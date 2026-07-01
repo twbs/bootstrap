@@ -56,7 +56,7 @@ class Popover extends Tooltip {
 
   // Overrides
   _isWithContent() {
-    return Boolean(this._getTitle() || this._getContent()) || this._hasNewContent();
+    return this._getTitle() || this._getContent();
   }
 
   // Private

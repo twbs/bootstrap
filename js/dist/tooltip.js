@@ -180,11 +180,6 @@ class Tooltip extends BaseComponent {
     const shadowRoot = findShadowRoot(this._element);
     const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element);
     if (showEvent.defaultPrevented || !isInTheDom) {
-      // Reset the transient hover/active state so a prevented (or not-in-DOM)
-      // show doesn't leave `_isHovered` stuck true — otherwise a click-triggered
-      // tip would hit the `_enter()` early-return on every later click and never
-      // reopen.
-      this._isHovered = false;
       return;
     }
     this._disposeFloating();
@@ -269,15 +264,7 @@ class Tooltip extends BaseComponent {
 
   // Protected
   _isWithContent() {
-    return Boolean(this._getTitle()) || this._hasNewContent();
-  }
-
-  // Content supplied via setContent() (a `{ selector: content }` map) overrides
-  // the configured title/content when rendering, so it should also satisfy the
-  // show() gate — otherwise a tip whose content is only set via setContent()
-  // can never be shown.
-  _hasNewContent() {
-    return Boolean(this._newContent) && Object.values(this._newContent).some(Boolean);
+    return Boolean(this._getTitle());
   }
   _getTipElement() {
     if (!this.tip) {
@@ -622,14 +609,10 @@ class Tooltip extends BaseComponent {
         hide: config.delay
       };
     }
-
-    // Coerce number/boolean title and content to strings. `data-bs-title="true"`
-    // / `data-bs-content="false"` are auto-converted to booleans by the data-API,
-    // which would otherwise fail the (null|string|element|function) type check.
-    if (typeof config.title === 'number' || typeof config.title === 'boolean') {
+    if (typeof config.title === 'number') {
       config.title = config.title.toString();
     }
-    if (typeof config.content === 'number' || typeof config.content === 'boolean') {
+    if (typeof config.content === 'number') {
       config.content = config.content.toString();
     }
     return config;

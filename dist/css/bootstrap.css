@@ -243,9 +243,8 @@
   --bs-border-style: solid;
   --bs-border-color: light-dark(var(--bs-gray-200), var(--bs-gray-700));
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
-  --bs-box-shadow-xs: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.075);
-  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-spacer: 1rem;
@@ -5886,7 +5885,7 @@
   }
   .nav.card-header-tabs {
     margin-inline: calc(-0.5 * var(--bs-card-cap-padding-x));
-    margin-bottom: calc(-1 * var(--bs-card-cap-padding-y) - var(--bs-nav-tabs-border-width));
+    margin-bottom: calc(-1 * var(--bs-card-cap-padding-y));
     border-block-end: 0;
   }
   .nav.card-header-tabs .nav-link.active {
@@ -6505,7 +6504,7 @@
   }
 }
 @layer components {
-  :root.dialog-open {
+  .dialog-open {
     overflow: hidden;
   }
   .dialog {
@@ -9067,9 +9066,6 @@
     top: var(--bs-popover-border-width);
     border-block-end-color: var(--bs-popover-bg);
   }
-  .bs-popover-bottom > .popover-arrow:has(+ .popover-header)::after, .bs-popover-auto[data-bs-placement^=bottom] > .popover-arrow:has(+ .popover-header)::after {
-    border-block-end-color: var(--bs-popover-header-bg);
-  }
   .bs-popover-bottom .popover-header::before, .bs-popover-auto[data-bs-placement^=bottom] .popover-header::before {
     position: absolute;
     top: 0;
@@ -10141,9 +10137,6 @@
   }
   .shadow {
     box-shadow: var(--bs-box-shadow);
-  }
-  .shadow-xs {
-    box-shadow: var(--bs-box-shadow-xs);
   }
   .shadow-sm {
     box-shadow: var(--bs-box-shadow-sm);

@@ -105,15 +105,6 @@ class DialogBase extends BaseComponent {
       EventHandler.trigger(this._element, this.constructor.eventName('hidden'));
     }, this._element, this._isAnimated());
   }
-  dispose() {
-    // If disposed while still open, close the native <dialog> and restore body
-    // scroll. Otherwise `dialog-open` (overflow: hidden) would stay stuck on the
-    // body — e.g. when an SPA tears the component down mid-navigation.
-    if (this._element.open) {
-      this._closeAndCleanup();
-    }
-    super.dispose();
-  }
 
   // Protected — hooks for subclasses to override
 
@@ -155,11 +146,7 @@ class DialogBase extends BaseComponent {
       this._element.show();
     }
     if (preventBodyScroll) {
-      // Lock scroll on the root element (not <body>) so it lands on the same
-      // element that carries `scrollbar-gutter: stable`. Co-locating them keeps
-      // the gutter reserved while the scrollbar is hidden, so the page doesn't
-      // shift (and the ::backdrop covers the gutter instead of leaving a strip).
-      document.documentElement.classList.add(CLASS_NAME_OPEN);
+      document.body.classList.add(CLASS_NAME_OPEN);
     }
   }
   _hideElement() {
@@ -180,15 +167,15 @@ class DialogBase extends BaseComponent {
     }
   }
 
-  // Closes the native <dialog> and tears down scroll prevention.
+  // Closes the native <dialog> and tears down body-scroll prevention.
   // Safe to call multiple times — close() is a no-op on a closed dialog.
   _closeAndCleanup() {
     this._element.close();
     this._openedAsModal = false;
 
-    // Only restore scroll if no other modal dialogs are open
+    // Only restore body scroll if no other modal dialogs are open
     if (!document.querySelector('dialog[open]:modal')) {
-      document.documentElement.classList.remove(CLASS_NAME_OPEN);
+      document.body.classList.remove(CLASS_NAME_OPEN);
     }
   }
 

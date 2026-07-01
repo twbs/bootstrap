@@ -4369,12 +4369,7 @@ class Menu extends BaseComponent {
       if (composedPath.includes(instance._element) || instance._config.autoClose === 'inside' && !isMenuTarget || instance._config.autoClose === 'outside' && isMenuTarget) {
         continue;
       }
-
-      // Don't auto-close when interacting with a form inside the menu — clicks
-      // on a form's labels, buttons, etc. (not just inputs) should keep it open.
-      const formAncestor = event.target.closest?.('form');
-      const isInsideMenuForm = Boolean(formAncestor) && instance._menu.contains(formAncestor);
-      if (instance._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName) || isInsideMenuForm)) {
+      if (instance._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName))) {
         continue;
       }
       const relatedTarget = {
@@ -4387,9 +4382,7 @@ class Menu extends BaseComponent {
     }
   }
   static dataApiKeydownHandler(event) {
-    // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
-    // menu doesn't hijack their arrow keys.
-    const isInput = /input|textarea/i.test(event.target.tagName) || event.target.isContentEditable;
+    const isInput = /input|textarea/i.test(event.target.tagName);
     const isEscapeEvent = event.key === ESCAPE_KEY$2;
     const isUpOrDownEvent = [ARROW_UP_KEY$2, ARROW_DOWN_KEY$2].includes(event.key);
     const isLeftOrRightEvent = [ARROW_LEFT_KEY$1, ARROW_RIGHT_KEY$1].includes(event.key);
@@ -5362,15 +5355,6 @@ class DialogBase extends BaseComponent {
       EventHandler.trigger(this._element, this.constructor.eventName('hidden'));
     }, this._element, this._isAnimated());
   }
-  dispose() {
-    // If disposed while still open, close the native <dialog> and restore body
-    // scroll. Otherwise `dialog-open` (overflow: hidden) would stay stuck on the
-    // body — e.g. when an SPA tears the component down mid-navigation.
-    if (this._element.open) {
-      this._closeAndCleanup();
-    }
-    super.dispose();
-  }
 
   // Protected — hooks for subclasses to override
 
@@ -5412,11 +5396,7 @@ class DialogBase extends BaseComponent {
       this._element.show();
     }
     if (preventBodyScroll) {
-      // Lock scroll on the root element (not <body>) so it lands on the same
-      // element that carries `scrollbar-gutter: stable`. Co-locating them keeps
-      // the gutter reserved while the scrollbar is hidden, so the page doesn't
-      // shift (and the ::backdrop covers the gutter instead of leaving a strip).
-      document.documentElement.classList.add(CLASS_NAME_OPEN);
+      document.body.classList.add(CLASS_NAME_OPEN);
     }
   }
   _hideElement() {
@@ -5437,15 +5417,15 @@ class DialogBase extends BaseComponent {
     }
   }
 
-  // Closes the native <dialog> and tears down scroll prevention.
+  // Closes the native <dialog> and tears down body-scroll prevention.
   // Safe to call multiple times — close() is a no-op on a closed dialog.
   _closeAndCleanup() {
     this._element.close();
     this._openedAsModal = false;
 
-    // Only restore scroll if no other modal dialogs are open
+    // Only restore body scroll if no other modal dialogs are open
     if (!document.querySelector('dialog[open]:modal')) {
-      document.documentElement.classList.remove(CLASS_NAME_OPEN);
+      document.body.classList.remove(CLASS_NAME_OPEN);
     }
   }
 
@@ -5633,9 +5613,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, functi
     }
     EventHandler.one(target, EVENT_HIDDEN$4, () => {
       if (isVisible(this)) {
-        this.focus({
-          preventScroll: true
-        });
+        this.focus();
       }
     });
   });
@@ -6260,9 +6238,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$4, functi
   }
   EventHandler.one(target, EVENT_HIDDEN$3, () => {
     if (isVisible(this)) {
-      this.focus({
-        preventScroll: true
-      });
+      this.focus();
     }
   });
 
@@ -7402,20 +7378,12 @@ const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longde
  *
  * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
  */
-const SAFE_URL_PATTERN = /^(?!(?:javascript|data|vbscript):)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
-
-/**
- * A pattern that matches safe data URLs. Only matches image, video and audio
- * types — notably NOT `data:text/html`, which is an XSS vector.
- *
- * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L49
- */
-const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z=]+$/i;
+const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
 const allowedAttribute = (attribute, allowedAttributeList) => {
   const attributeName = attribute.nodeName.toLowerCase();
   if (allowedAttributeList.includes(attributeName)) {
     if (uriAttributes.has(attributeName)) {
-      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue) || DATA_URL_PATTERN.test(attribute.nodeValue));
+      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue));
     }
     return true;
   }
@@ -7754,11 +7722,6 @@ class Tooltip extends BaseComponent {
     const shadowRoot = findShadowRoot(this._element);
     const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element);
     if (showEvent.defaultPrevented || !isInTheDom) {
-      // Reset the transient hover/active state so a prevented (or not-in-DOM)
-      // show doesn't leave `_isHovered` stuck true — otherwise a click-triggered
-      // tip would hit the `_enter()` early-return on every later click and never
-      // reopen.
-      this._isHovered = false;
       return;
     }
     this._disposeFloating();
@@ -7843,15 +7806,7 @@ class Tooltip extends BaseComponent {
 
   // Protected
   _isWithContent() {
-    return Boolean(this._getTitle()) || this._hasNewContent();
-  }
-
-  // Content supplied via setContent() (a `{ selector: content }` map) overrides
-  // the configured title/content when rendering, so it should also satisfy the
-  // show() gate — otherwise a tip whose content is only set via setContent()
-  // can never be shown.
-  _hasNewContent() {
-    return Boolean(this._newContent) && Object.values(this._newContent).some(Boolean);
+    return Boolean(this._getTitle());
   }
   _getTipElement() {
     if (!this.tip) {
@@ -8196,14 +8151,10 @@ class Tooltip extends BaseComponent {
         hide: config.delay
       };
     }
-
-    // Coerce number/boolean title and content to strings. `data-bs-title="true"`
-    // / `data-bs-content="false"` are auto-converted to booleans by the data-API,
-    // which would otherwise fail the (null|string|element|function) type check.
-    if (typeof config.title === 'number' || typeof config.title === 'boolean') {
+    if (typeof config.title === 'number') {
       config.title = config.title.toString();
     }
-    if (typeof config.content === 'number' || typeof config.content === 'boolean') {
+    if (typeof config.content === 'number') {
       config.content = config.content.toString();
     }
     return config;
@@ -8309,7 +8260,7 @@ class Popover extends Tooltip {
 
   // Overrides
   _isWithContent() {
-    return Boolean(this._getTitle() || this._getContent()) || this._hasNewContent();
+    return this._getTitle() || this._getContent();
   }
 
   // Private
@@ -8922,12 +8873,6 @@ class Tab extends BaseComponent {
   }
   _keydown(event) {
     if (![ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY, HOME_KEY, END_KEY].includes(event.key)) {
-      return;
-    }
-
-    // Don't hijack modifier+arrow shortcuts (e.g. Alt+Left/Right for browser
-    // history navigation); only the bare keys drive tablist navigation.
-    if (event.altKey || event.ctrlKey || event.metaKey) {
       return;
     }
     event.stopPropagation(); // stopPropagation/preventDefault both added to support up/down keys without scrolling the page

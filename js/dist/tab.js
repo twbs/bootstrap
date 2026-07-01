@@ -144,12 +144,6 @@ class Tab extends BaseComponent {
     if (![ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY, HOME_KEY, END_KEY].includes(event.key)) {
       return;
     }
-
-    // Don't hijack modifier+arrow shortcuts (e.g. Alt+Left/Right for browser
-    // history navigation); only the bare keys drive tablist navigation.
-    if (event.altKey || event.ctrlKey || event.metaKey) {
-      return;
-    }
     event.stopPropagation(); // stopPropagation/preventDefault both added to support up/down keys without scrolling the page
     event.preventDefault();
     const children = this._getChildren().filter(element => !isDisabled(element));
