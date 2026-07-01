@@ -1,6 +1,6 @@
 ---
 title: Color modes
-description: Bootstrap supports light and dark color modes. Dark mode is available globally by default, but can also be applied to specific components and elements via `data-bs-theme` attribute.
+description: Bootstrap supports light and dark color modes. The page follows the visitor’s system preference by default, and you can force a mode globally or per-component with the `data-bs-theme` attribute.
 toc: true
 ---
 
@@ -12,9 +12,14 @@ import { getDocsRelativePath } from '@libs/path'
 
 ## Dark mode
 
-**Bootstrap now supports color modes, starting with dark mode!** With v5.3.0 you can implement your own color mode toggler (see below for an example from Bootstrap’s docs) and apply the different color modes as you see fit. We support a light mode (default) and now dark mode. Color modes can be toggled globally on the `<html>` element, or on specific components and elements, thanks to the `data-bs-theme` attribute.
+**Bootstrap supports light and dark color modes out of the box.** They’re built on the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) function and the [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme) property, so our color tokens resolve to a light or dark value automatically—no recompiling and no duplicate stylesheets required.
 
-Alternatively, you can also switch to a media query implementation thanks to our color mode mixin—see [the usage section for details](#building-with-sass). Heads up though—this eliminates your ability to change themes on a per-component basis as shown below.
+This gives you the best of both worlds, with no flag to set:
+
+- **System preference by default.** Our `:root` is declared with `color-scheme: light dark`, so the page automatically follows the visitor’s operating system preference (`prefers-color-scheme`), just like a media query implementation.
+- **Override with a data attribute.** Set `data-bs-theme="light"` or `data-bs-theme="dark"` on the `<html>` element to force a mode for the whole page, or on any element or component to scope a mode to just that subtree.
+
+You don’t have to choose between media queries and a data attribute—because color modes are driven by `color-scheme`, the system preference and any `data-bs-theme` override work together.
 
 ## Example
 
@@ -50,24 +55,19 @@ For example, to change the color mode of a menu, add `data-bs-theme="light"` or 
 
 ## How it works
 
-- As shown above, color mode styles are controlled by the `data-bs-theme` attribute. This attribute can be applied to the `<html>` element, or to any other element or Bootstrap component. If applied to the `<html>` element, it will apply to everything. If applied to a component or element, it will be scoped to that specific component or element.
+- Our color tokens are defined once in `:root` using the CSS `light-dark()` function, e.g. `--bs-border-color: light-dark(var(--bs-gray-200), var(--bs-gray-700))`. Each token carries both its light and dark value, and the browser resolves the right one based on the element’s used color scheme.
 
-- For each color mode you wish to support, you’ll need to add new overrides for the shared global CSS variables. We do this already in our `_root.scss` stylesheet for dark mode, with light mode being the default values. In writing color mode specific styles, use the mixin:
+- The `:root` element is set to `color-scheme: light dark`, so the page honors the visitor’s system preference by default. There’s nothing else to wire up for automatic dark mode.
 
-  ```scss
-  // Color mode variables in _root.scss
-  @include color-mode(dark) {
-    // CSS variable overrides here...
-  }
-  ```
+- The `data-bs-theme` attribute overrides `color-scheme` for the element it’s set on and its descendants—`[data-bs-theme="dark"]` sets `color-scheme: dark` and `[data-bs-theme="light"]` sets `color-scheme: light`. That forces every `light-dark()` token in that subtree to resolve to the chosen mode, which is why you can flip the whole page from `<html>` or recolor just a single component (as shown above).
 
-- Dark mode overrides live in `_root.scss` (via the `color-mode()` mixin) and `_theme.scss`, which adjust global and theme color tokens. You don’t need these files for your own custom color modes, but they give Bootstrap a single place to reset colors for built-in dark mode.
+- For styles that can’t be expressed as a token—custom components, or additional color modes of your own—use the `color-mode()` Sass mixin to scope rules to a mode. See [Building with Sass](#building-with-sass).
 
 ## Usage
 
 ### Enable dark mode
 
-Enable the built in dark color mode across your entire project by adding the `data-bs-theme="dark"` attribute to the `<html>` element. This will apply the dark color mode to all components and elements, other than those with a specific `data-bs-theme` attribute applied. Building on the [quick start template]([[docsref:/guides/quickstart/]]):
+By default Bootstrap already follows the visitor’s system preference, so you don’t need to do anything to get automatic dark mode. To **force** dark mode regardless of their system setting, add the `data-bs-theme="dark"` attribute to the `<html>` element. This applies the dark color mode to all components and elements, other than those with their own `data-bs-theme` attribute. Building on the [quick start template]([[docsref:/guides/quickstart/]]):
 
 ```html
 <!doctype html>
@@ -89,11 +89,14 @@ Bootstrap does not yet ship with a built-in color mode picker, but you can use t
 
 ### Building with Sass
 
-Our new dark mode option is available to use for all users of Bootstrap, but it’s controlled via data attributes instead of media queries and does not automatically toggle your project’s color mode.
+Our built-in light and dark tokens auto-toggle via `light-dark()`, so you don’t need Sass to get automatic dark mode. The `color-mode()` mixin is for the extra cases: styles that can’t be captured by a token, or additional custom color modes of your own.
 
-We use a custom Sass mixin, `color-mode()`, to help you control _how_ color modes are applied. By default, we use a `data` attribute approach, allowing you to create more user-friendly experiences where your visitors can choose to have an automatic dark mode or control their preference (like in our own docs here). This is also an easy and scalable way to add different themes and more custom color modes beyond light and dark.
+The mixin can emit its rules two ways, controlled by the `$color-mode-type` Sass variable:
 
-In case you want to use media queries and only make color modes automatic, you can change the mixin’s default type via Sass variable. Consider the following snippet and its compiled CSS output.
+- `media-query` (the default) wraps your styles in a `@media (prefers-color-scheme: …)` block, so they follow the system preference.
+- `data` scopes your styles to a `[data-bs-theme="…"]` selector, so they can be toggled per-page or per-component.
+
+For example, opting into the `data` attribute approach produces a scoped selector:
 
 ```scss
 $color-mode-type: data;
@@ -115,7 +118,7 @@ Outputs to:
 }
 ```
 
-And when setting to `media-query`:
+And with the default `media-query` type, the same mixin output is wrapped in a media query instead:
 
 ```scss
 $color-mode-type: media-query;
@@ -186,13 +189,13 @@ Here’s a look at the JavaScript that powers it. Feel free to inspect our own d
 
 ### Variables
 
-Dozens of root level CSS variables are repeated as overrides for dark mode. These are scoped to the color mode selector, which defaults to `data-bs-theme` but [can be configured](#building-with-sass) to use a `prefers-color-scheme` media query. Use these variables as a guideline for generating your own new color modes.
+Dozens of root-level CSS variables carry both a light and a dark value via `light-dark()`, so a single `:root` declaration covers both modes—no repeated dark mode overrides. Use these as a guideline when defining tokens for your own custom color modes.
 
 {/* <ScssDocs name="root-dark-mode-vars" file="scss/_root.scss" /> */}
 
 ### Sass variables
 
-CSS variables for our dark color mode are generated from Sass in `_root.scss` and `_theme.scss`, including overrides for components that embed SVG data URIs in CSS—primarily via `mask-image` (carousel controls, close buttons, and similar icons), with select dropdown arrows as a remaining `background-image` case.
+Our light and dark color tokens are generated from Sass in `_root.scss` and `_theme.scss`, where most are emitted as `light-dark()` values so they resolve automatically. Components that paint their icons via CSS masks (carousel controls, close buttons, and similar) inherit the current color and adapt to the active mode without per-mode overrides.
 
 {/* <ScssDocs name="sass-dark-mode-vars" file="scss/_config.scss" /> */}
 

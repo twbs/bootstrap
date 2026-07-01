@@ -25,21 +25,23 @@ When you set `dir="rtl"`, these logical properties automatically flip to match t
 
 One line of changes to your HTML is all it takes to enable RTL. Bootstrap will then automatically adapt to the RTL direction using logical properties.
 
-```diff
-- <html lang="en">
-+ <html lang="ar" dir="rtl">
+```html
+<html lang="en">
+<html lang="ar" dir="rtl"><!-- [!code highlight] -->
 ```
 
 ### Live demo
 
 Toggle between LTR and RTL on this page to see Bootstrap’s logical properties in action:
 
-<div class="bd-example">
-  <div class="form-field">
-    <div class="switch">
-      <input type="checkbox" value="" id="rtlSwitch" role="switch" switch />
+<div class="bd-example-snippet bd-code-snippet not-prose">
+  <div class="bd-example">
+    <div class="form-field">
+      <div class="switch">
+        <input type="checkbox" value="" id="rtlSwitch" role="switch" switch />
+      </div>
+      <label for="rtlSwitch">Enable RTL mode</label>
     </div>
-    <label for="rtlSwitch">Enable RTL mode</label>
   </div>
 </div>
 
