@@ -1,13 +1,10 @@
 @use "../../../scss/mixins/border-radius" as *;
 
-// stylelint-disable selector-max-id, declaration-no-important
+// stylelint-disable selector-max-id
 
 @layer custom {
   #carbon-responsive .carbon-responsive-wrap {
-    padding: 1rem !important;
-    background-color: var(--bs-bg-1) !important;
-    border: 0 !important;
-    @include border-radius(var(--radius-8) !important);
+    @include border-radius(var(--radius-7));
   }
   .carbon-img {
     position: relative;
