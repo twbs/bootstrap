@@ -174,6 +174,24 @@ Add `.drawer-translucent` to the drawer panel to blur and saturate the backgroun
     </div>
   </dialog>`} />
 
+## Sheet
+
+Add `.drawer-sheet` to render the panel flush against the viewport edge. The sheet variant removes the drawer’s inset, border, border-radius, and box-shadow, so it sits edge-to-edge like a traditional offcanvas. It works with any placement.
+
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerSheet" aria-controls="drawerSheet">
+    Toggle sheet drawer
+  </button>
+
+  <dialog class="drawer drawer-bottom drawer-sheet" tabindex="-1" id="drawerSheet" aria-labelledby="drawerSheetLabel">
+    <div class="drawer-header">
+      <h5 class="drawer-title" id="drawerSheetLabel">Sheet drawer</h5>
+      <CloseButton dismiss="drawer" />
+    </div>
+    <div class="drawer-body">
+      Content for the sheet drawer goes here. It sits flush to the edge with no inset, border, rounded corners, or shadow.
+    </div>
+  </dialog>`} />
+
 ## Responsive
 
 Responsive drawer classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.lg:drawer` hides content in a drawer below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Responsive drawer classes are available for each breakpoint.

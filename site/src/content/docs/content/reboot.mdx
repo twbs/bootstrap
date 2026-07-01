@@ -450,3 +450,12 @@ Since `[hidden]` is not compatible with jQuery’s `$(...).hide()` and `$(...).s
 </Callout>
 
 To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]([[docsref:/utilities/visibility]]) instead.
+
+## iframe color-scheme
+
+The `<iframe>` element is updated to set `color-scheme: light dark`. This ensures that the iframe is displayed in the same color scheme as the parent document. Without it, an iframe would get an opaque `background: canvas` from a mismatched `color-scheme` value.
+
+<Example code={`<div class="bg-body fg-body p-3" data-bs-theme="dark">
+    <iframe class="w-100" style="color-scheme: unset" src="data:text/html,<!DOCTYPE html><html><meta name='color-scheme' content='light dark'><body style='background-color:transparent;color:gray;'><h4>Default iframe</h4></body></html>"></iframe>
+    <iframe class="w-100" src="data:text/html,<!DOCTYPE html><html><meta name='color-scheme' content='light dark'><body style='background-color:transparent;color:gray;'><h4>iframe with color-scheme: light-dark</h4></body></html>"></iframe>
+  </div>`} />
