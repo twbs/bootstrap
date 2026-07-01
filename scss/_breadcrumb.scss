@@ -13,7 +13,7 @@ $breadcrumb-tokens: defaults(
     --breadcrumb-margin-bottom: 1rem,
     --breadcrumb-font-size: inherit,
     --breadcrumb-bg: transparent,
-    --breadcrumb-border-radius: var(--radius-3),
+    --breadcrumb-border-radius: var(--radius-5),
     --breadcrumb-divider-color: var(--fg-4),
     --breadcrumb-divider-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 16'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M2 2l4 6-4 6'/></svg>"))},
     --breadcrumb-divider-width: .375rem,
@@ -24,7 +24,7 @@ $breadcrumb-tokens: defaults(
     --breadcrumb-link-hover-color: var(--fg-2),
     --breadcrumb-link-hover-bg: var(--bg-1),
     --breadcrumb-link-active-color: var(--fg-1),
-    --breadcrumb-link-border-radius: var(--radius-4),
+    --breadcrumb-link-border-radius: var(--radius-7),
   ),
   $breadcrumb-tokens
 );

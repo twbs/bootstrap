@@ -80,8 +80,7 @@ $sizes: (
   12: $spacer * 12,
 ) !default;
 
-// Starts the same as spacers
-$radius: 1rem !default;
+$radius: .5rem !default;
 $radii: (
   0: 0,
   1: $radius * .25,
