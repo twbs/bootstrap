@@ -12,6 +12,34 @@ When using Sass in your asset pipeline, make sure you optimize Bootstrap by only
 
 If you’re not using a component, comment it out or delete its `@forward` entry entirely. For example, if you’re not using the carousel, remove that line to save file size in your compiled CSS. Keep in mind there are some dependencies across Sass partials that may make it more difficult to omit a file.
 
+The cleanest way to do this is to maintain your own entry file that forwards only the parts of Bootstrap you need, rather than importing all of `bootstrap`. Copy the import stack above into your own stylesheet, then comment out the components you don’t use:
+
+```scss
+// custom-bootstrap.scss
+@forward "bootstrap/scss/colors";
+@forward "bootstrap/scss/root";
+
+// Layout & content
+@forward "bootstrap/scss/content";
+@forward "bootstrap/scss/layout";
+@forward "bootstrap/scss/forms";
+@forward "bootstrap/scss/buttons";
+
+// Components — keep only what you need
+@forward "bootstrap/scss/alert";
+@forward "bootstrap/scss/badge";
+@forward "bootstrap/scss/card";
+// @forward "bootstrap/scss/accordion";  // unused
+// @forward "bootstrap/scss/carousel";   // unused
+// @forward "bootstrap/scss/dialog";     // unused
+
+// Helpers & utilities
+@forward "bootstrap/scss/helpers";
+@forward "bootstrap/scss/utilities/api";
+```
+
+Then compile your `custom-bootstrap.scss` instead of Bootstrap’s default `bootstrap.scss`. Just remember to keep `colors` and `root` (and any partials your remaining components depend on), since the rest of the framework builds on the variables and tokens they define.
+
 ## Lean JavaScript
 
 Bootstrap’s JavaScript includes every component in our primary dist files (`bootstrap.js` and `bootstrap.min.js`), and even our primary dependencies (Floating UI and Vanilla Calendar Pro) with our bundle files (`bootstrap.bundle.js` and `bootstrap.bundle.min.js`). While you’re customizing via Sass, be sure to remove related JavaScript.
@@ -21,21 +49,21 @@ For instance, assuming you’re using your own JavaScript bundler like Webpack, 
 ```js
 // Import just what we need
 
-// import 'bootstrap/js/dist/alert';
-// import 'bootstrap/js/dist/button';
-// import 'bootstrap/js/dist/carousel';
-// import 'bootstrap/js/dist/collapse';
-import 'bootstrap/js/dist/dialog';
-// import 'bootstrap/js/dist/menu';
-// import 'bootstrap/js/dist/drawer';
-// import 'bootstrap/js/dist/popover';
-// import 'bootstrap/js/dist/scrollspy';
-// import 'bootstrap/js/dist/tab';
-// import 'bootstrap/js/dist/toast';
-// import 'bootstrap/js/dist/tooltip';
+// import 'bootstrap/js/dist/alert'
+// import 'bootstrap/js/dist/button'
+// import 'bootstrap/js/dist/carousel'
+// import 'bootstrap/js/dist/collapse'
+import 'bootstrap/js/dist/dialog'
+// import 'bootstrap/js/dist/menu'
+// import 'bootstrap/js/dist/drawer'
+// import 'bootstrap/js/dist/popover'
+// import 'bootstrap/js/dist/scrollspy'
+// import 'bootstrap/js/dist/tab'
+// import 'bootstrap/js/dist/toast'
+// import 'bootstrap/js/dist/tooltip'
 ```
 
-This way, you’re not including any JavaScript you don’t intend to use for components like buttons, carousels, and tooltips. If you’re importing menus, tooltips or popovers, be sure to list the Floating UI dependency in your `package.json` file. If you’re using the datepicker, be sure to also list the Vanilla Calendar Pro dependency.
+Importing a file this way runs it for its side effects, which registers that component’s data attribute API—so `data-bs-toggle` and friends keep working without any extra code. This way, you’re not including any JavaScript you don’t intend to use for components like buttons, carousels, and tooltips. If you’re importing menus, tooltips or popovers, be sure to list the Floating UI dependency in your `package.json` file. If you’re using the datepicker, be sure to also list the Vanilla Calendar Pro dependency.
 
 <Callout>
 **Heads up!** Files in `bootstrap/js/dist` use the **default export**. To use them, do the following:
@@ -52,14 +80,53 @@ Bootstrap depends on Autoprefixer to automatically add browser prefixes to certa
 
 ## Unused CSS
 
-_Help wanted with this section, please consider opening a PR. Thanks!_
+[PurgeCSS](https://github.com/FullHuman/purgecss) analyzes your markup and strips out any CSS selectors it can’t find in use, which can dramatically shrink Bootstrap’s compiled CSS. The setup below assumes a project of static HTML pages alongside Bootstrap’s JavaScript.
 
-While we don’t have a prebuilt example for using [PurgeCSS](https://github.com/FullHuman/purgecss) with Bootstrap, there are some helpful articles and walkthroughs that the community has written. Here are some options:
+First, install PurgeCSS as a dev dependency:
 
-- https://medium.com/dwarves-foundation/remove-unused-css-styles-from-bootstrap-using-purgecss-88395a2c5772
-- https://lukelowrey.com/automatically-removeunused-css-from-bootstrap-or-other-frameworks/
+```sh
+npm install --save-dev purgecss
+```
 
-Lastly, this [CSS Tricks article on unused CSS](https://css-tricks.com/how-do-you-remove-unused-css-from-a-site/) shows how to use PurgeCSS and other similar tools.
+Then add a `purgecss.config.js` to the root of your project:
+
+```js
+// purgecss.config.js
+export default {
+  // Files to scan for the class names actually in use
+  content: ['./**/*.html', './**/*.js'],
+  // Your compiled Bootstrap CSS (plus any of your own)
+  css: ['./css/bootstrap.css'],
+  output: './css/bootstrap.purged.css',
+  // Bootstrap 6 uses ":" in class names (e.g. `md:d-none`, `hover:opacity-50`),
+  // so the extractor must keep colons and slashes.
+  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+  safelist: {
+    // Classes added at runtime by Bootstrap's JS that never appear in your HTML
+    standard: ['show', 'showing', 'collapsing', 'active', 'fade', 'dialog-open'],
+    // Keep component families that are generated or toggled dynamically
+    greedy: [/^carousel/, /^menu/, /^drawer/, /^dialog/, /^tooltip/, /^popover/]
+  }
+}
+```
+
+Run it as part of your build, pointing PurgeCSS at the config:
+
+```sh
+npx purgecss --config purgecss.config.js
+```
+
+Then serve `bootstrap.purged.css` instead of the full file.
+
+<Callout type="warning">
+**Test thoroughly after purging.** Bootstrap toggles many classes with JavaScript (`.show`, `.active`, `.collapsing`, and more) and generates others dynamically (carousels, menus, dialogs). Anything PurgeCSS can’t find in the files it scans will be removed, so use the `safelist` option to protect runtime classes and verify every interactive component still works.
+</Callout>
+
+For deeper walkthroughs, the community has written some helpful guides:
+
+- [Remove unused CSS styles from Bootstrap using PurgeCSS](https://medium.com/dwarves-foundation/remove-unused-css-styles-from-bootstrap-using-purgecss-88395a2c5772)
+- [Automatically remove unused CSS from Bootstrap or other frameworks](https://lukelowrey.com/automatically-removeunused-css-from-bootstrap-or-other-frameworks/)
+- [CSS-Tricks: How do you remove unused CSS from a site?](https://css-tricks.com/how-do-you-remove-unused-css-from-a-site/)
 
 ## Minify and gzip
 

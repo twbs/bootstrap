@@ -14,9 +14,53 @@ Check out [our Sass maps and loops docs]([[docsref:/customize/sass#maps-and-loop
 
 ## Theme variants
 
-<Callout type="info">
-@mdo-do: Add more info about theme variants here.
-</Callout>
+Most components support **theme variants**—a single family of composable `.theme-*` classes that recolor a component without per-component color classes. This replaces the v5 pattern of baking color into each component (`.btn-primary`, `.alert-success`, `.bg-warning`, and so on) with one consistent API.
+
+A `.theme-{name}` class remaps a shared set of `--bs-theme-*` custom properties to the matching color’s tokens. Components read those `--bs-theme-*` variables for their background, foreground, border, and focus styles, so adding a theme class to a component (or to an ancestor) is all it takes to recolor it.
+
+<BsTable class="table">
+| Token | Description |
+| --- | --- |
+| `--bs-theme-base` | The raw base color the theme is derived from |
+| `--bs-theme-bg` | Solid background color, e.g., a solid button or badge |
+| `--bs-theme-bg-subtle` | Subtle background tint for low-emphasis surfaces |
+| `--bs-theme-bg-muted` | Muted background, between subtle and solid |
+| `--bs-theme-fg` | Foreground/text color on default surfaces |
+| `--bs-theme-fg-emphasis` | Higher-contrast foreground color |
+| `--bs-theme-border` | Border color |
+| `--bs-theme-contrast` | Contrasting color for text/icons sitting on a solid `--bs-theme-bg` |
+| `--bs-theme-focus-ring` | Focus ring color |
+</BsTable>
+
+The available theme classes mirror our semantic theme colors—`.theme-primary`, `.theme-secondary`, `.theme-success`, `.theme-danger`, `.theme-warning`, `.theme-info`, `.theme-accent`, and `.theme-inverse`. They’re generated from the `$theme-colors` Sass map, so adding or renaming a theme color automatically produces a matching `.theme-*` class. Each entry defines the tokens above for both light and dark mode via `light-dark()`:
+
+```scss
+// One entry from $theme-colors in scss/_theme.scss
+"primary": (
+  "base": var(--blue-500),
+  "fg": light-dark(var(--blue-600), var(--blue-400)),
+  "bg": var(--blue-500),
+  "bg-subtle": light-dark(var(--blue-100), var(--blue-900)),
+  "border": light-dark(var(--blue-300), var(--blue-600)),
+  "contrast": var(--white),
+  // …
+)
+```
+
+Combine a component’s variant class with a theme class to color it. For buttons, that means pairing a variant like `.btn-solid` or `.btn-outline` with a theme:
+
+<Example class="d-flex gap-2" code={`<button type="button" class="btn-solid theme-primary">Primary</button>
+<button type="button" class="btn-outline theme-success">Success</button>
+<button type="button" class="btn-subtle theme-danger">Danger</button>`} />
+
+Because the theme tokens are plain CSS variables, you can also scope a theme to a container and let everything inside inherit it, or override individual tokens for one-off styling—no Sass compilation required:
+
+```css
+.my-brand {
+  --bs-theme-bg: #6f42c1;
+  --bs-theme-contrast: #fff;
+}
+```
 
 ## Responsive
 
