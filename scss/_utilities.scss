@@ -122,6 +122,7 @@ $utilities: map.merge(
       // .shadow-{color} and .shadow-opacity-* take effect.
       values: (
         null: map.get($root-tokens, --box-shadow),
+        xs: map.get($root-tokens, --box-shadow-xs),
         sm: map.get($root-tokens, --box-shadow-sm),
         lg: map.get($root-tokens, --box-shadow-lg),
         xl: map.get($root-tokens, --box-shadow-xl),

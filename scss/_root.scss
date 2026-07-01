@@ -61,6 +61,7 @@ $root-tokens: defaults(
     // (.shadow-opacity-*), and shadow-strength deepens every shadow in dark mode.
     --shadow-color: #000,
     --shadow-strength: 1,
+    --box-shadow-xs: 0 .0625rem .125rem oklch(from var(--shadow-color) l c h / calc(.04 * var(--shadow-strength) * var(--shadow-opacity, 1))),
     --box-shadow-sm: #{(
       "0 .0625rem .125rem oklch(from var(--shadow-color) l c h / calc(.04 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
       "0 .125rem .375rem -.0625rem oklch(from var(--shadow-color) l c h / calc(.05 * var(--shadow-strength) * var(--shadow-opacity, 1)))"
