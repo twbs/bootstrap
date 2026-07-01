@@ -243,8 +243,9 @@
   --bs-border-style: solid;
   --bs-border-color: light-dark(var(--bs-gray-200), var(--bs-gray-700));
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
-  --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --bs-box-shadow-xs: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.075);
   --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-spacer: 1rem;
@@ -449,6 +450,10 @@
   }
   :root {
     accent-color: var(--bs-primary-base);
+  }
+  iframe {
+    color-scheme: light dark;
+    border: 0;
   }
   body {
     margin: 0;
@@ -777,9 +782,6 @@
   }
   output {
     display: inline-block;
-  }
-  iframe {
-    border: 0;
   }
   summary {
     display: list-item;
@@ -5885,7 +5887,7 @@
   }
   .nav.card-header-tabs {
     margin-inline: calc(-0.5 * var(--bs-card-cap-padding-x));
-    margin-bottom: calc(-1 * var(--bs-card-cap-padding-y));
+    margin-bottom: calc(-1 * var(--bs-card-cap-padding-y) - var(--bs-nav-tabs-border-width));
     border-block-end: 0;
   }
   .nav.card-header-tabs .nav-link.active {
@@ -6504,7 +6506,7 @@
   }
 }
 @layer components {
-  .dialog-open {
+  :root.dialog-open {
     overflow: hidden;
   }
   .dialog {
@@ -6519,13 +6521,13 @@
     --bs-dialog-box-shadow: var(--bs-box-shadow-lg);
     --bs-dialog-transition-duration: 0.3s;
     --bs-dialog-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
-    --bs-dialog-backdrop-bg: rgba(0, 0, 0, 0.5);
+    --bs-dialog-backdrop-bg: light-dark(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65));
     --bs-dialog-backdrop-blur: 8px;
     --bs-dialog-header-padding: 1rem;
-    --bs-dialog-header-border-color: var(--bs-border-color);
+    --bs-dialog-header-border-color: var(--bs-border-color-translucent);
     --bs-dialog-header-border-width: var(--bs-border-width);
     --bs-dialog-footer-padding: 1rem;
-    --bs-dialog-footer-border-color: var(--bs-border-color);
+    --bs-dialog-footer-border-color: var(--bs-border-color-translucent);
     --bs-dialog-footer-border-width: var(--bs-border-width);
     --bs-dialog-footer-gap: 0.5rem;
     display: flex;
@@ -7796,6 +7798,8 @@
   --bs-drawer-transition-duration: 0.3s;
   --bs-drawer-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
   --bs-drawer-title-line-height: 1.5;
+  --bs-drawer-backdrop-bg: color-mix(in oklch, var(--bs-bg-body) 25%, transparent);
+  --bs-drawer-backdrop-blur: 8px;
 }
 
 @layer components {
@@ -8581,25 +8585,7 @@
     transform: none;
   }
   .sm\:drawer::backdrop {
-    --bs-drawer-backdrop-bg: var(--bs-bg-body);
-    --bs-drawer-backdrop-opacity: 25%;
-    --bs-drawer-backdrop-blur: 8px;
-    --bs-drawer-inset: var(--bs-spacer);
-    --bs-drawer-zindex: 1045;
-    --bs-drawer-width: 400px;
-    --bs-drawer-height: 30vh;
-    --bs-drawer-padding-x: var(--bs-spacer);
-    --bs-drawer-padding-y: var(--bs-spacer);
-    --bs-drawer-color: var(--bs-fg-body);
-    --bs-drawer-bg: var(--bs-bg-body);
-    --bs-drawer-border-width: var(--bs-border-width);
-    --bs-drawer-border-color: var(--bs-border-color-translucent);
-    --bs-drawer-border-radius: var(--bs-radius-7);
-    --bs-drawer-box-shadow: var(--bs-box-shadow-lg);
-    --bs-drawer-transition-duration: 0.3s;
-    --bs-drawer-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
-    --bs-drawer-title-line-height: 1.5;
-    background-color: color-mix(in oklch, var(--bs-drawer-backdrop-bg) var(--bs-drawer-backdrop-opacity), transparent);
+    background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
@@ -8609,25 +8595,7 @@
     }
   }
   .md\:drawer::backdrop {
-    --bs-drawer-backdrop-bg: var(--bs-bg-body);
-    --bs-drawer-backdrop-opacity: 25%;
-    --bs-drawer-backdrop-blur: 8px;
-    --bs-drawer-inset: var(--bs-spacer);
-    --bs-drawer-zindex: 1045;
-    --bs-drawer-width: 400px;
-    --bs-drawer-height: 30vh;
-    --bs-drawer-padding-x: var(--bs-spacer);
-    --bs-drawer-padding-y: var(--bs-spacer);
-    --bs-drawer-color: var(--bs-fg-body);
-    --bs-drawer-bg: var(--bs-bg-body);
-    --bs-drawer-border-width: var(--bs-border-width);
-    --bs-drawer-border-color: var(--bs-border-color-translucent);
-    --bs-drawer-border-radius: var(--bs-radius-7);
-    --bs-drawer-box-shadow: var(--bs-box-shadow-lg);
-    --bs-drawer-transition-duration: 0.3s;
-    --bs-drawer-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
-    --bs-drawer-title-line-height: 1.5;
-    background-color: color-mix(in oklch, var(--bs-drawer-backdrop-bg) var(--bs-drawer-backdrop-opacity), transparent);
+    background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
@@ -8637,25 +8605,7 @@
     }
   }
   .lg\:drawer::backdrop {
-    --bs-drawer-backdrop-bg: var(--bs-bg-body);
-    --bs-drawer-backdrop-opacity: 25%;
-    --bs-drawer-backdrop-blur: 8px;
-    --bs-drawer-inset: var(--bs-spacer);
-    --bs-drawer-zindex: 1045;
-    --bs-drawer-width: 400px;
-    --bs-drawer-height: 30vh;
-    --bs-drawer-padding-x: var(--bs-spacer);
-    --bs-drawer-padding-y: var(--bs-spacer);
-    --bs-drawer-color: var(--bs-fg-body);
-    --bs-drawer-bg: var(--bs-bg-body);
-    --bs-drawer-border-width: var(--bs-border-width);
-    --bs-drawer-border-color: var(--bs-border-color-translucent);
-    --bs-drawer-border-radius: var(--bs-radius-7);
-    --bs-drawer-box-shadow: var(--bs-box-shadow-lg);
-    --bs-drawer-transition-duration: 0.3s;
-    --bs-drawer-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
-    --bs-drawer-title-line-height: 1.5;
-    background-color: color-mix(in oklch, var(--bs-drawer-backdrop-bg) var(--bs-drawer-backdrop-opacity), transparent);
+    background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
@@ -8665,25 +8615,7 @@
     }
   }
   .xl\:drawer::backdrop {
-    --bs-drawer-backdrop-bg: var(--bs-bg-body);
-    --bs-drawer-backdrop-opacity: 25%;
-    --bs-drawer-backdrop-blur: 8px;
-    --bs-drawer-inset: var(--bs-spacer);
-    --bs-drawer-zindex: 1045;
-    --bs-drawer-width: 400px;
-    --bs-drawer-height: 30vh;
-    --bs-drawer-padding-x: var(--bs-spacer);
-    --bs-drawer-padding-y: var(--bs-spacer);
-    --bs-drawer-color: var(--bs-fg-body);
-    --bs-drawer-bg: var(--bs-bg-body);
-    --bs-drawer-border-width: var(--bs-border-width);
-    --bs-drawer-border-color: var(--bs-border-color-translucent);
-    --bs-drawer-border-radius: var(--bs-radius-7);
-    --bs-drawer-box-shadow: var(--bs-box-shadow-lg);
-    --bs-drawer-transition-duration: 0.3s;
-    --bs-drawer-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
-    --bs-drawer-title-line-height: 1.5;
-    background-color: color-mix(in oklch, var(--bs-drawer-backdrop-bg) var(--bs-drawer-backdrop-opacity), transparent);
+    background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
@@ -8693,25 +8625,7 @@
     }
   }
   .\32 xl\:drawer::backdrop {
-    --bs-drawer-backdrop-bg: var(--bs-bg-body);
-    --bs-drawer-backdrop-opacity: 25%;
-    --bs-drawer-backdrop-blur: 8px;
-    --bs-drawer-inset: var(--bs-spacer);
-    --bs-drawer-zindex: 1045;
-    --bs-drawer-width: 400px;
-    --bs-drawer-height: 30vh;
-    --bs-drawer-padding-x: var(--bs-spacer);
-    --bs-drawer-padding-y: var(--bs-spacer);
-    --bs-drawer-color: var(--bs-fg-body);
-    --bs-drawer-bg: var(--bs-bg-body);
-    --bs-drawer-border-width: var(--bs-border-width);
-    --bs-drawer-border-color: var(--bs-border-color-translucent);
-    --bs-drawer-border-radius: var(--bs-radius-7);
-    --bs-drawer-box-shadow: var(--bs-box-shadow-lg);
-    --bs-drawer-transition-duration: 0.3s;
-    --bs-drawer-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
-    --bs-drawer-title-line-height: 1.5;
-    background-color: color-mix(in oklch, var(--bs-drawer-backdrop-bg) var(--bs-drawer-backdrop-opacity), transparent);
+    background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
@@ -8721,25 +8635,7 @@
     }
   }
   .drawer::backdrop {
-    --bs-drawer-backdrop-bg: var(--bs-bg-body);
-    --bs-drawer-backdrop-opacity: 25%;
-    --bs-drawer-backdrop-blur: 8px;
-    --bs-drawer-inset: var(--bs-spacer);
-    --bs-drawer-zindex: 1045;
-    --bs-drawer-width: 400px;
-    --bs-drawer-height: 30vh;
-    --bs-drawer-padding-x: var(--bs-spacer);
-    --bs-drawer-padding-y: var(--bs-spacer);
-    --bs-drawer-color: var(--bs-fg-body);
-    --bs-drawer-bg: var(--bs-bg-body);
-    --bs-drawer-border-width: var(--bs-border-width);
-    --bs-drawer-border-color: var(--bs-border-color-translucent);
-    --bs-drawer-border-radius: var(--bs-radius-7);
-    --bs-drawer-box-shadow: var(--bs-box-shadow-lg);
-    --bs-drawer-transition-duration: 0.3s;
-    --bs-drawer-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
-    --bs-drawer-title-line-height: 1.5;
-    background-color: color-mix(in oklch, var(--bs-drawer-backdrop-bg) var(--bs-drawer-backdrop-opacity), transparent);
+    background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
@@ -8782,10 +8678,19 @@
     backdrop-filter: blur(5px) saturate(180%);
   }
   .drawer-sheet {
-    --bs-drawer-inset: 0;
-    --bs-drawer-border-radius: 0;
-    --bs-drawer-border-width: 0;
-    --bs-drawer-box-shadow: none;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    margin-inline: auto;
+    margin-bottom: calc(-1 * var(--bs-drawer-border-width));
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+  }
+  @media (width >= 1024px) {
+    .drawer-sheet {
+      max-width: var(--bs-drawer-sheet-width, 760px);
+    }
   }
   .drawer-header {
     display: flex;
@@ -9065,6 +8970,9 @@
   .bs-popover-bottom > .popover-arrow::after, .bs-popover-auto[data-bs-placement^=bottom] > .popover-arrow::after {
     top: var(--bs-popover-border-width);
     border-block-end-color: var(--bs-popover-bg);
+  }
+  .bs-popover-bottom > .popover-arrow:has(+ .popover-header)::after, .bs-popover-auto[data-bs-placement^=bottom] > .popover-arrow:has(+ .popover-header)::after {
+    border-block-end-color: var(--bs-popover-header-bg);
   }
   .bs-popover-bottom .popover-header::before, .bs-popover-auto[data-bs-placement^=bottom] .popover-header::before {
     position: absolute;
@@ -10137,6 +10045,9 @@
   }
   .shadow {
     box-shadow: var(--bs-box-shadow);
+  }
+  .shadow-xs {
+    box-shadow: var(--bs-box-shadow-xs);
   }
   .shadow-sm {
     box-shadow: var(--bs-box-shadow-sm);
