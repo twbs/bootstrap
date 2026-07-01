@@ -9,12 +9,13 @@
   .bd-code-snippet {
     --bd-example-padding: 1.25rem;
     --bd-example-border-color: var(--bs-border-subtle);
-    --bd-example-inner-radius: calc(var(--radius-5) - 1px);
+    --bd-example-radius: var(--radius-5);
+    --bd-example-inner-radius: calc(var(--bd-example-radius) - 1px);
 
     margin: 0;
     background-color: var(--bd-pre-bg);
     border: 1px solid var(--bd-example-border-color);
-    @include border-radius(var(--radius-5));
+    @include border-radius(var(--bd-example-radius));
 
     .bd-example {
       &:first-child {
@@ -41,7 +42,7 @@
     border-bottom: 1px solid var(--bd-example-border-color);
 
     &:first-child {
-      @include border-top-radius(calc(var(--radius-5) - 1px));
+      @include border-top-radius(var(--bd-example-inner-radius));
     }
 
     &:not(:first-child) {
@@ -69,7 +70,7 @@
       min-height: 120px;
       padding: var(--bs-spacer);
       background-color: var(--bs-bg-1);
-      @include border-radius(var(--radius-5));
+      @include border-radius(var(--bd-example-radius));
     }
 
     > .menu.position-static {
@@ -202,7 +203,7 @@
       color: var(--bs-fg-3);
       background-color: var(--bs-bg-1);
       border: var(--bs-border-width) solid var(--bs-border-color);
-      @include border-radius(var(--radius-5));
+      @include border-radius(var(--bd-example-radius));
     }
   }
 
@@ -360,6 +361,8 @@
 
   .bd-example-resizable {
     position: relative;
+    padding: .375rem;
+    overflow: hidden;
   }
 
   .bd-resizable-container {
@@ -368,8 +371,7 @@
     overflow: hidden;
     resize: horizontal;
     background-color: var(--bs-bg-body);
-    border: 1px dashed var(--bs-border-color);
-    @include border-radius(var(--radius-5));
+    @include border-radius(var(--radius-4));
   }
 
   //

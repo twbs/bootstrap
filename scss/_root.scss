@@ -55,8 +55,9 @@ $root-tokens: defaults(
     // scss-docs-end root-border-var
 
     // scss-docs-start root-box-shadow-variables
-    --box-shadow: 0 .5rem 1rem rgb(0 0 0 / 15%),
+    --box-shadow-xs: 0 .0625rem .1875rem rgb(0 0 0 / 7.5%),
     --box-shadow-sm: 0 .125rem .25rem rgb(0 0 0 / 7.5%),
+    --box-shadow: 0 .5rem 1rem rgb(0 0 0 / 15%),
     --box-shadow-lg: 0 1rem 3rem rgb(0 0 0 / 17.5%),
     --box-shadow-inset: inset 0 1px 2px rgb(0 0 0 / 7.5%),
     // scss-docs-end root-box-shadow-variables
