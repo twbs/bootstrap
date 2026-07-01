@@ -21,7 +21,7 @@ $form-control-tokens: defaults(
     --control-bg: var(--btn-input-bg),
     --control-border-width: var(--border-width),
     --control-border-color: var(--border-color),
-    --control-border-radius: var(--radius-5),
+    --control-border-radius: var(--radius-3),
     --control-box-shadow: var(--box-shadow-inset),
     --control-action-bg: var(--bg-1),
     --control-action-hover-bg: var(--bg-2),
@@ -246,12 +246,12 @@ $form-control-sizes: defaults(
 
     &::-moz-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius(var(--radius-5));
+      @include border-radius(var(--radius-3));
     }
 
     &::-webkit-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius(var(--radius-5));
+      @include border-radius(var(--radius-3));
     }
   }
 

@@ -14,7 +14,7 @@ $check-tokens: defaults(
     --check-margin-block: .125rem,
     --check-bg: var(--bg-body),
     --check-border-color: var(--border-color),
-    --check-border-radius: var(--radius-5),
+    --check-border-radius: var(--radius-3),
     --check-icon-checked: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/></svg>"))},
     --check-icon-indeterminate: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 10h8'/></svg>"))},
     --check-checked-bg: var(--control-checked-bg),

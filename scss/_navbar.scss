@@ -39,7 +39,7 @@ $navbar-tokens: defaults(
     --navbar-toggler-padding-x: .75rem,
     --navbar-toggler-font-size: var(--font-size-lg),
     --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
-    --navbar-toggler-border-radius: var(--radius-5),
+    --navbar-toggler-border-radius: var(--radius-3),
     --navbar-toggler-transition: box-shadow .15s ease-in-out,
     --navbar-toggler-icon-size: 1.25rem,
     --navbar-toggler-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path stroke='black' stroke-linecap='round' stroke-width='1' d='M1 3.5h14M1 8h14M1 12.5h14'/></svg>"))},
