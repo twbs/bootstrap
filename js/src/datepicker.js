@@ -28,6 +28,10 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY}${DATA_API_KEY}`
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="datepicker"]'
+const SELECTOR_DATA_AUTO_INIT = [
+  `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"]`,
+  `${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates]`
+].join(',')
 
 const HIDE_DELAY = 100 // ms delay before hiding after selection
 
@@ -472,9 +476,9 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function
   Datepicker.getOrCreateInstance(this).show()
 })
 
-// Auto-initialize inline datepickers on DOMContentLoaded
+// Auto-initialize datepickers that need their initial state rendered on page load
 EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
-  for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"]`)) {
+  for (const element of document.querySelectorAll(SELECTOR_DATA_AUTO_INIT)) {
     Datepicker.getOrCreateInstance(element)
   }
 })
