@@ -842,6 +842,21 @@ describe('Datepicker', () => {
 
       expect(toggleSpy).not.toHaveBeenCalled()
     })
+
+    it('should initialize inputs with selected dates on DOMContentLoaded', () => {
+      fixtureEl.innerHTML = [
+        '<input type="text" data-bs-toggle="datepicker"',
+        'data-bs-selection-mode="multiple-ranged" data-bs-locale="en-US"',
+        'data-bs-selected-dates=\'["2026-06-10", "2026-06-18"]\'>'
+      ].join(' ')
+
+      const inputEl = fixtureEl.querySelector('input')
+      const domContentLoadedEvent = createEvent('DOMContentLoaded', { bubbles: true })
+      document.dispatchEvent(domContentLoadedEvent)
+
+      expect(Datepicker.getInstance(inputEl)).toBeInstanceOf(Datepicker)
+      expect(inputEl.value).toEqual('6/10/2026 – 6/18/2026')
+    })
   })
 
   describe('getInstance', () => {
