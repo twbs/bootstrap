@@ -101,7 +101,7 @@ $dialog-sizes: defaults(
         opacity var(--dialog-transition-duration)
         var(--dialog-transition-timing),
         transform var(--dialog-transition-duration)
-          var(--dialog-transition-timing),
+        var(--dialog-transition-timing),
         visibility 0s var(--dialog-transition-duration)
       );
 
@@ -134,7 +134,7 @@ $dialog-sizes: defaults(
           opacity var(--dialog-transition-duration)
           var(--dialog-transition-timing),
           transform var(--dialog-transition-duration)
-            var(--dialog-transition-timing),
+          var(--dialog-transition-timing),
           visibility 0s
         );
         transform: none;
