@@ -58,15 +58,17 @@ export function getPlaceholder(userOptions: Partial<PlaceholderOptions>): Placeh
 
 /**
  * Renders a CloseButton component to its HTML string representation.
- * Supports optional `dismiss` and `class` attributes.
+ * Supports optional `dismiss`, `target`, and `class` attributes.
  */
 function renderCloseButtonToString(attributes: Record<string, string>): string {
   const dismiss = attributes.dismiss
+  const target = attributes.target
   const extraClass = attributes.class
   const dismissAttr = dismiss ? ` data-bs-dismiss="${dismiss}"` : ''
+  const targetAttr = target ? ` data-bs-target="${target}"` : ''
   const classValue = extraClass ? `btn-close ${extraClass}` : 'btn-close'
 
-  return `<button type="button" class="${classValue}"${dismissAttr} aria-label="Close"></button>`
+  return `<button type="button" class="${classValue}"${dismissAttr}${targetAttr} aria-label="Close"></button>`
 }
 
 /**

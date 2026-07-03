@@ -196,23 +196,16 @@ Add `.drawer-sheet` to render the panel flush against the viewport edge. The she
 
 Responsive drawer classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.lg:drawer` hides content in a drawer below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Responsive drawer classes are available for each breakpoint.
 
-- `.drawer`
-- `.sm:drawer`
-- `.md:drawer`
-- `.lg:drawer`
-- `.xl:drawer`
-- `.2xl:drawer`
-
 To make a responsive drawer, replace the `.drawer` base class with a responsive variant and ensure your close button has an explicit `data-bs-target`.
 
 <Example code={`<button class="btn-solid theme-primary lg:d-none" type="button" data-bs-toggle="drawer" data-bs-target="#drawerResponsive" aria-controls="drawerResponsive">Toggle drawer</button>
 
-  <div class="alert theme-info d-none lg:d-block"><p>Resize your browser to show the responsive drawer toggle.</p></div>
+  <div class="alert theme-info d-none lg:d-block mb-3"><p>Resize your browser to show the responsive drawer toggle.</p></div>
 
   <dialog class="lg:drawer drawer-end" tabindex="-1" id="drawerResponsive" aria-labelledby="drawerResponsiveLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerResponsiveLabel">Responsive drawer</h5>
-      <CloseButton dismiss="drawer" />
+      <CloseButton dismiss="drawer" target="#drawerResponsive" />
     </div>
     <div class="drawer-body">
       <p class="mb-0">This is content within an <code>.lg:drawer</code>.</p>
