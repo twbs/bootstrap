@@ -1,57 +1,18 @@
-.menu-item-danger {
-  color: var(--bs-bs-bs-bs-bs-red);
-}
-.menu-item-danger:hover,
-.menu-item-danger:focus {
-  color: #fff;
-  background-color: var(--bs-bs-bs-bs-bs-red);
-}
-.menu-item-danger.active {
-  background-color: var(--bs-bs-bs-bs-bs-red);
-}
+@layer custom {
 
-.btn-hover-light {
-  color: var(--bs-bs-bs-bs-bs-body-color);
-  background-color: var(--bs-bs-bs-bs-bs-body-bg);
-}
-.btn-hover-light:hover,
-.btn-hover-light:focus {
-  color: var(--bs-bs-bs-bs-bs-link-hover-color);
-  background-color: var(--bs-bs-bs-bs-bs-tertiary-bg);
-}
+.mx--2 { margin-inline: -.5rem; }
+.mt--2 { margin-top: -.5rem; }
 
-.cal-month,
-.cal-days,
-.cal-weekdays {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  align-items: center;
-}
-.cal-month-name {
-  grid-column-start: 2;
-  grid-column-end: 7;
-  text-align: center;
-}
-.cal-weekday,
-.cal-btn {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  height: 3rem;
-  padding: 0;
-}
-.cal-btn:not([disabled]) {
-  font-weight: 500;
-  color: var(--bs-bs-bs-bs-bs-emphasis-color);
-}
-.cal-btn:hover,
-.cal-btn:focus {
-  background-color: var(--bs-bs-bs-bs-bs-secondary-bg);
-}
-.cal-btn[disabled] {
-  border: 0;
-  opacity: .5;
+.theme-light {
+  --bs-theme-base: var(--bs-gray-100);
+  --bs-theme-fg: light-dark(var(--bs-gray-600), var(--bs-gray-300));
+  --bs-theme-fg-emphasis: light-dark(var(--bs-gray-800), var(--bs-gray-100));
+  --bs-theme-bg: light-dark(var(--bs-gray-050), var(--bs-gray-800));
+  --bs-theme-bg-subtle: light-dark(var(--bs-gray-025), var(--bs-gray-900));
+  --bs-theme-bg-muted: light-dark(var(--bs-gray-100), var(--bs-gray-700));
+  --bs-theme-border: light-dark(var(--bs-gray-100), var(--bs-gray-700));
+  --bs-theme-focus-ring: color-mix(in oklch, light-dark(var(--bs-gray-400), var(--bs-gray-400)) 50%, var(--bs-bg-body));
+  --bs-theme-contrast: light-dark(var(--bs-gray-900), var(--bs-white));
 }
 
 .w-220px {
@@ -68,4 +29,5 @@
 
 .opacity-10 {
   opacity: .1;
+}
 }
