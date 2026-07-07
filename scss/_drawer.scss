@@ -81,6 +81,7 @@ $drawer-backdrop-tokens: defaults(
         max-height: calc(100% - var(--drawer-inset) * 2);
         padding: 0;
         margin: 0;
+        overflow: hidden;
         color: var(--drawer-color);
         visibility: hidden;
         background-color: var(--drawer-bg);
@@ -288,6 +289,7 @@ $drawer-backdrop-tokens: defaults(
     flex-direction: column;
     gap: var(--drawer-padding-y);
     @include dialog-body(var(--drawer-padding-y) var(--drawer-padding-x));
+    min-height: 0; // allow the body to shrink for inner scrolling
     overflow-y: auto;
   }
 
