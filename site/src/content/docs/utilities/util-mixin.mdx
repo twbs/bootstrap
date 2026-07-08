@@ -1,0 +1,165 @@
+---
+title: Util mixin
+description: Skip the utilities in your HTML and apply any Bootstrap utility in Sass using your own selector with the `util()` mixin.
+toc: true
+added:
+  version: 6.0.0
+---
+
+The `util()` mixin emits any Bootstrap utility’s declarations with your own selector in Sass. You get the exact styles a utility class would generate without adding the class to your markup and without any `!important`. It works with the built-in utilities, plus any you’ve added or extended through the [utility API]([[docsref:/utilities/api]]).
+
+## How it works
+
+`util()` reads the same `$utilities` map that powers our generated utility classes. For each class name you pass, it resolves the matching utility and value, then emits the identical declarations the generated class would—reusing the utility API’s own emitters. The output is byte-for-byte the same as the utility class, minus any optional `!important` you may have configured.
+
+Unlike the utility classes, `util()` never parses responsive or state prefixes. You get those from composition with existing tools instead (see [Responsive and states](#responsive-and-states)).
+
+For error protection, passing an invalid class name causes a Sass error (`util(): unknown utility class \`…\``), so typos fail at compile time without causing further issues down the line.
+
+## Usage
+
+Import the mixins and include `util()` inside any selector, passing one or more utility class names:
+
+```scss
+@use "bootstrap/scss/mixins" as *;
+
+.my-component {
+  @include util(p-3, d-flex, justify-content-between);
+}
+```
+
+You can pass class names as separate arguments or as a single space-separated string—whichever reads better:
+
+```scss
+.my-component {
+  @include util("p-3 d-flex justify-content-between");
+}
+```
+
+## Examples
+
+### Single utility
+
+```scss
+.single {
+  @include util(p-3);
+}
+```
+
+```css
+.single {
+  padding: 0.75rem;
+}
+```
+
+### Multiple utilities
+
+Pass as many class names as you like. They’re emitted in the order given.
+
+```scss
+.multi {
+  @include util(d-flex, justify-content-between, p-3);
+}
+```
+
+```css
+.multi {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+}
+```
+
+### Space-separated string
+
+The string form splits on whitespace, mirroring how you’d write the classes in HTML.
+
+```scss
+.multi {
+  @include util("d-flex justify-content-between p-3");
+}
+```
+
+```css
+.multi {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+}
+```
+
+### Utilities with custom properties
+
+Utilities that set CSS custom properties emit those variables too, exactly as the generated class does.
+
+```scss
+.badge {
+  @include util(bg-primary);
+}
+```
+
+```css
+.badge {
+  --bg: var(--primary-bg);
+  background-color: var(--bg);
+}
+```
+
+## Responsive and states
+
+`util()` only emits a utility’s base declarations. Compose responsive or state variants with normal CSS, our existing mixins, and plain Sass nesting. Compiled CSS will land in the right `@media` block or on the right pseudo-class, matching the generated variant classes.
+
+```scss
+@use "bootstrap/scss/mixins" as *;
+@use "bootstrap/scss/layout/breakpoints" as *;
+
+.responsive {
+  @include media-breakpoint-up(md) {
+    @include util(p-4);
+  }
+
+  &:hover {
+    @include util(bg-primary);
+  }
+}
+```
+
+```css
+@media (width >= 768px) {
+  .responsive {
+    padding: 1rem;
+  }
+}
+
+.responsive:hover {
+  --bg: var(--primary-bg);
+  background-color: var(--bg);
+}
+```
+
+## Custom utilities
+
+Because `util()` reads the merged `$utilities` map, any utility you add or extend through the [utility API]([[docsref:/utilities/api]]) resolves too. Define it once, then reuse it anywhere:
+
+```scss
+@use "bootstrap/scss/config" as * with (
+  $utilities: (
+    "brand": (
+      property: color,
+      class: brand,
+      values: (accent: #bada55)
+    )
+  )
+);
+@use "bootstrap/scss/mixins" as *;
+
+.headline {
+  @include util(brand-accent);
+}
+```
+
+```css
+.headline {
+  color: #bada55;
+}
+```

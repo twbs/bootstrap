@@ -1,0 +1,142 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+@use "../config" as config;
+// Loaded for its side effect: the utility definitions merge into
+// `config.$utilities`, which util() reads.
+@use "../utilities"; // check-unused-imports-disable-line
+@use "utilities" as gen;
+
+// util() — emit a utility's base declarations into the current selector.
+@mixin util($classes...) {
+  @each $arg in $classes {
+    @each $name in -util-split($arg) {
+      $resolved: -util-resolve($name);
+
+      @if $resolved == null {
+        @error "util(): unknown utility class `#{$name}`";
+      }
+
+      // Never emit `!important`, even if the utility requests it.
+      $utility: map.remove(map.get($resolved, "utility"), important);
+
+      @include gen.generate-variables($utility, map.get($resolved, "value"));
+      @include gen.generate-properties(
+        $utility,
+        map.get($resolved, "property-map"),
+        map.get($resolved, "properties"),
+        map.get($resolved, "value")
+      );
+    }
+  }
+}
+
+// Flatten variadic args into a flat list, splitting space-separated strings.
+@function -util-split($arg) {
+  $result: ();
+
+  @if meta.type-of($arg) == "list" {
+    @each $item in $arg {
+      @each $name in -util-split($item) {
+        $result: list.append($result, $name);
+      }
+    }
+  } @else if meta.type-of($arg) == "string" {
+    @each $part in string.split($arg, " ") {
+      @if $part != "" {
+        $result: list.append($result, $part);
+      }
+    }
+  } @else {
+    $result: list.append($result, $arg);
+  }
+
+  @return $result;
+}
+
+// Find the utility and value that produce $name by mirroring the class-name
+// construction in `generate-utility`. Returns a map of
+// `(utility, property-map, properties, value)`, or null if no utility matches.
+@function -util-resolve($name) {
+  @each $key, $utility in config.$utilities {
+    @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false {
+      // Attribute-selector utilities have no class-name form to match against.
+      $selector-type: "class";
+      @if map.has-key($utility, selector) {
+        $selector-type: map.get($utility, selector);
+      }
+
+      @if $selector-type == "class" {
+        $selector-class: map.get($utility, class);
+
+        $values: map.get($utility, values);
+        @if meta.type-of($values) != "map" {
+          @if meta.type-of($values) == "list" {
+            $list: ();
+            @each $value in $values {
+              $list: map.merge($list, ($value: $value));
+            }
+            $values: $list;
+          } @else {
+            $values: (null: $values);
+          }
+        }
+
+        @each $value-key, $value in $values {
+          $properties: map.get($utility, property);
+          $property-map: null;
+          $custom-class: "";
+
+          @if meta.type-of($properties) == "map" {
+            $property-map: $properties;
+            @if map.has-key($utility, class) {
+              $custom-class: map.get($utility, class);
+            }
+          } @else {
+            @if meta.type-of($properties) == "string" {
+              $properties: list.append((), $properties);
+            }
+            @if map.has-key($utility, class) {
+              $custom-class: map.get($utility, class);
+            } @else {
+              $custom-class: list.nth($properties, 1);
+            }
+            @if $custom-class == null {
+              $custom-class: "";
+            }
+          }
+
+          $custom-class-modifier: "";
+          @if $value-key {
+            @if $custom-class == "" {
+              $custom-class-modifier: $value-key;
+            } @else {
+              $custom-class-modifier: "-" + $value-key;
+            }
+          }
+
+          $class-name: "";
+          @if $custom-class != "" {
+            $class-name: $custom-class + $custom-class-modifier;
+          } @else if $selector-class != null and $selector-class != "" {
+            $class-name: $selector-class + $custom-class-modifier;
+          } @else {
+            $class-name: $custom-class-modifier;
+          }
+
+          @if "#{$class-name}" == "#{$name}" {
+            @return (
+              "utility": $utility,
+              "property-map": $property-map,
+              "properties": $properties,
+              "value": $value
+            );
+          }
+        }
+      }
+    }
+  }
+
+  @return null;
+}
