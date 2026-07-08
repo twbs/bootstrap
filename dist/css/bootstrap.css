@@ -4007,7 +4007,7 @@
     height: 100%;
     padding: 0;
     color: transparent;
-    text-align: center;
+    pointer-events: auto;
     cursor: default;
     caret-color: transparent;
     background-color: transparent;
@@ -4034,6 +4034,8 @@
     font-weight: 500;
     line-height: 1;
     color: var(--bs-otp-slot-fg);
+    -webkit-user-select: none;
+    user-select: none;
     background-color: var(--bs-otp-slot-bg);
     border: var(--bs-otp-slot-border-width) solid var(--bs-otp-slot-border-color);
     border-radius: var(--bs-otp-slot-border-radius);
