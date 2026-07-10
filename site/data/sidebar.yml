@@ -182,7 +182,7 @@
     - title: API
     - group: Color
       pages:
-        - title: Colors
+        - title: Color
         - title: Background
         - title: Theme
           meta:
