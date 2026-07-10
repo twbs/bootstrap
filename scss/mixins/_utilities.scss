@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
+@use "sass:string";
 @use "../layout/breakpoints" as bp;
 
 // Utility generator
@@ -251,6 +252,77 @@
           @include generate-properties($utility, $property-map, $properties, $value);
         }
       }
+    }
+  }
+}
+
+// Helper: append a custom property name to a list only if not already present.
+@function append-unique-var($list, $name) {
+  @if list.index($list, $name) == null {
+    @return list.append($list, $name);
+  }
+  @return $list;
+}
+
+// Helper: collect custom property names (those starting with `--`) from a
+// utility's `property` value, which may be a map, list, or string.
+@function collect-property-vars($list, $properties) {
+  @if meta.type-of($properties) == "map" {
+    @each $prop, $value in $properties {
+      @if meta.type-of($prop) == "string" and string.slice($prop, 1, 2) == "--" {
+        $list: append-unique-var($list, $prop);
+      }
+    }
+  } @else if meta.type-of($properties) == "list" {
+    @each $prop in $properties {
+      @if meta.type-of($prop) == "string" and string.slice($prop, 1, 2) == "--" {
+        $list: append-unique-var($list, $prop);
+      }
+    }
+  } @else if meta.type-of($properties) == "string" and string.slice($properties, 1, 2) == "--" {
+    $list: append-unique-var($list, $properties);
+  }
+  @return $list;
+}
+
+// Registers every custom property that utilities assign to as non-inheriting
+// via `@property`. Utilities compose values through local custom properties
+// (e.g. `--bc`, `--bg`, `--fg`, `--rounded-size`); because custom properties
+// inherit by default, setting one on an element would otherwise leak into every
+// descendant (e.g. `.border-inverse` tinting nested component borders). Marking
+// them `inherits: false` scopes each utility to the element it's applied to.
+// `syntax: "*"` is used so no `initial-value` is required (values are complex
+// expressions like `light-dark()` / `color-mix()` that can't be registered).
+@mixin generate-utility-at-properties($utilities) {
+  $names: ();
+
+  @each $key, $utility in $utilities {
+    @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false {
+      // Custom properties assigned via the `property` key
+      $names: collect-property-vars($names, map.get($utility, property));
+
+      // Custom properties assigned via the `variables` key (names lack the `--` prefix)
+      @if map.has-key($utility, variables) {
+        $variables: map.get($utility, variables);
+        @if meta.type-of($variables) == "map" {
+          @each $var-key, $var-value in $variables {
+            $names: append-unique-var($names, "--" + $var-key);
+          }
+        } @else if meta.type-of($variables) == "list" {
+          @each $var-name in $variables {
+            $names: append-unique-var($names, "--" + $var-name);
+          }
+        } @else {
+          $names: append-unique-var($names, "--" + $variables);
+        }
+      }
+    }
+  }
+
+  @each $name in $names {
+    @property #{$name} {
+      syntax: "*";
+      inherits: false;
     }
   }
 }
