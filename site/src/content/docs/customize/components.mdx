@@ -14,7 +14,26 @@ Check out [our Sass maps and loops docs]([[docsref:/customize/sass#maps-and-loop
 
 ## Theme variants
 
-{/* TODO: write a real theme-variants section (how components consume --theme-* tokens, with a worked example) */}
+Themeable components don’t hard-code their colors. Instead they read the generic `--bs-theme-*` tokens—`--bs-theme-bg`, `--bs-theme-fg`, `--bs-theme-border`, `--bs-theme-contrast`, and so on—each with a fallback to the component’s own default token. When no theme class is present the fallback applies; add a `.theme-*` class and the component picks up that theme’s colors instead.
+
+The [`.theme-{name}` classes]([[docsref:/customize/theme#theme-utility-classes]]) are generated from the `$theme-colors` map and simply remap the semantic role tokens onto the generic ones—`.theme-primary`, for example, sets `--bs-theme-bg: var(--bs-primary-bg)` and `--bs-theme-contrast: var(--bs-primary-contrast)`.
+
+Here’s how the badge consumes them in `scss/_badge.scss`. Its `color` and `background-color` each read a theme token first, falling back to the badge’s own default (CSS variables are written without the `--bs-` prefix in Sass source; PostCSS adds it at build):
+
+```scss
+.badge {
+  // …
+  color: var(--theme-contrast, var(--badge-color));
+  background-color: var(--theme-bg, var(--badge-bg));
+}
+```
+
+With no theme class, the badge uses its own defaults (`--badge-bg`, `--badge-color`). Add `.theme-success` and the very same element resolves `--theme-bg` and `--theme-contrast` to the success role tokens—no badge-specific `.badge-success` selector required:
+
+<Example code={`<span class="badge">Default badge</span>
+  <span class="badge theme-success">Success badge</span>`} />
+
+To make one of your own components themeable, follow the same pattern: read `var(--theme-{role}, var(--my-component-{role}))` for each color property, and it will respond to any `.theme-*` class set on it or an ancestor. See the [Theme page]([[docsref:/customize/theme]]) for the full list of role tokens and recommended pairings.
 
 ## Responsive
 
