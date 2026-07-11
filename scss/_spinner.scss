@@ -43,7 +43,7 @@ $spinner-grow-tokens: defaults(
 //
 
 @layer components {
-  // mdo-do: Refactor this to assume flex parent and remove `vertical-align`
+  // TODO: refactor this to assume flex parent and remove `vertical-align`
   .spinner-grow,
   .spinner-border {
     display: inline-block;

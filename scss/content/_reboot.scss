@@ -354,7 +354,7 @@ $reboot-mark-tokens: defaults(
     kbd {
       padding: 0;
       font-size: 1em;
-      font-weight: inherit; // mdo-do: check if this is needed
+      font-weight: inherit; // TODO: check if this is needed
     }
   }
 
@@ -396,7 +396,7 @@ $reboot-mark-tokens: defaults(
   // 3. Fix alignment for Safari
 
   th {
-    // font-weight: $table-th-font-weight; // 1 // mdo-do: it's null by default. maybe we remove?
+    // font-weight: $table-th-font-weight; // 1 // TODO: null by default — decide whether to remove
     text-align: inherit; // 2
     text-align: -webkit-match-parent; // 3
   }

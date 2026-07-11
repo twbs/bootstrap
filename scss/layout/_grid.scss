@@ -1,8 +1,7 @@
 @use "../config" as *;
 @use "../mixins/grid" as *;
 
-// mdo-do
-// - check gap utilities as replacement for gutter classes from v5
+// TODO: check gap utilities as replacement for gutter classes from v5
 
 @layer layout {
   @if $enable-grid-classes {
@@ -33,7 +32,7 @@
     @include make-cssgrid();
   }
 
-  // mdo-do: add to utilities?
+  // TODO: add to utilities?
   .grid-cols-subgrid {
     grid-template-columns: subgrid;
   }
@@ -51,7 +50,7 @@
   //   grid-column: auto;
   // }
 
-  // mdo-do: add to utilities?
+  // TODO: add to utilities?
   // .grid-cols-3 {
   //   --columns: 3;
   // }
