@@ -121,7 +121,7 @@ $form-control-sizes: defaults(
     // Prevent excessive date input height in Webkit
     // https://github.com/twbs/bootstrap/issues/34433
 
-    // mdo-do: need to check this stuff out across browsers
+    // TODO: verify these rules across the supported browser matrix
     &::-webkit-datetime-edit {
       display: block;
       height: 1.5rem;

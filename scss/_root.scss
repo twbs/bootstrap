@@ -4,7 +4,7 @@
 @use "functions" as *;
 @use "theme" as *;
 @use "mixins/tokens" as *;
-// mdo-do: do we need theme?
+// TODO: do we need theme output here?
 @layer colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
 
 $root-tokens: () !default;

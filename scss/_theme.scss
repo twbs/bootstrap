@@ -167,7 +167,7 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors
 
-// mdo-do: consider using muted, subtle, ghost or something instead of linear scale?
+// TODO: decide $theme-bgs scale naming — semantic (muted/subtle/ghost) vs linear numeric
 $theme-bgs: (
   "body": light-dark(var(--white), var(--gray-975)),
   "1": light-dark(var(--gray-025), var(--gray-950)),

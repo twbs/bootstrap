@@ -6,7 +6,7 @@
 @use "mixins/transition" as *;
 @use "mixins/tokens" as *;
 
-// mdo-do: Update pagination to support variant themes
+// TODO: update pagination to support variant themes (`.theme-*` role tokens)
 
 // stylelint-disable custom-property-no-missing-var-function
 $pagination-tokens: () !default;
