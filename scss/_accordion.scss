@@ -117,6 +117,13 @@ $accordion-tokens: defaults(
 
     // Open state - details[open] applies these styles
     &[open] {
+      position: relative;
+      z-index: 2;
+
+      // Overlap previous item's bottom border with our themed top border
+      &:not(:first-of-type) {
+        margin-block-start: calc(-1 * var(--accordion-border-width));
+      }
 
       border-color: var(--theme-border, var(--accordion-border-color));
       &::details-content {
