@@ -223,6 +223,52 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **List group horizontal variants now use container queries.** The `.*:list-group-horizontal` classes switch between vertical and horizontal layouts with `@container` queries instead of viewport `@media` queries, responding to a parent query container rather than the viewport. Wrap the list group in a query container (e.g. `.contains-inline`) for the responsive variants to take effect.
 - **Reworked badge variants.** Badge color variants now use `.badge-subtle` and `.badge-outline` combined with `.theme-*` classes (e.g., `.badge-subtle .theme-primary`), replacing the v5 `.bg-primary` utility pattern on badges.
 - **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and explicit `.breadcrumb-divider` elements as separators between items. An empty `.breadcrumb-divider` renders a default chevron via a CSS `mask-image` (`--breadcrumb-divider-icon`) tinted with `background-color: currentcolor`; add your own SVG, text, or markup inside it to override. This replaces the v5 `--bs-breadcrumb-divider` content string on the `.breadcrumb-item::before` pseudo-element.
+- **Navbar responsive collapsing now uses the Drawer, not Collapse.** The v5 collapsible navbar—a `.navbar-toggler` toggling a `.collapse.navbar-collapse` region through the Collapse plugin—has been replaced by the [Drawer]([[docsref:/components/drawer]]). On narrow viewports the navigation slides in as a `<dialog class="drawer">`; from your `.{breakpoint}:navbar-expand` breakpoint up it lays out inline as before. Three things change: the toggler targets a drawer (`data-bs-toggle="drawer"`) instead of a collapse; the collapsible region becomes a `<dialog class="drawer">` with `.drawer-header` / `.drawer-body`; and the `.navbar-expand-{bp}` infix becomes the `.{bp}:navbar-expand` prefix. The v5 `.navbar-light` / `.navbar-dark` color-scheme classes have also been removed—set the surface with a background utility such as `.bg-1` and let [color modes]([[docsref:/customize/color-modes]]) handle light and dark.
+
+  **Before (v5):**
+
+  ```html
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  ```
+
+  **After (v6):**
+
+  ```html
+  <nav class="navbar md:navbar-expand bg-1">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer" aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
+      </button>
+      <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body">
+          <ul class="nav navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+          </ul>
+        </div>
+      </dialog>
+    </div>
+  </nav>
+  ```
+
 - **Navbar toggler icon now uses a CSS mask.** `.navbar-toggler-icon` renders via `mask-image` (`--navbar-toggler-icon`) tinted with `background-color: currentcolor` instead of an embedded `background-image` SVG. The markup stays an empty `<span class="navbar-toggler-icon">`, but the icon now inherits the current text color (including dark mode), so the separate light/dark toggler SVGs are no longer needed.
 - **Rebuilt the carousel on CSS scroll snap.** The slide engine no longer uses `float` + `translateX` class juggling or a custom swipe handler—`.carousel-inner` is now a native horizontal scroll-snap container, so sliding, touch dragging, momentum, and keyboard scrolling come from the browser. The markup is unchanged (`.carousel` &rarr; `.carousel-inner` &rarr; `.carousel-item`), and the public JavaScript API (`next`, `prev`, `to`, `cycle`, `pause`) plus the `slide.bs.carousel` / `slid.bs.carousel` events are preserved.
   - **New capabilities:** show multiple slides at once, reveal a “peek” of adjacent slides, gaps, center mode, and variable-width slides—all via CSS custom properties (`--carousel-items`, `--carousel-items-gap`, `--carousel-items-peek`) and the `.carousel-center` / `.carousel-auto` variants.
@@ -358,6 +404,19 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | — | — | `.fs-6xl` | `clamp(3.75rem, …, 5rem)` |
 </BsTable>
 
+- **Removed `.display-1`–`.display-6` heading utilities.** The display heading classes no longer exist and have no single-class replacement. Recreate them by pairing a large font-size utility with a weight utility. v5's display headings used `font-weight: 300`, so `.fw-light` reproduces the original look; use a heavier weight (`.fw-semibold`, `.fw-bold`) if you prefer:
+
+<BsTable>
+| v5 class | v5 size | v6 recipe |
+|---|---|---|
+| `.display-1` | `5rem` | `.fs-6xl .fw-light` |
+| `.display-2` | `4.5rem` | `.fs-6xl .fw-light` |
+| `.display-3` | `4rem` | `.fs-5xl .fw-light` |
+| `.display-4` | `3.5rem` | `.fs-5xl .fw-light` |
+| `.display-5` | `3rem` | `.fs-4xl .fw-light` |
+| `.display-6` | `2.5rem` | `.fs-3xl .fw-light` |
+</BsTable>
+
 - **Removed `.lead` utility.** The v5 `.lead` class no longer exists in v6, and there is no exact one-class replacement. If you want a similar effect with utilities, use `.fs-lg` associated to `.fw-light`.
 
 - **Border radius tokens replaced with a numeric scale.** The named `$border-radius-*` Sass variables and `--border-radius-*` CSS custom properties (`-xs`, `-sm`, default, `-lg`, `-xl`, `-2xl`) have been removed in favor of a numeric `$radii` Sass map (keyed `0`–`9`) that generates `--radius-0` through `--radius-9` tokens, plus `--radius-pill`. The scale is driven by a single `$radius: .5rem` base, so all steps move together when the base changes. To migrate any custom Sass or CSS that referenced the old tokens directly:
@@ -401,6 +460,18 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Spacing and border utilities now use CSS logical properties.** `margin-top` &rarr; `margin-block-start`, `margin-right` &rarr; `margin-inline-end`, `padding-left` &rarr; `padding-inline-start`, `border-right` &rarr; `border-inline-end`, etc. Class names (`.mt-*`, `.me-*`, `.ps-*`, `.border-end`) remain the same, but the underlying CSS properties are now logical, improving RTL and writing-mode support.
 - **Text wrap additions.** Added `.text-balance` and `.text-pretty` values to the text-wrap utility.
 - **Color utility renames.** `.text-*` color utilities have been replaced by `.fg-*` (foreground) utilities. New `.fg-emphasis-*` and `.fg-contrast-*` variants. Background utilities now include `.bg-subtle-*` and `.bg-muted-*` in addition to `.bg-*`. Added `.fg-bg` and `.bg-fg` cross-reference utilities; removed `.fg-inherit` and `.bg-inherit`. Renamed `.bg-opacity-*` to `.bg-*`. Renamed `.text-reset` to `.fg-reset`.
+- **Removed the `.text-bg-*` helpers.** The v5 `.text-bg-{color}` helpers (a solid themed background plus an automatically contrasting foreground) have been removed. Compose the same result from a background utility and the matching contrast foreground—for example `.text-bg-primary` becomes `.bg-primary .fg-contrast-primary`. This works for every theme color (`primary`, `secondary`, `success`, `danger`, `warning`, `info`, `accent`, `inverse`). For the former `.text-bg-light` / `.text-bg-dark`, pair a neutral surface (see below—`.bg-1` or a fixed `.bg-white` / `.bg-black`) with an appropriate `.fg-*`.
+- **Removed `.bg-light`, `.bg-dark`, and the `.bg-body-*` surfaces.** The color-mode-aware `.bg-body-secondary` / `.bg-body-tertiary` surfaces map to v6's neutral background scale `.bg-1`–`.bg-4` (each step a little more contrast than the page body). The old `.bg-light` / `.bg-dark` grays were *fixed*—they didn't follow the color mode—and v6 has no drop-in class that renders identically, so choose by intent: use the adaptive `.bg-1` / `.bg-2` if you want the surface to follow light and dark, or pin a fixed surface with `.bg-white` / `.bg-black` or by scoping a color mode (`data-bs-theme="light|dark"`) and using `.bg-body`. Note `.bg-black` is pure black (darker than v5's dark gray) and a scoped `data-bs-theme` renders the themed body color, so neither reproduces v5's exact shade.
+
+<BsTable>
+| v5 class | v6 replacement |
+|---|---|
+| `.bg-body-tertiary` | `.bg-1` |
+| `.bg-body-secondary` | `.bg-2` |
+| `.bg-light` | `.bg-1` / `.bg-2` (adaptive), or `.bg-white` for a fixed light surface |
+| `.bg-dark` | `.bg-black`, or `data-bs-theme="dark"` + `.bg-body` (no exact shade match) |
+| `.bg-body` | `.bg-body` (unchanged) |
+</BsTable>
 - **Link utilities are now part of text decoration utilities.** The v5 `link-*` utility family has been replaced by `underline-*` utilities documented under [Text decoration]([[docsref:/utilities/text-decoration]]). Update class names accordingly:
 
 <BsTable>
