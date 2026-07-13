@@ -121,6 +121,16 @@ describe('Datepicker', () => {
       expect(datepicker._config.selectionMode).toEqual('multiple')
       expect(datepicker._config.firstWeekday).toEqual(0)
     })
+
+    it('should populate the input value with preselected dates', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-selected-dates=\'["2026-06-10", "2026-06-18"]\'>'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker._config.selectedDates).toEqual(['2026-06-10', '2026-06-18'])
+      expect(inputEl.value).not.toEqual('')
+    })
   })
 
   describe('show', () => {
@@ -841,6 +851,25 @@ describe('Datepicker', () => {
       divEl.dispatchEvent(clickEvent)
 
       expect(toggleSpy).not.toHaveBeenCalled()
+    })
+
+    it('should auto-initialize datepickers with preselected dates on DOMContentLoaded', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-selected-dates=\'["2026-06-10", "2026-06-18"]\'>'
+
+        const inputEl = fixtureEl.querySelector('input')
+
+        expect(Datepicker.getInstance(inputEl)).toBeNull()
+
+        const domContentLoadedEvent = createEvent('DOMContentLoaded')
+        document.dispatchEvent(domContentLoadedEvent)
+
+        setTimeout(() => {
+          expect(Datepicker.getInstance(inputEl)).not.toBeNull()
+          expect(inputEl.value).not.toEqual('')
+          resolve()
+        })
+      })
     })
   })
 
