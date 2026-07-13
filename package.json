@@ -167,6 +167,7 @@
     "postcss-cli": "^11.0.1",
     "prettier": "^3.9.4",
     "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-bootstrap": "^0.3.0",
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
