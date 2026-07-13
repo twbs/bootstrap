@@ -25,7 +25,7 @@ $accordion-tokens: defaults(
     --accordion-btn-icon-width: 1rem,
     --accordion-btn-icon-transform: rotate(-180deg),
     --accordion-btn-icon-transition: transform .2s ease-in-out,
-    --accordion-active-color: var(--fg),
+    --accordion-active-color: var(--fg-body),
     --accordion-active-bg: var(--bg-2),
   ),
   $accordion-tokens
