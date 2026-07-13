@@ -125,46 +125,39 @@ To remove a color, set the value to `null`.
 );
 ```
 
-{/* TODO: rewrite the content below for the v6 color pipeline; drop v5-era references */}
+## From colors to theme
+
+The `--bs-{color}-{stop}` tokens above are the raw palette. On their own they don’t style components—Bootstrap feeds a chosen subset of them into the **theme layer**, where they’re assigned semantic roles (background, foreground, border, and so on) and exposed as `.theme-*` classes that components read.
+
+The full pipeline looks like this:
+
+1. **`$colors`** (`scss/_colors.scss`) defines the base hues and generates the `--bs-{color}-{stop}` tokens (for example `--bs-blue-500`).
+2. **`$theme-colors`** (`scss/_theme.scss`) maps semantic names (`primary`, `success`, `danger`, and so on) onto those tokens one role at a time (`base`, `fg`, `bg`, `bg-subtle`, `border`, `contrast`, …), most wrapped in `light-dark()` so they adapt to the color mode.
+3. Those roles are emitted as **`--bs-{name}-{role}`** tokens (for example `--bs-primary-bg`).
+4. The **`.theme-{name}`** classes remap them onto generic **`--bs-theme-{role}`** tokens (for example `.theme-primary` sets `--bs-theme-bg: var(--bs-primary-bg)`).
+5. **Components** read the `--bs-theme-*` tokens, so a single `.theme-primary` class restyles any theme-aware component.
+
+The theme layer—semantic tokens, `.theme-*` classes, layer colors, and color modes—is documented in full on the [Theme page]([[docsref:/customize/theme]]). The rest of this page stays on the base color layer.
 
 ## Generating utilities
 
-Bootstrap doesn’t include `color` and `background-color` utilities for every color variable, but you can generate these yourself with our [utility API]([[docsref:/utilities/api]]) and our extended Sass maps added in v5.1.0.
-
-1. To start, make sure you’ve imported our functions, variables, mixins, and utilities.
-2. Use our `map-merge-multiple()` function to quickly merge multiple Sass maps together in a new map.
-3. Merge this new combined map to extend any utility with a `{color}-{level}` class name.
-
-Here’s an example that generates text color utilities (e.g., `.text-purple-500`) using the above steps.
+Bootstrap doesn’t ship `color` and `background-color` utilities for every palette token—that would add a lot of rarely used CSS. If you need a few specific shades as utilities, add a utility group through the [utilities API]([[docsref:/utilities/api]]). Configure the `$utilities` map when you import `utilities`, then load `utilities/api` to emit the CSS. Each value points at a generated color token (`--bs-{color}-{stop}`):
 
 ```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
-
-$all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
-
-$utilities: map-merge(
-  $utilities,
-  (
-    "color": map-merge(
-      map-get($utilities, "color"),
-      (
-        values: map-merge(
-          map-get(map-get($utilities, "color"), "values"),
-          (
-            $all-colors
-          ),
-        ),
+@use "../node_modules/bootstrap/scss/utilities" with (
+  $utilities: (
+    "fg-palette": (
+      property: color,
+      class: fg,
+      values: (
+        "purple-300": var(--bs-purple-300),
+        "purple-500": var(--bs-purple-500),
+        "purple-700": var(--bs-purple-700),
       ),
     ),
   )
 );
-
-@import "bootstrap/scss/utilities/api";
+@use "../node_modules/bootstrap/scss/utilities/api";
 ```
 
-This will generate new `.text-{color}-{level}` utilities for every color and level. You can do the same for any other utility and property as well.
+This adds `.fg-purple-300`, `.fg-purple-500`, and `.fg-purple-700`. Bootstrap merges your entry on top of the default `$utilities` map, so the built-in utilities are left untouched. List as many shades as you need, and set `property: background-color` with `class: bg` to generate backgrounds instead. (The color tokens themselves come from your main Bootstrap import; this snippet only emits the extra utility classes.)
