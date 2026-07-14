@@ -15,12 +15,15 @@ import CodeCopy from '@components/shortcodes/CodeCopy.astro'
         target="_blank"
       >
         Security updates for Bootstrap 3 &amp; 4
-        <svg class="bi" style="width: 20px; height: 20px;" aria-hidden="true"><use href="#arrow-right-short"></use></svg>
+        <svg class="bi" style="width: 20px; height: 20px;" aria-hidden="true"><use href="#arrow-right-short"></use></svg
+        >
       </a>
       <div class="d-flex flex-column gap-3">
         <h1 class="fw-semibold lh-1 text-balance">Bootstrap is the open source design system for everyone</h1>
         <p class="fs-lg fg-2 mb-0 text-balance">
-          Bootstrap 6 has been rebuilt for today's web as a framework-agnostic design toolkit that anyone—human or AI, novice or pro—can use to build anything. New standards, new components, an updated visual design, CSS-first theming, and more powerful JavaScript plugins.
+          Bootstrap 6 has been rebuilt for today's web as a framework-agnostic design toolkit that anyone—human or AI,
+          novice or pro—can use to build anything. New standards, new components, an updated visual design, CSS-first
+          theming, and more powerful JavaScript plugins.
           <!-- <br/><a href="https://blog.getbootstrap.com/2026/07/15/bootstrap-6/" class="underline-30">Read the v6 announcement post.</a> -->
         </p>
       </div>
@@ -37,7 +40,10 @@ import CodeCopy from '@components/shortcodes/CodeCopy.astro'
       <p class="fg-2 mb-0">
         Currently <strong>v{getConfig().current_version}</strong>
         <span class="px-1">&middot;</span>
-        <a href={getVersionedDocsPath('getting-started/install')} class="theme-secondary underline-50 underline-secondary">Download</a>
+        <a
+          href={getVersionedDocsPath('getting-started/install')}
+          class="theme-secondary underline-50 underline-secondary">Download</a
+        >
         <span class="px-1">&middot;</span>
         <a href="/docs/versions/" class="theme-secondary underline-50 underline-secondary text-nowrap">All releases</a>
       </p>
