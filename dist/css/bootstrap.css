@@ -5267,7 +5267,7 @@
     --bs-accordion-btn-icon-width: 1rem;
     --bs-accordion-btn-icon-transform: rotate(-180deg);
     --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
-    --bs-accordion-active-color: var(--bs-fg);
+    --bs-accordion-active-color: var(--bs-fg-body);
     --bs-accordion-active-bg: var(--bs-bg-2);
   }
   .accordion-header {
@@ -7818,6 +7818,7 @@
       max-height: calc(100% - var(--bs-drawer-inset) * 2);
       padding: 0;
       margin: 0;
+      overflow: hidden;
       color: var(--bs-drawer-color);
       visibility: hidden;
       background-color: var(--bs-drawer-bg);
@@ -7956,6 +7957,7 @@
       max-height: calc(100% - var(--bs-drawer-inset) * 2);
       padding: 0;
       margin: 0;
+      overflow: hidden;
       color: var(--bs-drawer-color);
       visibility: hidden;
       background-color: var(--bs-drawer-bg);
@@ -8094,6 +8096,7 @@
       max-height: calc(100% - var(--bs-drawer-inset) * 2);
       padding: 0;
       margin: 0;
+      overflow: hidden;
       color: var(--bs-drawer-color);
       visibility: hidden;
       background-color: var(--bs-drawer-bg);
@@ -8232,6 +8235,7 @@
       max-height: calc(100% - var(--bs-drawer-inset) * 2);
       padding: 0;
       margin: 0;
+      overflow: hidden;
       color: var(--bs-drawer-color);
       visibility: hidden;
       background-color: var(--bs-drawer-bg);
@@ -8370,6 +8374,7 @@
       max-height: calc(100% - var(--bs-drawer-inset) * 2);
       padding: 0;
       margin: 0;
+      overflow: hidden;
       color: var(--bs-drawer-color);
       visibility: hidden;
       background-color: var(--bs-drawer-bg);
@@ -8507,6 +8512,7 @@
     max-height: calc(100% - var(--bs-drawer-inset) * 2);
     padding: 0;
     margin: 0;
+    overflow: hidden;
     color: var(--bs-drawer-color);
     visibility: hidden;
     background-color: var(--bs-drawer-bg);
@@ -8714,6 +8720,7 @@
     gap: var(--bs-drawer-padding-y);
     flex: 1 1 auto;
     padding: var(--bs-drawer-padding-y) var(--bs-drawer-padding-x);
+    min-height: 0;
     overflow-y: auto;
   }
   .drawer-footer {
@@ -9888,6 +9895,26 @@
     background-color: var(--bs-border-color);
   }
 }
+@property --bs-ratio {
+  syntax: "*";
+  inherits: false;
+}
+@property --bs-bc {
+  syntax: "*";
+  inherits: false;
+}
+@property --bs-fg {
+  syntax: "*";
+  inherits: false;
+}
+@property --bs-bg {
+  syntax: "*";
+  inherits: false;
+}
+@property --bs-rounded-size {
+  syntax: "*";
+  inherits: false;
+}
 @layer utilities {
   .align-baseline {
     vertical-align: baseline;
@@ -10163,96 +10190,96 @@
     border-inline: 0;
   }
   .border-primary {
-    --bs-border-color: var(--bs-primary-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-primary-bg);
+    border-color: var(--bs-bc);
   }
   .border-accent {
-    --bs-border-color: var(--bs-accent-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-accent-bg);
+    border-color: var(--bs-bc);
   }
   .border-success {
-    --bs-border-color: var(--bs-success-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-success-bg);
+    border-color: var(--bs-bc);
   }
   .border-danger {
-    --bs-border-color: var(--bs-danger-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-danger-bg);
+    border-color: var(--bs-bc);
   }
   .border-warning {
-    --bs-border-color: var(--bs-warning-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-warning-bg);
+    border-color: var(--bs-bc);
   }
   .border-info {
-    --bs-border-color: var(--bs-info-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-info-bg);
+    border-color: var(--bs-bc);
   }
   .border-inverse {
-    --bs-border-color: var(--bs-inverse-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-inverse-bg);
+    border-color: var(--bs-bc);
   }
   .border-secondary {
-    --bs-border-color: var(--bs-secondary-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-secondary-bg);
+    border-color: var(--bs-bc);
   }
   .border-bg {
-    --bs-border-color: var(--bs-border-bg);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-border-bg);
+    border-color: var(--bs-bc);
   }
   .border-body {
-    --bs-border-color: var(--bs-border-body);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-border-body);
+    border-color: var(--bs-bc);
   }
   .border-muted {
-    --bs-border-color: var(--bs-border-muted);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-border-muted);
+    border-color: var(--bs-bc);
   }
   .border-subtle {
-    --bs-border-color: var(--bs-border-subtle);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-border-subtle);
+    border-color: var(--bs-bc);
   }
   .border-emphasized {
-    --bs-border-color: var(--bs-border-emphasized);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-border-emphasized);
+    border-color: var(--bs-bc);
   }
   .border-white {
-    --bs-border-color: var(--bs-border-white);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-border-white);
+    border-color: var(--bs-bc);
   }
   .border-black {
-    --bs-border-color: var(--bs-border-black);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-border-black);
+    border-color: var(--bs-bc);
   }
   .border-subtle-primary {
-    --bs-border-color: var(--bs-primary-border);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-primary-border);
+    border-color: var(--bs-bc);
   }
   .border-subtle-accent {
-    --bs-border-color: var(--bs-accent-border);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-accent-border);
+    border-color: var(--bs-bc);
   }
   .border-subtle-success {
-    --bs-border-color: var(--bs-success-border);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-success-border);
+    border-color: var(--bs-bc);
   }
   .border-subtle-danger {
-    --bs-border-color: var(--bs-danger-border);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-danger-border);
+    border-color: var(--bs-bc);
   }
   .border-subtle-warning {
-    --bs-border-color: var(--bs-warning-border);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-warning-border);
+    border-color: var(--bs-bc);
   }
   .border-subtle-info {
-    --bs-border-color: var(--bs-info-border);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-info-border);
+    border-color: var(--bs-bc);
   }
   .border-subtle-inverse {
-    --bs-border-color: var(--bs-inverse-border);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-inverse-border);
+    border-color: var(--bs-bc);
   }
   .border-subtle-secondary {
-    --bs-border-color: var(--bs-secondary-border);
-    border-color: var(--bs-border-color);
+    --bs-bc: var(--bs-secondary-border);
+    border-color: var(--bs-bc);
   }
   .border-1 {
     border-width: 1px;
@@ -10270,34 +10297,34 @@
     border-width: 5px;
   }
   .border-10 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 10%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 10%, transparent);
   }
   .border-20 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 20%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 20%, transparent);
   }
   .border-30 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 30%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 30%, transparent);
   }
   .border-40 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 40%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 40%, transparent);
   }
   .border-50 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 50%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 50%, transparent);
   }
   .border-60 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 60%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 60%, transparent);
   }
   .border-70 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 70%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 70%, transparent);
   }
   .border-80 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 80%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 80%, transparent);
   }
   .border-90 {
-    border-color: color-mix(in oklch, var(--bs-border-color) 90%, transparent);
+    border-color: color-mix(in oklch, var(--bs-bc) 90%, transparent);
   }
   .border-100 {
-    border-color: var(--bs-border-color);
+    border-color: var(--bs-bc);
   }
   .w-1 {
     width: 1rem;
@@ -16644,5 +16671,4 @@
     }
   }
 }
-
 /*# sourceMappingURL=bootstrap.css.map */

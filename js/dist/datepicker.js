@@ -429,9 +429,12 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function
   Datepicker.getOrCreateInstance(this).show();
 });
 
-// Auto-initialize inline datepickers on DOMContentLoaded
+// Auto-initialize datepickers that need to render on load:
+// - inline datepickers (always visible)
+// - datepickers with preselected dates (so the value populates without focus)
 EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
-  for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"]`)) {
+  const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"], ${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates]`;
+  for (const element of document.querySelectorAll(selector)) {
     Datepicker.getOrCreateInstance(element);
   }
 });

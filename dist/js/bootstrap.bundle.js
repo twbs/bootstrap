@@ -713,7 +713,7 @@ const SelectorEngine = {
     }
     return [];
   },
-  // TODO: this is now unused; remove later along with prev()
+  // TODO: this is now unused; remove along with prev()
   next(element, selector) {
     let next = element.nextElementSibling;
     while (next) {
@@ -5258,9 +5258,12 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE$6, functi
   Datepicker.getOrCreateInstance(this).show();
 });
 
-// Auto-initialize inline datepickers on DOMContentLoaded
+// Auto-initialize datepickers that need to render on load:
+// - inline datepickers (always visible)
+// - datepickers with preselected dates (so the value populates without focus)
 EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$c}${DATA_API_KEY$7}`, () => {
-  for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE$6}[data-bs-inline="true"]`)) {
+  const selector = `${SELECTOR_DATA_TOGGLE$6}[data-bs-inline="true"], ${SELECTOR_DATA_TOGGLE$6}[data-bs-selected-dates]`;
+  for (const element of document.querySelectorAll(selector)) {
     Datepicker.getOrCreateInstance(element);
   }
 });
