@@ -3,45 +3,35 @@ import { getConfig } from '@libs/config'
 import { getVersionedDocsPath } from '@libs/path'
 import Ads from '@components/Ads.astro'
 import CodeCopy from '@components/shortcodes/CodeCopy.astro'
-import ResponsiveImage from '@layouts/partials/ResponsiveImage.astro'
 ---
 
 <div class="bd-masthead mb-3" id="content">
   <div class="2xl:container bd-gutter">
-    <div class="md:col-8 mx-auto text-center">
+    <div class="md:col-8 mx-auto d-flex flex-column gap-5 align-items-center text-center">
       <a
-        class="d-flex flex-column lg:flex-row justify-content-center align-items-center mb-4 lh-sm text-decoration-none fs-sm"
+        class="badge badge-subtle badge-lg fs-md fw-normal theme-warning border border-bg border-50 rounded-pill gap-1"
         href="https://www.herodevs.com/support/nes-bootstrap?utm_source=Bootstrap_site&utm_medium=Banner&utm_campaign=v3and4_eol"
         rel="noopener"
         target="_blank"
       >
-        <span
-          class="sm:d-inline-flex align-items-center gap-1 py-2 px-3 me-2 mb-2 lg:mb-0 rounded-5 masthead-notice theme-subtle theme-warning"
+        Security updates for Bootstrap 3 &amp; 4
+        <svg class="bi" style="width: 20px; height: 20px;" aria-hidden="true"><use href="#arrow-right-short"></use></svg
         >
-          Get Security Updates for Bootstrap 3 &amp; 4
-          <svg class="bi" style="width: 20px; height: 20px; margin-block: -2px;" aria-hidden="true"
-            ><use href="#arrow-right-short"></use></svg
-          >
-        </span>
       </a>
-      <ResponsiveImage
-        imgPath="/assets/brand/bootstrap-logo-shadow.png"
-        alt="Bootstrap"
-        width={200}
-        height={165}
-        classes="d-none sm:d-block mx-auto mb-3"
-        lazyload={false}
-      />
-      <h1 class="mb-3 fw-semibold lh-1">Build fast, responsive sites with&nbsp;Bootstrap</h1>
-      <p class="fs-lg fw-light mb-4">
-        Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid
-        system and components, and bring projects to life with powerful JavaScript plugins.
-      </p>
-      <div class="d-flex flex-column lg:flex-row md:align-items-stretch md:justify-content-center gap-3 mb-4">
+      <div class="d-flex flex-column gap-3">
+        <h1 class="fw-semibold lh-1 text-balance">Bootstrap is the open source design system for everyone</h1>
+        <p class="fs-lg fg-2 mb-0 text-balance">
+          Bootstrap 6 has been rebuilt for today's web as a framework-agnostic design toolkit that anyone—human or AI,
+          novice or pro—can use to build anything. New standards, new components, an updated visual design, CSS-first
+          theming, and more powerful JavaScript plugins.
+          <!-- <br/><a href="https://blog.getbootstrap.com/2026/07/15/bootstrap-6/" class="underline-30">Read the v6 announcement post.</a> -->
+        </p>
+      </div>
+      <div class="d-flex flex-column lg:flex-row md:align-items-stretch md:my-2 gap-2">
         <CodeCopy code={`npm i bootstrap@${getConfig().current_version}`} />
         <a
           href={getVersionedDocsPath('getting-started/install')}
-          class="btn-solid theme-accent btn-lg justify-content-center"
+          class="btn-solid btn-styled theme-accent btn-lg justify-content-center fw-medium"
         >
           <svg class="bi me-2" aria-hidden="true"><use href="#book-half"></use></svg>
           Read the docs
@@ -50,9 +40,12 @@ import ResponsiveImage from '@layouts/partials/ResponsiveImage.astro'
       <p class="fg-2 mb-0">
         Currently <strong>v{getConfig().current_version}</strong>
         <span class="px-1">&middot;</span>
-        <a href={getVersionedDocsPath('getting-started/install')} class="theme-secondary">Download</a>
+        <a
+          href={getVersionedDocsPath('getting-started/install')}
+          class="theme-secondary underline-50 underline-secondary">Download</a
+        >
         <span class="px-1">&middot;</span>
-        <a href="/docs/versions/" class="theme-secondary text-nowrap">All releases</a>
+        <a href="/docs/versions/" class="theme-secondary underline-50 underline-secondary text-nowrap">All releases</a>
       </p>
       <Ads />
     </div>

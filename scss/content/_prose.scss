@@ -103,6 +103,7 @@ $prose-tokens: defaults(
       @include transition(.1s text-decoration-color ease-in-out);
 
       &:hover {
+        color: var(--link-hover-color);
         text-decoration-color: var(--link-hover-color);
       }
     }

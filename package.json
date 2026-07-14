@@ -113,9 +113,9 @@
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-js-docs": "nodemon --watch site/src/assets/ --ext js --exec \"npm run js-lint\"",
     "astro-clean": "rm -rf site/.astro site/node_modules/.astro",
-    "astro-dev": "astro dev --root site",
+    "astro-dev": "astro dev --root site --port ${PORT:-9001}",
     "astro-build": "astro build --root site && rm -rf _site && cp -r site/dist _site && pagefind --site _site",
-    "astro-preview": "astro preview --root site",
+    "astro-preview": "astro preview --root site --port 9001",
     "spellcheck": "cspell --config .cspell.json \"**/*.{md,mdx}\""
   },
   "peerDependencies": {
