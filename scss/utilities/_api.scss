@@ -2,6 +2,11 @@
 @use "../mixins/utilities" as *;
 @use "../utilities" as *;
 
+// Register utility-composition custom properties as non-inheriting so utilities
+// (e.g. `.border-inverse`) don't leak their composed value into descendants.
+// Emitted outside the cascade layer since `@property` registration is global.
+@include generate-utility-at-properties($utilities);
+
 @layer utilities {
   @include generate-utilities-loop($utilities, $breakpoints);
 }

@@ -65,6 +65,10 @@ Divide utilities apply `border-inline-start` or `border-block-start` to every di
 }
 ```
 
+<Callout>
+Divider color comes from the inheriting `--bs-border-color` design token, so set it on the parent to recolor dividers. Note this differs from the `.border-{color}` utilities, which are element-scoped (they set the non-inheriting `--bs-bc` variable) and therefore won’t recolor a parent’s dividers.
+</Callout>
+
 ## CSS
 
 ### Sass utilities API

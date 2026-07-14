@@ -208,16 +208,16 @@ $utilities: map.merge(
     // scss-docs-start utils-border-color
     "border-color": (
       property: (
-        "--border-color": null,
-        "border-color": var(--border-color)
+        "--bc": null,
+        "border-color": var(--bc)
       ),
       class: border,
       values: map.merge(theme-color-refs("bg"), theme-token-refs($theme-borders, "border")),
     ),
     "border-color-subtle": (
       property: (
-        "--border-color": null,
-        "border-color": var(--border-color)
+        "--bc": null,
+        "border-color": var(--bc)
       ),
       class: border-subtle,
       values: theme-color-refs("border"),
@@ -230,7 +230,7 @@ $utilities: map.merge(
     "border-opacity": (
       class: border,
       property: border-color,
-      values: theme-opacity-values(--border-color)
+      values: theme-opacity-values(--bc)
     ),
     // scss-docs-end utils-border-color
     // Sizing utilities
