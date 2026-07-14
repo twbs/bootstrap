@@ -11,25 +11,25 @@ Bootstrap includes many [CSS custom properties (variables)](https://developer.mo
 
 ## Root variables
 
-Here are the variables we include (note that the `:root` is required) that can be accessed anywhere Bootstrap’s CSS is loaded. They’re located in our `_root.scss` file and included in our compiled dist files.
-
-### Default
-
-These CSS variables are available everywhere, regardless of color mode.
+Here are the variables we include (note that the `:root` is required) that can be accessed anywhere Bootstrap’s CSS is loaded. They’re located in our `_root.scss` file and included in our compiled dist files. Many of these resolve their light and dark values automatically via the CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) function, so a single `:root` declaration covers both [color modes]([[docsref:/customize/color-modes]]).
 
 <Code lang="css" filePath="dist/css/bootstrap.css" fileMatch=":(root {[^}]*})" />
-
-### Dark mode
-
-These variables are scoped to our built-in dark mode.
-
-<Code lang="css" filePath="dist/css/bootstrap.css" fileMatch="(\[data-bs-theme=dark\] {[^}]*})" />
 
 ## Component variables
 
 Bootstrap makes use of custom properties as local variables for various components. This way we reduce our compiled CSS, ensure styles aren’t inherited in places like nested tables, and allow some basic restyling and extending of Bootstrap components after Sass compilation.
 
-Have a look at our table documentation for some [insight into how we’re using CSS variables]([[docsref:/content/tables#how-do-the-variants-and-accented-tables-work]]). Our [navbars also use CSS variables]([[docsref:/components/navbar#css]]) as of v5.2.0. We’re also using CSS variables across our grids—primarily for gutters the [new opt-in CSS grid]([[docsref:/layout/css-grid]])—with more component usage coming in the future.
+Nearly every component exposes its own set of CSS variables, scoped to the component’s base class. For example, the alert component reads a handful of `--bs-alert-*` variables that you can override in your own CSS—no Sass compilation required:
+
+```css
+.alert {
+  --bs-alert-padding-x: 1.5rem;
+  --bs-alert-padding-y: 1rem;
+  --bs-alert-border-radius: var(--bs-radius-5);
+}
+```
+
+Have a look at our table documentation for some [insight into how we’re using CSS variables]([[docsref:/content/tables#how-do-the-variants-and-accented-tables-work]]). Our [navbars also use CSS variables]([[docsref:/components/navbar#css]]), and we use CSS variables across our grids—primarily for gutters and the [opt-in CSS grid]([[docsref:/layout/css-grid]]).
 
 Whenever possible, we’ll assign CSS variables at the base component level (e.g., `.navbar` for navbar and its sub-components). This reduces guessing on where and how to customize, and allows for easy modifications by our team in future updates.
 
