@@ -183,9 +183,17 @@ class Collapse extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
-      const element = SelectorEngine.getElementFromSelector(trigger)
+      // Check *all* targets for this trigger. Using only the first match
+      // (findOne) incorrectly marks multi-target triggers as collapsed when
+      // an earlier sibling is hidden while a later one is still open.
+      // Also, if the selector depends on `.collapse` (removed during the
+      // transition), querySelector may find nothing — still treat as closed
+      // so aria-expanded / .collapsed stay in sync (see #40841).
+      const openTargets = SelectorEngine
+        .getMultipleElementsFromSelector(trigger)
+        .filter(element => this._isShown(element))
 
-      if (element && !this._isShown(element)) {
+      if (openTargets.length === 0) {
         this._addAriaAndCollapsedClass([trigger], false)
       }
     }
