@@ -9,11 +9,11 @@ $spinner-border-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $spinner-border-tokens: defaults(
   (
-    --spinner-width: 2rem,
-    --spinner-height: 2rem,
-    --spinner-vertical-align: -.125em,
-    --spinner-border-width: .25em,
-    --spinner-animation-speed: .75s,
+    --spinner-width: 1em,
+    --spinner-height: 1em,
+    --spinner-border-width: .125em,
+    --spinner-animation-speed: 1s,
+    --spinner-animation-timing-function: linear,
     --spinner-animation-name: spinner-border,
   ),
   $spinner-border-tokens
@@ -26,10 +26,10 @@ $spinner-grow-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $spinner-grow-tokens: defaults(
   (
-    --spinner-width: 2rem,
-    --spinner-height: 2rem,
-    --spinner-vertical-align: -.125em,
-    --spinner-animation-speed: .75s,
+    --spinner-width: 1em,
+    --spinner-height: 1em,
+    --spinner-animation-speed: 1s,
+    --spinner-animation-timing-function: ease-in-out,
     --spinner-animation-name: spinner-grow,
   ),
   $spinner-grow-tokens
@@ -43,17 +43,16 @@ $spinner-grow-tokens: defaults(
 //
 
 @layer components {
-  // TODO: refactor this to assume flex parent and remove `vertical-align`
+  // Assumes a flex parent
   .spinner-grow,
   .spinner-border {
-    display: inline-block;
+    display: inline-flex;
     flex-shrink: 0;
     width: var(--spinner-width);
     height: var(--spinner-height);
-    vertical-align: var(--spinner-vertical-align);
     // stylelint-disable-next-line property-disallowed-list
     border-radius: 50%;
-    animation: var(--spinner-animation-speed) linear infinite var(--spinner-animation-name);
+    animation: var(--spinner-animation-speed) var(--spinner-animation-timing-function) infinite var(--spinner-animation-name);
   }
 
   // scss-docs-start spinner-border-keyframes
@@ -69,11 +68,10 @@ $spinner-grow-tokens: defaults(
     border-inline-end-color: transparent;
   }
 
-  .spinner-border-sm {
+  .spinner-sm {
     // scss-docs-start spinner-border-sm-css-vars
-    --spinner-width: 1rem;
-    --spinner-height: 1rem;
-    --spinner-border-width: .2em;
+    --spinner-width: .75em;
+    --spinner-height: .75em;
     // scss-docs-end spinner-border-sm-css-vars
   }
 
@@ -100,11 +98,9 @@ $spinner-grow-tokens: defaults(
     opacity: 0;
   }
 
-  .spinner-grow-sm {
-    // scss-docs-start spinner-grow-sm-css-vars
-    --spinner-width: 1rem;
-    --spinner-height: 1rem;
-    // scss-docs-end spinner-grow-sm-css-vars
+  // Generic class for rotating custom spinners
+  .spinner-rotate {
+    animation: 1s linear infinite spinner-border;
   }
 
   @if $enable-reduced-motion {
