@@ -4,6 +4,7 @@
 @use "mixins/focus-ring" as *;
 @use "mixins/tokens" as *;
 
+// stylelint-disable custom-property-no-missing-var-function
 $accordion-tokens: () !default;
 
 // scss-docs-start accordion-tokens
@@ -31,6 +32,7 @@ $accordion-tokens: defaults(
   $accordion-tokens
 );
 // scss-docs-end accordion-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer components {
   .accordion {
@@ -76,6 +78,7 @@ $accordion-tokens: defaults(
   }
 
   .accordion-item {
+    position: relative;
     color: var(--accordion-color);
     background-color: var(--accordion-bg);
     border: var(--accordion-border-width) solid var(--accordion-border-color);
@@ -99,7 +102,8 @@ $accordion-tokens: defaults(
     }
 
     &:not(:first-of-type) {
-      border-block-start: 0;
+      // border-block-start: 0;
+      margin-top: calc(-1 * var(--accordion-border-width));
     }
 
     // Only set a border-radius on the last item if the accordion is collapsed
@@ -117,8 +121,9 @@ $accordion-tokens: defaults(
 
     // Open state - details[open] applies these styles
     &[open] {
-
+      z-index: 2;
       border-color: var(--theme-border, var(--accordion-border-color));
+
       &::details-content {
         block-size: auto;
       }
@@ -142,6 +147,21 @@ $accordion-tokens: defaults(
 
   .accordion-body {
     padding: var(--accordion-body-padding-y, var(--accordion-padding-y)) var(--accordion-body-padding-x, var(--accordion-padding-x));
+    font-size: var(--accordion-font-size, var(--font-size-base));
+  }
+
+
+  // Small accordion
+  //
+  // Tighten up padding, border-radius, and font size for a more compact accordion.
+
+  .accordion-sm {
+    // scss-docs-start accordion-sm-css-vars
+    --accordion-padding-x: .875rem;
+    --accordion-padding-y: .625rem;
+    --accordion-border-radius: var(--radius-5);
+    --accordion-font-size: var(--font-size-sm);
+    // scss-docs-end accordion-sm-css-vars
   }
 
 

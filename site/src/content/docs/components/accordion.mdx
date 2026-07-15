@@ -81,13 +81,51 @@ Use the contextual `.theme-{color}` classes to apply a semantic theme color to o
         <strong>This is the third item’s accordion body.</strong> This exclusive accordion behavior is built into the browser—no Bootstrap JavaScript required. Just use matching <code>name</code> attributes on your <code>&lt;details&gt;</code> elements.
       </div>
     </details>
+  </div>`} customMarkup={`<div class="accordion theme-primary"><!--[!code highlight]-->
+    <!-- Accordion items here -->
+  </div>`} />
+
+## Small
+
+Add `.accordion-sm` to the `.accordion` for a more compact accordion with tighter padding, a smaller border radius, and a smaller font size.
+
+<Example code={`<div class="accordion accordion-sm">
+    <details class="accordion-item" name="accordionSmall" open>
+      <summary class="accordion-header">
+        Accordion Item #1
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the first item’s accordion body.</strong> The <code>.accordion-sm</code> class tightens up the padding, border radius, and font size for a more compact presentation.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionSmall">
+      <summary class="accordion-header">
+        Accordion Item #2
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the second item’s accordion body.</strong> Everything is driven by CSS custom properties, so you can fine-tune the compact sizing to taste.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionSmall">
+      <summary class="accordion-header">
+        Accordion Item #3
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the third item’s accordion body.</strong> Combine <code>.accordion-sm</code> with other variants like <code>.accordion-flush</code> as needed.
+      </div>
+    </details>
+  </div>`} customMarkup={`<div class="accordion accordion-sm"><!--[!code highlight]-->
+    <!-- Accordion items here -->
   </div>`} />
 
 ## Flush
 
 Add `.accordion-flush` to remove some borders and rounded corners to render accordions edge-to-edge with their parent container.
 
-<Example class="bg-body-secondary" code={`<div class="accordion accordion-flush">
+<Example class="bg-1" code={`<div class="accordion accordion-flush">
     <details class="accordion-item" name="accordionFlushExample">
       <summary class="accordion-header">
         Accordion Item #1
@@ -109,6 +147,8 @@ Add `.accordion-flush` to remove some borders and rounded corners to render acco
       </summary>
       <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item’s accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
     </details>
+  </div>`} customMarkup={`<div class="accordion accordion-flush"><!--[!code highlight]-->
+    <!-- Accordion items here -->
   </div>`} />
 
 ## Always open
@@ -143,6 +183,11 @@ Omit the `name` attribute on each `<details>` element to allow multiple accordio
         <strong>This is the third item’s accordion body.</strong> Each item is completely independent—open or close them in any combination you like.
       </div>
     </details>
+  </div>`} customMarkup={`<div class="accordion">
+    <details class="accordion-item" open><!--[!code highlight]-->
+      <!-- No name attribute, so items open independently -->
+    </details>
+    <!-- More accordion items here -->
   </div>`} />
 
 ## Nested
