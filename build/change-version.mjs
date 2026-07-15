@@ -19,7 +19,7 @@ const FILES = [
   'config.yml',
   'js/src/base-component.js',
   'package.js',
-  'scss/mixins/_banner.scss',
+  'scss/_banner.scss',
   'site/data/docs-versions.yml'
 ]
 
