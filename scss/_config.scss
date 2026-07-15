@@ -214,6 +214,41 @@ $border-style:                solid !default;
 $border-color:                color-mix(in oklch, var(--gray-100), var(--gray-200)) !default;
 // scss-docs-end border-variables
 
+// Each layer's alpha is base * strength * opacity, so shadow-color retints
+// (e.g. .shadow-primary), shadow-opacity dims or boosts (.shadow-opacity-*),
+// and shadow-strength deepens every shadow in dark mode. Color and opacity
+// each read a local, non-inheriting override set by their utility
+// (scss/_utilities.scss)—var(--sc, var(--shadow-color)) and var(--so, 1)—so
+// neither leaks to nested .shadow-* descendants; --sc falls back to the
+// cascading global --shadow-color token (scss/_root.scss) when unset.
+// scss-docs-start box-shadow-variables
+$shadows: (
+  null: #{(
+    "0 .125rem .25rem -.0625rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.04 * var(--shadow-strength) * var(--so, 1)))",
+    "0 .375rem .75rem -.125rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.05 * var(--shadow-strength) * var(--so, 1)))",
+    "0 .75rem 1.5rem -.25rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.06 * var(--shadow-strength) * var(--so, 1)))"
+  )},
+  xs: 0 .0625rem .125rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.04 * var(--shadow-strength) * var(--so, 1))),
+  sm: #{(
+    "0 .0625rem .125rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.04 * var(--shadow-strength) * var(--so, 1)))",
+    "0 .125rem .375rem -.0625rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.05 * var(--shadow-strength) * var(--so, 1)))"
+  )},
+  lg: #{(
+    "0 .125rem .375rem -.0625rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.05 * var(--shadow-strength) * var(--so, 1)))",
+    "0 .375rem 1rem -.1875rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.06 * var(--shadow-strength) * var(--so, 1)))",
+    "0 .75rem 2rem -.375rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.07 * var(--shadow-strength) * var(--so, 1)))",
+    "0 1.5rem 3.5rem -.75rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.08 * var(--shadow-strength) * var(--so, 1)))"
+  )},
+  xl: #{(
+    "0 .1875rem .5rem -.0625rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.05 * var(--shadow-strength) * var(--so, 1)))",
+    "0 .5rem 1.25rem -.1875rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.06 * var(--shadow-strength) * var(--so, 1)))",
+    "0 1rem 2.5rem -.375rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.07 * var(--shadow-strength) * var(--so, 1)))",
+    "0 2rem 5rem -.75rem oklch(from var(--sc, var(--shadow-color)) l c h / calc(.09 * var(--shadow-strength) * var(--so, 1)))"
+  )},
+  inset: inset 0 1px 2px light-dark(oklch(from var(--sc, var(--shadow-color)) l c h / calc(8% * var(--so, 1))), oklch(from var(--sc, var(--shadow-color)) l c h / calc(26% * var(--so, 1)))),
+) !default;
+// scss-docs-end box-shadow-variables
+
 $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 

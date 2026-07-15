@@ -56,34 +56,10 @@ $root-tokens: defaults(
     // scss-docs-end root-border-var
 
     // scss-docs-start root-box-shadow-variables
-    // Each layer's alpha is base * strength * opacity, so the shadow-color token
-    // retints (e.g. .shadow-primary), shadow-opacity dims or boosts
-    // (.shadow-opacity-*), and shadow-strength deepens every shadow in dark mode.
+    // --box-shadow* tokens are generated below (see root-box-shadow-loop) from
+    // the shared $shadows map in scss/_config.scss, which reads these two.
     --shadow-color: #000,
     --shadow-strength: 1,
-    --box-shadow-xs: 0 .0625rem .125rem oklch(from var(--shadow-color) l c h / calc(.04 * var(--shadow-strength) * var(--shadow-opacity, 1))),
-    --box-shadow-sm: #{(
-      "0 .0625rem .125rem oklch(from var(--shadow-color) l c h / calc(.04 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 .125rem .375rem -.0625rem oklch(from var(--shadow-color) l c h / calc(.05 * var(--shadow-strength) * var(--shadow-opacity, 1)))"
-    )},
-    --box-shadow: #{(
-      "0 .125rem .25rem -.0625rem oklch(from var(--shadow-color) l c h / calc(.04 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 .375rem .75rem -.125rem oklch(from var(--shadow-color) l c h / calc(.05 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 .75rem 1.5rem -.25rem oklch(from var(--shadow-color) l c h / calc(.06 * var(--shadow-strength) * var(--shadow-opacity, 1)))"
-    )},
-    --box-shadow-lg: #{(
-      "0 .125rem .375rem -.0625rem oklch(from var(--shadow-color) l c h / calc(.05 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 .375rem 1rem -.1875rem oklch(from var(--shadow-color) l c h / calc(.06 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 .75rem 2rem -.375rem oklch(from var(--shadow-color) l c h / calc(.07 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 1.5rem 3.5rem -.75rem oklch(from var(--shadow-color) l c h / calc(.08 * var(--shadow-strength) * var(--shadow-opacity, 1)))"
-    )},
-    --box-shadow-xl: #{(
-      "0 .1875rem .5rem -.0625rem oklch(from var(--shadow-color) l c h / calc(.05 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 .5rem 1.25rem -.1875rem oklch(from var(--shadow-color) l c h / calc(.06 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 1rem 2.5rem -.375rem oklch(from var(--shadow-color) l c h / calc(.07 * var(--shadow-strength) * var(--shadow-opacity, 1)))",
-      "0 2rem 5rem -.75rem oklch(from var(--shadow-color) l c h / calc(.09 * var(--shadow-strength) * var(--shadow-opacity, 1)))"
-    )},
-    --box-shadow-inset: inset 0 1px 2px light-dark(oklch(from var(--shadow-color) l c h / calc(8% * var(--shadow-opacity, 1))), oklch(from var(--shadow-color) l c h / calc(26% * var(--shadow-opacity, 1)))),
     // scss-docs-end root-box-shadow-variables
 
     --spacer: 1rem,
@@ -192,6 +168,17 @@ $root-tokens: defaults(
 // stylelint-disable-next-line scss/dollar-variable-default
 $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
 // scss-docs-end root-radius-loop
+
+// Generate box-shadow tokens
+// scss-docs-start root-box-shadow-loop
+@each $key, $value in $shadows {
+  @if $key == null {
+    $root-tokens: map.set($root-tokens, --box-shadow, $value);
+  } @else {
+    $root-tokens: map.set($root-tokens, --box-shadow-#{$key}, $value);
+  }
+}
+// scss-docs-end root-box-shadow-loop
 
 :root {
   @include tokens($root-tokens);

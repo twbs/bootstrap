@@ -1,7 +1,6 @@
 @use "sass:map";
 @use "config" as *;
 @use "functions" as *;
-@use "root" as *;
 @use "theme" as *;
 
 // add:
@@ -115,24 +114,23 @@ $utilities: map.merge(
     "shadow": (
       property: box-shadow,
       class: shadow,
-      // Pull the literal layered expressions straight from the :root tokens
-      // (single source of truth in scss/_root.scss). Emitting the literal—rather
-      // than var(--box-shadow-*)—keeps the nested var(--shadow-color) /
-      // var(--shadow-opacity) unresolved so they resolve on the element, letting
-      // .shadow-{color} and .shadow-opacity-* take effect.
-      values: (
-        null: map.get($root-tokens, --box-shadow),
-        xs: map.get($root-tokens, --box-shadow-xs),
-        sm: map.get($root-tokens, --box-shadow-sm),
-        lg: map.get($root-tokens, --box-shadow-lg),
-        xl: map.get($root-tokens, --box-shadow-xl),
-        none: none,
-      )
+      // Pull the literal layered expressions straight from the shared $shadows
+      // map (single source of truth in scss/_config.scss, also consumed by
+      // scss/_root.scss). Emitting the literal—rather than var(--box-shadow-*)—
+      // keeps the nested var(--sc, var(--shadow-color)) / var(--so, 1)
+      // unresolved so they resolve on the element, letting .shadow-{color} and
+      // .shadow-opacity-* take effect. `inset` isn't a utility, so it's excluded.
+      values: map.merge(map.remove($shadows, inset), (none: none))
     ),
     // scss-docs-end utils-shadow
     // scss-docs-start utils-shadow-color
     "shadow-color": (
-      property: --shadow-color,
+      // --sc is a local override composed into the $shadows expressions
+      // (scss/_config.scss) as var(--sc, var(--shadow-color)); like --bc for
+      // border-color, it's non-inheriting so .shadow-primary doesn't tint
+      // nested .shadow-* descendants, which instead fall back to the
+      // cascading global --shadow-color token (scss/_root.scss).
+      property: --sc,
       class: shadow,
       values: map-merge-multiple(
         theme-color-refs("base"),
@@ -146,7 +144,10 @@ $utilities: map.merge(
     // scss-docs-end utils-shadow-color
     // scss-docs-start utils-shadow-opacity
     "shadow-opacity": (
-      property: --shadow-opacity,
+      // --so is a local override composed into the $shadows expressions
+      // (scss/_config.scss) as var(--so, 1); same rationale as --sc above,
+      // it's non-inheriting so it doesn't leak to nested .shadow-* descendants.
+      property: --so,
       class: shadow-opacity,
       values: $shadow-opacities
     ),

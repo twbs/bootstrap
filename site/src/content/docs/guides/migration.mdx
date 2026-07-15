@@ -503,6 +503,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Ratio helpers are now powered by the utility API and use simplified values without `calc()`.
 - **State variants now use prefix syntax.** Pseudo-state utility classes like hover and focus variants now use a `state:class` prefix pattern (e.g., `hover:opacity-50` instead of `opacity-50-hover`), matching the responsive prefix convention.
 - **Utility API cleanup.** Removed `css-var`, `css-variable-name`, and `local-vars` options from the utility API. Use the `property` map approach for CSS custom properties and `variables` for static CSS custom properties within utility classes.
+- **Shadows are now layered and themeable.** `.shadow`, `.shadow-sm`, and `.shadow-lg` are multi-stop `box-shadow` declarations for a more natural falloff, plus new `.shadow-xs` and `.shadow-xl` sizes. New `.shadow-{color}` utilities (any theme color, plus `.shadow-current`, `.shadow-black`, `.shadow-white`) and `.shadow-opacity-{10-100}` utilities retint and scale shadows. Both set local, non-inheriting CSS variables (`--bs-sc`, `--bs-so`)—mirroring how `.border-{color}` utilities scope `--bs-bc`—so a shadow color or opacity override never leaks into nested `.shadow-*` elements. A global `--bs-shadow-color` and `--bs-shadow-strength` (deepened automatically in dark mode) drive the default, uncolored look. See the [Shadows docs]([[docsref:/utilities/shadows]]) for details.
 
 ### New components and plugins
 
