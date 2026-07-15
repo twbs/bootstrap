@@ -1,0 +1,78 @@
+---
+title: Browsers & devices
+description: Learn about the browsers and devices, from modern to old, that are supported by Bootstrap, and the modern platform features the framework is built on.
+toc: true
+---
+
+## Supported browsers
+
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms—more precisely, the last two major versions of each. The exact policy lives in [our `.browserslistrc` file](https://github.com/twbs/bootstrap/blob/v6-dev/.browserslistrc):
+
+```text
+last 2 major versions
+not dead
+Chrome >= 130
+Edge >= 130
+Firefox >= 132
+iOS >= 18.0
+Safari >= 18.0
+```
+
+<BsTable>
+| Browser | Minimum version |
+| --- | --- |
+| Chrome | 130 |
+| Edge | 130 |
+| Firefox | 132 |
+| Safari (macOS) | 18 |
+| Safari (iOS and iPadOS) | 18 |
+</BsTable>
+
+Alternative browsers built on these engines (Chromium-based browsers like Brave, Opera, or Vivaldi, and browsers using WebKit on iOS) are not explicitly tested, but should be fully supported at equivalent engine versions.
+
+### Why these versions?
+
+Bootstrap’s CSS is written against the modern platform baseline: [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) for [color modes]([[docsref:/customize/color-modes]]), `oklch()` and `color-mix()` for the [color system]([[docsref:/customize/color]]), native CSS nesting, container queries, and `:has()`. The version floors are set on native `light-dark()` support so our build pipeline doesn’t have to lower these features to brittle custom-property polyfills. This floor covers roughly 90% of global browser usage; raising it further was possible, lowering it was not without compromising the color-mode architecture.
+
+Unlike previous major versions, Bootstrap 6 does not ship fallbacks, prefixes, or polyfills for browsers below this floor. Pages will not render correctly in unsupported browsers—most visibly, colors depending on `light-dark()` will not resolve.
+
+## Modern platform features
+
+The table below lists the platform features v6 relies on and how each behaves at—and below—the support floor.
+
+<BsTable>
+| Feature | Used by | Behavior in supported browsers |
+| --- | --- | --- |
+| `light-dark()` | [Color modes]([[docsref:/customize/color-modes]]), all theme tokens | Defines the support floor; no fallback below it |
+| `oklch()`, `color-mix()` | [Color system]([[docsref:/customize/color]]), theme variants | Fully supported above the floor |
+| Container queries (`@container`) | [Card groups]([[docsref:/components/card#card-groups]]), [horizontal list groups]([[docsref:/components/list-group#horizontal]]) | Fully supported above the floor; these components also require an ancestor query container (`.contains-inline`)—without one they stay stacked |
+| `:has()` | Forms, button groups with menus, and other contextual styling | Fully supported above the floor |
+| Native `<dialog>` | [Dialog]([[docsref:/components/dialog]]), [Drawer]([[docsref:/components/drawer]]) | Fully supported above the floor; focus containment and `inert` behavior come from the browser |
+| `<details name="…">` | [Exclusive accordions]([[docsref:/components/accordion]]) | Fully supported above the floor; in older, unsupported browsers accordion items degrade gracefully to independently openable `<details>` elements |
+| CSS scroll snap | [Carousel]([[docsref:/components/carousel]]) | Fully supported above the floor; native touch, wheel, and keyboard scrolling |
+| Logical properties | Spacing, borders, and [RTL]([[docsref:/customize/rtl]]) support throughout | Fully supported above the floor |
+</BsTable>
+
+## JavaScript
+
+Bootstrap’s JavaScript ships as **native ES modules only**. Load it with `<script type="module">`—a classic `<script src>` without `type="module"` will not execute it, and there is no global `window.bootstrap` object. See the [JavaScript getting-started guide]([[docsref:/getting-started/javascript]]) for loading patterns, including import maps for the bundle’s dependencies.
+
+All browsers meeting the CSS support floor above fully support ES modules, `import`/`export` syntax, and the DOM APIs Bootstrap’s plugins use—no transpilation or polyfills are required or provided.
+
+## Mobile devices
+
+Generally speaking, Bootstrap supports the latest versions of each major platform’s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile’s Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
+
+<BsTable>
+| Platform | Supported browsers |
+| --- | --- |
+| Android | Chrome (last two major versions) |
+| iOS and iPadOS | Safari 18+, Chrome (uses WebKit on iOS) |
+| Windows, macOS, Linux | Chrome, Edge, and Firefox (last two major versions); Safari 18+ on macOS |
+</BsTable>
+
+As with v5, make sure you include the responsive viewport meta tag in your `<head>` for proper rendering on mobile devices:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
