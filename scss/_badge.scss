@@ -9,6 +9,7 @@ $badge-tokens: () !default;
 // scss-docs-start badge-tokens
 $badge-tokens: defaults(
   (
+    --badge-gap: .375em,
     --badge-padding-x: .625em,
     --badge-padding-y: .25em,
     --badge-font-size: clamp(12px, .75em, .75em),
@@ -45,6 +46,7 @@ $badge-variants: (
     @include tokens($badge-tokens);
 
     display: inline-flex;
+    gap: var(--badge-gap);
     align-items: center;
     justify-content: center;
     min-height: 1.375rem;
@@ -59,7 +61,6 @@ $badge-variants: (
     background-color: var(--theme-bg, var(--badge-bg));
     border: var(--badge-border-width) solid var(--badge-border-color);
     @include border-radius(var(--badge-border-radius));
-    // @include gradient-bg();
 
     // Empty badges collapse automatically
     &:empty {
