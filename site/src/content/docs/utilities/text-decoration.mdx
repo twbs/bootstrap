@@ -40,7 +40,7 @@ Change the underline’s color independent of the text color.
 
 ### Opacity
 
-Change the underline’s opacity. Requires adding `.underline-{color}` to first set an `rgba()` color we use to then modify the alpha opacity.
+Change the underline’s opacity. Fades the current text color by default, or pair with `.underline-{color}` to first set a color that the opacity is then mixed against.
 
 <Example code={`<p><a class="underline-10" href="#">Underline opacity 10</a></p>
 <p><a class="underline-20" href="#">Underline opacity 20</a></p>
@@ -52,6 +52,10 @@ Change the underline’s opacity. Requires adding `.underline-{color}` to first 
 <p><a class="underline-80" href="#">Underline opacity 80</a></p>
 <p><a class="underline-90" href="#">Underline opacity 90</a></p>
 <p><a class="underline-100" href="#">Underline opacity 100</a></p>`} />
+
+Pair an opacity class with a color class to fade that specific color instead of the default text color:
+
+<Example code={`<a class="theme-success underline-success underline-30 hover:underline-80" href="#">Faded success underline</a>`} />
 
 ### Thickness
 

@@ -766,7 +766,10 @@ $utilities: map.merge(
       )
     ),
     "underline-color": (
-      property: text-decoration-color,
+      property: (
+        "--underline-color": null,
+        "text-decoration-color": var(--underline-color)
+      ),
       class: underline,
       values: theme-color-values("fg"),
     ),
@@ -774,7 +777,7 @@ $utilities: map.merge(
       property: text-decoration-color,
       class: underline,
       state: hover,
-      values: theme-opacity-values(--link-color)
+      values: theme-opacity-values(--underline-color, currentcolor)
     ),
     "underline-thickness": (
       property: text-decoration-thickness,
