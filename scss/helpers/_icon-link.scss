@@ -1,21 +1,40 @@
-@use "../config" as *;
+@use "../functions" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
+
+$icon-link-tokens: () !default;
+
+// scss-docs-start icon-link-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$icon-link-tokens: defaults(
+  (
+    --icon-link-gap: .375rem,
+    --icon-link-underline-offset: .25em,
+    --icon-link-icon-size: 1em,
+    --icon-link-icon-transition: .2s ease-in-out transform,
+    --icon-link-icon-transform: translate3d(.25em, 0, 0),
+  ),
+  $icon-link-tokens
+);
+// scss-docs-end icon-link-tokens
 
 @layer helpers {
   .icon-link {
+    @include tokens($icon-link-tokens);
+
     display: inline-flex;
-    gap: $icon-link-gap;
+    gap: var(--icon-link-gap);
     align-items: center;
     text-decoration-color: rgba(var(--link-color-rgb), var(--link-opacity, .5));
-    text-underline-offset: $icon-link-underline-offset;
+    text-underline-offset: var(--icon-link-underline-offset);
     backface-visibility: hidden;
 
     > .bi {
       flex-shrink: 0;
-      width: $icon-link-icon-size;
-      height: $icon-link-icon-size;
+      width: var(--icon-link-icon-size);
+      height: var(--icon-link-icon-size);
       fill: currentcolor;
-      @include transition($icon-link-icon-transition);
+      @include transition(var(--icon-link-icon-transition));
     }
   }
 
@@ -23,7 +42,7 @@
     &:hover,
     &:focus-visible {
       > .bi {
-        transform: var(--icon-link-transform, $icon-link-icon-transform);
+        transform: var(--icon-link-transform, var(--icon-link-icon-transform));
       }
     }
   }

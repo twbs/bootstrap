@@ -1,6 +1,7 @@
 ---
 title: Stretched link
 description: Make any HTML element or Bootstrap component clickable by “stretching” a nested link via CSS.
+toc: true
 ---
 
 Add `.stretched-link` to a link to make its [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block) clickable via a `::after` pseudo element. In most cases, this means that an element with `position: relative;` that contains a link with the `.stretched-link` class is clickable. Please note given [how CSS `position` works](https://www.w3.org/TR/CSS21/visuren.html#propdef-position), `.stretched-link` cannot be mixed with most table elements.
@@ -62,3 +63,17 @@ If the stretched link doesn’t seem to work, the [containing block](https://dev
       </p>
     </div>
   </div>`} />
+
+## CSS
+
+### Variables
+
+<CSSVariables component="Stretched links" className="stretched-link" />
+
+<ScssDocs name="stretched-link-tokens" file="scss/helpers/_stretched-link.scss" />
+
+### Sass variable
+
+The pseudo-element used to stretch the link defaults to `after` and can be changed via the `$stretched-link-pseudo-element` Sass variable. This can’t be a CSS variable since it’s compiled directly into the generated selector.
+
+<ScssDocs name="stretched-link-pseudo-element" file="scss/helpers/_stretched-link.scss" />
