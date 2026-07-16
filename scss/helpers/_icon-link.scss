@@ -25,7 +25,7 @@ $icon-link-tokens: defaults(
     display: inline-flex;
     gap: var(--icon-link-gap);
     align-items: center;
-    text-decoration-color: rgba(var(--link-color-rgb), var(--link-opacity, .5));
+    text-decoration-color: color-mix(in oklch, var(--link-color) 50%, transparent);
     text-underline-offset: var(--icon-link-underline-offset);
     backface-visibility: hidden;
 
