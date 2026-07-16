@@ -420,6 +420,15 @@ class Dropdown extends BaseComponent {
 
     if (isUpOrDownEvent) {
       event.stopPropagation()
+
+      // When arrowing between nested submenu toggles (especially with
+      // autoClose: 'outside'), close other open menus first so only the
+      // focused submenu stays shown. Skip when the event target is a
+      // regular menu item so in-menu arrow navigation is unchanged.
+      if (this.matches(SELECTOR_DATA_TOGGLE)) {
+        Dropdown.clearMenus(event)
+      }
+
       instance.show()
       instance._selectMenuItem(event)
       return
