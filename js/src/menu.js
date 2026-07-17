@@ -787,8 +787,9 @@ class Menu extends BaseComponent {
   _getItemsInMenu(menu) {
     // Items may be direct children of `.menu`, or submenu triggers nested as
     // `.menu > .submenu > .menu-item` (see menu-submenu visual tests / docs).
+    // Always use SELECTOR_VISIBLE_ITEMS so disabled triggers are skipped too.
     return SelectorEngine.find(
-      `:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU_TOGGLE}`,
+      `:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS}`,
       menu
     ).filter(element => isVisible(element))
   }

@@ -2862,6 +2862,51 @@ describe('Menu', () => {
       })
     })
 
+    it('should skip disabled submenu triggers during keyboard navigation', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <div class="submenu" id="submenu1">',
+          '      <button class="menu-item" type="button">Submenu 1</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Action 1</a></div>',
+          '    </div>',
+          '    <div class="submenu" id="submenuDisabled">',
+          '      <button class="menu-item" type="button" disabled>Disabled submenu</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Hidden</a></div>',
+          '    </div>',
+          '    <div class="submenu" id="submenu2">',
+          '      <button class="menu-item" type="button">Submenu 2</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Action 2</a></div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const submenu1Trigger = fixtureEl.querySelector('#submenu1 > .menu-item')
+        const submenu2Trigger = fixtureEl.querySelector('#submenu2 > .menu-item')
+        const disabledTrigger = fixtureEl.querySelector('#submenuDisabled > .menu-item')
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          submenu1Trigger.focus()
+
+          const keydown = createEvent('keydown', { bubbles: true })
+          keydown.key = 'ArrowDown'
+          submenu1Trigger.dispatchEvent(keydown)
+
+          expect(document.activeElement).toEqual(submenu2Trigger)
+          expect(document.activeElement).not.toEqual(disabledTrigger)
+          resolve()
+        })
+
+        // eslint-disable-next-line no-new
+        new Menu(btnMenu)
+        btnMenu.click()
+      })
+    })
+
     it('should open submenu with ArrowRight key', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
