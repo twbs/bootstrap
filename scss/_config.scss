@@ -265,21 +265,21 @@ $aspect-ratios: (
 //
 // Font, line-height, and color for body text, headings, and more.
 
-// scss-docs-start font-variables
-$font-weight-lighter:         lighter !default;
-$font-weight-light:           300 !default;
-$font-weight-normal:          400 !default;
-$font-weight-medium:          500 !default;
-$font-weight-semibold:        600 !default;
-$font-weight-bold:            700 !default;
-$font-weight-bolder:          bolder !default;
-
-$font-weight-base:            $font-weight-normal !default;
+// scss-docs-start font-weights
+$font-weights: (
+  lighter: lighter,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  bolder: bolder
+) !default;
+// scss-docs-end font-weights
 
 $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
 $line-height-lg:              2 !default;
-// scss-docs-end font-variables
 
 // scss-docs-start font-sizes
 $font-sizes: () !default;

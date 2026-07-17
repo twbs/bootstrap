@@ -240,7 +240,7 @@ $nav-underline-tokens: defaults(
 
     .nav-link.active,
     .show > .nav-link {
-      font-weight: $font-weight-bold;
+      font-weight: var(--font-weight-bold);
       color: var(--nav-underline-link-active-color);
       border-block-end-color: currentcolor;
     }

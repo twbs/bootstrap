@@ -413,6 +413,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | — | — | `.fs-6xl` | `clamp(3.75rem, …, 5rem)` |
 </BsTable>
 
+- **Font weights consolidated into a `$font-weights` Sass map.** Removed the individual `$font-weight-lighter`, `$font-weight-light`, `$font-weight-normal`, `$font-weight-medium`, `$font-weight-semibold`, `$font-weight-bold`, and `$font-weight-bolder` variables in favor of a single `$font-weights` map (keys: `lighter`, `light`, `normal`, `medium`, `semibold`, `bold`, `bolder`)—see [Font weight]([[docsref:/utilities/font-weight]]). `--font-weight-*` CSS custom properties are generated from this map instead of being hardcoded in `$root-tokens`. `$font-weight-base` was replaced by `--bs-font-weight-normal`.
+
 - **Removed `.display-1`–`.display-6` heading utilities.** The display heading classes no longer exist and have no single-class replacement. Recreate them by pairing a large font-size utility with a weight utility. v5's display headings used `font-weight: 300`, so `.fw-light` reproduces the original look; use a heavier weight (`.fw-semibold`, `.fw-bold`) if you prefer:
 
 <BsTable>

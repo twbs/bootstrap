@@ -180,7 +180,7 @@ $menu-tokens: defaults(
     }
 
     &.selected {
-      font-weight: $font-weight-semibold;
+      font-weight: var(--font-weight-semibold);
     }
 
     &.disabled,
