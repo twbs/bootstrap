@@ -31,32 +31,4 @@
 
     @include make-cssgrid();
   }
-
-  .grid-fill {
-    --gap: #{$grid-gutter-x};
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    grid-auto-flow: row;
-    gap: var(--gap);
-  }
-
-  // .g-col-auto {
-  //   grid-column: auto;
-  // }
-
-  // TODO: add to utilities?
-  // .grid-cols-3 {
-  //   --columns: 3;
-  // }
-  // .grid-cols-4 {
-  //   --columns: 4;
-  // }
-  // .grid-cols-6 {
-  //   --columns: 6;
-  // }
-
-  // .grid-full {
-  //   grid-column: 1 / -1;
-  // }
 }
