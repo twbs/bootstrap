@@ -84,7 +84,7 @@ $pagination-sizes: defaults(
     .active > & {
       z-index: 3;
       color: var(--theme-contrast, var(--pagination-active-color));
-      @include gradient-bg(var(--theme-bg, var(--pagination-active-bg)));
+      background-color: var(--theme-bg, var(--pagination-active-bg));
       border-color: var(--theme-border, var(--pagination-active-border-color));
     }
 
