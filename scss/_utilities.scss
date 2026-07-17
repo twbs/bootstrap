@@ -9,6 +9,14 @@
 // update:
 // - focus-ring if needed
 
+// Shadow opacity acts as a midpoint: double the standard opacity scale so
+// .shadow-opacity-50 → 1 (== the default shadow) and .shadow-opacity-100 → 2
+// (twice as strong). The shadow expressions read a clean var(--shadow-opacity, 1).
+$shadow-opacities: () !default;
+@each $key, $value in $util-opacity {
+  $shadow-opacities: map.set($shadow-opacities, $key, $value * 2);
+}
+
 $utilities: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $utilities: map.merge(
@@ -106,15 +114,44 @@ $utilities: map.merge(
     "shadow": (
       property: box-shadow,
       class: shadow,
-      values: (
-        null: var(--box-shadow),
-        xs: var(--box-shadow-xs),
-        sm: var(--box-shadow-sm),
-        lg: var(--box-shadow-lg),
-        none: none,
-      )
+      // Pull the literal layered expressions straight from the shared $shadows
+      // map (single source of truth in scss/_config.scss, also consumed by
+      // scss/_root.scss). Emitting the literal—rather than var(--box-shadow-*)—
+      // keeps the nested var(--sc, var(--shadow-color)) / var(--so, 1)
+      // unresolved so they resolve on the element, letting .shadow-{color} and
+      // .shadow-opacity-* take effect. `inset` isn't a utility, so it's excluded.
+      values: map.merge(map.remove($shadows, inset), (none: none))
     ),
     // scss-docs-end utils-shadow
+    // scss-docs-start utils-shadow-color
+    "shadow-color": (
+      // --sc is a local override composed into the $shadows expressions
+      // (scss/_config.scss) as var(--sc, var(--shadow-color)); like --bc for
+      // border-color, it's non-inheriting so .shadow-primary doesn't tint
+      // nested .shadow-* descendants, which instead fall back to the
+      // cascading global --shadow-color token (scss/_root.scss).
+      property: --sc,
+      class: shadow,
+      values: map-merge-multiple(
+        theme-color-refs("base"),
+        (
+          "current": currentcolor,
+          "black": var(--black),
+          "white": var(--white),
+        )
+      )
+    ),
+    // scss-docs-end utils-shadow-color
+    // scss-docs-start utils-shadow-opacity
+    "shadow-opacity": (
+      // --so is a local override composed into the $shadows expressions
+      // (scss/_config.scss) as var(--so, 1); same rationale as --sc above,
+      // it's non-inheriting so it doesn't leak to nested .shadow-* descendants.
+      property: --so,
+      class: shadow-opacity,
+      values: $shadow-opacities
+    ),
+    // scss-docs-end utils-shadow-opacity
     // scss-docs-start utils-position
     "position": (
       property: position,
@@ -225,7 +262,7 @@ $utilities: map.merge(
     "border-width": (
       property: border-width,
       class: border,
-      values: $border-widths
+      values: map.merge($border-widths, (keyline: var(--border-width-keyline)))
     ),
     "border-opacity": (
       class: border,

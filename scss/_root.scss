@@ -10,7 +10,7 @@
 $root-tokens: () !default;
 
 // scss-docs-start root-tokens
-// stylelint-disable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines
+// stylelint-disable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines, custom-property-no-missing-var-function
 // stylelint-disable-next-line scss/dollar-variable-default
 $root-tokens: defaults(
   (
@@ -50,17 +50,17 @@ $root-tokens: defaults(
 
     // scss-docs-start root-border-var
     --border-width: #{$border-width},
+    --border-width-keyline: .5px,
     --border-style: #{$border-style},
     --border-color: light-dark(var(--gray-200), var(--gray-700)),
     --border-color-translucent: color-mix(in oklch, var(--fg-body) 15%, transparent),
     // scss-docs-end root-border-var
 
     // scss-docs-start root-box-shadow-variables
-    --box-shadow-xs: 0 .0625rem .1875rem rgb(0 0 0 / 7.5%),
-    --box-shadow-sm: 0 .125rem .25rem rgb(0 0 0 / 7.5%),
-    --box-shadow: 0 .5rem 1rem rgb(0 0 0 / 15%),
-    --box-shadow-lg: 0 1rem 3rem rgb(0 0 0 / 17.5%),
-    --box-shadow-inset: inset 0 1px 2px rgb(0 0 0 / 7.5%),
+    // --box-shadow* tokens are generated below (see root-box-shadow-loop) from
+    // the shared $shadows map in scss/_config.scss, which reads these two.
+    --shadow-color: #000,
+    --shadow-strength: 1,
     // scss-docs-end root-box-shadow-variables
 
     --spacer: 1rem,
@@ -114,7 +114,7 @@ $root-tokens: defaults(
   ),
   $root-tokens
 );
-// stylelint-enable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines
+// stylelint-enable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines, custom-property-no-missing-var-function
 // scss-docs-end root-tokens
 
 // scss-docs-start root-font-size-loop
@@ -170,6 +170,17 @@ $root-tokens: defaults(
 $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
 // scss-docs-end root-radius-loop
 
+// Generate box-shadow tokens
+// scss-docs-start root-box-shadow-loop
+@each $key, $value in $shadows {
+  @if $key == null {
+    $root-tokens: map.set($root-tokens, --box-shadow, $value);
+  } @else {
+    $root-tokens: map.set($root-tokens, --box-shadow-#{$key}, $value);
+  }
+}
+// scss-docs-end root-box-shadow-loop
+
 :root {
   @include tokens($root-tokens);
 
@@ -179,10 +190,20 @@ $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
   scrollbar-gutter: stable;
 }
 
+// Deepen shadows in dark mode. The shadow-strength token is a plain number, so it
+// can't use light-dark() (colors only); vary it alongside color-scheme instead.
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-strength: 2.4;
+  }
+}
+
 [data-bs-theme="dark"] {
+  --shadow-strength: 2.4;
   color-scheme: dark;
 }
 
 [data-bs-theme="light"] {
+  --shadow-strength: 1;
   color-scheme: light;
 }
