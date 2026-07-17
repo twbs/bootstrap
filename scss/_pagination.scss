@@ -6,8 +6,6 @@
 @use "mixins/transition" as *;
 @use "mixins/tokens" as *;
 
-// TODO: update pagination to support variant themes (`.theme-*` role tokens)
-
 // stylelint-disable custom-property-no-missing-var-function
 $pagination-tokens: () !default;
 
@@ -27,11 +25,9 @@ $pagination-tokens: defaults(
     --pagination-hover-color: var(--link-hover-color),
     --pagination-hover-bg: var(--bg-1),
     --pagination-hover-border-color: var(--border-color),
-    --pagination-focus-color: var(--link-hover-color),
-    --pagination-focus-bg: var(--bg-2),
-    --pagination-active-color: var(--primary-contrast),
-    --pagination-active-bg: var(--primary-bg),
-    --pagination-active-border-color: var(--primary-bg),
+    --pagination-active-color: var(--theme-contrast, var(--primary-contrast)),
+    --pagination-active-bg: var(--theme-bg, var(--primary-bg)),
+    --pagination-active-border-color: var(--theme-bg, var(--primary-bg)),
     --pagination-disabled-color: var(--fg-3),
     --pagination-disabled-bg: var(--bg-2),
     --pagination-disabled-border-color: var(--border-color),
@@ -66,7 +62,7 @@ $pagination-sizes: defaults(
     min-height: var(--pagination-min-height);
     padding: var(--pagination-padding-y) var(--pagination-padding-x);
     font-size: var(--pagination-font-size);
-    color: var(--pagination-color);
+    color: var(--theme-fg, var(--pagination-color));
     text-decoration: none;
     background-color: var(--pagination-bg);
     border: var(--pagination-border-width) solid var(--pagination-border-color);
@@ -74,24 +70,22 @@ $pagination-sizes: defaults(
 
     &:hover {
       z-index: 2;
-      color: var(--pagination-hover-color);
-      background-color: var(--pagination-hover-bg);
-      border-color: var(--pagination-hover-border-color);
+      color: var(--theme-fg-emphasis, var(--pagination-hover-color));
+      background-color: var(--theme-bg-subtle, var(--pagination-hover-bg));
+      border-color: var(--theme-border, var(--pagination-hover-border-color));
     }
 
     &:focus-visible {
       z-index: 3;
-      color: var(--pagination-focus-color);
-      background-color: var(--pagination-focus-bg);
-      @include focus-ring(true);
+      @include focus-ring(true, var(--theme-focus-ring, var(--focus-ring-color)));
     }
 
     &.active,
     .active > & {
       z-index: 3;
-      color: var(--pagination-active-color);
-      @include gradient-bg(var(--pagination-active-bg));
-      border-color: var(--pagination-active-border-color);
+      color: var(--theme-contrast, var(--pagination-active-color));
+      @include gradient-bg(var(--theme-bg, var(--pagination-active-bg)));
+      border-color: var(--theme-border, var(--pagination-active-border-color));
     }
 
     &.disabled,
