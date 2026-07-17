@@ -124,7 +124,41 @@
         "shadow-xs",
         "shadow-sm",
         "shadow-lg",
+        "shadow-xl",
         "shadow-none"
+      ]
+    },
+    "shadow-color": {
+      "class": "shadow",
+      "property": "--sc",
+      "classes": [
+        "shadow-primary",
+        "shadow-accent",
+        "shadow-success",
+        "shadow-danger",
+        "shadow-warning",
+        "shadow-info",
+        "shadow-inverse",
+        "shadow-secondary",
+        "shadow-current",
+        "shadow-black",
+        "shadow-white"
+      ]
+    },
+    "shadow-opacity": {
+      "class": "shadow-opacity",
+      "property": "--so",
+      "classes": [
+        "shadow-opacity-10",
+        "shadow-opacity-20",
+        "shadow-opacity-30",
+        "shadow-opacity-40",
+        "shadow-opacity-50",
+        "shadow-opacity-60",
+        "shadow-opacity-70",
+        "shadow-opacity-80",
+        "shadow-opacity-90",
+        "shadow-opacity-100"
       ]
     },
     "position": {
@@ -276,6 +310,7 @@
       "class": "border",
       "property": "border-width",
       "classes": [
+        "border-keyline",
         "border-1",
         "border-2",
         "border-3",

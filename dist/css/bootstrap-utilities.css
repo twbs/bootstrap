@@ -234,19 +234,18 @@
   --bs-hr-border-color: var(--bs-border-color);
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-fg));
   --bs-link-decoration: underline;
+  --bs-link-underline-offset: 0.2em;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
   --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;;
   --bs-code-font-size: 95%;
   --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
+  --bs-border-width-keyline: 0.5px;
   --bs-border-style: solid;
   --bs-border-color: light-dark(var(--bs-gray-200), var(--bs-gray-700));
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
-  --bs-box-shadow-xs: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.075);
-  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-  --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  --bs-shadow-color: #000;
+  --bs-shadow-strength: 1;
   --bs-spacer: 1rem;
   --bs-focus-ring-width: 3px;
   --bs-focus-ring-offset: 1px;
@@ -429,15 +428,28 @@
   --bs-radius-8: 1rem;
   --bs-radius-9: 1.5rem;
   --bs-radius-pill: 50rem;
+  --bs-box-shadow: 0 .125rem .25rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.04 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .375rem .75rem -.125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .75rem 1.5rem -.25rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-xs: 0 0.0625rem 0.125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(0.04 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-sm: 0 .0625rem .125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.04 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .125rem .375rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-lg: 0 .125rem .375rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .375rem 1rem -.1875rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .75rem 2rem -.375rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.07 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 1.5rem 3.5rem -.75rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.08 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-xl: 0 .1875rem .5rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .5rem 1.25rem -.1875rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 1rem 2.5rem -.375rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.07 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 2rem 5rem -.75rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.09 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-inset: inset 0 1px 2px light-dark(oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(8% * var(--bs-so, 1))), oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(26% * var(--bs-so, 1))));
   color-scheme: light dark;
   scrollbar-gutter: stable;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-shadow-strength: 2.4;
+  }
+}
 [data-bs-theme=dark] {
+  --bs-shadow-strength: 2.4;
   color-scheme: dark;
 }
 
 [data-bs-theme=light] {
+  --bs-shadow-strength: 1;
   color-scheme: light;
 }
 
@@ -773,6 +785,14 @@
   syntax: "*";
   inherits: false;
 }
+@property --bs-sc {
+  syntax: "*";
+  inherits: false;
+}
+@property --bs-so {
+  syntax: "*";
+  inherits: false;
+}
 @property --bs-bc {
   syntax: "*";
   inherits: false;
@@ -947,19 +967,85 @@
     display: none;
   }
   .shadow {
-    box-shadow: var(--bs-box-shadow);
+    box-shadow: 0 .125rem .25rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.04 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .375rem .75rem -.125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .75rem 1.5rem -.25rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1)));
   }
   .shadow-xs {
-    box-shadow: var(--bs-box-shadow-xs);
+    box-shadow: 0 0.0625rem 0.125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(0.04 * var(--bs-shadow-strength) * var(--bs-so, 1)));
   }
   .shadow-sm {
-    box-shadow: var(--bs-box-shadow-sm);
+    box-shadow: 0 .0625rem .125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.04 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .125rem .375rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1)));
   }
   .shadow-lg {
-    box-shadow: var(--bs-box-shadow-lg);
+    box-shadow: 0 .125rem .375rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .375rem 1rem -.1875rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .75rem 2rem -.375rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.07 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 1.5rem 3.5rem -.75rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.08 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  }
+  .shadow-xl {
+    box-shadow: 0 .1875rem .5rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .5rem 1.25rem -.1875rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 1rem 2.5rem -.375rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.07 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 2rem 5rem -.75rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.09 * var(--bs-shadow-strength) * var(--bs-so, 1)));
   }
   .shadow-none {
     box-shadow: none;
+  }
+  .shadow-primary {
+    --bs-sc: var(--bs-primary-base);
+  }
+  .shadow-accent {
+    --bs-sc: var(--bs-accent-base);
+  }
+  .shadow-success {
+    --bs-sc: var(--bs-success-base);
+  }
+  .shadow-danger {
+    --bs-sc: var(--bs-danger-base);
+  }
+  .shadow-warning {
+    --bs-sc: var(--bs-warning-base);
+  }
+  .shadow-info {
+    --bs-sc: var(--bs-info-base);
+  }
+  .shadow-inverse {
+    --bs-sc: var(--bs-inverse-base);
+  }
+  .shadow-secondary {
+    --bs-sc: var(--bs-secondary-base);
+  }
+  .shadow-current {
+    --bs-sc: currentcolor;
+  }
+  .shadow-black {
+    --bs-sc: var(--bs-black);
+  }
+  .shadow-white {
+    --bs-sc: var(--bs-white);
+  }
+  .shadow-opacity-10 {
+    --bs-so: 0.2;
+  }
+  .shadow-opacity-20 {
+    --bs-so: 0.4;
+  }
+  .shadow-opacity-30 {
+    --bs-so: 0.6;
+  }
+  .shadow-opacity-40 {
+    --bs-so: 0.8;
+  }
+  .shadow-opacity-50 {
+    --bs-so: 1;
+  }
+  .shadow-opacity-60 {
+    --bs-so: 1.2;
+  }
+  .shadow-opacity-70 {
+    --bs-so: 1.4;
+  }
+  .shadow-opacity-80 {
+    --bs-so: 1.6;
+  }
+  .shadow-opacity-90 {
+    --bs-so: 1.8;
+  }
+  .shadow-opacity-100 {
+    --bs-so: 2;
   }
   .position-static {
     position: static;
@@ -1154,6 +1240,9 @@
   .border-subtle-secondary {
     --bs-bc: var(--bs-secondary-border);
     border-color: var(--bs-bc);
+  }
+  .border-keyline {
+    border-width: var(--bs-border-width-keyline);
   }
   .border-1 {
     border-width: 1px;

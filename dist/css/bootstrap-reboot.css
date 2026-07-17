@@ -234,19 +234,18 @@
   --bs-hr-border-color: var(--bs-border-color);
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-fg));
   --bs-link-decoration: underline;
+  --bs-link-underline-offset: 0.2em;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
   --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;;
   --bs-code-font-size: 95%;
   --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
+  --bs-border-width-keyline: 0.5px;
   --bs-border-style: solid;
   --bs-border-color: light-dark(var(--bs-gray-200), var(--bs-gray-700));
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
-  --bs-box-shadow-xs: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.075);
-  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-  --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  --bs-shadow-color: #000;
+  --bs-shadow-strength: 1;
   --bs-spacer: 1rem;
   --bs-focus-ring-width: 3px;
   --bs-focus-ring-offset: 1px;
@@ -429,16 +428,38 @@
   --bs-radius-8: 1rem;
   --bs-radius-9: 1.5rem;
   --bs-radius-pill: 50rem;
+  --bs-box-shadow: 0 .125rem .25rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.04 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .375rem .75rem -.125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .75rem 1.5rem -.25rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-xs: 0 0.0625rem 0.125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(0.04 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-sm: 0 .0625rem .125rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.04 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .125rem .375rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-lg: 0 .125rem .375rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .375rem 1rem -.1875rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .75rem 2rem -.375rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.07 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 1.5rem 3.5rem -.75rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.08 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-xl: 0 .1875rem .5rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .5rem 1.25rem -.1875rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 1rem 2.5rem -.375rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.07 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 2rem 5rem -.75rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.09 * var(--bs-shadow-strength) * var(--bs-so, 1)));
+  --bs-box-shadow-inset: inset 0 1px 2px light-dark(oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(8% * var(--bs-so, 1))), oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(26% * var(--bs-so, 1))));
   color-scheme: light dark;
   scrollbar-gutter: stable;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-shadow-strength: 2.4;
+  }
+}
 [data-bs-theme=dark] {
+  --bs-shadow-strength: 2.4;
   color-scheme: dark;
 }
 
 [data-bs-theme=light] {
+  --bs-shadow-strength: 1;
   color-scheme: light;
+}
+
+:root {
+  --bs-heading-margin-bottom: var(--bs-spacer-2);
+  --bs-heading-line-height: 1.2;
+  --bs-paragraph-margin-bottom: var(--bs-spacer);
+  --bs-legend-margin-bottom: var(--bs-spacer-2);
+  --bs-legend-font-size: 1.5rem;
+  --bs-list-padding-x: var(--bs-spacer-7);
 }
 
 @layer reboot {
@@ -479,9 +500,11 @@
   .h2, h1,
   .h1 {
     margin-top: 0;
-    margin-bottom: var(--bs-spacer-2);
-    font-weight: 500;
-    line-height: 1.2;
+    margin-bottom: var(--bs-heading-margin-bottom);
+    font-family: var(--bs-heading-font-family);
+    font-style: var(--bs-heading-font-style);
+    font-weight: var(--bs-heading-font-weight, var(--bs-font-weight-medium));
+    line-height: var(--bs-heading-line-height);
     color: var(--bs-heading-color);
   }
   h1,
@@ -510,7 +533,7 @@
   }
   p {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: var(--bs-paragraph-margin-bottom);
   }
   abbr[title] {
     -webkit-text-decoration: underline dotted;
@@ -519,20 +542,24 @@
     -webkit-text-decoration-skip-ink: none;
     text-decoration-skip-ink: none;
   }
+  .initialism {
+    font-size: var(--bs-initialism-font-size, var(--bs-font-size-xs));
+    text-transform: uppercase;
+  }
   address {
-    margin-bottom: 1rem;
+    margin-bottom: var(--bs-spacer);
     font-style: normal;
     line-height: inherit;
   }
   ol,
   ul {
-    padding-inline-start: 2rem;
+    padding-inline-start: var(--bs-list-padding-x);
   }
   ol,
   ul,
   dl {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: var(--bs-spacer);
   }
   ol ol,
   ul ul,
@@ -541,21 +568,21 @@
     margin-bottom: 0;
   }
   dt {
-    font-weight: 700;
+    font-weight: var(--bs-dt-font-weight, var(--bs-font-weight-bold));
   }
   dd {
     margin-inline-start: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--bs-spacer-2);
   }
   blockquote {
-    margin: 0 0 1rem;
+    margin: 0 0 var(--bs-spacer);
   }
   blockquote > * {
     margin-block: 0;
   }
   b,
   strong {
-    font-weight: bolder;
+    font-weight: var(--bs-font-weight-bolder);
   }
   small,
   .small {
@@ -587,7 +614,7 @@
     color: var(--bs-theme-fg, var(--bs-link-color));
     -webkit-text-decoration: var(--bs-link-decoration);
     text-decoration: var(--bs-link-decoration);
-    text-underline-offset: 0.2em;
+    text-underline-offset: var(--bs-link-underline-offset);
   }
   a:hover {
     color: var(--bs-theme-fg-emphasis, var(--bs-link-hover-color));
@@ -608,7 +635,7 @@
   pre {
     display: block;
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: var(--bs-spacer);
     overflow: auto;
     font-size: var(--bs-code-font-size);
     color: var(--bs-code-color, inherit);
@@ -628,7 +655,7 @@
   }
   kbd {
     --bs-kbd-padding-y: 0.125rem;
-    --bs-kbd-padding-x: 0.25rem;
+    --bs-kbd-padding-x: var(--bs-spacer-1);
     --bs-kbd-font-size: var(--bs-font-size-xs);
     --bs-kbd-color: var(--bs-bg-body);
     --bs-kbd-bg: var(--bs-fg-2);
@@ -645,7 +672,7 @@
     font-weight: inherit;
   }
   figure {
-    margin: 0 0 1rem;
+    margin: 0 0 var(--bs-spacer);
   }
   img,
   svg {
@@ -656,7 +683,7 @@
     border-collapse: collapse;
   }
   caption {
-    padding-block: 0.5rem;
+    padding-block: var(--bs-spacer-2);
     color: var(--bs-fg-3);
     text-align: start;
   }
@@ -730,8 +757,9 @@
     float: inline-start;
     width: 100%;
     padding: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
+    margin-bottom: var(--bs-legend-margin-bottom);
+    font-size: var(--bs-legend-font-size);
+    font-weight: var(--bs-legend-font-weight);
     line-height: inherit;
   }
   legend + * {
