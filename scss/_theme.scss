@@ -46,17 +46,21 @@
 }
 
 // Generate opacity values using color-mix()
-@function theme-opacity-values($color-var, $opacities: $util-opacity) {
+// $fallback lets the referenced $color-var fall back to another color (e.g. currentcolor)
+// when it hasn't been set by a companion color utility.
+@function theme-opacity-values($color-var, $fallback: null, $opacities: $util-opacity) {
   $result: ();
+  // stylelint-disable-next-line scss/at-function-named-arguments, @stylistic/function-whitespace-after
+  $color: if(sass($fallback): var($color-var, $fallback); else: var($color-var));
 
   @each $key, $value in $opacities {
     @if $key == 100 {
       // For 100%, use direct variable reference (more efficient)
-      $result: map.merge($result, ($key: var($color-var)));
+      $result: map.merge($result, ($key: $color));
     } @else {
       // For other values, use color-mix()
       $percentage: $key * 1%;
-      $result: map.merge($result, ($key: color-mix(in oklch, var($color-var) $percentage, transparent)));
+      $result: map.merge($result, ($key: color-mix(in oklch, $color $percentage, transparent)));
     }
   }
 
