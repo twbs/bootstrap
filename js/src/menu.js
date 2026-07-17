@@ -784,16 +784,46 @@ class Menu extends BaseComponent {
   // Keyboard navigation
   // -------------------------------------------------------------------------
 
+  _getItemsInMenu(menu) {
+    // Items may be direct children of `.menu`, or submenu triggers nested as
+    // `.menu > .submenu > .menu-item` (see menu-submenu visual tests / docs).
+    return SelectorEngine.find(
+      `:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU_TOGGLE}`,
+      menu
+    ).filter(element => isVisible(element))
+  }
+
   _selectMenuItem({ key, target }) {
     const currentMenu = target.closest(SELECTOR_MENU) || this._menu
-    const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
-      .filter(element => isVisible(element))
+    const items = this._getItemsInMenu(currentMenu)
 
     if (!items.length) {
       return
     }
 
-    getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus()
+    const nextItem = getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target))
+    nextItem.focus()
+
+    // Arrowing between items at this level must close open sibling submenus that
+    // no longer relate to focus (mouse/click already do this via _closeSiblingSubmenus).
+    this._closeUnrelatedSubmenus(currentMenu, nextItem)
+  }
+
+  _closeUnrelatedSubmenus(currentMenu, focusedElement) {
+    for (const [submenu] of this._openSubmenus) {
+      const submenuWrapper = submenu.closest(SELECTOR_SUBMENU)
+      // Only consider submenus that are direct children of the menu being navigated
+      if (!submenuWrapper || submenuWrapper.parentElement !== currentMenu) {
+        continue
+      }
+
+      // Keep open when focus is on that submenu's trigger or still inside it
+      if (submenuWrapper.contains(focusedElement)) {
+        continue
+      }
+
+      this._closeSubmenu(submenu, submenuWrapper)
+    }
   }
 
   _handleSubmenuKeydown(event) {
@@ -867,12 +897,12 @@ class Menu extends BaseComponent {
       event.stopPropagation()
 
       const currentMenu = target.closest(SELECTOR_MENU)
-      const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
-        .filter(element => isVisible(element))
+      const items = this._getItemsInMenu(currentMenu)
 
       if (items.length) {
         const targetItem = key === HOME_KEY ? items[0] : items.at(-1)
         targetItem.focus()
+        this._closeUnrelatedSubmenus(currentMenu, targetItem)
       }
 
       return true
