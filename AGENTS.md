@@ -56,6 +56,11 @@ Sass source in `scss/`, JS source in `js/src/`, docs site in `site/` (Astro 5 + 
 - Keep config files in sync: `config.yml`, `site/src/libs/config.ts` (Zod schema), `build/rollup.config.mjs`, `build/generate-sri.mjs`, `package.json`
 - For rebases/conflicts: favor base branch structure, layer feature changes on top
 
+## Commits & PRs
+
+- Commit messages and PR descriptions: direct, succinct prose explaining why the change was made.
+- No "Test plan" section, no extra headings — just the summary.
+
 ## Do not edit
 
 Built output in `dist/`, `_site/`, `js/dist/` — these are generated.
