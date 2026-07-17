@@ -178,6 +178,11 @@ $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
 }
 // scss-docs-end root-box-shadow-loop
 
+// Generate z-index tokens
+@each $key, $value in $zindex-levels {
+  $root-tokens: map.set($root-tokens, --z-#{$key}, $value);
+}
+
 :root {
   @include tokens($root-tokens);
 

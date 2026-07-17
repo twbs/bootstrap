@@ -6,13 +6,13 @@
   .fixed-top {
     position: fixed;
     inset: 0 0 auto;
-    z-index: $zindex-fixed;
+    z-index: var(--z-fixed);
   }
 
   .fixed-bottom {
     position: fixed;
     inset: auto 0 0;
-    z-index: $zindex-fixed;
+    z-index: var(--z-fixed);
   }
 
   // Responsive sticky top and bottom
@@ -23,13 +23,13 @@
       .#{$prefix}sticky-top {
         position: sticky;
         top: 0;
-        z-index: $zindex-sticky;
+        z-index: var(--z-sticky);
       }
 
       .#{$prefix}sticky-bottom {
         position: sticky;
         bottom: 0;
-        z-index: $zindex-sticky;
+        z-index: var(--z-sticky);
       }
     }
   }
