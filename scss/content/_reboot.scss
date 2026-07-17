@@ -5,15 +5,38 @@
 
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
+$type-tokens: () !default;
 $reboot-kbd-tokens: () !default;
 $reboot-mark-tokens: () !default;
+
+// scss-docs-start type-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$type-tokens: defaults(
+  (
+    --heading-margin-bottom: var(--spacer-2),
+    --heading-font-family: null,
+    --heading-font-style: null,
+    --heading-line-height: 1.2,
+    --paragraph-margin-bottom: var(--spacer),
+    --legend-margin-bottom: var(--spacer-2),
+    --legend-font-size: 1.5rem,
+    --legend-font-weight: null,
+    --list-padding-x: var(--spacer-7),
+  ),
+  $type-tokens
+);
+// scss-docs-end type-tokens
+
+:root {
+  @include tokens($type-tokens);
+}
 
 // scss-docs-start reboot-kbd-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
 $reboot-kbd-tokens: defaults(
   (
     --kbd-padding-y: .125rem,
-    --kbd-padding-x: .25rem,
+    --kbd-padding-x: var(--spacer-1),
     --kbd-font-size: var(--font-size-xs),
     --kbd-color: var(--bg-body),
     --kbd-bg: var(--fg-2),
@@ -115,11 +138,11 @@ $reboot-mark-tokens: defaults(
 
   %heading {
     margin-top: 0; // 1
-    margin-bottom: $headings-margin-bottom;
-    font-family: $headings-font-family;
-    font-style: $headings-font-style;
-    font-weight: $headings-font-weight;
-    line-height: $headings-line-height;
+    margin-bottom: var(--heading-margin-bottom);
+    font-family: var(--heading-font-family);
+    font-style: var(--heading-font-style);
+    font-weight: var(--heading-font-weight, var(--font-weight-medium));
+    line-height: var(--heading-line-height);
     color: var(--heading-color);
   }
 
@@ -166,7 +189,7 @@ $reboot-mark-tokens: defaults(
 
   p {
     margin-top: 0;
-    margin-bottom: $paragraph-margin-bottom;
+    margin-bottom: var(--paragraph-margin-bottom);
   }
 
   // Abbreviations
@@ -181,10 +204,16 @@ $reboot-mark-tokens: defaults(
     text-decoration-skip-ink: none; // 3
   }
 
+  // Builds on `abbr`
+  .initialism {
+    font-size: var(--initialism-font-size, var(--font-size-xs));
+    text-transform: uppercase;
+  }
+
   // Address
 
   address {
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacer);
     font-style: normal;
     line-height: inherit;
   }
@@ -193,14 +222,14 @@ $reboot-mark-tokens: defaults(
 
   ol,
   ul {
-    padding-inline-start: 2rem;
+    padding-inline-start: var(--list-padding-x);
   }
 
   ol,
   ul,
   dl {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacer);
   }
 
   ol ol,
@@ -211,20 +240,20 @@ $reboot-mark-tokens: defaults(
   }
 
   dt {
-    font-weight: $dt-font-weight;
+    font-weight: var(--dt-font-weight, var(--font-weight-bold));
   }
 
   // 1. Undo browser default
 
   dd {
     margin-inline-start: 0; // 1
-    margin-bottom: .5rem;
+    margin-bottom: var(--spacer-2);
   }
 
   // Blockquote
 
   blockquote {
-    margin: 0 0 1rem;
+    margin: 0 0 var(--spacer);
     > * {
       margin-block: 0;
     }
@@ -236,7 +265,7 @@ $reboot-mark-tokens: defaults(
 
   b,
   strong {
-    font-weight: $font-weight-bolder;
+    font-weight: var(--font-weight-bolder);
   }
 
   // Small
@@ -279,7 +308,7 @@ $reboot-mark-tokens: defaults(
   a {
     color: var(--theme-fg, var(--link-color));
     text-decoration: var(--link-decoration);
-    text-underline-offset: $link-underline-offset;
+    text-underline-offset: var(--link-underline-offset);
 
     &:hover {
       // --link-color: var(--link-hover-color);
@@ -319,7 +348,7 @@ $reboot-mark-tokens: defaults(
   pre {
     display: block;
     margin-top: 0; // 1
-    margin-bottom: 1rem; // 2
+    margin-bottom: var(--spacer); // 2
     overflow: auto; // 3
     font-size: var(--code-font-size);
     color: var(--code-color, inherit);
@@ -363,7 +392,7 @@ $reboot-mark-tokens: defaults(
   // Apply a consistent margin strategy (matches our type styles).
 
   figure {
-    margin: 0 0 1rem;
+    margin: 0 0 var(--spacer);
   }
 
   // Images and content
@@ -383,22 +412,17 @@ $reboot-mark-tokens: defaults(
   }
 
   caption {
-    // padding-top: $table-cell-padding-y;
-    // padding-bottom: $table-cell-padding-y;
-    // color: $table-caption-color;
-    padding-block: .5rem;
+    padding-block: var(--spacer-2);
     color: var(--fg-3);
     text-align: start;
   }
 
-  // 1. Removes font-weight bold by inheriting
-  // 2. Matches default `<td>` alignment by inheriting `text-align`.
-  // 3. Fix alignment for Safari
+  // 1. Matches default `<td>` alignment by inheriting `text-align`.
+  // 2. Fix alignment for Safari
 
   th {
-    // font-weight: $table-th-font-weight; // 1 // TODO: null by default — decide whether to remove
-    text-align: inherit; // 2
-    text-align: -webkit-match-parent; // 3
+    text-align: inherit; // 1
+    text-align: -webkit-match-parent; // 2
   }
 
   thead,
@@ -522,9 +546,9 @@ $reboot-mark-tokens: defaults(
     float: inline-start; // 1
     width: 100%;
     padding: 0;
-    margin-bottom: $legend-margin-bottom;
-    font-size: $legend-font-size;
-    font-weight: $legend-font-weight;
+    margin-bottom: var(--legend-margin-bottom);
+    font-size: var(--legend-font-size);
+    font-weight: var(--legend-font-weight);
     line-height: inherit;
 
     + * {

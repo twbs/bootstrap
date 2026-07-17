@@ -190,12 +190,6 @@ $icon-link-icon-transition:   .2s ease-in-out transform !default;
 $icon-link-icon-transform:    translate3d(.25em, 0, 0) !default;
 // scss-docs-end icon-link-variables
 
-// Paragraphs
-//
-// Style p element.
-
-$paragraph-margin-bottom:   1rem !default;
-
 // Components
 //
 // Define common padding and border radius sizes and more.
@@ -302,23 +296,8 @@ $font-sizes: defaults(
 // scss-docs-end font-sizes
 
 // scss-docs-start headings-variables
-$headings-margin-bottom:      var(--spacer-2) !default;
-$headings-font-family:        null !default;
-$headings-font-style:         null !default;
-$headings-font-weight:        500 !default;
-$headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 // scss-docs-end headings-variables
-
-// scss-docs-start type-variables
-
-$legend-margin-bottom:        .5rem !default;
-$legend-font-size:            1.5rem !default;
-$legend-font-weight:          null !default;
-
-$dt-font-weight:              $font-weight-bold !default;
-
-// scss-docs-end type-variables
 
 // Z-index master list
 //

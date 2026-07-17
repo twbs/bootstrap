@@ -298,7 +298,12 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 ### Reboot
 
-- Relocated heading classes (like `.h1`) and some type classes (`.mark` and `.small`) to Reboot from `_type.scss`. This avoids a dependency in Sass modules and we like to avoid extending selectors in general.
+- Relocated heading classes (like `.h1`) and some type classes (`.mark`, `.small`, and `.initialism`) to Reboot from `_type.scss`. This avoids a dependency in Sass modules and we like to avoid extending selectors in general.
+- **Split the remaining `_type.scss` into `_lists.scss` and `_blockquote.scss`.** Update any individual `@use "bootstrap/scss/content/type"` imports to `content/lists` and/or `content/blockquote` instead.
+- **Headings, paragraphs, description lists, and `<legend>` now use CSS variables instead of Sass variables.** Removed `$headings-margin-bottom`, `$headings-font-family`, `$headings-font-style`, `$headings-font-weight`, `$headings-line-height`, `$paragraph-margin-bottom`, `$legend-margin-bottom`, `$legend-font-size`, `$legend-font-weight`, and `$dt-font-weight`. Customize the equivalent `--heading-*`, `--paragraph-margin-bottom`, and `--legend-*` CSS variables at runtime instead—see [Typography]([[docsref:/content/typography]]). `$headings-color` is the only Sass variable that remains.
+- Heading and `<dt>` font-weight now fall back to shared weight tokens (`font-weight: var(--heading-font-weight, var(--font-weight-medium))`, `var(--dt-font-weight, var(--font-weight-bold))`) instead of a hardcoded value, so you can override either the component-specific token or the shared one.
+- Added `--link-underline-offset` to `$root-tokens` (mirroring `$link-underline-offset`) for runtime customization of the link underline offset.
+- Reboot and content spacing—`address`, lists, `dd`, `blockquote`, `pre`, `figure`, `caption`, `kbd` padding, and `ol`/`ul` `padding-inline-start` (now driven by a new `--list-padding-x` token)—now derive from the `--spacer-*` scale instead of hardcoded `rem` values. Visual output is unchanged.
 - Removed the `::-moz-focus-inner` styles, as the pseudo selector is deprecated in Firefox.
 - Removed `text-transform: none` from `button` and `select` elements, as Firefox no longer incorrectly inherits text-transform.
 - Added `accent-color: var(--primary-base)` on `:root`, which applies the primary theme color to native form controls (checkboxes, radios, range inputs, progress bars) globally.
