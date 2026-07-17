@@ -2,7 +2,6 @@
 @use "mixins/lists" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
-@use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 @use "mixins/tokens" as *;
 
@@ -85,7 +84,7 @@ $pagination-sizes: defaults(
       z-index: 3;
       color: var(--theme-contrast, var(--pagination-active-color));
       background-color: var(--theme-bg, var(--pagination-active-bg));
-      border-color: var(--theme-border, var(--pagination-active-border-color));
+      border-color: var(--theme-bg, var(--pagination-active-border-color));
     }
 
     &.disabled,
