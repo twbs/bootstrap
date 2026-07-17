@@ -72,7 +72,7 @@ $button-styled-tokens: defaults(
     --btn-border-hover-mix-amount: 12.5%,
     --btn-border-active-mix-amount: 20%,
     --btn-shadow: "0 1px 2px rgb(0 0 0 / 15%), inset 0 1px 0 rgb(255 255 255 / 10%)",
-    --btn-active-shadow: inset 0 2px 4px rgb(0 0 0 / .15) ,
+    --btn-active-shadow: inset 0 2px 4px rgb(0 0 0 / .15),
   ),
   $button-styled-tokens
 );
@@ -177,12 +177,11 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     @include tokens($button-tokens);
 
     display: inline-flex;
-    gap: var(--btn-gap, .25rem);
+    gap: var(--btn-gap, .375rem);
     align-items: center;
     justify-content: center;
     min-height: var(--btn-min-height);
     padding: var(--btn-padding-y) var(--btn-padding-x);
-    // font-family: var(--btn-font-family);
     font-size: var(--btn-font-size);
     font-weight: var(--btn-font-weight);
     line-height: var(--btn-line-height);
