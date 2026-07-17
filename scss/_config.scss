@@ -36,7 +36,6 @@ $enable-grid-classes:         true !default;
 $enable-container-classes:    true !default;
 $enable-cssgrid:              true !default;
 $enable-button-pointers:      true !default;
-// $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 
 $color-mode-type:          "media-query" !default;
@@ -170,13 +169,6 @@ $position-values: (
   100: 100%
 ) !default;
 // scss-docs-end position-map
-
-// Links
-//
-// Style anchor elements.
-
-$link-decoration:                         underline !default;
-$link-underline-offset:                   .2em !default;
 
 $stretched-link-pseudo-element:           after !default;
 $stretched-link-z-index:                  1 !default;

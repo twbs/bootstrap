@@ -65,8 +65,7 @@ $list-group-tokens: defaults(
     display: block;
     padding: var(--list-group-item-padding-y) var(--list-group-item-padding-x);
     color: var(--theme-fg, var(--list-group-color));
-    // stylelint-disable-next-line scss/at-function-named-arguments
-    text-decoration: if(sass($link-decoration == none): null);
+    text-decoration: none;
     background-color: var(--theme-bg-subtle, var(--list-group-bg));
     border: var(--list-group-border-width) solid var(--theme-border, var(--list-group-border-color));
 

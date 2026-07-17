@@ -311,8 +311,6 @@ $reboot-mark-tokens: defaults(
     text-underline-offset: var(--link-underline-offset);
 
     &:hover {
-      // --link-color: var(--link-hover-color);
-      // --link-decoration: var(--link-hover-decoration, var(--link-decoration));
       color: var(--theme-fg-emphasis, var(--link-hover-color));
       text-decoration: var(--link-hover-decoration, var(--link-decoration));
     }

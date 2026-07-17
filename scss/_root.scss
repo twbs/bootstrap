@@ -30,8 +30,8 @@ $root-tokens: defaults(
     --hr-border-color: var(--border-color),
 
     --link-color: light-dark(var(--primary-base), var(--primary-fg)),
-    --link-decoration: #{$link-decoration},
-    --link-underline-offset: #{$link-underline-offset},
+    --link-decoration: underline,
+    --link-underline-offset: .2em,
     --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
 
     --font-mono: "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;",
