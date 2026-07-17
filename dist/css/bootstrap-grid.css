@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap Grid v6.0.0-dev (https://getbootstrap.com/)
+  * Bootstrap Grid v6.0.0-alpha1 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -6296,4 +6296,5 @@
   --bs-breakpoint-xl: 1280px;
   --bs-breakpoint-2xl: 1536px;
 }
+
 /*# sourceMappingURL=bootstrap-grid.css.map */

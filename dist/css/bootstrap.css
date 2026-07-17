@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
-  * Bootstrap  v6.0.0-dev (https://getbootstrap.com/)
+  * Bootstrap  v6.0.0-alpha1 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -291,7 +291,7 @@
   --bs-line-height-sm: 1.5;
   --bs-font-size-md: 1rem;
   --bs-line-height-md: 1.5;
-  --bs-font-size-lg: clamp(1.25rem, 1rem + 0.625vw, 1.5rem);
+  --bs-font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
   --bs-line-height-lg: 1.5;
   --bs-font-size-xl: clamp(1.5rem, 1.1rem + 0.75vw, 1.75rem);
   --bs-line-height-xl: 1.4285714286;
@@ -1305,6 +1305,7 @@
     }
   }
   .prose :where(a:not([class])):not(:where(.not-prose, .not-prose *)):hover {
+    color: var(--bs-link-hover-color);
     text-decoration-color: var(--bs-link-hover-color);
   }
   .prose :where(img):not(:where(.not-prose, .not-prose *)) {
@@ -4840,7 +4841,7 @@
     --bs-btn-transition-property: color, background-color, border-color, box-shadow;
     --bs-btn-transition: var(--bs-btn-transition-property) var(--bs-btn-transition-timing);
     display: inline-flex;
-    gap: var(--bs-btn-gap, 0.25rem);
+    gap: var(--bs-btn-gap, 0.375rem);
     align-items: center;
     justify-content: center;
     min-height: var(--bs-btn-min-height);
@@ -5315,6 +5316,7 @@
     outline-offset: -1px;
   }
   .accordion-item {
+    position: relative;
     color: var(--bs-accordion-color);
     background-color: var(--bs-accordion-bg);
     border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
@@ -5343,7 +5345,7 @@
     border-start-end-radius: calc(var(--bs-accordion-border-radius) - var(--bs-accordion-border-width));
   }
   .accordion-item:not(:first-of-type) {
-    border-block-start: 0;
+    margin-top: calc(-1 * var(--bs-accordion-border-width));
   }
   .accordion-item:last-of-type {
     border-end-start-radius: var(--bs-accordion-border-radius);
@@ -5358,6 +5360,7 @@
     border-end-end-radius: var(--bs-accordion-border-radius);
   }
   .accordion-item[open] {
+    z-index: 2;
     border-color: var(--bs-theme-border, var(--bs-accordion-border-color));
   }
   .accordion-item[open]::details-content {
@@ -5377,6 +5380,13 @@
   }
   .accordion-body {
     padding: var(--bs-accordion-body-padding-y, var(--bs-accordion-padding-y)) var(--bs-accordion-body-padding-x, var(--bs-accordion-padding-x));
+    font-size: var(--bs-accordion-font-size, var(--bs-font-size-base));
+  }
+  .accordion-sm {
+    --bs-accordion-padding-x: .875rem;
+    --bs-accordion-padding-y: .625rem;
+    --bs-accordion-border-radius: var(--bs-radius-5);
+    --bs-accordion-font-size: var(--bs-font-size-sm);
   }
   .accordion-flush > .accordion-item {
     border-inline: 0;
@@ -5535,6 +5545,7 @@
 }
 @layer components {
   .badge {
+    --bs-badge-gap: 0.375em;
     --bs-badge-padding-x: 0.625em;
     --bs-badge-padding-y: 0.25em;
     --bs-badge-font-size: clamp(12px, 0.75em, 0.75em);
@@ -5545,6 +5556,7 @@
     --bs-badge-border-color: transparent;
     --bs-badge-border-radius: var(--bs-radius-7);
     display: inline-flex;
+    gap: var(--bs-badge-gap);
     align-items: center;
     justify-content: center;
     min-height: 1.375rem;
@@ -5562,6 +5574,9 @@
   }
   .badge:empty {
     display: none;
+  }
+  a.badge {
+    text-decoration: none;
   }
   .btn .badge {
     position: relative;
@@ -5582,6 +5597,10 @@
     color: var(--bs-badge-color);
     background-color: var(--bs-badge-bg);
     border-color: var(--bs-badge-border-color);
+  }
+  .badge-lg {
+    --bs-badge-padding-x: 1rem;
+    --bs-badge-padding-y: .5rem;
   }
 }
 @layer components {
@@ -9090,13 +9109,12 @@
 @layer components {
   .spinner-grow,
   .spinner-border {
-    display: inline-block;
+    display: inline-flex;
     flex-shrink: 0;
     width: var(--bs-spinner-width);
     height: var(--bs-spinner-height);
-    vertical-align: var(--bs-spinner-vertical-align);
     border-radius: 50%;
-    animation: var(--bs-spinner-animation-speed) linear infinite var(--bs-spinner-animation-name);
+    animation: var(--bs-spinner-animation-speed) var(--bs-spinner-animation-timing-function) infinite var(--bs-spinner-animation-name);
   }
   @keyframes spinner-border {
     to {
@@ -9104,19 +9122,18 @@
     }
   }
   .spinner-border {
-    --bs-spinner-width: 2rem;
-    --bs-spinner-height: 2rem;
-    --bs-spinner-vertical-align: -0.125em;
-    --bs-spinner-border-width: 0.25em;
-    --bs-spinner-animation-speed: 0.75s;
+    --bs-spinner-width: 1em;
+    --bs-spinner-height: 1em;
+    --bs-spinner-border-width: 0.125em;
+    --bs-spinner-animation-speed: 1s;
+    --bs-spinner-animation-timing-function: linear;
     --bs-spinner-animation-name: spinner-border;
     border: var(--bs-spinner-border-width) solid currentcolor;
     border-inline-end-color: transparent;
   }
-  .spinner-border-sm {
-    --bs-spinner-width: 1rem;
-    --bs-spinner-height: 1rem;
-    --bs-spinner-border-width: .2em;
+  .spinner-sm {
+    --bs-spinner-width: .75em;
+    --bs-spinner-height: .75em;
   }
   @keyframes spinner-grow {
     0% {
@@ -9128,17 +9145,16 @@
     }
   }
   .spinner-grow {
-    --bs-spinner-width: 2rem;
-    --bs-spinner-height: 2rem;
-    --bs-spinner-vertical-align: -0.125em;
-    --bs-spinner-animation-speed: 0.75s;
+    --bs-spinner-width: 1em;
+    --bs-spinner-height: 1em;
+    --bs-spinner-animation-speed: 1s;
+    --bs-spinner-animation-timing-function: ease-in-out;
     --bs-spinner-animation-name: spinner-grow;
     background-color: currentcolor;
     opacity: 0;
   }
-  .spinner-grow-sm {
-    --bs-spinner-width: 1rem;
-    --bs-spinner-height: 1rem;
+  .spinner-rotate {
+    animation: 1s linear infinite spinner-border;
   }
   @media (prefers-reduced-motion: reduce) {
     .spinner-border,
@@ -11262,7 +11278,7 @@
     font-size: 1rem;
   }
   .fs-lg {
-    font-size: clamp(1.25rem, 1rem + 0.625vw, 1.5rem);
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
   }
   .fs-xl {
     font-size: clamp(1.5rem, 1.1rem + 0.75vw, 1.75rem);
@@ -11295,7 +11311,7 @@
     line-height: 1.5;
   }
   .text-lg {
-    font-size: clamp(1.25rem, 1rem + 0.625vw, 1.5rem);
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
     line-height: 1.5;
   }
   .text-xl {
@@ -16671,4 +16687,5 @@
     }
   }
 }
+
 /*# sourceMappingURL=bootstrap.css.map */

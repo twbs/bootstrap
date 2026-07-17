@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap Utilities v6.0.0-dev (https://getbootstrap.com/)
+  * Bootstrap Utilities v6.0.0-alpha1 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -290,7 +290,7 @@
   --bs-line-height-sm: 1.5;
   --bs-font-size-md: 1rem;
   --bs-line-height-md: 1.5;
-  --bs-font-size-lg: clamp(1.25rem, 1rem + 0.625vw, 1.5rem);
+  --bs-font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
   --bs-line-height-lg: 1.5;
   --bs-font-size-xl: clamp(1.5rem, 1.1rem + 0.75vw, 1.75rem);
   --bs-line-height-xl: 1.4285714286;
@@ -2136,7 +2136,7 @@
     font-size: 1rem;
   }
   .fs-lg {
-    font-size: clamp(1.25rem, 1rem + 0.625vw, 1.5rem);
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
   }
   .fs-xl {
     font-size: clamp(1.5rem, 1.1rem + 0.75vw, 1.75rem);
@@ -2169,7 +2169,7 @@
     line-height: 1.5;
   }
   .text-lg {
-    font-size: clamp(1.25rem, 1rem + 0.625vw, 1.5rem);
+    font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
     line-height: 1.5;
   }
   .text-xl {
@@ -7545,4 +7545,5 @@
     }
   }
 }
+
 /*# sourceMappingURL=bootstrap-utilities.css.map */
