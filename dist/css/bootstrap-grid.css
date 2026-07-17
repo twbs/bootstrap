@@ -1693,16 +1693,6 @@
       grid-column-start: 11;
     }
   }
-  .grid-cols-subgrid {
-    grid-template-columns: subgrid;
-  }
-  .grid-fill {
-    --bs-gap: 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    grid-auto-flow: row;
-    gap: var(--bs-gap);
-  }
 }
 @layer utilities {
   .d-inline {
@@ -1887,6 +1877,9 @@
   }
   .grid-cols-6 {
     grid-template-columns: repeat(6, 1fr);
+  }
+  .grid-cols-subgrid {
+    grid-template-columns: subgrid;
   }
   .grid-cols-fill {
     grid-column: 1 / -1;
@@ -2650,6 +2643,9 @@
     }
     .sm\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
+    }
+    .sm\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
     }
     .sm\:grid-cols-fill {
       grid-column: 1 / -1;
@@ -3415,6 +3411,9 @@
     .md\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
     }
+    .md\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
+    }
     .md\:grid-cols-fill {
       grid-column: 1 / -1;
     }
@@ -4178,6 +4177,9 @@
     }
     .lg\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
+    }
+    .lg\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
     }
     .lg\:grid-cols-fill {
       grid-column: 1 / -1;
@@ -4943,6 +4945,9 @@
     .xl\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
     }
+    .xl\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
+    }
     .xl\:grid-cols-fill {
       grid-column: 1 / -1;
     }
@@ -5706,6 +5711,9 @@
     }
     .\32 xl\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
+    }
+    .\32 xl\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
     }
     .\32 xl\:grid-cols-fill {
       grid-column: 1 / -1;

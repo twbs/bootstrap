@@ -558,7 +558,8 @@
         "grid-cols-2",
         "grid-cols-3",
         "grid-cols-4",
-        "grid-cols-6"
+        "grid-cols-6",
+        "grid-cols-subgrid"
       ]
     },
     "grid-columns": {
@@ -988,7 +989,7 @@
       "classes": [
         "lh-1",
         "lh-sm",
-        "lh-base",
+        "lh-md",
         "lh-lg"
       ]
     },

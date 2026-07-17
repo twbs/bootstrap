@@ -221,9 +221,9 @@
   --bs-white: #fff;
   --bs-gradient: linear-gradient(180deg, color-mix(var(--bs-white) 15%, transparent), color-mix(var(--bs-white) 0%, transparent));
   --bs-body-font-family: system-ui;
-  --bs-body-font-size: var(--bs-font-size-base);
+  --bs-body-font-size: 1rem;
   --bs-body-font-weight: var(--bs-font-weight-normal);
-  --bs-body-line-height: var(--bs-line-height-base);
+  --bs-body-line-height: 1.5;
   --bs-heading-color: inherit;
   --bs-hr-border-color: var(--bs-border-color);
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-fg));
@@ -256,8 +256,8 @@
   --bs-btn-input-min-height: 2.375rem;
   --bs-btn-input-padding-y: 0.375rem;
   --bs-btn-input-padding-x: 0.75rem;
-  --bs-btn-input-font-size: var(--bs-font-size-base);
-  --bs-btn-input-line-height: var(--bs-line-height-base);
+  --bs-btn-input-font-size: var(--bs-body-font-size);
+  --bs-btn-input-line-height: var(--bs-body-line-height);
   --bs-btn-input-border-radius: var(--bs-radius-5);
   --bs-btn-input-xs-min-height: 1.5rem;
   --bs-btn-input-xs-padding-y: 0.125rem;
@@ -3062,16 +3062,6 @@
       grid-column-start: 11;
     }
   }
-  .grid-cols-subgrid {
-    grid-template-columns: subgrid;
-  }
-  .grid-fill {
-    --bs-gap: 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    grid-auto-flow: row;
-    gap: var(--bs-gap);
-  }
 }
 @layer forms {
   .form-label,
@@ -5314,7 +5304,7 @@
     align-items: center;
     width: 100%;
     padding: var(--bs-accordion-btn-padding-y, var(--bs-accordion-padding-y)) var(--bs-accordion-btn-padding-x, var(--bs-accordion-padding-x));
-    font-size: var(--bs-accordion-font-size, var(--bs-font-size-base));
+    font-size: var(--bs-accordion-font-size, var(--bs-body-font-size));
     color: var(--bs-accordion-btn-color);
     text-align: start;
     list-style: none;
@@ -5418,7 +5408,7 @@
   }
   .accordion-body {
     padding: var(--bs-accordion-body-padding-y, var(--bs-accordion-padding-y)) var(--bs-accordion-body-padding-x, var(--bs-accordion-padding-x));
-    font-size: var(--bs-accordion-font-size, var(--bs-font-size-base));
+    font-size: var(--bs-accordion-font-size, var(--bs-body-font-size));
   }
   .accordion-sm {
     --bs-accordion-padding-x: .875rem;
@@ -8853,8 +8843,7 @@
     z-index: 3;
     color: var(--bs-theme-contrast, var(--bs-pagination-active-color));
     background-color: var(--bs-theme-bg, var(--bs-pagination-active-bg));
-    background-image: var(--bs-gradient);
-    border-color: var(--bs-theme-border, var(--bs-pagination-active-border-color));
+    border-color: var(--bs-theme-bg, var(--bs-pagination-active-border-color));
   }
   .page-link.disabled, .disabled > .page-link {
     color: var(--bs-pagination-disabled-color);
@@ -10738,6 +10727,9 @@
   .grid-cols-6 {
     grid-template-columns: repeat(6, 1fr);
   }
+  .grid-cols-subgrid {
+    grid-template-columns: subgrid;
+  }
   .grid-cols-fill {
     grid-column: 1 / -1;
   }
@@ -11498,8 +11490,8 @@
   .lh-sm {
     line-height: var(--bs-line-height-sm);
   }
-  .lh-base {
-    line-height: var(--bs-line-height-base);
+  .lh-md {
+    line-height: var(--bs-line-height-md);
   }
   .lh-lg {
     line-height: var(--bs-line-height-lg);
@@ -12672,6 +12664,9 @@
     .sm\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
     }
+    .sm\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
+    }
     .sm\:grid-cols-fill {
       grid-column: 1 / -1;
     }
@@ -13549,6 +13544,9 @@
     }
     .md\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
+    }
+    .md\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
     }
     .md\:grid-cols-fill {
       grid-column: 1 / -1;
@@ -14428,6 +14426,9 @@
     .lg\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
     }
+    .lg\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
+    }
     .lg\:grid-cols-fill {
       grid-column: 1 / -1;
     }
@@ -15306,6 +15307,9 @@
     .xl\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
     }
+    .xl\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
+    }
     .xl\:grid-cols-fill {
       grid-column: 1 / -1;
     }
@@ -16183,6 +16187,9 @@
     }
     .\32 xl\:grid-cols-6 {
       grid-template-columns: repeat(6, 1fr);
+    }
+    .\32 xl\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
     }
     .\32 xl\:grid-cols-fill {
       grid-column: 1 / -1;

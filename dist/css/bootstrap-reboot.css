@@ -220,9 +220,9 @@
   --bs-white: #fff;
   --bs-gradient: linear-gradient(180deg, color-mix(var(--bs-white) 15%, transparent), color-mix(var(--bs-white) 0%, transparent));
   --bs-body-font-family: system-ui;
-  --bs-body-font-size: var(--bs-font-size-base);
+  --bs-body-font-size: 1rem;
   --bs-body-font-weight: var(--bs-font-weight-normal);
-  --bs-body-line-height: var(--bs-line-height-base);
+  --bs-body-line-height: 1.5;
   --bs-heading-color: inherit;
   --bs-hr-border-color: var(--bs-border-color);
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-fg));
@@ -255,8 +255,8 @@
   --bs-btn-input-min-height: 2.375rem;
   --bs-btn-input-padding-y: 0.375rem;
   --bs-btn-input-padding-x: 0.75rem;
-  --bs-btn-input-font-size: var(--bs-font-size-base);
-  --bs-btn-input-line-height: var(--bs-line-height-base);
+  --bs-btn-input-font-size: var(--bs-body-font-size);
+  --bs-btn-input-line-height: var(--bs-body-line-height);
   --bs-btn-input-border-radius: var(--bs-radius-5);
   --bs-btn-input-xs-min-height: 1.5rem;
   --bs-btn-input-xs-padding-y: 0.125rem;
