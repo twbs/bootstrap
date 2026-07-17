@@ -44,7 +44,7 @@ $accordion-tokens: defaults(
     align-items: center;
     width: 100%;
     padding: var(--accordion-btn-padding-y, var(--accordion-padding-y)) var(--accordion-btn-padding-x, var(--accordion-padding-x));
-    font-size: var(--accordion-font-size, var(--font-size-base));
+    font-size: var(--accordion-font-size, var(--body-font-size));
     color: var(--accordion-btn-color);
     text-align: start;
     list-style: none; // Remove default marker
@@ -147,7 +147,7 @@ $accordion-tokens: defaults(
 
   .accordion-body {
     padding: var(--accordion-body-padding-y, var(--accordion-padding-y)) var(--accordion-body-padding-x, var(--accordion-padding-x));
-    font-size: var(--accordion-font-size, var(--font-size-base));
+    font-size: var(--accordion-font-size, var(--body-font-size));
   }
 
 
