@@ -1,6 +1,8 @@
 @use "sass:list";
 @use "../config" as *;
 
+$transition-base: all .2s ease-in-out !default;
+
 // stylelint-disable property-disallowed-list
 @mixin transition($transition...) {
   @if list.length($transition) == 0 {

@@ -23,7 +23,7 @@ $popover-tokens: defaults(
     --popover-header-padding-x: var(--spacer),
     --popover-header-padding-y: var(--spacer-3),
     --popover-header-font-size: var(--font-size-sm),
-    --popover-header-color: #{$headings-color},
+    --popover-header-color: inherit,
     --popover-header-bg: var(--bg-1),
     --popover-body-padding-x: var(--spacer),
     --popover-body-padding-y: var(--spacer-3),

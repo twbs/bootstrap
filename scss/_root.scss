@@ -19,29 +19,19 @@ $root-tokens: defaults(
 
     --gradient: #{$gradient},
 
-    // scss-docs-start root-font-weight-variables
-    --font-weight-lighter: lighter,
-    --font-weight-light: 300,
-    --font-weight-normal: 400,
-    --font-weight-medium: 500,
-    --font-weight-semibold: 600,
-    --font-weight-bold: 700,
-    --font-weight-bolder: bolder,
-    // scss-docs-end root-font-weight-variables
-
     // scss-docs-start root-body-variables
     --body-font-family: system-ui,
     --body-font-size: var(--font-size-base),
-    --body-font-weight: #{$font-weight-base},
-    --body-line-height: #{$line-height-base},
+    --body-font-weight: var(--font-weight-normal),
+    --body-line-height: var(--line-height-base),
 
-    --heading-color: #{$headings-color},
+    --heading-color: inherit,
 
     --hr-border-color: var(--border-color),
 
     --link-color: light-dark(var(--primary-base), var(--primary-fg)),
-    --link-decoration: #{$link-decoration},
-    --link-underline-offset: #{$link-underline-offset},
+    --link-decoration: underline,
+    --link-underline-offset: .2em,
     --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
 
     --font-mono: "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;",
@@ -124,6 +114,13 @@ $root-tokens: defaults(
   $root-tokens: map.set($root-tokens, --line-height-#{$name}, map.get($props, "line-height"));
 }
 // scss-docs-end root-font-size-loop
+
+// scss-docs-start root-font-weight-loop
+// Generate font-weight tokens
+@each $name, $value in $font-weights {
+  $root-tokens: map.set($root-tokens, --font-weight-#{$name}, $value);
+}
+// scss-docs-end root-font-weight-loop
 
 // scss-docs-start root-theme-tokens
 // Generate semantic theme colors

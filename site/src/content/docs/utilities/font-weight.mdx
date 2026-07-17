@@ -22,22 +22,14 @@ Quickly change the `font-weight` of text with these utilities. `font-weight` uti
 
 ## CSS
 
+### Sass map
+
+Font weights are defined in the `$font-weights` map in `scss/_config.scss`. CSS custom properties (`--font-weight-*`) are generated from this map in `scss/_root.scss`, and the same map powers the Sass utilities API below.
+
+<ScssDocs name="font-weights" file="scss/_config.scss" />
+
 ### Sass utilities API
 
 Font weight utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-"font-weight": (
-  property: font-weight,
-  class: fw,
-  values: (
-    lighter: $font-weight-lighter,
-    light: $font-weight-light,
-    normal: $font-weight-normal,
-    medium: $font-weight-medium,
-    semibold: $font-weight-semibold,
-    bold: $font-weight-bold,
-    bolder: $font-weight-bolder
-  )
-),
-```
+<ScssDocs name="utils-font-weight" file="scss/_utilities.scss" />
