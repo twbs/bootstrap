@@ -90,6 +90,29 @@ Use `grid-cols-fill` to make a grid item span the entire width of the grid conta
 </div>
 ```
 
+## Subgrid
+
+Use `grid-cols-subgrid` to have a nested `.grid` adopt the column tracks of its parent grid, instead of generating its own evenly divided columns, by setting `grid-template-columns: subgrid`.
+
+In the example below, the parent grid’s three columns are unevenly sized (`2fr 1fr 1fr`). The nested grid in the last row uses `grid-cols-subgrid` to line up with those same column tracks rather than splitting into three equal columns of its own.
+
+<Example class="bd-example-cssgrid" code={`<div class="grid text-center" style="grid-template-columns: 2fr 1fr 1fr;">
+    <div>Column (2fr)</div>
+    <div>Column (1fr)</div>
+    <div>Column (1fr)</div>
+    <div class="grid grid-cols-subgrid" style="grid-column: 1 / -1;">
+      <div>Subgrid column (2fr)</div>
+      <div>Subgrid column (1fr)</div>
+      <div>Subgrid column (1fr)</div>
+    </div>
+  </div>`} />
+
+```scss
+.grid-cols-subgrid {
+  grid-template-columns: subgrid;
+}
+```
+
 ## Auto flow
 
 Control how auto-placed items are inserted into the grid with `grid-auto-flow` utilities.
@@ -158,6 +181,7 @@ All grid utilities are responsive and include all breakpoints.
       <li><code>.{breakpoint.abbr}grid-cols-4</code></li>
       <li><code>.{breakpoint.abbr}grid-cols-6</code></li>
       <li><code>.{breakpoint.abbr}grid-cols-fill</code></li>
+      <li><code>.{breakpoint.abbr}grid-cols-subgrid</code></li>
     </Fragment>
   )
 })}
@@ -191,7 +215,8 @@ Grid utilities are declared in our utilities API in `scss/_utilities.scss`. [Lea
   values: (
     3,
     4,
-    6
+    6,
+    subgrid: subgrid
   )
 ),
 "grid-columns": (

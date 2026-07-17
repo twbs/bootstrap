@@ -32,11 +32,6 @@
     @include make-cssgrid();
   }
 
-  // TODO: add to utilities?
-  .grid-cols-subgrid {
-    grid-template-columns: subgrid;
-  }
-
   .grid-fill {
     --gap: #{$grid-gutter-x};
 

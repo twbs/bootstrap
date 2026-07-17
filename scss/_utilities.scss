@@ -476,6 +476,7 @@ $utilities: map.merge(
         "3": repeat(3, 1fr),
         "4": repeat(4, 1fr),
         "6": repeat(6, 1fr),
+        subgrid: subgrid,
       )
     ),
     "grid-columns": (
