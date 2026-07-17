@@ -5,6 +5,8 @@ toc: true
 css_layer: components
 ---
 
+import { getData } from '@libs/data'
+
 ## Overview
 
 We use a large block of connected links for our pagination, making links hard to miss and easily scalable—all while providing large hit areas. Pagination is built with list HTML elements so screen readers can announce the number of available links. Use a wrapping `<nav>` element to identify it as a navigation section to screen readers and other assistive technologies.
@@ -94,6 +96,24 @@ And just like active page items, you can swap out the disabled `<a>` for a `<spa
   <span class="page-link">Previous</span>
 </li>
 ```
+
+## Variants
+
+Add a `.theme-{color}` class to `.pagination` to apply a semantic theme color across the component, including hover, focus, and the active page item.
+
+<Example class="vstack gap-3" code={getData('theme-colors').map((themeColor) => `<nav aria-label="Page navigation example">
+    <ul class="pagination theme-${themeColor.name}">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active">
+        <a class="page-link" href="#" aria-current="page">2</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>`)} customMarkup={`<ul class="pagination theme-primary"><!--[!code highlight]-->
+    <!-- Page items here -->
+  </ul>`} />
 
 ## Sizing
 
