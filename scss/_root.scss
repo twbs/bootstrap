@@ -23,7 +23,7 @@ $root-tokens: defaults(
     --body-font-family: system-ui,
     --body-font-size: 1rem,
     --body-font-weight: var(--font-weight-normal),
-    --body-line-height: var(--line-height-base),
+    --body-line-height: 1.5,
 
     --heading-color: inherit,
 
@@ -77,7 +77,7 @@ $root-tokens: defaults(
     --btn-input-padding-y: .375rem,
     --btn-input-padding-x: .75rem,
     --btn-input-font-size: var(--body-font-size),
-    --btn-input-line-height: var(--line-height-base),
+    --btn-input-line-height: var(--body-line-height),
     --btn-input-border-radius: var(--radius-5),
 
     --btn-input-xs-min-height: 1.5rem,

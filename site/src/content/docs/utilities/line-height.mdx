@@ -14,7 +14,7 @@ Change the line height with `.lh-*` utilities.
 
 <Example code={`<p class="lh-1">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
 <p class="lh-sm">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
-<p class="lh-base">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+<p class="lh-md">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
 <p class="lh-lg">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>`} />
 
 ## CSS
@@ -23,15 +23,4 @@ Change the line height with `.lh-*` utilities.
 
 Line height utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-"line-height": (
-  property: line-height,
-  class: lh,
-  values: (
-    1: 1,
-    sm: var(--line-height-sm),
-    base: var(--line-height-base),
-    lg: var(--line-height-lg),
-  )
-),
-```
+<ScssDocs file="scss/_utilities.scss" name="utils-line-height" />
