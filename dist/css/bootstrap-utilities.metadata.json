@@ -1127,7 +1127,6 @@
     },
     "underline-color": {
       "class": "underline",
-      "property": "text-decoration-color",
       "classes": [
         "underline-primary",
         "underline-accent",

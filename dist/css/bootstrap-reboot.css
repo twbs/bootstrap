@@ -214,22 +214,15 @@
   --bs-pewter-975: color-mix(in lab, var(--bs-black) 88%, oklch(65% 0.01 290deg));
 }
 
-@layer colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
+@layer colors, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
 :root {
   --bs-black: #000;
   --bs-white: #fff;
   --bs-gradient: linear-gradient(180deg, color-mix(var(--bs-white) 15%, transparent), color-mix(var(--bs-white) 0%, transparent));
-  --bs-font-weight-lighter: lighter;
-  --bs-font-weight-light: 300;
-  --bs-font-weight-normal: 400;
-  --bs-font-weight-medium: 500;
-  --bs-font-weight-semibold: 600;
-  --bs-font-weight-bold: 700;
-  --bs-font-weight-bolder: bolder;
   --bs-body-font-family: system-ui;
   --bs-body-font-size: var(--bs-font-size-base);
-  --bs-body-font-weight: 400;
-  --bs-body-line-height: 1.5;
+  --bs-body-font-weight: var(--bs-font-weight-normal);
+  --bs-body-line-height: var(--bs-line-height-base);
   --bs-heading-color: inherit;
   --bs-hr-border-color: var(--bs-border-color);
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-fg));
@@ -303,6 +296,13 @@
   --bs-line-height-5xl: 1.1;
   --bs-font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem);
   --bs-line-height-6xl: 1;
+  --bs-font-weight-lighter: lighter;
+  --bs-font-weight-light: 300;
+  --bs-font-weight-normal: 400;
+  --bs-font-weight-medium: 500;
+  --bs-font-weight-semibold: 600;
+  --bs-font-weight-bold: 700;
+  --bs-font-weight-bolder: bolder;
   --bs-primary-base: var(--bs-blue-500);
   --bs-primary-fg: light-dark(var(--bs-blue-600), var(--bs-blue-400));
   --bs-primary-fg-emphasis: light-dark(var(--bs-blue-800), var(--bs-blue-200));
@@ -434,6 +434,19 @@
   --bs-box-shadow-lg: 0 .125rem .375rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .375rem 1rem -.1875rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .75rem 2rem -.375rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.07 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 1.5rem 3.5rem -.75rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.08 * var(--bs-shadow-strength) * var(--bs-so, 1)));
   --bs-box-shadow-xl: 0 .1875rem .5rem -.0625rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.05 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 .5rem 1.25rem -.1875rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.06 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 1rem 2.5rem -.375rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.07 * var(--bs-shadow-strength) * var(--bs-so, 1))), 0 2rem 5rem -.75rem oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h / calc(.09 * var(--bs-shadow-strength) * var(--bs-so, 1)));
   --bs-box-shadow-inset: inset 0 1px 2px light-dark(oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(8% * var(--bs-so, 1))), oklch(from var(--bs-sc, var(--bs-shadow-color)) l c h/calc(26% * var(--bs-so, 1))));
+  --bs-z-n1: -1;
+  --bs-z-0: 0;
+  --bs-z-1: 1;
+  --bs-z-2: 2;
+  --bs-z-3: 3;
+  --bs-z-menu: 1000;
+  --bs-z-sticky: 1010;
+  --bs-z-fixed: 1020;
+  --bs-z-drawer: 1030;
+  --bs-z-dialog: 1040;
+  --bs-z-popover: 1050;
+  --bs-z-tooltip: 1060;
+  --bs-z-toast: 1070;
   color-scheme: light dark;
   scrollbar-gutter: stable;
 }
@@ -659,7 +672,7 @@
     --bs-kbd-font-size: var(--bs-font-size-xs);
     --bs-kbd-color: var(--bs-bg-body);
     --bs-kbd-bg: var(--bs-fg-2);
-    --bs-kbd-border-radius: var(--bs-radius-5);
+    --bs-kbd-border-radius: var(--bs-radius-3);
     padding: var(--bs-kbd-padding-y) var(--bs-kbd-padding-x);
     font-size: var(--bs-kbd-font-size);
     color: var(--bs-kbd-color);
@@ -669,7 +682,6 @@
   kbd kbd {
     padding: 0;
     font-size: 1em;
-    font-weight: inherit;
   }
   figure {
     margin: 0 0 var(--bs-spacer);
