@@ -23,7 +23,7 @@ $root-tokens: defaults(
     --body-font-family: system-ui,
     --body-font-size: var(--font-size-base),
     --body-font-weight: var(--font-weight-normal),
-    --body-line-height: #{$line-height-base},
+    --body-line-height: var(--line-height-base),
 
     --heading-color: #{$headings-color},
 
