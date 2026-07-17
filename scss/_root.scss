@@ -25,7 +25,7 @@ $root-tokens: defaults(
     --body-font-weight: var(--font-weight-normal),
     --body-line-height: var(--line-height-base),
 
-    --heading-color: #{$headings-color},
+    --heading-color: inherit,
 
     --hr-border-color: var(--border-color),
 
