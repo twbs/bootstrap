@@ -170,6 +170,7 @@ $position-values: (
 ) !default;
 // scss-docs-end position-map
 
+
 $stretched-link-pseudo-element:           after !default;
 $stretched-link-z-index:                  1 !default;
 
@@ -252,10 +253,6 @@ $aspect-ratios: (
   "21x9": #{"21 / 9"}
 ) !default;
 // scss-docs-end aspect-ratios
-
-// Typography
-//
-// Font, line-height, and color for body text, headings, and more.
 
 // scss-docs-start font-weights
 $font-weights: (
