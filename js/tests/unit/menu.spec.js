@@ -2907,6 +2907,53 @@ describe('Menu', () => {
       })
     })
 
+    it('should arrow-navigate items inside an open nested submenu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <div class="submenu" id="submenu1">',
+          '      <button class="menu-item" type="button">Submenu 1</button>',
+          '      <div class="menu" id="nestedMenu">',
+          '        <a id="nested1" class="menu-item" href="#">Action 1</a>',
+          '        <a id="nested2" class="menu-item" href="#">Action 2</a>',
+          '      </div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const submenuTrigger = fixtureEl.querySelector('#submenu1 > .menu-item')
+        const nested1 = fixtureEl.querySelector('#nested1')
+        const nested2 = fixtureEl.querySelector('#nested2')
+        const nestedMenu = fixtureEl.querySelector('#nestedMenu')
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          submenuTrigger.click()
+          expect(nestedMenu.classList.contains('show')).toBeTrue()
+
+          nested1.focus()
+          const keydown = createEvent('keydown', { bubbles: true })
+          keydown.key = 'ArrowDown'
+          nested1.dispatchEvent(keydown)
+
+          expect(document.activeElement).toEqual(nested2)
+
+          const keyup = createEvent('keydown', { bubbles: true })
+          keyup.key = 'ArrowUp'
+          nested2.dispatchEvent(keyup)
+          expect(document.activeElement).toEqual(nested1)
+          resolve()
+        })
+
+        // eslint-disable-next-line no-new
+        new Menu(btnMenu)
+        btnMenu.click()
+      })
+    })
+
     it('should open submenu with ArrowRight key', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [

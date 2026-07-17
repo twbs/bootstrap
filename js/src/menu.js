@@ -950,6 +950,29 @@ class Menu extends BaseComponent {
     }
   }
 
+  static _getToggleFromKeydownContext(element, event) {
+    if (element.matches?.(SELECTOR_DATA_TOGGLE)) {
+      return element
+    }
+
+    // Root panel is usually a sibling of the toggle (when not moved to a container).
+    const siblingToggle = SelectorEngine.prev(element, SELECTOR_DATA_TOGGLE)[0] ||
+      SelectorEngine.next(element, SELECTOR_DATA_TOGGLE)[0]
+    if (siblingToggle) {
+      return siblingToggle
+    }
+
+    // Nested submenu panels (and menus moved to `container`) are not siblings of
+    // the toggle. Resolve the owning open Menu instance from the event target.
+    for (const instance of Menu._openInstances) {
+      if (instance._menu?.contains(event.target) || instance._element === event.target) {
+        return instance._element
+      }
+    }
+
+    return SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
+  }
+
   static dataApiKeydownHandler(event) {
     // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
     // menu doesn't hijack their arrow keys.
@@ -971,11 +994,7 @@ class Menu extends BaseComponent {
       return
     }
 
-    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ?
-      this :
-      (SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
-        SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
-        SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode))
+    const getToggleButton = Menu._getToggleFromKeydownContext(this, event)
 
     if (!getToggleButton) {
       return
