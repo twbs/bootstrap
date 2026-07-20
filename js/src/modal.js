@@ -144,6 +144,12 @@ class Modal extends BaseComponent {
     EventHandler.off(window, EVENT_KEY)
     EventHandler.off(this._dialog, EVENT_KEY)
 
+    if (this._isShown) {
+      document.body.classList.remove(CLASS_NAME_OPEN)
+      this._resetAdjustments()
+      this._scrollBar.reset()
+    }
+
     this._backdrop.dispose()
     this._focustrap.deactivate()
 
