@@ -36,12 +36,16 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./js/src/*.js",
+    "./js/src/*.ts",
     "./js/dist/*.js",
     "./dist/js/*.js"
   ],
   "exports": {
-    ".": "./js/index.js",
+    ".": {
+      "types": "./js/dist/index.d.ts",
+      "default": "./js/dist/index.js"
+    },
+    "./js/src/*.js": "./js/src/*.ts",
     "./js/src/*": "./js/src/*",
     "./js/dist/*": "./js/dist/*",
     "./dist/js/*": "./dist/js/*",
@@ -73,7 +77,9 @@
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.mjs --sourcemap",
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.mjs --sourcemap",
     "js-compile-plugins": "node build/build-plugins.mjs",
+    "js-compile-types": "tsc --project build/tsconfig.dts.json",
     "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives .",
+    "js-typecheck": "tsc --noEmit",
     "js-minify": "npm-run-all --aggregate-output --parallel js-minify-*",
     "js-minify-standalone": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "js-minify-bundle": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
@@ -83,7 +89,7 @@
     "js-test-integration-bundle": "rollup --config js/tests/integration/rollup.bundle.mjs",
     "js-test-integration-modularity": "rollup --config js/tests/integration/rollup.bundle-modularity.mjs",
     "js-test-cloud": "cross-env BROWSERSTACK=true npm run js-test-karma",
-    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint css-lint lockfile-lint docs-mdx docs-md docs-lint",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint js-typecheck css-lint lockfile-lint docs-mdx docs-md docs-lint",
     "docs": "npm-run-all docs-build docs-lint",
     "docs-build": "npm run astro-build",
     "docs-compile": "npm run docs-build",
@@ -110,7 +116,7 @@
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile css-prefix\"",
     "watch-css-docs": "nodemon --watch site/src/scss/ --ext scss --exec \"npm run css-lint\"",
     "watch-css-test": "nodemon --watch scss/ --ext scss,js --exec \"npm run css-test\"",
-    "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
+    "watch-js-main": "nodemon --watch js/src/ --ext js,ts --exec \"npm-run-all js-lint js-compile\"",
     "watch-js-docs": "nodemon --watch site/src/assets/ --ext js --exec \"npm run js-lint\"",
     "astro-clean": "rm -rf site/.astro site/node_modules/.astro",
     "astro-dev": "astro dev --root site --port ${PORT:-9001}",
@@ -130,6 +136,7 @@
     "@babel/cli": "7.29.7",
     "@babel/core": "7.29.7",
     "@babel/preset-env": "7.29.7",
+    "@babel/preset-typescript": "^7.29.7",
     "@floating-ui/dom": "^1.7.6",
     "@pagefind/component-ui": "^1.5.2",
     "@rollup/plugin-babel": "^7.1.0",
@@ -199,14 +206,16 @@
     "stylelint-config-twbs-bootstrap": "^16.1.0",
     "stylelint-order": "^8.1.1",
     "terser": "^5.48.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.65.0",
     "unist-util-visit": "^5.1.0",
     "yaml": "^2.9.0",
     "zod": "^4.4.3"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/*.{js,map}",
-    "js/index.js",
+    "js/{src,dist}/**/*.{js,map,ts}",
+    "js/index.ts",
     "scss/**/*.scss",
     "!scss/tests/**",
     ".browserslistrc"
