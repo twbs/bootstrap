@@ -143,9 +143,14 @@ class Chips extends BaseComponent {
       this._anchorChip = null;
     }
 
-    // Remove from DOM and array
+    // Remove from DOM and array. Only drop a single entry: with
+    // `allowDuplicates`, filtering every match would strip other identical
+    // chips from state while their elements remain in the DOM.
     chip.remove();
-    this._chips = this._chips.filter(v => v !== value);
+    const valueIndex = this._chips.indexOf(value);
+    if (valueIndex !== -1) {
+      this._chips.splice(valueIndex, 1);
+    }
     EventHandler.trigger(this._element, EVENT_CHANGE, {
       values: this.getValues()
     });

@@ -116,7 +116,7 @@ class Strength extends BaseComponent {
     const strength = this._scoreToStrength(score);
     if (strength !== this._currentStrength) {
       this._currentStrength = strength;
-      this._updateUI(strength, score);
+      this._updateUI(strength);
       EventHandler.trigger(this._element, EVENT_STRENGTH_CHANGE, {
         strength,
         score,
