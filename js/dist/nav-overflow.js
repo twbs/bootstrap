@@ -24,6 +24,7 @@ const DATA_KEY = 'bs.navoverflow';
 const EVENT_KEY = `.${DATA_KEY}`;
 const EVENT_UPDATE = `update${EVENT_KEY}`;
 const EVENT_OVERFLOW = `overflow${EVENT_KEY}`;
+const EVENT_RESIZE = `resize${EVENT_KEY}`;
 const CLASS_NAME_OVERFLOW = 'nav-overflow';
 const CLASS_NAME_OVERFLOW_MENU = 'nav-overflow-menu';
 const CLASS_NAME_HIDDEN = 'd-none';
@@ -63,7 +64,6 @@ class NavOverflow extends BaseComponent {
     this._overflowToggle = null;
     this._resizeObserver = null;
     this._collapseBelow = 0;
-    this._isInitialized = false;
     this._init();
   }
 
@@ -87,6 +87,9 @@ class NavOverflow extends BaseComponent {
     if (this._resizeObserver) {
       this._resizeObserver.disconnect();
     }
+
+    // Remove the fallback resize listener bound on window
+    EventHandler.off(window, EVENT_RESIZE);
 
     // Move items back to original positions
     this._restoreItems();
@@ -122,7 +125,6 @@ class NavOverflow extends BaseComponent {
 
     // Initial calculation
     this._calculateOverflow();
-    this._isInitialized = true;
   }
   _createOverflowMenu() {
     // Check if overflow menu already exists
@@ -171,8 +173,9 @@ class NavOverflow extends BaseComponent {
   }
   _setupResizeObserver() {
     if (typeof ResizeObserver === 'undefined') {
-      // Fallback for older browsers
-      EventHandler.on(window, 'resize', () => this._calculateOverflow());
+      // Fallback for older browsers. Namespaced so dispose() can remove it from
+      // window (super.dispose() only clears listeners on this._element).
+      EventHandler.on(window, EVENT_RESIZE, () => this._calculateOverflow());
       return;
     }
     this._resizeObserver = new ResizeObserver(() => {

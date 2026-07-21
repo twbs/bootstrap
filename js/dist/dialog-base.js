@@ -111,6 +111,10 @@ class DialogBase extends BaseComponent {
     if (this._element.open) {
       this._closeAndCleanup();
     }
+
+    // The `cancel` listener is unnamespaced, so super.dispose()'s EVENT_KEY
+    // teardown misses it — remove it here.
+    EventHandler.off(this._element, 'cancel');
     super.dispose();
   }
 
@@ -235,7 +239,9 @@ class DialogBase extends BaseComponent {
   _addDialogListeners() {
     const eventKey = this.constructor.EVENT_KEY;
 
-    // Handle native cancel event (Escape key) — only fires for modal dialogs
+    // Handle native cancel event (Escape key) — only fires for modal dialogs.
+    // Bound unnamespaced because `cancel` is a real native event, not one of
+    // our namespaced custom events; `dispose()` removes it explicitly.
     EventHandler.on(this._element, 'cancel', event => {
       event.preventDefault();
       if (!this._config.keyboard) {
