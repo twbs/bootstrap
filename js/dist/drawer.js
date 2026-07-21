@@ -12,7 +12,7 @@ import { isDisabled, isVisible, isRTL } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap drawer.js
+ * Bootstrap drawer.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

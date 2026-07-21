@@ -10,7 +10,7 @@ import { getElement, isDisabled, isVisible } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap scrollspy.js
+ * Bootstrap scrollspy.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

@@ -10,7 +10,7 @@ import { isDisabled } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap datepicker.js
+ * Bootstrap datepicker.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

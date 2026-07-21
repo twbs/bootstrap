@@ -10,7 +10,7 @@ import { isDisabled, getNextActiveElement } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap tab.js
+ * Bootstrap tab.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

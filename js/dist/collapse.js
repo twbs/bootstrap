@@ -10,7 +10,7 @@ import { reflow, getElement } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap collapse.js
+ * Bootstrap collapse.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

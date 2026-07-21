@@ -11,7 +11,7 @@ import { isDisabled, isVisible, getNextActiveElement } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap combobox.js
+ * Bootstrap combobox.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

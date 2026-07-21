@@ -8,11 +8,10 @@ import EventHandler from './dom/event-handler.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap popover.js
+ * Bootstrap popover.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-
 
 /**
  * Constants
@@ -43,6 +42,11 @@ const DefaultType = {
  */
 
 class Popover extends Tooltip {
+  // eslint-disable-next-line no-useless-constructor -- narrows the config param type
+  constructor(element, config) {
+    super(element, config);
+  }
+
   // Getters
   static get Default() {
     return Default;
