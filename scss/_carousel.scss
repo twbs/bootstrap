@@ -17,7 +17,10 @@ $carousel-tokens: defaults(
     --carousel-indicator-width: .75rem,
     --carousel-indicator-height: .75rem,
     --carousel-indicator-spacer: .25rem,
-    --carousel-indicator-transition: "opacity .6s ease, width .3s ease",
+    --carousel-indicator-opacity-duration: .6s,
+    --carousel-indicator-opacity-timing: ease,
+    --carousel-indicator-width-duration: .3s,
+    --carousel-indicator-width-timing: ease,
     --carousel-indicator-progress-bg: var(--carousel-indicator-bg),
     --carousel-control-icon-width: 1rem,
     --carousel-control-prev-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>"),
@@ -34,6 +37,7 @@ $carousel-tokens: defaults(
     --carousel-items-gap: 0px,
     --carousel-items-peek: 0px,
     --carousel-fade-duration: .6s,
+    --carousel-fade-timing: ease,
   ),
   $carousel-tokens
 );
@@ -122,13 +126,13 @@ $carousel-tokens: defaults(
       width: 100%;
       visibility: hidden;
       opacity: 0;
-      @include transition(opacity var(--carousel-fade-duration) ease, visibility 0s linear var(--carousel-fade-duration));
+      @include transition(opacity var(--carousel-fade-duration) var(--carousel-fade-timing), visibility 0s linear var(--carousel-fade-duration));
     }
 
     .carousel-item.active {
       visibility: visible;
       opacity: 1;
-      @include transition(opacity var(--carousel-fade-duration) ease);
+      @include transition(opacity var(--carousel-fade-duration) var(--carousel-fade-timing));
     }
   }
 
@@ -201,7 +205,7 @@ $carousel-tokens: defaults(
       background-color: transparent;
       border: 1px solid var(--carousel-indicator-bg);
       @include border-radius(var(--carousel-indicator-width));
-      @include transition(var(--carousel-indicator-transition));
+      @include transition(opacity var(--carousel-indicator-opacity-duration) var(--carousel-indicator-opacity-timing), width var(--carousel-indicator-width-duration) var(--carousel-indicator-width-timing));
     }
 
     .active {
