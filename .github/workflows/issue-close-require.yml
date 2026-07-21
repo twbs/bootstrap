@@ -16,7 +16,7 @@ jobs:
     if: github.repository == 'twbs/bootstrap'
     steps:
       - name: awaiting reply
-        uses: actions/stale@eb5cf3af3ac0a1aa4c9c45633dd1ae542a27a899 # v10.3.0
+        uses: actions/stale@1e223db275d687790206a7acac4d1a11bd6fe629 # v10.4.0
         with:
           only-issue-labels: 'awaiting-reply'
           days-before-stale: 14
