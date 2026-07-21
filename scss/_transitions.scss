@@ -6,6 +6,7 @@ $fade-tokens: () !default;
 $collapse-tokens: () !default;
 
 // stylelint-disable scss/dollar-variable-default
+// scss-docs-start fade-transition
 $fade-tokens: defaults(
   (
     --transition-fade-duration: .15s,
@@ -13,6 +14,7 @@ $fade-tokens: defaults(
   ),
   $fade-tokens
 );
+// scss-docs-end fade-transition
 
 // scss-docs-start collapse-transition
 $collapse-tokens: defaults(

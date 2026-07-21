@@ -1419,6 +1419,22 @@
         "z-tooltip",
         "z-toast"
       ]
+    },
+    "transition": {
+      "class": "transition",
+      "property": "transition",
+      "classes": [
+        "transition-none"
+      ]
+    },
+    "animation": {
+      "class": "animation",
+      "property": "animation",
+      "classes": [
+        "animation-none",
+        "animation-shake",
+        "animation-pop"
+      ]
     }
   }
 }
