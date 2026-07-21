@@ -191,6 +191,7 @@
     - group: Layout
       pages:
         - title: Aspect ratio
+        - title: Container queries
         - title: Display
         - title: Float
         - title: Object fit
