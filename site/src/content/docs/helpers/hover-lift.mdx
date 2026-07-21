@@ -1,0 +1,43 @@
+---
+title: Hover lift
+description: Raise an element with a subtle transform and shadow on hover and keyboard focus.
+toc: true
+---
+
+## How it works
+
+Add `.hover-lift` to any element to gently raise it—translating it upward and deepening its shadow—when the user hovers over it or focuses it with the keyboard. It’s a lightweight way to signal that cards, tiles, or other surfaces are interactive.
+
+The effect is driven by CSS custom properties and applied with our `transition()` mixin, so it’s fully customizable and automatically honors the [`prefers-reduced-motion`]([[docsref:/getting-started/accessibility#reduced-motion]]) media feature—users who prefer reduced motion get the raised shadow and offset without the animation.
+
+## Example
+
+Hover or tab to the card below to see it lift.
+
+<Example class="bg-1" code={`<a href="#" class="card hover-lift text-decoration-none" style="max-width: 20rem;">
+    <div class="card-body">
+      <h5 class="card-title">Hover me</h5>
+      <p class="card-text mb-0">This card lifts on hover and keyboard focus.</p>
+    </div>
+  </a>`} />
+
+Because it only sets `transform` and `box-shadow`, `.hover-lift` composes with any element—buttons, list items, or plain containers.
+
+<Example class="bg-1 d-flex gap-3" code={`<button type="button" class="btn-solid theme-primary hover-lift">Lift on hover</button>`} />
+
+## CSS
+
+### Variables
+
+<CSSVariables component="Hover lift" className="hover-lift" />
+
+<ScssDocs name="hover-lift-tokens" file="scss/helpers/_hover-lift.scss" />
+
+Override the tokens to tune the lift distance, shadow, or timing. For example, a larger rise with a snappier transition:
+
+<Example class="bg-1" code={`<a href="#" class="card hover-lift text-decoration-none" style="--bs-hover-lift-transform: translateY(-.5rem); --bs-hover-lift-transition-duration: .1s; max-width: 20rem;">
+    <div class="card-body">
+      <h5 class="card-title">Bigger lift</h5>
+      <p class="card-text mb-0">Customized transform and duration.</p>
+    </div>
+  </a>`} />

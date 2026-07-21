@@ -167,6 +167,9 @@
   icon_color: orange
   pages:
     - title: Focus ring
+    - title: Hover lift
+      meta:
+        - added: 6.0.0
     - title: Icon link
     - title: Position
     - title: Stacks
