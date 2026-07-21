@@ -248,6 +248,22 @@ describe('Strength', () => {
 
       expect(strength.getStrength()).toBeNull()
     })
+
+    it('should fill the segmented meter to match the current strength', () => {
+      fixtureEl.innerHTML = getStrengthHtml()
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const strength = new Strength(strengthEl)
+
+      passwordInput.value = 'Password1' // fair → index 1 → first two segments active
+      passwordInput.dispatchEvent(createEvent('input'))
+
+      const activeSegments = strengthEl.querySelectorAll('.strength-segment.active')
+
+      expect(strength.getStrength()).toEqual('fair')
+      expect(activeSegments.length).toEqual(2)
+    })
   })
 
   describe('custom scorer', () => {

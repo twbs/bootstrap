@@ -549,9 +549,10 @@ class Tooltip extends BaseComponent {
 
       // Only set the cross-axis position (centering along the edge)
       // The main-axis position (which edge) is handled by CSS
+      // Floating UI reports the unused axis as `undefined`, never `null`
       Object.assign(arrowElement.style, {
-        left: isVertical && arrowX !== null ? `${arrowX}px` : '',
-        top: !isVertical && arrowY !== null ? `${arrowY}px` : '',
+        left: isVertical && arrowX !== undefined ? `${arrowX}px` : '',
+        top: !isVertical && arrowY !== undefined ? `${arrowY}px` : '',
         // Reset the other axis to let CSS handle it
         right: '',
         bottom: ''
@@ -570,7 +571,9 @@ class Tooltip extends BaseComponent {
       // Floating UI passes different args, adapt the interface for offset function callbacks
       return ({ placement, rects }) => {
         const result = offset({ placement, reference: rects.reference, floating: rects.floating }, this._element)
-        return result
+        // Adapt a `[skidding, distance]` array to Floating UI's offset shape,
+        // matching how the array and string config forms are applied
+        return Array.isArray(result) ? { mainAxis: result[1] || 0, crossAxis: result[0] || 0 } : result
       }
     }
 

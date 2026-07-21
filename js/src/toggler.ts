@@ -28,6 +28,10 @@ type TogglerConfig = {
   value: string | number | boolean | null
 }
 
+// `value` is required: it's the class/attribute value every `_execute()`
+// branch acts on. The `null` default is a must-override placeholder, and
+// DefaultType intentionally omits `null` so `_typeCheckConfig` rejects a
+// Toggler constructed without one.
 const DefaultType = {
   attribute: 'string',
   value: '(string|number|boolean)'
