@@ -349,6 +349,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
   @each $size, $_ in $button-sizes {
     .btn-#{$size},
     .btn-group-#{$size} > [class*="btn-"] {
+      --btn-gap: var(--btn-input-#{$size}-gap);
       --btn-min-height: var(--btn-input-#{$size}-min-height);
       --btn-padding-y: var(--btn-input-#{$size}-padding-y);
       --btn-padding-x: var(--btn-input-#{$size}-padding-x);

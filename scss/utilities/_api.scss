@@ -9,4 +9,40 @@
 
 @layer utilities {
   @include generate-utilities-loop($utilities, $breakpoints);
+
+  // The keyframe animation utilities (.animation-shake, .animation-pop) are
+  // decorative, so disable them when the user prefers reduced motion.
+  @if $enable-reduced-motion {
+    @media (prefers-reduced-motion: reduce) {
+      .animation-shake,
+      .animation-pop {
+        animation: none;
+      }
+    }
+  }
+}
+
+// Keyframes powering the animation utilities. Declared outside the cascade
+// layer since @keyframes registration is global and unaffected by layers.
+@keyframes shake {
+  10%,
+  90% { transform: translate3d(-1px, 0, 0); }
+
+  20%,
+  80% { transform: translate3d(2px, 0, 0); }
+
+  30%,
+  50%,
+  70% { transform: translate3d(-4px, 0, 0); }
+
+  40%,
+  60% { transform: translate3d(4px, 0, 0); }
+}
+
+// Scales from 0 to 1; the back-easing curve on the utility supplies the
+// slight overshoot, so the keyframes stay a simple two-stop scale.
+@keyframes pop {
+  from { transform: scale(0); }
+
+  to { transform: scale(1); }
 }

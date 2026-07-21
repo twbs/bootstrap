@@ -2,6 +2,7 @@
 @use "../mixins/focus-ring" as *;
 @use "../mixins/mask-icon" as *;
 @use "../mixins/tokens" as *;
+@use "../mixins/transition" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $check-tokens: () !default;
@@ -48,21 +49,37 @@ $check-tokens: defaults(
     border: 1px solid var(--theme-bg, var(--check-border-color));
     // stylelint-disable-next-line property-disallowed-list
     border-radius: 33%;
+    @include transition(
+      background-color var(--control-transition-duration) var(--control-transition-timing),
+      border-color var(--control-transition-duration) var(--control-transition-timing)
+    );
+
+    // Check/indeterminate mark, overlaid on the input and rendered via a CSS
+    // mask so it inherits the contrast color without an inline SVG. Always
+    // present but scaled/faded out until checked so it can pop in.
+    &::before {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      background-color: var(--theme-contrast, var(--primary-contrast));
+      opacity: 0;
+      transform: scale(0);
+      @include mask-icon();
+      @include transition(
+        opacity var(--control-transition-duration) var(--control-transition-timing),
+        transform var(--control-transition-duration) var(--control-transition-timing)
+      );
+    }
 
     &:checked,
     &:indeterminate {
       background-color: var(--theme-bg, var(--check-checked-bg));
       border-color: var(--theme-bg, var(--check-checked-border-color));
 
-      // Check/indeterminate mark, overlaid on the input and rendered via a CSS
-      // mask so it inherits the contrast color without an inline SVG.
       &::before {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        content: "";
-        background-color: var(--theme-contrast, var(--primary-contrast));
-        @include mask-icon();
+        opacity: 1;
+        transform: scale(1);
       }
     }
 

@@ -1,6 +1,7 @@
 @use "../functions" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/tokens" as *;
+@use "../mixins/transition" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $radio-tokens: () !default;
@@ -37,6 +38,26 @@ $radio-tokens: defaults(
     border: 1px solid var(--theme-bg, var(--radio-border-color));
     // stylelint-disable-next-line property-disallowed-list
     border-radius: 50%;
+    @include transition(
+      background-color var(--control-transition-duration) var(--control-transition-timing),
+      border-color var(--control-transition-duration) var(--control-transition-timing)
+    );
+
+    // Inner dot: always present but scaled/faded out until checked so it pops in.
+    &::before {
+      position: absolute;
+      inset: calc(var(--radio-size) * .25);
+      content: "";
+      background-color: currentcolor;
+      // stylelint-disable-next-line property-disallowed-list
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
+      @include transition(
+        opacity var(--control-transition-duration) var(--control-transition-timing),
+        transform var(--control-transition-duration) var(--control-transition-timing)
+      );
+    }
 
     &:checked {
       color: var(--theme-contrast, var(--primary-contrast));
@@ -44,12 +65,8 @@ $radio-tokens: defaults(
       border-color: var(--theme-bg, var(--radio-checked-border-color));
 
       &::before {
-        position: absolute;
-        inset: calc(var(--radio-size) * .25);
-        content: "";
-        background-color: currentcolor;
-        // stylelint-disable-next-line property-disallowed-list
-        border-radius: 50%;
+        opacity: 1;
+        transform: scale(1);
       }
     }
 

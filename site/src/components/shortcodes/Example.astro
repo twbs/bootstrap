@@ -47,6 +47,13 @@ interface Props {
   showPreview?: boolean
 }
 
+// Named slots:
+// - `actions`: optional nodes rendered in the code toolbar, to the left of the
+//   copy/StackBlitz icons (e.g. a replay button for a one-shot animation).
+//   Slots are how Astro passes renderable markup/components — there is no prop
+//   equivalent. Wire up any interactive behavior in
+//   `site/src/assets/partials/snippets.js`.
+
 const {
   addStackblitzJs = false,
   code,
@@ -86,7 +93,9 @@ const simplifiedMarkup = sourceMarkup
   }
   {
     showMarkup && (
-      <Code code={simplifiedMarkup} lang={lang} file={file} nestedInExample={true} addStackblitzJs={addStackblitzJs} />
+      <Code code={simplifiedMarkup} lang={lang} file={file} nestedInExample={true} addStackblitzJs={addStackblitzJs}>
+        <slot name="actions" slot="actions" />
+      </Code>
     )
   }
 </div>

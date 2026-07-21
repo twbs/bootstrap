@@ -183,6 +183,7 @@ $navbar-nav-tokens: defaults(
   .navbar-toggler {
     --btn-bg: transparent;
     --btn-hover-bg: var(--bg-2);
+    @include transition(var(--navbar-toggler-transition));
   }
 
   // Hamburger icon, rendered via CSS mask so it inherits the navbar color

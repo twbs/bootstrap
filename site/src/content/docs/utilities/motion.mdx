@@ -1,0 +1,66 @@
+---
+title: Motion
+description: Disable or apply CSS transitions and animations on individual elements with motion utilities.
+toc: true
+utility:
+  - transition
+  - animation
+---
+
+## Overview
+
+Bootstrap animates many components with CSS transitions and animations. The motion utilities let you disable that motion on a single element (`.transition-none`, `.animation-none`) or apply a small predefined animation (`.animation-shake`, `.animation-pop`).
+
+To disable motion globally at build time, set the `$enable-transitions` Sass option to `false` instead.
+
+## Transition
+
+Add `.transition-none` to set `transition: none`, so property changes apply instantly rather than animating. Hover both buttons below: the default one eases its hover color change, while the second snaps instantly.
+
+<Example class="d-flex gap-3" code={`<button type="button" class="btn-solid theme-primary">Default</button>
+<button type="button" class="btn-solid theme-primary transition-none">No hover transition</button>`} />
+
+## Animation
+
+### Disable an animation
+
+Add `.animation-none` to set `animation: none`, which stops any running keyframe animation (such as a spinner) on that element.
+
+<Example class="d-flex align-items-center gap-3" code={`<div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="spinner-border animation-none" role="status"><!--[!code highlight]-->
+    <span class="visually-hidden">Loading...</span>
+  </div>`} />
+
+### Shake
+
+Add `.animation-shake` to play a brief horizontal shake once. It pairs well with invalid form feedback—apply it to a field (or toggle it via JavaScript when validation fails) to draw attention to what needs fixing.
+
+<Example code={`<input type="text" class="form-control is-invalid animation-shake" id="motionShakeDemo" value="Not quite right">`}>
+  <button type="button" class="btn btn-xs fg-secondary bg-transparent" data-bd-replay="#motionShakeDemo" slot="actions"><svg class="bi" aria-hidden="true"><use href="#arrow-counterclockwise" /></svg>Replay</button>
+</Example>
+
+### Pop
+
+Add `.animation-pop` to scale an element in with a slight overshoot. It’s a good fit for content that appears dynamically, such as a badge whose count just updated.
+
+<Example code={`<span class="badge theme-primary animation-pop" id="motionPopDemo">New</span>`}>
+  <button type="button" class="btn btn-xs fg-secondary bg-transparent" data-bd-replay="#motionPopDemo" slot="actions"><svg class="bi" aria-hidden="true"><use href="#arrow-counterclockwise" /></svg>Replay</button>
+</Example>
+
+## Reduced motion
+
+`.transition-none` and `.animation-none` are always applied, regardless of a user’s motion preference—reach for them when you want to remove motion in every case. Bootstrap already respects the [`prefers-reduced-motion` media feature]([[docsref:/getting-started/accessibility#reduced-motion]]) for its own components, so you don’t need them just to honor that setting.
+
+The motion-adding utilities, `.animation-shake` and `.animation-pop`, are decorative, so they’re automatically disabled when the user prefers reduced motion.
+
+## CSS
+
+### Sass utilities API
+
+Motion utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-transition" file="scss/_utilities.scss" />
+
+<ScssDocs name="utils-animation" file="scss/_utilities.scss" />

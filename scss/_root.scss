@@ -53,6 +53,11 @@ $root-tokens: defaults(
     --shadow-strength: 1,
     // scss-docs-end root-box-shadow-variables
 
+    // scss-docs-start root-transition-variables
+    // Shared easing curve for overlay components (dialog, drawer, menu)
+    --transition-timing-overlay: cubic-bezier(.22, 1, .36, 1),
+    // scss-docs-end root-transition-variables
+
     --spacer: 1rem,
 
     // scss-docs-start root-focus-variables
@@ -69,6 +74,9 @@ $root-tokens: defaults(
     --control-active-border-color: var(--control-active-bg),
     --control-disabled-bg: var(--bg-3),
     --control-disabled-opacity: .65,
+    // Shared motion for checkbox/radio marks; slight overshoot so the mark pops in
+    --control-transition-duration: .15s,
+    --control-transition-timing: cubic-bezier(.34, 1.56, .64, 1),
 
     --btn-input-fg: var(--fg-body),
     --btn-input-bg: var(--bg-body),
@@ -80,6 +88,7 @@ $root-tokens: defaults(
     --btn-input-line-height: var(--body-line-height),
     --btn-input-border-radius: var(--radius-5),
 
+    --btn-input-xs-gap: var(--spacer-1),
     --btn-input-xs-min-height: 1.5rem,
     --btn-input-xs-padding-y: .125rem,
     --btn-input-xs-padding-x: .5rem,
