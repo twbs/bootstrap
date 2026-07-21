@@ -5382,6 +5382,10 @@ class DialogBase extends BaseComponent {
     if (this._element.open) {
       this._closeAndCleanup();
     }
+
+    // The `cancel` listener is unnamespaced, so super.dispose()'s EVENT_KEY
+    // teardown misses it — remove it here.
+    EventHandler.off(this._element, 'cancel');
     super.dispose();
   }
 
@@ -5506,7 +5510,9 @@ class DialogBase extends BaseComponent {
   _addDialogListeners() {
     const eventKey = this.constructor.EVENT_KEY;
 
-    // Handle native cancel event (Escape key) — only fires for modal dialogs
+    // Handle native cancel event (Escape key) — only fires for modal dialogs.
+    // Bound unnamespaced because `cancel` is a real native event, not one of
+    // our namespaced custom events; `dispose()` removes it explicitly.
     EventHandler.on(this._element, 'cancel', event => {
       event.preventDefault();
       if (!this._config.keyboard) {
@@ -5721,6 +5727,7 @@ const DATA_KEY$9 = 'bs.navoverflow';
 const EVENT_KEY$a = `.${DATA_KEY$9}`;
 const EVENT_UPDATE = `update${EVENT_KEY$a}`;
 const EVENT_OVERFLOW = `overflow${EVENT_KEY$a}`;
+const EVENT_RESIZE$2 = `resize${EVENT_KEY$a}`;
 const CLASS_NAME_OVERFLOW = 'nav-overflow';
 const CLASS_NAME_OVERFLOW_MENU = 'nav-overflow-menu';
 const CLASS_NAME_HIDDEN = 'd-none';
@@ -5760,7 +5767,6 @@ class NavOverflow extends BaseComponent {
     this._overflowToggle = null;
     this._resizeObserver = null;
     this._collapseBelow = 0;
-    this._isInitialized = false;
     this._init();
   }
 
@@ -5784,6 +5790,9 @@ class NavOverflow extends BaseComponent {
     if (this._resizeObserver) {
       this._resizeObserver.disconnect();
     }
+
+    // Remove the fallback resize listener bound on window
+    EventHandler.off(window, EVENT_RESIZE$2);
 
     // Move items back to original positions
     this._restoreItems();
@@ -5819,7 +5828,6 @@ class NavOverflow extends BaseComponent {
 
     // Initial calculation
     this._calculateOverflow();
-    this._isInitialized = true;
   }
   _createOverflowMenu() {
     // Check if overflow menu already exists
@@ -5868,8 +5876,9 @@ class NavOverflow extends BaseComponent {
   }
   _setupResizeObserver() {
     if (typeof ResizeObserver === 'undefined') {
-      // Fallback for older browsers
-      EventHandler.on(window, 'resize', () => this._calculateOverflow());
+      // Fallback for older browsers. Namespaced so dispose() can remove it from
+      // window (super.dispose() only clears listeners on this._element).
+      EventHandler.on(window, EVENT_RESIZE$2, () => this._calculateOverflow());
       return;
     }
     this._resizeObserver = new ResizeObserver(() => {
@@ -6415,7 +6424,7 @@ class Strength extends BaseComponent {
     const strength = this._scoreToStrength(score);
     if (strength !== this._currentStrength) {
       this._currentStrength = strength;
-      this._updateUI(strength, score);
+      this._updateUI(strength);
       EventHandler.trigger(this._element, EVENT_STRENGTH_CHANGE, {
         strength,
         score,
@@ -7056,9 +7065,14 @@ class Chips extends BaseComponent {
       this._anchorChip = null;
     }
 
-    // Remove from DOM and array
+    // Remove from DOM and array. Only drop a single entry: with
+    // `allowDuplicates`, filtering every match would strip other identical
+    // chips from state while their elements remain in the DOM.
     chip.remove();
-    this._chips = this._chips.filter(v => v !== value);
+    const valueIndex = this._chips.indexOf(value);
+    if (valueIndex !== -1) {
+      this._chips.splice(valueIndex, 1);
+    }
     EventHandler.trigger(this._element, EVENT_CHANGE$1, {
       values: this.getValues()
     });
@@ -8146,9 +8160,10 @@ class Tooltip extends BaseComponent {
 
       // Only set the cross-axis position (centering along the edge)
       // The main-axis position (which edge) is handled by CSS
+      // Floating UI reports the unused axis as `undefined`, never `null`
       Object.assign(arrowElement.style, {
-        left: isVertical && arrowX !== null ? `${arrowX}px` : '',
-        top: !isVertical && arrowY !== null ? `${arrowY}px` : '',
+        left: isVertical && arrowX !== undefined ? `${arrowX}px` : '',
+        top: !isVertical && arrowY !== undefined ? `${arrowY}px` : '',
         // Reset the other axis to let CSS handle it
         right: '',
         bottom: ''
@@ -8173,7 +8188,12 @@ class Tooltip extends BaseComponent {
           reference: rects.reference,
           floating: rects.floating
         }, this._element);
-        return result;
+        // Adapt a `[skidding, distance]` array to Floating UI's offset shape,
+        // matching how the array and string config forms are applied
+        return Array.isArray(result) ? {
+          mainAxis: result[1] || 0,
+          crossAxis: result[0] || 0
+        } : result;
       };
     }
     return offset;
@@ -9650,6 +9670,10 @@ const EVENT_TOGGLE = `toggle${EVENT_KEY}`;
 const EVENT_TOGGLED = `toggled${EVENT_KEY}`;
 const EVENT_CLICK = 'click';
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="toggler"]';
+// `value` is required: it's the class/attribute value every `_execute()`
+// branch acts on. The `null` default is a must-override placeholder, and
+// DefaultType intentionally omits `null` so `_typeCheckConfig` rejects a
+// Toggler constructed without one.
 const DefaultType = {
   attribute: 'string',
   value: '(string|number|boolean)'
