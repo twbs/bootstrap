@@ -18,9 +18,13 @@ Similar to checkboxes, radios are styled with the `.radio` class. However, there
 
 Wrap the `.radio` in a `.form-field` layout wrapper and add your label. The grid layout places the radio and label side by side.
 
-<Example code={`<div class="form-field">
-    <input type="radio" id="radioLabel" class="radio" />
-    <label for="radioLabel">Example new radio</label>
+<Example class="d-flex flex-column gap-2" code={`<div class="form-field">
+    <input class="radio" name="radios" type="radio" id="radioLabel" />
+    <label for="radioLabel">First example radio</label>
+  </div>
+  <div class="form-field">
+    <input class="radio" name="radios" type="radio" id="radioLabel2" />
+    <label for="radioLabel2">Second example radio</label>
   </div>`} />
 
 ## Description
