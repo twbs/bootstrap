@@ -46,6 +46,7 @@ Sass source in `scss/`, TypeScript source in `js/src/`, docs site in `site/` (As
 - Frontmatter schema: `title` (required), `description` (required), `toc`, `aliases`, `added`, `mdn`, `reference`, etc.
 - Shortcodes: `Example`, `Callout`, `Code`, `Details`
 - Internal links: `[[docsref:/path/]]`
+- JS component "Dependencies" tables are auto-generated — add a `### Dependencies` heading with `<JsDependencies component="<js-src-basename>" />` (before `### Options`) on any doc for a `js/src/*.ts` component. The table is derived at build time by walking the component's import graph in `site/src/libs/js-dependencies.ts`; never hand-write the file list. When a new source file or third-party package enters the graph, add its human-readable label to `FILE_DESCRIPTIONS` / `PACKAGE_DESCRIPTIONS` in that lib (the build throws if a label is missing).
 
 ## Formatting
 
