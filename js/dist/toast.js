@@ -10,7 +10,7 @@ import { reflow } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap toast.js
+ * Bootstrap toast.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

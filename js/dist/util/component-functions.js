@@ -9,7 +9,7 @@ import { isDisabled } from './index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/component-functions.js
+ * Bootstrap util/component-functions.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

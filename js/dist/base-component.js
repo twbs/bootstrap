@@ -10,7 +10,7 @@ import { getElement, executeAfterTransition } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap base-component.js
+ * Bootstrap base-component.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
