@@ -84,6 +84,7 @@ $root-tokens: defaults(
     --btn-input-fg: var(--fg-body),
     --btn-input-bg: var(--bg-body),
 
+    --btn-input-gap: .375rem,
     --btn-input-min-height: 2.375rem,
     --btn-input-padding-y: .375rem,
     --btn-input-padding-x: .75rem,
@@ -91,6 +92,7 @@ $root-tokens: defaults(
     --btn-input-line-height: var(--body-line-height),
     --btn-input-border-radius: var(--radius-5),
 
+    --btn-input-xs-gap: var(--spacer-1),
     --btn-input-xs-min-height: 1.5rem,
     --btn-input-xs-padding-y: .125rem,
     --btn-input-xs-padding-x: .5rem,
@@ -98,6 +100,7 @@ $root-tokens: defaults(
     --btn-input-xs-line-height: 1.125,
     --btn-input-xs-border-radius: var(--radius-5),
 
+    --btn-input-sm-gap: .375rem,
     --btn-input-sm-min-height: 2rem,
     --btn-input-sm-padding-y: .25rem,
     --btn-input-sm-padding-x: .625rem,
@@ -105,6 +108,7 @@ $root-tokens: defaults(
     --btn-input-sm-line-height: var(--line-height-sm),
     --btn-input-sm-border-radius: var(--radius-5),
 
+    --btn-input-lg-gap: .375rem,
     --btn-input-lg-min-height: 2.75rem,
     --btn-input-lg-padding-y: .5rem,
     --btn-input-lg-padding-x: 1rem,
