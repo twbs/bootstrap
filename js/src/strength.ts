@@ -138,7 +138,7 @@ class Strength extends BaseComponent {
 
     if (strength !== this._currentStrength) {
       this._currentStrength = strength
-      this._updateUI(strength, score)
+      this._updateUI(strength)
 
       EventHandler.trigger(this._element, EVENT_STRENGTH_CHANGE, {
         strength,
@@ -222,7 +222,6 @@ class Strength extends BaseComponent {
     return 'strong'
   }
 
-  _updateUI(strength: string | null, score: number): void
   _updateUI(strength: string | null): void {
     // Update data attribute on element
     if (strength) {
