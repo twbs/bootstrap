@@ -215,7 +215,8 @@ const highlightedCode =
           ) : (
             <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
           )}
-          <div class="d-flex ms-auto">
+          <div class="d-flex ms-auto align-items-center gap-1">
+            <slot name="actions" />
             {addStackblitzJs && (
               <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
                 <svg class="bi" aria-hidden="true">
@@ -269,7 +270,8 @@ const highlightedCode =
           ) : (
             <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
           )}
-          <div class="d-flex ms-auto">
+          <div class="d-flex ms-auto align-items-center gap-1">
+            <slot name="actions" />
             <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
               <svg class="bi fs-md" aria-hidden="true">
                 <use href="#copy" />
