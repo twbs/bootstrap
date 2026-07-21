@@ -94,6 +94,11 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | Print | `.d-print-none` | `.print:d-none` |
 </BsTable>
 
+- **New motion utilities.** Added `.transition-none` and `.animation-none` to switch off a component’s transition or keyframe animation on a single element, plus decorative `.animation-shake` and `.animation-pop` helpers. See the [Motion utilities]([[docsref:/utilities/motion]]) page. The decorative animations disable themselves under `prefers-reduced-motion`.
+- **Checkboxes, radios, and switches now animate their marks.** The checkbox tick, radio dot, and switch thumb ease in with a subtle overshoot, driven by shared `--control-transition-duration` and `--control-transition-timing` tokens so all three move in sync. The motion is skipped for users who prefer reduced motion, and no markup changes are required.
+- **Split the fade and collapse transition tokens.** v5’s single `$transition-fade` and `$transition-collapse` values are now CSS custom property pairs—`--transition-fade-duration` / `--transition-fade-timing` and `--transition-collapse-duration` / `--transition-collapse-timing`—so duration and easing can be tuned independently. Overlay components (dialog, drawer, menu) also share a new `--transition-timing-overlay` easing token. Update any overrides of the old values to the new token names.
+- **New `.hover-lift` helper.** Raises an element with a transform and deeper shadow on hover and keyboard focus, customizable via `--hover-lift-*` tokens and reduced-motion aware. See the [Hover lift]([[docsref:/helpers/hover-lift]]) helper.
+
 ### Sass
 
 - Dropped support for Node Sass, including no longer testing any of our source CSS against it.
@@ -154,6 +159,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed jQuery support and the `js-test-jquery` test target.
 - **Removed the internal `util/backdrop`, `util/focustrap`, and `util/scrollbar` helpers.** They’re obsolete now that Dialog and Drawer build on the native `<dialog>` element—the browser provides the backdrop (`::backdrop`), focus trap, and an inert top layer, and the body scroll-lock is handled in CSS (`:root.dialog-open` with `scrollbar-gutter: stable`). If you imported any of these modules directly from `bootstrap/js/src/util/`, they’re gone.
 - **Replaced the Dropdown component with Menu.** All `.dropdown-*` classes are now `.menu-*` classes, and `data-bs-toggle="dropdown"` is now `data-bs-toggle="menu"`. See the [Menu docs]([[docsref:/components/menus]]) for full details.
+- **Menu `shown.bs.menu` and `hidden.bs.menu` now fire after the CSS transition finishes**, rather than synchronously when `show()` / `hide()` are called—matching Dialog and Drawer. The menu also stays positioned in the DOM through its closing transition instead of being torn down immediately. Move any logic that assumed the old synchronous timing (or that the menu was removed the instant `hide()` returned) into the `shown` / `hidden` event handlers.
   - Renamed CSS classes: `.dropdown-menu` to `.menu`, `.dropdown-item` to `.menu-item`, `.dropdown-divider` to `.menu-divider`, `.dropdown-header` to `.menu-header`, `.dropdown-submenu` to `.submenu`.
   - Deprecated directional wrappers: `.dropstart`, `.dropend`, and `.dropup`. Use `data-bs-placement` to control direction instead (for example, `.dropup` becomes `data-bs-placement="top"`).
   - Removed the `.dropdown-toggle` class — menu toggles no longer require a toggle class.
