@@ -27,6 +27,7 @@ import {
   execute,
   getElement,
   getNextActiveElement,
+  getTransitionDurationFromElement,
   isDisabled,
   isElement,
   isRTL,
@@ -251,7 +252,15 @@ class Menu extends BaseComponent {
     }
 
     Menu._openInstances.add(this)
-    EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
+
+    // Wait for the CSS entry transition (opacity/transform) to finish before
+    // announcing `shown`, so listeners run against the settled menu.
+    await this._queueCallback(() => {
+      // Bail if the menu was hidden again mid-transition.
+      if (this._isShown()) {
+        EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
+      }
+    }, this._menu, this._isAnimated())
   }
 
   async hide(): Promise<void> {
@@ -263,7 +272,7 @@ class Menu extends BaseComponent {
       relatedTarget: this._element
     }
 
-    this._completeHide(relatedTarget)
+    await this._completeHide(relatedTarget)
   }
 
   override dispose(): void {
@@ -301,7 +310,7 @@ class Menu extends BaseComponent {
     return (wrapper instanceof Element ? wrapper : this._element.parentNode) as HTMLElement
   }
 
-  protected _completeHide(relatedTarget: Record<string, unknown>): void {
+  protected async _completeHide(relatedTarget: Record<string, unknown>): Promise<void> {
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
     if (hideEvent.defaultPrevented) {
       return
@@ -315,9 +324,11 @@ class Menu extends BaseComponent {
       }
     }
 
-    this._disposeFloating()
-    this._restoreMenuToOriginalParent()
-
+    // Start the exit transition by removing `.show`. Keep Floating UI active and
+    // the menu in its current DOM location so it animates out in place; the
+    // teardown (dispose floating, restore original parent) is deferred until the
+    // transition ends. Doing it now would move/reposition the menu mid-fade and
+    // make the exit animation appear to snap.
     this._menu.classList.remove(CLASS_NAME_SHOW)
     this._element.classList.remove(CLASS_NAME_SHOW)
 
@@ -326,10 +337,20 @@ class Menu extends BaseComponent {
     }
 
     this._element.setAttribute('aria-expanded', 'false')
-    Manipulator.removeDataAttribute(this._menu, 'placement')
-    Manipulator.removeDataAttribute(this._menu, 'display')
     Menu._openInstances.delete(this)
-    EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
+
+    await this._queueCallback(() => {
+      // Bail if the menu was reopened during the exit transition.
+      if (this._isShown()) {
+        return
+      }
+
+      this._disposeFloating()
+      this._restoreMenuToOriginalParent()
+      Manipulator.removeDataAttribute(this._menu, 'placement')
+      Manipulator.removeDataAttribute(this._menu, 'display')
+      EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
+    }, this._menu, this._isAnimated())
   }
 
   protected override _getConfig(config?: ComponentConfig | null): ComponentConfig {
@@ -401,6 +422,13 @@ class Menu extends BaseComponent {
 
   protected _isShown(): boolean {
     return this._menu.classList.contains(CLASS_NAME_SHOW)
+  }
+
+  protected _isAnimated(): boolean {
+    // The menu always defines its transition in CSS; treat a zero computed
+    // duration (e.g. reduced motion or disabled transitions) as non-animated so
+    // callbacks run synchronously.
+    return getTransitionDurationFromElement(this._menu) > 0
   }
 
   protected _getPlacement(): string {
