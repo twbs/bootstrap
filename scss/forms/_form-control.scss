@@ -118,18 +118,14 @@ $form-control-sizes: defaults(
     //   background-color: var(--red-500);
     // }
 
-    // Prevent excessive date input height in Webkit
-    // https://github.com/twbs/bootstrap/issues/34433
-
-    // TODO: verify these rules across the supported browser matrix
+    // Prevent excessive date input height in WebKit/Blink; see
+    // https://github.com/twbs/bootstrap/issues/34433. Firefox ignores these
+    // -webkit- pseudo-elements. Kept minimal so the field wrapper inherits the
+    // control's own font-size, line-height, and padding and scales with the size
+    // modifiers instead of a fixed height.
     &::-webkit-datetime-edit {
       display: block;
-      height: 1.5rem;
       padding: 0;
-      margin-bottom: -.125rem;
-    }
-    &::-webkit-datetime-edit-fields-wrapper {
-      height: 1.5rem;
     }
 
     // File inputs
