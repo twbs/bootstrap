@@ -1,0 +1,19 @@
+@import "../../functions";
+@import "../../variables";
+
+@include describe("list group variables") {
+  @include it("uses the regular item color for action items") {
+    @include assert-equal(
+      $list-group-action-color,
+      var(--#{$prefix}list-group-color),
+      "Action items should inherit the regular list group item color"
+    );
+  }
+
+  @include it("keeps action items visually distinct from disabled items") {
+    @include assert-true(
+      $list-group-action-color != $list-group-disabled-color,
+      "Action items should not use the disabled list group color"
+    );
+  }
+}
