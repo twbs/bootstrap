@@ -45,7 +45,7 @@ $menu-tokens: defaults(
     --menu-header-padding-x: .75rem,
     --menu-header-padding-y: .25rem,
     --menu-transition-duration: .15s,
-    --menu-transition-timing: cubic-bezier(.22, 1, .36, 1),
+    --menu-transition-timing: var(--transition-timing-overlay),
   ),
   $menu-tokens
 );

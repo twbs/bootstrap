@@ -53,6 +53,11 @@ $root-tokens: defaults(
     --shadow-strength: 1,
     // scss-docs-end root-box-shadow-variables
 
+    // scss-docs-start root-transition-variables
+    // Shared easing curve for overlay components (dialog, drawer, menu)
+    --transition-timing-overlay: cubic-bezier(.22, 1, .36, 1),
+    // scss-docs-end root-transition-variables
+
     --spacer: 1rem,
 
     // scss-docs-start root-focus-variables

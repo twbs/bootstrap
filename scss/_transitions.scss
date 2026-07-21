@@ -8,7 +8,8 @@ $collapse-tokens: () !default;
 // stylelint-disable scss/dollar-variable-default
 $fade-tokens: defaults(
   (
-    --transition-fade: opacity .15s linear,
+    --transition-fade-duration: .15s,
+    --transition-fade-timing: linear,
   ),
   $fade-tokens
 );
@@ -16,8 +17,8 @@ $fade-tokens: defaults(
 // scss-docs-start collapse-transition
 $collapse-tokens: defaults(
   (
-    --transition-collapse: height .35s ease,
-    --transition-collapse-width: width .35s ease,
+    --transition-collapse-duration: .35s,
+    --transition-collapse-timing: ease,
   ),
   $collapse-tokens
 );
@@ -25,7 +26,7 @@ $collapse-tokens: defaults(
 
 .fade {
   @include tokens($fade-tokens);
-  @include transition(var(--transition-fade));
+  @include transition(opacity var(--transition-fade-duration) var(--transition-fade-timing));
 
   &:not(.show) {
     opacity: 0;
@@ -43,12 +44,12 @@ $collapse-tokens: defaults(
   @include tokens($collapse-tokens);
   height: 0;
   overflow: hidden;
-  @include transition(var(--transition-collapse));
+  @include transition(height var(--transition-collapse-duration) var(--transition-collapse-timing));
 
   &.collapse-horizontal {
     width: 0;
     height: auto;
-    @include transition(var(--transition-collapse-width));
+    @include transition(width var(--transition-collapse-duration) var(--transition-collapse-timing));
   }
 }
 // scss-docs-end collapse-classes
