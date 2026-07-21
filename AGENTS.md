@@ -58,8 +58,10 @@ Sass source in `scss/`, JS source in `js/src/`, docs site in `site/` (Astro 5 + 
 
 ## Commits & PRs
 
-- Commit messages and PR descriptions: direct, succinct prose explaining why the change was made.
-- No "Test plan" section, no extra headings — just the summary.
+- Commit messages: direct, succinct prose explaining why the change was made.
+- PR descriptions: direct bulleted lists, minimal fluff — one bullet per notable change.
+- Reference related issues/PRs explicitly with `Fixes #{issue}`, `Closes #{issue}`, or `Supersedes #{pr}`.
+- No "Test plan" section and no extra headings — just the bullets and the references.
 
 ## Do not edit
 
