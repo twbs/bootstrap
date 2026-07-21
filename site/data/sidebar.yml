@@ -245,5 +245,8 @@
         - title: User select
     - group: Effects
       pages:
+        - title: Motion
+          meta:
+            - added: 6.0.0
         - title: Opacity
         - title: Shadows

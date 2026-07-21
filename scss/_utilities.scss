@@ -999,6 +999,26 @@ $utilities: map.merge(
       values: $zindex-levels,
     ),
     // scss-docs-end utils-zindex
+    // scss-docs-start utils-transition
+    "transition": (
+      property: transition,
+      class: transition,
+      values: (
+        none: none,
+      )
+    ),
+    // scss-docs-end utils-transition
+    // scss-docs-start utils-animation
+    "animation": (
+      property: animation,
+      class: animation,
+      values: (
+        none: none,
+        shake: shake .82s cubic-bezier(.36, .07, .19, .97) both,
+        pop: pop .3s cubic-bezier(.34, 1.56, .64, 1) both,
+      )
+    ),
+    // scss-docs-end utils-animation
   ),
   $utilities
 );
