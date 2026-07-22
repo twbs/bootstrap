@@ -7,7 +7,7 @@ import Placeholder from '@shortcodes/Placeholder.astro'
 export const title = 'Cheatsheet'
 export const extra_css = ['cheatsheet.css']
 export const extra_js = [{ src: 'cheatsheet.js' }]
-export const body_class = 'bg-body-tertiary'
+export const body_class = 'bg-1'
 ---
 
 <header class="bd-header bg-black bg-90 py-3 d-flex align-items-stretch border-bottom border-dark">
@@ -1181,7 +1181,7 @@ export const body_class = 'bg-body-tertiary'
       </div>
       <div>
         <Example showMarkup={false} code={`
-          <nav class="navbar lg:navbar-expand bg-body-tertiary">
+          <nav class="navbar lg:navbar-expand bg-1">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
                 <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy" style="filter: invert(1) grayscale(100%) brightness(200%);">
@@ -1391,7 +1391,7 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={`
-        <nav id="navbar-example2" class="navbar bg-body-tertiary px-3">
+        <nav id="navbar-example2" class="navbar bg-1 px-3">
           <a class="navbar-brand" href="#">Navbar</a>
           <ul class="nav nav-pills">
             <li class="nav-item">
