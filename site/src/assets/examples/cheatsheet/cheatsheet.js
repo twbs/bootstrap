@@ -13,12 +13,11 @@ document.querySelectorAll('[data-bs-toggle="popover"]')
   })
 
 document.querySelectorAll('.toast')
-  .forEach(toastNode => {
-    const toast = new Toast(toastNode, {
+  .forEach(toast => {
+    const toastInstance = new Toast(toast, {
       autohide: false
     })
-
-    toast.show()
+    toastInstance.show()
   })
 
 document.querySelectorAll('[href="#"], [type="submit"]')

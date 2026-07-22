@@ -33,6 +33,8 @@ const importMap = JSON.stringify({
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
 
+    {include_js !== false && <script type="importmap" is:inline set:html={importMap} />}
+
     <link rel="canonical" href={canonicalUrl} />
 
     {/* Loaded as `is:inline` (not via Vite) so the theme is applied before paint. */}
@@ -127,7 +129,6 @@ const importMap = JSON.stringify({
     {
       include_js !== false && (
         <Fragment>
-          <script type="importmap" is:inline set:html={importMap} />
           <script is:inline {...bootstrapJsProps} />
           {extra_js?.map((js) => (
             <script
