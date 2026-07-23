@@ -709,6 +709,35 @@ describe('Modal', () => {
       })
     })
 
+    it('should hide a modal and not remove role="dialog" if already present', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="modal" role="dialog"><div class="modal-dialog"></div></div>'
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const modal = new Modal(modalEl)
+        const backdropSpy = spyOn(modal._backdrop, 'hide').and.callThrough()
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          modal.hide()
+        })
+
+        modalEl.addEventListener('hide.bs.modal', event => {
+          expect(event).toBeDefined()
+        })
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+          expect(modalEl.getAttribute('aria-modal')).toBeNull()
+          expect(modalEl.getAttribute('role')).toEqual('dialog')
+          expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
+          expect(modalEl.style.display).toEqual('none')
+          expect(backdropSpy).toHaveBeenCalled()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
+
     it('should close modal when clicking outside of modal-content', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
