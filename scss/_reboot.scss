@@ -25,7 +25,8 @@
 // Ability to the value of the root font sizes, affecting the value of `rem`.
 // null by default, thus nothing is generated.
 
-:root {
+:root,
+:host {
   @if $font-size-root != null {
     @include font-size(var(--#{$prefix}root-font-size));
   }
