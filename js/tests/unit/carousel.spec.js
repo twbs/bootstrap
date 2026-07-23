@@ -59,9 +59,9 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const carouselBySelector = new Carousel('#myCarousel')
-      const carouselByElement = new Carousel(carouselEl)
-
       expect(carouselBySelector._element).toEqual(carouselEl)
+
+      const carouselByElement = new Carousel(carouselEl)
       expect(carouselByElement._element).toEqual(carouselEl)
     })
 
