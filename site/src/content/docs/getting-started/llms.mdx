@@ -1,0 +1,35 @@
+---
+title: LLMs
+description: Bootstrap’s machine-readable documentation and agent skills for large language models and AI-powered coding tools.
+toc: true
+---
+
+Bootstrap ships resources built for large language models and AI-powered coding tools: machine-readable documentation you can feed to an LLM, and a set of agent skills that walk coding agents through common Bootstrap tasks step by step.
+
+## For AI tools & LLMs
+
+Our documentation is available in a machine-readable format for large language models and AI-powered tools, following the [llms.txt](https://llmstxt.org/) convention.
+
+<BsTable>
+| File | Description | Link |
+| --- | --- | --- |
+| `llms.txt` | A curated index of every documentation page with links and descriptions. | [/llms.txt](/llms.txt) |
+| `llms-full.txt` | The full text of the documentation concatenated into a single file for direct ingestion. | [/llms-full.txt](/llms-full.txt) |
+</BsTable>
+
+## Skills
+
+Bootstrap ships [agent skills](https://github.com/twbs/bootstrap/tree/main/skills) in the `skills/` directory of our repository. Each skill is a `SKILL.md` file—a focused, phase-by-phase playbook that a coding agent like Claude can follow to complete a specific Bootstrap task, from migrating a project to setting up a new build.
+
+To use one, point your agent at the relevant `SKILL.md` file (or copy it into your project) and describe what you want to do. The skill’s `description` field tells the agent when it applies, and its steps keep the agent aligned with our official guidance. Always review an agent’s changes against the matching documentation.
+
+<BsTable>
+| Skill | Description | Guide |
+| --- | --- | --- |
+| [`bootstrap-v5-v6-migration`](https://github.com/twbs/bootstrap/tree/main/skills/bootstrap-v5-v6-migration) | Migrate a project from Bootstrap 5 to Bootstrap 6—dependencies, class and attribute renames, component restructuring, JavaScript, and Sass. | [Migration]([[docsref:/guides/migration]]) |
+| [`bootstrap-v6-install`](https://github.com/twbs/bootstrap/tree/main/skills/bootstrap-v6-install) | Add Bootstrap 6 to a project and set it up for local development via CDN or npm, with Sass `@use` and ESM JavaScript. | [Install]([[docsref:/getting-started/install]]) |
+| [`bootstrap-npm`](https://github.com/twbs/bootstrap/tree/main/skills/bootstrap-npm) | Build a starter project that compiles Bootstrap’s Sass and JavaScript using just npm and command-line tools. | [Bootstrap and npm]([[docsref:/guides/npm]]) |
+| [`bootstrap-webpack`](https://github.com/twbs/bootstrap/tree/main/skills/bootstrap-webpack) | Include and bundle Bootstrap’s CSS and JavaScript in a project using Webpack. | [Bootstrap and Webpack]([[docsref:/guides/webpack]]) |
+| [`bootstrap-parcel`](https://github.com/twbs/bootstrap/tree/main/skills/bootstrap-parcel) | Include and bundle Bootstrap’s CSS and JavaScript in a project using Parcel. | [Bootstrap and Parcel]([[docsref:/guides/parcel]]) |
+| [`bootstrap-vite`](https://github.com/twbs/bootstrap/tree/main/skills/bootstrap-vite) | Include and bundle Bootstrap’s CSS and JavaScript in a project using Vite. | [Bootstrap and Vite]([[docsref:/guides/vite]]) |
+</BsTable>

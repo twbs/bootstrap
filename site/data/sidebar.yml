@@ -7,6 +7,7 @@
   icon_color: indigo
   pages:
     - title: Install
+    - title: LLMs
     - title: Approach
     - title: CSS variables
     - title: JavaScript

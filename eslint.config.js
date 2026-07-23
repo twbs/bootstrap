@@ -418,6 +418,15 @@ const eslintConfig = [
     rules: {
       'unicorn/prefer-node-protocol': 'off'
     }
+  },
+
+  // Agent skill code blocks are illustrative docs (mirroring the docs guides),
+  // so allow side-effect imports like `import './styles.scss'` in bundler setups.
+  {
+    files: ['skills/**/*.md/*.js', 'skills/**/*.md/*.mjs'],
+    rules: {
+      'import/no-unassigned-import': 'off'
+    }
   }
 ]
 
