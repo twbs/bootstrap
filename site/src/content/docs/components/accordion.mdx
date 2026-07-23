@@ -140,6 +140,63 @@ Omit the `data-bs-parent` attribute on each `.accordion-collapse` to make accord
     </div>
   </div>`} />
 
+### Nested
+
+Accordions can be nested by placing one accordion inside the `.accordion-body` of another. The `data-bs-parent` attribute on the nested `.accordion-collapse` elements must reference the nested accordion’s container (not the outer one), so that opening or closing nested items doesn’t affect the parent accordion’s state.
+
+<Example code={`<div class="accordion" id="accordionNestingExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#nestingCollapseOne" aria-expanded="true" aria-controls="nestingCollapseOne">
+          Parent Accordion Item #1
+        </button>
+      </h2>
+      <div id="nestingCollapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionNestingExample">
+        <div class="accordion-body">
+          <strong>This is the first parent item’s accordion body.</strong> It contains another, nested accordion.
+          <div class="accordion mt-3" id="accordionNestedExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseOne" aria-expanded="true" aria-controls="nestedCollapseOne">
+                  Nested Accordion Item #1
+                </button>
+              </h2>
+              <div id="nestedCollapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionNestedExample">
+                <div class="accordion-body">
+                  <strong>This is the first nested item’s accordion body.</strong> Note how its <code>data-bs-parent</code> targets the nested accordion, not the outer one.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                  Nested Accordion Item #2
+                </button>
+              </h2>
+              <div id="nestedCollapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionNestedExample">
+                <div class="accordion-body">
+                  <strong>This is the second nested item’s accordion body.</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nestingCollapseTwo" aria-expanded="false" aria-controls="nestingCollapseTwo">
+          Parent Accordion Item #2
+        </button>
+      </h2>
+      <div id="nestingCollapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionNestingExample">
+        <div class="accordion-body">
+          <strong>This is the second parent item’s accordion body.</strong>
+        </div>
+      </div>
+    </div>
+  </div>`} />
+
 ## Accessibility
 
 Please read the [collapse accessibility section]([[docsref:/components/collapse#accessibility]]) for more information.
