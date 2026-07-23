@@ -45,7 +45,7 @@ function setActiveItem() {
 
   link.classList.add('active')
 
-  if (parent.classList.contains('collapsed')) {
+  if (parent.getAttribute('aria-expanded') === 'false') {
     parent.click()
   }
 
