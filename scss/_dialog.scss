@@ -76,6 +76,7 @@ $dialog-sizes: defaults(
     flex-direction: column;
     width: var(--dialog-width);
     max-width: calc(100% - var(--dialog-margin) * 2);
+    min-height: max-content;
     max-height: calc(100% - var(--dialog-margin) * 2);
     padding: 0;
     margin: auto;
@@ -97,8 +98,10 @@ $dialog-sizes: defaults(
       // Exit transition: opacity and transform animate out, then visibility
       // flips hidden after the animation completes (via the delay).
       @include transition(
-        opacity var(--dialog-transition-duration) var(--dialog-transition-timing),
-        transform var(--dialog-transition-duration) var(--dialog-transition-timing),
+        opacity var(--dialog-transition-duration)
+        var(--dialog-transition-timing),
+        transform var(--dialog-transition-duration)
+        var(--dialog-transition-timing),
         visibility 0s var(--dialog-transition-duration)
       );
 
@@ -128,8 +131,10 @@ $dialog-sizes: defaults(
         visibility: visible;
         opacity: 1;
         @include transition(
-          opacity var(--dialog-transition-duration) var(--dialog-transition-timing),
-          transform var(--dialog-transition-duration) var(--dialog-transition-timing),
+          opacity var(--dialog-transition-duration)
+          var(--dialog-transition-timing),
+          transform var(--dialog-transition-duration)
+          var(--dialog-transition-timing),
           visibility 0s
         );
         transform: none;
@@ -148,7 +153,10 @@ $dialog-sizes: defaults(
       &::backdrop {
         background-color: var(--dialog-backdrop-bg);
         backdrop-filter: blur(var(--dialog-backdrop-blur));
-        @include backdrop-transitions(var(--dialog-transition-duration), var(--dialog-transition-timing));
+        @include backdrop-transitions(
+          var(--dialog-transition-duration),
+          var(--dialog-transition-timing)
+        );
       }
 
       // Exit: fade the native backdrop out alongside the dialog. The dialog
@@ -225,7 +233,9 @@ $dialog-sizes: defaults(
 
   // Dialog sizes
   @each $size, $value in $dialog-sizes {
-    .dialog-#{$size} { --dialog-width: #{$value}; }
+    .dialog-#{$size} {
+      --dialog-width: #{$value};
+    }
   }
 
   // Fullscreen dialog
@@ -263,7 +273,9 @@ $dialog-sizes: defaults(
   // Dialog header
   .dialog-header {
     @include dialog-header(var(--dialog-header-padding));
-    border-block-end: var(--dialog-header-border-width) solid var(--dialog-header-border-color);
+    border-block-end:
+      var(--dialog-header-border-width) solid
+      var(--dialog-header-border-color);
 
     .btn-close {
       margin-inline-start: auto;
@@ -284,6 +296,11 @@ $dialog-sizes: defaults(
 
   // Dialog footer
   .dialog-footer {
-    @include dialog-footer(var(--dialog-footer-padding), var(--dialog-footer-gap), var(--dialog-footer-border-width), var(--dialog-footer-border-color));
+    @include dialog-footer(
+      var(--dialog-footer-padding),
+      var(--dialog-footer-gap),
+      var(--dialog-footer-border-width),
+      var(--dialog-footer-border-color)
+    );
   }
 }
