@@ -941,6 +941,61 @@ describe('Collapse', () => {
         trigger3.click()
       })
     })
+
+    it('should keep multi-target trigger expanded when the first matched target is hidden first', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<a id="triggerMulti" role="button" data-bs-toggle="collapse" href=".multi"></a>',
+          '<a id="triggerFirst" role="button" data-bs-toggle="collapse" href="#first"></a>',
+          '<div id="first" class="collapse multi show"></div>',
+          '<div id="second" class="collapse multi show"></div>'
+        ].join('')
+
+        const triggerMulti = fixtureEl.querySelector('#triggerMulti')
+        const triggerFirst = fixtureEl.querySelector('#triggerFirst')
+        const first = fixtureEl.querySelector('#first')
+        const second = fixtureEl.querySelector('#second')
+
+        // Ensure trigger state is initialized against both open targets
+        Collapse.getOrCreateInstance(first, { toggle: false })
+        Collapse.getOrCreateInstance(second, { toggle: false })
+
+        expect(triggerMulti.getAttribute('aria-expanded')).toEqual('true')
+        expect(triggerMulti).not.toHaveClass('collapsed')
+
+        first.addEventListener('hidden.bs.collapse', () => {
+          expect(first).not.toHaveClass('show')
+          expect(second).toHaveClass('show')
+          expect(triggerMulti.getAttribute('aria-expanded')).toEqual('true')
+          expect(triggerMulti).not.toHaveClass('collapsed')
+          resolve()
+        })
+
+        triggerFirst.click()
+      })
+    })
+
+    it('should set aria-expanded to false when data-bs-target selector includes .collapse', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="wrapper">',
+          '  <button type="button" data-bs-toggle="collapse" data-bs-target="#wrapper .collapse" aria-expanded="true">Toggle</button>',
+          '  <div class="collapse show">Content</div>',
+          '</div>'
+        ].join('')
+
+        const trigger = fixtureEl.querySelector('button')
+        const target = fixtureEl.querySelector('.collapse')
+
+        target.addEventListener('hidden.bs.collapse', () => {
+          expect(trigger.getAttribute('aria-expanded')).toEqual('false')
+          expect(trigger).toHaveClass('collapsed')
+          resolve()
+        })
+
+        trigger.click()
+      })
+    })
   })
 
   describe('jQueryInterface', () => {
