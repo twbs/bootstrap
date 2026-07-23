@@ -1,6 +1,7 @@
 ---
 name: bootstrap-webpack
 description: Include and bundle Bootstrap 6's CSS and JavaScript in a project using Webpack. Use when setting up Bootstrap with Webpack, configuring Webpack loaders for Bootstrap's Sass and JS, or creating a Webpack-based Bootstrap project.
+guide: /guides/webpack
 ---
 
 # Bootstrap 6 with Webpack
@@ -9,16 +10,16 @@ Set up a Bootstrap 6 project bundled with Webpack, including the loaders needed 
 
 ## Workflow
 
-- [ ] Phase 1: Set up npm and install dependencies
-- [ ] Phase 2: Create the project structure
-- [ ] Phase 3: Configure Webpack (boilerplate + dev server)
-- [ ] Phase 4: Set up loaders and import Bootstrap
-- [ ] Phase 5: Verify
-- [ ] Phase 6 (optional): Production optimizations
+- [ ] Step 1: Set up npm and install dependencies
+- [ ] Step 2: Create the project structure
+- [ ] Step 3: Configure Webpack (boilerplate + dev server)
+- [ ] Step 4: Set up loaders and import Bootstrap
+- [ ] Step 5: Verify
+- [ ] Step 6 (optional): Production optimizations
 
 ---
 
-## Phase 1: Set up npm and install dependencies
+## Step 1: Set up npm and install dependencies
 
 1. Create the project and initialize npm:
 
@@ -47,7 +48,7 @@ Set up a Bootstrap 6 project bundled with Webpack, including the loaders needed 
 
 ---
 
-## Phase 2: Create the project structure
+## Step 2: Create the project structure
 
 ```sh
 mkdir {src,src/js,src/scss}
@@ -71,7 +72,7 @@ my-project/
 
 ---
 
-## Phase 3: Configure Webpack
+## Step 3: Configure Webpack
 
 1. `webpack.config.js` — entry, output, and dev server:
 
@@ -138,7 +139,7 @@ my-project/
 
 ---
 
-## Phase 4: Set up loaders and import Bootstrap
+## Step 4: Set up loaders and import Bootstrap
 
 1. Add the `module.rules` loader chain to `webpack.config.js` (order matters: `sass-loader` compiles, `postcss-loader` runs Autoprefixer, `css-loader` resolves imports, `style-loader` injects CSS):
 
@@ -196,6 +197,8 @@ my-project/
    @use "bootstrap/scss/bootstrap";
    ```
 
+   To customize, override Bootstrap's CSS token maps (`$root-tokens`, `$*-tokens`) — see [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written unprefixed in Sass; Bootstrap's dist/CDN CSS adds the `--bs-` prefix via PostCSS, so compiling the source yourself keeps them unprefixed.
+
 3. `src/js/main.js` — load the CSS and import Bootstrap's JS. Floating UI and Vanilla Calendar Pro are imported automatically through Bootstrap:
 
    ```js
@@ -212,7 +215,7 @@ my-project/
 
 ---
 
-## Phase 5: Verify
+## Step 5: Verify
 
 1. Run `npm start` and open `http://localhost:8080` — the `.container` and `.btn-solid.theme-primary` button should be styled.
 2. Confirm the console is free of module-resolution or loader errors.
@@ -221,7 +224,7 @@ my-project/
 
 ---
 
-## Phase 6 (optional): Production optimizations
+## Step 6 (optional): Production optimizations
 
 Not required for a working setup; apply only if needed.
 

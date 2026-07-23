@@ -1,6 +1,7 @@
 ---
 name: bootstrap-parcel
 description: Include and bundle Bootstrap 6's CSS and JavaScript in a project using Parcel. Use when setting up Bootstrap with Parcel, bundling Bootstrap's Sass and JS through Parcel, or creating a Parcel-based Bootstrap project.
+guide: /guides/parcel
 ---
 
 # Bootstrap 6 with Parcel
@@ -9,15 +10,15 @@ Set up a Bootstrap 6 project bundled with Parcel. Parcel is zero-config and auto
 
 ## Workflow
 
-- [ ] Phase 1: Set up npm and install dependencies
-- [ ] Phase 2: Create the project structure
-- [ ] Phase 3: Configure Parcel (HTML + npm script)
-- [ ] Phase 4: Import Bootstrap's CSS and JS
-- [ ] Phase 5: Verify
+- [ ] Step 1: Set up npm and install dependencies
+- [ ] Step 2: Create the project structure
+- [ ] Step 3: Configure Parcel (HTML + npm script)
+- [ ] Step 4: Import Bootstrap's CSS and JS
+- [ ] Step 5: Verify
 
 ---
 
-## Phase 1: Set up npm and install dependencies
+## Step 1: Set up npm and install dependencies
 
 1. Create the project and initialize npm:
 
@@ -42,7 +43,7 @@ Parcel will auto-install the [Sass plugin](https://parceljs.org/languages/sass/)
 
 ---
 
-## Phase 2: Create the project structure
+## Step 2: Create the project structure
 
 ```sh
 mkdir {src,src/js,src/scss}
@@ -65,7 +66,7 @@ my-project/
 
 ---
 
-## Phase 3: Configure Parcel
+## Step 3: Configure Parcel
 
 1. `src/index.html` — link the Sass and JS entry points directly (Parcel resolves and bundles them):
 
@@ -107,7 +108,7 @@ my-project/
 
 ---
 
-## Phase 4: Import Bootstrap's CSS and JS
+## Step 4: Import Bootstrap's CSS and JS
 
 1. `src/scss/styles.scss` — import the source Sass with `@use` (never `@import`):
 
@@ -115,6 +116,8 @@ my-project/
    // Import all of Bootstrap's CSS
    @use "bootstrap/scss/bootstrap";
    ```
+
+   To customize, override Bootstrap's CSS token maps (`$root-tokens`, `$*-tokens`) — see [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written unprefixed in Sass; Bootstrap's dist/CDN CSS adds the `--bs-` prefix via PostCSS, so compiling the source yourself keeps them unprefixed.
 
 2. `src/js/main.js` — import Bootstrap's JS. Floating UI and Vanilla Calendar Pro are imported automatically through Bootstrap:
 
@@ -131,7 +134,7 @@ my-project/
 
 ---
 
-## Phase 5: Verify
+## Step 5: Verify
 
 1. Run `npm start` and open the served URL — the `.container` and `.btn-solid.theme-primary` button should be styled.
 2. Confirm Parcel installed the Sass transformer (no `.scss` build errors) and the console is free of module errors.

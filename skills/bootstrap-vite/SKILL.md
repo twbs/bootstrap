@@ -1,6 +1,7 @@
 ---
 name: bootstrap-vite
 description: Include and bundle Bootstrap 6's CSS and JavaScript in a project using Vite. Use when setting up Bootstrap with Vite, bundling Bootstrap's Sass and JS through Vite, or creating a Vite-based Bootstrap project.
+guide: /guides/vite
 ---
 
 # Bootstrap 6 with Vite
@@ -9,15 +10,15 @@ Set up a Bootstrap 6 project bundled with Vite. Requires Node.js and terminal fa
 
 ## Workflow
 
-- [ ] Phase 1: Set up npm and install dependencies
-- [ ] Phase 2: Create the project structure
-- [ ] Phase 3: Configure Vite
-- [ ] Phase 4: Import Bootstrap's CSS and JS
-- [ ] Phase 5: Verify
+- [ ] Step 1: Set up npm and install dependencies
+- [ ] Step 2: Create the project structure
+- [ ] Step 3: Configure Vite
+- [ ] Step 4: Import Bootstrap's CSS and JS
+- [ ] Step 5: Verify
 
 ---
 
-## Phase 1: Set up npm and install dependencies
+## Step 1: Set up npm and install dependencies
 
 1. Create the project and initialize npm:
 
@@ -46,7 +47,7 @@ Set up a Bootstrap 6 project bundled with Vite. Requires Node.js and terminal fa
 
 ---
 
-## Phase 2: Create the project structure
+## Step 2: Create the project structure
 
 ```sh
 mkdir {src,src/js,src/scss}
@@ -60,9 +61,9 @@ my-project/
 ├── src/
 │   ├── js/
 │   │   └── main.js
-│   └── scss/
-│   |   └── styles.scss
-|   └── index.html
+│   ├── scss/
+│   │   └── styles.scss
+│   └── index.html
 ├── package-lock.json
 ├── package.json
 └── vite.config.js
@@ -70,7 +71,7 @@ my-project/
 
 ---
 
-## Phase 3: Configure Vite
+## Step 3: Configure Vite
 
 1. `vite.config.js`:
 
@@ -127,7 +128,7 @@ my-project/
 
 ---
 
-## Phase 4: Import Bootstrap's CSS and JS
+## Step 4: Import Bootstrap's CSS and JS
 
 1. `src/scss/styles.scss` — import the source Sass with `@use` (never `@import`):
 
@@ -135,6 +136,8 @@ my-project/
    // Import all of Bootstrap's CSS
    @use "bootstrap/scss/bootstrap";
    ```
+
+   To customize, override Bootstrap's CSS token maps (`$root-tokens`, `$*-tokens`) — see [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written unprefixed in Sass; Bootstrap's dist/CDN CSS adds the `--bs-` prefix via PostCSS, so compiling the source yourself keeps them unprefixed.
 
 2. `src/js/main.js` — load the CSS and import Bootstrap's JS. Floating UI and Vanilla Calendar Pro are imported automatically through Bootstrap:
 
@@ -152,7 +155,7 @@ my-project/
 
 ---
 
-## Phase 5: Verify
+## Step 5: Verify
 
 1. Run `npm start` and open `http://localhost:8080` — the `.container` and `.btn-solid.theme-primary` button should be styled.
 2. Confirm the browser console is free of module-resolution errors (Bootstrap, Floating UI, Vanilla Calendar Pro).

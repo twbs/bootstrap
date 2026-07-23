@@ -1,6 +1,7 @@
 ---
 name: bootstrap-npm
 description: Build a Bootstrap 6 starter project using just npm and command-line tools (no bundler). Use when setting up Bootstrap with npm, compiling Bootstrap's Sass to CSS from the command line, or creating an npm-based Bootstrap project.
+guide: /guides/npm
 ---
 
 # Bootstrap 6 with npm
@@ -9,15 +10,15 @@ Set up a Bootstrap 6 project that compiles Sass to CSS using npm command-line to
 
 ## Workflow
 
-- [ ] Phase 1: Set up npm and install dependencies
-- [ ] Phase 2: Create the project structure
-- [ ] Phase 3: Configure npm scripts and config files
-- [ ] Phase 4: Import Bootstrap's Sass
-- [ ] Phase 5: Verify
+- [ ] Step 1: Set up npm and install dependencies
+- [ ] Step 2: Create the project structure
+- [ ] Step 3: Configure npm scripts and config files
+- [ ] Step 4: Import Bootstrap's Sass
+- [ ] Step 5: Verify
 
 ---
 
-## Phase 1: Set up npm and install dependencies
+## Step 1: Set up npm and install dependencies
 
 1. Create the project and initialize npm:
 
@@ -46,7 +47,7 @@ Set up a Bootstrap 6 project that compiles Sass to CSS using npm command-line to
 
 ---
 
-## Phase 2: Create the project structure
+## Step 2: Create the project structure
 
 ```sh
 mkdir {css,scss}
@@ -69,7 +70,7 @@ my-project/
 
 ---
 
-## Phase 3: Configure npm scripts and config files
+## Step 3: Configure npm scripts and config files
 
 1. `postcss.config.js` — run Autoprefixer after Sass:
 
@@ -137,7 +138,7 @@ my-project/
 
 ---
 
-## Phase 4: Import Bootstrap's Sass
+## Step 4: Import Bootstrap's Sass
 
 Add to `scss/styles.scss` using the modern `@use` rule (never `@import`):
 
@@ -157,9 +158,11 @@ Customize tokens with `with ()` — include only the keys you want to change:
 );
 ```
 
+Override CSS custom properties through the token maps (`$root-tokens` and each component's `$*-tokens` map), following [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written **unprefixed** in Sass (e.g. `--border-radius`, `--spacer`); Bootstrap's dist/CDN CSS runs PostCSS to add the `--bs-` prefix, so compiling the source yourself keeps them unprefixed.
+
 ---
 
-## Phase 5: Verify
+## Step 5: Verify
 
 1. Run `npm start` and open `http://localhost:8080` — the `.container` and `.btn-solid.theme-primary` button should be styled once the CSS compiles.
 2. Confirm `css/styles.css` is generated and updates when you edit `scss/styles.scss` (watch is running).

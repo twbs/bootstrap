@@ -1,24 +1,25 @@
 ---
 name: bootstrap-v5-v6-migration
 description: Migrate projects from Bootstrap 5 to Bootstrap 6. Use when upgrading Bootstrap, migrating v5 to v6, or updating Bootstrap class names, components, Sass, or JavaScript to the latest version.
+guide: /guides/migration
 ---
 
 # Bootstrap v5 to v6 Migration
 
 ## Workflow
 
-Work through each phase in order. After each phase, search the codebase for remaining v5 patterns before moving on.
+Work through each step in order. After each step, search the codebase for remaining v5 patterns before moving on.
 
-- [ ] Phase 1: Update dependencies and build setup
-- [ ] Phase 2: Rename CSS classes and data attributes
-- [ ] Phase 3: Restructure component HTML
-- [ ] Phase 4: Update JavaScript
-- [ ] Phase 5: Update Sass
-- [ ] Phase 6: Verify
+- [ ] Step 1: Update dependencies and build setup
+- [ ] Step 2: Rename CSS classes and data attributes
+- [ ] Step 3: Restructure component HTML
+- [ ] Step 4: Update JavaScript
+- [ ] Step 5: Update Sass
+- [ ] Step 6: Verify
 
 ---
 
-## Phase 1: Dependencies & Build
+## Step 1: Dependencies & Build
 
 1. Update `package.json`: `"bootstrap": "^6.0.0"`
 2. Replace `@popperjs/core` with `@floating-ui/dom`
@@ -32,15 +33,19 @@ Work through each phase in order. After each phase, search the codebase for rema
 // v6
 @use "bootstrap/scss/bootstrap";
 
-// v6 with overrides
+// v6 with overrides — customize CSS tokens through the token maps
 @use "bootstrap/scss/bootstrap" with (
-  $spacer: 1rem
+  $root-tokens: (
+    --spacer: 1rem,
+  )
 );
 ```
 
+Customize by overriding the CSS token maps — `$root-tokens` for global tokens and each component's `$*-tokens` map — rather than legacy Sass scalars. See [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written **unprefixed** in Sass (e.g. `--spacer`, `--border-radius`); Bootstrap's dist/CDN CSS runs PostCSS to add the `--bs-` prefix (`--bs-spacer`), so when you compile the source yourself the properties stay unprefixed.
+
 ---
 
-## Phase 2: CSS Class & Attribute Renames
+## Step 2: CSS Class & Attribute Renames
 
 ### Responsive & state prefix syntax
 
@@ -83,7 +88,7 @@ Three components have been fully renamed. Find-and-replace these prefixes across
 | CSS vars | `--modal-*` | `--dialog-*` |
 | Body class | `.modal-open` on `<body>` | `.dialog-open` on `<html>` |
 
-Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Phase 3.
+Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Step 3.
 
 #### Offcanvas -> Drawer
 
@@ -106,7 +111,7 @@ Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Phase 3.
 | Events | `*.bs.dropdown` | `*.bs.menu` |
 | Sass | `$zindex-dropdown` | `$zindex-menu` |
 
-Also remove: `.dropdown-toggle` (no longer needed), `.dropdown` wrapper, `.dropdown-toggle-split`. See Phase 3 for new markup.
+Also remove: `.dropdown-toggle` (no longer needed), `.dropdown` wrapper, `.dropdown-toggle-split`. See Step 3 for new markup.
 
 ### Button & badge variants -> theme tokens
 
@@ -170,7 +175,7 @@ Keys 3-5 have changed values. To preserve v5 spacing: `.p-3` (1rem) -> `.p-4`, `
 
 ---
 
-## Phase 3: Structural HTML Changes
+## Step 3: Structural HTML Changes
 
 These components have fundamentally new markup, not just class renames.
 
@@ -353,7 +358,7 @@ Add `.breadcrumb-link` on `<a>` elements. Add `.breadcrumb-divider` separator el
 
 ---
 
-## Phase 4: JavaScript
+## Step 4: JavaScript
 
 ### ESM-only
 
@@ -415,7 +420,7 @@ document.querySelectorAll('form[data-bs-validate]')
 
 ---
 
-## Phase 5: Sass
+## Step 5: Sass
 
 ### Renamed files
 
@@ -529,7 +534,7 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 
 ---
 
-## Phase 6: Verify
+## Step 6: Verify
 
 1. Build the project and fix any compilation errors.
 2. Search for remaining v5 patterns:

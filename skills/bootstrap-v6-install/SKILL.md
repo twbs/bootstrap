@@ -1,6 +1,7 @@
 ---
 name: bootstrap-v6-install
 description: Add Bootstrap 6 to a project and set it up for local development. Use when installing Bootstrap, adding Bootstrap to a new or existing project, or setting up Bootstrap's CSS and JavaScript via CDN or a package manager.
+guide: /getting-started/install
 ---
 
 # Add Bootstrap 6 to a Project
@@ -40,19 +41,19 @@ Add Bootstrap's CSS in `<head>` and the JS bundle before the closing `</body>`. 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-<hash>" crossorigin="anonymous">
   </head>
   <body>
     <div class="container py-4 px-3 mx-auto">
       <h1>Hello, Bootstrap!</h1>
       <button class="btn-solid theme-primary">Primary button</button>
     </div>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-<hash>" crossorigin="anonymous"></script>
   </body>
 </html>
 ```
 
-Always add the `integrity` (SRI hash) and `crossorigin="anonymous"` attributes in production. Copy the exact URLs and hashes for the target version from the Install docs — do not guess hashes.
+Replace the `sha384-<hash>` placeholders with the real SRI hashes for your version — copy the exact URLs and hashes from the Install docs and never guess them. The `crossorigin="anonymous"` attribute is required for SRI to work.
 
 To load Floating UI and Vanilla Calendar Pro separately (smaller payload), use the non-bundle JS with an import map:
 
@@ -65,7 +66,7 @@ To load Floating UI and Vanilla Calendar Pro separately (smaller payload), use t
   }
 }
 </script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-<hash>" crossorigin="anonymous"></script>
 ```
 
 For a CDN setup you're done — skip to **Step 5: Verify**.
@@ -103,6 +104,8 @@ Customize tokens with the `with ()` syntax. Only include the keys you want to ch
   )
 );
 ```
+
+Override CSS custom properties through the token maps (`$root-tokens` and each component's `$*-tokens` map), following [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written **unprefixed** in Sass (e.g. `--border-radius`, `--spacer`); Bootstrap's dist/CDN CSS runs PostCSS to add the `--bs-` prefix, so compiling the source yourself keeps them unprefixed.
 
 Compile the Sass to CSS with a `--load-path=node_modules` so `bootstrap` resolves, then run Autoprefixer via PostCSS.
 
