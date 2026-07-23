@@ -162,8 +162,8 @@ if (currentPageIndex < allPages.length - 1) {
                     `${parentDirectory ? parentDirectory + '/' : ''}${getSlug(section.title)}/`
                   )}
                 >
-                  <strong class="d-block fs-5 mb-0">{section.title}</strong>
-                  <span class="fs-6 fg-3">{section.description}</span>
+                  <strong class="d-block mb-0">{section.title}</strong>
+                  <span class="fg-3">{section.description}</span>
                 </a>
               ))}
             </div>
@@ -188,7 +188,7 @@ if (currentPageIndex < allPages.length - 1) {
                   rel="prev"
                 >
                   <div class="fg-3">← Previous</div>
-                  <div class="fs-5 fw-semibold">{prevPage.title}</div>
+                  <div class="fw-semibold">{prevPage.title}</div>
                   <div class="fg-3">{prevPage.groupTitle}</div>
                 </a>
               )
@@ -201,7 +201,7 @@ if (currentPageIndex < allPages.length - 1) {
                   rel="next"
                 >
                   <div class="fg-3">Next →</div>
-                  <div class="fs-5 fw-semibold">{nextPage.title}</div>
+                  <div class="fw-semibold">{nextPage.title}</div>
                   <div class="fg-3">{nextPage.groupTitle}</div>
                 </a>
               )
