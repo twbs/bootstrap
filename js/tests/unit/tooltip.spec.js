@@ -157,6 +157,38 @@ describe('Tooltip', () => {
       expect(tooltip._getOffset()).toEqual([10, 20])
     })
 
+    it('should adapt array results from offset functions to Floating UI offset values', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Offset adapter"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        offset: () => [10, 20]
+      })
+
+      const offset = tooltip._getOffset()
+
+      expect(offset({ placement: 'top', rects: { reference: {}, floating: {} } })).toEqual({ mainAxis: 20, crossAxis: 10 })
+    })
+
+    it('should not write "undefined" into arrow styles when positioning', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Arrow tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl, { placement: 'right' })
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          const arrow = tooltip.tip.querySelector('.tooltip-arrow')
+
+          expect(arrow.style.left).not.toContain('undefined')
+          expect(arrow.style.top).not.toContain('undefined')
+          resolve()
+        })
+
+        tooltip.show()
+      })
+    })
+
     it('should allow to pass config to Floating UI with `floatingConfig`', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip"></a>'
 

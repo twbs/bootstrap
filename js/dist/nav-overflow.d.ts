@@ -24,7 +24,6 @@ declare class NavOverflow extends BaseComponent {
     _overflowToggle: HTMLElement | null;
     _resizeObserver: ResizeObserver | null;
     _collapseBelow: number;
-    _isInitialized: boolean;
     constructor(element?: string | Element | null, config?: Partial<NavOverflowConfig> | null);
     static get Default(): NavOverflowConfig;
     static get DefaultType(): Record<string, string>;

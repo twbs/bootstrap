@@ -33,7 +33,7 @@ declare class Strength extends BaseComponent {
     _evaluate(): void;
     _calculateScore(password: string): number;
     _scoreToStrength(score: number): string | null;
-    _updateUI(strength: string | null, score: number): void;
+    _updateUI(strength: string | null): void;
 }
 export default Strength;
 export type { StrengthConfig };

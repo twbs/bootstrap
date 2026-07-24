@@ -735,6 +735,28 @@ describe('Dialog', () => {
         dialog.show()
       })
     })
+
+    it('should remove the native cancel listener on dispose', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog" id="exampleDialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl)
+        const spy = jasmine.createSpy('cancel')
+
+        dialogEl.addEventListener('cancel.bs.dialog', spy)
+
+        dialog.dispose()
+
+        // After dispose, a native cancel event must not reach the component
+        dialogEl.dispatchEvent(createEvent('cancel'))
+
+        setTimeout(() => {
+          expect(spy).not.toHaveBeenCalled()
+          resolve()
+        }, 10)
+      })
+    })
   })
 
   describe('data-api', () => {
