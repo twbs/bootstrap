@@ -12,10 +12,15 @@
   <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
     <nav class="navbar md:navbar-expand fixed-top" data-bs-theme="dark">
       <a class="navbar-brand" href="#">Scrollspy test</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse" id="navbarSupportedContent">
+      <dialog class="drawer drawer-end" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContentLabel">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="navbarSupportedContentLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link" href="#fat">@fat</a>
@@ -36,7 +41,8 @@
             <a class="nav-link" href="#final">Final</a>
           </li>
         </ul>
-      </div>
+        </div>
+      </dialog>
     </nav>
     <div class="container">
       <h2 id="fat">@fat</h2>

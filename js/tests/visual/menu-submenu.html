@@ -225,10 +225,15 @@
         <nav class="navbar lg:navbar-expand bg-1 rounded">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSubmenu" aria-controls="navbarSubmenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarSubmenu" aria-controls="navbarSubmenu" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSubmenu">
+            <dialog class="drawer drawer-end" tabindex="-1" id="navbarSubmenu" aria-labelledby="navbarSubmenuLabel">
+              <div class="drawer-header">
+                <h5 class="drawer-title" id="navbarSubmenuLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+              </div>
+              <div class="drawer-body">
               <ul class="navbar-nav me-auto mb-2 lg:mb-0">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -266,7 +271,8 @@
                   <a class="nav-link" href="#">About</a>
                 </li>
               </ul>
-            </div>
+              </div>
+            </dialog>
           </div>
         </nav>
       </section>
