@@ -9,7 +9,7 @@ import { execute } from './index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/swipe.js
+ * Bootstrap util/swipe.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

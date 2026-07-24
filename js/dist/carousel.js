@@ -11,7 +11,7 @@ import { isVisible, isRTL } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap carousel.js
+ * Bootstrap carousel.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

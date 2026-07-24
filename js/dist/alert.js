@@ -9,7 +9,7 @@ import { enableDismissTrigger } from './util/component-functions.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap alert.js
+ * Bootstrap alert.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

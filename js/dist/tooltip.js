@@ -14,7 +14,7 @@ import { getResponsivePlacement, parseResponsivePlacement, createBreakpointListe
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap tooltip.js
+ * Bootstrap tooltip.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
