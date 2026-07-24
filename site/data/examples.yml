@@ -49,8 +49,8 @@
       description: 'Common navigation patterns ideal for drawer or multi-column layouts.'
     - name: Footers
       description: 'Finish every page strong with an awesome footer, big or small.'
-    # - name: Menus
-    #   description: 'Enhance your menus with filters, icons, custom styles, and more.'
+    - name: Menus
+      description: 'Enhance your menus with filters, icons, custom styles, and more.'
     - name: List groups
       description: 'Extend list groups with utilities and custom styles for any content.'
     - name: Dialogs
@@ -107,6 +107,8 @@
       description: 'Demonstration of all responsive and container options for the navbar.'
     - name: Navbars drawer
       description: 'Same as the Navbars example, but with our drawer component.'
+    - name: Drawer navbar
+      description: 'Navbar template with a drawer-style collapsible navigation pattern.'
     - name: Navbar static
       description: 'Single navbar example of a static top navbar along with some additional content.'
     - name: Navbar fixed
