@@ -784,16 +784,47 @@ class Menu extends BaseComponent {
   // Keyboard navigation
   // -------------------------------------------------------------------------
 
+  _getItemsInMenu(menu) {
+    // Items may be direct children of `.menu`, or submenu triggers nested as
+    // `.menu > .submenu > .menu-item` (see menu-submenu visual tests / docs).
+    // Always use SELECTOR_VISIBLE_ITEMS so disabled triggers are skipped too.
+    return SelectorEngine.find(
+      `:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS}`,
+      menu
+    ).filter(element => isVisible(element))
+  }
+
   _selectMenuItem({ key, target }) {
     const currentMenu = target.closest(SELECTOR_MENU) || this._menu
-    const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
-      .filter(element => isVisible(element))
+    const items = this._getItemsInMenu(currentMenu)
 
     if (!items.length) {
       return
     }
 
-    getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus()
+    const nextItem = getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target))
+    nextItem.focus()
+
+    // Arrowing between items at this level must close open sibling submenus that
+    // no longer relate to focus (mouse/click already do this via _closeSiblingSubmenus).
+    this._closeUnrelatedSubmenus(currentMenu, nextItem)
+  }
+
+  _closeUnrelatedSubmenus(currentMenu, focusedElement) {
+    for (const [submenu] of this._openSubmenus) {
+      const submenuWrapper = submenu.closest(SELECTOR_SUBMENU)
+      // Only consider submenus that are direct children of the menu being navigated
+      if (!submenuWrapper || submenuWrapper.parentElement !== currentMenu) {
+        continue
+      }
+
+      // Keep open when focus is on that submenu's trigger or still inside it
+      if (submenuWrapper.contains(focusedElement)) {
+        continue
+      }
+
+      this._closeSubmenu(submenu, submenuWrapper)
+    }
   }
 
   _handleSubmenuKeydown(event) {
@@ -867,12 +898,12 @@ class Menu extends BaseComponent {
       event.stopPropagation()
 
       const currentMenu = target.closest(SELECTOR_MENU)
-      const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
-        .filter(element => isVisible(element))
+      const items = this._getItemsInMenu(currentMenu)
 
       if (items.length) {
         const targetItem = key === HOME_KEY ? items[0] : items.at(-1)
         targetItem.focus()
+        this._closeUnrelatedSubmenus(currentMenu, targetItem)
       }
 
       return true
@@ -919,6 +950,29 @@ class Menu extends BaseComponent {
     }
   }
 
+  static _getToggleFromKeydownContext(element, event) {
+    if (element.matches?.(SELECTOR_DATA_TOGGLE)) {
+      return element
+    }
+
+    // Root panel is usually a sibling of the toggle (when not moved to a container).
+    const siblingToggle = SelectorEngine.prev(element, SELECTOR_DATA_TOGGLE)[0] ||
+      SelectorEngine.next(element, SELECTOR_DATA_TOGGLE)[0]
+    if (siblingToggle) {
+      return siblingToggle
+    }
+
+    // Nested submenu panels (and menus moved to `container`) are not siblings of
+    // the toggle. Resolve the owning open Menu instance from the event target.
+    for (const instance of Menu._openInstances) {
+      if (instance._menu?.contains(event.target) || instance._element === event.target) {
+        return instance._element
+      }
+    }
+
+    return SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
+  }
+
   static dataApiKeydownHandler(event) {
     // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
     // menu doesn't hijack their arrow keys.
@@ -940,11 +994,7 @@ class Menu extends BaseComponent {
       return
     }
 
-    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ?
-      this :
-      (SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
-        SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
-        SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode))
+    const getToggleButton = Menu._getToggleFromKeydownContext(this, event)
 
     if (!getToggleButton) {
       return
