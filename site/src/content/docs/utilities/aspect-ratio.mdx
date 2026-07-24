@@ -17,8 +17,6 @@ Use the ratio utility to manage the aspect ratios of content like `<iframe>`s, `
 
 Add your ratio utility to the element you want to modify, like an `<iframe>`, `<video>`, or less semantic elements like `<div>`. Ratio utilities also pair well with any width utilities, as shown below. Customize the available aspect ratios with the Sass variable or the utility API.
 
-Heads up—you can omit `frameborder="0"` on your `<iframe>`s as that is overridden for you in [Reboot]([[docsref:/content/reboot]]).
-
 <Example code={`<iframe class="w-100 ratio-16x9" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>`} />
 
 Swap the `.ratio-*` class for a different aspect ratio.
@@ -39,34 +37,33 @@ Swap the `.ratio-*` class for a different aspect ratio.
     <div>21×9</div>
   </div>`} />
 
-{/*
-
 ## Custom ratios
 
-TODO: decide whether to restore custom ratios; delete this block or reinstate the section
+To set a custom ratio, override `--bs-ratio` on any `.ratio-*` element.
 
-Each `.ratio-*` class includes a CSS custom property (or CSS variable) in the selector. You can override this CSS variable to create custom aspect ratios on the fly with some quick math on your part.
-
-For example, to create a 2x1 aspect ratio, set `--bs-aspect-ratio: 50%` on the `.ratio`.
-
-<Example class="bd-example-ratios" code={`<div class="ratio" style="--bs-aspect-ratio: 50%;">
-    <div>2x1</div>
+<Example class="bd-example-ratios" code={`<div class="w-25 ratio-auto" style="--bs-ratio: 2 / 1;">
+    <div>2×1</div>
   </div>`} />
 
-This CSS variable makes it easy to modify the aspect ratio across breakpoints. The following is 4x3 to start, but changes to a custom 2x1 at the medium breakpoint.
+You can also change the ratio at breakpoints by overriding the same custom property in your own CSS.
 
 ```scss
-.ratio-4x3 {
+.custom-ratio {
+  --bs-ratio: 4 / 3;
+
   @include media-breakpoint-up(md) {
-    --bs-aspect-ratio: 50%; // 2x1
+    --bs-ratio: 2 / 1;
   }
 }
 ```
 
-<Example class="bd-example-ratios bd-example-ratios-breakpoint" code={`<div class="ratio ratio-4x3">
-    <div>4x3, then 2x1</div>
-  </div>`} />
-*/}
+Then apply that class to your markup:
+
+```html
+<div class="ratio-auto custom-ratio">
+  <div>4×3, then 2×1</div>
+</div>
+```
 
 ## Sass map
 
