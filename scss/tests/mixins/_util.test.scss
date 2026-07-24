@@ -1,0 +1,138 @@
+// check-unused-imports-disable — test infrastructure imports.
+//
+// Extra utilities so we can assert user-extended ones resolve through util().
+@use "../../config" as * with (
+  $utilities: (
+    "demo-color": (
+      property: color,
+      class: demo,
+      values: (brand: #bada55)
+    ),
+    "demo-var": (
+      property: (
+        "--demo": null,
+        "color": var(--demo)
+      ),
+      class: demovar,
+      values: (one: #06c)
+    )
+  )
+);
+@use "../../mixins/util" as *;
+@use "../../layout/breakpoints" as *;
+
+$true-terminal-output: false;
+
+@include describe("util") {
+  @include describe("base output") {
+    @include it("emits a utility's declaration with no !important") {
+      @include assert() {
+        @include output() {
+          @include util(p-3);
+        }
+
+        @include expect() {
+          padding: .75rem;
+        }
+      }
+    }
+
+    @include it("accepts multiple class names") {
+      @include assert() {
+        @include output() {
+          @include util(d-flex, justify-content-between);
+        }
+
+        @include expect() {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    @include it("splits a space-separated string, @apply-style") {
+      @include assert() {
+        @include output() {
+          @include util("d-flex p-3");
+        }
+
+        @include expect() {
+          display: flex;
+          padding: .75rem;
+        }
+      }
+    }
+  }
+
+  @include describe("custom properties") {
+    @include it("emits the local variable and the property that references it") {
+      @include assert() {
+        @include output() {
+          @include util(demovar-one);
+        }
+
+        @include expect() {
+          --demo: #06c;
+          color: var(--demo);
+        }
+      }
+    }
+  }
+
+  @include describe("custom utilities") {
+    @include it("resolves a user-extended utility") {
+      @include assert() {
+        @include output() {
+          @include util(demo-brand);
+        }
+
+        @include expect() {
+          color: #bada55;
+        }
+      }
+    }
+  }
+
+  @include describe("composition") {
+    @include it("lands inside a media query via media-breakpoint-up()") {
+      @include assert() {
+        @include output() {
+          .test {
+            @include media-breakpoint-up(md) {
+              @include util(p-4);
+            }
+          }
+        }
+
+        @include expect() {
+          @media (width >= 768px) {
+            .test {
+              padding: 1rem;
+            }
+          }
+        }
+      }
+    }
+
+    @include it("lands on a pseudo-class via plain nesting") {
+      @include assert() {
+        @include output() {
+          .test {
+            &:hover {
+              @include util(demo-brand);
+            }
+          }
+        }
+
+        @include expect() {
+          .test:hover {
+            color: #bada55;
+          }
+        }
+      }
+    }
+  }
+}
+
+// The unknown-class `@error` path can't be asserted here — a compile error
+// halts sass-true — so it's verified manually.

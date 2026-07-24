@@ -181,6 +181,9 @@
   icon_color: red
   pages:
     - title: API
+    - title: Util mixin
+      meta:
+        - added: 6.0.0
     - group: Color
       pages:
         - title: Colors
