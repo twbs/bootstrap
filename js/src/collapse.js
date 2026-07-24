@@ -31,7 +31,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
 const CLASS_NAME_COLLAPSING = 'collapsing'
-const CLASS_NAME_COLLAPSED = 'collapsed'
 const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`
 const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 
@@ -77,7 +76,7 @@ class Collapse extends BaseComponent {
     this._initializeChildren()
 
     if (!this._config.parent) {
-      this._addAriaAndCollapsedClass(this._triggerArray, this._isShown())
+      this._setAriaExpanded(this._triggerArray, this._isShown())
     }
 
     if (this._config.toggle) {
@@ -141,7 +140,7 @@ class Collapse extends BaseComponent {
 
     this._element.style[dimension] = 0
 
-    this._addAriaAndCollapsedClass(this._triggerArray, true)
+    this._setAriaExpanded(this._triggerArray, true)
     this._isTransitioning = true
 
     const complete = () => {
@@ -185,7 +184,7 @@ class Collapse extends BaseComponent {
       const element = SelectorEngine.getElementFromSelector(trigger)
 
       if (element && !this._isShown(element)) {
-        this._addAriaAndCollapsedClass([trigger], false)
+        this._setAriaExpanded([trigger], false)
       }
     }
 
@@ -229,7 +228,7 @@ class Collapse extends BaseComponent {
       const selected = SelectorEngine.getElementFromSelector(element)
 
       if (selected) {
-        this._addAriaAndCollapsedClass([element], this._isShown(selected))
+        this._setAriaExpanded([element], this._isShown(selected))
       }
     }
   }
@@ -240,13 +239,12 @@ class Collapse extends BaseComponent {
     return SelectorEngine.find(selector, this._config.parent).filter(element => !children.includes(element))
   }
 
-  _addAriaAndCollapsedClass(triggerArray, isOpen) {
+  _setAriaExpanded(triggerArray, isOpen) {
     if (!triggerArray.length) {
       return
     }
 
     for (const element of triggerArray) {
-      element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen)
       element.setAttribute('aria-expanded', isOpen)
     }
   }
