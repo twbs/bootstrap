@@ -1,0 +1,37 @@
+// check-unused-imports-disable — test infrastructure imports.
+
+@use "sass:color";
+@use "../../colors" as *;
+@use "../../mixins/color-mode" as *;
+
+// Exercises the default `$color-mode-type: "media-query"` (see scss/_config.scss).
+@include describe("global $color-mode-type: media-query (default)") {
+  @include it("generates media queries for dark mode") {
+    @include assert() {
+      @include output() {
+        @include color-mode(dark) {
+          .element {
+            color: var(--bs-primary-fg-emphasis);
+            background-color: var(--bs-primary-bg-subtle);
+          }
+        }
+        @include color-mode(dark, true) {
+          --custom-color: #{color.mix($indigo, $blue, 50%, oklch)};
+        }
+      }
+      @include expect() {
+        @media (prefers-color-scheme: dark) {
+          .element {
+            color: var(--bs-primary-fg-emphasis);
+            background-color: var(--bs-primary-bg-subtle);
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --custom-color: #{color.mix($indigo, $blue, 50%, oklch)};
+          }
+        }
+      }
+    }
+  }
+}
