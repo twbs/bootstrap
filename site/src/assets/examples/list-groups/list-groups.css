@@ -27,8 +27,8 @@
 }
 .list-group-item-check:checked + .list-group-item {
   color: #fff;
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
+  background-color: var(--bs-primary-bg);
+  border-color: var(--bs-primary-bg);
 }
 .list-group-item-check[disabled] + .list-group-item,
 .list-group-item-check:disabled + .list-group-item {
@@ -51,9 +51,9 @@
 }
 
 .list-group-radio .radio:checked + .list-group-item {
-  background-color: var(--bs-body);
-  border-color: var(--bs-primary);
-  box-shadow: 0 0 0 2px var(--bs-primary);
+  background-color: var(--bs-bg-body);
+  border-color: var(--bs-primary-bg);
+  box-shadow: 0 0 0 2px var(--bs-primary-bg);
 }
 .list-group-radio .radio[disabled] + .list-group-item,
 .list-group-radio .radio:disabled + .list-group-item {

@@ -17,13 +17,13 @@ main {
 .btn-toggle {
   padding: .25rem .5rem;
   font-weight: 600;
-  color: var(--bs-emphasis-color);
+  color: var(--bs-fg-1);
   background-color: transparent;
 }
 .btn-toggle:hover,
 .btn-toggle:focus {
-  color: rgba(var(--bs-emphasis-color-rgb), .85);
-  background-color: var(--bs-tertiary-bg);
+  color: color-mix(in oklab, var(--bs-fg-1), transparent 15%);
+  background-color: var(--bs-bg-3);
 }
 
 .btn-toggle::before {
@@ -39,7 +39,7 @@ main {
 }
 
 .btn-toggle[aria-expanded="true"] {
-  color: rgba(var(--bs-emphasis-color-rgb), .85);
+  color: color-mix(in oklab, var(--bs-fg-1), transparent 15%);
 }
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
@@ -52,7 +52,7 @@ main {
 }
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--bs-bg-3);
 }
 
 .scrollarea {

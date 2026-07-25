@@ -12,9 +12,11 @@ export const extra_css = ['breadcrumbs.css']
 <div class="container my-5">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb p-3 bg-1 rounded-3">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item"><a href="#">Library</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Data</li>
+      <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Home</a></li>
+      <li class="breadcrumb-divider"></li>
+      <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Library</a></li>
+      <li class="breadcrumb-divider"></li>
+      <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link active" href="#">Data</a></li>
     </ol>
   </nav>
 </div>
@@ -25,16 +27,18 @@ export const extra_css = ['breadcrumbs.css']
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb p-3 bg-1 rounded-3">
       <li class="breadcrumb-item">
-        <a class="theme-inverse" href="#">
+        <a class="breadcrumb-link theme-inverse" href="#">
           <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#house-door-fill"></use></svg>
           <span class="visually-hidden">Home</span>
         </a>
       </li>
+      <li class="breadcrumb-divider"></li>
       <li class="breadcrumb-item">
-        <a class="theme-inverse fw-semibold text-decoration-none" href="#">Library</a>
+        <a class="breadcrumb-link theme-inverse fw-semibold text-decoration-none" href="#">Library</a>
       </li>
-      <li class="breadcrumb-item active" aria-current="page">
-        Data
+      <li class="breadcrumb-divider"></li>
+      <li class="breadcrumb-item" aria-current="page">
+        <a class="breadcrumb-link active" href="#">Data</a>
       </li>
     </ol>
   </nav>
@@ -44,18 +48,28 @@ export const extra_css = ['breadcrumbs.css']
 
 <div class="container my-5">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb breadcrumb-chevron p-3 bg-1 rounded-3">
+    <ol class="breadcrumb p-3 bg-1 rounded-3">
       <li class="breadcrumb-item">
-        <a class="theme-inverse" href="#">
+        <a class="breadcrumb-link theme-inverse" href="#">
           <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#house-door-fill"></use></svg>
           <span class="visually-hidden">Home</span>
         </a>
       </li>
-      <li class="breadcrumb-item">
-        <a class="theme-inverse fw-semibold text-decoration-none" href="#">Library</a>
+      <li class="breadcrumb-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
       </li>
-      <li class="breadcrumb-item active" aria-current="page">
-        Data
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link theme-inverse fw-semibold text-decoration-none" href="#">Library</a>
+      </li>
+      <li class="breadcrumb-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">
+        <a class="breadcrumb-link active" href="#">Data</a>
       </li>
     </ol>
   </nav>
