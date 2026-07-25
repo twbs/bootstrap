@@ -12,8 +12,6 @@ main {
   max-height: 100vh;
 }
 
-.menu-toggle { outline: 0; }
-
 .btn-toggle {
   padding: .25rem .5rem;
   font-weight: 600;
