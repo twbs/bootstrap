@@ -1,0 +1,38 @@
+// check-unused-imports-disable — test infrastructure imports.
+// stylelint-disable selector-attribute-quotes
+
+@use "sass:color";
+// Configure the shared config module once, for this compilation, before it's
+// loaded by mixins/color-mode. Dart Sass forbids reassigning another module's
+// variable (`ns.$var: value !global` errors), so overriding via `with (...)`
+// at first load is the only supported way to flip `$color-mode-type` for a test.
+@use "../../config" with ($color-mode-type: "data");
+@use "../../colors" as *;
+@use "../../mixins/color-mode" as *;
+
+@include describe("global $color-mode-type: data") {
+  @include it("generates data attribute selectors for dark mode") {
+    @include assert() {
+      @include output() {
+        @include color-mode(dark) {
+          .element {
+            color: var(--bs-primary-fg-emphasis);
+            background-color: var(--bs-primary-bg-subtle);
+          }
+        }
+        @include color-mode(dark, true) {
+          --custom-color: #{color.mix($indigo, $blue, 50%, oklch)};
+        }
+      }
+      @include expect() {
+        [data-bs-theme=dark] .element {
+          color: var(--bs-primary-fg-emphasis);
+          background-color: var(--bs-primary-bg-subtle);
+        }
+        [data-bs-theme=dark] {
+          --custom-color: #{color.mix($indigo, $blue, 50%, oklch)};
+        }
+      }
+    }
+  }
+}
