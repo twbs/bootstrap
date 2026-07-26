@@ -9,6 +9,7 @@ import Config, { type ComponentConfig } from './util/config.js';
  * Class definition
  */
 declare class BaseComponent extends Config {
+    ['constructor']: typeof BaseComponent;
     _element: HTMLElement;
     _config: ComponentConfig;
     constructor(element?: string | Element | null, config?: ComponentConfig | null);

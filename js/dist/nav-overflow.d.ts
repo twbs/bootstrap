@@ -23,6 +23,7 @@ declare class NavOverflow extends BaseComponent {
     _overflowMenu: HTMLElement | null;
     _overflowToggle: HTMLElement | null;
     _resizeObserver: ResizeObserver | null;
+    _resizeHandler: (() => void) | null;
     _collapseBelow: number;
     constructor(element?: string | Element | null, config?: Partial<NavOverflowConfig> | null);
     static get Default(): NavOverflowConfig;

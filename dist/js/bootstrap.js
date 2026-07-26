@@ -539,6 +539,9 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
  */
 
 class Config {
+  // Type `this.constructor` so static members (Default, DefaultType, NAME) are
+  // reachable without a cast. Declaration-only, so it emits no runtime code.
+
   // Getters
   static get Default() {
     return {};
@@ -2036,6 +2039,33 @@ const disposeBreakpointListeners = listeners => {
 };
 
 /**
+ * Public `offset` option shared by the positioned components (Tooltip, Menu, …):
+ * an `[skidding, distance]` array, a comma-separated string, or a callback
+ * returning that array.
+ */
+
+/**
+ * Public `floatingConfig` option: a Floating UI config object, a function that
+ * refines the default config, or null.
+ */
+
+/**
+ * Floating UI offset value: a number, an axis object, or our `[skidding, distance]` array
+ */
+
+/**
+ * Normalize an offset value into Floating UI's offset shape.
+ * A `[skidding, distance]` array becomes `{ mainAxis: distance, crossAxis: skidding }`;
+ * numbers and axis objects pass through unchanged.
+ */
+const toFloatingOffset = value => {
+  return Array.isArray(value) ? {
+    mainAxis: value[1] || 0,
+    crossAxis: value[0] || 0
+  } : value;
+};
+
+/**
  * --------------------------------------------------------------------------
  * Bootstrap menu.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -2340,17 +2370,14 @@ class Menu extends BaseComponent {
           reference: rects.reference,
           floating: rects.floating
         }, this._element);
-        return result;
+        return toFloatingOffset(result);
       };
     }
     return offsetConfig;
   }
   _getFloatingMiddleware() {
     const offsetValue = this._getOffset();
-    const middleware = [offset(typeof offsetValue === 'function' ? offsetValue : {
-      mainAxis: offsetValue[1] || 0,
-      crossAxis: offsetValue[0] || 0
-    }), flip({
+    const middleware = [offset(typeof offsetValue === 'function' ? offsetValue : toFloatingOffset(offsetValue)), flip({
       fallbackPlacements: this._getFallbackPlacements()
     }), shift({
       boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
@@ -3760,8 +3787,8 @@ class DialogBase extends BaseComponent {
     }
 
     // The `cancel` listener is unnamespaced, so super.dispose()'s EVENT_KEY
-    // teardown misses it — remove it here.
-    EventHandler.off(this._element, 'cancel');
+    // teardown misses it — remove this instance's own handler here.
+    EventHandler.off(this._element, 'cancel', this._cancelHandler);
     super.dispose();
   }
 
@@ -3888,8 +3915,9 @@ class DialogBase extends BaseComponent {
 
     // Handle native cancel event (Escape key) — only fires for modal dialogs.
     // Bound unnamespaced because `cancel` is a real native event, not one of
-    // our namespaced custom events; `dispose()` removes it explicitly.
-    EventHandler.on(this._element, 'cancel', event => {
+    // our namespaced custom events. Keep a per-instance handler so dispose()
+    // removes only this listener, not a consumer's own `cancel` listener.
+    this._cancelHandler = event => {
       event.preventDefault();
       if (!this._config.keyboard) {
         this._triggerBackdropTransition();
@@ -3897,7 +3925,8 @@ class DialogBase extends BaseComponent {
       }
       this._onCancel();
       this.hide();
-    });
+    };
+    EventHandler.on(this._element, 'cancel', this._cancelHandler);
 
     // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
     EventHandler.on(this._element, `keydown${eventKey}`, event => {
@@ -4142,6 +4171,7 @@ class NavOverflow extends BaseComponent {
     this._overflowMenu = null;
     this._overflowToggle = null;
     this._resizeObserver = null;
+    this._resizeHandler = null;
     this._collapseBelow = 0;
     this._init();
   }
@@ -4167,8 +4197,10 @@ class NavOverflow extends BaseComponent {
       this._resizeObserver.disconnect();
     }
 
-    // Remove the fallback resize listener bound on window
-    EventHandler.off(window, EVENT_RESIZE$2);
+    // Remove this instance's fallback resize listener from window
+    if (this._resizeHandler) {
+      EventHandler.off(window, EVENT_RESIZE$2, this._resizeHandler);
+    }
 
     // Move items back to original positions
     this._restoreItems();
@@ -4252,9 +4284,10 @@ class NavOverflow extends BaseComponent {
   }
   _setupResizeObserver() {
     if (typeof ResizeObserver === 'undefined') {
-      // Fallback for older browsers. Namespaced so dispose() can remove it from
-      // window (super.dispose() only clears listeners on this._element).
-      EventHandler.on(window, EVENT_RESIZE$2, () => this._calculateOverflow());
+      // Fallback for older browsers. Keep a per-instance handler so dispose()
+      // removes only this instance's window listener, not every instance's.
+      this._resizeHandler = () => this._calculateOverflow();
+      EventHandler.on(window, EVENT_RESIZE$2, this._resizeHandler);
       return;
     }
     this._resizeObserver = new ResizeObserver(() => {
@@ -5441,14 +5474,11 @@ class Chips extends BaseComponent {
       this._anchorChip = null;
     }
 
-    // Remove from DOM and array. Only drop a single entry: with
-    // `allowDuplicates`, filtering every match would strip other identical
-    // chips from state while their elements remain in the DOM.
+    // Remove from DOM, then rebuild the value array from the remaining chips.
+    // This keeps `_chips` in the same order as the rendered chips even with
+    // duplicates, where splicing the first matching value would desync order.
     chip.remove();
-    const valueIndex = this._chips.indexOf(value);
-    if (valueIndex !== -1) {
-      this._chips.splice(valueIndex, 1);
-    }
+    this._chips = this._getChipElements().map(chipElement => this._getChipValue(chipElement)).filter(Boolean);
     EventHandler.trigger(this._element, EVENT_CHANGE$1, {
       values: this.getValues()
     });
@@ -6564,12 +6594,7 @@ class Tooltip extends BaseComponent {
           reference: rects.reference,
           floating: rects.floating
         }, this._element);
-        // Adapt a `[skidding, distance]` array to Floating UI's offset shape,
-        // matching how the array and string config forms are applied
-        return Array.isArray(result) ? {
-          mainAxis: result[1] || 0,
-          crossAxis: result[0] || 0
-        } : result;
+        return toFloatingOffset(result);
       };
     }
     return offset;
@@ -6581,10 +6606,7 @@ class Tooltip extends BaseComponent {
     const offsetValue = this._getOffset();
     const middleware = [
     // Offset middleware - handles distance from reference
-    offset(typeof offsetValue === 'function' ? offsetValue : {
-      mainAxis: offsetValue[1] || 0,
-      crossAxis: offsetValue[0] || 0
-    }),
+    offset(typeof offsetValue === 'function' ? offsetValue : toFloatingOffset(offsetValue)),
     // Flip middleware - handles fallback placements
     flip({
       fallbackPlacements: this._config.fallbackPlacements

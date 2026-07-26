@@ -12,6 +12,7 @@ type ComponentConfig = Record<string, any>;
  * Class definition
  */
 declare class Config {
+    ['constructor']: typeof Config;
     static get Default(): ComponentConfig;
     static get DefaultType(): ComponentConfig;
     static get NAME(): string;

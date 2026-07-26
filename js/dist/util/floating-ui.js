@@ -138,5 +138,32 @@ const disposeBreakpointListeners = listeners => {
   }
 };
 
-export { BREAKPOINTS, createBreakpointListeners, disposeBreakpointListeners, getDefaultPlacement, getResponsivePlacement, parseResponsivePlacement };
+/**
+ * Public `offset` option shared by the positioned components (Tooltip, Menu, …):
+ * an `[skidding, distance]` array, a comma-separated string, or a callback
+ * returning that array.
+ */
+
+/**
+ * Public `floatingConfig` option: a Floating UI config object, a function that
+ * refines the default config, or null.
+ */
+
+/**
+ * Floating UI offset value: a number, an axis object, or our `[skidding, distance]` array
+ */
+
+/**
+ * Normalize an offset value into Floating UI's offset shape.
+ * A `[skidding, distance]` array becomes `{ mainAxis: distance, crossAxis: skidding }`;
+ * numbers and axis objects pass through unchanged.
+ */
+const toFloatingOffset = value => {
+  return Array.isArray(value) ? {
+    mainAxis: value[1] || 0,
+    crossAxis: value[0] || 0
+  } : value;
+};
+
+export { BREAKPOINTS, createBreakpointListeners, disposeBreakpointListeners, getDefaultPlacement, getResponsivePlacement, parseResponsivePlacement, toFloatingOffset };
 //# sourceMappingURL=floating-ui.js.map
