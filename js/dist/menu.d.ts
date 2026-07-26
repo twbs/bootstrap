@@ -8,7 +8,7 @@ import { type Middleware, type MiddlewareState, type Placement, type ReferenceEl
 import BaseComponent from './base-component.js';
 import { type BootstrapEvent } from './dom/event-handler.js';
 import type { ComponentConfig } from './util/config.js';
-import { type BreakpointListener, type ResponsivePlacements } from './util/floating-ui.js';
+import { type BreakpointListener, type ResponsivePlacements, type FloatingOffsetOption, type FloatingConfigOption } from './util/floating-ui.js';
 type Point = {
     x: number;
     y: number;
@@ -18,8 +18,8 @@ type MenuConfig = {
     boundary: string | Element;
     container: string | Element | boolean;
     display: string;
-    offset: number[] | string | ((data: Record<string, any>, element: HTMLElement) => any);
-    floatingConfig: Record<string, any> | ((defaultConfig: Record<string, any>) => Record<string, any>) | null;
+    offset: FloatingOffsetOption;
+    floatingConfig: FloatingConfigOption;
     menu: HTMLElement | null;
     placement: string;
     reference: string | Element | Record<string, any>;

@@ -5,6 +5,7 @@
  * --------------------------------------------------------------------------
  */
 import BaseComponent from './base-component.js';
+import { type BootstrapEvent } from './dom/event-handler.js';
 type DialogBaseConfig = {
     backdrop: boolean | string;
     keyboard: boolean;
@@ -28,6 +29,7 @@ declare class DialogBase extends BaseComponent {
     _config: DialogBaseConfig;
     _isTransitioning: boolean;
     _openedAsModal: boolean;
+    _cancelHandler: (event: BootstrapEvent) => void;
     constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null);
     static get NAME(): string;
     toggle(relatedTarget?: HTMLElement): void;
