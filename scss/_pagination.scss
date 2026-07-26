@@ -121,7 +121,7 @@ $pagination-sizes: defaults(
   // scss-docs-start pagination-sizes-loop
   @each $size, $_ in $pagination-sizes {
     .pagination-#{$size} {
-      --pagination-min-height: var(--bs-btn-input-#{$size}-min-height);
+      --pagination-min-height: var(--btn-input-#{$size}-min-height);
       --pagination-padding-y: var(--btn-input-#{$size}-padding-y);
       --pagination-padding-x: var(--btn-input-#{$size}-padding-x);
       --pagination-font-size: var(--btn-input-#{$size}-font-size);
