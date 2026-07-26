@@ -174,14 +174,13 @@ class Chips extends BaseComponent {
       this._anchorChip = null
     }
 
-    // Remove from DOM and array. Only drop a single entry: with
-    // `allowDuplicates`, filtering every match would strip other identical
-    // chips from state while their elements remain in the DOM.
+    // Remove from DOM, then rebuild the value array from the remaining chips.
+    // This keeps `_chips` in the same order as the rendered chips even with
+    // duplicates, where splicing the first matching value would desync order.
     chip.remove()
-    const valueIndex = this._chips.indexOf(value)
-    if (valueIndex !== -1) {
-      this._chips.splice(valueIndex, 1)
-    }
+    this._chips = this._getChipElements()
+      .map(chipElement => this._getChipValue(chipElement))
+      .filter(Boolean)
 
     EventHandler.trigger(this._element, EVENT_CHANGE, {
       values: this.getValues()

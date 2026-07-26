@@ -30,8 +30,11 @@ import {
   getResponsivePlacement,
   createBreakpointListeners,
   disposeBreakpointListeners,
+  toFloatingOffset,
   type BreakpointListener,
-  type ResponsivePlacements
+  type ResponsivePlacements,
+  type FloatingOffsetOption,
+  type FloatingConfigOption
 } from './util/floating-ui.js'
 
 /**
@@ -87,9 +90,9 @@ type TooltipConfig = {
   delay: number | { show: number, hide: number }
   fallbackPlacements: string[]
   html: boolean
-  offset: number[] | string | ((deps: Record<string, any>, element: HTMLElement) => number[])
+  offset: FloatingOffsetOption
   placement: string | ((this: Tooltip, tip: HTMLElement, trigger: HTMLElement) => string)
-  floatingConfig: Record<string, any> | ((defaultConfig: Record<string, any>) => Record<string, any>) | null
+  floatingConfig: FloatingConfigOption
   sanitize: boolean
   sanitizeFn: ((unsafeHtml: string) => string) | null
   selector: string | boolean
@@ -146,6 +149,7 @@ const DefaultType = {
  */
 
 class Tooltip extends BaseComponent {
+  declare ['constructor']: typeof Tooltip
   declare _config: TooltipConfig
   declare _isEnabled: boolean
   declare _timeout: number
@@ -254,7 +258,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    const showEvent = EventHandler.trigger(this._element, (this.constructor as typeof Tooltip).eventName(EVENT_SHOW))
+    const showEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOW))
     const shadowRoot = findShadowRoot(this._element)
     const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element)
 
@@ -281,7 +285,7 @@ class Tooltip extends BaseComponent {
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip)
-      EventHandler.trigger(this._element, (this.constructor as typeof Tooltip).eventName(EVENT_INSERTED))
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
     }
 
     await this._createFloating(tip)
@@ -302,7 +306,7 @@ class Tooltip extends BaseComponent {
     }
 
     const complete = () => {
-      EventHandler.trigger(this._element, (this.constructor as typeof Tooltip).eventName(EVENT_SHOWN))
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN))
 
       if (this._isHovered === false) {
         this._leave()
@@ -319,7 +323,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, (this.constructor as typeof Tooltip).eventName(EVENT_HIDE))
+    const hideEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDE))
     if (hideEvent.defaultPrevented) {
       return
     }
@@ -352,7 +356,7 @@ class Tooltip extends BaseComponent {
       }
 
       this._element.removeAttribute('aria-describedby')
-      EventHandler.trigger(this._element, (this.constructor as typeof Tooltip).eventName(EVENT_HIDDEN))
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN))
     }
 
     this._queueCallback(complete, this.tip!, this._isAnimated()!)
@@ -389,9 +393,9 @@ class Tooltip extends BaseComponent {
     const tip = this._getTemplateFactory(content).toHtml()
 
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
-    tip.classList.add(`bs-${(this.constructor as typeof Tooltip).NAME}-auto`)
+    tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
-    const tipId = getUID((this.constructor as typeof Tooltip).NAME).toString()
+    const tipId = getUID(this.constructor.NAME).toString()
 
     tip.setAttribute('id', tipId)
 
@@ -438,7 +442,7 @@ class Tooltip extends BaseComponent {
 
   // Private
   _initializeOnDelegatedTarget(event: BootstrapEvent): Tooltip {
-    return (this.constructor as typeof Tooltip).getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
+    return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
 
   _isAnimated(): boolean | null {
@@ -491,7 +495,7 @@ class Tooltip extends BaseComponent {
 
   async _createFloating(tip: HTMLElement): Promise<void> {
     const placement = this._getPlacement(tip)
-    const arrowElement = tip.querySelector<HTMLElement>(`.${(this.constructor as typeof Tooltip).NAME}-arrow`)
+    const arrowElement = tip.querySelector<HTMLElement>(`.${this.constructor.NAME}-arrow`)
 
     // Initial position update
     await this._updateFloatingPosition(tip, placement, arrowElement)
@@ -514,7 +518,7 @@ class Tooltip extends BaseComponent {
     }
 
     if (!arrowElement) {
-      arrowElement = tip.querySelector<HTMLElement>(`.${(this.constructor as typeof Tooltip).NAME}-arrow`)
+      arrowElement = tip.querySelector<HTMLElement>(`.${this.constructor.NAME}-arrow`)
     }
 
     const middleware = this._getFloatingMiddleware(arrowElement)
@@ -571,9 +575,7 @@ class Tooltip extends BaseComponent {
       // Floating UI passes different args, adapt the interface for offset function callbacks
       return ({ placement, rects }) => {
         const result = offset({ placement, reference: rects.reference, floating: rects.floating }, this._element)
-        // Adapt a `[skidding, distance]` array to Floating UI's offset shape,
-        // matching how the array and string config forms are applied
-        return Array.isArray(result) ? { mainAxis: result[1] || 0, crossAxis: result[0] || 0 } : result
+        return toFloatingOffset(result)
       }
     }
 
@@ -592,7 +594,7 @@ class Tooltip extends BaseComponent {
       offset(
         typeof offsetValue === 'function' ?
           offsetValue :
-          { mainAxis: offsetValue[1] || 0, crossAxis: offsetValue[0] || 0 }
+          toFloatingOffset(offsetValue)
       ),
       // Flip middleware - handles fallback placements
       flip({
@@ -629,18 +631,18 @@ class Tooltip extends BaseComponent {
 
     for (const trigger of triggers) {
       if (trigger === 'click') {
-        EventHandler.on(this._element, (this.constructor as typeof Tooltip).eventName(EVENT_CLICK), this._config.selector as string, event => {
+        EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK), this._config.selector as string, event => {
           const context = this._initializeOnDelegatedTarget(event)
           context._activeTrigger[TRIGGER_CLICK] = !(context._isShown() && context._activeTrigger[TRIGGER_CLICK])
           context.toggle()
         })
       } else if (trigger !== TRIGGER_MANUAL) {
         const eventIn = trigger === TRIGGER_HOVER ?
-          (this.constructor as typeof Tooltip).eventName(EVENT_MOUSEENTER) :
-          (this.constructor as typeof Tooltip).eventName(EVENT_FOCUSIN)
+          this.constructor.eventName(EVENT_MOUSEENTER) :
+          this.constructor.eventName(EVENT_FOCUSIN)
         const eventOut = trigger === TRIGGER_HOVER ?
-          (this.constructor as typeof Tooltip).eventName(EVENT_MOUSELEAVE) :
-          (this.constructor as typeof Tooltip).eventName(EVENT_FOCUSOUT)
+          this.constructor.eventName(EVENT_MOUSELEAVE) :
+          this.constructor.eventName(EVENT_FOCUSOUT)
 
         EventHandler.on(this._element, eventIn, this._config.selector as string, event => {
           const context = this._initializeOnDelegatedTarget(event)
@@ -801,7 +803,7 @@ class Tooltip extends BaseComponent {
     const config: ComponentConfig = {}
 
     for (const [key, value] of Object.entries(this._config)) {
-      if ((this.constructor as typeof Tooltip).Default[key as keyof TooltipConfig] !== value) {
+      if (this.constructor.Default[key as keyof TooltipConfig] !== value) {
         config[key] = value
       }
     }

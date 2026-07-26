@@ -15,6 +15,26 @@ Sass source in `scss/`, TypeScript source in `js/src/`, docs site in `site/` (As
 - `npm run docs-build` — build docs site
 - `npm test` — full test suite (lint + dist + tests + docs)
 
+## Writing style
+
+Use ASD-STE100 Simplified Technical English for all prose: replies to the user, docs, code comments, commit messages, and PR text.
+
+- Write short sentences. Use approximately 20 words or fewer.
+- Give one instruction per sentence.
+- Use the active voice. Name the actor.
+- Use simple verbs. Do not use a complex verb when a simple one works.
+- Use one term for one thing. Keep terms the same across the project.
+- Keep paragraphs short. Cover one topic per paragraph.
+
+## Teaching
+
+Act as a teacher for JavaScript, TypeScript, React, and all JavaScript-family topics.
+
+- When the work hits a new problem, concept, or language feature, stop and explain it.
+- Keep each explanation short and plain. Define jargon on first use.
+- Use a small code example when it makes the idea clear.
+- Assume strong HTML/CSS knowledge. Do not assume deep JS internals knowledge.
+
 ## SCSS conventions
 
 - Variable naming: `$component-state-property-size` (e.g., `$nav-link-disabled-color`)
@@ -30,7 +50,7 @@ Sass source in `scss/`, TypeScript source in `js/src/`, docs site in `site/` (As
 
 ## JavaScript/TypeScript conventions
 
-- Source is TypeScript (`js/src/**/*.ts`, entry `js/index.ts`); ESM-only, no semicolons, 2-space indent
+- Source is TypeScript (`js/src/**/*.ts`, entry `js/src/index.ts`); ESM-only, no semicolons, 2-space indent
 - Imports use `.js` extensions (standard TS ESM style); the build resolves them to `.ts` via `build/rollup-plugin-ts-resolve.cjs`
 - Strict tsconfig with `verbatimModuleSyntax` + `erasableSyntaxOnly`; Babel (`@babel/preset-typescript`) strips types, `tsc` only type-checks and emits `.d.ts` (`npm run js-typecheck`, `npm run js-compile-types`)
 - Components extend `BaseComponent` (which extends `Config`); per-component config `type XxxConfig` typed off `Default`, refined on the class via `declare _config: XxxConfig`

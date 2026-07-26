@@ -7,7 +7,7 @@
 
 import BaseComponent from './base-component.js'
 import Data from './dom/data.js'
-import EventHandler from './dom/event-handler.js'
+import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 
 /**
@@ -41,6 +41,7 @@ class DialogBase extends BaseComponent {
   declare _config: DialogBaseConfig
   declare _isTransitioning: boolean
   declare _openedAsModal: boolean
+  declare _cancelHandler: (event: BootstrapEvent) => void
 
   constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null) {
     super(element, config)
@@ -68,7 +69,7 @@ class DialogBase extends BaseComponent {
 
     const showEvent = EventHandler.trigger(
       this._element,
-      (this.constructor as typeof DialogBase).eventName('show'),
+      this.constructor.eventName('show'),
       { relatedTarget }
     )
 
@@ -86,7 +87,7 @@ class DialogBase extends BaseComponent {
       this._isTransitioning = false
       EventHandler.trigger(
         this._element,
-        (this.constructor as typeof DialogBase).eventName('shown'),
+        this.constructor.eventName('shown'),
         { relatedTarget }
       )
     }, this._element, this._isAnimated())
@@ -99,7 +100,7 @@ class DialogBase extends BaseComponent {
 
     const hideEvent = EventHandler.trigger(
       this._element,
-      (this.constructor as typeof DialogBase).eventName('hide')
+      this.constructor.eventName('hide')
     )
 
     if (hideEvent.defaultPrevented) {
@@ -122,7 +123,7 @@ class DialogBase extends BaseComponent {
       this._isTransitioning = false
       EventHandler.trigger(
         this._element,
-        (this.constructor as typeof DialogBase).eventName('hidden')
+        this.constructor.eventName('hidden')
       )
     }, this._element, this._isAnimated())
   }
@@ -136,8 +137,8 @@ class DialogBase extends BaseComponent {
     }
 
     // The `cancel` listener is unnamespaced, so super.dispose()'s EVENT_KEY
-    // teardown misses it — remove it here.
-    EventHandler.off(this._element, 'cancel')
+    // teardown misses it — remove this instance's own handler here.
+    EventHandler.off(this._element, 'cancel', this._cancelHandler)
 
     super.dispose()
   }
@@ -232,7 +233,7 @@ class DialogBase extends BaseComponent {
   _triggerBackdropTransition(): void {
     const hidePreventedEvent = EventHandler.trigger(
       this._element,
-      (this.constructor as typeof DialogBase).eventName('hidePrevented')
+      this.constructor.eventName('hidePrevented')
     )
 
     if (hidePreventedEvent.defaultPrevented) {
@@ -271,12 +272,13 @@ class DialogBase extends BaseComponent {
   // Private
 
   _addDialogListeners(): void {
-    const eventKey = (this.constructor as typeof DialogBase).EVENT_KEY
+    const eventKey = this.constructor.EVENT_KEY
 
     // Handle native cancel event (Escape key) — only fires for modal dialogs.
     // Bound unnamespaced because `cancel` is a real native event, not one of
-    // our namespaced custom events; `dispose()` removes it explicitly.
-    EventHandler.on(this._element, 'cancel', event => {
+    // our namespaced custom events. Keep a per-instance handler so dispose()
+    // removes only this listener, not a consumer's own `cancel` listener.
+    this._cancelHandler = event => {
       event.preventDefault()
 
       if (!this._config.keyboard) {
@@ -286,7 +288,9 @@ class DialogBase extends BaseComponent {
 
       this._onCancel()
       this.hide()
-    })
+    }
+
+    EventHandler.on(this._element, 'cancel', this._cancelHandler)
 
     // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
     EventHandler.on(this._element, `keydown${eventKey}`, event => {
