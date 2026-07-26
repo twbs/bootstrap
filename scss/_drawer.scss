@@ -172,7 +172,6 @@ $drawer-backdrop-tokens: defaults(
         }
       }
 
-      // Above breakpoint - show content inline (for responsive drawer)
       // Above breakpoint - show content inline (for responsive drawer).
       // Must fully reset all drawer styles so the element behaves as an
       // inline flex container within its parent (e.g., a navbar).
