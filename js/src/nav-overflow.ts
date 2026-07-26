@@ -70,6 +70,7 @@ class NavOverflow extends BaseComponent {
   declare _overflowMenu: HTMLElement | null
   declare _overflowToggle: HTMLElement | null
   declare _resizeObserver: ResizeObserver | null
+  declare _resizeHandler: (() => void) | null
   declare _collapseBelow: number
 
   constructor(element?: string | Element | null, config?: Partial<NavOverflowConfig> | null) {
@@ -80,6 +81,7 @@ class NavOverflow extends BaseComponent {
     this._overflowMenu = null
     this._overflowToggle = null
     this._resizeObserver = null
+    this._resizeHandler = null
     this._collapseBelow = 0
 
     this._init()
@@ -109,8 +111,10 @@ class NavOverflow extends BaseComponent {
       this._resizeObserver.disconnect()
     }
 
-    // Remove the fallback resize listener bound on window
-    EventHandler.off(window, EVENT_RESIZE)
+    // Remove this instance's fallback resize listener from window
+    if (this._resizeHandler) {
+      EventHandler.off(window, EVENT_RESIZE, this._resizeHandler)
+    }
 
     // Move items back to original positions
     this._restoreItems()
@@ -213,9 +217,10 @@ class NavOverflow extends BaseComponent {
 
   _setupResizeObserver(): void {
     if (typeof ResizeObserver === 'undefined') {
-      // Fallback for older browsers. Namespaced so dispose() can remove it from
-      // window (super.dispose() only clears listeners on this._element).
-      EventHandler.on(window, EVENT_RESIZE, () => this._calculateOverflow())
+      // Fallback for older browsers. Keep a per-instance handler so dispose()
+      // removes only this instance's window listener, not every instance's.
+      this._resizeHandler = () => this._calculateOverflow()
+      EventHandler.on(window, EVENT_RESIZE, this._resizeHandler)
       return
     }
 

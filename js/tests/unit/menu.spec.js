@@ -108,6 +108,26 @@ describe('Menu', () => {
       expect(menu._getOffset()).toEqual([10, 20])
     })
 
+    it('should adapt array results from offset functions to Floating UI offset values', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '  <div class="menu">',
+        '    <a class="menu-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const menu = new Menu(btnMenu, {
+        offset: () => [10, 20]
+      })
+
+      const offset = menu._getOffset()
+
+      expect(offset({ placement: 'bottom', rects: { reference: {}, floating: {} } })).toEqual({ mainAxis: 20, crossAxis: 10 })
+    })
+
     it('should allow to pass config to Floating UI with `floatingConfig`', () => {
       fixtureEl.innerHTML = [
         '<div>',

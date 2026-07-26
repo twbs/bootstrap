@@ -38,8 +38,11 @@ import {
   getResponsivePlacement,
   createBreakpointListeners,
   disposeBreakpointListeners,
+  toFloatingOffset,
   type BreakpointListener,
-  type ResponsivePlacements
+  type ResponsivePlacements,
+  type FloatingOffsetOption,
+  type FloatingConfigOption
 } from './util/floating-ui.js'
 
 /**
@@ -104,8 +107,8 @@ type MenuConfig = {
   boundary: string | Element
   container: string | Element | boolean
   display: string
-  offset: number[] | string | ((data: Record<string, any>, element: HTMLElement) => any)
-  floatingConfig: Record<string, any> | ((defaultConfig: Record<string, any>) => Record<string, any>) | null
+  offset: FloatingOffsetOption
+  floatingConfig: FloatingConfigOption
   menu: HTMLElement | null
   placement: string
   reference: string | Element | Record<string, any>
@@ -440,7 +443,7 @@ class Menu extends BaseComponent {
     if (typeof offsetConfig === 'function') {
       return ({ placement, rects }) => {
         const result = offsetConfig({ placement, reference: rects.reference, floating: rects.floating }, this._element)
-        return result
+        return toFloatingOffset(result)
       }
     }
 
@@ -454,7 +457,7 @@ class Menu extends BaseComponent {
       offset(
         typeof offsetValue === 'function' ?
           offsetValue :
-          { mainAxis: offsetValue[1] || 0, crossAxis: offsetValue[0] || 0 }
+          toFloatingOffset(offsetValue)
       ),
       flip({
         fallbackPlacements: this._getFallbackPlacements()

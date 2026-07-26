@@ -9,6 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import Menu from './menu.js'
+import type { FloatingOffsetOption } from './util/floating-ui.js'
 import { getNextActiveElement, isDisabled, isVisible } from './util/index.js'
 
 /**
@@ -52,7 +53,7 @@ type ComboboxConfig = {
   boundary: string | Element
   multiple: boolean
   name: string | null
-  offset: number[] | string | ((data: Record<string, any>, element: HTMLElement) => any)
+  offset: FloatingOffsetOption
   placeholder: string
   placement: string
   search: boolean
