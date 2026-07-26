@@ -10,7 +10,7 @@ import Manipulator from './dom/manipulator.js';
 import { isRTL, findShadowRoot, noop, getUID, execute, getElement } from './util/index.js';
 import { DefaultAllowlist } from './util/sanitizer.js';
 import TemplateFactory from './util/template-factory.js';
-import { getResponsivePlacement, parseResponsivePlacement, createBreakpointListeners, disposeBreakpointListeners } from './util/floating-ui.js';
+import { getResponsivePlacement, parseResponsivePlacement, createBreakpointListeners, disposeBreakpointListeners, toFloatingOffset } from './util/floating-ui.js';
 
 /**
  * --------------------------------------------------------------------------
@@ -453,12 +453,7 @@ class Tooltip extends BaseComponent {
           reference: rects.reference,
           floating: rects.floating
         }, this._element);
-        // Adapt a `[skidding, distance]` array to Floating UI's offset shape,
-        // matching how the array and string config forms are applied
-        return Array.isArray(result) ? {
-          mainAxis: result[1] || 0,
-          crossAxis: result[0] || 0
-        } : result;
+        return toFloatingOffset(result);
       };
     }
     return offset;
@@ -470,10 +465,7 @@ class Tooltip extends BaseComponent {
     const offsetValue = this._getOffset();
     const middleware = [
     // Offset middleware - handles distance from reference
-    offset(typeof offsetValue === 'function' ? offsetValue : {
-      mainAxis: offsetValue[1] || 0,
-      crossAxis: offsetValue[0] || 0
-    }),
+    offset(typeof offsetValue === 'function' ? offsetValue : toFloatingOffset(offsetValue)),
     // Flip middleware - handles fallback placements
     flip({
       fallbackPlacements: this._config.fallbackPlacements

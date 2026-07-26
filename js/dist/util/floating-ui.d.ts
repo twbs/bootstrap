@@ -50,5 +50,31 @@ export declare const createBreakpointListeners: (callback: (event: MediaQueryLis
  * @param listeners - Array of { mql, handler } objects
  */
 export declare const disposeBreakpointListeners: (listeners: BreakpointListener[]) => void;
-export type { BreakpointListener, ResponsivePlacements };
+/**
+ * Public `offset` option shared by the positioned components (Tooltip, Menu, …):
+ * an `[skidding, distance]` array, a comma-separated string, or a callback
+ * returning that array.
+ */
+type FloatingOffsetOption = number[] | string | ((data: Record<string, any>, element: HTMLElement) => number[]);
+/**
+ * Public `floatingConfig` option: a Floating UI config object, a function that
+ * refines the default config, or null.
+ */
+type FloatingConfigOption = Record<string, any> | ((defaultConfig: Record<string, any>) => Record<string, any>) | null;
+/**
+ * Floating UI offset value: a number, an axis object, or our `[skidding, distance]` array
+ */
+type FloatingOffsetInput = number | number[] | {
+    mainAxis?: number;
+    crossAxis?: number;
+    alignmentAxis?: number | null;
+};
+type FloatingOffsetValue = Exclude<FloatingOffsetInput, number[]>;
+/**
+ * Normalize an offset value into Floating UI's offset shape.
+ * A `[skidding, distance]` array becomes `{ mainAxis: distance, crossAxis: skidding }`;
+ * numbers and axis objects pass through unchanged.
+ */
+export declare const toFloatingOffset: (value: FloatingOffsetInput) => FloatingOffsetValue;
+export type { BreakpointListener, ResponsivePlacements, FloatingOffsetValue, FloatingOffsetOption, FloatingConfigOption };
 //# sourceMappingURL=floating-ui.d.ts.map

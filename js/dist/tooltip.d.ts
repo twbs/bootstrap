@@ -10,7 +10,7 @@ import { type BootstrapEvent } from './dom/event-handler.js';
 import type { ComponentConfig } from './util/config.js';
 import { type SanitizerAllowList } from './util/sanitizer.js';
 import TemplateFactory, { type TemplateContentEntry } from './util/template-factory.js';
-import { type BreakpointListener, type ResponsivePlacements } from './util/floating-ui.js';
+import { type BreakpointListener, type ResponsivePlacements, type FloatingOffsetOption, type FloatingConfigOption } from './util/floating-ui.js';
 type TooltipConfig = {
     allowList: SanitizerAllowList;
     animation: boolean;
@@ -23,9 +23,9 @@ type TooltipConfig = {
     };
     fallbackPlacements: string[];
     html: boolean;
-    offset: number[] | string | ((deps: Record<string, any>, element: HTMLElement) => number[]);
+    offset: FloatingOffsetOption;
     placement: string | ((this: Tooltip, tip: HTMLElement, trigger: HTMLElement) => string);
-    floatingConfig: Record<string, any> | ((defaultConfig: Record<string, any>) => Record<string, any>) | null;
+    floatingConfig: FloatingConfigOption;
     sanitize: boolean;
     sanitizeFn: ((unsafeHtml: string) => string) | null;
     selector: string | boolean;
@@ -37,6 +37,7 @@ type TooltipConfig = {
  * Class definition
  */
 declare class Tooltip extends BaseComponent {
+    ['constructor']: typeof Tooltip;
     _config: TooltipConfig;
     _isEnabled: boolean;
     _timeout: number;

@@ -23,6 +23,9 @@ import { isElement, toType } from './index.js';
  */
 
 class Config {
+  // Type `this.constructor` so static members (Default, DefaultType, NAME) are
+  // reachable without a cast. Declaration-only, so it emits no runtime code.
+
   // Getters
   static get Default() {
     return {};

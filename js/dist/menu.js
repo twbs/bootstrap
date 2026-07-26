@@ -9,7 +9,7 @@ import EventHandler from './dom/event-handler.js';
 import Manipulator from './dom/manipulator.js';
 import SelectorEngine from './dom/selector-engine.js';
 import { isDisabled, noop, isElement, getElement, execute, isRTL, isVisible, getNextActiveElement } from './util/index.js';
-import { getResponsivePlacement, parseResponsivePlacement, createBreakpointListeners, disposeBreakpointListeners } from './util/floating-ui.js';
+import { getResponsivePlacement, parseResponsivePlacement, createBreakpointListeners, disposeBreakpointListeners, toFloatingOffset } from './util/floating-ui.js';
 
 /**
  * --------------------------------------------------------------------------
@@ -316,17 +316,14 @@ class Menu extends BaseComponent {
           reference: rects.reference,
           floating: rects.floating
         }, this._element);
-        return result;
+        return toFloatingOffset(result);
       };
     }
     return offsetConfig;
   }
   _getFloatingMiddleware() {
     const offsetValue = this._getOffset();
-    const middleware = [offset(typeof offsetValue === 'function' ? offsetValue : {
-      mainAxis: offsetValue[1] || 0,
-      crossAxis: offsetValue[0] || 0
-    }), flip({
+    const middleware = [offset(typeof offsetValue === 'function' ? offsetValue : toFloatingOffset(offsetValue)), flip({
       fallbackPlacements: this._getFallbackPlacements()
     }), shift({
       boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
