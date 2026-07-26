@@ -253,14 +253,18 @@ const eslintConfig = [
   {
     files: ['js/**/*.ts'],
     rules: {
-      // tsc validates symbol resolution, including type-only references the
-      // core rule can't see
-      'no-undef': 'off',
       // The DOM plumbing (event registry, config merging) is inherently
       // dynamic; explicit `any` marks those seams
-      '@typescript-eslint/no-explicit-any': 'off',
-      // TS sources import sibling modules with the standard ESM-style `.js`
-      // extension, which these rules misread as pointing at the resolved `.ts`
+      '@typescript-eslint/no-explicit-any': 'off'
+    }
+  },
+
+  // TS sources and the specs that import them use ESM-style `.js` specifiers
+  // that resolve to `.ts` files, which these rules misread; tsc (moduleResolution
+  // nodenext) enforces the extensions instead
+  {
+    files: ['js/**/*.ts', 'js/tests/unit/**'],
+    rules: {
       'import/extensions': 'off',
       'import-x/extensions': 'off'
     }
@@ -319,10 +323,7 @@ const eslintConfig = [
       'no-console': 'off',
       'unicorn/consistent-function-scoping': 'off',
       'unicorn/no-useless-undefined': 'off',
-      'unicorn/prefer-add-event-listener': 'off',
-      // Spec imports use `.js` specifiers that resolve to the TS sources
-      'import/extensions': 'off',
-      'import-x/extensions': 'off'
+      'unicorn/prefer-add-event-listener': 'off'
     }
   },
 

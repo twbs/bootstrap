@@ -757,6 +757,24 @@ describe('Dialog', () => {
         }, 10)
       })
     })
+
+    it('should keep a consumer cancel listener after dispose', () => {
+      fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+      const dialogEl = fixtureEl.querySelector('.dialog')
+      const dialog = new Dialog(dialogEl)
+      const consumerSpy = jasmine.createSpy('consumerCancel')
+
+      // A consumer registers its own native cancel listener via EventHandler
+      EventHandler.on(dialogEl, 'cancel', consumerSpy)
+
+      dialog.dispose()
+
+      // dispose removes only the component's handler; the consumer's survives
+      dialogEl.dispatchEvent(createEvent('cancel'))
+
+      expect(consumerSpy).toHaveBeenCalled()
+    })
   })
 
   describe('data-api', () => {

@@ -45,7 +45,7 @@
       "types": "./js/dist/index.d.ts",
       "default": "./js/dist/index.js"
     },
-    "./js/src/*.js": "./js/src/*.ts",
+    "./js/src/*.js": "./js/dist/*.js",
     "./js/src/*": "./js/src/*",
     "./js/dist/*": "./js/dist/*",
     "./dist/js/*": "./dist/js/*",
@@ -72,12 +72,13 @@
     "css-prefix-main": "postcss --config build/postcss.config.mjs --replace \"dist/css/*.css\" \"!dist/css/*.min.css\" \"!dist/css/*.tmp.css\"",
     "css-prefix-examples": "postcss --config build/postcss.config.mjs --replace \"site/src/assets/examples/**/*.css\"",
     "css-test": "jasmine --config=scss/tests/jasmine.cjs",
-    "js": "npm-run-all js-compile js-minify",
+    "js": "npm-run-all --aggregate-output --parallel js-emit-types js-build",
+    "js-build": "npm-run-all js-compile js-minify",
     "js-compile": "npm-run-all --aggregate-output --parallel js-compile-*",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.mjs --sourcemap",
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.mjs --sourcemap",
     "js-compile-plugins": "node build/build-plugins.mjs",
-    "js-compile-types": "tsc --project build/tsconfig.dts.json",
+    "js-emit-types": "tsc --project build/tsconfig.dts.json",
     "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives .",
     "js-typecheck": "tsc --noEmit",
     "js-minify": "npm-run-all --aggregate-output --parallel js-minify-*",
@@ -215,7 +216,6 @@
   "files": [
     "dist/{css,js}/*.{css,js,map}",
     "js/{src,dist}/**/*.{js,map,ts}",
-    "js/index.ts",
     "scss/**/*.scss",
     "!scss/tests/**",
     ".browserslistrc"

@@ -773,7 +773,7 @@ describe('NavOverflow', () => {
       }
     })
 
-    it('should remove the fallback window resize listener on dispose', () => {
+    it('should remove only its own fallback window resize listener on dispose', () => {
       const { ResizeObserver: originalResizeObserver } = window
 
       // Force the no-ResizeObserver fallback path
@@ -781,19 +781,31 @@ describe('NavOverflow', () => {
 
       try {
         fixtureEl.innerHTML = [
-          '<ul class="nav" data-bs-toggle="nav-overflow">',
+          '<ul class="nav" id="navA" data-bs-toggle="nav-overflow">',
+          '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+          '</ul>',
+          '<ul class="nav" id="navB" data-bs-toggle="nav-overflow">',
           '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
           '</ul>'
         ].join('')
 
-        const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-        const navOverflow = new NavOverflow(navEl)
+        const navA = new NavOverflow(fixtureEl.querySelector('#navA'))
+        const navB = new NavOverflow(fixtureEl.querySelector('#navB'))
+
+        // Each instance keeps its own handler; dispose() nulls the field, so
+        // capture them before disposing
+        const handlerA = navA._resizeHandler
+        const handlerB = navB._resizeHandler
+        expect(handlerA).toEqual(jasmine.any(Function))
+        expect(handlerB).not.toBe(handlerA)
 
         const spyOff = spyOn(EventHandler, 'off').and.callThrough()
 
-        navOverflow.dispose()
+        navA.dispose()
 
-        expect(spyOff).toHaveBeenCalledWith(window, 'resize.bs.navoverflow')
+        // off() removes only navA's handler; navB's listener stays registered
+        expect(spyOff).toHaveBeenCalledWith(window, 'resize.bs.navoverflow', handlerA)
+        expect(spyOff).not.toHaveBeenCalledWith(window, 'resize.bs.navoverflow', handlerB)
       } finally {
         window.ResizeObserver = originalResizeObserver
       }

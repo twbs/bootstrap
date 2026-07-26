@@ -21,6 +21,7 @@ const VERSION = '6.0.0-alpha1'
  */
 
 class BaseComponent extends Config {
+  declare ['constructor']: typeof BaseComponent
   declare _element: HTMLElement
   declare _config: ComponentConfig
 
@@ -37,18 +38,18 @@ class BaseComponent extends Config {
 
     // Dispose any existing instance bound to this element before registering the new one,
     // so its event listeners and timers are cleaned up instead of leaking
-    const existingInstance = Data.get(this._element, (this.constructor as typeof BaseComponent).DATA_KEY)
+    const existingInstance = Data.get(this._element, this.constructor.DATA_KEY)
     if (existingInstance) {
       existingInstance.dispose()
     }
 
-    Data.set(this._element, (this.constructor as typeof BaseComponent).DATA_KEY, this)
+    Data.set(this._element, this.constructor.DATA_KEY, this)
   }
 
   // Public
   dispose(): void {
-    Data.remove(this._element, (this.constructor as typeof BaseComponent).DATA_KEY)
-    EventHandler.off(this._element, (this.constructor as typeof BaseComponent).EVENT_KEY)
+    Data.remove(this._element, this.constructor.DATA_KEY)
+    EventHandler.off(this._element, this.constructor.EVENT_KEY)
 
     for (const propertyName of Object.getOwnPropertyNames(this)) {
       (this as Record<string, any>)[propertyName] = null

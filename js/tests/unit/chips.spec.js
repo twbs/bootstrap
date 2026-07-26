@@ -1,6 +1,6 @@
 import Chips from '../../src/chips.js'
 import EventHandler from '../../src/dom/event-handler.js'
-import { clearFixture, getFixture } from '../helpers/fixture.js'
+import { clearFixture, createEvent, getFixture } from '../helpers/fixture.js'
 
 describe('Chips', () => {
   let fixtureEl
@@ -186,6 +186,21 @@ describe('Chips', () => {
       expect(chipsEl.querySelectorAll('.chip').length).toEqual(2)
     })
 
+    it('should keep values in rendered order when a later duplicate is removed', () => {
+      const { chips, chipsEl } = makeChips({ allowDuplicates: true })
+
+      chips.add('a')
+      chips.add('b')
+      chips.add('a') // DOM order: a, b, a
+
+      // Remove the LAST 'a' chip element (not the first)
+      const chipElements = chipsEl.querySelectorAll('.chip')
+      expect(chips.remove(chipElements[2])).toBeTrue()
+
+      // Values must match the rendered order a, b — not the mis-ordered b, a
+      expect(chips.getValues()).toEqual(['a', 'b'])
+    })
+
     it('should return false when the value is not present', () => {
       const { chips } = makeChips()
 
@@ -328,7 +343,7 @@ describe('Chips', () => {
       const input = chips._input
 
       input.value = 'a,b,c'
-      input.dispatchEvent(new Event('input', { bubbles: true }))
+      input.dispatchEvent(createEvent('input', { bubbles: true }))
 
       expect(chips.getValues()).toEqual(['a', 'b'])
       expect(input.value).toEqual('c')
@@ -426,7 +441,7 @@ describe('Chips', () => {
       const { chips } = makeChips({ separator: null })
       const input = chips._input
 
-      const pasteEvent = new Event('paste', { bubbles: true, cancelable: true })
+      const pasteEvent = createEvent('paste', { bubbles: true, cancelable: true })
       pasteEvent.clipboardData = { getData: () => 'a,b,c' }
       input.dispatchEvent(pasteEvent)
 
@@ -437,7 +452,7 @@ describe('Chips', () => {
       const { chips } = makeChips()
       const input = chips._input
 
-      const pasteEvent = new Event('paste', { bubbles: true, cancelable: true })
+      const pasteEvent = createEvent('paste', { bubbles: true, cancelable: true })
       pasteEvent.clipboardData = { getData: () => 'a,b,c' }
       input.dispatchEvent(pasteEvent)
 
@@ -448,7 +463,7 @@ describe('Chips', () => {
       const { chips } = makeChips()
       const input = chips._input
 
-      const pasteEvent = new Event('paste', { bubbles: true, cancelable: true })
+      const pasteEvent = createEvent('paste', { bubbles: true, cancelable: true })
       pasteEvent.clipboardData = { getData: () => 'single' }
       input.dispatchEvent(pasteEvent)
 

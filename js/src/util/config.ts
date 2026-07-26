@@ -19,6 +19,10 @@ type ComponentConfig = Record<string, any>
  */
 
 class Config {
+  // Type `this.constructor` so static members (Default, DefaultType, NAME) are
+  // reachable without a cast. Declaration-only, so it emits no runtime code.
+  declare ['constructor']: typeof Config
+
   // Getters
   static get Default(): ComponentConfig {
     return {}
@@ -47,21 +51,21 @@ class Config {
     const jsonConfig = isElement(element) ? Manipulator.getDataAttribute(element, 'config') : {} // try to parse
 
     return {
-      ...(this.constructor as typeof Config).Default,
+      ...this.constructor.Default,
       ...(typeof jsonConfig === 'object' ? jsonConfig : {}),
       ...(isElement(element) ? Manipulator.getDataAttributes(element as HTMLElement) : {}),
       ...(typeof config === 'object' ? config : {})
     }
   }
 
-  _typeCheckConfig(config: ComponentConfig, configTypes: ComponentConfig = (this.constructor as typeof Config).DefaultType): void {
+  _typeCheckConfig(config: ComponentConfig, configTypes: ComponentConfig = this.constructor.DefaultType): void {
     for (const [property, expectedTypes] of Object.entries(configTypes)) {
       const value = config[property]
       const valueType = isElement(value) ? 'element' : toType(value)
 
       if (!new RegExp(expectedTypes).test(valueType)) {
         throw new TypeError(
-          `${(this.constructor as typeof Config).NAME.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
+          `${this.constructor.NAME.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`
         )
       }
     }
