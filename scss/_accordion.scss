@@ -17,7 +17,7 @@ $accordion-tokens: defaults(
     --accordion-bg: var(--bg-body),
     --accordion-transition-property: "color, background-color, border-radius",
     --accordion-transition-timing: ".15s ease-in-out",
-    --accordion-transition: var(--accordion-transition-property) var(--accordion-timing),
+    --accordion-transition: var(--accordion-transition-property) var(--accordion-transition-timing),
     --accordion-border-color: var(--border-color),
     --accordion-border-width: var(--border-width),
     --accordion-border-radius: var(--accordion-radius, var(--radius-7)),
