@@ -58,7 +58,6 @@ $chip-tokens: defaults(
 
     &:focus-visible {
       outline: 0;
-      // @include focus-ring();
     }
 
     &.active {
@@ -117,17 +116,15 @@ $chip-tokens: defaults(
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: var(--chip-min-height);
-    height: var(--chip-min-height);
+    width: var(--chip-dismiss-size);
+    height: var(--chip-dismiss-size);
     padding: 0;
-    // margin-inline-start: calc(var(--chip-padding-x) * -.5);
     margin-inline-end: calc(var(--chip-padding-x) * -.25);
     color: inherit;
     cursor: pointer;
     background: transparent;
     border: 0;
     opacity: var(--chip-dismiss-opacity);
-    // @include transition(opacity .15s ease-in-out);
 
     &:hover {
       opacity: var(--chip-dismiss-hover-opacity);
