@@ -111,7 +111,7 @@ $nav-underline-tokens: defaults(
     justify-content: var(--nav-link-justify);
     padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
     font-weight: var(--nav-link-font-weight);
-    color: var(--nav-link-color);
+    color: var(--theme-fg, var(--nav-link-color));
     text-decoration: none;
     white-space: nowrap;
     background: none;
@@ -121,20 +121,20 @@ $nav-underline-tokens: defaults(
 
     &:hover,
     &:focus {
-      color: var(--nav-link-hover-color);
-      background-color: var(--nav-link-hover-bg);
+      color: var(--theme-fg-emphasis, var(--nav-link-hover-color));
+      background-color: var(--theme-bg-muted, var(--nav-link-hover-bg));
     }
 
     &:focus-visible {
       --focus-ring-offset: 1px;
-      color: var(--nav-link-hover-color);
+      color: var(--theme-fg-emphasis, var(--nav-link-hover-color));
       @include focus-ring(true);
     }
 
     &.active,
     &:active {
-      color: var(--nav-link-active-color);
-      background-color: var(--nav-link-active-bg);
+      color: var(--theme-fg, var(--nav-link-active-color));
+      background-color: var(--theme-bg-subtle, var(--nav-link-active-bg));
     }
 
     // Disabled state lightens text
