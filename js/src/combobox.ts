@@ -440,23 +440,6 @@ class Combobox extends BaseComponent {
       }
     }
   }
-
-  // Static
-  static jQueryInterface(this: any, config: any): any {
-    return this.each(function (this: any) {
-      const data: any = Combobox.getOrCreateInstance(this, config)
-
-      if (typeof config !== 'string') {
-        return
-      }
-
-      if (typeof data[config] === 'undefined') {
-        throw new TypeError(`No method named "${config}"`)
-      }
-
-      data[config]()
-    })
-  }
 }
 
 /**
