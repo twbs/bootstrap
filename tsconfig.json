@@ -17,5 +17,8 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["js/src/**/*.ts", "js/tests/types/**/*.ts"]
+  "include": ["js/src/**/*.ts", "js/tests/types/**/*.ts"],
+  // `consumer.ts` checks the shipped `js/dist/*.d.ts`, which only exist after
+  // the build. It has its own config (`tsconfig.consumer.json`) and runs then.
+  "exclude": ["js/tests/types/consumer.ts"]
 }

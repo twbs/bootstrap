@@ -3,9 +3,19 @@
 Bootstrap uses [Jasmine](https://jasmine.github.io/). Each plugin has a file dedicated to its tests in `tests/unit/<plugin-name>.spec.js`.
 
 - `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
+- `types/` contains compile-time type tests. They are type-checked, never executed.
 
 To run the unit test suite via [Karma](https://karma-runner.github.io/), run `npm run js-test`.
 To run the unit test suite via [Karma](https://karma-runner.github.io/) and debug, run `npm run js-debug`.
+
+## Type tests
+
+Bootstrap ships its own TypeScript declarations, so consumers need no `@types/bootstrap`. Two tests protect that public API. Both assert the same surface, but each checks a different artifact.
+
+- `types/api.ts` checks the **source** (`js/src/*.ts`). It imports the source with relative paths. Run it with `npm run js-typecheck`. It runs before the build, as part of `npm run lint`.
+- `types/consumer.ts` checks the **shipped** declarations (`js/dist/*.d.ts`). It imports through the package name (`bootstrap` and `bootstrap/js/src/*.js`), exactly as a downstream project does. Node resolves both through the `exports` map. Run it with `npm run js-typecheck-dist`. It needs the build first, so it runs after `npm run dist`.
+
+A source-only test cannot catch a declaration-emit bug. For example, a leaked private type or a broken import inside a `.d.ts` passes `api.ts` but fails `consumer.ts`. Keep the two files in sync when you change the public API.
 
 ## How do I add a new unit test?
 
