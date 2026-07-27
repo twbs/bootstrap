@@ -96,5 +96,11 @@ new Toast(element, { autohype: true })
 // @ts-expect-error — config value types are enforced
 new Collapse(element, { toggle: 'yes' })
 
+// getOrCreateInstance types its config per component through the shipped types
+Toast.getOrCreateInstance(element, { autohide: false })
+
+// @ts-expect-error — unknown keys are rejected on the static path too
+Toast.getOrCreateInstance(element, { autohype: true })
+
 // @ts-expect-error — getInstance may return null; using it directly must fail
 Alert.getInstance('#alert').close()
