@@ -51,8 +51,9 @@ Act as a teacher for JavaScript, TypeScript, React, and all JavaScript-family to
 ## JavaScript/TypeScript conventions
 
 - Source is TypeScript (`js/src/**/*.ts`, entry `js/src/index.ts`); ESM-only, no semicolons, 2-space indent
-- Imports use `.js` extensions (standard TS ESM style); the build resolves them to `.ts` via `build/rollup-plugin-ts-resolve.cjs`
-- Strict tsconfig with `verbatimModuleSyntax` + `erasableSyntaxOnly`; Babel (`@babel/preset-typescript`) strips types, `tsc` only type-checks and emits `.d.ts` (`npm run js-typecheck`, `npm run js-emit-types`)
+- Imports use `.js` extensions (standard TS ESM style); Rolldown resolves them to `.ts` via `resolve.extensionAlias`, Karma via `build/rollup-plugin-ts-resolve.cjs`
+- Dist builds use Rolldown (`build/rolldown.config.mjs`, `build/build-plugins.mjs`) with built-in TS transforms; browser floors live in `build/browser-targets.mjs` (keep in sync with `.browserslistrc`). Karma still bundles specs with Rollup + Babel (`@babel/preset-typescript`)
+- Strict tsconfig with `verbatimModuleSyntax` + `erasableSyntaxOnly`; `tsc` only type-checks and emits `.d.ts` (`npm run js-typecheck`, `npm run js-emit-types`)
 - Components extend `BaseComponent` (which extends `Config`); per-component config `type XxxConfig` typed off `Default`, refined on the class via `protected declare _config: XxxConfig`
 - Instance fields use `declare` (no runtime emit); constructor `element` param stays optional to keep `typeof Component` assignable to `typeof BaseComponent`
 - Every `_`-prefixed instance member is `protected` (never `private`, so subclasses keep access); public API methods and statics stay public. This keeps the internals out of the published `.d.ts` surface
@@ -78,7 +79,7 @@ Act as a teacher for JavaScript, TypeScript, React, and all JavaScript-family to
 ## Workflow
 
 - Validate after changes: `npm run css-lint`, `npm run js-lint`, `npm run dist`, `npm run docs-build`
-- Keep config files in sync: `config.yml`, `site/src/libs/config.ts` (Zod schema), `build/rollup.config.mjs`, `build/generate-sri.mjs`, `package.json`
+- Keep config files in sync: `config.yml`, `site/src/libs/config.ts` (Zod schema), `build/rolldown.config.mjs`, `build/generate-sri.mjs`, `package.json`
 - For rebases/conflicts: favor base branch structure, layer feature changes on top
 
 ## Commits & PRs
