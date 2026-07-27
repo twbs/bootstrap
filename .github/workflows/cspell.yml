@@ -32,6 +32,8 @@ jobs:
         uses: streetsidesoftware/cspell-action@de2a73e963e7443969755b648a1008f77033c5b2 # v8.4.0
         with:
           config: ".cspell.json"
-          files: "**/*.{md,mdx}"
+          files: |
+            .gitignore
+            **/*.{md,mdx,yml,yaml,json,js,cjs,mjs,ts}
           inline: error
           incremental_files_only: false
