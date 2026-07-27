@@ -17,7 +17,7 @@ declare class BaseComponent extends Config {
     _queueCallback(callback: () => void, element: Element, isAnimated?: boolean): void;
     _getConfig(config?: ComponentConfig | null): ComponentConfig;
     static getInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null): InstanceType<T> | null;
-    static getOrCreateInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null, config?: ComponentConfig | null): InstanceType<T>;
+    static getOrCreateInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null, config?: Partial<InstanceType<T>['_config']> | null): InstanceType<T>;
     static get VERSION(): string;
     static get DATA_KEY(): string;
     static get EVENT_KEY(): string;

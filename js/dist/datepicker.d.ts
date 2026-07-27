@@ -8,8 +8,8 @@ import { Calendar, type DatesArr, type Options } from 'vanilla-calendar-pro';
 import BaseComponent from './base-component.js';
 type DatepickerConfig = {
     datepickerTheme: string | null;
-    dateMin: string | number | Date | null;
-    dateMax: string | number | Date | null;
+    dateMin: string | number | null;
+    dateMax: string | number | null;
     dateFormat: Intl.DateTimeFormatOptions | ((date: Date, locale: string | undefined) => string) | null;
     displayElement: string | HTMLElement | boolean | null;
     displayMonthsCount: number;
