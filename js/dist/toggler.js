@@ -27,9 +27,9 @@ const EVENT_TOGGLED = `toggled${EVENT_KEY}`;
 const EVENT_CLICK = 'click';
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="toggler"]';
 // `value` is required: it's the class/attribute value every `_execute()`
-// branch acts on. The `null` default is a must-override placeholder, and
-// DefaultType intentionally omits `null` so `_typeCheckConfig` rejects a
-// Toggler constructed without one.
+// branch acts on. The public type omits `null` because `DefaultType` rejects
+// it — `Default.value` is a not-set sentinel that must be overridden, so a
+// Toggler built without a `value` throws from `_typeCheckConfig`.
 const DefaultType = {
   attribute: 'string',
   value: '(string|number|boolean)'

@@ -15,7 +15,7 @@ type TooltipConfig = {
     allowList: SanitizerAllowList;
     animation: boolean;
     boundary: string | Element;
-    container: string | Element | boolean | null;
+    container: string | Element | boolean;
     customClass: string | ((...args: any[]) => string);
     delay: number | {
         show: number;
