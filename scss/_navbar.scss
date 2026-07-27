@@ -131,13 +131,13 @@ $navbar-nav-tokens: defaults(
     margin-inline-end: var(--navbar-brand-margin-end);
     font-size: var(--navbar-brand-font-size);
     font-weight: var(--navbar-brand-font-weight);
-    color: var(--navbar-brand-color);
+    color: var(--theme-fg, var(--navbar-brand-color));
     text-decoration: none;
     white-space: nowrap;
 
     &:hover,
     &:focus {
-      color: var(--navbar-brand-hover-color);
+      color: var(--theme-fg-emphasis, var(--navbar-brand-hover-color));
     }
   }
 
@@ -158,7 +158,7 @@ $navbar-nav-tokens: defaults(
     .nav-link {
       &.active,
       &.show {
-        color: var(--navbar-active-color);
+        color: var(--theme-fg, var(--navbar-active-color));
         border: var(--nav-link-border-width) solid var(--nav-link-border-color, transparent);
       }
     }
@@ -175,7 +175,7 @@ $navbar-nav-tokens: defaults(
     a,
     a:hover,
     a:focus {
-      color: var(--navbar-active-color);
+      color: var(--theme-fg, var(--navbar-active-color));
     }
   }
 
