@@ -8,11 +8,10 @@
 
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { babel } from '@rollup/plugin-babel'
 import { globby } from 'globby'
-import { rollup } from 'rollup'
+import { rolldown } from 'rolldown'
 import banner from './banner.mjs'
-import tsResolve from './rollup-plugin-ts-resolve.cjs'
+import browserTargets from './browser-targets.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -34,29 +33,27 @@ for (const file of tsFiles) {
 }
 
 const build = async plugin => {
-  const bundle = await rollup({
+  const bundle = await rolldown({
     input: plugin.src,
-    plugins: [
-      tsResolve(),
-      babel({
-        // Only transpile our source code
-        exclude: 'node_modules/**',
-        // Transpile the TypeScript sources too
-        extensions: ['.js', '.mjs', '.ts'],
-        // Include the helpers in each file, at most one copy of each
-        babelHelpers: 'bundled'
-      })
-    ],
-    external: () => true
+    // Keep every import external, so each plugin file mirrors its source module
+    external: () => true,
+    resolve: {
+      // Map ESM-style `.js` specifiers to the `.ts` sources on disk
+      extensionAlias: { '.js': ['.ts', '.js'] }
+    },
+    transform: {
+      target: browserTargets
+    }
   })
 
   await bundle.write({
     banner: banner(plugin.fileName),
     format: 'esm',
     sourcemap: true,
-    generatedCode: 'es2015',
     file: plugin.dist
   })
+
+  await bundle.close()
 
   console.log(`Built ${plugin.fileName}`)
 }
