@@ -58,7 +58,7 @@ Act as a teacher for JavaScript, TypeScript, React, and all JavaScript-family to
 - Constants: `NAME`, `DATA_KEY`, `EVENT_KEY`, `VERSION`
 - DOM utilities via `dom/event-handler.ts`, `dom/selector-engine.ts`, `dom/manipulator.ts`
 - Floating UI for positioning (dropdown, tooltip, popover)
-- Tests: Jasmine + Karma, specs in `js/tests/unit/*.spec.js` (plain JS, bundled against the TS sources); type-level API tests in `js/tests/types/`
+- Tests: Jasmine + Karma, specs in `js/tests/unit/*.spec.js` (plain JS, bundled against the TS sources); type-level API tests in `js/tests/types/` — `api.ts` checks the source (`npm run js-typecheck`), `consumer.ts` checks the shipped `js/dist/*.d.ts` through the package `exports` map (`npm run js-typecheck-dist`, after the build)
 
 ## Docs conventions
 

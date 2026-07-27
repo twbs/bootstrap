@@ -1,0 +1,14 @@
+{
+  // Checks the SHIPPED declarations. It includes only `consumer.ts`, so it
+  // never sees `js/src`. Node then resolves the `bootstrap` imports through
+  // the `exports` map to the emitted `js/dist/*.d.ts`. Run it after the build.
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    // Type-check the bodies of the emitted declarations, not just use them,
+    // so a malformed shipped `.d.ts` fails here.
+    "skipLibCheck": false
+  },
+  // The root config excludes `consumer.ts`; clear that so this config sees it.
+  "exclude": [],
+  "include": ["consumer.ts"]
+}
