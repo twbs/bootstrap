@@ -53,7 +53,6 @@ declare class Combobox extends BaseComponent {
     _normalizeText(text: string): string;
     _handleToggleKeydown(event: BootstrapEvent): void;
     _handleMenuKeydown(event: BootstrapEvent): void;
-    static jQueryInterface(this: any, config: any): any;
 }
 export default Combobox;
 export type { ComboboxConfig };
