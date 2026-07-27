@@ -234,6 +234,9 @@ $navbar-nav-tokens: defaults(
       max-height: none !important;
       padding: 0;
       margin: 0;
+      // Allow focus rings on inlined form controls to paint outside the dialog box.
+      // Without this, UA/drawer `overflow` clips the top/bottom of `:focus-visible` outlines.
+      overflow: visible !important;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
