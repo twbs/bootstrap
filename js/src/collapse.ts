@@ -11,7 +11,8 @@ import SelectorEngine from './dom/selector-engine.js'
 import type { ComponentConfig } from './util/config.js'
 import {
   getElement,
-  reflow
+  reflow,
+  setAriaAttribute
 } from './util/index.js'
 
 /**
@@ -257,7 +258,7 @@ class Collapse extends BaseComponent {
 
     for (const element of triggerArray) {
       element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen)
-      element.setAttribute('aria-expanded', isOpen as unknown as string)
+      setAriaAttribute(element, 'aria-expanded', isOpen)
     }
   }
 }

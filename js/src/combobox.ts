@@ -10,7 +10,9 @@ import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import Menu from './menu.js'
 import type { FloatingOffsetOption } from './util/floating-ui.js'
-import { getNextActiveElement, isDisabled, isVisible } from './util/index.js'
+import {
+  getNextActiveElement, isDisabled, isVisible, setAriaAttribute
+} from './util/index.js'
 
 /**
  * Constants
@@ -266,7 +268,7 @@ class Combobox extends BaseComponent {
   protected _selectItem(item: HTMLElement): void {
     if (this._config.multiple) {
       item.classList.toggle(CLASS_NAME_SELECTED)
-      item.setAttribute('aria-selected', item.classList.contains(CLASS_NAME_SELECTED) as unknown as string)
+      setAriaAttribute(item, 'aria-selected', item.classList.contains(CLASS_NAME_SELECTED))
     } else {
       const previouslySelected = SelectorEngine.find(`.${CLASS_NAME_SELECTED}`, this._menu)
       for (const prev of previouslySelected) {

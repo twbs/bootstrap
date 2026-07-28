@@ -75,7 +75,6 @@ const SelectorEngine = {
     return []
   },
 
-  // TODO: this is now unused; remove along with prev()
   next(element: Element, selector: string): Element[] {
     let next = element.nextElementSibling
 
