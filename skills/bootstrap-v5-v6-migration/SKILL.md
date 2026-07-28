@@ -1,24 +1,25 @@
 ---
 name: bootstrap-v5-v6-migration
-description: Migrate projects from Bootstrap 5 to Bootstrap 6. Use when upgrading Bootstrap, migrating v5 to v6, or updating Bootstrap class names, components, Sass, or JavaScript to the latest version.
+description: Migrate projects from Bootstrap 5 to Bootstrap 6. Use when upgrading from Bootstrap 5, migrating v5 to v6, or updating v5 class names, components, Sass, or JavaScript to the latest version. For Bootstrap 4 projects, start with the v4-to-v6 migration skill instead.
+guide: /guides/migration
 ---
 
 # Bootstrap v5 to v6 Migration
 
 ## Workflow
 
-Work through each phase in order. After each phase, search the codebase for remaining v5 patterns before moving on.
+Work through each step in order. After each step, search the codebase for remaining v5 patterns before moving on.
 
-- [ ] Phase 1: Update dependencies and build setup
-- [ ] Phase 2: Rename CSS classes and data attributes
-- [ ] Phase 3: Restructure component HTML
-- [ ] Phase 4: Update JavaScript
-- [ ] Phase 5: Update Sass
-- [ ] Phase 6: Verify
+- [ ] Step 1: Update dependencies and build setup
+- [ ] Step 2: Rename CSS classes and data attributes
+- [ ] Step 3: Restructure component HTML
+- [ ] Step 4: Update JavaScript
+- [ ] Step 5: Update Sass
+- [ ] Step 6: Verify
 
 ---
 
-## Phase 1: Dependencies & Build
+## Step 1: Dependencies & Build
 
 1. Update `package.json`: `"bootstrap": "^6.0.0"`
 2. Replace `@popperjs/core` with `@floating-ui/dom`
@@ -32,15 +33,19 @@ Work through each phase in order. After each phase, search the codebase for rema
 // v6
 @use "bootstrap/scss/bootstrap";
 
-// v6 with overrides
+// v6 with overrides — customize CSS tokens through the token maps
 @use "bootstrap/scss/bootstrap" with (
-  $spacer: 1rem
+  $root-tokens: (
+    --spacer: 1rem,
+  )
 );
 ```
 
+Customize by overriding the CSS token maps — `$root-tokens` for global tokens and each component's `$*-tokens` map — rather than legacy Sass scalars. See [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written **unprefixed** in Sass (e.g. `--spacer`, `--border-radius`); Bootstrap's dist/CDN CSS runs PostCSS to add the `--bs-` prefix (`--bs-spacer`), so when you compile the source yourself the properties stay unprefixed.
+
 ---
 
-## Phase 2: CSS Class & Attribute Renames
+## Step 2: CSS Class & Attribute Renames
 
 ### Responsive & state prefix syntax
 
@@ -83,7 +88,7 @@ Three components have been fully renamed. Find-and-replace these prefixes across
 | CSS vars | `--modal-*` | `--dialog-*` |
 | Body class | `.modal-open` on `<body>` | `.dialog-open` on `<html>` |
 
-Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Phase 3.
+Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Step 3.
 
 #### Offcanvas -> Drawer
 
@@ -106,7 +111,7 @@ Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Phase 3.
 | Events | `*.bs.dropdown` | `*.bs.menu` |
 | Sass | `$zindex-dropdown` | `$zindex-menu` |
 
-Also remove: `.dropdown-toggle` (no longer needed), `.dropdown` wrapper, `.dropdown-toggle-split`. See Phase 3 for new markup.
+Also remove: `.dropdown-toggle` (no longer needed), `.dropdown` wrapper, `.dropdown-toggle-split`. See Step 3 for new markup.
 
 ### Button & badge variants -> theme tokens
 
@@ -170,7 +175,7 @@ Keys 3-5 have changed values. To preserve v5 spacing: `.p-3` (1rem) -> `.p-4`, `
 
 ---
 
-## Phase 3: Structural HTML Changes
+## Step 3: Structural HTML Changes
 
 These components have fundamentally new markup, not just class renames.
 
@@ -353,7 +358,7 @@ Add `.breadcrumb-link` on `<a>` elements. Add `.breadcrumb-divider` separator el
 
 ---
 
-## Phase 4: JavaScript
+## Step 4: JavaScript
 
 ### ESM-only
 
@@ -415,7 +420,7 @@ document.querySelectorAll('form[data-bs-validate]')
 
 ---
 
-## Phase 5: Sass
+## Step 5: Sass
 
 ### Renamed files
 
@@ -454,9 +459,11 @@ document.querySelectorAll('form[data-bs-validate]')
 The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem` and a `$radii` map (keys `0`–`9`, e.g. `5: $radius`, `9: $radius * 3`), exposed as `--radius-0`–`--radius-9` tokens (plus `--radius-pill`). The `.rounded-*` utilities now span `0`–`9` and map to different values than v5, so shift class numbers up to keep the same roundness (e.g. `.rounded-1` → `.rounded-3`, `.rounded-3` → `.rounded-5`). Override the base or the map entries rather than the old per-size variables:
 
 ```scss
-@use "bootstrap/scss/bootstrap" with (
+// $radius lives in _config.scss, so configure that module before loading Bootstrap
+@use "bootstrap/scss/config" with (
   $radius: .375rem // scales the whole map
 );
+@use "bootstrap/scss/bootstrap";
 ```
 
 ### Removed (no replacement)
@@ -524,12 +531,12 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 ### Removed / changed internals
 
 - **`util/backdrop.js`, `util/focustrap.js`, and `util/scrollbar.js` removed.** Dialog and Drawer use the native `<dialog>` element, which provides the backdrop (`::backdrop`), the focus trap, and an inert top layer; the body scroll-lock is now CSS (`:root.dialog-open`). If you imported `bootstrap/js/src/util/backdrop`, `.../focustrap`, or `.../scrollbar` directly, they're gone.
-- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Author CSS outside any layer now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
+- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Author CSS outside any layer now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
 - **`--bs-*-rgb` variables removed.** The `$*-rgb` Sass vars and `--bs-*-rgb` custom properties are gone. Replace `rgba(var(--bs-primary-rgb), .5)` with `color-mix(in oklab, var(--bs-primary), transparent 50%)` (or use the color directly).
 
 ---
 
-## Phase 6: Verify
+## Step 6: Verify
 
 1. Build the project and fix any compilation errors.
 2. Search for remaining v5 patterns:

@@ -1,0 +1,57 @@
+---
+import { getConfig } from '@libs/config'
+import { docsPages, getDocsPageSlug } from '@libs/content'
+import { getVersionedDocsPath } from '@libs/path'
+import { getSkills } from '@libs/skills'
+
+// Render the agent skills table from each `SKILL.md` frontmatter so the docs
+// stay in sync with the skill files. Markup mirrors the `BsTable` shortcode.
+const skills = getSkills()
+const { repo } = getConfig()
+
+function getGuide(guide: string | undefined) {
+  if (!guide) {
+    return undefined
+  }
+
+  const slug = guide.replace(/^\//, '')
+  const page = docsPages.find((docsPage) => getDocsPageSlug(docsPage.id) === slug)
+
+  if (!page) {
+    return undefined
+  }
+
+  return { href: getVersionedDocsPath(slug), label: page.data.title }
+}
+---
+
+<div class="table-responsive">
+  <table class="table md:table-stacked">
+    <thead>
+      <tr>
+        <th scope="col">Skill</th>
+        <th scope="col">Description</th>
+        <th scope="col">Guide</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        skills.map((skill) => {
+          const guide = getGuide(skill.guide)
+
+          return (
+            <tr>
+              <td>
+                <a href={`${repo}/tree/main/skills/${skill.name}`}>
+                  <code class="text-nowrap">{skill.name}</code>
+                </a>
+              </td>
+              <td>{skill.description}</td>
+              <td>{guide ? <a href={guide.href}>{guide.label}</a> : '—'}</td>
+            </tr>
+          )
+        })
+      }
+    </tbody>
+  </table>
+</div>
