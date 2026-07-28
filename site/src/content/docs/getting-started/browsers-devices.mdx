@@ -8,16 +8,7 @@ toc: true
 
 Bootstrap supports the **latest, stable releases** of all major browsers and platforms, plus a run of older versions of each engine. The exact policy lives in [our `.browserslistrc` file](https://github.com/twbs/bootstrap/blob/v6-dev/.browserslistrc):
 
-```text
-last 2 major versions
-not dead
-unreleased versions
-Chrome >= 130
-Edge >= 130
-Firefox >= 132
-iOS >= 18.0
-Safari >= 18.0
-```
+<Code lang="plaintext" filePath=".browserslistrc" fileMatch="last 2 major versions[\s\S]+not op_mini all" />
 
 Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `last 2 major versions`. They add every version above each floor, which is what sets our real minimums:
 
@@ -32,6 +23,15 @@ Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `l
 </BsTable>
 
 Alternative browsers built on these engines (Chromium-based browsers like Brave, Opera, or Vivaldi, and browsers using WebKit on iOS) are not explicitly tested, but should be fully supported at equivalent engine versions.
+
+### How to read the query list
+
+Two of those lines do more than they look like they do:
+
+- **`last 2 major versions` carries our mobile coverage.** caniuse tracks Chrome for Android as a single unversioned entry rather than one entry per release, so this line, not the `>=` floors, is what picks it up.
+- **`unreleased versions` is worth about eight points of coverage, and it costs nothing.** caniuse gives the newest Safari a null release date, yet that version already holds most of Safari’s usage share. Both range queries and `last N versions` skip unreleased versions, so without this line we would exclude the single most-used Safari. It cannot pull in anything old, because an unreleased version is newer than every floor.
+
+To measure coverage yourself, run `npx browserslist --coverage` in a clone of the repository. Do not read the figure off browserslist.dev: that site pins an older copy of caniuse-db and reports a materially different number.
 
 ### Why these versions?
 
@@ -51,7 +51,7 @@ Our floors also have to last. They apply to the whole v6.x line, and we cannot r
 
 `light-dark()` sets the hard lower bound: Chrome 123, Firefox 120, and Safari 17.5. Below it, our build pipeline lowers `light-dark()` to a custom-property polyfill, and that polyfill breaks `data-bs-theme` dark mode. We will not go below that bound in any release.
 
-Together these targets cover about 85% of global browser usage. Run `npx browserslist --coverage` in a clone to check the current figure yourself.
+Together these targets cover about 85% of global browser usage.
 
 Unlike previous major versions, Bootstrap 6 does not ship fallbacks, prefixes, or polyfills for browsers below this floor. Pages will not render correctly in unsupported browsers—most visibly, colors depending on `light-dark()` will not resolve.
 
@@ -72,6 +72,37 @@ The table below lists the platform features v6 relies on and how each behaves at
 | Logical properties | Spacing, borders, and [RTL]([[docsref:/customize/rtl]]) support throughout | Fully supported above the floor |
 </BsTable>
 
+### Also safe to use
+
+The floors clear more of the platform than the components currently use. All of the following need no fallback, no vendor prefix, and no polyfill in any 6.x release, so reach for them first when you build on top of Bootstrap or contribute to it:
+
+- Native CSS nesting, so compiled output can stay nested
+- `@layer`, which our [layer order]([[docsref:/getting-started/approach]]) depends on
+- `:focus-visible` for keyboard-only focus styling
+- Container query units and `subgrid`
+- `content-visibility`, `transition-behavior: allow-discrete`, and `@starting-style`, which together animate `<details>` and `<dialog>` open and closed
+- Unprefixed `backdrop-filter`
+- `text-wrap: balance`
+- Range syntax in media queries, such as `@media (width >= 1024px)`
+
+### Not available yet
+
+These features sit above our floors, so v6 cannot use them without a fallback. Firefox is the blocker in nearly every case, which means Chrome support alone is never enough to tell you whether we can ship something.
+
+<BsTable>
+| Feature | First fully supported in |
+| --- | --- |
+| Relative color syntax, `rgb(from …)` | Chrome 131, Firefox 133 |
+| View transitions | Firefox 144 |
+| `@scope` | Firefox 146 |
+| Anchor positioning | Firefox 147, Safari 26 |
+| Style container queries | Firefox 151 |
+| `text-box-trim` | Firefox 154 |
+| Scrollbar styling | Safari 26.2 |
+</BsTable>
+
+Relative color syntax is the closest miss, one version above our Chrome floor. Anchor positioning is the one most worth waiting for: it would let Menu, Tooltip, Popover, and Combobox drop their [Floating UI](https://floating-ui.com/) dependency. Re-check these with `npx browserslist` before you assume one has landed.
+
 ## JavaScript
 
 Bootstrap’s JavaScript ships as **native ES modules only**. Load it with `<script type="module">`—a classic `<script src>` without `type="module"` will not execute it, and there is no global `window.bootstrap` object. See the [JavaScript getting-started guide]([[docsref:/getting-started/javascript]]) for loading patterns, including import maps for the bundle’s dependencies.
@@ -80,7 +111,7 @@ All browsers meeting the CSS support floor above fully support ES modules, `impo
 
 ## Mobile devices
 
-Generally speaking, Bootstrap supports the latest versions of each major platform’s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile’s Turbo mode, UC Browser Mini, Amazon Silk) are not supported. We also exclude UC Browser, QQ Browser, and KaiOS. Together they hold under 1% of users, and targeting them only adds vendor prefixes to our CSS.
+Generally speaking, Bootstrap supports the latest versions of each major platform’s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile’s Turbo mode, UC Browser Mini, Amazon Silk) are not supported. We also exclude UC Browser, QQ Browser, and KaiOS. Together they hold under 1% of users, and including them only adds vendor prefixes to our CSS: `-webkit-mask-*` for UC and QQ, and `-moz-column-gap` for KaiOS. KaiOS additionally [broke our floating labels](https://github.com/postcss/autoprefixer/issues/1533).
 
 <BsTable>
 | Platform | Supported browsers |

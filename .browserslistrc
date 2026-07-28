@@ -1,75 +1,28 @@
 # https://github.com/browserslist/browserslist#readme
 #
-# Browserslist joins every line below with OR, not AND. The `>=` lines do not
-# restrict `last 2 major versions`; they add older versions of each engine on
-# top of it. `last 2 major versions` is the line that carries mobile coverage,
-# because caniuse tracks Chrome for Android as one unversioned entry.
+# Read the docs before you change anything here. The support policy, the reason
+# behind each floor, the features these floors do and do not give us, and how to
+# measure coverage all live in one place:
+# https://getbootstrap.com/docs/6.0/getting-started/browsers-devices/
 #
-# Run `npx browserslist --coverage` for the real coverage figure. It reports
-# about 85% today. Do not read the number off browserslist.dev, because that
-# site pins an old caniuse-db and reports a different result.
+# Two rules for editing this file:
+#   1. Never set a floor below `light-dark()`: Chrome 123, Firefox 120,
+#      Safari 17.5. Lightning CSS lowers `light-dark()` to a custom-property
+#      polyfill below those versions, and the polyfill breaks `data-bs-theme`.
+#   2. Run `npx browserslist --coverage` after any change, then update the
+#      versions and the coverage figure on the docs page above.
 
 last 2 major versions
 not dead
-
-# caniuse gives the newest Safari a null release date, but that version already
-# holds most of Safari's usage share. Both range queries and `last N versions`
-# skip unreleased versions, so this line is worth about 8 points of coverage.
-# It costs nothing, because the version is newer than every floor below.
 unreleased versions
 
-# These floors are the platform baseline for the whole v6.x line. We cannot raise
-# them in a minor release, so they cap what every future 6.x feature may use.
-# Each floor sits on the newest feature we already depend on, not the oldest one
-# we could tolerate:
-#   - `:has()` needs Firefox 121. We use it in forms, button groups and cards.
-#   - `content-visibility` needs Firefox 125 and Safari 18. The accordion
-#     transitions it with `allow-discrete`.
-#   - `<details name>` needs Firefox 130. It drives exclusive accordions.
-#   - Unprefixed `backdrop-filter` needs Safari and iOS 18. Dialog and Drawer
-#     blur their `::backdrop`. Below 18, Autoprefixer adds `-webkit-` copies.
-#   - `text-wrap: balance` needs Chrome 130. We ship it as a utility.
-# `light-dark()` sets the hard lower bound (Chrome 123, Firefox 120, Safari 17.5).
-# Below it, Lightning CSS lowers `light-dark()` to a custom-property polyfill, and
-# that polyfill breaks `data-bs-theme` dark mode. Never go below that bound.
 Chrome >= 130
 Edge >= 130
 Firefox >= 132
 iOS >= 18.0
 Safari >= 18.0
 
-# What these floors buy us. Every item here is safe in any 6.x release with no
-# fallback, no prefix and no polyfill. Reach for these first:
-#   - Colors: `light-dark()`, `oklch()`, `color()` and `color-mix()`
-#   - Native CSS nesting, so compiled output can stay nested
-#   - `@layer`, which our layer order depends on
-#   - `:has()` and `:focus-visible` for contextual styling
-#   - Container queries, container query units and `subgrid`
-#   - `content-visibility`, `transition-behavior: allow-discrete` and
-#     `@starting-style`, which animate `<details>` and `<dialog>` open and closed
-#   - Native `<dialog>` with `::backdrop` and unprefixed `backdrop-filter`
-#   - `<details name>` for exclusive accordions
-#   - `text-wrap: balance`
-#   - Range syntax in media queries, such as `@media (width >= 1024px)`
-#
-# What these floors still do not buy. Do not use these in 6.x without a
-# fallback. Re-check with `npx browserslist` before you assume one has landed,
-# because Firefox is the blocker in almost every case:
-#   - Relative color syntax, `rgb(from ...)`: Chrome 131, Firefox 133. This sits
-#     one version above our Chrome floor, so revisit it first in v7.
-#   - View transitions: Firefox 144
-#   - `@scope`: Firefox 146
-#   - Anchor positioning: Firefox 147, Safari 26. This is the big one. It would
-#     let Menu, Tooltip, Popover and Combobox drop Floating UI.
-#   - Style container queries: Firefox 151
-#   - `text-box-trim`: Firefox 154
-#   - Scrollbar styling: Safari 26.2
-
-# Autoprefixer adds `-webkit-mask-*` for UC and QQ, and `-moz-column-gap` for
-# KaiOS. Those three engines hold under 0.8% of users between them, so we drop
-# them rather than ship the prefixes. KaiOS also broke floating labels
-# (see https://github.com/postcss/autoprefixer/issues/1533).
 not and_uc > 0
 not and_qq > 0
 not kaios > 0
-not op_mini all # proxy browser we don't target; only source of redundant -o-object-fit prefixes
+not op_mini all
