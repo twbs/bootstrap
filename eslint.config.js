@@ -420,6 +420,14 @@ const eslintConfig = [
     }
   },
 
+  // Markdown TypeScript code blocks — parsed for syntax only, never type-checked
+  {
+    files: ['**/*.md/*.ts'],
+    languageOptions: {
+      parser: tseslint.parser
+    }
+  },
+
   // Agent skill code blocks are illustrative docs (mirroring the docs guides),
   // so allow side-effect imports like `import './styles.scss'` in bundler setups.
   {
