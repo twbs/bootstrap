@@ -24,7 +24,7 @@ Our [package.json]([[config:repo]]/blob/v[[config:current_version]]/package.json
 | Task | Description |
 | --- | --- |
 | `npm start` | Compiles CSS and JavaScript, builds the documentation, and starts a local server. |
-| `npm run dist` | Creates the `dist/` directory with compiled files. Uses [Sass](https://sass-lang.com/), [Autoprefixer](https://github.com/postcss/autoprefixer), and [terser](https://github.com/terser/terser). |
+| `npm run dist` | Creates the `dist/` directory with compiled files. Uses [Sass](https://sass-lang.com/), [Autoprefixer](https://github.com/postcss/autoprefixer), [Rolldown](https://rolldown.rs/), and [terser](https://github.com/terser/terser). |
 | `npm test` | Runs tests locally after running `npm run dist` |
 | `npm run docs-serve` | Builds and runs the documentation locally. |
 </BsTable>
@@ -46,6 +46,14 @@ Bootstrap uses [PostCSS](https://postcss.org/) to process our compiled CSS with 
 - **[postcss-prefix-custom-properties](https://github.com/twbs/postcss-prefix-custom-properties)** adds the `bs-` prefix to all CSS custom properties (variables). This allows us to write clean, unprefixed variable names in our Sass source (e.g., `--border-radius`) that become prefixed in the compiled CSS (e.g., `--bs-border-radius`).
 
 Our PostCSS configuration is located in [build/postcss.config.mjs]([[config:repo]]/blob/v[[config:current_version]]/build/postcss.config.mjs).
+
+## JavaScript
+
+Our JavaScript source is written in TypeScript and lives in `js/src/`. We bundle it with [Rolldown](https://rolldown.rs/), the Rust-based bundler from the Vite team, and then minify the output with [terser](https://github.com/terser/terser). Bootstrap v5 used [Rollup](https://rollupjs.org/) and [Babel](https://babeljs.io/) for this. Rolldown strips the TypeScript types and lowers the syntax itself, so we no longer need Babel.
+
+Rolldown does not read `.browserslistrc`, so [build/browser-targets.mjs]([[config:repo]]/blob/v[[config:current_version]]/build/browser-targets.mjs) resolves that file at build time and converts it into the target list Rolldown expects. Both pipelines therefore honor one browser list.
+
+We ship our own TypeScript declarations, so you do not need `@types/bootstrap`. Our bundler configuration is located in [build/rolldown.config.mjs]([[config:repo]]/blob/v[[config:current_version]]/build/rolldown.config.mjs).
 
 ## Local documentation
 

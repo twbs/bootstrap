@@ -802,6 +802,27 @@ describe('Dialog', () => {
       })
     })
 
+    it('should not open the dialog when the show event is prevented', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button type="button" data-bs-toggle="dialog" data-bs-target="#exampleDialog"></button>',
+          '<dialog id="exampleDialog" class="dialog"></dialog>'
+        ].join('')
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const trigger = fixtureEl.querySelector('[data-bs-toggle="dialog"]')
+
+        dialogEl.addEventListener('show.bs.dialog', event => event.preventDefault())
+
+        trigger.click()
+
+        setTimeout(() => {
+          expect(dialogEl.open).toBeFalse()
+          resolve()
+        }, 10)
+      })
+    })
+
     it('should not recreate a new dialog', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [

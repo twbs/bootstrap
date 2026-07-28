@@ -1,15 +1,28 @@
 # https://github.com/browserslist/browserslist#readme
+#
+# Read the docs before you change anything here. The support policy, the reason
+# behind each floor, the features these floors do and do not give us, and how to
+# measure coverage all live in one place:
+# https://getbootstrap.com/docs/6.0/getting-started/browsers-devices/
+#
+# Two rules for editing this file:
+#   1. Never set a floor below `light-dark()`: Chrome 123, Firefox 120,
+#      Safari 17.5. Lightning CSS lowers `light-dark()` to a custom-property
+#      polyfill below those versions, and the polyfill breaks `data-bs-theme`.
+#   2. Run `npx browserslist --coverage` after any change, then update the
+#      versions and the coverage figure on the docs page above.
 
 last 2 major versions
 not dead
-# Floors kept on versions with native CSS `light-dark()` (and nesting) so
-# Lightning CSS doesn't lower them to the brittle custom-property polyfill that
-# broke `data-bs-theme` dark mode. Raised as far as we can while staying above
-# 90% global coverage (~90.8%).
+unreleased versions
+
 Chrome >= 130
 Edge >= 130
 Firefox >= 132
 iOS >= 18.0
 Safari >= 18.0
-not kaios <= 2.5 # fix floating label issues in Firefox (see https://github.com/postcss/autoprefixer/issues/1533)
-not op_mini all # proxy browser we don't target; only source of redundant -o-object-fit prefixes
+
+not and_uc > 0
+not and_qq > 0
+not kaios > 0
+not op_mini all

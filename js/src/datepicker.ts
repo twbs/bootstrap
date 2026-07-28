@@ -5,7 +5,17 @@
  * --------------------------------------------------------------------------
  */
 
-import { Calendar, type DatesArr, type Options } from 'vanilla-calendar-pro'
+import {
+  Calendar,
+  type DateAny,
+  type DateMode,
+  type DatesArr,
+  type MonthsCount,
+  type Options,
+  type PositionToInput,
+  type Range,
+  type WeekDayID
+} from 'vanilla-calendar-pro'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import { isDisabled } from './util/index.js'
@@ -31,20 +41,24 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="datepicker"]'
 
 const HIDE_DELAY = 100 // ms delay before hiding after selection
 
+// The date, weekday, month-count and placement options are handed straight to
+// Vanilla Calendar Pro, so they use its own literal unions rather than the wider
+// `string` / `number`. That keeps a bad value a compile error here instead of a
+// silent no-op inside the calendar.
 type DatepickerConfig = {
   datepickerTheme: string | null
-  dateMin: string | number | null
-  dateMax: string | number | null
+  dateMin: DateAny | null
+  dateMax: DateAny | null
   dateFormat: Intl.DateTimeFormatOptions | ((date: Date, locale: string | undefined) => string) | null
   displayElement: string | HTMLElement | boolean | null
-  displayMonthsCount: number
-  firstWeekday: number
+  displayMonthsCount: MonthsCount
+  firstWeekday: WeekDayID
   inline: boolean
   locale: string
   positionElement: string | HTMLElement | null
   selectedDates: string[]
-  selectionMode: string
-  placement: string
+  selectionMode: DateMode
+  placement: PositionToInput
   vcpOptions: Options
 }
 
@@ -339,12 +353,12 @@ class Datepicker extends BaseComponent {
     const calendarOptions: Options = {
       ...this._config.vcpOptions,
       inputMode: !this._isInline,
-      positionToInput: this._config.placement as any,
-      firstWeekday: this._config.firstWeekday as any,
+      positionToInput: this._config.placement,
+      firstWeekday: this._config.firstWeekday,
       locale: this._config.locale,
-      selectionDatesMode: this._config.selectionMode as any,
+      selectionDatesMode: this._config.selectionMode,
       selectedDates: this._config.selectedDates,
-      displayMonthsCount: this._config.displayMonthsCount as any,
+      displayMonthsCount: this._config.displayMonthsCount,
       type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
       selectedTheme: vcpTheme,
       themeAttrDetect: '[data-bs-theme]',
@@ -364,16 +378,17 @@ class Datepicker extends BaseComponent {
     // Navigate to the month of the first selected date
     if (this._config.selectedDates.length > 0) {
       const firstDate = this._parseDate(this._config.selectedDates[0])
-      calendarOptions.selectedMonth = firstDate.getMonth() as any
+      // `getMonth()` is always 0-11, which TypeScript cannot narrow on its own
+      calendarOptions.selectedMonth = firstDate.getMonth() as Range<12>
       calendarOptions.selectedYear = firstDate.getFullYear()
     }
 
     if (this._config.dateMin) {
-      calendarOptions.dateMin = this._config.dateMin as any
+      calendarOptions.dateMin = this._config.dateMin
     }
 
     if (this._config.dateMax) {
-      calendarOptions.dateMax = this._config.dateMax as any
+      calendarOptions.dateMax = this._config.dateMax
     }
 
     return calendarOptions

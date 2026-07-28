@@ -50,6 +50,10 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 5. Recompile your Sass to see the changes.
 
+<Callout type="warning">
+**Check your browser support first.** Bootstrap 6 raises the minimum browser versions sharply: Chrome and Edge 130, Firefox 132, and Safari 18 on both macOS and iOS. Bootstrap 5 supported Chrome and Firefox 60, and Safari 12. We build on `light-dark()`, `:has()`, container queries, `content-visibility`, and the native `<dialog>` element, and v6 ships no fallbacks, prefixes, or polyfills below the floor. Pages will not render correctly in older browsers. Check your own analytics before you upgrade, and see [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the full policy and the reason behind each version.
+</Callout>
+
 ## Changelog
 
 ### CSS
@@ -150,6 +154,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - **Data attribute APIs are unchanged.** If you only use `data-bs-toggle`, `data-bs-dismiss`, and other data attributes—without calling the JavaScript API directly—the only change you need is adding `type="module"` to your script tag. All data attribute behavior continues to work automatically.
   - For modern ESM-based bundler setups (Vite, Webpack 5, Parcel 2, Rollup, etc.), no changes are needed — `import { Tooltip } from 'bootstrap'` works as before and now supports full tree shaking. Projects still using CommonJS `require()` calls will need to update to ESM `import` syntax.
 - **Bootstrap’s JavaScript source is now TypeScript.** The `js/src` files use the `.ts` extension. The package ships built-in type declarations in `js/dist/*.d.ts`, so you no longer need `@types/bootstrap`. Deep `.js` imports still work: `bootstrap/js/src/alert.js` now resolves to the compiled file in `js/dist`. To import the raw TypeScript source, use `bootstrap/js/src/alert.ts`.
+- **We now build with Rolldown instead of Rollup and Babel.** This only affects you if you build Bootstrap from source. Rolldown strips the TypeScript types and lowers the syntax itself, so Babel is gone, along with `.babelrc.mjs` and the `@rollup/plugin-*` packages. The published files in `dist/` and `js/dist/` are unchanged in format. If you bundle Bootstrap in your own project, keep using whatever bundler you prefer — Rollup is still a fine choice, and `import { Tooltip } from 'bootstrap'` works the same way. See the [contribute guide]([[docsref:/guides/contribute]]) for details.
+- **Tab now throws when its element has no tab-panel ancestor.** In v5 the constructor returned early and gave you an inert instance, which hid the markup error. Wrap your tab triggers in a `.list-group`, `.nav`, or `[role="tablist"]` container, as the [Nav docs]([[docsref:/components/nav]]) show.
 - Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
 - Removed `js/index.umd.js` entry point.
 - Removed jQuery support and the `js-test-jquery` test target.

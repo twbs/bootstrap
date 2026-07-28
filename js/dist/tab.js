@@ -6,7 +6,7 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
-import { getNextActiveElement, isDisabled } from "./util/index.js";
+import { getNextActiveElement, isDisabled, setAriaAttribute } from "./util/index.js";
 //#region js/src/tab.ts
 /**
 * --------------------------------------------------------------------------
@@ -51,7 +51,7 @@ var Tab = class Tab extends BaseComponent {
 	constructor(element) {
 		super(element);
 		this._parent = this._element.closest(SELECTOR_TAB_PANEL);
-		if (!this._parent) return;
+		if (!this._parent) throw new TypeError(`${this._element.outerHTML} has no valid parent ${SELECTOR_TAB_PANEL}`);
 		this._setInitialAttributes(this._parent, this._getChildren());
 		EventHandler.on(this._element, EVENT_KEYDOWN, (event) => this._keydown(event));
 	}
@@ -77,7 +77,7 @@ var Tab = class Tab extends BaseComponent {
 				return;
 			}
 			element.removeAttribute("tabindex");
-			element.setAttribute("aria-selected", true);
+			setAriaAttribute(element, "aria-selected", true);
 			this._toggleMenu(element, true);
 			EventHandler.trigger(element, EVENT_SHOWN, { relatedTarget: relatedElem });
 		};
@@ -93,7 +93,7 @@ var Tab = class Tab extends BaseComponent {
 				element.classList.remove(CLASS_NAME_SHOW);
 				return;
 			}
-			element.setAttribute("aria-selected", false);
+			setAriaAttribute(element, "aria-selected", false);
 			element.setAttribute("tabindex", "-1");
 			this._toggleMenu(element, false);
 			EventHandler.trigger(element, EVENT_HIDDEN, { relatedTarget: relatedElem });
@@ -138,7 +138,7 @@ var Tab = class Tab extends BaseComponent {
 		child = this._getInnerElement(child);
 		const isActive = this._elemIsActive(child);
 		const outerElem = this._getOuterElement(child);
-		child.setAttribute("aria-selected", isActive);
+		setAriaAttribute(child, "aria-selected", isActive);
 		if (outerElem !== child) this._setAttributeIfNotExists(outerElem, "role", "presentation");
 		if (!isActive) child.setAttribute("tabindex", "-1");
 		this._setAttributeIfNotExists(child, "role", "tab");
@@ -157,7 +157,7 @@ var Tab = class Tab extends BaseComponent {
 		const menu = SelectorEngine.findOne(SELECTOR_MENU, outerElem);
 		menuToggle.classList.toggle(CLASS_NAME_ACTIVE, open);
 		if (menu) menu.classList.toggle(CLASS_NAME_SHOW, open);
-		menuToggle.setAttribute("aria-expanded", open);
+		setAriaAttribute(menuToggle, "aria-expanded", open);
 	}
 	_setAttributeIfNotExists(element, attribute, value) {
 		if (!element.hasAttribute(attribute)) element.setAttribute(attribute, value);

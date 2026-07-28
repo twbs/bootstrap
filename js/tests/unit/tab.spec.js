@@ -39,15 +39,13 @@ describe('Tab', () => {
       expect(tabByElement._element).toEqual(tabEl)
     })
 
-    it('Do not Throw exception if not parent', () => {
-      fixtureEl.innerHTML = [
-        fixtureEl.innerHTML = '<div class=""><div class="nav-link"></div></div>'
-      ].join('')
+    it('should throw a TypeError when the element has no tab-panel parent', () => {
+      fixtureEl.innerHTML = '<div class=""><div class="nav-link"></div></div>'
       const navEl = fixtureEl.querySelector('.nav-link')
 
       expect(() => {
         new Tab(navEl) // eslint-disable-line no-new
-      }).not.toThrowError(TypeError)
+      }).toThrowError(TypeError)
     })
   })
 
@@ -179,41 +177,43 @@ describe('Tab', () => {
       })
     })
 
-    it('should work with tab id being an int', done => {
-      fixtureEl.innerHTML = [
-        '<div class="card-header d-block d-inline-block">',
-        '  <ul class="nav nav-tabs card-header-tabs" id="page_tabs">',
-        '    <li class="nav-item">',
-        '      <a class="nav-link" draggable="false" data-toggle="tab" href="#tab1">',
-        '        Working Tab 1 (#tab1)',
-        '     </a>',
-        '    </li>',
-        '    <li class="nav-item">',
-        '      <a id="trigger2" class="nav-link" draggable="false" data-toggle="tab" href="#2">',
-        '        Tab with numeric ID should work (#2)',
-        '      </a>',
-        '    </li>',
-        '  </ul>',
-        '</div>',
-        '<div class="card-body">',
-        '  <div class="tab-content" id="page_content">',
-        '     <div class="tab-pane fade" id="tab1">',
-        '      Working Tab 1 (#tab1) Content Here',
-        '  </div>',
-        '  <div class="tab-pane fade" id="2">',
-        '      Working Tab 2 (#2) with numeric ID',
-        '  </div>',
-        '</div>'
-      ].join('')
-      const profileTriggerEl = fixtureEl.querySelector('#trigger2')
-      const tab = new Tab(profileTriggerEl)
+    it('should work with tab id being an int', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="card-header d-block d-inline-block">',
+          '  <ul class="nav nav-tabs card-header-tabs" id="page_tabs">',
+          '    <li class="nav-item">',
+          '      <a class="nav-link" draggable="false" data-toggle="tab" href="#tab1">',
+          '        Working Tab 1 (#tab1)',
+          '     </a>',
+          '    </li>',
+          '    <li class="nav-item">',
+          '      <a id="trigger2" class="nav-link" draggable="false" data-toggle="tab" href="#2">',
+          '        Tab with numeric ID should work (#2)',
+          '      </a>',
+          '    </li>',
+          '  </ul>',
+          '</div>',
+          '<div class="card-body">',
+          '  <div class="tab-content" id="page_content">',
+          '     <div class="tab-pane fade" id="tab1">',
+          '      Working Tab 1 (#tab1) Content Here',
+          '  </div>',
+          '  <div class="tab-pane fade" id="2">',
+          '      Working Tab 2 (#2) with numeric ID',
+          '  </div>',
+          '</div>'
+        ].join('')
+        const profileTriggerEl = fixtureEl.querySelector('#trigger2')
+        const tab = new Tab(profileTriggerEl)
 
-      profileTriggerEl.addEventListener('shown.bs.tab', () => {
-        expect(fixtureEl.querySelector(`#${CSS.escape('2')}`)).toHaveClass('active')
-        done()
+        profileTriggerEl.addEventListener('shown.bs.tab', () => {
+          expect(fixtureEl.querySelector(`#${CSS.escape('2')}`)).toHaveClass('active')
+          resolve()
+        })
+
+        tab.show()
       })
-
-      tab.show()
     })
 
     it('should not fire shown when show is prevented', () => {

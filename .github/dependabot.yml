@@ -28,23 +28,13 @@ updates:
     versioning-strategy: increase
     rebase-strategy: disabled
     ignore:
-      - dependency-name: "@babel/cli"
-        update-types:
-          - "version-update:semver-major"
-      - dependency-name: "@babel/core"
-        update-types:
-          - "version-update:semver-major"
-      - dependency-name: "@babel/preset-env"
-        update-types:
-          - "version-update:semver-major"
-      - dependency-name: "karma-browserstack-launcher"
+      # Rolldown is pinned exactly on purpose while it is still release-candidate
+      # software. Review each bump by hand.
+      - dependency-name: "rolldown"
         update-types:
           - "version-update:semver-major"
           - "version-update:semver-minor"
-      - dependency-name: "karma-rollup-preprocessor"
-        update-types:
-          - "version-update:semver-major"
-          - "version-update:semver-minor"
+          - "version-update:semver-patch"
       - dependency-name: "stylelint"
         update-types:
           - "version-update:semver-major"

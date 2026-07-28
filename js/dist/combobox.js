@@ -7,7 +7,7 @@ import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
 import Menu from "./menu.js";
-import { getNextActiveElement, isDisabled, isVisible } from "./util/index.js";
+import { getNextActiveElement, isDisabled, isVisible, setAriaAttribute } from "./util/index.js";
 //#region js/src/combobox.ts
 /**
 * --------------------------------------------------------------------------
@@ -186,7 +186,7 @@ var Combobox = class extends BaseComponent {
 	_selectItem(item) {
 		if (this._config.multiple) {
 			item.classList.toggle(CLASS_NAME_SELECTED);
-			item.setAttribute("aria-selected", item.classList.contains(CLASS_NAME_SELECTED));
+			setAriaAttribute(item, "aria-selected", item.classList.contains(CLASS_NAME_SELECTED));
 		} else {
 			const previouslySelected = SelectorEngine.find(`.${CLASS_NAME_SELECTED}`, this._menu);
 			for (const prev of previouslySelected) {

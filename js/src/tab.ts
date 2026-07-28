@@ -8,7 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-import { getNextActiveElement, isDisabled } from './util/index.js'
+import { getNextActiveElement, isDisabled, setAriaAttribute } from './util/index.js'
 
 /**
  * Constants
@@ -60,9 +60,7 @@ class Tab extends BaseComponent {
     this._parent = this._element.closest(SELECTOR_TAB_PANEL)
 
     if (!this._parent) {
-      return
-      // TODO: should throw exception in v6
-      // throw new TypeError(`${element.outerHTML} has not a valid parent ${SELECTOR_TAB_PANEL}`)
+      throw new TypeError(`${this._element.outerHTML} has no valid parent ${SELECTOR_TAB_PANEL}`)
     }
 
     // Set up initial aria attributes
@@ -117,7 +115,7 @@ class Tab extends BaseComponent {
       }
 
       element.removeAttribute('tabindex')
-      element.setAttribute('aria-selected', true as unknown as string)
+      setAriaAttribute(element, 'aria-selected', true)
       this._toggleMenu(element, true)
       EventHandler.trigger(element, EVENT_SHOWN, {
         relatedTarget: relatedElem
@@ -143,7 +141,7 @@ class Tab extends BaseComponent {
         return
       }
 
-      element.setAttribute('aria-selected', false as unknown as string)
+      setAriaAttribute(element, 'aria-selected', false)
       element.setAttribute('tabindex', '-1')
       this._toggleMenu(element, false)
       EventHandler.trigger(element, EVENT_HIDDEN, { relatedTarget: relatedElem })
@@ -202,7 +200,7 @@ class Tab extends BaseComponent {
     child = this._getInnerElement(child)!
     const isActive = this._elemIsActive(child)
     const outerElem = this._getOuterElement(child)
-    child.setAttribute('aria-selected', isActive as unknown as string)
+    setAriaAttribute(child, 'aria-selected', isActive)
 
     if (outerElem !== child) {
       this._setAttributeIfNotExists(outerElem, 'role', 'presentation')
@@ -246,7 +244,7 @@ class Tab extends BaseComponent {
       menu.classList.toggle(CLASS_NAME_SHOW, open)
     }
 
-    menuToggle.setAttribute('aria-expanded', open as unknown as string)
+    setAriaAttribute(menuToggle, 'aria-expanded', open)
   }
 
   protected _setAttributeIfNotExists(element: Element, attribute: string, value: string): void {

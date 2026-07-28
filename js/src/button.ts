@@ -7,6 +7,7 @@
 
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
+import { setAriaAttribute } from './util/index.js'
 
 /**
  * Constants
@@ -34,7 +35,7 @@ class Button extends BaseComponent {
   // Public
   toggle(): void {
     // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
-    this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE) as unknown as string)
+    setAriaAttribute(this._element, 'aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE))
   }
 }
 
