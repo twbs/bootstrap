@@ -87,16 +87,16 @@ const DefaultType = {
  */
 
 class Datepicker extends BaseComponent {
-  declare _element: HTMLElement & { value: string }
-  declare _config: DatepickerConfig
-  declare _calendar: Calendar | null
-  declare _isShown: boolean
-  declare _isInput: boolean
-  declare _isInline: boolean
-  declare _boundInput: HTMLInputElement | null
-  declare _positionElement: HTMLElement
-  declare _displayElement: HTMLElement | false | null
-  declare _themeObserver: MutationObserver | null
+  protected declare _element: HTMLElement & { value: string }
+  protected declare _config: DatepickerConfig
+  protected declare _calendar: Calendar | null
+  protected declare _isShown: boolean
+  protected declare _isInput: boolean
+  protected declare _isInline: boolean
+  protected declare _boundInput: HTMLInputElement | null
+  protected declare _positionElement: HTMLElement
+  protected declare _displayElement: HTMLElement | false | null
+  protected declare _themeObserver: MutationObserver | null
 
   constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null) {
     super(element, config)
@@ -195,7 +195,7 @@ class Datepicker extends BaseComponent {
   }
 
   // Private
-  _initCalendar(): void {
+  protected _initCalendar(): void {
     this._isInput = this._element.tagName === 'INPUT'
     this._isInline = this._config.inline
 
@@ -226,7 +226,7 @@ class Datepicker extends BaseComponent {
     this._updateDisplayWithSelectedDates()
   }
 
-  _updateDisplayWithSelectedDates(): void {
+  protected _updateDisplayWithSelectedDates(): void {
     const { selectedDates } = this._config
     if (!selectedDates || selectedDates.length === 0) {
       return
@@ -247,7 +247,7 @@ class Datepicker extends BaseComponent {
     }
   }
 
-  _resolvePositionElement(): HTMLElement {
+  protected _resolvePositionElement(): HTMLElement {
     let { positionElement } = this._config
 
     if (typeof positionElement === 'string') {
@@ -265,7 +265,7 @@ class Datepicker extends BaseComponent {
     return positionElement || this._element
   }
 
-  _resolveDisplayElement(): HTMLElement | false | null {
+  protected _resolveDisplayElement(): HTMLElement | false | null {
     const { displayElement } = this._config
 
     if (typeof displayElement === 'string') {
@@ -281,11 +281,11 @@ class Datepicker extends BaseComponent {
     return displayElement
   }
 
-  _getThemeAncestor(): Element | null {
+  protected _getThemeAncestor(): Element | null {
     return this._element.closest('[data-bs-theme]')
   }
 
-  _getEffectiveTheme(): string | null {
+  protected _getEffectiveTheme(): string | null {
     // Priority: explicit datepickerTheme config > inherited from ancestor > none
     const { datepickerTheme } = this._config
     if (datepickerTheme) {
@@ -296,7 +296,7 @@ class Datepicker extends BaseComponent {
     return ancestor?.getAttribute('data-bs-theme') || null
   }
 
-  _syncThemeAttribute(element: HTMLElement | undefined): void {
+  protected _syncThemeAttribute(element: HTMLElement | undefined): void {
     if (!element) {
       return
     }
@@ -312,7 +312,7 @@ class Datepicker extends BaseComponent {
     }
   }
 
-  _setupThemeObserver(): void {
+  protected _setupThemeObserver(): void {
     // Watch for theme changes on ancestor elements
     const ancestor = this._getThemeAncestor()
     if (!ancestor || this._config.datepickerTheme) {
@@ -330,7 +330,7 @@ class Datepicker extends BaseComponent {
     })
   }
 
-  _buildCalendarOptions(): Options {
+  protected _buildCalendarOptions(): Options {
     // Get theme for VCP - use 'system' for auto-detection if no explicit theme
     const theme = this._getEffectiveTheme()
     // VCP uses 'system' for auto, Bootstrap uses 'auto'
@@ -379,7 +379,7 @@ class Datepicker extends BaseComponent {
     return calendarOptions
   }
 
-  _handleDateClick(self: Calendar, event: MouseEvent): void {
+  protected _handleDateClick(self: Calendar, event: MouseEvent): void {
     const selectedDates = [...self.context.selectedDates]
 
     if (selectedDates.length > 0) {
@@ -406,7 +406,7 @@ class Datepicker extends BaseComponent {
     this._maybeHideAfterSelection(selectedDates)
   }
 
-  _maybeHideAfterSelection(selectedDates: string[]): void {
+  protected _maybeHideAfterSelection(selectedDates: string[]): void {
     if (this._isInline) {
       return
     }
@@ -420,12 +420,12 @@ class Datepicker extends BaseComponent {
     }
   }
 
-  _parseDate(dateStr: string): Date {
+  protected _parseDate(dateStr: string): Date {
     const [year, month, day]: any[] = dateStr.split('-')
     return new Date(year, month - 1, day)
   }
 
-  _formatDate(dateStr: string): string {
+  protected _formatDate(dateStr: string): string {
     const date = this._parseDate(dateStr)
     const locale = this._config.locale === 'default' ? undefined : this._config.locale
     const { dateFormat } = this._config
@@ -444,7 +444,7 @@ class Datepicker extends BaseComponent {
     return date.toLocaleDateString(locale)
   }
 
-  _formatDateForInput(dates: string[]): string {
+  protected _formatDateForInput(dates: string[]): string {
     if (dates.length === 0) {
       return ''
     }
@@ -458,7 +458,7 @@ class Datepicker extends BaseComponent {
     return dates.map(d => this._formatDate(d)).join(separator)
   }
 
-  _parseInputValue(): void {
+  protected _parseInputValue(): void {
     // Try to parse the input value as a date
     const value = this._element.value.trim()
     if (!value) {

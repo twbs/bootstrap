@@ -74,28 +74,30 @@ const DefaultType = {
  */
 
 class OtpInput extends BaseComponent {
-  declare _config: OtpInputConfig
-  declare _input: HTMLInputElement
-  declare _type: { inputmode: string, pattern: string, filter: RegExp }
-  declare _length: number
-  declare _slots: HTMLElement[]
-  declare _pointerActive: boolean
-  declare _pointerIndex: number
-  declare _slotsContainer: HTMLElement
-  declare _onInput: () => void
-  declare _onBeforeInput: (event: BootstrapEvent) => void
-  declare _onFocus: () => void
-  declare _onPointerDown: (event: BootstrapEvent) => void
-  declare _onSync: () => void
-  declare _onSelectionChange: () => void
+  protected declare _config: OtpInputConfig
+  protected declare _input: HTMLInputElement
+  protected declare _type: { inputmode: string, pattern: string, filter: RegExp }
+  protected declare _length: number
+  protected declare _slots: HTMLElement[]
+  protected declare _pointerActive: boolean
+  protected declare _pointerIndex: number
+  protected declare _slotsContainer: HTMLElement
+  protected declare _onInput: () => void
+  protected declare _onBeforeInput: (event: BootstrapEvent) => void
+  protected declare _onFocus: () => void
+  protected declare _onPointerDown: (event: BootstrapEvent) => void
+  protected declare _onSync: () => void
+  protected declare _onSelectionChange: () => void
 
   constructor(element?: string | Element | null, config?: Partial<OtpInputConfig> | null) {
     super(element, config)
 
-    this._input = SelectorEngine.findOne<HTMLInputElement>(SELECTOR_INPUT, this._element)!
-    if (!this._input) {
+    const input = SelectorEngine.findOne<HTMLInputElement>(SELECTOR_INPUT, this._element)
+    if (!input) {
       return
     }
+
+    this._input = input
 
     this._type = TYPES[this._config.type as keyof typeof TYPES] || TYPES.numeric
     this._length = this._resolveLength()
@@ -165,7 +167,7 @@ class OtpInput extends BaseComponent {
   }
 
   // Private
-  _resolveLength(): number {
+  protected _resolveLength(): number {
     if (this._config.length) {
       return this._config.length
     }
@@ -174,7 +176,7 @@ class OtpInput extends BaseComponent {
     return Number.isNaN(maxLength) || maxLength < 1 ? 6 : maxLength
   }
 
-  _setupInput(): void {
+  protected _setupInput(): void {
     const input = this._input
 
     // A single text field backs the whole control so screen readers, password
@@ -198,7 +200,7 @@ class OtpInput extends BaseComponent {
     }
   }
 
-  _renderSlots(): void {
+  protected _renderSlots(): void {
     const container = document.createElement('div')
     container.className = CLASS_NAME_SLOTS
     container.setAttribute('aria-hidden', 'true')
@@ -232,7 +234,7 @@ class OtpInput extends BaseComponent {
     this._element.classList.add(CLASS_NAME_RENDERED)
   }
 
-  _addEventListeners(): void {
+  protected _addEventListeners(): void {
     // Listeners are attached with bare event names (not namespaced) because
     // `input`, `beforeinput`, and `selectionchange` are not in EventHandler's
     // native-events list; we keep references so they can be removed on dispose.
@@ -277,7 +279,7 @@ class OtpInput extends BaseComponent {
   // Bulk path: paste, SMS autofill, or a programmatic value change land here as
   // a single multi-character `input` event. Single keystrokes are handled by
   // `_handleBeforeInput` (overwrite semantics) and never reach this method.
-  _handleInput(): void {
+  protected _handleInput(): void {
     const sanitized = this._sanitize(this._input.value)
     if (sanitized !== this._input.value) {
       this._input.value = sanitized
@@ -294,7 +296,7 @@ class OtpInput extends BaseComponent {
   // Intercept single-character typing and backspace so each slot is overwritten
   // in place rather than inserting and shifting the rest of the value. Anything
   // else (paste, autofill, IME composition) falls through to `_handleInput`.
-  _handleBeforeInput(event: BootstrapEvent): void {
+  protected _handleBeforeInput(event: BootstrapEvent): void {
     const { inputType, data } = event
 
     if (inputType === 'insertText' && data && data.length === 1) {
@@ -338,7 +340,7 @@ class OtpInput extends BaseComponent {
     }
   }
 
-  _handlePointerDown(event: BootstrapEvent): void {
+  protected _handlePointerDown(event: BootstrapEvent): void {
     const index = this._slotIndexFromPoint(event.clientX)
     if (index === null) {
       return
@@ -364,7 +366,7 @@ class OtpInput extends BaseComponent {
   }
 
   // Map a viewport x-coordinate to the slot under it, clamped to the last slot
-  _slotIndexFromPoint(x: number): number | null {
+  protected _slotIndexFromPoint(x: number): number | null {
     for (const [index, slot] of this._slots.entries()) {
       if (x <= slot.getBoundingClientRect().right || index === this._slots.length - 1) {
         return index
@@ -374,29 +376,29 @@ class OtpInput extends BaseComponent {
     return null
   }
 
-  _afterValueChange(): void {
+  protected _afterValueChange(): void {
     this._render()
     EventHandler.trigger(this._element, EVENT_INPUT, { value: this._input.value })
     this._checkComplete()
   }
 
-  _firstEmptyIndex(): number {
+  protected _firstEmptyIndex(): number {
     return Math.min(this._input.value.length, this._length - 1)
   }
 
   // Represent the active slot as a selection: a filled slot is selected so the
   // next keystroke overwrites it; an empty slot gets a collapsed caret.
-  _selectSlot(index: number): void {
+  protected _selectSlot(index: number): void {
     const clamped = Math.max(0, Math.min(index, this._length - 1))
     const end = clamped < this._input.value.length ? clamped + 1 : clamped
     this._input.setSelectionRange(clamped, end)
   }
 
-  _sanitize(value: string): string {
+  protected _sanitize(value: string): string {
     return value.replace(this._type.filter, '').slice(0, this._length)
   }
 
-  _render(): void {
+  protected _render(): void {
     const { value } = this._input
     const isFocused = document.activeElement === this._input
     // The active slot follows the caret, clamped to the last slot when the value is full
@@ -410,7 +412,7 @@ class OtpInput extends BaseComponent {
     }
   }
 
-  _checkComplete(): void {
+  protected _checkComplete(): void {
     const { value } = this._input
     if (value.length === this._length) {
       EventHandler.trigger(this._element, EVENT_COMPLETE, { value })

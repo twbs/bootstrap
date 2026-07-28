@@ -52,9 +52,10 @@ Act as a teacher for JavaScript, TypeScript, React, and all JavaScript-family to
 
 - Source is TypeScript (`js/src/**/*.ts`, entry `js/src/index.ts`); ESM-only, no semicolons, 2-space indent
 - Imports use `.js` extensions (standard TS ESM style); the build resolves them to `.ts` via `build/rollup-plugin-ts-resolve.cjs`
-- Strict tsconfig with `verbatimModuleSyntax` + `erasableSyntaxOnly`; Babel (`@babel/preset-typescript`) strips types, `tsc` only type-checks and emits `.d.ts` (`npm run js-typecheck`, `npm run js-compile-types`)
-- Components extend `BaseComponent` (which extends `Config`); per-component config `type XxxConfig` typed off `Default`, refined on the class via `declare _config: XxxConfig`
+- Strict tsconfig with `verbatimModuleSyntax` + `erasableSyntaxOnly`; Babel (`@babel/preset-typescript`) strips types, `tsc` only type-checks and emits `.d.ts` (`npm run js-typecheck`, `npm run js-emit-types`)
+- Components extend `BaseComponent` (which extends `Config`); per-component config `type XxxConfig` typed off `Default`, refined on the class via `protected declare _config: XxxConfig`
 - Instance fields use `declare` (no runtime emit); constructor `element` param stays optional to keep `typeof Component` assignable to `typeof BaseComponent`
+- Every `_`-prefixed instance member is `protected` (never `private`, so subclasses keep access); public API methods and statics stay public. This keeps the internals out of the published `.d.ts` surface
 - Constants: `NAME`, `DATA_KEY`, `EVENT_KEY`, `VERSION`
 - DOM utilities via `dom/event-handler.ts`, `dom/selector-engine.ts`, `dom/manipulator.ts`
 - Floating UI for positioning (dropdown, tooltip, popover)

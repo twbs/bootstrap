@@ -22,8 +22,8 @@ const VERSION = '6.0.0-alpha1'
 
 class BaseComponent extends Config {
   declare ['constructor']: typeof BaseComponent
-  declare _element: HTMLElement
-  declare _config: ComponentConfig
+  protected declare _element: HTMLElement
+  protected declare _config: ComponentConfig
 
   constructor(element?: string | Element | null, config?: ComponentConfig | null) {
     super()
@@ -56,8 +56,8 @@ class BaseComponent extends Config {
     }
   }
 
-  // Private
-  _queueCallback(callback: () => void, element: Element, isAnimated = true): void {
+  // Protected
+  protected _queueCallback(callback: () => void, element: Element, isAnimated = true): void {
     executeAfterTransition(() => {
       // Don't run the completion callback if the instance was disposed mid-transition
       if (!this._element) {
@@ -68,7 +68,7 @@ class BaseComponent extends Config {
     }, element, isAnimated)
   }
 
-  override _getConfig(config?: ComponentConfig | null): ComponentConfig {
+  protected override _getConfig(config?: ComponentConfig | null): ComponentConfig {
     config = this._mergeConfigObj(config, this._element)
     config = this._configAfterMerge(config)
     this._typeCheckConfig(config)
@@ -80,7 +80,7 @@ class BaseComponent extends Config {
     return Data.get(getElement(element), this.DATA_KEY)
   }
 
-  static getOrCreateInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null, config: Partial<InstanceType<T>['_config']> | null = {}): InstanceType<T> {
+  static getOrCreateInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null, config: NonNullable<ConstructorParameters<T>[1]> | null = {}): InstanceType<T> {
     return this.getInstance(element) || (new this(element, typeof config === 'object' ? config : null) as InstanceType<T>)
   }
 

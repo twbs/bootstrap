@@ -58,7 +58,7 @@ const DefaultContentType = {
  */
 
 class TemplateFactory extends Config {
-  declare _config: TemplateFactoryConfig
+  protected declare _config: TemplateFactoryConfig
 
   constructor(config?: Partial<TemplateFactoryConfig> | null) {
     super()
@@ -114,18 +114,18 @@ class TemplateFactory extends Config {
   }
 
   // Private
-  override _typeCheckConfig(config: ComponentConfig): void {
+  protected override _typeCheckConfig(config: ComponentConfig): void {
     super._typeCheckConfig(config)
     this._checkContent(config.content)
   }
 
-  _checkContent(arg: Record<string, TemplateContentEntry>): void {
+  protected _checkContent(arg: Record<string, TemplateContentEntry>): void {
     for (const [selector, content] of Object.entries(arg)) {
       super._typeCheckConfig({ selector, entry: content }, DefaultContentType)
     }
   }
 
-  _setContent(template: Element, content: TemplateContentEntry, selector: string): void {
+  protected _setContent(template: Element, content: TemplateContentEntry, selector: string): void {
     const templateElement = SelectorEngine.findOne(selector, template)
 
     if (!templateElement) {
@@ -152,15 +152,15 @@ class TemplateFactory extends Config {
     templateElement.textContent = content
   }
 
-  _maybeSanitize(arg: string): string {
+  protected _maybeSanitize(arg: string): string {
     return this._config.sanitize ? sanitizeHtml(arg, this._config.allowList, this._config.sanitizeFn) : arg
   }
 
-  _resolvePossibleFunction<T>(arg: T | ((...args: any[]) => T)): T {
+  protected _resolvePossibleFunction<T>(arg: T | ((...args: any[]) => T)): T {
     return execute(arg, [undefined, this])
   }
 
-  _putElementInTemplate(element: Element, templateElement: Element): void {
+  protected _putElementInTemplate(element: Element, templateElement: Element): void {
     if (this._config.html) {
       templateElement.innerHTML = ''
       templateElement.append(element)

@@ -47,7 +47,7 @@ class Alert extends BaseComponent {
   }
 
   // Private
-  _destroyElement(): void {
+  protected _destroyElement(): void {
     this._element.remove()
     EventHandler.trigger(this._element, EVENT_CLOSED)
     this.dispose()

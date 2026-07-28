@@ -53,8 +53,8 @@ const DefaultType = {
  */
 
 class Drawer extends DialogBase {
-  declare _config: DrawerConfig
-  declare _swipeHelper: Swipe | null
+  protected declare _config: DrawerConfig
+  protected declare _swipeHelper: Swipe | null
 
   constructor(element?: string | Element | null, config?: Partial<DrawerConfig> | null) {
     super(element, config)
@@ -85,7 +85,7 @@ class Drawer extends DialogBase {
 
   // Protected — hook overrides
 
-  override _getShowOptions(): { modal: boolean, preventBodyScroll: boolean } {
+  protected override _getShowOptions(): { modal: boolean, preventBodyScroll: boolean } {
     const useModal = Boolean(this._config.backdrop) || !this._config.scroll
     return {
       modal: useModal,
@@ -93,21 +93,21 @@ class Drawer extends DialogBase {
     }
   }
 
-  override _onBeforeShow(): void {
+  protected override _onBeforeShow(): void {
     this._initSwipe()
   }
 
-  override _getInstantClassName(): string {
+  protected override _getInstantClassName(): string {
     return 'drawer-instant'
   }
 
-  override _getStaticClassName(): string {
+  protected override _getStaticClassName(): string {
     return 'drawer-static'
   }
 
   // Private
 
-  _initSwipe(): void {
+  protected _initSwipe(): void {
     if (this._swipeHelper || !Swipe.isSupported()) {
       return
     }
