@@ -54,7 +54,7 @@ class BaseComponent extends Config {
     }
   }
 
-  // Private
+  // Protected
   _queueCallback(callback, element, isAnimated = true) {
     executeAfterTransition(() => {
       // Don't run the completion callback if the instance was disposed mid-transition

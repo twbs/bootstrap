@@ -17,22 +17,22 @@ type SwipeConfig = {
  * Class definition
  */
 declare class Swipe extends Config {
-    _element: HTMLElement;
-    _config: SwipeConfig;
-    _deltaX: number;
-    _deltaY: number;
-    _supportPointerEvents: boolean;
+    protected _element: HTMLElement;
+    protected _config: SwipeConfig;
+    protected _deltaX: number;
+    protected _deltaY: number;
+    protected _supportPointerEvents: boolean;
     constructor(element: HTMLElement | null, config?: Partial<SwipeConfig> | null);
     static get Default(): SwipeConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
     dispose(): void;
-    _start(event: BootstrapEvent): void;
-    _end(event: BootstrapEvent): void;
-    _move(event: BootstrapEvent): void;
-    _handleSwipe(): void;
-    _initEvents(): void;
-    _eventIsPointerPenTouch(event: BootstrapEvent): boolean;
+    protected _start(event: BootstrapEvent): void;
+    protected _end(event: BootstrapEvent): void;
+    protected _move(event: BootstrapEvent): void;
+    protected _handleSwipe(): void;
+    protected _initEvents(): void;
+    protected _eventIsPointerPenTouch(event: BootstrapEvent): boolean;
     static isSupported(): boolean;
 }
 export default Swipe;

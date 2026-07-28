@@ -10,14 +10,14 @@ import Config, { type ComponentConfig } from './util/config.js';
  */
 declare class BaseComponent extends Config {
     ['constructor']: typeof BaseComponent;
-    _element: HTMLElement;
-    _config: ComponentConfig;
+    protected _element: HTMLElement;
+    protected _config: ComponentConfig;
     constructor(element?: string | Element | null, config?: ComponentConfig | null);
     dispose(): void;
-    _queueCallback(callback: () => void, element: Element, isAnimated?: boolean): void;
-    _getConfig(config?: ComponentConfig | null): ComponentConfig;
+    protected _queueCallback(callback: () => void, element: Element, isAnimated?: boolean): void;
+    protected _getConfig(config?: ComponentConfig | null): ComponentConfig;
     static getInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null): InstanceType<T> | null;
-    static getOrCreateInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null, config?: Partial<InstanceType<T>['_config']> | null): InstanceType<T>;
+    static getOrCreateInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null, config?: NonNullable<ConstructorParameters<T>[1]> | null): InstanceType<T>;
     static get VERSION(): string;
     static get DATA_KEY(): string;
     static get EVENT_KEY(): string;

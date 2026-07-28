@@ -22,14 +22,14 @@ type ComboboxConfig = {
  * Class definition
  */
 declare class Combobox extends BaseComponent {
-    _config: ComboboxConfig;
-    _toggle: HTMLElement;
-    _menu: HTMLElement;
-    _valueDisplay: HTMLElement;
-    _searchInput: HTMLInputElement | null;
-    _noResults: HTMLElement | null;
-    _hiddenInput: HTMLInputElement | null;
-    _menuInstance: Menu | null;
+    protected _config: ComboboxConfig;
+    protected _toggle: HTMLElement;
+    protected _menu: HTMLElement;
+    protected _valueDisplay: HTMLElement;
+    protected _searchInput: HTMLInputElement | null;
+    protected _noResults: HTMLElement | null;
+    protected _hiddenInput: HTMLInputElement | null;
+    protected _menuInstance: Menu | null;
     constructor(element?: string | Element | null, config?: Partial<ComboboxConfig> | null);
     static get Default(): ComboboxConfig;
     static get DefaultType(): Record<string, string>;
@@ -38,21 +38,21 @@ declare class Combobox extends BaseComponent {
     show(): void;
     hide(): void;
     dispose(): void;
-    _isShown(): boolean;
-    _createHiddenInput(): void;
-    _createMenuInstance(): void;
-    _syncInitialSelection(): void;
-    _addEventListeners(): void;
-    _selectItem(item: HTMLElement): void;
-    _updateToggleText(): void;
-    _showPlaceholder(): void;
-    _updateHiddenInput(): void;
-    _getSelectedItems(): HTMLElement[];
-    _getVisibleItems(): HTMLElement[];
-    _filterItems(query: string): void;
-    _normalizeText(text: string): string;
-    _handleToggleKeydown(event: BootstrapEvent): void;
-    _handleMenuKeydown(event: BootstrapEvent): void;
+    protected _isShown(): boolean;
+    protected _createHiddenInput(): void;
+    protected _createMenuInstance(): void;
+    protected _syncInitialSelection(): void;
+    protected _addEventListeners(): void;
+    protected _selectItem(item: HTMLElement): void;
+    protected _updateToggleText(): void;
+    protected _showPlaceholder(): void;
+    protected _updateHiddenInput(): void;
+    protected _getSelectedItems(): HTMLElement[];
+    protected _getVisibleItems(): HTMLElement[];
+    protected _filterItems(query: string): void;
+    protected _normalizeText(text: string): string;
+    protected _handleToggleKeydown(event: BootstrapEvent): void;
+    protected _handleMenuKeydown(event: BootstrapEvent): void;
 }
 export default Combobox;
 export type { ComboboxConfig };

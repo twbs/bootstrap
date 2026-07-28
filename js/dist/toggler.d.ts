@@ -13,12 +13,12 @@ type TogglerConfig = {
  * Class definition
  */
 declare class Toggler extends BaseComponent {
-    _config: TogglerConfig;
+    protected _config: TogglerConfig;
     static get Default(): TogglerConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
     toggle(): void;
-    _execute(): void;
+    protected _execute(): void;
 }
 export default Toggler;
 export type { TogglerConfig };

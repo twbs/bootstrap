@@ -20,7 +20,7 @@ type TemplateFactoryConfig = {
  * Class definition
  */
 declare class TemplateFactory extends Config {
-    _config: TemplateFactoryConfig;
+    protected _config: TemplateFactoryConfig;
     constructor(config?: Partial<TemplateFactoryConfig> | null);
     static get Default(): TemplateFactoryConfig;
     static get DefaultType(): ComponentConfig;
@@ -29,12 +29,12 @@ declare class TemplateFactory extends Config {
     hasContent(): boolean;
     changeContent(content: Record<string, TemplateContentEntry>): this;
     toHtml(): HTMLElement;
-    _typeCheckConfig(config: ComponentConfig): void;
-    _checkContent(arg: Record<string, TemplateContentEntry>): void;
-    _setContent(template: Element, content: TemplateContentEntry, selector: string): void;
-    _maybeSanitize(arg: string): string;
-    _resolvePossibleFunction<T>(arg: T | ((...args: any[]) => T)): T;
-    _putElementInTemplate(element: Element, templateElement: Element): void;
+    protected _typeCheckConfig(config: ComponentConfig): void;
+    protected _checkContent(arg: Record<string, TemplateContentEntry>): void;
+    protected _setContent(template: Element, content: TemplateContentEntry, selector: string): void;
+    protected _maybeSanitize(arg: string): string;
+    protected _resolvePossibleFunction<T>(arg: T | ((...args: any[]) => T)): T;
+    protected _putElementInTemplate(element: Element, templateElement: Element): void;
 }
 export default TemplateFactory;
 export type { TemplateFactoryConfig, TemplateContentEntry };

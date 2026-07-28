@@ -625,7 +625,7 @@ class BaseComponent extends Config {
     }
   }
 
-  // Private
+  // Protected
   _queueCallback(callback, element, isAnimated = true) {
     executeAfterTransition(() => {
       // Don't run the completion callback if the instance was disposed mid-transition
@@ -4334,8 +4334,8 @@ class Menu extends BaseComponent {
     const enterKey = isRtl ? ARROW_LEFT_KEY$1 : ARROW_RIGHT_KEY$1;
     const exitKey = isRtl ? ARROW_RIGHT_KEY$1 : ARROW_LEFT_KEY$1;
     const submenuWrapper = target.closest(SELECTOR_SUBMENU);
-    const isSubmenuTrigger = submenuWrapper && target.matches(SELECTOR_SUBMENU_TOGGLE);
-    if ((key === ENTER_KEY$1 || key === SPACE_KEY$1) && isSubmenuTrigger) {
+    const isSubmenuToggle = target.matches(SELECTOR_SUBMENU_TOGGLE);
+    if ((key === ENTER_KEY$1 || key === SPACE_KEY$1) && submenuWrapper && isSubmenuToggle) {
       event.preventDefault();
       event.stopPropagation();
       const submenu = SelectorEngine.findOne(SELECTOR_MENU$2, submenuWrapper);
@@ -4351,7 +4351,7 @@ class Menu extends BaseComponent {
       }
       return true;
     }
-    if (key === enterKey && isSubmenuTrigger) {
+    if (key === enterKey && submenuWrapper && isSubmenuToggle) {
       event.preventDefault();
       event.stopPropagation();
       const submenu = SelectorEngine.findOne(SELECTOR_MENU$2, submenuWrapper);
@@ -6637,10 +6637,11 @@ const DefaultType$8 = {
 class OtpInput extends BaseComponent {
   constructor(element, config) {
     super(element, config);
-    this._input = SelectorEngine.findOne(SELECTOR_INPUT$1, this._element);
-    if (!this._input) {
+    const input = SelectorEngine.findOne(SELECTOR_INPUT$1, this._element);
+    if (!input) {
       return;
     }
+    this._input = input;
     this._type = TYPES[this._config.type] || TYPES.numeric;
     this._length = this._resolveLength();
     this._slots = [];
@@ -7002,12 +7003,14 @@ const DefaultType$7 = {
 class Chips extends BaseComponent {
   constructor(element, config) {
     super(element, config);
-    this._input = SelectorEngine.findOne(SELECTOR_GHOST_INPUT, this._element);
+    const ghostInput = SelectorEngine.findOne(SELECTOR_GHOST_INPUT, this._element);
     this._chips = [];
     this._selectedChips = new Set();
     this._anchorChip = null; // For shift+click range selection
 
-    if (!this._input) {
+    if (ghostInput) {
+      this._input = ghostInput;
+    } else {
       this._createInput();
     }
     this._initializeExistingChips();

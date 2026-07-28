@@ -12,20 +12,20 @@ type DialogConfig = DialogBaseConfig & {
  * Class definition
  */
 declare class Dialog extends DialogBase {
-    _config: DialogConfig;
+    protected _config: DialogConfig;
     constructor(element?: string | Element | null, config?: Partial<DialogConfig> | null);
     static get Default(): DialogConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
     handleUpdate(): void;
-    _getShowOptions(): {
+    protected _getShowOptions(): {
         modal: boolean;
         preventBodyScroll: boolean;
     };
-    _onBeforeShow(): void;
-    _onAfterHide(): void;
-    _shouldDeferClose(): boolean;
-    _onCancel(): void;
+    protected _onBeforeShow(): void;
+    protected _onAfterHide(): void;
+    protected _shouldDeferClose(): boolean;
+    protected _onCancel(): void;
 }
 export default Dialog;
 export type { DialogConfig };

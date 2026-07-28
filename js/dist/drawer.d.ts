@@ -13,21 +13,21 @@ type DrawerConfig = DialogBaseConfig & {
  * Class definition
  */
 declare class Drawer extends DialogBase {
-    _config: DrawerConfig;
-    _swipeHelper: Swipe | null;
+    protected _config: DrawerConfig;
+    protected _swipeHelper: Swipe | null;
     constructor(element?: string | Element | null, config?: Partial<DrawerConfig> | null);
     static get Default(): DrawerConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
     dispose(): void;
-    _getShowOptions(): {
+    protected _getShowOptions(): {
         modal: boolean;
         preventBodyScroll: boolean;
     };
-    _onBeforeShow(): void;
-    _getInstantClassName(): string;
-    _getStaticClassName(): string;
-    _initSwipe(): void;
+    protected _onBeforeShow(): void;
+    protected _getInstantClassName(): string;
+    protected _getStaticClassName(): string;
+    protected _initSwipe(): void;
 }
 export default Drawer;
 export type { DrawerConfig };
