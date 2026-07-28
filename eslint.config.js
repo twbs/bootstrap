@@ -286,11 +286,10 @@ const eslintConfig = [
     }
   },
 
-  // js/tests/*.js + integration rollup configs — browser ESM
+  // Integration test entry points — browser ESM
   {
     files: [
-      'js/tests/integration/bundle*.js',
-      'js/tests/integration/rollup*.js'
+      'js/tests/integration/bundle*.js'
     ],
     languageOptions: {
       globals: {
