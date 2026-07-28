@@ -659,8 +659,8 @@ class Menu extends BaseComponent {
     const enterKey = isRtl ? ARROW_LEFT_KEY : ARROW_RIGHT_KEY;
     const exitKey = isRtl ? ARROW_RIGHT_KEY : ARROW_LEFT_KEY;
     const submenuWrapper = target.closest(SELECTOR_SUBMENU);
-    const isSubmenuTrigger = submenuWrapper && target.matches(SELECTOR_SUBMENU_TOGGLE);
-    if ((key === ENTER_KEY || key === SPACE_KEY) && isSubmenuTrigger) {
+    const isSubmenuToggle = target.matches(SELECTOR_SUBMENU_TOGGLE);
+    if ((key === ENTER_KEY || key === SPACE_KEY) && submenuWrapper && isSubmenuToggle) {
       event.preventDefault();
       event.stopPropagation();
       const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
@@ -676,7 +676,7 @@ class Menu extends BaseComponent {
       }
       return true;
     }
-    if (key === enterKey && isSubmenuTrigger) {
+    if (key === enterKey && submenuWrapper && isSubmenuToggle) {
       event.preventDefault();
       event.stopPropagation();
       const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);

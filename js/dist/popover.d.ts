@@ -13,14 +13,14 @@ type PopoverConfig = TooltipConfig & {
  * Class definition
  */
 declare class Popover extends Tooltip {
-    _config: PopoverConfig;
+    protected _config: PopoverConfig;
     constructor(element?: string | Element | null, config?: Partial<PopoverConfig> | null);
     static get Default(): PopoverConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
-    _isWithContent(): boolean;
-    _getContentForTemplate(): Record<string, TemplateContentEntry>;
-    _getContent(): string | Element | null;
+    protected _isWithContent(): boolean;
+    protected _getContentForTemplate(): Record<string, TemplateContentEntry>;
+    protected _getContent(): string | Element | null;
 }
 export default Popover;
 export type { PopoverConfig };

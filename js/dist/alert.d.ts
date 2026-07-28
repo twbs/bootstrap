@@ -11,7 +11,7 @@ import BaseComponent from './base-component.js';
 declare class Alert extends BaseComponent {
     static get NAME(): string;
     close(): void;
-    _destroyElement(): void;
+    protected _destroyElement(): void;
 }
 export default Alert;
 //# sourceMappingURL=alert.d.ts.map

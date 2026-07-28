@@ -25,37 +25,37 @@ type DialogBaseConfig = {
  * - Child component cleanup (tooltips, popovers, toasts)
  */
 declare class DialogBase extends BaseComponent {
-    _element: HTMLDialogElement;
-    _config: DialogBaseConfig;
-    _isTransitioning: boolean;
-    _openedAsModal: boolean;
-    _cancelHandler: (event: BootstrapEvent) => void;
+    protected _element: HTMLDialogElement;
+    protected _config: DialogBaseConfig;
+    protected _isTransitioning: boolean;
+    protected _openedAsModal: boolean;
+    protected _cancelHandler: (event: BootstrapEvent) => void;
     constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null);
     static get NAME(): string;
     toggle(relatedTarget?: HTMLElement): void;
     show(relatedTarget?: HTMLElement): void;
     hide(): void;
     dispose(): void;
-    _getShowOptions(): {
+    protected _getShowOptions(): {
         modal: boolean;
         preventBodyScroll: boolean;
     };
-    _onBeforeShow(): void;
-    _onAfterHide(): void;
-    _isAnimated(): boolean;
-    _getInstantClassName(): string;
-    _getStaticClassName(): string;
-    _onCancel(): void;
-    _showElement({ modal, preventBodyScroll }?: {
+    protected _onBeforeShow(): void;
+    protected _onAfterHide(): void;
+    protected _isAnimated(): boolean;
+    protected _getInstantClassName(): string;
+    protected _getStaticClassName(): string;
+    protected _onCancel(): void;
+    protected _showElement({ modal, preventBodyScroll }?: {
         modal?: boolean;
         preventBodyScroll?: boolean;
     }): void;
-    _hideElement(): void;
-    _closeAndCleanup(): void;
-    _shouldDeferClose(): boolean;
-    _triggerBackdropTransition(): void;
-    _hideChildComponents(): void;
-    _addDialogListeners(): void;
+    protected _hideElement(): void;
+    protected _closeAndCleanup(): void;
+    protected _shouldDeferClose(): boolean;
+    protected _triggerBackdropTransition(): void;
+    protected _hideChildComponents(): void;
+    protected _addDialogListeners(): void;
 }
 export default DialogBase;
 export type { DialogBaseConfig };

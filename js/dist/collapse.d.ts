@@ -14,9 +14,9 @@ type CollapseConfig = {
  * Class definition
  */
 declare class Collapse extends BaseComponent {
-    _config: CollapseConfig;
-    _isTransitioning: boolean;
-    _triggerArray: HTMLElement[];
+    protected _config: CollapseConfig;
+    protected _isTransitioning: boolean;
+    protected _triggerArray: HTMLElement[];
     constructor(element?: string | Element | null, config?: Partial<CollapseConfig> | null);
     static get Default(): CollapseConfig;
     static get DefaultType(): Record<string, string>;
@@ -24,12 +24,12 @@ declare class Collapse extends BaseComponent {
     toggle(): void;
     show(): void;
     hide(): void;
-    _isShown(element?: HTMLElement): boolean;
-    _configAfterMerge(config: ComponentConfig): ComponentConfig;
-    _getDimension(): 'width' | 'height';
-    _initializeChildren(): void;
-    _getFirstLevelChildren(selector: string): HTMLElement[];
-    _addAriaAndCollapsedClass(triggerArray: HTMLElement[], isOpen: boolean): void;
+    protected _isShown(element?: HTMLElement): boolean;
+    protected _configAfterMerge(config: ComponentConfig): ComponentConfig;
+    protected _getDimension(): 'width' | 'height';
+    protected _initializeChildren(): void;
+    protected _getFirstLevelChildren(selector: string): HTMLElement[];
+    protected _addAriaAndCollapsedClass(triggerArray: HTMLElement[], isOpen: boolean): void;
 }
 export default Collapse;
 export type { CollapseConfig };
