@@ -8,9 +8,9 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "strict": true,
     "noEmit": true,
-    // Babel compiles each file in isolation (type stripping only), so the
-    // syntax must be erasable and imports/exports of types must be explicit.
-    // `verbatimModuleSyntax` already implies `isolatedModules`.
+    // Rolldown and Vite both compile each file in isolation (type stripping
+    // only), so the syntax must be erasable and imports/exports of types must be
+    // explicit. `verbatimModuleSyntax` already implies `isolatedModules`.
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
     "useDefineForClassFields": true,

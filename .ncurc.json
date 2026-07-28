@@ -1,9 +1,7 @@
 {
   "reject": [
-    "@babel/cli",
-    "@babel/core",
-    "@babel/preset-env",
     "hammer-simulator",
+    "rolldown",
     "stylelint"
   ]
 }
