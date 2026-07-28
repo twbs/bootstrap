@@ -80,10 +80,11 @@ const DefaultType = {
 class OtpInput extends BaseComponent {
   constructor(element, config) {
     super(element, config);
-    this._input = SelectorEngine.findOne(SELECTOR_INPUT, this._element);
-    if (!this._input) {
+    const input = SelectorEngine.findOne(SELECTOR_INPUT, this._element);
+    if (!input) {
       return;
     }
+    this._input = input;
     this._type = TYPES[this._config.type] || TYPES.numeric;
     this._length = this._resolveLength();
     this._slots = [];

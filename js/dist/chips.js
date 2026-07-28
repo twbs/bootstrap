@@ -61,12 +61,14 @@ const DefaultType = {
 class Chips extends BaseComponent {
   constructor(element, config) {
     super(element, config);
-    this._input = SelectorEngine.findOne(SELECTOR_GHOST_INPUT, this._element);
+    const ghostInput = SelectorEngine.findOne(SELECTOR_GHOST_INPUT, this._element);
     this._chips = [];
     this._selectedChips = new Set();
     this._anchorChip = null; // For shift+click range selection
 
-    if (!this._input) {
+    if (ghostInput) {
+      this._input = ghostInput;
+    } else {
       this._createInput();
     }
     this._initializeExistingChips();

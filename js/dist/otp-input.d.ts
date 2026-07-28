@@ -17,24 +17,24 @@ type OtpInputConfig = {
  * Class definition
  */
 declare class OtpInput extends BaseComponent {
-    _config: OtpInputConfig;
-    _input: HTMLInputElement;
-    _type: {
+    protected _config: OtpInputConfig;
+    protected _input: HTMLInputElement;
+    protected _type: {
         inputmode: string;
         pattern: string;
         filter: RegExp;
     };
-    _length: number;
-    _slots: HTMLElement[];
-    _pointerActive: boolean;
-    _pointerIndex: number;
-    _slotsContainer: HTMLElement;
-    _onInput: () => void;
-    _onBeforeInput: (event: BootstrapEvent) => void;
-    _onFocus: () => void;
-    _onPointerDown: (event: BootstrapEvent) => void;
-    _onSync: () => void;
-    _onSelectionChange: () => void;
+    protected _length: number;
+    protected _slots: HTMLElement[];
+    protected _pointerActive: boolean;
+    protected _pointerIndex: number;
+    protected _slotsContainer: HTMLElement;
+    protected _onInput: () => void;
+    protected _onBeforeInput: (event: BootstrapEvent) => void;
+    protected _onFocus: () => void;
+    protected _onPointerDown: (event: BootstrapEvent) => void;
+    protected _onSync: () => void;
+    protected _onSelectionChange: () => void;
     constructor(element?: string | Element | null, config?: Partial<OtpInputConfig> | null);
     static get Default(): OtpInputConfig;
     static get DefaultType(): Record<string, string>;
@@ -44,20 +44,20 @@ declare class OtpInput extends BaseComponent {
     clear(): void;
     focus(): void;
     dispose(): void;
-    _resolveLength(): number;
-    _setupInput(): void;
-    _renderSlots(): void;
-    _addEventListeners(): void;
-    _handleInput(): void;
-    _handleBeforeInput(event: BootstrapEvent): void;
-    _handlePointerDown(event: BootstrapEvent): void;
-    _slotIndexFromPoint(x: number): number | null;
-    _afterValueChange(): void;
-    _firstEmptyIndex(): number;
-    _selectSlot(index: number): void;
-    _sanitize(value: string): string;
-    _render(): void;
-    _checkComplete(): void;
+    protected _resolveLength(): number;
+    protected _setupInput(): void;
+    protected _renderSlots(): void;
+    protected _addEventListeners(): void;
+    protected _handleInput(): void;
+    protected _handleBeforeInput(event: BootstrapEvent): void;
+    protected _handlePointerDown(event: BootstrapEvent): void;
+    protected _slotIndexFromPoint(x: number): number | null;
+    protected _afterValueChange(): void;
+    protected _firstEmptyIndex(): number;
+    protected _selectSlot(index: number): void;
+    protected _sanitize(value: string): string;
+    protected _render(): void;
+    protected _checkComplete(): void;
 }
 export default OtpInput;
 export type { OtpInputConfig };

@@ -26,18 +26,18 @@ type DatepickerConfig = {
  * Class definition
  */
 declare class Datepicker extends BaseComponent {
-    _element: HTMLElement & {
+    protected _element: HTMLElement & {
         value: string;
     };
-    _config: DatepickerConfig;
-    _calendar: Calendar | null;
-    _isShown: boolean;
-    _isInput: boolean;
-    _isInline: boolean;
-    _boundInput: HTMLInputElement | null;
-    _positionElement: HTMLElement;
-    _displayElement: HTMLElement | false | null;
-    _themeObserver: MutationObserver | null;
+    protected _config: DatepickerConfig;
+    protected _calendar: Calendar | null;
+    protected _isShown: boolean;
+    protected _isInput: boolean;
+    protected _isInline: boolean;
+    protected _boundInput: HTMLInputElement | null;
+    protected _positionElement: HTMLElement;
+    protected _displayElement: HTMLElement | false | null;
+    protected _themeObserver: MutationObserver | null;
     constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null);
     static get Default(): DatepickerConfig;
     static get DefaultType(): Record<string, string>;
@@ -48,21 +48,21 @@ declare class Datepicker extends BaseComponent {
     dispose(): void;
     getSelectedDates(): string[];
     setSelectedDates(dates: DatesArr): void;
-    _initCalendar(): void;
-    _updateDisplayWithSelectedDates(): void;
-    _resolvePositionElement(): HTMLElement;
-    _resolveDisplayElement(): HTMLElement | false | null;
-    _getThemeAncestor(): Element | null;
-    _getEffectiveTheme(): string | null;
-    _syncThemeAttribute(element: HTMLElement | undefined): void;
-    _setupThemeObserver(): void;
-    _buildCalendarOptions(): Options;
-    _handleDateClick(self: Calendar, event: MouseEvent): void;
-    _maybeHideAfterSelection(selectedDates: string[]): void;
-    _parseDate(dateStr: string): Date;
-    _formatDate(dateStr: string): string;
-    _formatDateForInput(dates: string[]): string;
-    _parseInputValue(): void;
+    protected _initCalendar(): void;
+    protected _updateDisplayWithSelectedDates(): void;
+    protected _resolvePositionElement(): HTMLElement;
+    protected _resolveDisplayElement(): HTMLElement | false | null;
+    protected _getThemeAncestor(): Element | null;
+    protected _getEffectiveTheme(): string | null;
+    protected _syncThemeAttribute(element: HTMLElement | undefined): void;
+    protected _setupThemeObserver(): void;
+    protected _buildCalendarOptions(): Options;
+    protected _handleDateClick(self: Calendar, event: MouseEvent): void;
+    protected _maybeHideAfterSelection(selectedDates: string[]): void;
+    protected _parseDate(dateStr: string): Date;
+    protected _formatDate(dateStr: string): string;
+    protected _formatDateForInput(dates: string[]): string;
+    protected _parseInputValue(): void;
 }
 export default Datepicker;
 export type { DatepickerConfig };

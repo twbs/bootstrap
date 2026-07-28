@@ -15,10 +15,10 @@ type ToastConfig = {
  * Class definition
  */
 declare class Toast extends BaseComponent {
-    _config: ToastConfig;
-    _timeout: number | null;
-    _hasMouseInteraction: boolean;
-    _hasKeyboardInteraction: boolean;
+    protected _config: ToastConfig;
+    protected _timeout: number | null;
+    protected _hasMouseInteraction: boolean;
+    protected _hasKeyboardInteraction: boolean;
     constructor(element?: string | Element | null, config?: Partial<ToastConfig> | null);
     static get Default(): ToastConfig;
     static get DefaultType(): Record<string, string>;
@@ -27,10 +27,10 @@ declare class Toast extends BaseComponent {
     hide(): void;
     dispose(): void;
     isShown(): boolean;
-    _maybeScheduleHide(): void;
-    _onInteraction(event: BootstrapEvent, isInteracting: boolean): void;
-    _setListeners(): void;
-    _clearTimeout(): void;
+    protected _maybeScheduleHide(): void;
+    protected _onInteraction(event: BootstrapEvent, isInteracting: boolean): void;
+    protected _setListeners(): void;
+    protected _clearTimeout(): void;
 }
 export default Toast;
 export type { ToastConfig };

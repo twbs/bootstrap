@@ -10,23 +10,23 @@ import { type BootstrapEvent } from './dom/event-handler.js';
  * Class definition
  */
 declare class Tab extends BaseComponent {
-    _parent: Element | null;
+    protected _parent: Element | null;
     constructor(element?: string | Element | null);
     static get NAME(): string;
     show(): void;
-    _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void;
-    _deactivate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void;
-    _keydown(event: BootstrapEvent): void;
-    _getChildren(): HTMLElement[];
-    _getActiveElem(): HTMLElement | null;
-    _setInitialAttributes(parent: Element, children: HTMLElement[]): void;
-    _setInitialAttributesOnChild(child: HTMLElement): void;
-    _setInitialAttributesOnTargetPanel(child: HTMLElement): void;
-    _toggleMenu(element: HTMLElement, open: boolean): void;
-    _setAttributeIfNotExists(element: Element, attribute: string, value: string): void;
-    _elemIsActive(elem: HTMLElement): boolean;
-    _getInnerElement(elem: HTMLElement): HTMLElement | null;
-    _getOuterElement(elem: HTMLElement): Element;
+    protected _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void;
+    protected _deactivate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void;
+    protected _keydown(event: BootstrapEvent): void;
+    protected _getChildren(): HTMLElement[];
+    protected _getActiveElem(): HTMLElement | null;
+    protected _setInitialAttributes(parent: Element, children: HTMLElement[]): void;
+    protected _setInitialAttributesOnChild(child: HTMLElement): void;
+    protected _setInitialAttributesOnTargetPanel(child: HTMLElement): void;
+    protected _toggleMenu(element: HTMLElement, open: boolean): void;
+    protected _setAttributeIfNotExists(element: Element, attribute: string, value: string): void;
+    protected _elemIsActive(elem: HTMLElement): boolean;
+    protected _getInnerElement(elem: HTMLElement): HTMLElement | null;
+    protected _getOuterElement(elem: HTMLElement): Element;
 }
 export default Tab;
 //# sourceMappingURL=tab.d.ts.map
