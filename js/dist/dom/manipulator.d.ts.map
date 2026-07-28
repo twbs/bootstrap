@@ -1,0 +1,1 @@
+{"version":3,"file":"manipulator.d.ts","sourceRoot":"","sources":["../../src/dom/manipulator.ts"],"names":[],"mappings":"AAAA;;;;;GAKG;AAkCH,QAAA,MAAM,WAAW;8BACW,OAAO,OAAO,MAAM,SAAS,OAAO,GAAG,IAAI;iCAIxC,OAAO,OAAO,MAAM,GAAG,IAAI;+BAI7B,WAAW,GAAG,IAAI,GAAG,MAAM,CAAC,MAAM,EAAE,OAAO,CAAC;8BAiB7C,OAAO,OAAO,MAAM,GAAG,OAAO;CAGzD,CAAA;AAED,eAAe,WAAW,CAAA"}

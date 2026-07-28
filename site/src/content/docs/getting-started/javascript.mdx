@@ -32,6 +32,19 @@ If you use a bundler (Webpack, Parcel, Vite…), you can import only the plugins
 import { Toast, Tooltip } from 'bootstrap'
 ```
 
+## TypeScript
+
+Bootstrap’s plugins are authored in TypeScript and ship with built-in type declarations — no `@types/bootstrap` package needed. The main entry point and every individual plugin under `js/dist/*.js` are fully typed, including each plugin’s configuration options:
+
+```ts
+import { Tooltip } from 'bootstrap'
+
+const tooltip = Tooltip.getOrCreateInstance('#example')
+tooltip.show()
+```
+
+Each plugin module also exports its configuration object type (for example `TooltipConfig`) if you need to type your own wrappers.
+
 ## Usage with JavaScript frameworks
 
 While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScript is not fully compatible with JavaScript frameworks like React, Vue, and Angular** which assume full knowledge of the DOM. Both Bootstrap and the framework may attempt to mutate the same DOM element, resulting in bugs like menus that are stuck in the "open" position.
@@ -248,7 +261,7 @@ To prevent cross-site scripting (XSS) attacks, these components use our built-in
 
 The tags and attributes allowed by default are as follows. Any tags or attributes not explicitly allowed will be removed during sanitization:
 
-<JsDocs name="allow-list" file="js/src/util/sanitizer.js" removeIndentation={false} />
+<JsDocs name="allow-list" file="js/src/util/sanitizer.ts" removeIndentation={false} />
 
 <Callout type="warning">
 **Exercise caution when using these advanced options.** Refer to [OWASP’s Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information. Vulnerabilities caused solely by disabling or modifying content sanitization are not considered within scope for Bootstrap’s security model.

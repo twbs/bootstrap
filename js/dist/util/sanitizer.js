@@ -5,7 +5,7 @@
   */
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/sanitizer.js
+ * Bootstrap util/sanitizer.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

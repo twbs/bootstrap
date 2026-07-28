@@ -9,7 +9,7 @@ import { eventActionOnPlugin } from './util/component-functions.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap toggler.js
+ * Bootstrap toggler.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

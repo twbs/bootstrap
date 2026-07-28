@@ -13,7 +13,7 @@ import { getResponsivePlacement, parseResponsivePlacement, createBreakpointListe
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap menu.js
+ * Bootstrap menu.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

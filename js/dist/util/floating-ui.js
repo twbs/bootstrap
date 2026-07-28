@@ -7,11 +7,15 @@ import { isRTL } from './index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/floating-ui.js
+ * Bootstrap util/floating-ui.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
+
+/**
+ * Types
+ */
 
 /**
  * Breakpoints for responsive placement (matches SCSS $breakpoints)
@@ -40,9 +44,9 @@ const getDefaultPlacement = (fallback = 'bottom') => {
  * Parse a placement string that may contain responsive prefixes
  * Example: "bottom-start md:top-end lg:right" returns { xs: 'bottom-start', md: 'top-end', lg: 'right' }
  *
- * @param {string} placementString - The placement string to parse
- * @param {string} defaultPlacement - The default placement to use for xs/base
- * @returns {object|null} - Object with breakpoint keys and placement values, or null if not responsive
+ * @param placementString - The placement string to parse
+ * @param defaultPlacement - The default placement to use for xs/base
+ * @returns Object with breakpoint keys and placement values, or null if not responsive
  */
 const parseResponsivePlacement = (placementString, defaultPlacement = 'bottom') => {
   // Check if placement contains responsive prefixes (e.g., "bottom-start md:top-end")
@@ -74,9 +78,9 @@ const parseResponsivePlacement = (placementString, defaultPlacement = 'bottom') 
 /**
  * Get the active placement for the current viewport width
  *
- * @param {object} responsivePlacements - Object with breakpoint keys and placement values
- * @param {string} defaultPlacement - Fallback placement
- * @returns {string} - The active placement for current viewport
+ * @param responsivePlacements - Object with breakpoint keys and placement values
+ * @param defaultPlacement - Fallback placement
+ * @returns The active placement for current viewport
  */
 const getResponsivePlacement = (responsivePlacements, defaultPlacement = 'bottom') => {
   if (!responsivePlacements) {
@@ -103,8 +107,8 @@ const getResponsivePlacement = (responsivePlacements, defaultPlacement = 'bottom
 /**
  * Create media query listeners for responsive placement changes
  *
- * @param {Function} callback - Callback to run when breakpoint changes
- * @returns {Array} - Array of { mql, handler } objects for cleanup
+ * @param callback - Callback to run when breakpoint changes
+ * @returns Array of { mql, handler } objects for cleanup
  */
 const createBreakpointListeners = callback => {
   const listeners = [];
@@ -123,7 +127,7 @@ const createBreakpointListeners = callback => {
 /**
  * Clean up media query listeners
  *
- * @param {Array} listeners - Array of { mql, handler } objects
+ * @param listeners - Array of { mql, handler } objects
  */
 const disposeBreakpointListeners = listeners => {
   for (const {

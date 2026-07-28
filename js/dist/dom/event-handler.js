@@ -5,9 +5,13 @@
   */
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dom/event-handler.js
+ * Bootstrap dom/event-handler.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
+ */
+
+/**
+ * Types
  */
 
 /**
@@ -137,6 +141,17 @@ function getTypeEvent(event) {
   event = event.replace(stripNameRegex, '');
   return customEvents[event] || event;
 }
+function trigger(element, event, args) {
+  if (typeof event !== 'string' || !element) {
+    return null;
+  }
+  const evt = hydrateObj(new Event(event, {
+    bubbles: true,
+    cancelable: true
+  }), args);
+  element.dispatchEvent(evt);
+  return evt;
+}
 const EventHandler = {
   on(element, event, handler, delegationFunction) {
     addHandler(element, event, handler, delegationFunction, false);
@@ -173,17 +188,7 @@ const EventHandler = {
       }
     }
   },
-  trigger(element, event, args) {
-    if (typeof event !== 'string' || !element) {
-      return null;
-    }
-    const evt = hydrateObj(new Event(event, {
-      bubbles: true,
-      cancelable: true
-    }), args);
-    element.dispatchEvent(evt);
-    return evt;
-  }
+  trigger
 };
 function hydrateObj(obj, meta = {}) {
   for (const [key, value] of Object.entries(meta)) {

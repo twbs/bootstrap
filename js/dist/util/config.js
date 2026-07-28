@@ -8,11 +8,15 @@ import { isElement, toType } from './index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/config.js
+ * Bootstrap util/config.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
+
+/**
+ * Types
+ */
 
 /**
  * Class definition

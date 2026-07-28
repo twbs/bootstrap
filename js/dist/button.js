@@ -8,7 +8,7 @@ import EventHandler from './dom/event-handler.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap button.js
+ * Bootstrap button.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

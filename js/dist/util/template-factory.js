@@ -10,7 +10,7 @@ import { isElement, getElement, execute } from './index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/template-factory.js
+ * Bootstrap util/template-factory.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

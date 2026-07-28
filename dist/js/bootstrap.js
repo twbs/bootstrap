@@ -8,7 +8,7 @@ import { Calendar } from 'vanilla-calendar-pro';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dom/data.js
+ * Bootstrap dom/data.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -35,13 +35,13 @@ const Data = {
     instanceMap.set(key, instance);
   },
   get(element, key) {
-    if (elementMap.has(element)) {
+    if (element && elementMap.has(element)) {
       return elementMap.get(element).get(key) || null;
     }
     return null;
   },
   getAny(element) {
-    if (elementMap.has(element)) {
+    if (element && elementMap.has(element)) {
       return elementMap.get(element).values().next().value || null;
     }
     return null;
@@ -62,9 +62,13 @@ const Data = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dom/event-handler.js
+ * Bootstrap dom/event-handler.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
+ */
+
+/**
+ * Types
  */
 
 /**
@@ -194,6 +198,17 @@ function getTypeEvent(event) {
   event = event.replace(stripNameRegex, '');
   return customEvents[event] || event;
 }
+function trigger(element, event, args) {
+  if (typeof event !== 'string' || !element) {
+    return null;
+  }
+  const evt = hydrateObj(new Event(event, {
+    bubbles: true,
+    cancelable: true
+  }), args);
+  element.dispatchEvent(evt);
+  return evt;
+}
 const EventHandler = {
   on(element, event, handler, delegationFunction) {
     addHandler(element, event, handler, delegationFunction, false);
@@ -230,17 +245,7 @@ const EventHandler = {
       }
     }
   },
-  trigger(element, event, args) {
-    if (typeof event !== 'string' || !element) {
-      return null;
-    }
-    const evt = hydrateObj(new Event(event, {
-      bubbles: true,
-      cancelable: true
-    }), args);
-    element.dispatchEvent(evt);
-    return evt;
-  }
+  trigger
 };
 function hydrateObj(obj, meta = {}) {
   for (const [key, value] of Object.entries(meta)) {
@@ -260,7 +265,7 @@ function hydrateObj(obj, meta = {}) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dom/manipulator.js
+ * Bootstrap dom/manipulator.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -317,7 +322,7 @@ const Manipulator = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/index.js
+ * Bootstrap util/index.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -328,10 +333,10 @@ const TRANSITION_END = 'transitionend';
 
 /**
  * Properly escape IDs selectors to handle weird IDs
- * @param {string} selector
- * @returns {string}
  */
 const parseSelector = selector => {
+  // The `window.CSS` checks guard against ancient browsers, so check them as
+  // untyped values instead of letting tsc call them always-defined
   if (selector && window.CSS && window.CSS.escape) {
     // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
     selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`);
@@ -426,8 +431,9 @@ const isDisabled = element => {
   if (element.classList.contains('disabled')) {
     return true;
   }
-  if (typeof element.disabled !== 'undefined') {
-    return element.disabled;
+  const disableableElement = element;
+  if (typeof disableableElement.disabled !== 'undefined') {
+    return disableableElement.disabled;
   }
   return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
 };
@@ -456,13 +462,10 @@ const noop = () => {};
 /**
  * Trick to restart an element's animation
  *
- * @param {HTMLElement} element
- * @return void
- *
  * @see https://www.harrytheo.com/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
 const reflow = element => {
-  element.offsetHeight; // eslint-disable-line no-unused-expressions
+  element.offsetHeight; // eslint-disable-line @typescript-eslint/no-unused-expressions
 };
 const isRTL = () => document.documentElement.dir === 'rtl';
 const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
@@ -497,11 +500,11 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
 /**
  * Return the previous/next element of a list.
  *
- * @param {array} list    The list of elements
+ * @param list            The list of elements
  * @param activeElement   The active element
  * @param shouldGetNext   Choose to get next or previous element
  * @param isCycleAllowed
- * @return {Element|elem} The proper element
+ * @return The proper element
  */
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
   const listLength = list.length;
@@ -521,11 +524,15 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/config.js
+ * Bootstrap util/config.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
+
+/**
+ * Types
+ */
 
 /**
  * Class definition
@@ -574,7 +581,7 @@ class Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap base-component.js
+ * Bootstrap base-component.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -658,7 +665,7 @@ class BaseComponent extends Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dom/selector-engine.js
+ * Bootstrap dom/selector-engine.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -750,7 +757,7 @@ const SelectorEngine = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/component-functions.js
+ * Bootstrap util/component-functions.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -803,7 +810,7 @@ const eventAction = (onEvent, stringSelector, callback) => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap alert.js
+ * Bootstrap alert.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -858,7 +865,7 @@ enableDismissTrigger(Alert, 'close');
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap button.js
+ * Bootstrap button.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -906,7 +913,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$8, SELECTOR_DATA_TOGGLE$a, event 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap carousel.js
+ * Bootstrap carousel.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1698,7 +1705,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$3, () => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap collapse.js
+ * Bootstrap collapse.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1909,11 +1916,15 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$9, functi
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/floating-ui.js
+ * Bootstrap util/floating-ui.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
+
+/**
+ * Types
+ */
 
 /**
  * Breakpoints for responsive placement (matches SCSS $breakpoints)
@@ -1930,9 +1941,9 @@ const BREAKPOINTS = {
  * Parse a placement string that may contain responsive prefixes
  * Example: "bottom-start md:top-end lg:right" returns { xs: 'bottom-start', md: 'top-end', lg: 'right' }
  *
- * @param {string} placementString - The placement string to parse
- * @param {string} defaultPlacement - The default placement to use for xs/base
- * @returns {object|null} - Object with breakpoint keys and placement values, or null if not responsive
+ * @param placementString - The placement string to parse
+ * @param defaultPlacement - The default placement to use for xs/base
+ * @returns Object with breakpoint keys and placement values, or null if not responsive
  */
 const parseResponsivePlacement = (placementString, defaultPlacement = 'bottom') => {
   // Check if placement contains responsive prefixes (e.g., "bottom-start md:top-end")
@@ -1964,9 +1975,9 @@ const parseResponsivePlacement = (placementString, defaultPlacement = 'bottom') 
 /**
  * Get the active placement for the current viewport width
  *
- * @param {object} responsivePlacements - Object with breakpoint keys and placement values
- * @param {string} defaultPlacement - Fallback placement
- * @returns {string} - The active placement for current viewport
+ * @param responsivePlacements - Object with breakpoint keys and placement values
+ * @param defaultPlacement - Fallback placement
+ * @returns The active placement for current viewport
  */
 const getResponsivePlacement = (responsivePlacements, defaultPlacement = 'bottom') => {
   if (!responsivePlacements) {
@@ -1993,8 +2004,8 @@ const getResponsivePlacement = (responsivePlacements, defaultPlacement = 'bottom
 /**
  * Create media query listeners for responsive placement changes
  *
- * @param {Function} callback - Callback to run when breakpoint changes
- * @returns {Array} - Array of { mql, handler } objects for cleanup
+ * @param callback - Callback to run when breakpoint changes
+ * @returns Array of { mql, handler } objects for cleanup
  */
 const createBreakpointListeners = callback => {
   const listeners = [];
@@ -2013,7 +2024,7 @@ const createBreakpointListeners = callback => {
 /**
  * Clean up media query listeners
  *
- * @param {Array} listeners - Array of { mql, handler } objects
+ * @param listeners - Array of { mql, handler } objects
  */
 const disposeBreakpointListeners = listeners => {
   for (const {
@@ -2026,7 +2037,7 @@ const disposeBreakpointListeners = listeners => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap menu.js
+ * Bootstrap menu.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2830,7 +2841,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, functi
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap combobox.js
+ * Bootstrap combobox.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3215,7 +3226,7 @@ EventHandler.on(document, 'DOMContentLoaded', () => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap datepicker.js
+ * Bootstrap datepicker.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3646,7 +3657,7 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$c}${DATA_API_KEY$7}`, () 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dialog-base.js
+ * Bootstrap dialog-base.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3657,7 +3668,6 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$c}${DATA_API_KEY$7}`, () 
  */
 
 const CLASS_NAME_OPEN = 'dialog-open';
-
 /**
  * Class definition
  *
@@ -3912,7 +3922,7 @@ class DialogBase extends BaseComponent {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dialog.js
+ * Bootstrap dialog.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3950,6 +3960,11 @@ const DefaultType$d = {
  */
 
 class Dialog extends DialogBase {
+  // eslint-disable-next-line no-useless-constructor -- narrows the config param type
+  constructor(element, config) {
+    super(element, config);
+  }
+
   // Getters
   static get Default() {
     return Default$d;
@@ -4067,7 +4082,7 @@ enableDismissTrigger(Dialog);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap nav-overflow.js
+ * Bootstrap nav-overflow.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4366,7 +4381,7 @@ EventHandler.on(document, 'DOMContentLoaded', () => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/swipe.js
+ * Bootstrap util/swipe.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4515,7 +4530,7 @@ class Swipe extends Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap drawer.js
+ * Bootstrap drawer.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4669,7 +4684,7 @@ enableDismissTrigger(Drawer);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap strength.js
+ * Bootstrap strength.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4899,7 +4914,7 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$7}${DATA_API_KEY$4}`, () 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap otp-input.js
+ * Bootstrap otp-input.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5283,7 +5298,7 @@ EventHandler.on(document, EVENT_DOMCONTENT_LOADED, () => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap chips.js
+ * Bootstrap chips.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5857,7 +5872,7 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`, () 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/sanitizer.js
+ * Bootstrap util/sanitizer.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5960,7 +5975,7 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/template-factory.js
+ * Bootstrap util/template-factory.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6096,7 +6111,7 @@ class TemplateFactory extends Config {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap tooltip.js
+ * Bootstrap tooltip.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6769,11 +6784,10 @@ EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$3, initToolti
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap popover.js
+ * Bootstrap popover.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-
 
 /**
  * Constants
@@ -6804,6 +6818,11 @@ const DefaultType$4 = {
  */
 
 class Popover extends Tooltip {
+  // eslint-disable-next-line no-useless-constructor -- narrows the config param type
+  constructor(element, config) {
+    super(element, config);
+  }
+
   // Getters
   static get Default() {
     return Default$4;
@@ -6861,11 +6880,10 @@ EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$2, initPopover)
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap range.js
+ * Bootstrap range.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-
 
 /**
  * Constants
@@ -7064,7 +7082,7 @@ EventHandler.on(document, EVENT_DOM_CONTENT_LOADED, () => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap scrollspy.js
+ * Bootstrap scrollspy.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7573,7 +7591,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$1, () => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap tab.js
+ * Bootstrap tab.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7827,7 +7845,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap toast.js
+ * Bootstrap toast.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7991,7 +8009,7 @@ enableDismissTrigger(Toast);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap toggler.js
+ * Bootstrap toggler.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

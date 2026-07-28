@@ -9,7 +9,7 @@ import SelectorEngine from './dom/selector-engine.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap chips.js
+ * Bootstrap chips.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

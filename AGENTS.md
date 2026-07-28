@@ -3,7 +3,7 @@
 Guidance for AI coding agents working in this repository. Tool-agnostic; `CLAUDE.md` points here.
 
 Bootstrap v6.0.0-alpha1 — CSS/JS framework.
-Sass source in `scss/`, JS source in `js/src/`, docs site in `site/` (Astro 5 + MDX).
+Sass source in `scss/`, TypeScript source in `js/src/`, docs site in `site/` (Astro 5 + MDX).
 
 ## Quick commands
 
@@ -28,14 +28,17 @@ Sass source in `scss/`, JS source in `js/src/`, docs site in `site/` (Astro 5 + 
 - Modern CSS: `color-mix()`, `light-dark()`, range media queries (`@media (width >= 1024px)`)
 - Doc markers: `// scss-docs-start name` / `// scss-docs-end name` for docs extraction
 
-## JavaScript conventions
+## JavaScript/TypeScript conventions
 
-- ESM-only, no semicolons, 2-space indent
-- Components extend `BaseComponent` (which extends `Config`)
+- Source is TypeScript (`js/src/**/*.ts`, entry `js/index.ts`); ESM-only, no semicolons, 2-space indent
+- Imports use `.js` extensions (standard TS ESM style); the build resolves them to `.ts` via `build/rollup-plugin-ts-resolve.cjs`
+- Strict tsconfig with `verbatimModuleSyntax` + `erasableSyntaxOnly`; Babel (`@babel/preset-typescript`) strips types, `tsc` only type-checks and emits `.d.ts` (`npm run js-typecheck`, `npm run js-compile-types`)
+- Components extend `BaseComponent` (which extends `Config`); per-component config `type XxxConfig` typed off `Default`, refined on the class via `declare _config: XxxConfig`
+- Instance fields use `declare` (no runtime emit); constructor `element` param stays optional to keep `typeof Component` assignable to `typeof BaseComponent`
 - Constants: `NAME`, `DATA_KEY`, `EVENT_KEY`, `VERSION`
-- DOM utilities via `dom/event-handler.js`, `dom/selector-engine.js`, `dom/manipulator.js`
+- DOM utilities via `dom/event-handler.ts`, `dom/selector-engine.ts`, `dom/manipulator.ts`
 - Floating UI for positioning (dropdown, tooltip, popover)
-- Tests: Jasmine + Karma, specs in `js/tests/unit/*.spec.js`
+- Tests: Jasmine + Karma, specs in `js/tests/unit/*.spec.js` (plain JS, bundled against the TS sources); type-level API tests in `js/tests/types/`
 
 ## Docs conventions
 

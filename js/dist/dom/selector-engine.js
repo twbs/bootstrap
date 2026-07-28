@@ -7,7 +7,7 @@ import { isDisabled, isVisible, parseSelector } from '../util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dom/selector-engine.js
+ * Bootstrap dom/selector-engine.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

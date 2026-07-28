@@ -5,7 +5,7 @@
   */
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dom/manipulator.js
+ * Bootstrap dom/manipulator.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

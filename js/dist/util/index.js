@@ -5,7 +5,7 @@
   */
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/index.js
+ * Bootstrap util/index.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,10 +16,10 @@ const TRANSITION_END = 'transitionend';
 
 /**
  * Properly escape IDs selectors to handle weird IDs
- * @param {string} selector
- * @returns {string}
  */
 const parseSelector = selector => {
+  // The `window.CSS` checks guard against ancient browsers, so check them as
+  // untyped values instead of letting tsc call them always-defined
   if (selector && window.CSS && window.CSS.escape) {
     // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
     selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`);
@@ -114,8 +114,9 @@ const isDisabled = element => {
   if (element.classList.contains('disabled')) {
     return true;
   }
-  if (typeof element.disabled !== 'undefined') {
-    return element.disabled;
+  const disableableElement = element;
+  if (typeof disableableElement.disabled !== 'undefined') {
+    return disableableElement.disabled;
   }
   return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
 };
@@ -144,13 +145,10 @@ const noop = () => {};
 /**
  * Trick to restart an element's animation
  *
- * @param {HTMLElement} element
- * @return void
- *
  * @see https://www.harrytheo.com/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
 const reflow = element => {
-  element.offsetHeight; // eslint-disable-line no-unused-expressions
+  element.offsetHeight; // eslint-disable-line @typescript-eslint/no-unused-expressions
 };
 const DOMContentLoadedCallbacks = [];
 const onDOMContentLoaded = callback => {
@@ -201,11 +199,11 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
 /**
  * Return the previous/next element of a list.
  *
- * @param {array} list    The list of elements
+ * @param list            The list of elements
  * @param activeElement   The active element
  * @param shouldGetNext   Choose to get next or previous element
  * @param isCycleAllowed
- * @return {Element|elem} The proper element
+ * @return The proper element
  */
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
   const listLength = list.length;

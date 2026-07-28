@@ -17,7 +17,7 @@ const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-r
 const FILES = [
   'README.md',
   'config.yml',
-  'js/src/base-component.js',
+  'js/src/base-component.ts',
   'package.js',
   'scss/_banner.scss',
   'site/data/docs-versions.yml'

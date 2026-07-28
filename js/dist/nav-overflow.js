@@ -9,7 +9,7 @@ import SelectorEngine from './dom/selector-engine.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap nav-overflow.js
+ * Bootstrap nav-overflow.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

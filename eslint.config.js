@@ -4,6 +4,7 @@ import importXPlugin from 'eslint-plugin-import-x'
 import html from 'eslint-plugin-html'
 import markdown from 'eslint-plugin-markdown'
 import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 const importRules = {
   'import/extensions': [
@@ -194,12 +195,13 @@ const eslintConfig = [
       'site/static/sw.js',
       'site/static/docs/**/assets/sw.js',
       'site/layouts/partials/**',
-      // TypeScript, declaration and Astro files are not linted
-      '**/*.ts',
-      '**/*.d.ts',
+      // Site TypeScript and Astro files are checked by `astro check` instead
+      'site/**/*.ts',
       '**/*.astro',
       // Meteor metadata file (uses unsupported eslint-env comment)
       'package.js',
+      // Conductor workspace scratch space (gitignored)
+      '.context/**',
       // Claude worktrees
       '.claude/worktrees/**'
     ]
@@ -243,6 +245,27 @@ const eslintConfig = [
     }
   },
 
+  // js/**/*.ts — TypeScript sources
+  ...tseslint.configs.recommended.map(config => ({
+    ...config,
+    files: ['js/**/*.ts']
+  })),
+  {
+    files: ['js/**/*.ts'],
+    rules: {
+      // tsc validates symbol resolution, including type-only references the
+      // core rule can't see
+      'no-undef': 'off',
+      // The DOM plumbing (event registry, config merging) is inherently
+      // dynamic; explicit `any` marks those seams
+      '@typescript-eslint/no-explicit-any': 'off',
+      // TS sources import sibling modules with the standard ESM-style `.js`
+      // extension, which these rules misread as pointing at the resolved `.ts`
+      'import/extensions': 'off',
+      'import-x/extensions': 'off'
+    }
+  },
+
   // CJS files — Node.js environment, script mode
   {
     files: ['**/*.cjs'],
@@ -273,6 +296,17 @@ const eslintConfig = [
     }
   },
 
+  // js/tests/types/** — compile-time type assertions, never executed
+  {
+    files: ['js/tests/types/**'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
+      'no-new': 'off',
+      'no-void': 'off'
+    }
+  },
+
   // js/tests/unit/** — jasmine
   {
     files: ['js/tests/unit/**'],
@@ -285,7 +319,10 @@ const eslintConfig = [
       'no-console': 'off',
       'unicorn/consistent-function-scoping': 'off',
       'unicorn/no-useless-undefined': 'off',
-      'unicorn/prefer-add-event-listener': 'off'
+      'unicorn/prefer-add-event-listener': 'off',
+      // Spec imports use `.js` specifiers that resolve to the TS sources
+      'import/extensions': 'off',
+      'import-x/extensions': 'off'
     }
   },
 

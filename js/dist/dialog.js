@@ -12,7 +12,7 @@ import { isVisible } from './util/index.js';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dialog.js
+ * Bootstrap dialog.ts
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -50,6 +50,11 @@ const DefaultType = {
  */
 
 class Dialog extends DialogBase {
+  // eslint-disable-next-line no-useless-constructor -- narrows the config param type
+  constructor(element, config) {
+    super(element, config);
+  }
+
   // Getters
   static get Default() {
     return Default;
