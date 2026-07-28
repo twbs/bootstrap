@@ -1,6 +1,6 @@
 ---
 name: bootstrap-v5-v6-migration
-description: Migrate projects from Bootstrap 5 to Bootstrap 6. Use when upgrading Bootstrap, migrating v5 to v6, or updating Bootstrap class names, components, Sass, or JavaScript to the latest version.
+description: Migrate projects from Bootstrap 5 to Bootstrap 6. Use when upgrading from Bootstrap 5, migrating v5 to v6, or updating v5 class names, components, Sass, or JavaScript to the latest version. For Bootstrap 4 projects, start with the v4-to-v6 migration skill instead.
 guide: /guides/migration
 ---
 
@@ -459,9 +459,11 @@ document.querySelectorAll('form[data-bs-validate]')
 The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem` and a `$radii` map (keys `0`–`9`, e.g. `5: $radius`, `9: $radius * 3`), exposed as `--radius-0`–`--radius-9` tokens (plus `--radius-pill`). The `.rounded-*` utilities now span `0`–`9` and map to different values than v5, so shift class numbers up to keep the same roundness (e.g. `.rounded-1` → `.rounded-3`, `.rounded-3` → `.rounded-5`). Override the base or the map entries rather than the old per-size variables:
 
 ```scss
-@use "bootstrap/scss/bootstrap" with (
+// $radius lives in _config.scss, so configure that module before loading Bootstrap
+@use "bootstrap/scss/config" with (
   $radius: .375rem // scales the whole map
 );
+@use "bootstrap/scss/bootstrap";
 ```
 
 ### Removed (no replacement)
@@ -529,7 +531,7 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 ### Removed / changed internals
 
 - **`util/backdrop.js`, `util/focustrap.js`, and `util/scrollbar.js` removed.** Dialog and Drawer use the native `<dialog>` element, which provides the backdrop (`::backdrop`), the focus trap, and an inert top layer; the body scroll-lock is now CSS (`:root.dialog-open`). If you imported `bootstrap/js/src/util/backdrop`, `.../focustrap`, or `.../scrollbar` directly, they're gone.
-- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Author CSS outside any layer now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
+- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Author CSS outside any layer now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
 - **`--bs-*-rgb` variables removed.** The `$*-rgb` Sass vars and `--bs-*-rgb` custom properties are gone. Replace `rgba(var(--bs-primary-rgb), .5)` with `color-mix(in oklab, var(--bs-primary), transparent 50%)` (or use the color directly).
 
 ---

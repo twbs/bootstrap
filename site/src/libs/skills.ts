@@ -6,12 +6,17 @@ import { load as yamlLoad } from 'js-yaml'
 // appended alphabetically, so adding a new `skills/<name>/SKILL.md` shows up
 // automatically without touching this file.
 const skillOrder = [
+  'bootstrap-v4-v6-migration',
   'bootstrap-v5-v6-migration',
   'bootstrap-v6-install',
   'bootstrap-npm',
   'bootstrap-webpack',
   'bootstrap-parcel',
-  'bootstrap-vite'
+  'bootstrap-vite',
+  'bootstrap-component',
+  'bootstrap-component-js',
+  'bootstrap-color-system',
+  'bootstrap-utility-api'
 ]
 
 // The skills directory lives at the repository root, resolved relative to the
