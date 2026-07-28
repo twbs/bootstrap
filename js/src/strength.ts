@@ -70,11 +70,11 @@ const DefaultType = {
  */
 
 class Strength extends BaseComponent {
-  declare _config: StrengthConfig
-  declare _input: HTMLInputElement | null
-  declare _segments: HTMLElement[]
-  declare _textElement: HTMLElement | null
-  declare _currentStrength: string | null
+  protected declare _config: StrengthConfig
+  protected declare _input: HTMLInputElement | null
+  protected declare _segments: HTMLElement[]
+  protected declare _textElement: HTMLElement | null
+  protected declare _currentStrength: string | null
 
   constructor(element?: string | Element | null, config?: Partial<StrengthConfig> | null) {
     super(element, config)
@@ -114,7 +114,7 @@ class Strength extends BaseComponent {
   }
 
   // Private
-  _getInput(): HTMLInputElement | null {
+  protected _getInput(): HTMLInputElement | null {
     if (this._config.input) {
       return typeof this._config.input === 'string' ?
         SelectorEngine.findOne<HTMLInputElement>(this._config.input) :
@@ -126,12 +126,12 @@ class Strength extends BaseComponent {
     return SelectorEngine.findOne<HTMLInputElement>('input[type="password"]', parent!)
   }
 
-  _addEventListeners(): void {
+  protected _addEventListeners(): void {
     EventHandler.on(this._input, 'input', () => this._evaluate())
     EventHandler.on(this._input, 'change', () => this._evaluate())
   }
 
-  _evaluate(): void {
+  protected _evaluate(): void {
     const password = this._input!.value
     const score = this._calculateScore(password)
     const strength = this._scoreToStrength(score)
@@ -148,7 +148,7 @@ class Strength extends BaseComponent {
     }
   }
 
-  _calculateScore(password: string): number {
+  protected _calculateScore(password: string): number {
     if (!password) {
       return 0
     }
@@ -200,7 +200,7 @@ class Strength extends BaseComponent {
     return score
   }
 
-  _scoreToStrength(score: number): string | null {
+  protected _scoreToStrength(score: number): string | null {
     if (score === 0) {
       return null
     }
@@ -222,7 +222,7 @@ class Strength extends BaseComponent {
     return 'strong'
   }
 
-  _updateUI(strength: string | null): void {
+  protected _updateUI(strength: string | null): void {
     // Update data attribute on element
     if (strength) {
       this._element.dataset.bsStrength = strength

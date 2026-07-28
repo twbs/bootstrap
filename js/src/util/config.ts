@@ -36,18 +36,18 @@ class Config {
     throw new Error('You have to implement the static method "NAME", for each component!')
   }
 
-  _getConfig(config?: ComponentConfig | null): ComponentConfig {
+  protected _getConfig(config?: ComponentConfig | null): ComponentConfig {
     config = this._mergeConfigObj(config)
     config = this._configAfterMerge(config)
     this._typeCheckConfig(config)
     return config
   }
 
-  _configAfterMerge(config: ComponentConfig): ComponentConfig {
+  protected _configAfterMerge(config: ComponentConfig): ComponentConfig {
     return config
   }
 
-  _mergeConfigObj(config?: ComponentConfig | null, element?: Element): ComponentConfig {
+  protected _mergeConfigObj(config?: ComponentConfig | null, element?: Element): ComponentConfig {
     const jsonConfig = isElement(element) ? Manipulator.getDataAttribute(element, 'config') : {} // try to parse
 
     return {
@@ -58,7 +58,7 @@ class Config {
     }
   }
 
-  _typeCheckConfig(config: ComponentConfig, configTypes: ComponentConfig = this.constructor.DefaultType): void {
+  protected _typeCheckConfig(config: ComponentConfig, configTypes: ComponentConfig = this.constructor.DefaultType): void {
     for (const [property, expectedTypes] of Object.entries(configTypes)) {
       const value = config[property]
       const valueType = isElement(value) ? 'element' : toType(value)

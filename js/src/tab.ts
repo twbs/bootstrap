@@ -53,7 +53,7 @@ const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"]
  */
 
 class Tab extends BaseComponent {
-  declare _parent: Element | null
+  protected declare _parent: Element | null
 
   constructor(element?: string | Element | null) {
     super(element)
@@ -101,7 +101,7 @@ class Tab extends BaseComponent {
   }
 
   // Private
-  _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void {
+  protected _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void {
     if (!element) {
       return
     }
@@ -127,7 +127,7 @@ class Tab extends BaseComponent {
     this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE))
   }
 
-  _deactivate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void {
+  protected _deactivate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void {
     if (!element) {
       return
     }
@@ -152,7 +152,7 @@ class Tab extends BaseComponent {
     this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE))
   }
 
-  _keydown(event: BootstrapEvent): void {
+  protected _keydown(event: BootstrapEvent): void {
     if (!([ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY, HOME_KEY, END_KEY].includes(event.key))) {
       return
     }
@@ -182,15 +182,15 @@ class Tab extends BaseComponent {
     }
   }
 
-  _getChildren(): HTMLElement[] { // collection of inner elements
+  protected _getChildren(): HTMLElement[] { // collection of inner elements
     return SelectorEngine.find(SELECTOR_INNER_ELEM, this._parent!)
   }
 
-  _getActiveElem(): HTMLElement | null {
+  protected _getActiveElem(): HTMLElement | null {
     return this._getChildren().find(child => this._elemIsActive(child)) || null
   }
 
-  _setInitialAttributes(parent: Element, children: HTMLElement[]): void {
+  protected _setInitialAttributes(parent: Element, children: HTMLElement[]): void {
     this._setAttributeIfNotExists(parent, 'role', 'tablist')
 
     for (const child of children) {
@@ -198,7 +198,7 @@ class Tab extends BaseComponent {
     }
   }
 
-  _setInitialAttributesOnChild(child: HTMLElement): void {
+  protected _setInitialAttributesOnChild(child: HTMLElement): void {
     child = this._getInnerElement(child)!
     const isActive = this._elemIsActive(child)
     const outerElem = this._getOuterElement(child)
@@ -218,7 +218,7 @@ class Tab extends BaseComponent {
     this._setInitialAttributesOnTargetPanel(child)
   }
 
-  _setInitialAttributesOnTargetPanel(child: HTMLElement): void {
+  protected _setInitialAttributesOnTargetPanel(child: HTMLElement): void {
     const target = SelectorEngine.getElementFromSelector(child)
 
     if (!target) {
@@ -232,7 +232,7 @@ class Tab extends BaseComponent {
     }
   }
 
-  _toggleMenu(element: HTMLElement, open: boolean): void {
+  protected _toggleMenu(element: HTMLElement, open: boolean): void {
     const outerElem = this._getOuterElement(element)
     const menuToggle = SelectorEngine.findOne(SELECTOR_MENU_TOGGLE, outerElem)
     if (!menuToggle) {
@@ -249,23 +249,23 @@ class Tab extends BaseComponent {
     menuToggle.setAttribute('aria-expanded', open as unknown as string)
   }
 
-  _setAttributeIfNotExists(element: Element, attribute: string, value: string): void {
+  protected _setAttributeIfNotExists(element: Element, attribute: string, value: string): void {
     if (!element.hasAttribute(attribute)) {
       element.setAttribute(attribute, value)
     }
   }
 
-  _elemIsActive(elem: HTMLElement): boolean {
+  protected _elemIsActive(elem: HTMLElement): boolean {
     return elem.classList.contains(CLASS_NAME_ACTIVE)
   }
 
   // Try to get the inner element (usually the .nav-link)
-  _getInnerElement(elem: HTMLElement): HTMLElement | null {
+  protected _getInnerElement(elem: HTMLElement): HTMLElement | null {
     return elem.matches(SELECTOR_INNER_ELEM) ? elem : SelectorEngine.findOne(SELECTOR_INNER_ELEM, elem)
   }
 
   // Try to get the outer element (usually the .nav-item)
-  _getOuterElement(elem: HTMLElement): Element {
+  protected _getOuterElement(elem: HTMLElement): Element {
     return elem.closest(SELECTOR_OUTER) || elem
   }
 }

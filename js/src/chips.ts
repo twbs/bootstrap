@@ -69,21 +69,23 @@ const DefaultType = {
  */
 
 class Chips extends BaseComponent {
-  declare _config: ChipsConfig
-  declare _input: HTMLInputElement
-  declare _chips: string[]
-  declare _selectedChips: Set<HTMLElement>
-  declare _anchorChip: HTMLElement | null
+  protected declare _config: ChipsConfig
+  protected declare _input: HTMLInputElement
+  protected declare _chips: string[]
+  protected declare _selectedChips: Set<HTMLElement>
+  protected declare _anchorChip: HTMLElement | null
 
   constructor(element?: string | Element | null, config?: Partial<ChipsConfig> | null) {
     super(element, config)
 
-    this._input = SelectorEngine.findOne<HTMLInputElement>(SELECTOR_GHOST_INPUT, this._element)!
+    const ghostInput = SelectorEngine.findOne<HTMLInputElement>(SELECTOR_GHOST_INPUT, this._element)
     this._chips = []
     this._selectedChips = new Set()
     this._anchorChip = null // For shift+click range selection
 
-    if (!this._input) {
+    if (ghostInput) {
+      this._input = ghostInput
+    } else {
       this._createInput()
     }
 
@@ -285,11 +287,11 @@ class Chips extends BaseComponent {
   }
 
   // Private
-  _getChipElements(): HTMLElement[] {
+  protected _getChipElements(): HTMLElement[] {
     return SelectorEngine.find(SELECTOR_CHIP, this._element)
   }
 
-  _createInput(): void {
+  protected _createInput(): void {
     const input = document.createElement('input')
     input.type = 'text'
     input.className = 'form-ghost'
@@ -301,7 +303,7 @@ class Chips extends BaseComponent {
     this._input = input
   }
 
-  _initializeExistingChips(): void {
+  protected _initializeExistingChips(): void {
     const existingChips = SelectorEngine.find(SELECTOR_CHIP, this._element)
     for (const chip of existingChips) {
       const value = this._getChipValue(chip)
@@ -312,7 +314,7 @@ class Chips extends BaseComponent {
     }
   }
 
-  _setupChip(chip: HTMLElement): void {
+  protected _setupChip(chip: HTMLElement): void {
     // Make chip focusable
     chip.setAttribute('tabindex', '0')
 
@@ -322,7 +324,7 @@ class Chips extends BaseComponent {
     }
   }
 
-  _createChip(value: string): HTMLElement {
+  protected _createChip(value: string): HTMLElement {
     const chip = document.createElement('span')
     chip.className = CLASS_NAME_CHIP
     chip.dataset.bsChipValue = value
@@ -336,7 +338,7 @@ class Chips extends BaseComponent {
     return chip
   }
 
-  _createDismissButton(): HTMLButtonElement {
+  protected _createDismissButton(): HTMLButtonElement {
     const button = document.createElement('button')
     button.type = 'button'
     button.className = CLASS_NAME_CHIP_DISMISS
@@ -346,12 +348,12 @@ class Chips extends BaseComponent {
     return button
   }
 
-  _findChipByValue(value: string): HTMLElement | undefined {
+  protected _findChipByValue(value: string): HTMLElement | undefined {
     const chips = this._getChipElements()
     return chips.find(chip => this._getChipValue(chip) === value)
   }
 
-  _getChipValue(chip: HTMLElement): string {
+  protected _getChipValue(chip: HTMLElement): string {
     if (chip.dataset.bsChipValue) {
       return chip.dataset.bsChipValue
     }
@@ -365,7 +367,7 @@ class Chips extends BaseComponent {
     return clone.textContent?.trim() || ''
   }
 
-  _addEventListeners(): void {
+  protected _addEventListeners(): void {
     // Input events
     EventHandler.on(this._input, 'keydown', event => this._handleInputKeydown(event))
     EventHandler.on(this._input, 'input', event => this._handleInput(event))
@@ -423,7 +425,7 @@ class Chips extends BaseComponent {
     })
   }
 
-  _handleInputKeydown(event: BootstrapEvent): void {
+  protected _handleInputKeydown(event: BootstrapEvent): void {
     const { key } = event
 
     switch (key) {
@@ -480,7 +482,7 @@ class Chips extends BaseComponent {
     }
   }
 
-  _handleChipKeydown(event: BootstrapEvent): void {
+  protected _handleChipKeydown(event: BootstrapEvent): void {
     const { key } = event
     const chip = (event.target as Element).closest<HTMLElement>(SELECTOR_CHIP)
     if (!chip) {
@@ -539,7 +541,7 @@ class Chips extends BaseComponent {
     }
   }
 
-  _handleChipDelete(currentIndex: number, chips: HTMLElement[]): void {
+  protected _handleChipDelete(currentIndex: number, chips: HTMLElement[]): void {
     if (this._selectedChips.size === 0) {
       return
     }
@@ -557,7 +559,7 @@ class Chips extends BaseComponent {
     }
   }
 
-  _navigateChip(chips: HTMLElement[], currentIndex: number, direction: number, shiftKey: boolean): void {
+  protected _navigateChip(chips: HTMLElement[], currentIndex: number, direction: number, shiftKey: boolean): void {
     const targetIndex = currentIndex + direction
 
     if (direction < 0 && targetIndex >= 0) {
@@ -574,7 +576,7 @@ class Chips extends BaseComponent {
     }
   }
 
-  _navigateToEdge(chips: HTMLElement[], targetIndex: number, shiftKey: boolean): void {
+  protected _navigateToEdge(chips: HTMLElement[], targetIndex: number, shiftKey: boolean): void {
     if (chips.length === 0) {
       return
     }
@@ -584,7 +586,7 @@ class Chips extends BaseComponent {
     targetChip.focus()
   }
 
-  _handleSelectAll(event: BootstrapEvent, chips: HTMLElement[]): void {
+  protected _handleSelectAll(event: BootstrapEvent, chips: HTMLElement[]): void {
     if (!(event.metaKey || event.ctrlKey)) {
       return
     }
@@ -600,7 +602,7 @@ class Chips extends BaseComponent {
     })
   }
 
-  _handleInput(event: BootstrapEvent): void {
+  protected _handleInput(event: BootstrapEvent): void {
     const { value } = event.target as HTMLInputElement
     const { separator } = this._config
 
@@ -614,7 +616,7 @@ class Chips extends BaseComponent {
     }
   }
 
-  _handlePaste(event: BootstrapEvent): void {
+  protected _handlePaste(event: BootstrapEvent): void {
     const { separator } = this._config
     if (!separator) {
       return
@@ -631,7 +633,7 @@ class Chips extends BaseComponent {
     }
   }
 
-  _createChipFromInput(): void {
+  protected _createChipFromInput(): void {
     const value = this._input.value.trim()
     if (value) {
       this.add(value)

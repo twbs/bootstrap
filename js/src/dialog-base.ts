@@ -37,11 +37,11 @@ type DialogBaseConfig = {
  */
 
 class DialogBase extends BaseComponent {
-  declare _element: HTMLDialogElement
-  declare _config: DialogBaseConfig
-  declare _isTransitioning: boolean
-  declare _openedAsModal: boolean
-  declare _cancelHandler: (event: BootstrapEvent) => void
+  protected declare _element: HTMLDialogElement
+  protected declare _config: DialogBaseConfig
+  protected declare _isTransitioning: boolean
+  protected declare _openedAsModal: boolean
+  protected declare _cancelHandler: (event: BootstrapEvent) => void
 
   constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null) {
     super(element, config)
@@ -145,37 +145,37 @@ class DialogBase extends BaseComponent {
 
   // Protected — hooks for subclasses to override
 
-  _getShowOptions(): { modal: boolean, preventBodyScroll: boolean } {
+  protected _getShowOptions(): { modal: boolean, preventBodyScroll: boolean } {
     return { modal: true, preventBodyScroll: true }
   }
 
-  _onBeforeShow(): void {
+  protected _onBeforeShow(): void {
     // No-op by default — Dialog overrides to add nonmodal class
   }
 
-  _onAfterHide(): void {
+  protected _onAfterHide(): void {
     // No-op by default — Dialog overrides to remove nonmodal class
   }
 
-  _isAnimated(): boolean {
+  protected _isAnimated(): boolean {
     return !this._element.classList.contains(this._getInstantClassName())
   }
 
-  _getInstantClassName(): string {
+  protected _getInstantClassName(): string {
     return 'dialog-instant'
   }
 
-  _getStaticClassName(): string {
+  protected _getStaticClassName(): string {
     return 'dialog-static'
   }
 
-  _onCancel(): void {
+  protected _onCancel(): void {
     // No-op by default — Dialog overrides to fire cancel event
   }
 
   // Protected — shared mechanics
 
-  _showElement({ modal = true, preventBodyScroll = true }: { modal?: boolean, preventBodyScroll?: boolean } = {}): void {
+  protected _showElement({ modal = true, preventBodyScroll = true }: { modal?: boolean, preventBodyScroll?: boolean } = {}): void {
     this._openedAsModal = modal
 
     if (modal) {
@@ -193,7 +193,7 @@ class DialogBase extends BaseComponent {
     }
   }
 
-  _hideElement(): void {
+  protected _hideElement(): void {
     this._hideChildComponents()
 
     // Add .hiding before close() so CSS exit transitions can play.
@@ -213,7 +213,7 @@ class DialogBase extends BaseComponent {
 
   // Closes the native <dialog> and tears down scroll prevention.
   // Safe to call multiple times — close() is a no-op on a closed dialog.
-  _closeAndCleanup(): void {
+  protected _closeAndCleanup(): void {
     this._element.close()
     this._openedAsModal = false
 
@@ -226,11 +226,11 @@ class DialogBase extends BaseComponent {
   // Hook: return true to keep the dialog in the top layer (i.e., delay
   // calling close()) until the exit transition completes. The base class
   // closes synchronously; Dialog overrides this for animated modal cases.
-  _shouldDeferClose(): boolean {
+  protected _shouldDeferClose(): boolean {
     return false
   }
 
-  _triggerBackdropTransition(): void {
+  protected _triggerBackdropTransition(): void {
     const hidePreventedEvent = EventHandler.trigger(
       this._element,
       this.constructor.eventName('hidePrevented')
@@ -250,7 +250,7 @@ class DialogBase extends BaseComponent {
   // Hide any tooltips, popovers, or toasts inside the dialog before closing.
   // These components append to the dialog (for top-layer rendering) and would
   // otherwise persist visibly after close().
-  _hideChildComponents(): void {
+  protected _hideChildComponents(): void {
     const selector = '[data-bs-toggle="tooltip"], [data-bs-toggle="popover"]'
 
     for (const el of SelectorEngine.find(selector, this._element)) {
@@ -271,7 +271,7 @@ class DialogBase extends BaseComponent {
 
   // Private
 
-  _addDialogListeners(): void {
+  protected _addDialogListeners(): void {
     const eventKey = this.constructor.EVENT_KEY
 
     // Handle native cancel event (Escape key) — only fires for modal dialogs.

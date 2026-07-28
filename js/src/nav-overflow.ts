@@ -64,14 +64,14 @@ const DefaultType = {
  */
 
 class NavOverflow extends BaseComponent {
-  declare _config: NavOverflowConfig
-  declare _items: HTMLElement[]
-  declare _overflowItems: HTMLElement[]
-  declare _overflowMenu: HTMLElement | null
-  declare _overflowToggle: HTMLElement | null
-  declare _resizeObserver: ResizeObserver | null
-  declare _resizeHandler: (() => void) | null
-  declare _collapseBelow: number
+  protected declare _config: NavOverflowConfig
+  protected declare _items: HTMLElement[]
+  protected declare _overflowItems: HTMLElement[]
+  protected declare _overflowMenu: HTMLElement | null
+  protected declare _overflowToggle: HTMLElement | null
+  protected declare _resizeObserver: ResizeObserver | null
+  protected declare _resizeHandler: (() => void) | null
+  protected declare _collapseBelow: number
 
   constructor(element?: string | Element | null, config?: Partial<NavOverflowConfig> | null) {
     super(element, config)
@@ -128,7 +128,7 @@ class NavOverflow extends BaseComponent {
   }
 
   // Private
-  _init(): void {
+  protected _init(): void {
     // Add overflow class to nav
     this._element.classList.add(CLASS_NAME_OVERFLOW)
 
@@ -153,7 +153,7 @@ class NavOverflow extends BaseComponent {
     this._calculateOverflow()
   }
 
-  _createOverflowMenu(): void {
+  protected _createOverflowMenu(): void {
     // Check if overflow menu already exists
     this._overflowToggle = SelectorEngine.findOne(SELECTOR_OVERFLOW_TOGGLE, this._element)
 
@@ -183,7 +183,7 @@ class NavOverflow extends BaseComponent {
     this._overflowMenu = overflowItem.querySelector<HTMLElement>(SELECTOR_OVERFLOW_MENU)
   }
 
-  _resolveIcon(): string {
+  protected _resolveIcon(): string {
     const customIconElement = SelectorEngine.findOne(SELECTOR_CUSTOM_ICON, this._element)
 
     if (!customIconElement) {
@@ -199,7 +199,7 @@ class NavOverflow extends BaseComponent {
     return iconHtml
   }
 
-  _resolveCollapseBelow(): number {
+  protected _resolveCollapseBelow(): number {
     const value = this._config.collapseBelow
 
     if (typeof value === 'number') {
@@ -215,7 +215,7 @@ class NavOverflow extends BaseComponent {
     return 0
   }
 
-  _setupResizeObserver(): void {
+  protected _setupResizeObserver(): void {
     if (typeof ResizeObserver === 'undefined') {
       // Fallback for older browsers. Keep a per-instance handler so dispose()
       // removes only this instance's window listener, not every instance's.
@@ -231,7 +231,7 @@ class NavOverflow extends BaseComponent {
     this._resizeObserver.observe(this._element)
   }
 
-  _calculateOverflow(): void {
+  protected _calculateOverflow(): void {
     // First, restore all items to measure properly
     this._restoreItems()
 
@@ -320,7 +320,7 @@ class NavOverflow extends BaseComponent {
     }
   }
 
-  _moveToOverflow(items: HTMLElement[]): void {
+  protected _moveToOverflow(items: HTMLElement[]): void {
     if (!this._overflowMenu) {
       return
     }
@@ -356,7 +356,7 @@ class NavOverflow extends BaseComponent {
     }
   }
 
-  _restoreItems(): void {
+  protected _restoreItems(): void {
     for (const item of this._items) {
       item.classList.remove(CLASS_NAME_HIDDEN)
       delete item.dataset.bsNavOverflow

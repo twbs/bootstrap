@@ -53,7 +53,7 @@ const DefaultType = {
  */
 
 class Dialog extends DialogBase {
-  declare _config: DialogConfig
+  protected declare _config: DialogConfig
 
   // eslint-disable-next-line no-useless-constructor -- narrows the config param type
   constructor(element?: string | Element | null, config?: Partial<DialogConfig> | null) {
@@ -80,20 +80,20 @@ class Dialog extends DialogBase {
 
   // Protected — hook overrides
 
-  override _getShowOptions(): { modal: boolean, preventBodyScroll: boolean } {
+  protected override _getShowOptions(): { modal: boolean, preventBodyScroll: boolean } {
     return {
       modal: this._config.modal,
       preventBodyScroll: this._config.modal
     }
   }
 
-  override _onBeforeShow(): void {
+  protected override _onBeforeShow(): void {
     if (!this._config.modal) {
       this._element.classList.add(CLASS_NAME_NONMODAL)
     }
   }
 
-  override _onAfterHide(): void {
+  protected override _onAfterHide(): void {
     this._element.classList.remove(CLASS_NAME_NONMODAL)
   }
 
@@ -103,11 +103,11 @@ class Dialog extends DialogBase {
   // this, the dialog would jump to the top of the page and the backdrop
   // blur would vanish instantly while the dialog faded — making the exit
   // animation appear to skip entirely.
-  override _shouldDeferClose(): boolean {
+  protected override _shouldDeferClose(): boolean {
     return this._isAnimated()
   }
 
-  override _onCancel(): void {
+  protected override _onCancel(): void {
     EventHandler.trigger(this._element, EVENT_CANCEL)
   }
 }

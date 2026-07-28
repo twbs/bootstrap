@@ -55,10 +55,10 @@ const Default: ToastConfig = {
  */
 
 class Toast extends BaseComponent {
-  declare _config: ToastConfig
-  declare _timeout: number | null
-  declare _hasMouseInteraction: boolean
-  declare _hasKeyboardInteraction: boolean
+  protected declare _config: ToastConfig
+  protected declare _timeout: number | null
+  protected declare _hasMouseInteraction: boolean
+  protected declare _hasKeyboardInteraction: boolean
 
   constructor(element?: string | Element | null, config?: Partial<ToastConfig> | null) {
     super(element, config)
@@ -146,7 +146,7 @@ class Toast extends BaseComponent {
   }
 
   // Private
-  _maybeScheduleHide(): void {
+  protected _maybeScheduleHide(): void {
     if (!this._config.autohide) {
       return
     }
@@ -160,7 +160,7 @@ class Toast extends BaseComponent {
     }, this._config.delay)
   }
 
-  _onInteraction(event: BootstrapEvent, isInteracting: boolean): void {
+  protected _onInteraction(event: BootstrapEvent, isInteracting: boolean): void {
     switch (event.type) {
       case 'mouseover':
       case 'mouseout': {
@@ -192,14 +192,14 @@ class Toast extends BaseComponent {
     this._maybeScheduleHide()
   }
 
-  _setListeners(): void {
+  protected _setListeners(): void {
     EventHandler.on(this._element, EVENT_MOUSEOVER, event => this._onInteraction(event, true))
     EventHandler.on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false))
     EventHandler.on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true))
     EventHandler.on(this._element, EVENT_FOCUSOUT, event => this._onInteraction(event, false))
   }
 
-  _clearTimeout(): void {
+  protected _clearTimeout(): void {
     clearTimeout(this._timeout!)
     this._timeout = null
   }

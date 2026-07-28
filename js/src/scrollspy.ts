@@ -82,24 +82,24 @@ const DefaultType = {
  */
 
 class ScrollSpy extends BaseComponent {
-  declare _config: ScrollSpyConfig
-  declare _sections: HTMLElement[]
-  declare _linkBySection: Map<HTMLElement, HTMLElement>
-  declare _sectionByLink: Map<HTMLElement, HTMLElement>
-  declare _intersecting: Set<Element>
-  declare _activeTarget: HTMLElement | null
-  declare _lastActive: HTMLElement | null
-  declare _atBottom: boolean
-  declare _rootElement: HTMLElement | null
-  declare _observer: IntersectionObserver | null
-  declare _sentinel: HTMLElement | null
-  declare _sentinelObserver: IntersectionObserver | null
-  declare _pendingNavigation: { hash: string, section: HTMLElement } | null
-  declare _settleTimeout: number | null
-  declare _settleHandler: (() => void) | null
-  declare _scrollIdleHandler: (() => void) | null
-  declare _resizeHandler: (() => void) | null
-  declare _resizeTimeout: number | null
+  protected declare _config: ScrollSpyConfig
+  protected declare _sections: HTMLElement[]
+  protected declare _linkBySection: Map<HTMLElement, HTMLElement>
+  protected declare _sectionByLink: Map<HTMLElement, HTMLElement>
+  protected declare _intersecting: Set<Element>
+  protected declare _activeTarget: HTMLElement | null
+  protected declare _lastActive: HTMLElement | null
+  protected declare _atBottom: boolean
+  protected declare _rootElement: HTMLElement | null
+  protected declare _observer: IntersectionObserver | null
+  protected declare _sentinel: HTMLElement | null
+  protected declare _sentinelObserver: IntersectionObserver | null
+  protected declare _pendingNavigation: { hash: string, section: HTMLElement } | null
+  protected declare _settleTimeout: number | null
+  protected declare _settleHandler: (() => void) | null
+  protected declare _scrollIdleHandler: (() => void) | null
+  protected declare _resizeHandler: (() => void) | null
+  protected declare _resizeTimeout: number | null
 
   constructor(element?: string | Element | null, config?: Partial<ScrollSpyConfig> | null) {
     super(element, config)
@@ -174,7 +174,7 @@ class ScrollSpy extends BaseComponent {
   }
 
   // Private
-  override _configAfterMerge(config: ComponentConfig): ComponentConfig {
+  protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
     config.target = getElement(config.target) || document.body
 
     if (typeof config.threshold === 'string') {
@@ -186,7 +186,7 @@ class ScrollSpy extends BaseComponent {
 
   // --- Detection (IntersectionObserver-driven) -----------------------------
 
-  _getNewObserver(): IntersectionObserver {
+  protected _getNewObserver(): IntersectionObserver {
     const options = {
       root: this._rootElement,
       threshold: this._config.threshold as number[],
@@ -196,7 +196,7 @@ class ScrollSpy extends BaseComponent {
     return new IntersectionObserver(entries => this._onIntersect(entries), options)
   }
 
-  _onIntersect(entries: IntersectionObserverEntry[]): void {
+  protected _onIntersect(entries: IntersectionObserverEntry[]): void {
     for (const entry of entries) {
       if (entry.isIntersecting) {
         this._intersecting.add(entry.target)
@@ -213,7 +213,7 @@ class ScrollSpy extends BaseComponent {
   // one currently crossing the activation line; in a gap we keep the last one;
   // above the first section the first stays active; at the very bottom the last
   // section wins.
-  _computeActive(): void {
+  protected _computeActive(): void {
     // Guard against observer callbacks that outlive a disposed/detached instance.
     if (!this._element?.isConnected || this._sections.length === 0) {
       return
@@ -248,7 +248,7 @@ class ScrollSpy extends BaseComponent {
 
   // Single source of truth for the `topMargin` option: its numeric value and
   // whether it's expressed as a percentage of the root height or in pixels.
-  _parseTopMargin(): { value: number, unit: string } {
+  protected _parseTopMargin(): { value: number, unit: string } {
     const value = String(this._config.topMargin)
     return {
       value: Number.parseFloat(value) || 0,
@@ -258,7 +258,7 @@ class ScrollSpy extends BaseComponent {
 
   // Collapse the observer root to a strip from the top down to the activation
   // line, so a section is "intersecting" exactly while it crosses that line.
-  _getDerivedRootMargin(): string {
+  protected _getDerivedRootMargin(): string {
     const { value, unit } = this._parseTopMargin()
     let percent = value
 
@@ -279,13 +279,13 @@ class ScrollSpy extends BaseComponent {
   // Whether the activation line is derived from a pixel `topMargin` (in which
   // case it must be recomputed on resize). An explicit `rootMargin` is owned by
   // the caller, and a `%` topMargin is recomputed by the browser automatically.
-  _usesPixelMargin(): boolean {
+  protected _usesPixelMargin(): boolean {
     return !this._config.rootMargin && this._parseTopMargin().unit === 'px'
   }
 
   // --- Bottom sentinel -----------------------------------------------------
 
-  _setUpSentinel(): void {
+  protected _setUpSentinel(): void {
     this._teardownSentinel()
 
     if (this._sections.length === 0) {
@@ -305,7 +305,7 @@ class ScrollSpy extends BaseComponent {
     this._sentinelObserver.observe(sentinel)
   }
 
-  _onSentinel(entries: IntersectionObserverEntry[]): void {
+  protected _onSentinel(entries: IntersectionObserverEntry[]): void {
     const entry = entries.at(-1)
     // Only treat the sentinel as "bottom reached" when content actually
     // overflows; otherwise everything is visible and there's nothing to spy.
@@ -313,12 +313,12 @@ class ScrollSpy extends BaseComponent {
     this._computeActive()
   }
 
-  _isOverflowing(): boolean {
+  protected _isOverflowing(): boolean {
     const scroller = this._rootElement || document.scrollingElement || document.documentElement
     return scroller.scrollHeight > scroller.clientHeight
   }
 
-  _teardownSentinel(): void {
+  protected _teardownSentinel(): void {
     this._sentinelObserver?.disconnect()
     this._sentinelObserver = null
     this._sentinel?.remove()
@@ -328,7 +328,7 @@ class ScrollSpy extends BaseComponent {
 
   // --- Resize (px activation lines only) -----------------------------------
 
-  _maybeAddResizeListener(): void {
+  protected _maybeAddResizeListener(): void {
     this._removeResizeListener()
 
     if (!this._usesPixelMargin()) {
@@ -343,7 +343,7 @@ class ScrollSpy extends BaseComponent {
     EventHandler.on(window, EVENT_RESIZE, this._resizeHandler)
   }
 
-  _removeResizeListener(): void {
+  protected _removeResizeListener(): void {
     clearTimeout(this._resizeTimeout!)
     this._resizeTimeout = null
 
@@ -353,7 +353,7 @@ class ScrollSpy extends BaseComponent {
     }
   }
 
-  _rebuildObserver(): void {
+  protected _rebuildObserver(): void {
     if (!this._observer) {
       return
     }
@@ -368,7 +368,7 @@ class ScrollSpy extends BaseComponent {
 
   // --- Smooth-scroll settle (hash + focus) ---------------------------------
 
-  _maybeEnableSmoothScroll(): void {
+  protected _maybeEnableSmoothScroll(): void {
     if (!this._config.smoothScroll) {
       return
     }
@@ -423,7 +423,7 @@ class ScrollSpy extends BaseComponent {
   // Arm a one-shot settle for the in-flight smooth scroll. `scrollend` is the
   // primary signal; a transient scroll-idle timer covers engines without it.
   // Both are removed on settle, so a later unrelated scroll can't replay it.
-  _armSettle(): void {
+  protected _armSettle(): void {
     this._disarmSettle()
 
     const target = this._getSettleTarget()
@@ -438,7 +438,7 @@ class ScrollSpy extends BaseComponent {
     EventHandler.on(target, EVENT_SCROLL, this._scrollIdleHandler)
   }
 
-  _disarmSettle(): void {
+  protected _disarmSettle(): void {
     clearTimeout(this._settleTimeout!)
     this._settleTimeout = null
 
@@ -454,11 +454,11 @@ class ScrollSpy extends BaseComponent {
     }
   }
 
-  _getSettleTarget(): HTMLElement | Document {
+  protected _getSettleTarget(): HTMLElement | Document {
     return this._rootElement || document
   }
 
-  _onSettle(): void {
+  protected _onSettle(): void {
     this._disarmSettle()
 
     if (!this._pendingNavigation) {
@@ -469,7 +469,7 @@ class ScrollSpy extends BaseComponent {
     this._settleNavigation(hash, section)
   }
 
-  _settleNavigation(hash: string, section: HTMLElement): void {
+  protected _settleNavigation(hash: string, section: HTMLElement): void {
     this._pendingNavigation = null
 
     // Restore the URL hash (without adding a history entry) now that we've
@@ -487,7 +487,7 @@ class ScrollSpy extends BaseComponent {
 
   // --- Targets / observables ----------------------------------------------
 
-  _initializeTargetsAndObservables(): void {
+  protected _initializeTargetsAndObservables(): void {
     this._sections = []
     this._linkBySection = new Map()
     this._sectionByLink = new Map()
@@ -528,7 +528,7 @@ class ScrollSpy extends BaseComponent {
     this._sections.sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top)
   }
 
-  _process(target: HTMLElement): void {
+  protected _process(target: HTMLElement): void {
     if (this._activeTarget === target) {
       return
     }
@@ -541,7 +541,7 @@ class ScrollSpy extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_ACTIVATE, { relatedTarget: target })
   }
 
-  _activateParents(target: HTMLElement): void {
+  protected _activateParents(target: HTMLElement): void {
     // Activate menu parents
     if (target.classList.contains(CLASS_NAME_MENU_ITEM)) {
       const menuToggle = target.closest('.menu')?.previousElementSibling
@@ -561,7 +561,7 @@ class ScrollSpy extends BaseComponent {
     }
   }
 
-  _clearActiveClass(parent: HTMLElement): void {
+  protected _clearActiveClass(parent: HTMLElement): void {
     parent.classList.remove(CLASS_NAME_ACTIVE)
 
     const activeNodes = SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)

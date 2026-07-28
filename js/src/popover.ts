@@ -50,7 +50,7 @@ const DefaultType = {
  */
 
 class Popover extends Tooltip {
-  declare _config: PopoverConfig
+  protected declare _config: PopoverConfig
 
   // eslint-disable-next-line no-useless-constructor -- narrows the config param type
   constructor(element?: string | Element | null, config?: Partial<PopoverConfig> | null) {
@@ -71,19 +71,19 @@ class Popover extends Tooltip {
   }
 
   // Overrides
-  override _isWithContent(): boolean {
+  protected override _isWithContent(): boolean {
     return Boolean(this._getTitle() || this._getContent()) || this._hasNewContent()
   }
 
   // Private
-  override _getContentForTemplate(): Record<string, TemplateContentEntry> {
+  protected override _getContentForTemplate(): Record<string, TemplateContentEntry> {
     return {
       [SELECTOR_TITLE]: this._getTitle(),
       [SELECTOR_CONTENT]: this._getContent()
     }
   }
 
-  _getContent(): string | Element | null {
+  protected _getContent(): string | Element | null {
     return this._resolvePossibleFunction(this._config.content)
   }
 }

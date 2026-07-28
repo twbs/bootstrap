@@ -54,11 +54,11 @@ const DefaultType = {
  */
 
 class Swipe extends Config {
-  declare _element: HTMLElement
-  declare _config: SwipeConfig
-  declare _deltaX: number
-  declare _deltaY: number
-  declare _supportPointerEvents: boolean
+  protected declare _element: HTMLElement
+  protected declare _config: SwipeConfig
+  protected declare _deltaX: number
+  protected declare _deltaY: number
+  protected declare _supportPointerEvents: boolean
 
   constructor(element: HTMLElement | null, config?: Partial<SwipeConfig> | null) {
     super()
@@ -94,7 +94,7 @@ class Swipe extends Config {
   }
 
   // Private
-  _start(event: BootstrapEvent): void {
+  protected _start(event: BootstrapEvent): void {
     if (!this._supportPointerEvents) {
       this._deltaX = event.touches[0].clientX
       this._deltaY = event.touches[0].clientY
@@ -108,7 +108,7 @@ class Swipe extends Config {
     }
   }
 
-  _end(event: BootstrapEvent): void {
+  protected _end(event: BootstrapEvent): void {
     if (this._eventIsPointerPenTouch(event)) {
       this._deltaX = event.clientX - this._deltaX
       this._deltaY = event.clientY - this._deltaY
@@ -118,7 +118,7 @@ class Swipe extends Config {
     execute(this._config.endCallback)
   }
 
-  _move(event: BootstrapEvent): void {
+  protected _move(event: BootstrapEvent): void {
     if (event.touches && event.touches.length > 1) {
       this._deltaX = 0
       this._deltaY = 0
@@ -129,7 +129,7 @@ class Swipe extends Config {
     this._deltaY = event.touches[0].clientY - this._deltaY
   }
 
-  _handleSwipe(): void {
+  protected _handleSwipe(): void {
     const absDeltaX = Math.abs(this._deltaX)
     const absDeltaY = Math.abs(this._deltaY)
 
@@ -161,7 +161,7 @@ class Swipe extends Config {
     this._deltaY = 0
   }
 
-  _initEvents(): void {
+  protected _initEvents(): void {
     if (this._supportPointerEvents) {
       EventHandler.on(this._element, EVENT_POINTERDOWN, event => this._start(event))
       EventHandler.on(this._element, EVENT_POINTERUP, event => this._end(event))
@@ -174,7 +174,7 @@ class Swipe extends Config {
     }
   }
 
-  _eventIsPointerPenTouch(event: BootstrapEvent): boolean {
+  protected _eventIsPointerPenTouch(event: BootstrapEvent): boolean {
     return this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)
   }
 
