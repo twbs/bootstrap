@@ -36,7 +36,6 @@ $utilities: map.merge(
       values: var(--ratio),
     ),
     "aspect-ratio": (
-      // property: aspect-ratio,
       property: --ratio,
       class: ratio,
       values: $aspect-ratios
