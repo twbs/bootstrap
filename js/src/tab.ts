@@ -60,9 +60,7 @@ class Tab extends BaseComponent {
     this._parent = this._element.closest(SELECTOR_TAB_PANEL)
 
     if (!this._parent) {
-      return
-      // TODO: should throw exception in v6
-      // throw new TypeError(`${element.outerHTML} has not a valid parent ${SELECTOR_TAB_PANEL}`)
+      throw new TypeError(`${this._element.outerHTML} has no valid parent ${SELECTOR_TAB_PANEL}`)
     }
 
     // Set up initial aria attributes

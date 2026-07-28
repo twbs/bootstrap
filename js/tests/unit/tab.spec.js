@@ -39,15 +39,13 @@ describe('Tab', () => {
       expect(tabByElement._element).toEqual(tabEl)
     })
 
-    it('Do not Throw exception if not parent', () => {
-      fixtureEl.innerHTML = [
-        fixtureEl.innerHTML = '<div class=""><div class="nav-link"></div></div>'
-      ].join('')
+    it('should throw a TypeError when the element has no tab-panel parent', () => {
+      fixtureEl.innerHTML = '<div class=""><div class="nav-link"></div></div>'
       const navEl = fixtureEl.querySelector('.nav-link')
 
       expect(() => {
         new Tab(navEl) // eslint-disable-line no-new
-      }).not.toThrowError(TypeError)
+      }).toThrowError(TypeError)
     })
   })
 
