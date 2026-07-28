@@ -483,7 +483,6 @@ $utilities: map.merge(
     // scss-docs-start utils-grid
     "grid-column-counts": (
       responsive: true,
-      // property: --columns,
       property: grid-template-columns,
       class: grid-cols,
       values: (
@@ -525,7 +524,6 @@ $utilities: map.merge(
       ),
     ),
     // Margin utilities
-    // scss-docs-start utils-spacing
     // scss-docs-start utils-margin
     "margin": (
       responsive: true,
@@ -636,7 +634,6 @@ $utilities: map.merge(
       values: $spacers
     ),
     // scss-docs-end utils-gap
-    // scss-docs-end utils-spacing
     // scss-docs-start utils-space
     "space-x": (
       responsive: true,
@@ -764,7 +761,6 @@ $utilities: map.merge(
       values: (break: break-word),
     ),
     // scss-docs-end utils-text-break
-    // scss-docs-end utils-text
     // scss-docs-start utils-color
     "fg": (
       property: (
