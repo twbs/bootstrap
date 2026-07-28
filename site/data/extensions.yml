@@ -1,0 +1,188 @@
+# Community-maintained, third-party Bootstrap plugins and add-ons.
+#
+# To add an entry, append a block below. Keep entries sorted by category, then
+# by name. Provide `site`, `github_repo`, or both — everything else is required:
+#
+#   - name: Plugin name
+#     site: https://example.com/           # Homepage or docs (optional)
+#     github_repo: https://github.com/…    # Source repository (optional)
+#     description: One sentence, ending with a period.
+#     category: Forms                      # Forms, Integrations, Pickers, Tables, Themes, or UI
+#     versions: [4, 5]                     # Bootstrap major versions supported
+
+- name: bootstrap-fileinput
+  site: https://plugins.krajee.com/file-input
+  github_repo: https://github.com/kartik-v/bootstrap-fileinput
+  description: File input widget with previews, drag and drop, and AJAX uploads.
+  category: Forms
+  versions: [4, 5]
+
+- name: bootstrap-maxlength
+  site: https://mimo84.github.io/bootstrap-maxlength/
+  github_repo: https://github.com/mimo84/bootstrap-maxlength
+  description: Show a live character counter as users type into length-limited fields.
+  category: Forms
+  versions: [4, 5]
+
+- name: bootstrap-multiselect
+  site: https://davidstutz.github.io/bootstrap-multiselect/
+  github_repo: https://github.com/davidstutz/bootstrap-multiselect
+  description: Turn multiple select elements into dropdowns with checkboxes and search.
+  category: Forms
+  versions: [4]
+
+- name: bootstrap-select
+  site: https://developer.snapappointments.com/bootstrap-select/
+  github_repo: https://github.com/snapappointments/bootstrap-select
+  description: The original jQuery select replacement with search and multiselect support.
+  category: Forms
+  versions: [4]
+
+- name: bootstrap-select (CrestApps fork)
+  github_repo: https://github.com/CrestApps/bootstrap-select
+  description: Dependency-free, vanilla JavaScript rewrite of bootstrap-select for Bootstrap 5 and later.
+  category: Forms
+  versions: [5]
+
+- name: bootstrap-slider
+  site: https://seiyria.com/bootstrap-slider/
+  github_repo: https://github.com/seiyria/bootstrap-slider
+  description: Single value and range slider controls styled to match Bootstrap.
+  category: Forms
+  versions: [4]
+
+- name: Bootstrap TouchSpin
+  site: https://www.virtuosoft.eu/code/bootstrap-touchspin/
+  github_repo: https://github.com/istvan-ujjmeszaros/bootstrap-touchspin
+  description: Mobile-friendly spinner buttons for number inputs.
+  category: Forms
+  versions: [4, 5]
+
+- name: bootstrap5-tags
+  github_repo: https://github.com/lekoala/bootstrap5-tags
+  description: Accessible tag and autocomplete input built on the native select element.
+  category: Forms
+  versions: [5]
+
+- name: FormValidation
+  site: https://formvalidation.io/
+  description: Validation library with first-class Bootstrap form markup and feedback styles.
+  category: Forms
+  versions: [4, 5]
+
+- name: Select2
+  site: https://select2.org/
+  github_repo: https://github.com/select2/select2
+  description: Searchable select box with remote data loading and tagging, plus a Bootstrap theme.
+  category: Forms
+  versions: [4]
+
+- name: BootstrapVueNext
+  site: https://bootstrap-vue-next.github.io/bootstrap-vue-next/
+  github_repo: https://github.com/bootstrap-vue-next/bootstrap-vue-next
+  description: Bootstrap components rebuilt for Vue 3.
+  category: Integrations
+  versions: [5]
+
+- name: ng-bootstrap
+  site: https://ng-bootstrap.github.io/
+  github_repo: https://github.com/ng-bootstrap/ng-bootstrap
+  description: Bootstrap widgets implemented as native Angular components.
+  category: Integrations
+  versions: [4, 5]
+
+- name: React Bootstrap
+  site: https://react-bootstrap.github.io/
+  github_repo: https://github.com/react-bootstrap/react-bootstrap
+  description: Bootstrap components rebuilt as React components, without jQuery.
+  category: Integrations
+  versions: [5]
+
+- name: reactstrap
+  site: https://reactstrap.github.io/
+  github_repo: https://github.com/reactstrap/reactstrap
+  description: Stateless React components wrapping Bootstrap markup.
+  category: Integrations
+  versions: [4, 5]
+
+- name: bootstrap-datepicker
+  site: https://bootstrap-datepicker.readthedocs.io/
+  github_repo: https://github.com/uxsolutions/bootstrap-datepicker
+  description: Long-standing jQuery date picker with ranges, formats, and localization.
+  category: Pickers
+  versions: [4]
+
+- name: Flatpickr
+  site: https://flatpickr.js.org/
+  github_repo: https://github.com/flatpickr/flatpickr
+  description: Lightweight, dependency-free date and time picker that themes well alongside Bootstrap.
+  category: Pickers
+  versions: [4, 5]
+
+- name: Tempus Dominus
+  site: https://getdatepicker.com/
+  github_repo: https://github.com/Eonasdan/tempus-dominus
+  description: Date and time picker positioned with Popper, with no jQuery dependency.
+  category: Pickers
+  versions: [5]
+
+- name: vanillajs-datepicker
+  site: https://mymth.github.io/vanillajs-datepicker/
+  github_repo: https://github.com/mymth/vanillajs-datepicker
+  description: Dependency-free date picker shipping a dedicated Bootstrap 5 stylesheet.
+  category: Pickers
+  versions: [5]
+
+- name: Bootstrap Table
+  site: https://bootstrap-table.com/
+  github_repo: https://github.com/wenzhixin/bootstrap-table
+  description: Extended table with sorting, pagination, row selection, and an extension ecosystem.
+  category: Tables
+  versions: [4, 5]
+
+- name: DataTables
+  site: https://datatables.net/
+  github_repo: https://github.com/DataTables/DataTables
+  description: Advanced table plugin with official Bootstrap styling integrations.
+  category: Tables
+  versions: [4, 5]
+
+- name: Bootswatch
+  site: https://bootswatch.com/
+  github_repo: https://github.com/thomaspark/bootswatch
+  description: A collection of free, drop-in themes that restyle Bootstrap with Sass variables.
+  category: Themes
+  versions: [4, 5]
+
+- name: Bootbox.js
+  site: https://bootboxjs.com/
+  github_repo: https://github.com/bootboxjs/bootbox
+  description: Create programmatic alert, confirm, and prompt dialogs in a single call.
+  category: UI
+  versions: [4, 5]
+
+- name: bs-stepper
+  site: https://johann-s.github.io/bs-stepper/
+  github_repo: https://github.com/Johann-S/bs-stepper
+  description: Lightweight, dependency-free stepper for multi-step forms and wizards.
+  category: UI
+  versions: [4, 5]
+
+- name: perfect-scrollbar
+  github_repo: https://github.com/mdbootstrap/perfect-scrollbar
+  description: Minimal custom scrollbar that keeps native scrolling behavior intact.
+  category: UI
+  versions: [4, 5]
+
+- name: Tab Collapse
+  github_repo: https://github.com/flatlogic/bootstrap-tabcollapse
+  description: Swap tabs for an accordion at small viewport sizes.
+  category: UI
+  versions: [5]
+
+- name: Toastr
+  site: https://codeseven.github.io/toastr/
+  github_repo: https://github.com/CodeSeven/toastr
+  description: Non-blocking toast notifications with configurable positioning and timeouts.
+  category: UI
+  versions: [4]

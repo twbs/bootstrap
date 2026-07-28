@@ -22,7 +22,9 @@ interface Props {
 
 const { addedIn, layout, title } = Astro.props
 
-const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Docs'
+// Standalone pages that get their own navbar entry rather than falling under Docs.
+const singlePages = ['Examples', 'Extend']
+const activeSection = !layout ? 'Home' : singlePages.includes(title) ? title : 'Docs'
 ---
 
 <header class="navbar lg:navbar-expand bd-navbar border-bottom border-inverse border-20">
@@ -79,6 +81,16 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
               )
             }
           </a>
+          <a class:list={['menu-item', { active: title === 'Extend' }]} href={getVersionedDocsPath('extend/')}>
+            Extend
+            {
+              title === 'Extend' && (
+                <svg class="bi ms-auto" aria-hidden="true">
+                  <use href="#check2" />
+                </svg>
+              )
+            }
+          </a>
           <a class="menu-item" href={getConfig().icons} target="_blank" rel="noopener">
             Icons
             <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
@@ -109,6 +121,7 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
           Docs
         </LinkItem>
         <LinkItem active={title === 'Examples'} href={getVersionedDocsPath('examples/')} track>Examples</LinkItem>
+        <LinkItem active={title === 'Extend'} href={getVersionedDocsPath('extend/')} track>Extend</LinkItem>
         <LinkItem href={getConfig().icons} target="_blank" rel="noopener" track>Icons</LinkItem>
         <LinkItem href={getConfig().blog} target="_blank" rel="noopener" track>Blog</LinkItem>
       </ul>

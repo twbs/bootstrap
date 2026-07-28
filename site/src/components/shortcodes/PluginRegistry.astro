@@ -1,0 +1,295 @@
+---
+import { getData } from '@libs/data'
+import GitHubIcon from '@components/icons/GitHubIcon.astro'
+
+// Render the community plugin registry from `site/data/extensions.yml` so
+// contributors only ever have to touch that one file. Markup mirrors the
+// `BsTable` shortcode.
+const extensions = getData('extensions')
+
+const versions = [4, 5, 6] as const
+const categories = [...new Set(extensions.map((extension) => extension.category))].sort()
+
+const sortedExtensions = [...extensions].sort(
+  (a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name)
+)
+
+// Both header dropdowns render from this one shape. `options` doubles as the list
+// of label states each trigger has to reserve width for.
+const filters = [
+  {
+    name: 'category',
+    label: 'Category',
+    resetLabel: 'All categories',
+    // Categories are read off the entries, so each one always matches something.
+    options: categories.map((category) => ({ value: category, label: category, disabled: false }))
+  },
+  {
+    name: 'version',
+    label: 'Versions',
+    resetLabel: 'All versions',
+    // The majors are a fixed list, so one nobody supports yet stays listed but
+    // disabled instead of offering a filter that can only come back empty.
+    options: versions.map((version) => ({
+      value: String(version),
+      label: `v${version}`,
+      disabled: extensions.every((extension) => !extension.versions.includes(version))
+    }))
+  }
+]
+---
+
+<div id="bd-plugin-registry" data-pagefind-ignore>
+  <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+    <div class="flex-grow-1">
+      <label class="visually-hidden" for="bd-plugin-search">Search plugins</label>
+      <input
+        type="search"
+        class="form-control form-control-sm"
+        id="bd-plugin-search"
+        placeholder="Filter by name or description…"
+        autocomplete="off"
+        data-plugin-search
+      />
+    </div>
+    <button
+      type="button"
+      class="btn-solid btn-sm theme-primary"
+      data-bs-toggle="dialog"
+      data-bs-target="#addPluginDialog"
+    >
+      Add your plugin
+    </button>
+  </div>
+
+  <div class="table-responsive text-sm">
+    <table class="table md:table-stacked bd-plugin-table">
+      <colgroup>
+        <col class="bd-col-name" />
+        <col class="bd-col-description" />
+        <col class="bd-col-category" />
+        <col class="bd-col-versions" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Plugin</th>
+          <th scope="col">Description</th>
+          {
+            filters.map((filter) => (
+              <th scope="col" aria-label={filter.label} data-filter data-plugin-filter={filter.name}>
+                {/* `container` lifts the menu out of `.table-responsive`, whose overflow would clip it. */}
+                <button
+                  class="btn-link fw-semibold p-0 text-decoration-none fg-body fs-sm"
+                  type="button"
+                  data-bs-toggle="menu"
+                  data-bs-container="body"
+                  aria-expanded="false"
+                >
+                  <span class="bd-filter-label">{filter.label}</span>
+                  <svg class="bi bi-sm" aria-hidden="true">
+                    <use href="#chevron-expand" />
+                  </svg>
+                </button>
+                <div class="menu">
+                  <button
+                    class="menu-item selected"
+                    type="button"
+                    data-plugin-filter-value=""
+                    data-plugin-filter-label={filter.label}
+                  >
+                    {filter.resetLabel}
+                    <svg class="bi menu-item-check" width="16" height="16" aria-hidden="true">
+                      <use href="#check2" />
+                    </svg>
+                  </button>
+                  {filter.options.map((option) => (
+                    <button
+                      class="menu-item"
+                      type="button"
+                      disabled={option.disabled}
+                      data-plugin-filter-value={option.value}
+                      data-plugin-filter-label={option.label}
+                    >
+                      {option.label}
+                      <svg class="bi menu-item-check" width="16" height="16" aria-hidden="true">
+                        <use href="#check2" />
+                      </svg>
+                    </button>
+                  ))}
+                </div>
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          sortedExtensions.map((extension) => (
+            <tr
+              data-versions={extension.versions.join(' ')}
+              data-category={extension.category}
+              data-search={`${extension.name} ${extension.description}`.toLowerCase()}
+            >
+              <td data-cell="Plugin">
+                <span class="d-flex align-items-center gap-2">
+                  <a class="fw-medium text-decoration-none" href={extension.site ?? extension.github_repo}>
+                    {extension.name}
+                  </a>
+                  {extension.site && extension.github_repo && (
+                    <a
+                      class="d-inline-flex fg-3"
+                      href={extension.github_repo}
+                      aria-label={`${extension.name} on GitHub`}
+                    >
+                      <GitHubIcon height={14} width={14} />
+                    </a>
+                  )}
+                </span>
+              </td>
+              <td data-cell="Description">{extension.description}</td>
+              <td data-cell="Category">{extension.category}</td>
+              <td data-cell="Versions">
+                <span class="d-flex gap-1">
+                  {extension.versions.map((version) => (
+                    <span class="badge badge-subtle theme-secondary">v{version}</span>
+                  ))}
+                </span>
+              </td>
+            </tr>
+          ))
+        }
+        <tr class="d-none" data-plugin-empty>
+          <td colspan="4">No plugins match the current filters.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  /* Filtering hides rows, and an auto-laid-out table would resize its columns to
+     whatever is left visible. Pin the widths so only the row count changes. Only
+     above the stacked breakpoint: once rows become blocks they sit in an anonymous
+     cell that the first column's width would squeeze. */
+  @container (width >= 768px) {
+    .bd-plugin-table {
+      table-layout: fixed;
+    }
+
+    .bd-col-name {
+      width: 24%;
+    }
+
+    .bd-col-description {
+      width: 44%;
+    }
+
+    .bd-col-category,
+    .bd-col-versions {
+      width: 16%;
+    }
+  }
+
+  /* Each label swaps to the option that was picked, so reserve room for the widest
+     one — "Integrations" and "Versions" — and the chevron beside it holds still. */
+  [data-plugin-filter='category'] .bd-filter-label {
+    min-width: 96px;
+  }
+
+  [data-plugin-filter='version'] .bd-filter-label {
+    min-width: 72px;
+  }
+
+  /* The filters live in the header cells, but `table-stacked` hides `<thead>`
+     once the table collapses into blocks. Keep the header rendered as a plain
+     filter row there and drop the two labels that have no control. */
+  @container (width < 768px) {
+    .bd-plugin-table > thead {
+      position: static;
+      display: block;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+    }
+
+    .bd-plugin-table > thead > tr {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-block-end: 0.75rem;
+    }
+
+    .bd-plugin-table > thead > tr > th {
+      padding: 0;
+      border: 0;
+    }
+
+    .bd-plugin-table > thead > tr > th:not([data-filter]) {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const registry = document.querySelector('#bd-plugin-registry')
+
+  if (registry) {
+    const rows = [...registry.querySelectorAll<HTMLTableRowElement>('tbody tr[data-versions]')]
+    const emptyRow = registry.querySelector('[data-plugin-empty]')
+    const searchInput = registry.querySelector<HTMLInputElement>('[data-plugin-search]')
+    const active = { category: '', version: '' }
+
+    const filterRows = () => {
+      const query = searchInput?.value.trim().toLowerCase() ?? ''
+
+      let visibleCount = 0
+
+      for (const row of rows) {
+        const matches =
+          (active.version === '' || row.dataset.versions?.split(' ').includes(active.version)) &&
+          (active.category === '' || row.dataset.category === active.category) &&
+          (query === '' || row.dataset.search?.includes(query))
+
+        row.classList.toggle('d-none', !matches)
+
+        if (matches) {
+          visibleCount++
+        }
+      }
+
+      emptyRow?.classList.toggle('d-none', visibleCount > 0)
+    }
+
+    // Each header menu drives one filter: reflect the pick on its trigger, mark the
+    // chosen item, then refilter. Items are captured up front because the menu is
+    // moved to `<body>` while open.
+    for (const header of registry.querySelectorAll<HTMLElement>('[data-plugin-filter]')) {
+      const name = header.dataset.pluginFilter as keyof typeof active
+      const label = header.querySelector('.bd-filter-label')
+      const items = [...header.querySelectorAll<HTMLButtonElement>('[data-plugin-filter-value]')]
+
+      for (const item of items) {
+        item.addEventListener('click', () => {
+          active[name] = item.dataset.pluginFilterValue ?? ''
+
+          for (const sibling of items) {
+            sibling.classList.toggle('selected', sibling === item)
+          }
+
+          if (label) {
+            label.textContent = item.dataset.pluginFilterLabel ?? ''
+          }
+
+          filterRows()
+        })
+      }
+    }
+
+    searchInput?.addEventListener('input', filterRows)
+
+    filterRows()
+  }
+</script>

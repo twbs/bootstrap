@@ -123,11 +123,10 @@
 
   .bd-title {
     --bs-heading-color: var(--bs-fg);
-    // @include font-size(3rem);
   }
 
   .bd-subtitle {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 300;
 
     @media (width >= 1024px) {

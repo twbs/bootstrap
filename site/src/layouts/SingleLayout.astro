@@ -12,15 +12,15 @@ const { description, title } = Astro.props
 
 <BaseLayout {...Astro.props} layout="single">
   <Fragment slot="main">
-    <header class="py-5 border-bottom">
-      <div class="2xl:container bd-gutter md:pt-1 md:pb-4">
-        <div class="row">
-          <div class="xl:col-8">
+    <header class="py-7 lg:py-9">
+      <div class="2xl:container bd-gutter">
+        <div class="row lg:align-items-center">
+          <div class="lg:col-8">
             <h1 class="bd-title mt-0">{title}</h1>
-            <p class="bd-subtitle">{description}</p>
+            <p class="bd-subtitle lg:mb-0">{description}</p>
             <slot name="header-content" />
           </div>
-          <div class="xl:col-4 lg:d-flex xl:justify-content-end">
+          <div class="lg:col-4 md:d-flex lg:justify-content-end">
             <Ads />
           </div>
         </div>
