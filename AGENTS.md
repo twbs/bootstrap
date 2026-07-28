@@ -51,8 +51,8 @@ Act as a teacher for JavaScript, TypeScript, React, and all JavaScript-family to
 ## JavaScript/TypeScript conventions
 
 - Source is TypeScript (`js/src/**/*.ts`, entry `js/src/index.ts`); ESM-only, no semicolons, 2-space indent
-- Imports use `.js` extensions (standard TS ESM style); Rolldown resolves them to `.ts` via `resolve.extensionAlias`, Karma via `build/rollup-plugin-ts-resolve.cjs`
-- Dist builds use Rolldown (`build/rolldown.config.mjs`, `build/build-plugins.mjs`) with built-in TS transforms; browser floors live in `build/browser-targets.mjs` (keep in sync with `.browserslistrc`). Karma still bundles specs with Rollup + Babel (`@babel/preset-typescript`)
+- Imports use `.js` extensions (standard TS ESM style); Rolldown resolves them to `.ts` via `resolve.extensionAlias`, Vitest via the `tsResolve` plugin in `js/tests/vitest.config.mts`
+- Dist builds use Rolldown (`build/rolldown.config.mjs`, `build/build-plugins.mjs`) with built-in TS transforms; `build/browser-targets.mjs` derives the browser floors from `.browserslistrc` at build time, so there is nothing to keep in sync. Rollup and Babel are gone from the repo — Vitest transforms the specs itself
 - Strict tsconfig with `verbatimModuleSyntax` + `erasableSyntaxOnly`; `tsc` only type-checks and emits `.d.ts` (`npm run js-typecheck`, `npm run js-emit-types`)
 - Components extend `BaseComponent` (which extends `Config`); per-component config `type XxxConfig` typed off `Default`, refined on the class via `protected declare _config: XxxConfig`
 - Instance fields use `declare` (no runtime emit); constructor `element` param stays optional to keep `typeof Component` assignable to `typeof BaseComponent`
@@ -60,7 +60,8 @@ Act as a teacher for JavaScript, TypeScript, React, and all JavaScript-family to
 - Constants: `NAME`, `DATA_KEY`, `EVENT_KEY`, `VERSION`
 - DOM utilities via `dom/event-handler.ts`, `dom/selector-engine.ts`, `dom/manipulator.ts`
 - Floating UI for positioning (dropdown, tooltip, popover)
-- Tests: Jasmine + Karma, specs in `js/tests/unit/*.spec.js` (plain JS, bundled against the TS sources); type-level API tests in `js/tests/types/` — `api.ts` checks the source (`npm run js-typecheck`), `consumer.ts` checks the shipped `js/dist/*.d.ts` through the package `exports` map (`npm run js-typecheck-dist`, after the build)
+- Tests: Vitest browser mode (real Chromium via Playwright), config in `js/tests/vitest.config.mts`, specs in `js/tests/unit/*.spec.js` (plain JS, bundled against the TS sources). `js/tests/vitest-setup.js` maps the Jasmine API the specs are written against onto Vitest — note `spyOn` stubs by default, unlike `vi.spyOn`. Async specs return a promise; Vitest 4 dropped `done`. Coverage is Istanbul over all of `js/src`, thresholds 90/88/90/90
+- Type-level API tests in `js/tests/types/` — `api.ts` checks the source (`npm run js-typecheck`), `consumer.ts` checks the shipped `js/dist/*.d.ts` through the package `exports` map (`npm run js-typecheck-dist`, after the build). Keep the two in sync
 
 ## Docs conventions
 
