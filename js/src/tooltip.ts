@@ -150,18 +150,18 @@ const DefaultType = {
 
 class Tooltip extends BaseComponent {
   declare ['constructor']: typeof Tooltip
-  declare _config: TooltipConfig
-  declare _isEnabled: boolean
-  declare _timeout: number
-  declare _isHovered: boolean | null
-  declare _activeTrigger: Record<string, boolean>
-  declare _floatingCleanup: (() => void) | null
-  declare _keydownHandler: ((event: KeyboardEvent) => void) | null
-  declare _templateFactory: TemplateFactory | null
-  declare _newContent: Record<string, TemplateContentEntry> | null
-  declare _mediaQueryListeners: BreakpointListener[]
-  declare _responsivePlacements: ResponsivePlacements | null
-  declare _hideModalHandler: () => void
+  protected declare _config: TooltipConfig
+  protected declare _isEnabled: boolean
+  protected declare _timeout: number
+  protected declare _isHovered: boolean | null
+  protected declare _activeTrigger: Record<string, boolean>
+  protected declare _floatingCleanup: (() => void) | null
+  protected declare _keydownHandler: ((event: KeyboardEvent) => void) | null
+  protected declare _templateFactory: TemplateFactory | null
+  protected declare _newContent: Record<string, TemplateContentEntry> | null
+  protected declare _mediaQueryListeners: BreakpointListener[]
+  protected declare _responsivePlacements: ResponsivePlacements | null
+  protected declare _hideModalHandler: () => void
   declare tip: HTMLElement | null
 
   constructor(element?: string | Element | null, config?: Partial<TooltipConfig> | null) {
@@ -369,7 +369,7 @@ class Tooltip extends BaseComponent {
   }
 
   // Protected
-  _isWithContent(): boolean {
+  protected _isWithContent(): boolean {
     return Boolean(this._getTitle()) || this._hasNewContent()
   }
 
@@ -377,11 +377,11 @@ class Tooltip extends BaseComponent {
   // the configured title/content when rendering, so it should also satisfy the
   // show() gate — otherwise a tip whose content is only set via setContent()
   // can never be shown.
-  _hasNewContent(): boolean {
+  protected _hasNewContent(): boolean {
     return Boolean(this._newContent) && Object.values(this._newContent!).some(Boolean)
   }
 
-  _getTipElement(): HTMLElement {
+  protected _getTipElement(): HTMLElement {
     if (!this.tip) {
       this.tip = this._createTipElement(this._newContent || this._getContentForTemplate())
     }
@@ -389,7 +389,7 @@ class Tooltip extends BaseComponent {
     return this.tip
   }
 
-  _createTipElement(content: Record<string, TemplateContentEntry>): HTMLElement {
+  protected _createTipElement(content: Record<string, TemplateContentEntry>): HTMLElement {
     const tip = this._getTemplateFactory(content).toHtml()
 
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
@@ -414,7 +414,7 @@ class Tooltip extends BaseComponent {
     }
   }
 
-  _getTemplateFactory(content: Record<string, TemplateContentEntry>): TemplateFactory {
+  protected _getTemplateFactory(content: Record<string, TemplateContentEntry>): TemplateFactory {
     if (this._templateFactory) {
       this._templateFactory.changeContent(content)
     } else {
@@ -430,30 +430,30 @@ class Tooltip extends BaseComponent {
     return this._templateFactory
   }
 
-  _getContentForTemplate(): Record<string, TemplateContentEntry> {
+  protected _getContentForTemplate(): Record<string, TemplateContentEntry> {
     return {
       [SELECTOR_TOOLTIP_INNER]: this._getTitle()
     }
   }
 
-  _getTitle(): string | Element | null {
+  protected _getTitle(): string | Element | null {
     return this._resolvePossibleFunction(this._config.title) || this._element.getAttribute('data-bs-original-title')
   }
 
   // Private
-  _initializeOnDelegatedTarget(event: BootstrapEvent): Tooltip {
+  protected _initializeOnDelegatedTarget(event: BootstrapEvent): Tooltip {
     return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
 
-  _isAnimated(): boolean | null {
+  protected _isAnimated(): boolean | null {
     return this._config.animation || (this.tip && this.tip.classList.contains(CLASS_NAME_FADE))
   }
 
-  _isShown(): boolean | null {
+  protected _isShown(): boolean | null {
     return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
   }
 
-  _getPlacement(tip: HTMLElement): string {
+  protected _getPlacement(tip: HTMLElement): string {
     // If we have responsive placements, get the one for current viewport
     if (this._responsivePlacements) {
       const placement = getResponsivePlacement(this._responsivePlacements, 'top')
@@ -465,7 +465,7 @@ class Tooltip extends BaseComponent {
     return AttachmentMap[placement.toUpperCase()] || placement
   }
 
-  _parseResponsivePlacements(): void {
+  protected _parseResponsivePlacements(): void {
     // Only parse if placement is a string (not a function)
     if (typeof this._config.placement !== 'string') {
       this._responsivePlacements = null
@@ -479,7 +479,7 @@ class Tooltip extends BaseComponent {
     }
   }
 
-  _setupMediaQueryListeners(): void {
+  protected _setupMediaQueryListeners(): void {
     this._disposeMediaQueryListeners()
     this._mediaQueryListeners = createBreakpointListeners(() => {
       if (this._isShown()) {
@@ -488,12 +488,12 @@ class Tooltip extends BaseComponent {
     })
   }
 
-  _disposeMediaQueryListeners(): void {
+  protected _disposeMediaQueryListeners(): void {
     disposeBreakpointListeners(this._mediaQueryListeners)
     this._mediaQueryListeners = []
   }
 
-  async _createFloating(tip: HTMLElement): Promise<void> {
+  protected async _createFloating(tip: HTMLElement): Promise<void> {
     const placement = this._getPlacement(tip)
     const arrowElement = tip.querySelector<HTMLElement>(`.${this.constructor.NAME}-arrow`)
 
@@ -508,7 +508,7 @@ class Tooltip extends BaseComponent {
     )
   }
 
-  async _updateFloatingPosition(tip: HTMLElement | null = this.tip, placement: string | null = null, arrowElement: HTMLElement | null = null): Promise<void> {
+  protected async _updateFloatingPosition(tip: HTMLElement | null = this.tip, placement: string | null = null, arrowElement: HTMLElement | null = null): Promise<void> {
     if (!tip) {
       return
     }
@@ -564,7 +564,7 @@ class Tooltip extends BaseComponent {
     }
   }
 
-  _getOffset(): number[] | ((state: any) => any) {
+  protected _getOffset(): number[] | ((state: any) => any) {
     const { offset } = this._config
 
     if (typeof offset === 'string') {
@@ -582,11 +582,11 @@ class Tooltip extends BaseComponent {
     return offset
   }
 
-  _resolvePossibleFunction<T>(arg: T | ((...args: any[]) => T)): T {
+  protected _resolvePossibleFunction<T>(arg: T | ((...args: any[]) => T)): T {
     return execute(arg, [this._element, this._element])
   }
 
-  _getFloatingMiddleware(arrowElement: HTMLElement | null): Middleware[] {
+  protected _getFloatingMiddleware(arrowElement: HTMLElement | null): Middleware[] {
     const offsetValue = this._getOffset()
 
     const middleware = [
@@ -614,7 +614,7 @@ class Tooltip extends BaseComponent {
     return middleware
   }
 
-  _getFloatingConfig(placement: string, middleware: Middleware[]): Record<string, any> {
+  protected _getFloatingConfig(placement: string, middleware: Middleware[]): Record<string, any> {
     const defaultConfig = {
       placement,
       middleware
@@ -626,7 +626,7 @@ class Tooltip extends BaseComponent {
     }
   }
 
-  _setListeners(): void {
+  protected _setListeners(): void {
     const triggers = this._config.trigger.split(' ')
 
     for (const trigger of triggers) {
@@ -668,7 +668,7 @@ class Tooltip extends BaseComponent {
     EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
   }
 
-  _setEscapeListener(): void {
+  protected _setEscapeListener(): void {
     if (this._keydownHandler) {
       return
     }
@@ -694,7 +694,7 @@ class Tooltip extends BaseComponent {
     this._element.ownerDocument.addEventListener(EVENT_KEYDOWN, this._keydownHandler, true)
   }
 
-  _removeEscapeListener(): void {
+  protected _removeEscapeListener(): void {
     if (!this._keydownHandler) {
       return
     }
@@ -703,7 +703,7 @@ class Tooltip extends BaseComponent {
     this._keydownHandler = null
   }
 
-  _fixTitle(): void {
+  protected _fixTitle(): void {
     const title = this._element.getAttribute('title')
 
     if (!title) {
@@ -718,7 +718,7 @@ class Tooltip extends BaseComponent {
     this._element.removeAttribute('title')
   }
 
-  _enter(): void {
+  protected _enter(): void {
     if (this._isShown() || this._isHovered) {
       this._isHovered = true
       return
@@ -733,7 +733,7 @@ class Tooltip extends BaseComponent {
     }, (this._config.delay as { show: number, hide: number }).show)
   }
 
-  _leave(): void {
+  protected _leave(): void {
     if (this._isWithActiveTrigger()) {
       return
     }
@@ -747,16 +747,16 @@ class Tooltip extends BaseComponent {
     }, (this._config.delay as { show: number, hide: number }).hide)
   }
 
-  _setTimeout(handler: () => void, timeout: number): void {
+  protected _setTimeout(handler: () => void, timeout: number): void {
     clearTimeout(this._timeout)
     this._timeout = setTimeout(handler, timeout)
   }
 
-  _isWithActiveTrigger(): boolean {
+  protected _isWithActiveTrigger(): boolean {
     return Object.values(this._activeTrigger).includes(true)
   }
 
-  override _getConfig(config?: ComponentConfig | null): ComponentConfig {
+  protected override _getConfig(config?: ComponentConfig | null): ComponentConfig {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
 
     for (const dataAttribute of Object.keys(dataAttributes)) {
@@ -775,7 +775,7 @@ class Tooltip extends BaseComponent {
     return config
   }
 
-  override _configAfterMerge(config: ComponentConfig): ComponentConfig {
+  protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
     config.container = config.container === false ? document.body : getElement(config.container)
 
     if (typeof config.delay === 'number') {
@@ -799,7 +799,7 @@ class Tooltip extends BaseComponent {
     return config
   }
 
-  _getDelegateConfig(): ComponentConfig {
+  protected _getDelegateConfig(): ComponentConfig {
     const config: ComponentConfig = {}
 
     for (const [key, value] of Object.entries(this._config)) {
@@ -817,7 +817,7 @@ class Tooltip extends BaseComponent {
     return config
   }
 
-  _disposeFloating(): void {
+  protected _disposeFloating(): void {
     if (this._floatingCleanup) {
       this._floatingCleanup()
       this._floatingCleanup = null

@@ -62,9 +62,9 @@ const DefaultType = {
  */
 
 class Collapse extends BaseComponent {
-  declare _config: CollapseConfig
-  declare _isTransitioning: boolean
-  declare _triggerArray: HTMLElement[]
+  protected declare _config: CollapseConfig
+  protected declare _isTransitioning: boolean
+  protected declare _triggerArray: HTMLElement[]
 
   constructor(element?: string | Element | null, config?: Partial<CollapseConfig> | null) {
     super(element, config)
@@ -214,21 +214,21 @@ class Collapse extends BaseComponent {
   }
 
   // Private
-  _isShown(element: HTMLElement = this._element): boolean {
+  protected _isShown(element: HTMLElement = this._element): boolean {
     return element.classList.contains(CLASS_NAME_SHOW)
   }
 
-  override _configAfterMerge(config: ComponentConfig): ComponentConfig {
+  protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
     config.toggle = Boolean(config.toggle) // Coerce string values
     config.parent = getElement(config.parent)
     return config
   }
 
-  _getDimension(): 'width' | 'height' {
+  protected _getDimension(): 'width' | 'height' {
     return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT
   }
 
-  _initializeChildren(): void {
+  protected _initializeChildren(): void {
     if (!this._config.parent) {
       return
     }
@@ -244,13 +244,13 @@ class Collapse extends BaseComponent {
     }
   }
 
-  _getFirstLevelChildren(selector: string): HTMLElement[] {
+  protected _getFirstLevelChildren(selector: string): HTMLElement[] {
     const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent as HTMLElement)
     // remove children if greater depth
     return SelectorEngine.find(selector, this._config.parent as HTMLElement).filter(element => !children.includes(element))
   }
 
-  _addAriaAndCollapsedClass(triggerArray: HTMLElement[], isOpen: boolean): void {
+  protected _addAriaAndCollapsedClass(triggerArray: HTMLElement[], isOpen: boolean): void {
     if (!triggerArray.length) {
       return
     }

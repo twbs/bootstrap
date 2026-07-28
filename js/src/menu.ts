@@ -153,17 +153,17 @@ const DefaultType = {
 
 class Menu extends BaseComponent {
   static _openInstances = new Set<Menu>()
-  declare _config: MenuConfig
-  declare _floatingCleanup: (() => void) | null
-  declare _mediaQueryListeners: BreakpointListener[]
-  declare _responsivePlacements: ResponsivePlacements | null
-  declare _parent: HTMLElement
-  declare _openSubmenus: Map<HTMLElement, () => void>
-  declare _submenuCloseTimeouts: Map<HTMLElement, number>
-  declare _hoverIntentData: { x: number, y: number, timestamp: number } | null
-  declare _menu: HTMLElement
-  declare _isSubmenu: boolean
-  declare _menuOriginalParent: ParentNode | null
+  protected declare _config: MenuConfig
+  protected declare _floatingCleanup: (() => void) | null
+  protected declare _mediaQueryListeners: BreakpointListener[]
+  protected declare _responsivePlacements: ResponsivePlacements | null
+  protected declare _parent: HTMLElement
+  protected declare _openSubmenus: Map<HTMLElement, () => void>
+  protected declare _submenuCloseTimeouts: Map<HTMLElement, number>
+  protected declare _hoverIntentData: { x: number, y: number, timestamp: number } | null
+  protected declare _menu: HTMLElement
+  protected declare _isSubmenu: boolean
+  protected declare _menuOriginalParent: ParentNode | null
 
   constructor(element?: string | Element | null, config?: Partial<MenuConfig> | null) {
     if (typeof computePosition === 'undefined') {
@@ -283,7 +283,7 @@ class Menu extends BaseComponent {
   }
 
   // Private
-  _findMenu(): Element | null {
+  protected _findMenu(): Element | null {
     // Fall back to the closest ancestor that contains a menu so the toggle can be
     // nested deeper than a direct sibling of `.menu`.
     const wrapper = SelectorEngine.closest(this._element, `:has(${SELECTOR_MENU})`)
@@ -292,7 +292,7 @@ class Menu extends BaseComponent {
       SelectorEngine.findOne(SELECTOR_MENU, wrapper || this._parent)
   }
 
-  _findWrapper(menu: HTMLElement): HTMLElement {
+  protected _findWrapper(menu: HTMLElement): HTMLElement {
     let wrapper = this._element.parentNode
     while (wrapper instanceof Element && !wrapper.contains(menu)) {
       wrapper = wrapper.parentNode
@@ -301,7 +301,7 @@ class Menu extends BaseComponent {
     return (wrapper instanceof Element ? wrapper : this._element.parentNode) as HTMLElement
   }
 
-  _completeHide(relatedTarget: Record<string, unknown>): void {
+  protected _completeHide(relatedTarget: Record<string, unknown>): void {
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
     if (hideEvent.defaultPrevented) {
       return
@@ -332,7 +332,7 @@ class Menu extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
-  override _getConfig(config?: ComponentConfig | null): ComponentConfig {
+  protected override _getConfig(config?: ComponentConfig | null): ComponentConfig {
     config = super._getConfig(config)
 
     if (typeof config.reference === 'object' && !isElement(config.reference) &&
@@ -344,7 +344,7 @@ class Menu extends BaseComponent {
     return config
   }
 
-  _createFloating(): void {
+  protected _createFloating(): void {
     if (this._config.display === 'static') {
       Manipulator.setDataAttribute(this._menu, 'display', 'static')
       return
@@ -369,7 +369,7 @@ class Menu extends BaseComponent {
     )
   }
 
-  async _updateFloatingPosition(referenceElement: ReferenceElement | null = null): Promise<void> {
+  protected async _updateFloatingPosition(referenceElement: ReferenceElement | null = null): Promise<void> {
     if (!this._menu) {
       return
     }
@@ -399,11 +399,11 @@ class Menu extends BaseComponent {
     )
   }
 
-  _isShown(): boolean {
+  protected _isShown(): boolean {
     return this._menu.classList.contains(CLASS_NAME_SHOW)
   }
 
-  _getPlacement(): string {
+  protected _getPlacement(): string {
     const placement = this._responsivePlacements ?
       getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT) :
       this._config.placement
@@ -411,7 +411,7 @@ class Menu extends BaseComponent {
     return resolveLogicalPlacement(placement)
   }
 
-  _parseResponsivePlacements(): void {
+  protected _parseResponsivePlacements(): void {
     this._responsivePlacements = parseResponsivePlacement(this._config.placement, DEFAULT_PLACEMENT)
 
     if (this._responsivePlacements) {
@@ -419,7 +419,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  _setupMediaQueryListeners(): void {
+  protected _setupMediaQueryListeners(): void {
     this._disposeMediaQueryListeners()
     this._mediaQueryListeners = createBreakpointListeners(() => {
       if (this._isShown()) {
@@ -428,12 +428,12 @@ class Menu extends BaseComponent {
     })
   }
 
-  _disposeMediaQueryListeners(): void {
+  protected _disposeMediaQueryListeners(): void {
     disposeBreakpointListeners(this._mediaQueryListeners)
     this._mediaQueryListeners = []
   }
 
-  _getOffset(): number[] | ((state: MiddlewareState) => any) {
+  protected _getOffset(): number[] | ((state: MiddlewareState) => any) {
     const { offset: offsetConfig } = this._config
 
     if (typeof offsetConfig === 'string') {
@@ -450,7 +450,7 @@ class Menu extends BaseComponent {
     return offsetConfig
   }
 
-  _getFloatingMiddleware(): Middleware[] {
+  protected _getFloatingMiddleware(): Middleware[] {
     const offsetValue = this._getOffset()
 
     const middleware = [
@@ -470,7 +470,7 @@ class Menu extends BaseComponent {
     return middleware
   }
 
-  _getFallbackPlacements(): Placement[] {
+  protected _getFallbackPlacements(): Placement[] {
     const placement = this._getPlacement()
 
     const fallbackMap: Record<string, Placement[]> = {
@@ -491,7 +491,7 @@ class Menu extends BaseComponent {
     return fallbackMap[placement] || ['top', 'bottom', 'right', 'left']
   }
 
-  _getFloatingConfig(placement: string, middleware: Middleware[]): Record<string, any> {
+  protected _getFloatingConfig(placement: string, middleware: Middleware[]): Record<string, any> {
     const defaultConfig = {
       placement,
       middleware,
@@ -504,14 +504,14 @@ class Menu extends BaseComponent {
     }
   }
 
-  _disposeFloating(): void {
+  protected _disposeFloating(): void {
     if (this._floatingCleanup) {
       this._floatingCleanup()
       this._floatingCleanup = null
     }
   }
 
-  _getContainer(): HTMLElement | null {
+  protected _getContainer(): HTMLElement | null {
     const { container } = this._config
     if (container === false) {
       return null
@@ -520,7 +520,7 @@ class Menu extends BaseComponent {
     return container === true ? document.body : getElement(container)
   }
 
-  _moveMenuToContainer(): void {
+  protected _moveMenuToContainer(): void {
     const container = this._getContainer()
     if (!container || !this._menu) {
       return
@@ -531,7 +531,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  _restoreMenuToOriginalParent(): void {
+  protected _restoreMenuToOriginalParent(): void {
     if (!this._menuOriginalParent || !this._menu) {
       return
     }
@@ -541,7 +541,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  async _applyFloatingPosition(reference: ReferenceElement, floating: HTMLElement, placement: Placement, middleware: Middleware[], strategy: Strategy = 'absolute'): Promise<string | null> {
+  protected async _applyFloatingPosition(reference: ReferenceElement, floating: HTMLElement, placement: Placement, middleware: Middleware[], strategy: Strategy = 'absolute'): Promise<string | null> {
     if (!floating.isConnected) {
       return null
     }
@@ -571,7 +571,7 @@ class Menu extends BaseComponent {
   // Submenu handling
   // -------------------------------------------------------------------------
 
-  _setupSubmenuListeners(): void {
+  protected _setupSubmenuListeners(): void {
     if (this._config.submenuTrigger === 'hover' || this._config.submenuTrigger === 'both') {
       EventHandler.on(this._menu, 'mouseenter', SELECTOR_SUBMENU_TOGGLE, event => {
         this._onSubmenuTriggerEnter(event)
@@ -593,7 +593,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  _onSubmenuTriggerEnter(event: BootstrapEvent): void {
+  protected _onSubmenuTriggerEnter(event: BootstrapEvent): void {
     const trigger = (event.target as Element).closest<HTMLElement>(SELECTOR_SUBMENU_TOGGLE)
     if (!trigger) {
       return
@@ -610,7 +610,7 @@ class Menu extends BaseComponent {
     this._openSubmenu(trigger, submenu, submenuWrapper)
   }
 
-  _onSubmenuLeave(event: BootstrapEvent): void {
+  protected _onSubmenuLeave(event: BootstrapEvent): void {
     const submenuWrapper = (event.target as Element).closest(SELECTOR_SUBMENU)!
     const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
     if (!submenu || !this._openSubmenus.has(submenu)) {
@@ -624,7 +624,7 @@ class Menu extends BaseComponent {
     this._scheduleSubmenuClose(submenu, submenuWrapper)
   }
 
-  _onSubmenuTriggerClick(event: BootstrapEvent): void {
+  protected _onSubmenuTriggerClick(event: BootstrapEvent): void {
     const trigger = (event.target as Element).closest<HTMLElement>(SELECTOR_SUBMENU_TOGGLE)
     if (!trigger) {
       return
@@ -647,7 +647,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  _openSubmenu(trigger: HTMLElement, submenu: HTMLElement, submenuWrapper: Element): void {
+  protected _openSubmenu(trigger: HTMLElement, submenu: HTMLElement, submenuWrapper: Element): void {
     if (this._openSubmenus.has(submenu)) {
       return
     }
@@ -671,7 +671,7 @@ class Menu extends BaseComponent {
     })
   }
 
-  _closeSubmenu(submenu: HTMLElement, submenuWrapper: Element): void {
+  protected _closeSubmenu(submenu: HTMLElement, submenuWrapper: Element): void {
     if (!this._openSubmenus.has(submenu)) {
       return
     }
@@ -707,14 +707,14 @@ class Menu extends BaseComponent {
     submenu.style.opacity = ''
   }
 
-  _closeAllSubmenus(): void {
+  protected _closeAllSubmenus(): void {
     for (const [submenu] of this._openSubmenus) {
       const submenuWrapper = submenu.closest(SELECTOR_SUBMENU)!
       this._closeSubmenu(submenu, submenuWrapper)
     }
   }
 
-  _closeSiblingSubmenus(currentSubmenuWrapper: Element): void {
+  protected _closeSiblingSubmenus(currentSubmenuWrapper: Element): void {
     const parent = currentSubmenuWrapper.parentNode!
     const siblingSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} > ${SELECTOR_MENU}.${CLASS_NAME_SHOW}`, parent)
 
@@ -726,7 +726,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  _createSubmenuFloating(trigger: HTMLElement, submenu: HTMLElement, submenuWrapper: Element): () => void {
+  protected _createSubmenuFloating(trigger: HTMLElement, submenu: HTMLElement, submenuWrapper: Element): () => void {
     const referenceElement = submenuWrapper
     const placement = resolveLogicalPlacement(SUBMENU_PLACEMENT) as Placement
     const middleware = [
@@ -753,7 +753,7 @@ class Menu extends BaseComponent {
     return autoUpdate(referenceElement, submenu, updatePosition)
   }
 
-  _scheduleSubmenuClose(submenu: HTMLElement, submenuWrapper: Element): void {
+  protected _scheduleSubmenuClose(submenu: HTMLElement, submenuWrapper: Element): void {
     this._cancelSubmenuCloseTimeout(submenu)
 
     const timeoutId = setTimeout(() => {
@@ -764,7 +764,7 @@ class Menu extends BaseComponent {
     this._submenuCloseTimeouts.set(submenu, timeoutId)
   }
 
-  _cancelSubmenuCloseTimeout(submenu: HTMLElement): void {
+  protected _cancelSubmenuCloseTimeout(submenu: HTMLElement): void {
     const timeoutId = this._submenuCloseTimeouts.get(submenu)
     if (timeoutId) {
       clearTimeout(timeoutId)
@@ -772,7 +772,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  _clearAllSubmenuTimeouts(): void {
+  protected _clearAllSubmenuTimeouts(): void {
     for (const timeoutId of this._submenuCloseTimeouts.values()) {
       clearTimeout(timeoutId)
     }
@@ -784,7 +784,7 @@ class Menu extends BaseComponent {
   // Hover intent / Safe triangle
   // -------------------------------------------------------------------------
 
-  _trackMousePosition(event: BootstrapEvent): void {
+  protected _trackMousePosition(event: BootstrapEvent): void {
     this._hoverIntentData = {
       x: event.clientX,
       y: event.clientY,
@@ -792,7 +792,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  _isMovingTowardSubmenu(event: BootstrapEvent, submenu: HTMLElement): boolean {
+  protected _isMovingTowardSubmenu(event: BootstrapEvent, submenu: HTMLElement): boolean {
     if (!this._hoverIntentData) {
       return false
     }
@@ -809,7 +809,7 @@ class Menu extends BaseComponent {
     return this._pointInTriangle(currentPos, lastPos, topCorner, bottomCorner)
   }
 
-  _pointInTriangle(point: Point, v1: Point, v2: Point, v3: Point): boolean {
+  protected _pointInTriangle(point: Point, v1: Point, v2: Point, v3: Point): boolean {
     const d1 = triangleSign(point, v1, v2)
     const d2 = triangleSign(point, v2, v3)
     const d3 = triangleSign(point, v3, v1)
@@ -824,7 +824,7 @@ class Menu extends BaseComponent {
   // Keyboard navigation
   // -------------------------------------------------------------------------
 
-  _selectMenuItem({ key, target }: BootstrapEvent): void {
+  protected _selectMenuItem({ key, target }: BootstrapEvent): void {
     const currentMenu = (target as Element).closest(SELECTOR_MENU) || this._menu
     const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
       .filter(element => isVisible(element))
@@ -836,17 +836,17 @@ class Menu extends BaseComponent {
     getNextActiveElement(items, target as HTMLElement, key === ARROW_DOWN_KEY, !items.includes(target as HTMLElement)).focus()
   }
 
-  _handleSubmenuKeydown(event: BootstrapEvent): boolean {
+  protected _handleSubmenuKeydown(event: BootstrapEvent): boolean {
     const { key, target } = event
     const isRtl = isRTL()
 
     const enterKey = isRtl ? ARROW_LEFT_KEY : ARROW_RIGHT_KEY
     const exitKey = isRtl ? ARROW_RIGHT_KEY : ARROW_LEFT_KEY
 
-    const submenuWrapper = (target as Element).closest(SELECTOR_SUBMENU)!
-    const isSubmenuTrigger = submenuWrapper && (target as Element).matches(SELECTOR_SUBMENU_TOGGLE)
+    const submenuWrapper = (target as Element).closest(SELECTOR_SUBMENU)
+    const isSubmenuToggle = (target as Element).matches(SELECTOR_SUBMENU_TOGGLE)
 
-    if ((key === ENTER_KEY || key === SPACE_KEY) && isSubmenuTrigger) {
+    if ((key === ENTER_KEY || key === SPACE_KEY) && submenuWrapper && isSubmenuToggle) {
       event.preventDefault()
       event.stopPropagation()
 
@@ -865,7 +865,7 @@ class Menu extends BaseComponent {
       return true
     }
 
-    if (key === enterKey && isSubmenuTrigger) {
+    if (key === enterKey && submenuWrapper && isSubmenuToggle) {
       event.preventDefault()
       event.stopPropagation()
 

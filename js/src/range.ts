@@ -58,12 +58,12 @@ const DefaultType = {
  */
 
 class Range extends BaseComponent {
-  declare _config: RangeConfig
-  declare _input: HTMLInputElement | null
-  declare _bubble: HTMLElement | null
-  declare _bubbleText: HTMLElement | null
-  declare _ticks: HTMLElement | null
-  declare _updateHandler: () => void
+  protected declare _config: RangeConfig
+  protected declare _input: HTMLInputElement | null
+  protected declare _bubble: HTMLElement | null
+  protected declare _bubbleText: HTMLElement | null
+  protected declare _ticks: HTMLElement | null
+  protected declare _updateHandler: () => void
 
   constructor(element?: string | Element | null, config?: Partial<RangeConfig> | null) {
     super(element, config)
@@ -122,7 +122,7 @@ class Range extends BaseComponent {
   }
 
   // Private
-  override _configAfterMerge(config: ComponentConfig): ComponentConfig {
+  protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
     // A bare `data-bs-bubble` attribute normalizes to `null`; treat it as enabled
     if (config.bubble === null) {
       config.bubble = true
@@ -131,29 +131,29 @@ class Range extends BaseComponent {
     return config
   }
 
-  _addEventListeners(): void {
+  protected _addEventListeners(): void {
     EventHandler.on(this._input, EVENT_INPUT, this._updateHandler)
     EventHandler.on(this._input, EVENT_CHANGE, this._updateHandler)
   }
 
-  _min(): number {
+  protected _min(): number {
     return this._input!.min === '' ? 0 : Number.parseFloat(this._input!.min)
   }
 
-  _max(): number {
+  protected _max(): number {
     return this._input!.max === '' ? 100 : Number.parseFloat(this._input!.max)
   }
 
-  _value(): number {
+  protected _value(): number {
     return Number.parseFloat(this._input!.value)
   }
 
-  _ratio(): number {
+  protected _ratio(): number {
     const span = this._max() - this._min()
     return span > 0 ? (this._value() - this._min()) / span : 0
   }
 
-  _update(): void {
+  protected _update(): void {
     // The fill ratio drives the track gradient and the bubble/tick positions, all in CSS
     this._element.style.setProperty(PROPERTY_FILL, `${this._ratio()}`)
 
@@ -164,11 +164,11 @@ class Range extends BaseComponent {
     EventHandler.trigger(this._input, EVENT_CHANGED, { value: this._value() })
   }
 
-  _format(value: number): string {
+  protected _format(value: number): string {
     return typeof this._config.formatter === 'function' ? this._config.formatter(value) : String(value)
   }
 
-  _createBubble(): void {
+  protected _createBubble(): void {
     // Reuse the tooltip markup so we don't duplicate the pill and arrow styles
     this._bubble = document.createElement('output')
     this._bubble.className = `${CLASS_NAME_BUBBLE} tooltip bs-tooltip-top show`
@@ -185,7 +185,7 @@ class Range extends BaseComponent {
     this._input!.insertAdjacentElement('afterend', this._bubble)
   }
 
-  _createTicks(): void {
+  protected _createTicks(): void {
     const listId = this._input!.getAttribute('list')
     const datalist = listId ? document.getElementById(listId) : null
 

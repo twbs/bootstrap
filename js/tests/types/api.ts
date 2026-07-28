@@ -94,3 +94,11 @@ Toast.getOrCreateInstance(element, { autohype: true })
 
 // @ts-expect-error — getInstance may return null; using it directly must fail
 Alert.getInstance('#alert').close()
+
+// Internals are protected: consumers cannot reach a component's private state
+// @ts-expect-error — _config is protected
+tooltipFromElement._config
+// @ts-expect-error — _element is protected
+toast._element
+// @ts-expect-error — internal methods are protected
+carousel._getItems()

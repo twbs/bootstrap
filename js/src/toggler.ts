@@ -47,7 +47,7 @@ const Default: TogglerConfig = {
  */
 
 class Toggler extends BaseComponent {
-  declare _config: TogglerConfig
+  protected declare _config: TogglerConfig
 
   // Getters
   static override get Default(): TogglerConfig {
@@ -76,7 +76,7 @@ class Toggler extends BaseComponent {
   }
 
   // Private
-  _execute(): void {
+  protected _execute(): void {
     const { attribute, value } = this._config
 
     if (attribute === 'id') {

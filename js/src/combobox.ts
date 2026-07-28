@@ -87,14 +87,14 @@ const DefaultType = {
  */
 
 class Combobox extends BaseComponent {
-  declare _config: ComboboxConfig
-  declare _toggle: HTMLElement
-  declare _menu: HTMLElement
-  declare _valueDisplay: HTMLElement
-  declare _searchInput: HTMLInputElement | null
-  declare _noResults: HTMLElement | null
-  declare _hiddenInput: HTMLInputElement | null
-  declare _menuInstance: Menu | null
+  protected declare _config: ComboboxConfig
+  protected declare _toggle: HTMLElement
+  protected declare _menu: HTMLElement
+  protected declare _valueDisplay: HTMLElement
+  protected declare _searchInput: HTMLInputElement | null
+  protected declare _noResults: HTMLElement | null
+  protected declare _hiddenInput: HTMLInputElement | null
+  protected declare _menuInstance: Menu | null
 
   constructor(element?: string | Element | null, config?: Partial<ComboboxConfig> | null) {
     super(element, config)
@@ -184,11 +184,11 @@ class Combobox extends BaseComponent {
   }
 
   // Private
-  _isShown(): boolean {
+  protected _isShown(): boolean {
     return this._menu.classList.contains(CLASS_NAME_SHOW)
   }
 
-  _createHiddenInput(): void {
+  protected _createHiddenInput(): void {
     const { name } = this._config
     if (!name) {
       return
@@ -201,7 +201,7 @@ class Combobox extends BaseComponent {
     this._toggle.parentNode!.insertBefore(this._hiddenInput, this._toggle)
   }
 
-  _createMenuInstance(): void {
+  protected _createMenuInstance(): void {
     this._menuInstance = new Menu(this._toggle, {
       menu: this._menu,
       autoClose: this._config.multiple ? 'outside' : true,
@@ -211,7 +211,7 @@ class Combobox extends BaseComponent {
     })
   }
 
-  _syncInitialSelection(): void {
+  protected _syncInitialSelection(): void {
     const selectedItems = this._getSelectedItems()
     if (selectedItems.length > 0) {
       this._updateToggleText()
@@ -221,7 +221,7 @@ class Combobox extends BaseComponent {
     }
   }
 
-  _addEventListeners(): void {
+  protected _addEventListeners(): void {
     EventHandler.on(this._menu, 'click', SELECTOR_MENU_ITEM, event => {
       const item = (event.target as Element).closest<HTMLElement>(SELECTOR_MENU_ITEM)
       if (!item || isDisabled(item)) {
@@ -263,7 +263,7 @@ class Combobox extends BaseComponent {
     }
   }
 
-  _selectItem(item: HTMLElement): void {
+  protected _selectItem(item: HTMLElement): void {
     if (this._config.multiple) {
       item.classList.toggle(CLASS_NAME_SELECTED)
       item.setAttribute('aria-selected', item.classList.contains(CLASS_NAME_SELECTED) as unknown as string)
@@ -296,7 +296,7 @@ class Combobox extends BaseComponent {
     }
   }
 
-  _updateToggleText(): void {
+  protected _updateToggleText(): void {
     const selectedItems = this._getSelectedItems()
 
     if (selectedItems.length === 0) {
@@ -315,7 +315,7 @@ class Combobox extends BaseComponent {
     }
   }
 
-  _showPlaceholder(): void {
+  protected _showPlaceholder(): void {
     const { placeholder } = this._config
     if (placeholder) {
       this._valueDisplay.textContent = placeholder
@@ -323,7 +323,7 @@ class Combobox extends BaseComponent {
     }
   }
 
-  _updateHiddenInput(): void {
+  protected _updateHiddenInput(): void {
     if (!this._hiddenInput) {
       return
     }
@@ -333,16 +333,16 @@ class Combobox extends BaseComponent {
     this._hiddenInput.value = this._config.multiple ? values.join(',') : (values[0] || '')
   }
 
-  _getSelectedItems(): HTMLElement[] {
+  protected _getSelectedItems(): HTMLElement[] {
     return SelectorEngine.find(`.${CLASS_NAME_SELECTED}`, this._menu)
   }
 
-  _getVisibleItems(): HTMLElement[] {
+  protected _getVisibleItems(): HTMLElement[] {
     return SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu)
       .filter(item => isVisible(item))
   }
 
-  _filterItems(query: string): void {
+  protected _filterItems(query: string): void {
     const normalizedQuery = this._normalizeText(query.toLowerCase().trim())
     const items = SelectorEngine.find(SELECTOR_MENU_ITEM, this._menu)
     let visibleCount = 0
@@ -361,7 +361,7 @@ class Combobox extends BaseComponent {
     }
   }
 
-  _normalizeText(text: string): string {
+  protected _normalizeText(text: string): string {
     if (this._config.searchNormalize) {
       return text.normalize('NFD').replace(/[\u0300-\u036F]/g, '')
     }
@@ -369,7 +369,7 @@ class Combobox extends BaseComponent {
     return text
   }
 
-  _handleToggleKeydown(event: BootstrapEvent): void {
+  protected _handleToggleKeydown(event: BootstrapEvent): void {
     const { key } = event
 
     if (key === ARROW_DOWN_KEY || key === ARROW_UP_KEY) {
@@ -393,7 +393,7 @@ class Combobox extends BaseComponent {
     }
   }
 
-  _handleMenuKeydown(event: BootstrapEvent): void {
+  protected _handleMenuKeydown(event: BootstrapEvent): void {
     const { key, target } = event
 
     if (key === ESCAPE_KEY) {
