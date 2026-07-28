@@ -6,7 +6,7 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
-import { getElement, reflow } from "./util/index.js";
+import { getElement, reflow, setAriaAttribute } from "./util/index.js";
 //#region js/src/collapse.ts
 /**
 * --------------------------------------------------------------------------
@@ -147,7 +147,7 @@ var Collapse = class Collapse extends BaseComponent {
 		if (!triggerArray.length) return;
 		for (const element of triggerArray) {
 			element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen);
-			element.setAttribute("aria-expanded", isOpen);
+			setAriaAttribute(element, "aria-expanded", isOpen);
 		}
 	}
 };

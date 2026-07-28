@@ -2633,6 +2633,7 @@
     --bs-columns: 12;
     --bs-rows: 1;
     --bs-gap: 1.5rem;
+    container-type: inline-size;
     display: grid;
     grid-template-rows: repeat(var(--bs-rows), 1fr);
     grid-template-columns: repeat(var(--bs-columns), 1fr);
@@ -2707,7 +2708,7 @@
   .g-start-11 {
     grid-column-start: 11;
   }
-  @media (width >= 576px) {
+  @container (width >= 576px) {
     .sm\:g-col-1 {
       grid-column: auto/span 1;
     }
@@ -2778,7 +2779,7 @@
       grid-column-start: 11;
     }
   }
-  @media (width >= 768px) {
+  @container (width >= 768px) {
     .md\:g-col-1 {
       grid-column: auto/span 1;
     }
@@ -2849,7 +2850,7 @@
       grid-column-start: 11;
     }
   }
-  @media (width >= 1024px) {
+  @container (width >= 1024px) {
     .lg\:g-col-1 {
       grid-column: auto/span 1;
     }
@@ -2920,7 +2921,7 @@
       grid-column-start: 11;
     }
   }
-  @media (width >= 1280px) {
+  @container (width >= 1280px) {
     .xl\:g-col-1 {
       grid-column: auto/span 1;
     }
@@ -2991,7 +2992,7 @@
       grid-column-start: 11;
     }
   }
-  @media (width >= 1536px) {
+  @container (width >= 1536px) {
     .\32 xl\:g-col-1 {
       grid-column: auto/span 1;
     }
@@ -3132,7 +3133,6 @@
     font-size: var(--bs-control-font-size);
     line-height: var(--bs-control-line-height);
     color: var(--bs-control-fg);
-    -webkit-appearance: none;
     appearance: none;
     background-color: var(--bs-control-bg);
     background-clip: padding-box;
@@ -3163,12 +3163,7 @@
   }
   .form-control::-webkit-datetime-edit {
     display: block;
-    height: 1.5rem;
     padding: 0;
-    margin-bottom: -0.125rem;
-  }
-  .form-control::-webkit-datetime-edit-fields-wrapper {
-    height: 1.5rem;
   }
   .form-control[type=file] {
     overflow: hidden;
@@ -3295,7 +3290,6 @@
     padding: 0;
     font: inherit;
     color: inherit;
-    -webkit-appearance: none;
     appearance: none;
     background: transparent;
     border: 0;
@@ -3334,7 +3328,6 @@
     width: var(--bs-check-size);
     height: var(--bs-check-size);
     margin-block: var(--bs-check-margin-block);
-    -webkit-appearance: none;
     appearance: none;
     background-color: var(--bs-theme-bg, var(--bs-check-bg));
     border: 1px solid var(--bs-theme-bg, var(--bs-check-border-color));
@@ -3404,7 +3397,6 @@
     width: var(--bs-radio-size);
     height: var(--bs-radio-size);
     margin-block: var(--bs-radio-margin-block);
-    -webkit-appearance: none;
     appearance: none;
     background-color: var(--bs-theme-bg, var(--bs-radio-bg));
     border: 1px solid var(--bs-theme-bg, var(--bs-radio-border-color));
@@ -3494,7 +3486,6 @@
   .switch input {
     position: absolute;
     inset: 0;
-    -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
     outline: 0;
@@ -3574,7 +3565,6 @@
     width: 100%;
     height: calc(var(--bs-range-thumb-height) + var(--bs-focus-ring-width) * 2);
     padding: 0;
-    -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
   }
@@ -3603,7 +3593,6 @@
   .form-range-input::-webkit-slider-thumb {
     width: var(--bs-range-thumb-width);
     height: var(--bs-range-thumb-height);
-    -webkit-appearance: none;
     appearance: none;
     background-color: var(--bs-range-thumb-bg);
     background-image: var(--bs-gradient);
@@ -5287,7 +5276,7 @@
     --bs-accordion-bg: var(--bs-bg-body);
     --bs-accordion-transition-property: color, background-color, border-radius;
     --bs-accordion-transition-timing: .15s ease-in-out;
-    --bs-accordion-transition: var(--bs-accordion-transition-property) var(--bs-accordion-timing);
+    --bs-accordion-transition: var(--bs-accordion-transition-property) var(--bs-accordion-transition-timing);
     --bs-accordion-border-color: var(--bs-border-color);
     --bs-accordion-border-width: var(--bs-border-width);
     --bs-accordion-border-radius: var(--bs-accordion-radius, var(--bs-radius-7));
@@ -5785,8 +5774,8 @@
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: var(--bs-chip-min-height);
-    height: var(--bs-chip-min-height);
+    width: var(--bs-chip-dismiss-size);
+    height: var(--bs-chip-dismiss-size);
     padding: 0;
     margin-inline-end: calc(var(--bs-chip-padding-x) * -0.25);
     color: inherit;
@@ -5911,6 +5900,7 @@
   }
   .card-translucent {
     background-color: color-mix(in oklch, var(--bs-card-bg) 80%, transparent);
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
     backdrop-filter: blur(5px) saturate(180%);
   }
   .card-translucent .card-header,
@@ -6278,7 +6268,6 @@
   }
   [data-vc=calendar]:not([data-vc-input]) {
     position: relative;
-    width: -moz-fit-content;
     width: fit-content;
     padding: 0;
     border: 0;
@@ -6629,8 +6618,11 @@
   }
   .dialog:not(.dialog-instant)::backdrop {
     background-color: var(--bs-dialog-backdrop-bg);
+    -webkit-backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
     backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
+    transition: background-color var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing);
     transition: background-color var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete;
+    transition: background-color var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing);
   }
   @media (prefers-reduced-motion: reduce) {
     .dialog:not(.dialog-instant)::backdrop {
@@ -6639,10 +6631,12 @@
   }
   .dialog:not(.dialog-instant).hiding::backdrop {
     background-color: transparent;
+    -webkit-backdrop-filter: blur(0);
     backdrop-filter: blur(0);
   }
   .dialog.dialog-instant::backdrop {
     background-color: var(--bs-dialog-backdrop-bg);
+    -webkit-backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
     backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
   }
   .dialog[open]:not(.hiding) {
@@ -6668,10 +6662,12 @@
   @starting-style {
     .dialog:not(.dialog-instant)::backdrop {
       background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
       backdrop-filter: blur(0);
     }
     .dialog.dialog-swap-in:not(.dialog-instant)::backdrop {
       background-color: var(--bs-dialog-backdrop-bg);
+      -webkit-backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
       backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
     }
   }
@@ -6688,6 +6684,7 @@
     --bs-dialog-width: 100vw;
     --bs-dialog-margin: 0;
     --bs-dialog-border-radius: 0;
+    --bs-dialog-border-width: 0;
     width: 100%;
     max-width: none;
     height: 100%;
@@ -6879,6 +6876,7 @@
     --bs-menu-item-active-bg: light-dark(var(--bs-menu-item-active-bg-light), var(--bs-menu-item-active-bg-dark));
     --bs-menu-item-hover-bg: light-dark(var(--bs-menu-item-hover-bg-light), var(--bs-menu-item-hover-bg-dark));
     background-color: color-mix(in oklch, var(--bs-menu-bg) 80%, transparent);
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
     backdrop-filter: blur(5px) saturate(180%);
   }
   .menu-divider {
@@ -6936,7 +6934,6 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    min-width: -moz-fit-content;
     min-width: fit-content;
   }
   .menu-item-description {
@@ -7275,7 +7272,7 @@
     justify-content: var(--bs-nav-link-justify);
     padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
     font-weight: var(--bs-nav-link-font-weight);
-    color: var(--bs-nav-link-color);
+    color: var(--bs-theme-fg, var(--bs-nav-link-color));
     text-decoration: none;
     white-space: nowrap;
     background: none;
@@ -7289,18 +7286,18 @@
     }
   }
   .nav-link:hover, .nav-link:focus {
-    color: var(--bs-nav-link-hover-color);
-    background-color: var(--bs-nav-link-hover-bg);
+    color: var(--bs-theme-fg-emphasis, var(--bs-nav-link-hover-color));
+    background-color: var(--bs-theme-bg-muted, var(--bs-nav-link-hover-bg));
   }
   .nav-link:focus-visible {
     --bs-focus-ring-offset: 1px;
-    color: var(--bs-nav-link-hover-color);
+    color: var(--bs-theme-fg-emphasis, var(--bs-nav-link-hover-color));
     outline: var(--bs-focus-ring);
     outline-offset: var(--bs-focus-ring-offset);
   }
   .nav-link.active, .nav-link:active {
-    color: var(--bs-nav-link-active-color);
-    background-color: var(--bs-nav-link-active-bg);
+    color: var(--bs-theme-fg, var(--bs-nav-link-active-color));
+    background-color: var(--bs-theme-bg-subtle, var(--bs-nav-link-active-bg));
   }
   .nav-link.disabled, .nav-link:disabled {
     color: var(--bs-nav-link-disabled-color);
@@ -7481,12 +7478,12 @@
     margin-inline-end: var(--bs-navbar-brand-margin-end);
     font-size: var(--bs-navbar-brand-font-size);
     font-weight: var(--bs-navbar-brand-font-weight);
-    color: var(--bs-navbar-brand-color);
+    color: var(--bs-theme-fg, var(--bs-navbar-brand-color));
     text-decoration: none;
     white-space: nowrap;
   }
   .navbar-brand:hover, .navbar-brand:focus {
-    color: var(--bs-navbar-brand-hover-color);
+    color: var(--bs-theme-fg-emphasis, var(--bs-navbar-brand-hover-color));
   }
   .navbar-nav {
     --bs-nav-gap: 0.25rem;
@@ -7508,7 +7505,7 @@
     list-style-type: "";
   }
   .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-    color: var(--bs-navbar-active-color);
+    color: var(--bs-theme-fg, var(--bs-navbar-active-color));
     border: var(--bs-nav-link-border-width) solid var(--bs-nav-link-border-color, transparent);
   }
   .navbar-text {
@@ -7519,7 +7516,7 @@
   .navbar-text a,
   .navbar-text a:hover,
   .navbar-text a:focus {
-    color: var(--bs-navbar-active-color);
+    color: var(--bs-theme-fg, var(--bs-navbar-active-color));
   }
   .navbar-toggler {
     --bs-btn-bg: transparent;
@@ -7559,6 +7556,7 @@
     max-height: none !important;
     padding: 0;
     margin: 0;
+    overflow: visible !important;
     visibility: visible !important;
     background-color: transparent !important;
     border: 0 !important;
@@ -7606,6 +7604,7 @@
       max-height: none !important;
       padding: 0;
       margin: 0;
+      overflow: visible !important;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -7650,6 +7649,7 @@
       max-height: none !important;
       padding: 0;
       margin: 0;
+      overflow: visible !important;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -7694,6 +7694,7 @@
       max-height: none !important;
       padding: 0;
       margin: 0;
+      overflow: visible !important;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -7738,6 +7739,7 @@
       max-height: none !important;
       padding: 0;
       margin: 0;
+      overflow: visible !important;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -7782,6 +7784,7 @@
       max-height: none !important;
       padding: 0;
       margin: 0;
+      overflow: visible !important;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -7820,6 +7823,7 @@
     content: "";
     background-color: color-mix(in oklch, var(--bs-navbar-bg, var(--bs-bg-body)) 80%, transparent);
     background-image: none;
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
     backdrop-filter: blur(5px) saturate(180%);
   }
   .navbar[data-bs-theme=dark] {
@@ -8642,8 +8646,11 @@
   }
   .sm\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
+    -webkit-backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
   }
   @media (prefers-reduced-motion: reduce) {
     .sm\:drawer::backdrop {
@@ -8652,8 +8659,11 @@
   }
   .md\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
+    -webkit-backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
   }
   @media (prefers-reduced-motion: reduce) {
     .md\:drawer::backdrop {
@@ -8662,8 +8672,11 @@
   }
   .lg\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
+    -webkit-backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
   }
   @media (prefers-reduced-motion: reduce) {
     .lg\:drawer::backdrop {
@@ -8672,8 +8685,11 @@
   }
   .xl\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
+    -webkit-backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
   }
   @media (prefers-reduced-motion: reduce) {
     .xl\:drawer::backdrop {
@@ -8682,8 +8698,11 @@
   }
   .\32 xl\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
+    -webkit-backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
   }
   @media (prefers-reduced-motion: reduce) {
     .\32 xl\:drawer::backdrop {
@@ -8692,8 +8711,11 @@
   }
   .drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
+    -webkit-backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
     transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
+    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing);
   }
   @media (prefers-reduced-motion: reduce) {
     .drawer::backdrop {
@@ -8703,26 +8725,32 @@
   @starting-style {
     .sm\:drawer::backdrop {
       background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
       backdrop-filter: blur(0);
     }
     .md\:drawer::backdrop {
       background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
       backdrop-filter: blur(0);
     }
     .lg\:drawer::backdrop {
       background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
       backdrop-filter: blur(0);
     }
     .xl\:drawer::backdrop {
       background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
       backdrop-filter: blur(0);
     }
     .\32 xl\:drawer::backdrop {
       background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
       backdrop-filter: blur(0);
     }
     .drawer::backdrop {
       background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
       backdrop-filter: blur(0);
     }
   }
@@ -8731,6 +8759,7 @@
   }
   .drawer-translucent {
     background-color: color-mix(in oklch, var(--bs-drawer-bg) 80%, transparent);
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
     backdrop-filter: blur(5px) saturate(180%);
   }
   .drawer-sheet {
@@ -9472,6 +9501,7 @@
     color: inherit;
   }
   .toast-translucent {
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
     backdrop-filter: blur(5px) saturate(180%);
   }
   .toast-body {
@@ -10516,7 +10546,6 @@
     width: max-content;
   }
   .w-fit {
-    width: -moz-fit-content;
     width: fit-content;
   }
   .max-w-100 {
@@ -10556,7 +10585,6 @@
     height: max-content;
   }
   .h-fit {
-    height: -moz-fit-content;
     height: fit-content;
   }
   .max-h-100 {

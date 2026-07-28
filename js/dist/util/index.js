@@ -72,6 +72,9 @@ const isDisabled = (element) => {
 	if (typeof disableableElement.disabled !== "undefined") return disableableElement.disabled;
 	return element.hasAttribute("disabled") && element.getAttribute("disabled") !== "false";
 };
+const setAriaAttribute = (element, name, value) => {
+	element.setAttribute(name, String(value));
+};
 const findShadowRoot = (element) => {
 	if (!document.documentElement.attachShadow) return null;
 	if (typeof element.getRootNode === "function") {
@@ -140,6 +143,6 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 	return list[Math.max(0, Math.min(index, listLength - 1))];
 };
 //#endregion
-export { execute, executeAfterTransition, findShadowRoot, getElement, getNextActiveElement, getTransitionDurationFromElement, getUID, isDisabled, isElement, isRTL, isVisible, noop, onDOMContentLoaded, parseSelector, reflow, toType, triggerTransitionEnd };
+export { execute, executeAfterTransition, findShadowRoot, getElement, getNextActiveElement, getTransitionDurationFromElement, getUID, isDisabled, isElement, isRTL, isVisible, noop, onDOMContentLoaded, parseSelector, reflow, setAriaAttribute, toType, triggerTransitionEnd };
 
 //# sourceMappingURL=index.js.map

@@ -4,22 +4,22 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-import { Calendar, type DatesArr, type Options } from 'vanilla-calendar-pro';
+import { Calendar, type DateAny, type DateMode, type DatesArr, type MonthsCount, type Options, type PositionToInput, type WeekDayID } from 'vanilla-calendar-pro';
 import BaseComponent from './base-component.js';
 type DatepickerConfig = {
     datepickerTheme: string | null;
-    dateMin: string | number | null;
-    dateMax: string | number | null;
+    dateMin: DateAny | null;
+    dateMax: DateAny | null;
     dateFormat: Intl.DateTimeFormatOptions | ((date: Date, locale: string | undefined) => string) | null;
     displayElement: string | HTMLElement | boolean | null;
-    displayMonthsCount: number;
-    firstWeekday: number;
+    displayMonthsCount: MonthsCount;
+    firstWeekday: WeekDayID;
     inline: boolean;
     locale: string;
     positionElement: string | HTMLElement | null;
     selectedDates: string[];
-    selectionMode: string;
-    placement: string;
+    selectionMode: DateMode;
+    placement: PositionToInput;
     vcpOptions: Options;
 };
 /**

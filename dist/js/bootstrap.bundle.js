@@ -351,6 +351,9 @@ const isDisabled = (element) => {
 	if (typeof disableableElement.disabled !== "undefined") return disableableElement.disabled;
 	return element.hasAttribute("disabled") && element.getAttribute("disabled") !== "false";
 };
+const setAriaAttribute = (element, name, value) => {
+	element.setAttribute(name, String(value));
+};
 const findShadowRoot = (element) => {
 	if (!document.documentElement.attachShadow) return null;
 	if (typeof element.getRootNode === "function") {
@@ -699,7 +702,7 @@ var Button = class extends BaseComponent {
 		return NAME$20;
 	}
 	toggle() {
-		this._element.setAttribute("aria-pressed", this._element.classList.toggle(CLASS_NAME_ACTIVE$4));
+		setAriaAttribute(this._element, "aria-pressed", this._element.classList.toggle(CLASS_NAME_ACTIVE$4));
 	}
 };
 /**
@@ -1356,7 +1359,7 @@ var Collapse = class Collapse extends BaseComponent {
 		if (!triggerArray.length) return;
 		for (const element of triggerArray) {
 			element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen);
-			element.setAttribute("aria-expanded", isOpen);
+			setAriaAttribute(element, "aria-expanded", isOpen);
 		}
 	}
 };
@@ -3449,7 +3452,7 @@ var Combobox = class extends BaseComponent {
 	_selectItem(item) {
 		if (this._config.multiple) {
 			item.classList.toggle(CLASS_NAME_SELECTED);
-			item.setAttribute("aria-selected", item.classList.contains(CLASS_NAME_SELECTED));
+			setAriaAttribute(item, "aria-selected", item.classList.contains(CLASS_NAME_SELECTED));
 		} else {
 			const previouslySelected = SelectorEngine.find(`.${CLASS_NAME_SELECTED}`, this._menu);
 			for (const prev of previouslySelected) {
@@ -7899,7 +7902,7 @@ var Tab = class Tab extends BaseComponent {
 	constructor(element) {
 		super(element);
 		this._parent = this._element.closest(SELECTOR_TAB_PANEL);
-		if (!this._parent) return;
+		if (!this._parent) throw new TypeError(`${this._element.outerHTML} has no valid parent ${SELECTOR_TAB_PANEL}`);
 		this._setInitialAttributes(this._parent, this._getChildren());
 		EventHandler.on(this._element, EVENT_KEYDOWN, (event) => this._keydown(event));
 	}
@@ -7925,7 +7928,7 @@ var Tab = class Tab extends BaseComponent {
 				return;
 			}
 			element.removeAttribute("tabindex");
-			element.setAttribute("aria-selected", true);
+			setAriaAttribute(element, "aria-selected", true);
 			this._toggleMenu(element, true);
 			EventHandler.trigger(element, EVENT_SHOWN$1, { relatedTarget: relatedElem });
 		};
@@ -7941,7 +7944,7 @@ var Tab = class Tab extends BaseComponent {
 				element.classList.remove(CLASS_NAME_SHOW$1);
 				return;
 			}
-			element.setAttribute("aria-selected", false);
+			setAriaAttribute(element, "aria-selected", false);
 			element.setAttribute("tabindex", "-1");
 			this._toggleMenu(element, false);
 			EventHandler.trigger(element, EVENT_HIDDEN$1, { relatedTarget: relatedElem });
@@ -7986,7 +7989,7 @@ var Tab = class Tab extends BaseComponent {
 		child = this._getInnerElement(child);
 		const isActive = this._elemIsActive(child);
 		const outerElem = this._getOuterElement(child);
-		child.setAttribute("aria-selected", isActive);
+		setAriaAttribute(child, "aria-selected", isActive);
 		if (outerElem !== child) this._setAttributeIfNotExists(outerElem, "role", "presentation");
 		if (!isActive) child.setAttribute("tabindex", "-1");
 		this._setAttributeIfNotExists(child, "role", "tab");
@@ -8005,7 +8008,7 @@ var Tab = class Tab extends BaseComponent {
 		const menu = SelectorEngine.findOne(SELECTOR_MENU, outerElem);
 		menuToggle.classList.toggle(CLASS_NAME_ACTIVE, open);
 		if (menu) menu.classList.toggle(CLASS_NAME_SHOW$1, open);
-		menuToggle.setAttribute("aria-expanded", open);
+		setAriaAttribute(menuToggle, "aria-expanded", open);
 	}
 	_setAttributeIfNotExists(element, attribute, value) {
 		if (!element.hasAttribute(attribute)) element.setAttribute(attribute, value);

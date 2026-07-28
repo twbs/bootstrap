@@ -5,6 +5,7 @@
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
+import { setAriaAttribute } from "./util/index.js";
 //#region js/src/button.ts
 /**
 * --------------------------------------------------------------------------
@@ -29,7 +30,7 @@ var Button = class extends BaseComponent {
 		return NAME;
 	}
 	toggle() {
-		this._element.setAttribute("aria-pressed", this._element.classList.toggle(CLASS_NAME_ACTIVE));
+		setAriaAttribute(this._element, "aria-pressed", this._element.classList.toggle(CLASS_NAME_ACTIVE));
 	}
 };
 /**

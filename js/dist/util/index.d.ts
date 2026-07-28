@@ -19,6 +19,7 @@ declare const isElement: (object: unknown) => object is Element;
 declare const getElement: (object: unknown) => HTMLElement | null;
 declare const isVisible: (element: unknown) => boolean;
 declare const isDisabled: (element: Element | null | undefined) => boolean;
+declare const setAriaAttribute: (element: Element, name: string, value: boolean) => void;
 declare const findShadowRoot: (element: Node) => ShadowRoot | null;
 declare const noop: () => void;
 /**
@@ -41,5 +42,5 @@ declare const executeAfterTransition: (callback: () => void, transitionElement: 
  * @return The proper element
  */
 declare const getNextActiveElement: <T>(list: T[], activeElement: T, shouldGetNext: boolean, isCycleAllowed: boolean) => T;
-export { execute, executeAfterTransition, findShadowRoot, getElement, getNextActiveElement, getTransitionDurationFromElement, getUID, isDisabled, isElement, isRTL, isVisible, noop, onDOMContentLoaded, parseSelector, reflow, triggerTransitionEnd, toType };
+export { execute, executeAfterTransition, findShadowRoot, getElement, getNextActiveElement, getTransitionDurationFromElement, getUID, isDisabled, isElement, isRTL, isVisible, noop, onDOMContentLoaded, parseSelector, reflow, setAriaAttribute, triggerTransitionEnd, toType };
 //# sourceMappingURL=index.d.ts.map
