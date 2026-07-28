@@ -1,3 +1,7 @@
 name: "CodeQL config"
 paths-ignore:
   - dist
+  # Compile-time type assertions. `tsc` checks these files; nothing ever runs or
+  # bundles them. Each assertion is a typed declaration that is unused by design,
+  # so the quality suite reports every line as an unused variable.
+  - js/tests/types
