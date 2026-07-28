@@ -102,7 +102,8 @@
     "watch-js-docs": "nodemon --watch site/src/assets/ --ext js --exec \"npm run js-lint\"",
     "astro-dev": "astro dev --root site --port 9001",
     "astro-build": "astro build --root site && rm -rf _site && cp -r site/dist _site",
-    "astro-preview": "astro preview --root site --port 9001"
+    "astro-preview": "astro preview --root site --port 9001",
+    "spellcheck": "cspell --config .cspell.json \".gitignore\" \"**/*.{md,mdx,yml,yaml,json,js,cjs,mjs,ts}\""
   },
   "peerDependencies": {
     "@popperjs/core": "^2.11.8"
@@ -134,6 +135,7 @@
     "clean-css-cli": "^5.6.3",
     "clipboard": "^2.0.11",
     "cross-env": "^10.1.0",
+    "cspell": "^10.0.1",
     "eslint": "8.57.1",
     "eslint-config-xo": "0.45.0",
     "eslint-plugin-html": "^8.1.4",
