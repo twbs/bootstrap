@@ -99,21 +99,4 @@ Space utilities apply `margin-inline-end` or `margin-block-end` to every direct 
 
 Space utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-// scss-docs-start utils-space
-"space-x": (
-  responsive: true,
-  property: margin-inline-end,
-  class: space-x,
-  child-selector: "> :not(:last-child)",
-  values: $spacers
-),
-"space-y": (
-  responsive: true,
-  property: margin-block-end,
-  class: space-y,
-  child-selector: "> :not(:last-child)",
-  values: $spacers
-),
-// scss-docs-end utils-space
-```
+<ScssDocs name="utils-space" file="scss/_utilities.scss" />

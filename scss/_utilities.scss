@@ -391,6 +391,8 @@ $utilities: map.merge(
       class: flex,
       values: wrap nowrap wrap-reverse
     ),
+    // scss-docs-end utils-flex
+    // scss-docs-start utils-justify-content
     "justify-content": (
       responsive: true,
       property: justify-content,
@@ -403,6 +405,8 @@ $utilities: map.merge(
         evenly: space-evenly,
       )
     ),
+    // scss-docs-end utils-justify-content
+    // scss-docs-start utils-justify-items
     "justify-items": (
       responsive: true,
       property: justify-items,
@@ -413,6 +417,7 @@ $utilities: map.merge(
         stretch: stretch,
       )
     ),
+    // scss-docs-end utils-justify-items
     "justify-self": (
       responsive: true,
       property: justify-self,
@@ -422,6 +427,7 @@ $utilities: map.merge(
         center: center,
       )
     ),
+    // scss-docs-start utils-align-items
     "align-items": (
       responsive: true,
       property: align-items,
@@ -433,6 +439,8 @@ $utilities: map.merge(
         stretch: stretch,
       )
     ),
+    // scss-docs-end utils-align-items
+    // scss-docs-start utils-align-content
     "align-content": (
       responsive: true,
       property: align-content,
@@ -445,6 +453,8 @@ $utilities: map.merge(
         stretch: stretch,
       )
     ),
+    // scss-docs-end utils-align-content
+    // scss-docs-start utils-align-self
     "align-self": (
       responsive: true,
       property: align-self,
@@ -457,6 +467,8 @@ $utilities: map.merge(
         stretch: stretch,
       )
     ),
+    // scss-docs-end utils-align-self
+    // scss-docs-start utils-place-items
     "place-items": (
       responsive: true,
       property: place-items,
@@ -467,6 +479,8 @@ $utilities: map.merge(
         stretch: stretch,
       )
     ),
+    // scss-docs-end utils-place-items
+    // scss-docs-start utils-grid
     "grid-column-counts": (
       responsive: true,
       // property: --columns,
@@ -495,6 +509,7 @@ $utilities: map.merge(
       class: grid-auto-flow,
       values: row column dense
     ),
+    // scss-docs-end utils-grid
     "order": (
       responsive: true,
       property: order,
@@ -509,7 +524,6 @@ $utilities: map.merge(
         last: 6,
       ),
     ),
-    // scss-docs-end utils-flex
     // Margin utilities
     // scss-docs-start utils-spacing
     // scss-docs-start utils-margin
@@ -687,11 +701,13 @@ $utilities: map.merge(
       values: $font-sizes
     ),
     // scss-docs-end utils-font-size
+    // scss-docs-start utils-font-style
     "font-style": (
       property: font-style,
       class: fst,
       values: italic normal
     ),
+    // scss-docs-end utils-font-style
     // scss-docs-start utils-font-weight
     "font-weight": (
       property: font-weight,
@@ -711,6 +727,7 @@ $utilities: map.merge(
       )
     ),
     // scss-docs-end utils-line-height
+    // scss-docs-start utils-text-align
     "text-align": (
       responsive: true,
       property: text-align,
@@ -721,6 +738,7 @@ $utilities: map.merge(
         center: center,
       )
     ),
+    // scss-docs-end utils-text-align
     "text-decoration": (
       property: text-decoration,
       values: none underline line-through
@@ -896,17 +914,19 @@ $utilities: map.merge(
       class: bg,
       values: (gradient: var(--gradient))
     ),
-    // scss-docs-start utils-interaction
+    // scss-docs-start utils-user-select
     "user-select": (
       property: user-select,
       values: all auto text none
     ),
+    // scss-docs-end utils-user-select
+    // scss-docs-start utils-pointer-events
     "pointer-events": (
       property: pointer-events,
       class: pe,
       values: none auto,
     ),
-    // scss-docs-end utils-interaction
+    // scss-docs-end utils-pointer-events
     // scss-docs-start utils-border-radius
     "border-radius": (
       property: (
