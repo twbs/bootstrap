@@ -1,15 +1,37 @@
 # https://github.com/browserslist/browserslist#readme
+#
+# Browserslist joins every line below with OR, not AND. The `>=` lines do not
+# restrict `last 2 major versions`; they add older versions of each engine on
+# top of it. `last 2 major versions` is the line that carries mobile coverage,
+# because caniuse tracks Chrome for Android as one unversioned entry.
+#
+# Run `npx browserslist --coverage` for the real coverage figure. It reports
+# about 87% today. Do not read the number off browserslist.dev, because that
+# site pins an old caniuse-db and reports a different result.
 
 last 2 major versions
 not dead
-# Floors kept on versions with native CSS `light-dark()` (and nesting) so
-# Lightning CSS doesn't lower them to the brittle custom-property polyfill that
-# broke `data-bs-theme` dark mode. Raised as far as we can while staying above
-# 90% global coverage (~90.8%).
-Chrome >= 130
-Edge >= 130
-Firefox >= 132
-iOS >= 18.0
-Safari >= 18.0
-not kaios <= 2.5 # fix floating label issues in Firefox (see https://github.com/postcss/autoprefixer/issues/1533)
+
+# caniuse gives the newest Safari a null release date, but that version already
+# holds most of Safari's usage share. Both range queries and `last N versions`
+# skip unreleased versions, so this line is worth about 8 points of coverage.
+# It costs nothing, because the version is newer than every floor below.
+unreleased versions
+
+# Floors sit on the first versions with native CSS `light-dark()` and nesting.
+# Below these versions Lightning CSS lowers `light-dark()` to a custom-property
+# polyfill, and that polyfill breaks `data-bs-theme` dark mode.
+Chrome >= 123
+Edge >= 123
+Firefox >= 120
+iOS >= 17.5
+Safari >= 17.5
+
+# Autoprefixer adds `-webkit-mask-*` for UC and QQ, and `-moz-column-gap` for
+# KaiOS. Those three engines hold under 0.8% of users between them, so we drop
+# them rather than ship the prefixes. KaiOS also broke floating labels
+# (see https://github.com/postcss/autoprefixer/issues/1533).
+not and_uc > 0
+not and_qq > 0
+not kaios > 0
 not op_mini all # proxy browser we don't target; only source of redundant -o-object-fit prefixes
