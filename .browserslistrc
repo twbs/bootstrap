@@ -25,6 +25,7 @@ unreleased versions
 #   - `:has()` needs Firefox 121. We use it in forms, button groups and cards.
 #   - `content-visibility` needs Firefox 125 and Safari 18. The accordion
 #     transitions it with `allow-discrete`.
+#   - `<details name>` needs Firefox 130. It drives exclusive accordions.
 #   - Unprefixed `backdrop-filter` needs Safari and iOS 18. Dialog and Drawer
 #     blur their `::backdrop`. Below 18, Autoprefixer adds `-webkit-` copies.
 #   - `text-wrap: balance` needs Chrome 130. We ship it as a utility.
@@ -36,6 +37,33 @@ Edge >= 130
 Firefox >= 132
 iOS >= 18.0
 Safari >= 18.0
+
+# What these floors buy us. Every item here is safe in any 6.x release with no
+# fallback, no prefix and no polyfill. Reach for these first:
+#   - Colors: `light-dark()`, `oklch()`, `color()` and `color-mix()`
+#   - Native CSS nesting, so compiled output can stay nested
+#   - `@layer`, which our layer order depends on
+#   - `:has()` and `:focus-visible` for contextual styling
+#   - Container queries, container query units and `subgrid`
+#   - `content-visibility`, `transition-behavior: allow-discrete` and
+#     `@starting-style`, which animate `<details>` and `<dialog>` open and closed
+#   - Native `<dialog>` with `::backdrop` and unprefixed `backdrop-filter`
+#   - `<details name>` for exclusive accordions
+#   - `text-wrap: balance`
+#   - Range syntax in media queries, such as `@media (width >= 1024px)`
+#
+# What these floors still do not buy. Do not use these in 6.x without a
+# fallback. Re-check with `npx browserslist` before you assume one has landed,
+# because Firefox is the blocker in almost every case:
+#   - Relative color syntax, `rgb(from ...)`: Chrome 131, Firefox 133. This sits
+#     one version above our Chrome floor, so revisit it first in v7.
+#   - View transitions: Firefox 144
+#   - `@scope`: Firefox 146
+#   - Anchor positioning: Firefox 147, Safari 26. This is the big one. It would
+#     let Menu, Tooltip, Popover and Combobox drop Floating UI.
+#   - Style container queries: Firefox 151
+#   - `text-box-trim`: Firefox 154
+#   - Scrollbar styling: Safari 26.2
 
 # Autoprefixer adds `-webkit-mask-*` for UC and QQ, and `-moz-column-gap` for
 # KaiOS. Those three engines hold under 0.8% of users between them, so we drop
