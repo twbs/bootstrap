@@ -207,30 +207,4 @@ All grid utilities are responsive and include all breakpoints.
 
 Grid utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-"grid-column-counts": (
-  responsive: true,
-  property: --#{$prefix}columns,
-  class: grid-cols,
-  values: (
-    3,
-    4,
-    6,
-    subgrid: subgrid
-  )
-),
-"grid-columns": (
-  responsive: true,
-  property: grid-column,
-  class: grid-cols,
-  values: (
-    fill: #{"1 / -1"},
-  )
-),
-"grid-auto-flow": (
-  responsive: true,
-  property: grid-auto-flow,
-  class: grid-auto-flow,
-  values: row column dense
-),
-```
+<ScssDocs name="utils-grid" file="scss/_utilities.scss" />
