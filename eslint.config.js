@@ -245,13 +245,13 @@ const eslintConfig = [
     }
   },
 
-  // js/**/*.ts — TypeScript sources
+  // js/**/*.ts — TypeScript sources, plus the `.mts` Vitest config
   ...tseslint.configs.recommended.map(config => ({
     ...config,
-    files: ['js/**/*.ts']
+    files: ['js/**/*.{ts,mts}']
   })),
   {
-    files: ['js/**/*.ts'],
+    files: ['js/**/*.{ts,mts}'],
     rules: {
       // The DOM plumbing (event registry, config merging) is inherently
       // dynamic; explicit `any` marks those seams
@@ -263,7 +263,7 @@ const eslintConfig = [
   // that resolve to `.ts` files, which these rules misread; tsc (moduleResolution
   // nodenext) enforces the extensions instead
   {
-    files: ['js/**/*.ts', 'js/tests/unit/**'],
+    files: ['js/**/*.{ts,mts}', 'js/tests/unit/**'],
     rules: {
       'import/extensions': 'off',
       'import-x/extensions': 'off'

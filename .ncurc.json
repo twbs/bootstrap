@@ -4,7 +4,6 @@
     "@babel/core",
     "@babel/preset-env",
     "hammer-simulator",
-    "karma-rollup-preprocessor",
     "stylelint"
   ]
 }
