@@ -12,11 +12,11 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
 last 2 major versions
 not dead
 unreleased versions
-Chrome >= 123
-Edge >= 123
-Firefox >= 120
-iOS >= 17.5
-Safari >= 17.5
+Chrome >= 130
+Edge >= 130
+Firefox >= 132
+iOS >= 18.0
+Safari >= 18.0
 ```
 
 Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `last 2 major versions`. They add every version above each floor, which is what sets our real minimums:
@@ -24,20 +24,34 @@ Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `l
 <BsTable>
 | Browser | Minimum version |
 | --- | --- |
-| Chrome | 123 |
-| Edge | 123 |
-| Firefox | 120 |
-| Safari (macOS) | 17.5 |
-| Safari (iOS and iPadOS) | 17.5 |
+| Chrome | 130 |
+| Edge | 130 |
+| Firefox | 132 |
+| Safari (macOS) | 18 |
+| Safari (iOS and iPadOS) | 18 |
 </BsTable>
 
 Alternative browsers built on these engines (Chromium-based browsers like Brave, Opera, or Vivaldi, and browsers using WebKit on iOS) are not explicitly tested, but should be fully supported at equivalent engine versions.
 
 ### Why these versions?
 
-Bootstrap’s CSS is written against the modern platform baseline: [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) for [color modes]([[docsref:/customize/color-modes]]), `oklch()` and `color-mix()` for the [color system]([[docsref:/customize/color]]), native CSS nesting, container queries, and `:has()`. Each floor sits on the first version of that engine with native `light-dark()`. Below it, our build pipeline lowers `light-dark()` to a custom-property polyfill, and that polyfill breaks `data-bs-theme` dark mode. This is why we cannot lower the floors further. Raising them would drop users and gain us nothing.
+Bootstrap’s CSS is written against the modern platform baseline: [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) for [color modes]([[docsref:/customize/color-modes]]), `oklch()` and `color-mix()` for the [color system]([[docsref:/customize/color]]), native CSS nesting, container queries, and `:has()`.
 
-Together these targets cover about 87% of global browser usage. Run `npx browserslist --coverage` in a clone to check the current figure yourself.
+Our floors also have to last. They apply to the whole v6.x line, and we cannot raise them in a minor release, so they cap what every future 6.x feature may use. We therefore set each floor on the newest feature v6 already depends on, not the oldest version we could tolerate:
+
+<BsTable>
+| Feature | Sets the floor for |
+| --- | --- |
+| `:has()` | Firefox 121—used by forms, button groups, and cards |
+| `content-visibility` | Firefox 125 and Safari 18—the accordion transitions it with `allow-discrete` |
+| `<details name="…">` | Firefox 130—exclusive accordions |
+| `text-wrap: balance` | Chrome 130—shipped as a utility |
+| Unprefixed `backdrop-filter` | Safari and iOS 18—Dialog and Drawer blur their `::backdrop` |
+</BsTable>
+
+`light-dark()` sets the hard lower bound: Chrome 123, Firefox 120, and Safari 17.5. Below it, our build pipeline lowers `light-dark()` to a custom-property polyfill, and that polyfill breaks `data-bs-theme` dark mode. We will not go below that bound in any release.
+
+Together these targets cover about 85% of global browser usage. Run `npx browserslist --coverage` in a clone to check the current figure yourself.
 
 Unlike previous major versions, Bootstrap 6 does not ship fallbacks, prefixes, or polyfills for browsers below this floor. Pages will not render correctly in unsupported browsers—most visibly, colors depending on `light-dark()` will not resolve.
 
@@ -48,7 +62,7 @@ The table below lists the platform features v6 relies on and how each behaves at
 <BsTable>
 | Feature | Used by | Behavior in supported browsers |
 | --- | --- | --- |
-| `light-dark()` | [Color modes]([[docsref:/customize/color-modes]]), all theme tokens | Defines the support floor; no fallback below it |
+| `light-dark()` | [Color modes]([[docsref:/customize/color-modes]]), all theme tokens | Sets the hard lower bound for the floor; no fallback below it |
 | `oklch()`, `color-mix()` | [Color system]([[docsref:/customize/color]]), theme variants | Fully supported above the floor |
 | Container queries (`@container`) | [Card groups]([[docsref:/components/card#card-groups]]), [horizontal list groups]([[docsref:/components/list-group#horizontal]]) | Fully supported above the floor; these components also require an ancestor query container (`.contains-inline`)—without one they stay stacked |
 | `:has()` | Forms, button groups with menus, and other contextual styling | Fully supported above the floor |
@@ -72,8 +86,8 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
 | Platform | Supported browsers |
 | --- | --- |
 | Android | Chrome (last two major versions) |
-| iOS and iPadOS | Safari 17.5+, Chrome (uses WebKit on iOS) |
-| Windows, macOS, Linux | Chrome 123+, Edge 123+, Firefox 120+; Safari 17.5+ on macOS |
+| iOS and iPadOS | Safari 18+, Chrome (uses WebKit on iOS) |
+| Windows, macOS, Linux | Chrome 130+, Edge 130+, Firefox 132+; Safari 18+ on macOS |
 </BsTable>
 
 As with v5, make sure you include the responsive viewport meta tag in your `<head>` for proper rendering on mobile devices:

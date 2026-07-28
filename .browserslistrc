@@ -6,7 +6,7 @@
 # because caniuse tracks Chrome for Android as one unversioned entry.
 #
 # Run `npx browserslist --coverage` for the real coverage figure. It reports
-# about 87% today. Do not read the number off browserslist.dev, because that
+# about 85% today. Do not read the number off browserslist.dev, because that
 # site pins an old caniuse-db and reports a different result.
 
 last 2 major versions
@@ -18,14 +18,24 @@ not dead
 # It costs nothing, because the version is newer than every floor below.
 unreleased versions
 
-# Floors sit on the first versions with native CSS `light-dark()` and nesting.
-# Below these versions Lightning CSS lowers `light-dark()` to a custom-property
-# polyfill, and that polyfill breaks `data-bs-theme` dark mode.
-Chrome >= 123
-Edge >= 123
-Firefox >= 120
-iOS >= 17.5
-Safari >= 17.5
+# These floors are the platform baseline for the whole v6.x line. We cannot raise
+# them in a minor release, so they cap what every future 6.x feature may use.
+# Each floor sits on the newest feature we already depend on, not the oldest one
+# we could tolerate:
+#   - `:has()` needs Firefox 121. We use it in forms, button groups and cards.
+#   - `content-visibility` needs Firefox 125 and Safari 18. The accordion
+#     transitions it with `allow-discrete`.
+#   - Unprefixed `backdrop-filter` needs Safari and iOS 18. Dialog and Drawer
+#     blur their `::backdrop`. Below 18, Autoprefixer adds `-webkit-` copies.
+#   - `text-wrap: balance` needs Chrome 130. We ship it as a utility.
+# `light-dark()` sets the hard lower bound (Chrome 123, Firefox 120, Safari 17.5).
+# Below it, Lightning CSS lowers `light-dark()` to a custom-property polyfill, and
+# that polyfill breaks `data-bs-theme` dark mode. Never go below that bound.
+Chrome >= 130
+Edge >= 130
+Firefox >= 132
+iOS >= 18.0
+Safari >= 18.0
 
 # Autoprefixer adds `-webkit-mask-*` for UC and QQ, and `-moz-column-gap` for
 # KaiOS. Those three engines hold under 0.8% of users between them, so we drop
