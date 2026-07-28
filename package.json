@@ -116,7 +116,7 @@
     "astro-dev": "astro dev --root site --port ${PORT:-9001}",
     "astro-build": "astro build --root site && rm -rf _site && cp -r site/dist _site && pagefind --site _site",
     "astro-preview": "astro preview --root site --port 9001",
-    "spellcheck": "cspell --config .cspell.json \"**/*.{md,mdx}\""
+    "spellcheck": "cspell --config .cspell.json \".gitignore\" \"**/*.{md,mdx,yml,yaml,json,js,cjs,mjs,ts}\""
   },
   "peerDependencies": {
     "@floating-ui/dom": "^1.7.6",

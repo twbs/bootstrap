@@ -105,7 +105,7 @@ const localRules = {
   'unicorn/prefer-string-replace-all': 'off',
   'unicorn/prefer-structured-clone': 'off',
   'unicorn/prevent-abbreviations': 'off',
-  // Rules new/changed in ESLint 10 / updated plugins — disable to preserve old behaviour
+  // Rules new/changed in ESLint 10 / updated plugins — disable to preserve old behavior
   'xo/import-specifier-newline': 'off',
   '@eslint-community/eslint-comments/require-description': 'off',
   'import-x/no-anonymous-default-export': 'off',
