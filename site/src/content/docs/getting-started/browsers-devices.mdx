@@ -6,33 +6,38 @@ toc: true
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms—more precisely, the last two major versions of each. The exact policy lives in [our `.browserslistrc` file](https://github.com/twbs/bootstrap/blob/v6-dev/.browserslistrc):
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms, plus a run of older versions of each engine. The exact policy lives in [our `.browserslistrc` file](https://github.com/twbs/bootstrap/blob/v6-dev/.browserslistrc):
 
 ```text
 last 2 major versions
 not dead
-Chrome >= 130
-Edge >= 130
-Firefox >= 132
-iOS >= 18.0
-Safari >= 18.0
+unreleased versions
+Chrome >= 123
+Edge >= 123
+Firefox >= 120
+iOS >= 17.5
+Safari >= 17.5
 ```
+
+Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `last 2 major versions`. They add every version above each floor, which is what sets our real minimums:
 
 <BsTable>
 | Browser | Minimum version |
 | --- | --- |
-| Chrome | 130 |
-| Edge | 130 |
-| Firefox | 132 |
-| Safari (macOS) | 18 |
-| Safari (iOS and iPadOS) | 18 |
+| Chrome | 123 |
+| Edge | 123 |
+| Firefox | 120 |
+| Safari (macOS) | 17.5 |
+| Safari (iOS and iPadOS) | 17.5 |
 </BsTable>
 
 Alternative browsers built on these engines (Chromium-based browsers like Brave, Opera, or Vivaldi, and browsers using WebKit on iOS) are not explicitly tested, but should be fully supported at equivalent engine versions.
 
 ### Why these versions?
 
-Bootstrap’s CSS is written against the modern platform baseline: [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) for [color modes]([[docsref:/customize/color-modes]]), `oklch()` and `color-mix()` for the [color system]([[docsref:/customize/color]]), native CSS nesting, container queries, and `:has()`. The version floors are set on native `light-dark()` support so our build pipeline doesn’t have to lower these features to brittle custom-property polyfills. This floor covers roughly 90% of global browser usage; raising it further was possible, lowering it was not without compromising the color-mode architecture.
+Bootstrap’s CSS is written against the modern platform baseline: [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) for [color modes]([[docsref:/customize/color-modes]]), `oklch()` and `color-mix()` for the [color system]([[docsref:/customize/color]]), native CSS nesting, container queries, and `:has()`. Each floor sits on the first version of that engine with native `light-dark()`. Below it, our build pipeline lowers `light-dark()` to a custom-property polyfill, and that polyfill breaks `data-bs-theme` dark mode. This is why we cannot lower the floors further. Raising them would drop users and gain us nothing.
+
+Together these targets cover about 87% of global browser usage. Run `npx browserslist --coverage` in a clone to check the current figure yourself.
 
 Unlike previous major versions, Bootstrap 6 does not ship fallbacks, prefixes, or polyfills for browsers below this floor. Pages will not render correctly in unsupported browsers—most visibly, colors depending on `light-dark()` will not resolve.
 
@@ -61,14 +66,14 @@ All browsers meeting the CSS support floor above fully support ES modules, `impo
 
 ## Mobile devices
 
-Generally speaking, Bootstrap supports the latest versions of each major platform’s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile’s Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
+Generally speaking, Bootstrap supports the latest versions of each major platform’s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile’s Turbo mode, UC Browser Mini, Amazon Silk) are not supported. We also exclude UC Browser, QQ Browser, and KaiOS. Together they hold under 1% of users, and targeting them only adds vendor prefixes to our CSS.
 
 <BsTable>
 | Platform | Supported browsers |
 | --- | --- |
 | Android | Chrome (last two major versions) |
-| iOS and iPadOS | Safari 18+, Chrome (uses WebKit on iOS) |
-| Windows, macOS, Linux | Chrome, Edge, and Firefox (last two major versions); Safari 18+ on macOS |
+| iOS and iPadOS | Safari 17.5+, Chrome (uses WebKit on iOS) |
+| Windows, macOS, Linux | Chrome 123+, Edge 123+, Firefox 120+; Safari 17.5+ on macOS |
 </BsTable>
 
 As with v5, make sure you include the responsive viewport meta tag in your `<head>` for proper rendering on mobile devices:
