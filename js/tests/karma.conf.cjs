@@ -7,10 +7,8 @@ const istanbul = require('rollup-plugin-istanbul')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const replace = require('@rollup/plugin-replace')
 const tsResolve = require('../../build/rollup-plugin-ts-resolve.cjs')
-const { browsers } = require('./browsers.cjs')
 
 const ENV = process.env
-const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
 const DEBUG = Boolean(ENV.DEBUG)
 
 const frameworks = [
@@ -62,7 +60,7 @@ const config = {
     'node_modules/hammer-simulator/index.js',
     {
       pattern: 'js/tests/unit/**/*.spec.js',
-      watched: !BROWSERSTACK
+      watched: true
     }
   ],
   preprocessors: {
@@ -119,50 +117,35 @@ const config = {
   }
 }
 
-if (BROWSERSTACK) {
-  config.hostname = ip.address()
-  config.browserStack = {
-    username: ENV.BROWSER_STACK_USERNAME,
-    accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
-    build: `bootstrap-${ENV.GITHUB_SHA ? `${ENV.GITHUB_SHA.slice(0, 7)}-` : ''}${new Date().toISOString()}`,
-    project: 'Bootstrap',
-    retryLimit: 2
-  }
-  plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
-  config.customLaunchers = browsers
-  config.browsers = Object.keys(browsers)
-  reporters.push('BrowserStack', 'kjhtml')
-} else {
-  frameworks.push('detectBrowsers')
-  plugins.push(
-    'karma-chrome-launcher',
-    'karma-firefox-launcher',
-    'karma-detect-browsers',
-    'karma-coverage-istanbul-reporter'
-  )
-  reporters.push('coverage-istanbul')
-  config.detectBrowsers = detectBrowsers
-  config.coverageIstanbulReporter = {
-    dir: path.resolve(__dirname, '../coverage/'),
-    reports: ['lcov', 'text-summary'],
-    thresholds: {
-      emitWarning: false,
-      global: {
-        statements: 90,
-        branches: 89,
-        functions: 90,
-        lines: 90
-      }
+frameworks.push('detectBrowsers')
+plugins.push(
+  'karma-chrome-launcher',
+  'karma-firefox-launcher',
+  'karma-detect-browsers',
+  'karma-coverage-istanbul-reporter'
+)
+reporters.push('coverage-istanbul')
+config.detectBrowsers = detectBrowsers
+config.coverageIstanbulReporter = {
+  dir: path.resolve(__dirname, '../coverage/'),
+  reports: ['lcov', 'text-summary'],
+  thresholds: {
+    emitWarning: false,
+    global: {
+      statements: 90,
+      branches: 89,
+      functions: 90,
+      lines: 90
     }
   }
+}
 
-  if (DEBUG) {
-    config.hostname = ip.address()
-    plugins.push('karma-jasmine-html-reporter')
-    reporters.push('kjhtml')
-    config.singleRun = false
-    config.autoWatch = true
-  }
+if (DEBUG) {
+  config.hostname = ip.address()
+  plugins.push('karma-jasmine-html-reporter')
+  reporters.push('kjhtml')
+  config.singleRun = false
+  config.autoWatch = true
 }
 
 config.frameworks = frameworks
