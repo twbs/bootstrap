@@ -93,6 +93,9 @@
     - title: Chips
       meta:
         - added: 6.0.0
+    - title: Color picker
+      meta:
+        - added: 6.0.0
     - title: Combobox
       meta:
         - added: 6.0.0
