@@ -154,6 +154,66 @@ describe('EventHandler', () => {
         }, 20)
       })
     })
+
+    it('should ignore related transitions for namespaced mouseenter/mouseleave events', () => {
+      fixtureEl.innerHTML = '<div><span></span></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const child = fixtureEl.querySelector('span')
+      const enterSpy = jasmine.createSpy('mouseenter')
+      const leaveSpy = jasmine.createSpy('mouseleave')
+
+      EventHandler.on(div, 'mouseenter.namespace', enterSpy)
+      EventHandler.on(div, 'mouseleave.namespace', leaveSpy)
+
+      child.dispatchEvent(new MouseEvent('mouseover', {
+        bubbles: true,
+        relatedTarget: div
+      }))
+      child.dispatchEvent(new MouseEvent('mouseout', {
+        bubbles: true,
+        relatedTarget: div
+      }))
+
+      expect(enterSpy).not.toHaveBeenCalled()
+      expect(leaveSpy).not.toHaveBeenCalled()
+    })
+
+    it('should deduplicate and remove custom mouse event handlers', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const handler = jasmine.createSpy('mouseenter')
+
+      EventHandler.on(div, 'mouseenter', handler)
+      EventHandler.on(div, 'mouseenter', handler)
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(1)
+
+      EventHandler.off(div, 'mouseenter', handler)
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(1)
+    })
+
+    it('should keep mouseenter handlers separate from mouseover handlers', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const handler = jasmine.createSpy('mouse handler')
+
+      EventHandler.on(div, 'mouseenter', handler)
+      EventHandler.on(div, 'mouseover', handler)
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(2)
+
+      EventHandler.off(div, 'mouseenter')
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(3)
+    })
   })
 
   describe('one', () => {
@@ -203,6 +263,35 @@ describe('EventHandler', () => {
           resolve()
         }, 20)
       })
+    })
+
+    it('should not consume custom mouse listeners on related transitions', () => {
+      fixtureEl.innerHTML = '<div class="outer"><div class="inner"><span></span></div></div>'
+
+      const outer = fixtureEl.querySelector('.outer')
+      const inner = fixtureEl.querySelector('.inner')
+      const child = fixtureEl.querySelector('span')
+      const enterSpy = jasmine.createSpy('mouseenter')
+      const delegateEnterSpy = jasmine.createSpy('delegated mouseenter')
+
+      EventHandler.one(inner, 'mouseenter', enterSpy)
+      EventHandler.one(outer, 'mouseenter', '.inner', delegateEnterSpy)
+
+      child.dispatchEvent(new MouseEvent('mouseover', {
+        bubbles: true,
+        relatedTarget: inner
+      }))
+      inner.dispatchEvent(new MouseEvent('mouseover', {
+        bubbles: true,
+        relatedTarget: outer
+      }))
+      inner.dispatchEvent(new MouseEvent('mouseover', {
+        bubbles: true,
+        relatedTarget: outer
+      }))
+
+      expect(enterSpy.calls.count()).toEqual(1)
+      expect(delegateEnterSpy.calls.count()).toEqual(1)
     })
   })
 
