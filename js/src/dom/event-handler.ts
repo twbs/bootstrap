@@ -24,6 +24,13 @@ interface WrappedHandler {
 
 type ElementEvents = Record<string, Record<string, WrappedHandler>>
 
+interface NormalizedParameters {
+  isDelegated: boolean
+  callable: EventCallable
+  typeEvent: string
+  handlerTypeEvent: string
+}
+
 /**
  * Constants
  */
@@ -105,13 +112,19 @@ function getElementEvents(element: Element & { uidEvent?: string | number }): El
   return eventRegistry[uid]
 }
 
+// `mouseenter` and `mouseleave` ride on `mouseover` and `mouseout`, which also fire when
+// the pointer moves between descendants of the listening element. Drop those events, so the
+// handler only sees the pointer entering or leaving `delegateTarget` itself.
+// `Node.contains()` is inclusive, so this also covers `relatedTarget === delegateTarget`.
 function isMouseEventWithinTarget(event: BootstrapEvent): boolean {
   const { delegateTarget, relatedTarget } = event
 
-  return Boolean(relatedTarget && (relatedTarget === delegateTarget || delegateTarget.contains(relatedTarget)))
+  return Boolean(relatedTarget && delegateTarget.contains(relatedTarget))
 }
 
-function bootstrapHandler(element: Element, fn: EventCallable, isCustomMouseEvent: boolean): WrappedHandler {
+function bootstrapHandler(element: Element, fn: EventCallable, handlerTypeEvent: string): WrappedHandler {
+  const isCustomMouseEvent = handlerTypeEvent in customEvents
+
   return function handler(event: Event) {
     const bootstrapEvent = hydrateObj(event, { delegateTarget: element })
 
@@ -120,14 +133,16 @@ function bootstrapHandler(element: Element, fn: EventCallable, isCustomMouseEven
     }
 
     if ((handler as WrappedHandler).oneOff) {
-      EventHandler.off(element, (handler as WrappedHandler).handlerTypeEvent!, (handler as WrappedHandler).callable)
+      EventHandler.off(element, handlerTypeEvent, fn)
     }
 
     return fn.apply(element, [bootstrapEvent])
   } as WrappedHandler
 }
 
-function bootstrapDelegationHandler(element: Element, selector: string, fn: EventCallable, isCustomMouseEvent: boolean): WrappedHandler {
+function bootstrapDelegationHandler(element: Element, selector: string, fn: EventCallable, handlerTypeEvent: string): WrappedHandler {
+  const isCustomMouseEvent = handlerTypeEvent in customEvents
+
   return function handler(this: Element, event: Event) {
     const domElements = element.querySelectorAll(selector)
 
@@ -144,7 +159,7 @@ function bootstrapDelegationHandler(element: Element, selector: string, fn: Even
         }
 
         if ((handler as WrappedHandler).oneOff) {
-          EventHandler.off(element, (handler as WrappedHandler).handlerTypeEvent!, selector, (handler as WrappedHandler).callable)
+          EventHandler.off(element, handlerTypeEvent, selector, fn)
         }
 
         return fn.apply(target, [bootstrapEvent])
@@ -158,22 +173,25 @@ function findHandler(events: Record<string, WrappedHandler>, callable: EventCall
     .find(event => event.callable === callable && event.handlerTypeEvent === handlerTypeEvent && event.delegationSelector === delegationSelector)
 }
 
-function normalizeParameters(originalTypeEvent: string, handler?: string | EventCallable, delegationFunction?: EventCallable): [boolean, EventCallable, string] {
+// `typeEvent` is the DOM event type the listener is registered under. `handlerTypeEvent` is
+// the type the caller asked for. The two differ only for `mouseenter` and `mouseleave`, which
+// the registry must keep apart from the `mouseover` and `mouseout` listeners they share.
+function normalizeParameters(originalTypeEvent: string, handler?: string | EventCallable, delegationFunction?: EventCallable): NormalizedParameters {
   const isDelegated = typeof handler === 'string'
   const callable = (isDelegated ? delegationFunction : (handler || delegationFunction)) as EventCallable
-  let typeEvent = getTypeEvent(originalTypeEvent)
+  // Strip the namespace to get the plain event ('click.bs.button' --> 'click')
+  const baseTypeEvent = originalTypeEvent.replace(stripNameRegex, '')
+  let typeEvent = customEvents[baseTypeEvent] || baseTypeEvent
 
   if (!nativeEvents.has(typeEvent)) {
     typeEvent = originalTypeEvent
   }
 
-  return [isDelegated, callable, typeEvent]
-}
+  const handlerTypeEvent = baseTypeEvent in customEvents ? baseTypeEvent : typeEvent
 
-function getHandlerTypeEvent(originalTypeEvent: string, typeEvent: string): string {
-  const baseTypeEvent = originalTypeEvent.replace(stripNameRegex, '')
-
-  return baseTypeEvent in customEvents ? baseTypeEvent : typeEvent
+  return {
+    isDelegated, callable, typeEvent, handlerTypeEvent
+  }
 }
 
 function addHandler(element: Element, originalTypeEvent: string, handler?: string | EventCallable, delegationFunction?: EventCallable, oneOff?: boolean): void {
@@ -181,9 +199,7 @@ function addHandler(element: Element, originalTypeEvent: string, handler?: strin
     return
   }
 
-  const [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
-  const handlerTypeEvent = getHandlerTypeEvent(originalTypeEvent, typeEvent)
-  const isCustomMouseEvent = handlerTypeEvent in customEvents
+  const { isDelegated, callable, typeEvent, handlerTypeEvent } = normalizeParameters(originalTypeEvent, handler, delegationFunction)
   const events = getElementEvents(element)
   const handlers = events[typeEvent] || (events[typeEvent] = {})
   const previousFunction = findHandler(handlers, callable, handlerTypeEvent, isDelegated ? (handler as string) : null)
@@ -196,8 +212,8 @@ function addHandler(element: Element, originalTypeEvent: string, handler?: strin
 
   const uid = makeEventUid(callable, originalTypeEvent.replace(namespaceRegex, ''))
   const fn = isDelegated ?
-    bootstrapDelegationHandler(element, handler as string, callable, isCustomMouseEvent) :
-    bootstrapHandler(element, callable, isCustomMouseEvent)
+    bootstrapDelegationHandler(element, handler as string, callable, handlerTypeEvent) :
+    bootstrapHandler(element, callable, handlerTypeEvent)
 
   fn.delegationSelector = isDelegated ? (handler as string) : null
   fn.callable = callable
@@ -222,12 +238,6 @@ function removeNamespacedHandlers(element: Element, events: ElementEvents, typeE
       removeHandler(element, events, typeEvent, event)
     }
   }
-}
-
-function getTypeEvent(event: string): string {
-  // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
-  event = event.replace(stripNameRegex, '')
-  return customEvents[event] || event
 }
 
 function trigger(element: EventTarget, event: string, args?: Record<string, unknown>): BootstrapEvent
@@ -256,8 +266,9 @@ const EventHandler = {
       return
     }
 
-    const [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction)
-    const handlerTypeEvent = getHandlerTypeEvent(originalTypeEvent, typeEvent)
+    const { isDelegated, callable, typeEvent, handlerTypeEvent } = normalizeParameters(originalTypeEvent, handler, delegationFunction)
+    // The caller gave a namespace when neither event type matches what they passed in.
+    // `handlerTypeEvent` must take part, or plain `mouseenter` looks namespaced next to `mouseover`.
     const inNamespace = typeEvent !== originalTypeEvent && handlerTypeEvent !== originalTypeEvent
     const events = getElementEvents(element as Element)
     const storeElementEvent = events[typeEvent] || {}
