@@ -4351,7 +4351,7 @@ describe('Menu', () => {
   })
 
   describe('ArrowLeft to close submenu', () => {
-    it('should close the current submenu via _handleSubmenuKeydown on ArrowLeft', () => {
+    it('should close the current submenu on ArrowLeft pressed inside it', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div>',
@@ -4379,11 +4379,10 @@ describe('Menu', () => {
           expect(submenu.classList.contains('show')).toBeTrue()
 
           subItem.focus()
-          const arrowLeftEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, cancelable: true })
-          Object.defineProperty(arrowLeftEvent, 'target', { value: subItem })
-          const handled = menu._handleSubmenuKeydown(arrowLeftEvent)
+          const arrowLeft = createEvent('keydown', { bubbles: true })
+          arrowLeft.key = 'ArrowLeft'
+          subItem.dispatchEvent(arrowLeft)
 
-          expect(handled).toBeTrue()
           expect(submenu.classList.contains('show')).toBeFalse()
           expect(document.activeElement).toEqual(subTrigger)
           resolve()
@@ -4395,7 +4394,7 @@ describe('Menu', () => {
   })
 
   describe('Escape in submenu', () => {
-    it('should close the current submenu via dataApiKeydownHandler on Escape', () => {
+    it('should close the current submenu on Escape pressed inside it', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div>',
@@ -4416,6 +4415,7 @@ describe('Menu', () => {
         const subTrigger = fixtureEl.querySelector('#sub-trigger')
         const submenuWrapper = fixtureEl.querySelector('.submenu')
         const submenu = submenuWrapper.querySelector('.menu')
+        const subItem = fixtureEl.querySelector('#sub-item')
         const menu = new Menu(btnMenu)
 
         btnMenu.addEventListener('shown.bs.menu', () => {
@@ -4423,11 +4423,53 @@ describe('Menu', () => {
           expect(submenu.classList.contains('show')).toBeTrue()
           expect(menu._openSubmenus.size).toEqual(1)
 
-          menu._closeSubmenu(submenu, submenuWrapper)
+          subItem.focus()
+          const escape = createEvent('keydown', { bubbles: true })
+          escape.key = 'Escape'
+          subItem.dispatchEvent(escape)
 
           expect(submenu.classList.contains('show')).toBeFalse()
           expect(menu._openSubmenus.size).toEqual(0)
+          expect(document.activeElement).toEqual(subTrigger)
+          // Only the submenu closes — the root menu stays open
           expect(btnMenu).toHaveClass('show')
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+
+    it('should close the whole menu on Escape pressed at the top level', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <a id="top-item" class="menu-item" href="#">Top item</a>',
+          '    <div class="submenu">',
+          '      <button class="menu-item" type="button">Sub</button>',
+          '      <div class="menu">',
+          '        <a class="menu-item" href="#">Sub item</a>',
+          '      </div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const menuEl = fixtureEl.querySelector('.menu')
+        const topItem = fixtureEl.querySelector('#top-item')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          topItem.focus()
+          const escape = createEvent('keydown', { bubbles: true })
+          escape.key = 'Escape'
+          topItem.dispatchEvent(escape)
+
+          expect(menuEl).not.toHaveClass('show')
+          expect(document.activeElement).toEqual(btnMenu)
           resolve()
         })
 
@@ -4437,7 +4479,7 @@ describe('Menu', () => {
   })
 
   describe('scoped keyboard navigation', () => {
-    it('should scope ArrowDown/ArrowUp to direct children of the current menu level', () => {
+    it('should scope ArrowDown/ArrowUp to the current menu level, including submenu triggers', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div>',
@@ -4445,7 +4487,7 @@ describe('Menu', () => {
           '  <div class="menu">',
           '    <a id="top-item-1" class="menu-item" href="#">Top 1</a>',
           '    <div class="submenu">',
-          '      <button class="menu-item" type="button">Sub trigger</button>',
+          '      <button id="sub-trigger" class="menu-item" type="button">Sub trigger</button>',
           '      <div class="menu">',
           '        <a id="sub-item-1" class="menu-item" href="#">Sub 1</a>',
           '        <a id="sub-item-2" class="menu-item" href="#">Sub 2</a>',
@@ -4458,19 +4500,347 @@ describe('Menu', () => {
 
         const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
         const topItem1 = fixtureEl.querySelector('#top-item-1')
+        const subTrigger = fixtureEl.querySelector('#sub-trigger')
+        const topItem2 = fixtureEl.querySelector('#top-item-2')
         const menu = new Menu(btnMenu)
 
         btnMenu.addEventListener('shown.bs.menu', () => {
           topItem1.focus()
           expect(document.activeElement).toEqual(topItem1)
 
-          const arrowDown = createEvent('keydown')
+          const arrowDown = createEvent('keydown', { bubbles: true })
           arrowDown.key = 'ArrowDown'
-          topItem1.dispatchEvent(arrowDown)
 
-          setTimeout(() => {
-            resolve()
-          }, 20)
+          // The submenu trigger sits one level deeper in the DOM, but belongs to this level
+          topItem1.dispatchEvent(arrowDown)
+          expect(document.activeElement).toEqual(subTrigger)
+
+          // The submenu's own items are never reached from the parent level
+          subTrigger.dispatchEvent(arrowDown)
+          expect(document.activeElement).toEqual(topItem2)
+
+          const arrowUp = createEvent('keydown', { bubbles: true })
+          arrowUp.key = 'ArrowUp'
+          topItem2.dispatchEvent(arrowUp)
+          expect(document.activeElement).toEqual(subTrigger)
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+
+    it('should skip disabled submenu triggers', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <a id="top-item" class="menu-item" href="#">Top</a>',
+          '    <div class="submenu">',
+          '      <button id="disabled-trigger" class="menu-item" type="button" disabled>Disabled</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Hidden</a></div>',
+          '    </div>',
+          '    <div class="submenu">',
+          '      <button id="enabled-trigger" class="menu-item" type="button">Enabled</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Shown</a></div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const topItem = fixtureEl.querySelector('#top-item')
+        const disabledTrigger = fixtureEl.querySelector('#disabled-trigger')
+        const enabledTrigger = fixtureEl.querySelector('#enabled-trigger')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          topItem.focus()
+
+          const arrowDown = createEvent('keydown', { bubbles: true })
+          arrowDown.key = 'ArrowDown'
+          topItem.dispatchEvent(arrowDown)
+
+          expect(document.activeElement).toEqual(enabledTrigger)
+          expect(document.activeElement).not.toEqual(disabledTrigger)
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+  })
+
+  describe('keyboard navigation inside open submenus', () => {
+    it('should move focus with ArrowDown/ArrowUp between items of an open submenu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <div class="submenu">',
+          '      <button id="sub-trigger" class="menu-item" type="button">Sub</button>',
+          '      <div class="menu">',
+          '        <a id="sub-item-1" class="menu-item" href="#">Sub 1</a>',
+          '        <a id="sub-item-2" class="menu-item" href="#">Sub 2</a>',
+          '      </div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const subTrigger = fixtureEl.querySelector('#sub-trigger')
+        const subItem1 = fixtureEl.querySelector('#sub-item-1')
+        const subItem2 = fixtureEl.querySelector('#sub-item-2')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          subTrigger.click()
+          subItem1.focus()
+
+          const arrowDown = createEvent('keydown', { bubbles: true })
+          arrowDown.key = 'ArrowDown'
+          subItem1.dispatchEvent(arrowDown)
+          expect(document.activeElement).toEqual(subItem2)
+
+          const arrowUp = createEvent('keydown', { bubbles: true })
+          arrowUp.key = 'ArrowUp'
+          subItem2.dispatchEvent(arrowUp)
+          expect(document.activeElement).toEqual(subItem1)
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+
+    it('should jump to the first and last item of an open submenu with Home and End', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <div class="submenu">',
+          '      <button id="sub-trigger" class="menu-item" type="button">Sub</button>',
+          '      <div class="menu">',
+          '        <a id="sub-first" class="menu-item" href="#">Sub first</a>',
+          '        <a id="sub-middle" class="menu-item" href="#">Sub middle</a>',
+          '        <a id="sub-last" class="menu-item" href="#">Sub last</a>',
+          '      </div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const subTrigger = fixtureEl.querySelector('#sub-trigger')
+        const subFirst = fixtureEl.querySelector('#sub-first')
+        const subMiddle = fixtureEl.querySelector('#sub-middle')
+        const subLast = fixtureEl.querySelector('#sub-last')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          subTrigger.click()
+          subMiddle.focus()
+
+          const endKey = createEvent('keydown', { bubbles: true })
+          endKey.key = 'End'
+          subMiddle.dispatchEvent(endKey)
+          expect(document.activeElement).toEqual(subLast)
+
+          const homeKey = createEvent('keydown', { bubbles: true })
+          homeKey.key = 'Home'
+          subLast.dispatchEvent(homeKey)
+          expect(document.activeElement).toEqual(subFirst)
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+
+    it('should navigate a third level submenu and walk back up with ArrowLeft', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <div class="submenu">',
+          '      <button id="level-1-trigger" class="menu-item" type="button">Level 1</button>',
+          '      <div class="menu">',
+          '        <div class="submenu">',
+          '          <button id="level-2-trigger" class="menu-item" type="button">Level 2</button>',
+          '          <div class="menu">',
+          '            <a id="level-3-a" class="menu-item" href="#">Level 3 A</a>',
+          '            <a id="level-3-b" class="menu-item" href="#">Level 3 B</a>',
+          '          </div>',
+          '        </div>',
+          '      </div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const level1Trigger = fixtureEl.querySelector('#level-1-trigger')
+        const level2Trigger = fixtureEl.querySelector('#level-2-trigger')
+        const level2Menu = fixtureEl.querySelector('#level-2-trigger').nextElementSibling
+        const level3A = fixtureEl.querySelector('#level-3-a')
+        const level3B = fixtureEl.querySelector('#level-3-b')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          level1Trigger.click()
+          level2Trigger.click()
+          expect(level2Menu).toHaveClass('show')
+
+          level3A.focus()
+          const arrowDown = createEvent('keydown', { bubbles: true })
+          arrowDown.key = 'ArrowDown'
+          level3A.dispatchEvent(arrowDown)
+          expect(document.activeElement).toEqual(level3B)
+
+          const arrowLeft = createEvent('keydown', { bubbles: true })
+          arrowLeft.key = 'ArrowLeft'
+          level3B.dispatchEvent(arrowLeft)
+          expect(level2Menu).not.toHaveClass('show')
+          expect(document.activeElement).toEqual(level2Trigger)
+
+          level2Trigger.dispatchEvent(arrowLeft)
+          expect(document.activeElement).toEqual(level1Trigger)
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+
+    it('should close an open sibling submenu when focus moves to another item', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <div class="submenu" id="submenu-1">',
+          '      <button id="trigger-1" class="menu-item" type="button">Submenu 1</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Action 1</a></div>',
+          '    </div>',
+          '    <div class="submenu" id="submenu-2">',
+          '      <button id="trigger-2" class="menu-item" type="button">Submenu 2</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Action 2</a></div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const trigger1 = fixtureEl.querySelector('#trigger-1')
+        const trigger2 = fixtureEl.querySelector('#trigger-2')
+        const submenu1 = fixtureEl.querySelector('#submenu-1 > .menu')
+        const submenu2 = fixtureEl.querySelector('#submenu-2 > .menu')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          trigger1.click()
+          expect(submenu1).toHaveClass('show')
+
+          trigger1.focus()
+          const arrowDown = createEvent('keydown', { bubbles: true })
+          arrowDown.key = 'ArrowDown'
+          trigger1.dispatchEvent(arrowDown)
+
+          expect(document.activeElement).toEqual(trigger2)
+          expect(submenu1).not.toHaveClass('show')
+          // Arrowing onto a trigger moves focus only, it does not open the submenu
+          expect(submenu2).not.toHaveClass('show')
+          expect(menu._openSubmenus.size).toEqual(0)
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+
+    it('should keep an open submenu when focus stays on its own trigger', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <a id="top-item" class="menu-item" href="#">Top</a>',
+          '    <div class="submenu" id="submenu-1">',
+          '      <button id="trigger-1" class="menu-item" type="button">Submenu 1</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Action 1</a></div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const topItem = fixtureEl.querySelector('#top-item')
+        const trigger1 = fixtureEl.querySelector('#trigger-1')
+        const submenu1 = fixtureEl.querySelector('#submenu-1 > .menu')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          trigger1.click()
+          expect(submenu1).toHaveClass('show')
+
+          topItem.focus()
+          const arrowDown = createEvent('keydown', { bubbles: true })
+          arrowDown.key = 'ArrowDown'
+          topItem.dispatchEvent(arrowDown)
+
+          expect(document.activeElement).toEqual(trigger1)
+          expect(submenu1).toHaveClass('show')
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+
+    it('should resolve the owning menu when the menu is moved to a container', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button id="other-toggle" class="btn" data-bs-toggle="menu">Other menu</button>',
+          '  <div class="menu">',
+          '    <a class="menu-item" href="#">Other item</a>',
+          '  </div>',
+          '</div>',
+          '<div>',
+          '  <button id="contained-toggle" class="btn" data-bs-toggle="menu" data-bs-container="body">Contained menu</button>',
+          '  <div id="contained-menu" class="menu">',
+          '    <a id="contained-1" class="menu-item" href="#">Contained 1</a>',
+          '    <a id="contained-2" class="menu-item" href="#">Contained 2</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const otherToggle = fixtureEl.querySelector('#other-toggle')
+        const containedToggle = fixtureEl.querySelector('#contained-toggle')
+        const containedMenu = fixtureEl.querySelector('#contained-menu')
+        const contained1 = fixtureEl.querySelector('#contained-1')
+        const contained2 = fixtureEl.querySelector('#contained-2')
+        const menu = new Menu(containedToggle)
+
+        containedToggle.addEventListener('shown.bs.menu', () => {
+          expect(containedMenu.parentNode).toEqual(document.body)
+
+          contained1.focus()
+          const arrowDown = createEvent('keydown', { bubbles: true })
+          arrowDown.key = 'ArrowDown'
+          contained1.dispatchEvent(arrowDown)
+
+          expect(document.activeElement).toEqual(contained2)
+          // The first toggle in the document must not be mistaken for the owner
+          expect(otherToggle.getAttribute('aria-expanded')).not.toEqual('true')
+
+          menu.hide()
+          resolve()
         })
 
         menu.show()
