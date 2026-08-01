@@ -901,26 +901,9 @@ class Menu extends BaseComponent {
     const submenuWrapper = (target as Element).closest(SELECTOR_SUBMENU)
     const isSubmenuToggle = (target as Element).matches(SELECTOR_SUBMENU_TOGGLE)
 
-    if ((key === ENTER_KEY || key === SPACE_KEY) && submenuWrapper && isSubmenuToggle) {
-      event.preventDefault()
-      event.stopPropagation()
+    const isOpenKey = key === ENTER_KEY || key === SPACE_KEY || key === enterKey
 
-      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
-      if (submenu) {
-        this._closeSiblingSubmenus(submenuWrapper)
-        this._openSubmenu(target as HTMLElement, submenu, submenuWrapper)
-        requestAnimationFrame(() => {
-          const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
-          if (firstItem) {
-            firstItem.focus()
-          }
-        })
-      }
-
-      return true
-    }
-
-    if (key === enterKey && submenuWrapper && isSubmenuToggle) {
+    if (isOpenKey && submenuWrapper && isSubmenuToggle) {
       event.preventDefault()
       event.stopPropagation()
 
