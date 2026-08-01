@@ -2660,6 +2660,123 @@ describe('Menu', () => {
     })
   })
 
+  describe('submenu trigger markup', () => {
+    it('should mark every submenu trigger as a popup on init, at any depth', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '  <div class="menu">',
+        '    <a id="plain" class="menu-item" href="#">Plain</a>',
+        '    <div class="submenu">',
+        '      <button id="level-1" class="menu-item" type="button">Level 1</button>',
+        '      <div class="menu">',
+        '        <div class="submenu">',
+        '          <button id="level-2" class="menu-item" type="button">Level 2</button>',
+        '          <div class="menu"><a class="menu-item" href="#">Deep</a></div>',
+        '        </div>',
+        '      </div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const plain = fixtureEl.querySelector('#plain')
+      const level1 = fixtureEl.querySelector('#level-1')
+      const level2 = fixtureEl.querySelector('#level-2')
+
+      // eslint-disable-next-line no-new
+      new Menu(btnMenu)
+
+      for (const trigger of [level1, level2]) {
+        expect(trigger.getAttribute('aria-haspopup')).toEqual('true')
+        expect(trigger.getAttribute('aria-expanded')).toEqual('false')
+      }
+
+      expect(plain.hasAttribute('aria-haspopup')).toBeFalse()
+      expect(plain.hasAttribute('aria-expanded')).toBeFalse()
+    })
+
+    it('should not mark a submenu wrapper that holds no nested menu', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '  <div class="menu">',
+        '    <div class="submenu">',
+        '      <button id="empty-trigger" class="menu-item" type="button">No submenu</button>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const emptyTrigger = fixtureEl.querySelector('#empty-trigger')
+
+      // eslint-disable-next-line no-new
+      new Menu(btnMenu)
+
+      expect(emptyTrigger.hasAttribute('aria-haspopup')).toBeFalse()
+      expect(emptyTrigger.hasAttribute('aria-expanded')).toBeFalse()
+    })
+
+    it('should keep an author supplied aria-expanded on a submenu trigger', () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '  <div class="menu">',
+        '    <div class="submenu">',
+        '      <button id="trigger" class="menu-item" type="button" aria-expanded="true">Sub</button>',
+        '      <div class="menu"><a class="menu-item" href="#">Action</a></div>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const trigger = fixtureEl.querySelector('#trigger')
+
+      // eslint-disable-next-line no-new
+      new Menu(btnMenu)
+
+      expect(trigger.getAttribute('aria-haspopup')).toEqual('true')
+      expect(trigger.getAttribute('aria-expanded')).toEqual('true')
+    })
+
+    it('should flip aria-expanded on the trigger as its submenu opens and closes', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <div class="submenu">',
+          '      <button id="trigger" class="menu-item" type="button">Sub</button>',
+          '      <div class="menu"><a class="menu-item" href="#">Action</a></div>',
+          '    </div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const trigger = fixtureEl.querySelector('#trigger')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          expect(trigger.getAttribute('aria-expanded')).toEqual('false')
+
+          trigger.click()
+          expect(trigger.getAttribute('aria-expanded')).toEqual('true')
+
+          trigger.click()
+          expect(trigger.getAttribute('aria-expanded')).toEqual('false')
+          expect(trigger.getAttribute('aria-haspopup')).toEqual('true')
+          resolve()
+        })
+
+        menu.show()
+      })
+    })
+  })
+
   describe('submenu', () => {
     // `_openSubmenu()` adds a `mouseenter` listener and `_closeSubmenu()` drops it again.
     // A failed removal used to leave one live listener behind per open and close cycle.

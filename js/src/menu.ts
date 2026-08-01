@@ -197,6 +197,7 @@ class Menu extends BaseComponent {
 
     this._parseResponsivePlacements()
     this._setupSubmenuListeners()
+    this._initSubmenuTriggers()
   }
 
   // Getters
@@ -675,6 +676,26 @@ class Menu extends BaseComponent {
     } else {
       this._closeSiblingSubmenus(submenuWrapper)
       this._openSubmenu(trigger, submenu, submenuWrapper)
+    }
+  }
+
+  // Announce every submenu trigger up front. Waiting until the submenu opens hides
+  // the popup from assistive technology until a user has already found it.
+  protected _initSubmenuTriggers(): void {
+    if (!this._menu) {
+      return
+    }
+
+    for (const trigger of SelectorEngine.find(SELECTOR_SUBMENU_TOGGLE, this._menu)) {
+      if (!SelectorEngine.findOne(SELECTOR_MENU, trigger.parentElement!)) {
+        continue
+      }
+
+      trigger.setAttribute('aria-haspopup', 'true')
+
+      if (!trigger.hasAttribute('aria-expanded')) {
+        trigger.setAttribute('aria-expanded', 'false')
+      }
     }
   }
 

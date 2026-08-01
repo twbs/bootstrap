@@ -536,6 +536,8 @@ The [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessib
 
 Bootstrap’s menus, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create menus that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the `role` and `aria-` attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.
 
+Submenu triggers are an exception. Bootstrap adds `aria-haspopup="true"` to each `.submenu > .menu-item` that wraps a nested `.menu`, and keeps `aria-expanded` on it in sync as the submenu opens and closes. Set `aria-expanded` yourself only if a submenu must start open.
+
 ### Keyboard navigation
 
 Menus include built-in keyboard support for navigating menu items.
