@@ -20,10 +20,13 @@ $root-tokens: defaults(
     --gradient: #{$gradient},
 
     // scss-docs-start root-body-variables
-    --body-font-family: system-ui,
+    // The stack omits system-ui. It resolves to the user interface font of the
+    // locale, which shows non-Latin text incorrectly. See twbs/bootstrap#42703.
+    --body-font-family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
     --body-font-size: 1rem,
     --body-font-weight: var(--font-weight-normal),
     --body-line-height: 1.5,
+    // scss-docs-end root-body-variables
 
     --heading-color: inherit,
 
@@ -34,7 +37,7 @@ $root-tokens: defaults(
     --link-underline-offset: .2em,
     --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
 
-    --font-mono: "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;",
+    --font-mono: "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace",
     --code-font-size: 95%,
     --code-color: var(--fg-2),
 
