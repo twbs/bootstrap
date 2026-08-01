@@ -49,7 +49,7 @@ $range-tokens: defaults(
   border: var(--range-thumb-border);
   @include border-radius(var(--range-thumb-border-radius));
   @include box-shadow(var(--range-thumb-box-shadow));
-  @include transition-longhand(
+  @include transition-props(
     var(--range-thumb-transition-property),
     var(--range-thumb-transition-duration),
     var(--range-thumb-transition-timing)

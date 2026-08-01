@@ -50,7 +50,7 @@ $accordion-tokens: defaults(
     list-style: none; // Remove default marker
     cursor: pointer;
     background-color: var(--accordion-btn-bg);
-    @include transition-longhand(
+    @include transition-props(
       var(--accordion-transition-property),
       var(--accordion-transition-duration),
       var(--accordion-transition-timing)

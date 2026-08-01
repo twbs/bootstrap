@@ -68,7 +68,7 @@ $form-control-sizes: defaults(
     border: var(--control-border-width) solid var(--control-border-color);
     @include border-radius(var(--control-border-radius), 0);
     @include box-shadow(var(--control-box-shadow));
-    @include transition-longhand(
+    @include transition-props(
       var(--control-transition-property),
       var(--control-transition-duration),
       var(--control-transition-timing)
@@ -129,7 +129,7 @@ $form-control-sizes: defaults(
       border-width: 0;
       border-inline-end-width: var(--control-border-width);
       border-radius: 0; // stylelint-disable-line property-disallowed-list
-      @include transition-longhand(
+      @include transition-props(
         var(--control-transition-property),
         var(--control-transition-duration),
         var(--control-transition-timing)

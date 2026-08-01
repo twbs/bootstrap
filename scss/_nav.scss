@@ -117,7 +117,7 @@ $nav-underline-tokens: defaults(
     background: none;
     border: var(--nav-link-border-width) solid transparent;
     @include border-radius(var(--radius-5));
-    @include transition-longhand(
+    @include transition-props(
       var(--nav-link-transition-property),
       var(--nav-link-transition-duration),
       var(--nav-link-transition-timing)

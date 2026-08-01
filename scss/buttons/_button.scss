@@ -196,7 +196,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     background-color: var(--btn-bg, var(--bg-2));
     border: var(--btn-border-width) solid var(--btn-border-color);
     @include border-radius(var(--btn-border-radius));
-    @include transition-longhand(
+    @include transition-props(
       var(--btn-transition-property),
       var(--btn-transition-duration),
       var(--btn-transition-timing)

@@ -56,7 +56,7 @@ $form-floating-tokens: defaults(
       pointer-events: none;
       border: var(--border-width) solid transparent; // Required for aligning label's text with the input as it affects inner box model
       transform-origin: 0 0;
-      @include transition-longhand(
+      @include transition-props(
         var(--form-floating-transition-property),
         var(--form-floating-transition-duration),
         var(--form-floating-transition-timing)
