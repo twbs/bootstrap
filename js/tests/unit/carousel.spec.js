@@ -1173,6 +1173,47 @@ describe('Carousel', () => {
       expect(carousel._interval).not.toBeNull()
     })
 
+    it('should stay paused while the pointer moves between slides', () => {
+      fixtureEl.innerHTML = basicMarkup({ autoplay: true })
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const item = fixtureEl.querySelector('#item1')
+      const carousel = new Carousel(carouselEl)
+      const cycleSpy = spyOn(carousel, 'cycle')
+
+      // The pointer enters the carousel, then moves onto one of its slides. `mouseout`
+      // fires with a `relatedTarget` inside the carousel, so cycling must not resume.
+      carouselEl.dispatchEvent(new MouseEvent('mouseout', {
+        bubbles: true,
+        relatedTarget: item
+      }))
+
+      expect(cycleSpy).not.toHaveBeenCalled()
+
+      carouselEl.dispatchEvent(new MouseEvent('mouseout', {
+        bubbles: true,
+        relatedTarget: document.body
+      }))
+
+      expect(cycleSpy).toHaveBeenCalled()
+    })
+
+    it('should not pause again while the pointer moves between slides', () => {
+      fixtureEl.innerHTML = basicMarkup({ autoplay: true })
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const item = fixtureEl.querySelector('#item1')
+      const carousel = new Carousel(carouselEl)
+      const pauseSpy = spyOn(carousel, 'pause')
+
+      item.dispatchEvent(new MouseEvent('mouseover', {
+        bubbles: true,
+        relatedTarget: carouselEl
+      }))
+
+      expect(pauseSpy).not.toHaveBeenCalled()
+    })
+
     it('should toggle the playing class and expose the interval while cycling', () => {
       fixtureEl.innerHTML = basicMarkup({ autoplay: true })
 

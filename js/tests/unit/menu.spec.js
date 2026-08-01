@@ -2661,6 +2661,49 @@ describe('Menu', () => {
   })
 
   describe('submenu', () => {
+    // `_openSubmenu()` adds a `mouseenter` listener and `_closeSubmenu()` drops it again.
+    // A failed removal used to leave one live listener behind per open and close cycle.
+    it('should not accumulate mouseenter listeners across open and close cycles', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <ul class="menu">',
+          '    <li class="submenu">',
+          '      <button class="menu-item" type="button">More options</button>',
+          '      <ul class="menu">',
+          '        <li><a class="menu-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const submenuTrigger = fixtureEl.querySelector('.submenu > .menu-item')
+        const submenu = fixtureEl.querySelector('.submenu > .menu')
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          for (let i = 0; i < 3; i++) {
+            submenuTrigger.click()
+            submenuTrigger.click()
+          }
+
+          submenuTrigger.click()
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          const spy = spyOn(menu, '_cancelSubmenuCloseTimeout')
+          submenu.dispatchEvent(new MouseEvent('mouseover'))
+
+          expect(spy.calls.count()).toEqual(1)
+          resolve()
+        })
+
+        const menu = new Menu(btnMenu)
+        btnMenu.click()
+      })
+    })
+
     it('should open submenu on click', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [

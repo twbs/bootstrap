@@ -1215,6 +1215,31 @@ describe('Tooltip', () => {
         tooltip.show()
       })
     })
+
+    it('should not start hiding while the pointer moves between children of the trigger', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"><span>child</span></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const childEl = fixtureEl.querySelector('span')
+      const tooltip = new Tooltip(tooltipEl, { trigger: 'hover' })
+      const spy = spyOn(tooltip, '_leave')
+
+      // The pointer leaves the child but stays inside the trigger, so `mouseout` carries a
+      // `relatedTarget` within the trigger. This must not count as a leave.
+      childEl.dispatchEvent(new MouseEvent('mouseout', {
+        bubbles: true,
+        relatedTarget: tooltipEl
+      }))
+
+      expect(spy).not.toHaveBeenCalled()
+
+      tooltipEl.dispatchEvent(new MouseEvent('mouseout', {
+        bubbles: true,
+        relatedTarget: document.body
+      }))
+
+      expect(spy).toHaveBeenCalled()
+    })
   })
 
   describe('update', () => {

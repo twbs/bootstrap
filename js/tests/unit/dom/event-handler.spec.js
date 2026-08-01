@@ -442,6 +442,248 @@ describe('EventHandler', () => {
     })
   })
 
+  // `mouseenter` and `mouseleave` do not bubble, so `EventHandler` emulates them with
+  // `mouseover` and `mouseout` listeners. The registry must still treat them as their own
+  // event types, or removal, deduplication and one-off bookkeeping hit the wrong handler.
+  describe('custom mouse events', () => {
+    const moveMouse = (from, to) => {
+      from.dispatchEvent(new MouseEvent('mouseout', { bubbles: true, relatedTarget: to }))
+      to.dispatchEvent(new MouseEvent('mouseover', { bubbles: true, relatedTarget: from }))
+    }
+
+    it('should ignore transitions between descendants for namespaced listeners', () => {
+      fixtureEl.innerHTML = '<div class="outer"><span></span></div>'
+
+      const outer = fixtureEl.querySelector('.outer')
+      const child = fixtureEl.querySelector('span')
+      const enterSpy = jasmine.createSpy('mouseenter')
+      const leaveSpy = jasmine.createSpy('mouseleave')
+
+      EventHandler.on(outer, 'mouseenter.namespace', enterSpy)
+      EventHandler.on(outer, 'mouseleave.namespace', leaveSpy)
+
+      moveMouse(outer, child)
+      moveMouse(child, outer)
+
+      expect(enterSpy).not.toHaveBeenCalled()
+      expect(leaveSpy).not.toHaveBeenCalled()
+
+      moveMouse(document.body, outer)
+
+      expect(enterSpy.calls.count()).toEqual(1)
+      expect(leaveSpy).not.toHaveBeenCalled()
+    })
+
+    it('should ignore transitions between descendants for delegated listeners', () => {
+      fixtureEl.innerHTML = '<div class="outer"><div class="inner"><span></span></div></div>'
+
+      const outer = fixtureEl.querySelector('.outer')
+      const inner = fixtureEl.querySelector('.inner')
+      const child = fixtureEl.querySelector('span')
+      const enterSpy = jasmine.createSpy('delegated mouseenter')
+
+      EventHandler.on(outer, 'mouseenter.namespace', '.inner', enterSpy)
+
+      moveMouse(inner, child)
+
+      expect(enterSpy).not.toHaveBeenCalled()
+
+      moveMouse(outer, inner)
+
+      expect(enterSpy.calls.count()).toEqual(1)
+    })
+
+    it('should register the same callback only once', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const handler = jasmine.createSpy('mouseenter')
+
+      EventHandler.on(div, 'mouseenter', handler)
+      EventHandler.on(div, 'mouseenter', handler)
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(1)
+    })
+
+    it('should keep mouseenter listeners apart from mouseover listeners', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const handler = jasmine.createSpy('mouse handler')
+
+      EventHandler.on(div, 'mouseenter', handler)
+      EventHandler.on(div, 'mouseover', handler)
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(2)
+
+      EventHandler.off(div, 'mouseover')
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      // only the mouseenter listener is left
+      expect(handler.calls.count()).toEqual(3)
+
+      EventHandler.off(div, 'mouseenter')
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(3)
+    })
+
+    it('should keep a delegated listener apart from a direct one', () => {
+      fixtureEl.innerHTML = '<div class="outer"><div class="inner"></div></div>'
+
+      const outer = fixtureEl.querySelector('.outer')
+      const inner = fixtureEl.querySelector('.inner')
+      const handler = jasmine.createSpy('mouseenter')
+
+      EventHandler.on(outer, 'mouseenter', handler)
+      EventHandler.on(outer, 'mouseenter', '.inner', handler)
+      inner.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }))
+
+      expect(handler.calls.count()).toEqual(2)
+
+      EventHandler.off(outer, 'mouseenter', '.inner', handler)
+      inner.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }))
+
+      // the direct listener survives
+      expect(handler.calls.count()).toEqual(3)
+    })
+
+    it('should remove a listener by reference', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const handler = jasmine.createSpy('mouseenter')
+
+      EventHandler.on(div, 'mouseenter', handler)
+      EventHandler.off(div, 'mouseenter', handler)
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler).not.toHaveBeenCalled()
+    })
+
+    it('should remove a delegated listener by reference', () => {
+      fixtureEl.innerHTML = '<div class="outer"><div class="inner"></div></div>'
+
+      const outer = fixtureEl.querySelector('.outer')
+      const inner = fixtureEl.querySelector('.inner')
+      const handler = jasmine.createSpy('delegated mouseenter')
+
+      EventHandler.on(outer, 'mouseenter', '.inner', handler)
+      EventHandler.off(outer, 'mouseenter', '.inner', handler)
+      inner.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }))
+
+      expect(handler).not.toHaveBeenCalled()
+    })
+
+    it('should remove every listener for the event type', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const first = jasmine.createSpy('first')
+      const second = jasmine.createSpy('second')
+
+      EventHandler.on(div, 'mouseenter', first)
+      EventHandler.on(div, 'mouseenter.namespace', second)
+      EventHandler.off(div, 'mouseenter')
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(first).not.toHaveBeenCalled()
+      expect(second).not.toHaveBeenCalled()
+    })
+
+    it('should remove only the namespaced listener when a namespace is given', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const plain = jasmine.createSpy('plain')
+      const namespaced = jasmine.createSpy('namespaced')
+
+      EventHandler.on(div, 'mouseenter', plain)
+      EventHandler.on(div, 'mouseenter.namespace', namespaced)
+      EventHandler.off(div, 'mouseenter.namespace')
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(plain.calls.count()).toEqual(1)
+      expect(namespaced).not.toHaveBeenCalled()
+    })
+
+    it('should remove listeners when only a namespace is given', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const enterSpy = jasmine.createSpy('mouseenter')
+      const leaveSpy = jasmine.createSpy('mouseleave')
+
+      EventHandler.on(div, 'mouseenter.namespace', enterSpy)
+      EventHandler.on(div, 'mouseleave.namespace', leaveSpy)
+      EventHandler.off(div, '.namespace')
+
+      div.dispatchEvent(new MouseEvent('mouseover'))
+      div.dispatchEvent(new MouseEvent('mouseout'))
+
+      expect(enterSpy).not.toHaveBeenCalled()
+      expect(leaveSpy).not.toHaveBeenCalled()
+    })
+
+    // Components such as Menu add a listener each time they open a submenu, then drop it on
+    // close. A failed removal used to leave one live listener behind per cycle.
+    it('should not accumulate listeners across repeated add and remove cycles', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const handler = jasmine.createSpy('mouseenter')
+
+      for (let i = 0; i < 5; i++) {
+        EventHandler.on(div, 'mouseenter', () => handler())
+        EventHandler.off(div, 'mouseenter')
+      }
+
+      EventHandler.on(div, 'mouseenter', () => handler())
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(1)
+    })
+
+    it('should not consume a one-off listener on a transition between descendants', () => {
+      fixtureEl.innerHTML = '<div class="outer"><div class="inner"><span></span></div></div>'
+
+      const outer = fixtureEl.querySelector('.outer')
+      const inner = fixtureEl.querySelector('.inner')
+      const child = fixtureEl.querySelector('span')
+      const enterSpy = jasmine.createSpy('mouseenter')
+      const delegateEnterSpy = jasmine.createSpy('delegated mouseenter')
+
+      EventHandler.one(inner, 'mouseenter', enterSpy)
+      EventHandler.one(outer, 'mouseenter', '.inner', delegateEnterSpy)
+
+      moveMouse(inner, child)
+
+      expect(enterSpy).not.toHaveBeenCalled()
+      expect(delegateEnterSpy).not.toHaveBeenCalled()
+
+      moveMouse(outer, inner)
+      moveMouse(outer, inner)
+
+      expect(enterSpy.calls.count()).toEqual(1)
+      expect(delegateEnterSpy.calls.count()).toEqual(1)
+    })
+
+    it('should call a namespaced one-off listener just once', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const handler = jasmine.createSpy('mouseenter')
+
+      EventHandler.one(div, 'mouseenter.namespace', handler)
+      div.dispatchEvent(new MouseEvent('mouseover'))
+      div.dispatchEvent(new MouseEvent('mouseover'))
+
+      expect(handler.calls.count()).toEqual(1)
+    })
+  })
+
   describe('general functionality', () => {
     it('should hydrate properties, and make them configurable', () => {
       return new Promise(resolve => {
