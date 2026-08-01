@@ -47,7 +47,7 @@ $datepicker-tokens: defaults(
     flex-direction: column;
     min-width: var(--datepicker-min-width);
     padding: var(--datepicker-padding);
-    font-family: var(--font-sans-serif);
+    font-family: var(--body-font-family);
     font-size: var(--datepicker-font-size);
     color: var(--datepicker-color);
     color-scheme: light dark;
