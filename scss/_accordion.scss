@@ -16,8 +16,8 @@ $accordion-tokens: defaults(
     --accordion-color: var(--fg-body),
     --accordion-bg: var(--bg-body),
     --accordion-transition-property: "color, background-color, border-radius",
-    --accordion-transition-timing: ".15s ease-in-out",
-    --accordion-transition: var(--accordion-transition-property) var(--accordion-transition-timing),
+    --accordion-transition-duration: .15s,
+    --accordion-transition-timing: ease-in-out,
     --accordion-border-color: var(--border-color),
     --accordion-border-width: var(--border-width),
     --accordion-border-radius: var(--accordion-radius, var(--radius-7)),
@@ -50,7 +50,11 @@ $accordion-tokens: defaults(
     list-style: none; // Remove default marker
     cursor: pointer;
     background-color: var(--accordion-btn-bg);
-    @include transition(var(--accordion-transition));
+    @include transition-longhand(
+      var(--accordion-transition-property),
+      var(--accordion-transition-duration),
+      var(--accordion-transition-timing)
+    );
 
     &::-webkit-details-marker {
       display: none;

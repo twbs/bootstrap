@@ -26,8 +26,8 @@ $form-control-tokens: defaults(
     --control-action-bg: var(--bg-1),
     --control-action-hover-bg: var(--bg-2),
     --control-transition-property: "border-color, box-shadow",
-    --control-transition-timing: .15s ease-in-out,
-    --control-transition: var(--control-transition-property) var(--control-transition-timing),
+    --control-transition-duration: .15s,
+    --control-transition-timing: ease-in-out,
     --control-placeholder-color: var(--fg-3),
     --control-disabled-color: var(--control-fg),
     --control-disabled-bg: var(--bg-2),
@@ -68,7 +68,11 @@ $form-control-sizes: defaults(
     border: var(--control-border-width) solid var(--control-border-color);
     @include border-radius(var(--control-border-radius), 0);
     @include box-shadow(var(--control-box-shadow));
-    @include transition(var(--control-transition));
+    @include transition-longhand(
+      var(--control-transition-property),
+      var(--control-transition-duration),
+      var(--control-transition-timing)
+    );
 
     // Customize the `:focus` state to imitate native WebKit styles.
     &:focus-visible {
@@ -125,7 +129,11 @@ $form-control-sizes: defaults(
       border-width: 0;
       border-inline-end-width: var(--control-border-width);
       border-radius: 0; // stylelint-disable-line property-disallowed-list
-      @include transition(var(--control-transition));
+      @include transition-longhand(
+        var(--control-transition-property),
+        var(--control-transition-duration),
+        var(--control-transition-timing)
+      );
     }
 
     &:hover:not(:disabled, [readonly])::file-selector-button {
