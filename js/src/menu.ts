@@ -460,7 +460,10 @@ class Menu extends BaseComponent {
           toFloatingOffset(offsetValue)
       ),
       flip({
-        fallbackPlacements: this._getFallbackPlacements()
+        fallbackPlacements: this._getFallbackPlacements(),
+        // When no placement fits, keep the initial one. Overflow below can be
+        // scrolled to; overflow above the scroll origin can never be reached.
+        fallbackStrategy: 'initialPlacement'
       }),
       shift({
         boundary: (this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary) as Boundary

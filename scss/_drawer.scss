@@ -284,6 +284,9 @@ $drawer-backdrop-tokens: defaults(
 
   // Scrollable body
   .drawer-body {
+    // Contain absolutely positioned children (e.g. menus) so they scroll with
+    // the body instead of being clipped by the drawer's overflow.
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--drawer-padding-y);
