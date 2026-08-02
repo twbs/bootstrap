@@ -238,6 +238,11 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **New `.drawer-sheet` variant** for flush-to-edge panels with no inset, border-radius, or shadow.
 - **Swipe-to-dismiss** gesture support on touch devices for Drawer components. Drawers automatically detect their placement and dismiss on the appropriate swipe direction.
 - **Dialog and Drawer share `DialogBase`** — the show/hide/toggle lifecycle, keyboard handling, backdrop clicks, and static backdrop bounce are consolidated in a shared base class.
+- **Toast transitions moved to CSS.** The fade now uses `@starting-style` with a discrete `display` transition, so the component no longer toggles helper classes to drive the animation:
+  - Removed the `animation` option and `data-bs-animation`. Add `.toast-instant` to skip the animation, matching `.dialog-instant` and `.drawer-instant`.
+  - Removed the `.showing` class and the deprecated `.hide` class. Only `.show` is toggled now. Replace any CSS or tests that depend on them.
+  - Toasts no longer get the generic `.fade` class. The transition lives on `.toast` itself, tuned with `--toast-transition-duration` and `--toast-transition-timing`.
+  - `isShown()` returns `false` as soon as `hide()` is called, rather than when the fade-out ends.
 - **Reworked button variants.** The v5 per-color classes like `.btn-primary`, `.btn-outline-primary`, `.btn-secondary`, etc. are replaced by a composition of variant + theme classes:
   - `.btn-primary` &rarr; `.btn-solid .theme-primary`
   - `.btn-outline-primary` &rarr; `.btn-outline .theme-primary`

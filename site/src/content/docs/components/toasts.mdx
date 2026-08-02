@@ -227,6 +227,22 @@ Alternatively, you can also add additional controls and components to toasts.
     </div>
   </div>`} />
 
+### Instant
+
+By default, toasts fade in and out. To disable the animation, add `.toast-instant` to the toast. The `show` and `hide` methods then finish immediately, so `shown.bs.toast` and `hidden.bs.toast` fire right away.
+
+<Example class="bg-1" code={`<div class="toast toast-instant" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      This toast appears and disappears instantly.
+    </div>
+  </div>`} />
+
 ## Placement
 
 Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you’re only ever going to show one toast at a time, put the positioning styles right on the `.toast`.
@@ -375,7 +391,6 @@ const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, o
 | `data-bs-dismiss="toast"` | On a close control, dismisses the toast when activated. |
 | `data-bs-autohide` | Whether the toast hides automatically after the delay. |
 | `data-bs-delay` | Time in milliseconds before hiding (when autohide is enabled). |
-| `data-bs-animation` | Whether to use the fade transition when showing and hiding. |
 </BsTable>
 
 ### Triggers
@@ -393,7 +408,6 @@ const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, o
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `animation` | boolean | `true` | Apply a CSS fade transition to the toast. |
 | `autohide` | boolean | `true` | Automatically hide the toast after the delay. |
 | `delay` | number | `5000` | Delay in milliseconds before hiding the toast. |
 </BsTable>
