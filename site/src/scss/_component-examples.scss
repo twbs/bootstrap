@@ -62,6 +62,10 @@
       --bd-example-padding: 1.5rem;
     }
 
+    &.bd-example-resizable {
+      --bd-example-padding: .375rem;
+    }
+
     + p {
       margin-top: 2rem;
     }
@@ -125,8 +129,8 @@
   // Grid examples
   //
 
-  .bd-example-row [class^="col"],
-  .bd-example-cols [class^="col"] > *,
+  .bd-example-row [class*="col"],
+  .bd-example-cols [class*="col"] > *,
   .bd-example-cssgrid [class*="grid"] > * {
     padding-block: .75rem;
     background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
@@ -359,11 +363,6 @@
   // Resizable examples
   //
 
-  .bd-example-resizable {
-    position: relative;
-    padding: .375rem;
-  }
-
   .bd-resizable-container {
     position: relative;
     max-width: 100%;
@@ -371,7 +370,7 @@
     overflow: hidden;
     resize: horizontal;
     background-color: var(--bs-bg-body);
-    @include border-radius(var(--radius-4));
+    @include border-radius(var(--radius-3));
   }
 
   .bd-resizable-badge {

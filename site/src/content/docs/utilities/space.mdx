@@ -38,10 +38,14 @@ Where *size* is one of:
 
 - `0` - for classes that eliminate the spacing by setting it to `0`
 - `1` - (by default) for classes that set the spacing to `$spacer * .25`
-- `2` - (by default) for classes that set the spacing to `$spacer * .5`
-- `3` - (by default) for classes that set the spacing to `$spacer`
-- `4` - (by default) for classes that set the spacing to `$spacer * 1.5`
-- `5` - (by default) for classes that set the spacing to `$spacer * 3`
+- `2` - (by default) for classes that set the spacing to `$spacer * .375`
+- `3` - (by default) for classes that set the spacing to `$spacer * .5`
+- `4` - (by default) for classes that set the spacing to `$spacer * .75`
+- `5` - (by default) for classes that set the spacing to `$spacer`
+- `6` - (by default) for classes that set the spacing to `$spacer * 1.25`
+- `7` - (by default) for classes that set the spacing to `$spacer * 1.5`
+- `8` - (by default) for classes that set the spacing to `$spacer * 2`
+- `9` - (by default) for classes that set the spacing to `$spacer * 3`
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
@@ -89,7 +93,7 @@ Space utilities apply `margin-inline-end` or `margin-block-end` to every direct 
 
 ```css
 :where(.space-x-3 > :not(:last-child)) {
-  margin-inline-end: 1rem;
+  margin-inline-end: 0.5rem;
 }
 ```
 

@@ -243,7 +243,7 @@ $card-tokens: defaults(
   //
 
   // Card groups lay out their cards in a row using a container query, so wrap the
-  // group in a query container (e.g., the `.contains-inline` utility) for the row
+  // group in a query container (e.g., the `.container-inline` utility) for the row
   // layout to take effect. Without a query container the cards remain stacked.
   .card-group {
     // The child selector allows nested `.card` within `.card-group`

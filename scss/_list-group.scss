@@ -135,7 +135,7 @@ $list-group-tokens: defaults(
   //
   // Change the layout of list group items from vertical (default) to horizontal.
   // The responsive variants use container queries, so wrap the list group in a
-  // query container (e.g., the `.contains-inline` utility) for them to take effect.
+  // query container (e.g., the `.container-inline` utility) for them to take effect.
 
   @include loop-breakpoints-up() using ($breakpoint, $prefix) {
     .#{$prefix}list-group-horizontal {

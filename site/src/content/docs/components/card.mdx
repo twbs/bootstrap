@@ -431,9 +431,9 @@ In addition to styling the content within cards, Bootstrap includes a few option
 
 Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use `display: flex;` to become attached with uniform dimensions starting at the `sm` breakpoint.
 
-This layout uses [container queries]([[docsref:/layout/breakpoints#container-queries]]), so wrap the card group in a query container—add the `.contains-inline` utility to a parent element—for the row layout to take effect. Without a query container, the cards remain stacked.
+This layout uses [container queries]([[docsref:/layout/breakpoints#container-queries]]), so wrap the card group in a query container—add the `.container-inline` utility to a parent element—for the row layout to take effect. Without a query container, the cards remain stacked.
 
-<ResizableExample code={`<div class="contains-inline">
+<ResizableExample code={`<div class="container-inline">
     <div class="card-group">
     <div class="card">
       <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
@@ -464,7 +464,7 @@ This layout uses [container queries]([[docsref:/layout/breakpoints#container-que
 
 When using card groups with footers, their content will automatically line up.
 
-<Example code={`<div class="contains-inline">
+<Example code={`<div class="container-inline">
     <div class="card-group">
     <div class="card">
       <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />

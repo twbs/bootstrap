@@ -11,6 +11,9 @@
 @mixin make-row($gutter-x: $grid-gutter-x, $gutter-y: $grid-gutter-y) {
   --gutter-x: #{$gutter-x};
   --gutter-y: #{$gutter-y};
+
+  @include set-container();
+
   display: flex;
   flex-wrap: wrap;
   // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
@@ -75,7 +78,7 @@
   @each $breakpoint in map.keys($breakpoints) {
     $prefix: breakpoint-prefix($breakpoint, $breakpoints);
 
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
+    @include container-breakpoint-up($breakpoint, $breakpoints: $breakpoints) {
       .#{$prefix}col {
         flex: 1 0 0;
       }

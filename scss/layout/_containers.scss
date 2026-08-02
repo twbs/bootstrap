@@ -21,6 +21,8 @@
     // 100% wide container at all breakpoints
     .container-fluid {
       @include make-container();
+      container-type: inline-size;
+      container-name: layout;
     }
 
     // Responsive containers that are 100% wide until a breakpoint

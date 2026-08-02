@@ -121,6 +121,8 @@ $reboot-mark-tokens: defaults(
     background-color: var(--bg-body); // 2
     -webkit-text-size-adjust: 100%; // 3
     -webkit-tap-highlight-color: transparent; // 4
+    container-type: inline-size;
+    container-name: body;
   }
   // scss-docs-end reboot-body-rules
 

@@ -121,6 +121,27 @@ Gutter classes can also be added to [row columns]([[docsref:/layout/grid#row-col
     </div>
   </div>`} />
 
+## Responsive gutters
+
+Resize the container below to test responsive gutter classes. The gutter width should widen as the container crosses breakpoints.
+
+<ResizableExample showBreakpoint class="bd-example-cols" code={`<div class="container text-center">
+    <div class="row sm:g-1 md:g-3 lg:g-5 xl:g-8">
+      <div class="col-6">
+        <div class="p-3">Column</div>
+      </div>
+      <div class="col-6">
+        <div class="p-3">Column</div>
+      </div>
+      <div class="col-6">
+        <div class="p-3">Column</div>
+      </div>
+      <div class="col-6">
+        <div class="p-3">Column</div>
+      </div>
+    </div>
+  </div>`} />
+
 ## No gutters
 
 The gutters between columns in our predefined grid classes can be removed with `.g-0`. This removes the negative `margin`s from `.row` and the horizontal `padding` from all immediate children columns.
@@ -143,9 +164,13 @@ $grid-gutter-x: 1.5rem;
 $gutters: (
   0: 0,
   1: $spacer * .25,
-  2: $spacer * .5,
-  3: $spacer,
-  4: $spacer * 1.5,
-  5: $spacer * 3,
+  2: $spacer * .375,
+  3: $spacer * .5,
+  4: $spacer * .75,
+  5: $spacer,
+  6: $spacer * 1.25,
+  7: $spacer * 1.5,
+  8: $spacer * 2,
+  9: $spacer * 3,
 );
 ```

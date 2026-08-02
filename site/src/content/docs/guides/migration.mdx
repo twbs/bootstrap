@@ -94,6 +94,9 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | Print | `.d-print-none` | `.print:d-none` |
 </BsTable>
 
+- **Both grids now respond to their container instead of the viewport.** Every `.row` and `.grid` is a query container (`container-type: inline-size`), and the responsive grid classes—`.md:col-*`, `.md:offset-*`, `.md:row-cols-*`, `.md:g-col-*`, `.md:g-start-*`, and the `.md:g-*` gutters—are generated with `@container` queries rather than `@media` queries. A `.md:col-6` inside a narrow sidebar now splits when the *row* reaches 768px, not when the viewport does. `<body>`, `.container`, and `.container-fluid` are query containers too, so a top-level `.row` still resolves against the page width. Note that responsive [utilities]([[docsref:/utilities/api]]) like `.md:d-flex` remain viewport-based, so the same prefix can switch at two different widths within one subtree.
+- **Setting `container-type` has layout side effects.** Because `.row` and `.grid` apply layout containment, they establish a containing block for `position: absolute`/`fixed` descendants and create a stacking context. Absolutely positioned children now resolve against the row or grid, and a `z-index` on a `.col` can no longer stack above content outside its row.
+
 ### Sass
 
 - Dropped support for Node Sass, including no longer testing any of our source CSS against it.
@@ -223,8 +226,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance, and the `.btn-close-white` class has been removed—on dark backgrounds (e.g., `.text-bg-dark`) the icon now inherits the contrast color automatically.
 - **Removed `.alert-dismissible`.** Dismissible alerts no longer require the `.alert-dismissible` modifier class. Place a `.btn-close` directly inside the alert—the alert's flex layout positions it automatically. Remove any `.alert-dismissible` class from your markup.
 - **Restructured cards.** Borders now live on `.card-body` and `.card-list` segments rather than a single outer `.card` border. Added `--card-box-shadow` and `--card-body-gap` tokens. New variant classes: `.card-translucent` (frosted glass effect) and `.card-subtle` (themed with subtle backgrounds). Horizontal cards use a new `.card-row` class. Removed `.card-link` class.
-- **Card groups now use container queries.** `.card-group` switches to its attached, equal-width row layout with a `@container` query instead of a viewport `@media` query, so it responds to the width of a parent query container rather than the viewport. Wrap the card group in a query container—e.g. add the `.contains-inline` utility to a parent element—or the cards stay stacked.
-- **List group horizontal variants now use container queries.** The `.*:list-group-horizontal` classes switch between vertical and horizontal layouts with `@container` queries instead of viewport `@media` queries, responding to a parent query container rather than the viewport. Wrap the list group in a query container (e.g. `.contains-inline`) for the responsive variants to take effect.
+- **Card groups now use container queries.** `.card-group` switches to its attached, equal-width row layout with a `@container` query instead of a viewport `@media` query, so it responds to the width of a parent query container rather than the viewport. Wrap the card group in a query container—e.g. add the `.container-inline` utility to a parent element—or the cards stay stacked.
+- **List group horizontal variants now use container queries.** The `.*:list-group-horizontal` classes switch between vertical and horizontal layouts with `@container` queries instead of viewport `@media` queries, responding to a parent query container rather than the viewport. Wrap the list group in a query container (e.g. `.container-inline`) for the responsive variants to take effect.
 - **Reworked badge variants.** Badge color variants now use `.badge-subtle` and `.badge-outline` combined with `.theme-*` classes (e.g., `.badge-subtle .theme-primary`), replacing the v5 `.bg-primary` utility pattern on badges.
 - **Added theme variant support to pagination.** Add a `.theme-{color}` class to `.pagination` (e.g., `.pagination.theme-primary`) to color links, hover, focus, and the active page item with a semantic theme color, matching the pattern already used by alerts and accordions.
 - **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and explicit `.breadcrumb-divider` elements as separators between items. An empty `.breadcrumb-divider` renders a default chevron via a CSS `mask-image` (`--breadcrumb-divider-icon`) tinted with `background-color: currentcolor`; add your own SVG, text, or markup inside it to override. This replaces the v5 `--bs-breadcrumb-divider` content string on the `.breadcrumb-item::before` pseudo-element.
@@ -364,13 +367,13 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 |---|---|---|
 | 0 | `0` | `0` |
 | 1 | `0.25rem` | `0.25rem` |
-| 2 | `0.5rem` | `0.5rem` |
-| 3 | `1rem` | `0.75rem` (new) |
-| 4 | `1.5rem` | `1rem` (was key 3) |
-| 5 | `3rem` | `1.25rem` (new) |
-| 6 | — | `1.5rem` (was key 4) |
-| 7 | — | `2rem` (new) |
-| 8 | — | `2.5rem` (new) |
+| 2 | `0.5rem` | `0.375rem` (new) |
+| 3 | `1rem` | `0.5rem` (was key 2) |
+| 4 | `1.5rem` | `0.75rem` (new) |
+| 5 | `3rem` | `1rem` (was key 3) |
+| 6 | — | `1.25rem` (new) |
+| 7 | — | `1.5rem` (was key 4) |
+| 8 | — | `2rem` (new) |
 | 9 | — | `3rem` (was key 5) |
 </BsTable>
 
@@ -471,7 +474,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   To preserve v5 visual roundness, shift class numbers up the scale (e.g. `.rounded-1` &rarr; `.rounded-3`, `.rounded-2` &rarr; `.rounded-4`, `.rounded-3` &rarr; `.rounded-5`, `.rounded-4` &rarr; `.rounded-8`, `.rounded-5` &rarr; `.rounded-9`). The `.rounded-{top,end,bottom,start}-*` directional variants follow the same scale.
 
 - **Font weight additions.** Added `.fw-medium` (`500`) and `.fw-semibold` (`600`) utilities. v5 only had `lighter`, `light` (`300`), `normal` (`400`), `bold` (`700`), and `bolder`.
-- **Negative margins limited.** Negative spacers are reduced to only `-1` (`-0.25rem`) and `-2` (`-0.5rem`), and only applied to `margin-inline-start` (`.ms--1`, `.ms--2`) and `margin-inline-end` (`.me--1`, `.me--2`). The v5 full negative margin utilities across all sides have been removed.
+- **Negative margins limited.** Negative spacers are reduced to only `-1` (`-0.25rem`) and `-2` (`-0.375rem`), and only applied to `margin-inline-start` (`.ms--1`, `.ms--2`) and `margin-inline-end` (`.me--1`, `.me--2`). The v5 full negative margin utilities across all sides have been removed.
 - **Spacing and border utilities now use CSS logical properties.** `margin-top` &rarr; `margin-block-start`, `margin-right` &rarr; `margin-inline-end`, `padding-left` &rarr; `padding-inline-start`, `border-right` &rarr; `border-inline-end`, etc. Class names (`.mt-*`, `.me-*`, `.ps-*`, `.border-end`) remain the same, but the underlying CSS properties are now logical, improving RTL and writing-mode support.
 - **Text wrap additions.** Added `.text-balance` and `.text-pretty` values to the text-wrap utility.
 - **Color utility renames.** `.text-*` color utilities have been replaced by `.fg-*` (foreground) utilities. New `.fg-emphasis-*` and `.fg-contrast-*` variants. Background utilities now include `.bg-subtle-*` and `.bg-muted-*` in addition to `.bg-*`. Added `.fg-bg` and `.bg-fg` cross-reference utilities; removed `.fg-inherit` and `.bg-inherit`. Renamed `.bg-opacity-*` to `.bg-*`. Renamed `.text-reset` to `.fg-reset`.
@@ -510,7 +513,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Flex & Grid utilities:**
   - Added `.place-items` and `.justify-items` utilities.
   - Added `.grid-cols-*` utilities for `grid-template-columns` (1–4 and 6 column layouts), `.grid-cols-fill` for spanning all columns, `.grid-cols-subgrid` for adopting a parent grid's column tracks, and `.grid-auto-flow` utility.
-- **Container query utilities.** New `.contains-inline` and `.contains-size` utilities for `container-type`.
+- **Container query utilities (renamed from `.contains-*` in earlier v6 alphas).** New `.container-inline` and `.container-size` utilities for `container-type`.
 - Ratio helpers are now powered by the utility API and use simplified values without `calc()`.
 - **State variants now use prefix syntax.** Pseudo-state utility classes like hover and focus variants now use a `state:class` prefix pattern (e.g., `hover:opacity-50` instead of `opacity-50-hover`), matching the responsive prefix convention.
 - **Utility API cleanup.** Removed `css-var`, `css-variable-name`, and `local-vars` options from the utility API. Use the `property` map approach for CSS custom properties and `variables` for static CSS custom properties within utility classes.

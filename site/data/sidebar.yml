@@ -191,6 +191,9 @@
     - group: Layout
       pages:
         - title: Aspect ratio
+        - title: Container
+          meta:
+            - added: 6.0.0
         - title: Display
         - title: Float
         - title: Object fit

@@ -116,13 +116,13 @@ These work great with custom content as well.
 
 Add `.list-group-horizontal` to change the layout of list group items from vertical to horizontal across all container sizes. Alternatively, choose a responsive variant `.{sm|md|lg|xl|2xl}:list-group-horizontal` to make a list group horizontal starting at that breakpoint’s width.
 
-The responsive variants use [container queries]([[docsref:/layout/breakpoints#container-queries]]), so wrap the list group in a query container—add the `.contains-inline` utility to a parent element—for them to take effect. Currently **horizontal list groups cannot be combined with flush list groups.**
+The responsive variants use [container queries]([[docsref:/layout/breakpoints#container-queries]]), so wrap the list group in a query container—add the `.container-inline` utility to a parent element—for them to take effect. Currently **horizontal list groups cannot be combined with flush list groups.**
 
 **ProTip:** Want equal-width list group items when horizontal? Add `.flex-fill` to each list group item.
 
 <Example
   class="vstack gap-3"
-  code={getData('breakpoints').map((breakpoint) => `<div class="contains-inline">
+  code={getData('breakpoints').map((breakpoint) => `<div class="container-inline">
     <ul class="list-group ${breakpoint.abbr}list-group-horizontal">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
@@ -132,7 +132,7 @@ The responsive variants use [container queries]([[docsref:/layout/breakpoints#co
 
 Drag the handle to resize the container below and watch the list group switch between vertical and horizontal layouts as the container—not the viewport—crosses the `md` breakpoint.
 
-<ResizableExample code={`<div class="contains-inline">
+<ResizableExample code={`<div class="container-inline">
     <ul class="list-group md:list-group-horizontal">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>

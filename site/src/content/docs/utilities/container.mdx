@@ -1,0 +1,63 @@
+---
+title: Container
+description: Use the container utility to set an element as a CSS query container for `@container` queries.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/container-type
+utility:
+  - container
+---
+
+## Container
+
+Set an element as a query container with the `.container-inline` or `.container-size` utility. Elements inside can then respond to the container's size rather than the viewport using `@container` queries.
+
+- `.container-inline` sets `container-type: inline-size`, creating a containment context on the inline axis (most common for responsive layouts).
+- `.container-size` sets `container-type: size`, creating a containment context on both block and inline axes.
+
+```html
+<div class="container-inline">
+  <div class="vstack md:hstack gap-3">...</div>
+</div>
+```
+
+Without a query container, responsive container query classes (like `.md:hstack`) have no effect.
+
+## How it works
+
+Container queries let components respond to the width of a parent container instead of the viewport. This is useful when the same component appears in different layout contexts (e.g., a sidebar and a main content area).
+
+Resize the example below. The stack switches from vertical to horizontal when the query container—not the viewport—is at least `768px` wide.
+
+<ResizableExample showBreakpoint code={`<div class="container-inline p-3">
+    <div class="vstack md:hstack gap-3">
+      <div class="p-3 bg-subtle-primary rounded-2 flex-fill">Item 1</div>
+      <div class="p-3 bg-subtle-primary rounded-2 flex-fill">Item 2</div>
+      <div class="p-3 bg-subtle-primary rounded-2 flex-fill">Item 3</div>
+    </div>
+  </div>`} />
+
+<Callout type="warning">
+Only some responsive classes are container-driven. Grid columns, [stacks]([[docsref:/helpers/stacks]]), and the responsive component variants listed below evaluate against their query container, while responsive [utilities]([[docsref:/utilities/api]]) such as `.md:d-flex` or `.md:text-center` still evaluate against the viewport. The same `md:` prefix can therefore switch at two different widths within one subtree.
+</Callout>
+
+## Components using container queries
+
+Several Bootstrap components use container queries to respond to their parent container:
+
+- **[Navbar]([[docsref:/components/navbar]])** — The `.*:navbar-expand` classes respond to the navbar's own width.
+- **[Card groups]([[docsref:/components/card#card-groups]])** — Wrap a card group in `.container-inline` to enable its row layout.
+- **[List group horizontal]([[docsref:/components/list-group#horizontal]])** — Wrap a list group in `.container-inline` for responsive horizontal variants.
+- **[Stepper]([[docsref:/components/stepper]])** — Wrap a stepper in `.container-inline` for responsive horizontal variants.
+- **[Stacks]([[docsref:/helpers/stacks]])** — The responsive `.*:hstack` and `.*:vstack` classes respond to the nearest query container.
+- **[CSS Grid]([[docsref:/layout/css-grid]])** — Each `.grid` is automatically a query container.
+- **[Default Grid]([[docsref:/layout/grid]])** — Each `.row` is automatically a query container.
+
+The `<body>` element and `.container`/`.container-fluid` are also query containers, named `body` and `layout` respectively, so responsive grid and gutter classes resolve against the page or the layout container when there is no closer query container.
+
+## CSS
+
+### Sass utilities API
+
+Container utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-container" file="scss/_utilities.scss" />

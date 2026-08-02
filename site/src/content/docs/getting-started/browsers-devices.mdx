@@ -45,7 +45,7 @@ The table below lists the platform features v6 relies on and how each behaves at
 | --- | --- | --- |
 | `light-dark()` | [Color modes]([[docsref:/customize/color-modes]]), all theme tokens | Defines the support floor; no fallback below it |
 | `oklch()`, `color-mix()` | [Color system]([[docsref:/customize/color]]), theme variants | Fully supported above the floor |
-| Container queries (`@container`) | [Card groups]([[docsref:/components/card#card-groups]]), [horizontal list groups]([[docsref:/components/list-group#horizontal]]) | Fully supported above the floor; these components also require an ancestor query container (`.contains-inline`)—without one they stay stacked |
+| Container queries (`@container`) | [Card groups]([[docsref:/components/card#card-groups]]), [horizontal list groups]([[docsref:/components/list-group#horizontal]]) | Fully supported above the floor; these components also require an ancestor query container (`.container-inline`)—without one they stay stacked |
 | `:has()` | Forms, button groups with menus, and other contextual styling | Fully supported above the floor |
 | Native `<dialog>` | [Dialog]([[docsref:/components/dialog]]), [Drawer]([[docsref:/components/drawer]]) | Fully supported above the floor; focus containment and `inert` behavior come from the browser |
 | `<details name="…">` | [Exclusive accordions]([[docsref:/components/accordion]]) | Fully supported above the floor; in older, unsupported browsers accordion items degrade gracefully to independently openable `<details>` elements |
