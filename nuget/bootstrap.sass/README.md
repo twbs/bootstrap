@@ -17,11 +17,9 @@ You can also use the NuGet Package Manager Console:
 Install-Package bootstrap.sass
 ```
 
-## Compile the Sass source
+## Compile the Sass source at build
 
-Use a Sass compiler that supports Dart Sass.
-Compile Sass during the build, during publish, or at run time.
-Write the generated CSS to a public path such as `wwwroot/css`.
+Use a Sass compiler that supports Dart Sass. Write the generated CSS to a public path such as `wwwroot/css`.
 
 Set `GeneratePathProperty="true"` on the `bootstrap.sass` package reference.
 NuGet then creates the `$(Pkgbootstrap_sass)` MSBuild property.
@@ -40,16 +38,9 @@ $(Pkgbootstrap_sass)\contentFiles\any\any\Styles
 
 Use the [Bootstrap Sass guide](https://getbootstrap.com/docs/6.0/customize/sass/) to customize Bootstrap.
 
-These community packages can compile Sass without Node.js:
+## Copy Sass for runtime compilation
 
-- [EmbeddedSass.Net](https://github.com/gumbarros/EmbeddedSass.Net)
-- [AspNetCore.SassCompiler](https://github.com/koenvzeijl/AspNetCore.SassCompiler)
-
-Follow the selected compiler’s documentation for its current setup.
-
-### Copy Sass for run-time compilation
-
-A run-time compiler needs the Sass files in the application output.
+A runtime compiler needs the Sass files in the application output.
 Add this item to your project file:
 
 ```xml
@@ -61,8 +52,22 @@ Add this item to your project file:
 </ItemGroup>
 ```
 
-Use `Styles/bootstrap` as a compiler load path at run time.
+Use `Styles/bootstrap` as a compiler load path at runtime.
 Do not serve that directory as static web content.
+
+## Install a Sass compiler
+
+These community packages can compile Sass without Node.js:
+
+- [EmbeddedSass.Net](https://github.com/gumbarros/EmbeddedSass.Net)
+- [AspNetCore.SassCompiler](https://github.com/koenvzeijl/AspNetCore.SassCompiler)
+
+They both support build time and runtime compilations.
+
+Follow the selected compiler’s documentation for its current setup.
+
+### 
+
 
 ## Use the JavaScript
 
