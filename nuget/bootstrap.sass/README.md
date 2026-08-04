@@ -59,8 +59,8 @@ Do not serve that directory as static web content.
 
 These community packages can compile Sass without Node.js:
 
-- [EmbeddedSass.Net](https://github.com/gumbarros/EmbeddedSass.Net)
 - [AspNetCore.SassCompiler](https://github.com/koenvzeijl/AspNetCore.SassCompiler)
+- [EmbeddedSass.Net](https://github.com/gumbarros/EmbeddedSass.Net)
 
 They both support build time and runtime compilations.
 
