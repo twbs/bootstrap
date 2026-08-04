@@ -10,12 +10,6 @@ Install the package with the .NET CLI:
 dotnet add package bootstrap
 ```
 
-You can also use the NuGet Package Manager Console:
-
-```powershell
-Install-Package bootstrap
-```
-
 ## Use the files
 
 SDK-style projects expose the files at these paths:

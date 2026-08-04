@@ -11,12 +11,6 @@ Install the package with the .NET CLI:
 dotnet add package bootstrap.sass
 ```
 
-You can also use the NuGet Package Manager Console:
-
-```powershell
-Install-Package bootstrap.sass
-```
-
 ## Compile the Sass source at build
 
 Use a Sass compiler that supports Dart Sass. Write the generated CSS to a public path such as `wwwroot/css`.
