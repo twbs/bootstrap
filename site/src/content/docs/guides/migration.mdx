@@ -357,6 +357,15 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Updated form label defaults.** `.form-label` and `.col-form-label` now default to `font-weight: 500` (was `inherit`) and `font-size: inherit` (was `var(--font-size-sm)`).
 - **Updated form helper text.** `.form-text` color changed from `var(--fg-3)` to `var(--fg-2)`. The `margin-top` from `--form-text-margin-top` is removed; spacing is handled by the parent `.form-field` grid gap.
 - **Reworked switch internals.** The switch thumb is now absolutely positioned with `inset-inline-start` transitions instead of padding-based animation. New tokens: `--switch-indicator-width`, `--switch-indicator-height`. Themes overriding old padding-based switch behavior will need updating.
+- **`.form-adorn` wrappers should be `<label>` elements.** The wrapper looks like an input, so people click the icon, the text, or the surrounding padding and expect the field to take focus. A `<label>` gives that behavior natively. Mark the adornments with `aria-hidden="true"`, otherwise their text joins the input’s accessible name.
+
+  ```html
+  <!-- v6 -->
+  <label class="form-control form-adorn">
+    <span class="form-adorn-text" aria-hidden="true">$</span>
+    <input type="text" class="form-ghost" placeholder="0.00">
+  </label>
+  ```
 
 ### Helpers
 

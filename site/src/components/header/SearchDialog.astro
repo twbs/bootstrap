@@ -14,8 +14,8 @@ const { id = 'bdSearchDialog', placeholder = 'Search docs…' } = Astro.props
     <label class="visually-hidden" id={`${id}-label`} for={`${id}-input`}>
       {placeholder}
     </label>
-    <div class="form-control form-adorn">
-      <div class="form-adorn-icon">
+    <label class="form-control form-adorn">
+      <div class="form-adorn-icon" aria-hidden="true">
         <svg class="bi bd-search-form-icon" width="16" height="16" aria-hidden="true">
           <use href="#search"></use>
         </svg>
@@ -31,7 +31,7 @@ const { id = 'bdSearchDialog', placeholder = 'Search docs…' } = Astro.props
           enterkeyhint="search"
         />
       </bd-search-input>
-    </div>
+    </label>
     <CloseButton dismiss="dialog" class="bd-search-close" />
   </form>
 
