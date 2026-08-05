@@ -186,19 +186,59 @@ const drawer = bootstrap.Drawer.getInstance('#myDrawer')
 const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
 ```
 
-### Asynchronous functions and transitions
+### Promises and transitions
 
-All programmatic API methods are **asynchronous** and return to the caller once the transition is started, but **before it ends**. In order to execute an action once the transition is complete, you can listen to the corresponding event.
+All programmatic API methods are **asynchronous** and return to the caller once the transition is started, but **before it ends**.
+
+Methods that show or hide a component return a **promise**. The promise resolves when the transition ends, so you can `await` the method instead of listening for an event.
 
 ```js
-const myCollapseEl = document.querySelector('#myCollapse')
+const collapse = bootstrap.Collapse.getOrCreateInstance('#myCollapse')
 
-myCollapseEl.addEventListener('shown.bs.collapse', event => {
-  // Action to execute once the collapsible area is expanded
+await collapse.show()
+// The collapsible area is now expanded
+```
+
+These methods return a promise:
+
+<BsTable class="table">
+| Method | Components |
+| --- | --- |
+| `show`, `hide`, `toggle` | Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, Popover, Tooltip |
+| `show`, `hide` | Toast |
+| `show` | Tab |
+| `close` | Alert |
+</BsTable>
+
+The promise resolves with no value. It resolves at the same moment the matching `shown.bs.*`, `hidden.bs.*`, or `closed.bs.*` event fires, so both styles run your code at the same time. Use the event when you must react to every change, including ones your own code did not start.
+
+```js
+const drawerEl = document.querySelector('#myDrawer')
+const drawer = bootstrap.Drawer.getOrCreateInstance(drawerEl)
+
+// Await the method you called…
+await drawer.hide()
+saveState()
+
+// …or listen for every hide, whoever started it
+drawerEl.addEventListener('hidden.bs.drawer', () => {
+  saveState()
 })
 ```
 
-In addition, a method call on a **transitioning component will be ignored**.
+Because each method returns a promise, you can run steps in order without nesting listeners.
+
+```js
+const dialog = bootstrap.Dialog.getOrCreateInstance('#myDialog')
+const toast = bootstrap.Toast.getOrCreateInstance('#myToast')
+
+await dialog.hide()
+await toast.show()
+```
+
+The promise also resolves when the call does nothing — for example when the component is already open, when a listener calls `preventDefault()` on the `show.bs.*` event, or when you dispose the component mid-transition. `await` therefore never hangs, but it also does not tell you whether the state changed. Check the state yourself when that matters.
+
+In addition, a method call on a **transitioning component will be ignored**. For the promise-returning methods above, such a call resolves immediately. It does not wait for the running transition to end.
 
 ```js
 const myCarouselEl = document.querySelector('#myCarousel')
@@ -214,16 +254,26 @@ carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not 
 
 #### `dispose` method
 
-While it may seem correct to use the `dispose` method immediately after `hide()`, it will lead to incorrect results. Here’s an example of the problem use:
+Do not call `dispose` immediately after `hide()`. The hide transition is still running at that point, so the component tears down mid-transition. Await the promise first:
+
+```js
+const toast = bootstrap.Toast.getInstance('#myToast')
+
+await toast.hide()
+toast.dispose()
+```
+
+The event-based equivalent also works:
 
 ```js
 const myToast = document.querySelector('#myToast')
 const toast = bootstrap.Toast.getInstance(myToast)
-toast.hide() // it is asynchronous
 
-myToast.addEventListener('hidden.bs.toast', event => {
+myToast.addEventListener('hidden.bs.toast', () => {
   toast.dispose()
 })
+
+toast.hide()
 ```
 
 ### Default settings

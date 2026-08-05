@@ -387,7 +387,7 @@ describe('Datepicker', () => {
       expect(hideSpy).toHaveBeenCalled()
     })
 
-    it('should do nothing for inline mode', () => {
+    it('should do nothing for inline mode', async () => {
       fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-inline="true"></div>'
 
       const divEl = fixtureEl.querySelector('div')
@@ -395,9 +395,8 @@ describe('Datepicker', () => {
 
       const showSpy = spyOn(datepicker, 'show')
       const hideSpy = spyOn(datepicker, 'hide')
-      const result = datepicker.toggle()
 
-      expect(result).toBeUndefined()
+      await expect(datepicker.toggle()).resolves.toBeUndefined()
       expect(showSpy).not.toHaveBeenCalled()
       expect(hideSpy).not.toHaveBeenCalled()
     })

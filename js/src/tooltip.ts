@@ -153,6 +153,7 @@ class Tooltip extends BaseComponent {
   protected declare _config: TooltipConfig
   protected declare _isEnabled: boolean
   protected declare _timeout: number
+  protected declare _resolveTimeout: (() => void) | null
   protected declare _isHovered: boolean | null
   protected declare _activeTrigger: Record<string, boolean>
   protected declare _floatingCleanup: (() => void) | null
@@ -174,6 +175,7 @@ class Tooltip extends BaseComponent {
     // Private
     this._isEnabled = true
     this._timeout = 0
+    this._resolveTimeout = null
     this._isHovered = null
     this._activeTrigger = {}
     this._floatingCleanup = null
@@ -220,21 +222,16 @@ class Tooltip extends BaseComponent {
     this._isEnabled = !this._isEnabled
   }
 
-  toggle(): void {
+  toggle(): Promise<void> {
     if (!this._isEnabled) {
-      return
+      return Promise.resolve()
     }
 
-    if (this._isShown()) {
-      this._leave()
-      return
-    }
-
-    this._enter()
+    return this._isShown() ? this._leave() : this._enter()
   }
 
   override dispose(): void {
-    clearTimeout(this._timeout)
+    this._clearTimeout()
 
     this._removeEscapeListener()
 
@@ -315,10 +312,10 @@ class Tooltip extends BaseComponent {
       this._isHovered = false
     }
 
-    this._queueCallback(complete, this.tip!, this._isAnimated()!)
+    await this._queueCallback(complete, this.tip!, this._isAnimated()!)
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (!this._isShown()) {
       return
     }
@@ -359,7 +356,7 @@ class Tooltip extends BaseComponent {
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN))
     }
 
-    this._queueCallback(complete, this.tip!, this._isAnimated()!)
+    await this._queueCallback(complete, this.tip!, this._isAnimated()!)
   }
 
   update(): void {
@@ -718,38 +715,54 @@ class Tooltip extends BaseComponent {
     this._element.removeAttribute('title')
   }
 
-  protected _enter(): void {
+  protected _enter(): Promise<void> {
     if (this._isShown() || this._isHovered) {
       this._isHovered = true
-      return
+      return Promise.resolve()
     }
 
     this._isHovered = true
 
-    this._setTimeout(() => {
-      if (this._isHovered) {
-        this.show()
-      }
-    }, (this._config.delay as { show: number, hide: number }).show)
+    return this._setTimeout(
+      () => this._isHovered ? this.show() : undefined,
+      (this._config.delay as { show: number, hide: number }).show
+    )
   }
 
-  protected _leave(): void {
+  protected _leave(): Promise<void> {
     if (this._isWithActiveTrigger()) {
-      return
+      return Promise.resolve()
     }
 
     this._isHovered = false
 
-    this._setTimeout(() => {
-      if (!this._isHovered) {
-        this.hide()
-      }
-    }, (this._config.delay as { show: number, hide: number }).hide)
+    return this._setTimeout(
+      () => this._isHovered ? undefined : this.hide(),
+      (this._config.delay as { show: number, hide: number }).hide
+    )
   }
 
-  protected _setTimeout(handler: () => void, timeout: number): void {
+  protected _setTimeout(handler: () => void | Promise<void>, timeout: number): Promise<void> {
+    this._clearTimeout()
+
+    return new Promise(resolve => {
+      this._resolveTimeout = resolve
+      this._timeout = setTimeout(() => {
+        this._resolveTimeout = null
+        resolve(handler())
+      }, timeout)
+    })
+  }
+
+  // Cancels the pending hover delay. The superseded promise resolves right away, so a
+  // caller awaiting `toggle()` resumes instead of waiting on a timer that never fires.
+  protected _clearTimeout(): void {
     clearTimeout(this._timeout)
-    this._timeout = setTimeout(handler, timeout)
+
+    if (this._resolveTimeout) {
+      this._resolveTimeout()
+      this._resolveTimeout = null
+    }
   }
 
   protected _isWithActiveTrigger(): boolean {

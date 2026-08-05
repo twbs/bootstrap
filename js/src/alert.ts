@@ -33,7 +33,7 @@ class Alert extends BaseComponent {
   }
 
   // Public
-  close(): void {
+  async close(): Promise<void> {
     const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE)
 
     if (closeEvent.defaultPrevented) {
@@ -43,7 +43,7 @@ class Alert extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_SHOW)
 
     const isAnimated = this._element.classList.contains(CLASS_NAME_FADE)
-    this._queueCallback(() => this._destroyElement(), this._element, isAnimated)
+    await this._queueCallback(() => this._destroyElement(), this._element, isAnimated)
   }
 
   // Private

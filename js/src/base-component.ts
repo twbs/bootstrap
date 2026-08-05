@@ -57,15 +57,22 @@ class BaseComponent extends Config {
   }
 
   // Protected
-  protected _queueCallback(callback: () => void, element: Element, isAnimated = true): void {
-    executeAfterTransition(() => {
-      // Don't run the completion callback if the instance was disposed mid-transition
-      if (!this._element) {
-        return
-      }
 
-      callback()
-    }, element, isAnimated)
+  // Runs `callback` once the transition on `element` ends, and resolves afterwards.
+  // Lifecycle methods return this promise, so `await instance.show()` continues at the
+  // same moment a `shown.bs.*` listener would run.
+  protected _queueCallback(callback: () => void, element: Element, isAnimated = true): Promise<void> {
+    return new Promise(resolve => {
+      executeAfterTransition(() => {
+        // Don't run the completion callback if the instance was disposed mid-transition.
+        // Still settle the promise, so an awaiting caller resumes instead of hanging.
+        if (this._element) {
+          callback()
+        }
+
+        resolve()
+      }, element, isAnimated)
+    })
   }
 
   protected override _getConfig(config?: ComponentConfig | null): ComponentConfig {

@@ -270,7 +270,7 @@ const tooltip = new bootstrap.Tooltip(element, {
 
 ### Methods
 
-<Callout name="danger-async-methods" type="danger" />
+<Callout name="info-promise-methods" />
 
 <BsTable>
 | Method | Description |
@@ -280,10 +280,10 @@ const tooltip = new bootstrap.Tooltip(element, {
 | `enable` | Gives an element’s tooltip the ability to be shown. **Tooltips are enabled by default.** |
 | `getInstance` | *Static* method which allows you to get the tooltip instance associated with a DOM element. |
 | `getOrCreateInstance` | *Static* method which allows you to get the tooltip instance associated with a DOM element, or create a new one in case it wasn’t initialized. |
-| `hide` | Hides an element’s tooltip. **Returns to the caller before the tooltip has actually been hidden** (i.e. before the `hidden.bs.tooltip` event occurs). This is considered a “manual” triggering of the tooltip. |
+| `hide` | Hides an element’s tooltip. **Returns a promise that resolves once the tooltip is hidden** (i.e. after the `hidden.bs.tooltip` event fires). This is considered a “manual” triggering of the tooltip. |
 | `setContent` | Gives a way to change the tooltip’s content after its initialization. |
-| `show` | Reveals an element’s tooltip. **Returns to the caller before the tooltip has actually been shown** (i.e. before the `shown.bs.tooltip` event occurs). This is considered a “manual” triggering of the tooltip. Tooltips with zero-length titles are never displayed. |
-| `toggle` | Toggles an element’s tooltip. **Returns to the caller before the tooltip has actually been shown or hidden** (i.e. before the `shown.bs.tooltip` or `hidden.bs.tooltip` event occurs). This is considered a “manual” triggering of the tooltip. |
+| `show` | Reveals an element’s tooltip. **Returns a promise that resolves once the tooltip is shown** (i.e. after the `shown.bs.tooltip` event fires). This is considered a “manual” triggering of the tooltip. Tooltips with zero-length titles are never displayed. |
+| `toggle` | Toggles an element’s tooltip. **Returns a promise that resolves once the tooltip is shown or hidden** (i.e. after the `shown.bs.tooltip` or `hidden.bs.tooltip` event fires). This is considered a “manual” triggering of the tooltip. |
 | `toggleEnabled` | Toggles the ability for an element’s tooltip to be shown or hidden. |
 | `update` | Updates the position of an element’s tooltip. |
 </BsTable>
