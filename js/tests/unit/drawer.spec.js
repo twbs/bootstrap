@@ -66,6 +66,24 @@ describe('Drawer', () => {
       expect(spy).toHaveBeenCalled()
     })
 
+    it('should call hide on a responsive drawer without an explicit data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<dialog class="lg:drawer drawer-end">',
+        '  <button type="button" data-bs-dismiss="drawer">Close</button>',
+        '</dialog>'
+      ].join('')
+
+      const drawerEl = fixtureEl.querySelector('dialog')
+      const closeEl = fixtureEl.querySelector('button')
+      const drawer = new Drawer(drawerEl)
+
+      const spy = spyOn(drawer, 'hide')
+
+      closeEl.click()
+
+      expect(spy).toHaveBeenCalled()
+    })
+
     it('should hide if esc is pressed (non-modal via keydown)', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
