@@ -159,4 +159,29 @@ export default () => {
       }, false)
     })
   }
+
+  // -------------------------------
+  // Motion utilities
+  // -------------------------------
+  // Replay the one-shot animation utilities (.animation-shake, .animation-pop)
+  // in docs demos by removing and re-adding the class after a reflow. The
+  // trigger typically lives in the Example toolbar via its `actions` slot.
+  document.querySelectorAll('[data-bd-replay]')
+    .forEach(trigger => {
+      const target = document.querySelector(trigger.getAttribute('data-bd-replay'))
+      if (!target) {
+        return
+      }
+
+      const animationClass = [...target.classList].find(name => name.startsWith('animation-'))
+      if (!animationClass) {
+        return
+      }
+
+      trigger.addEventListener('click', () => {
+        target.classList.remove(animationClass)
+        target.offsetHeight // eslint-disable-line no-unused-expressions
+        target.classList.add(animationClass)
+      })
+    })
 }

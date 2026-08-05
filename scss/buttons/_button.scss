@@ -17,6 +17,7 @@ $button-tokens: () !default;
 // scss-docs-start btn-tokens
 $button-tokens: defaults(
   (
+    --btn-gap: var(--btn-input-gap),
     --btn-min-height: var(--btn-input-min-height),
     --btn-padding-x: var(--btn-input-padding-x),
     --btn-padding-y: var(--btn-input-padding-y),
@@ -177,7 +178,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     @include tokens($button-tokens);
 
     display: inline-flex;
-    gap: var(--btn-gap, .375rem);
+    gap: var(--btn-gap);
     align-items: center;
     justify-content: center;
     min-height: var(--btn-min-height);
@@ -349,6 +350,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
   @each $size, $_ in $button-sizes {
     .btn-#{$size},
     .btn-group-#{$size} > [class*="btn-"] {
+      --btn-gap: var(--btn-input-#{$size}-gap);
       --btn-min-height: var(--btn-input-#{$size}-min-height);
       --btn-padding-y: var(--btn-input-#{$size}-padding-y);
       --btn-padding-x: var(--btn-input-#{$size}-padding-x);

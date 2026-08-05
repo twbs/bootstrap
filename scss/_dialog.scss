@@ -29,7 +29,7 @@ $dialog-tokens: defaults(
     --dialog-border-radius: var(--radius-7),
     --dialog-box-shadow: var(--box-shadow-xl),
     --dialog-transition-duration: .3s,
-    --dialog-transition-timing: cubic-bezier(.22, 1, .36, 1),
+    --dialog-transition-timing: var(--transition-timing-overlay),
     --dialog-backdrop-bg: light-dark(rgb(0 0 0 / 50%), rgb(0 0 0 / 65%)),
     --dialog-backdrop-blur: 8px,
     --dialog-header-padding: 1rem,

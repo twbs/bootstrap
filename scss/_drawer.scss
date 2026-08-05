@@ -28,7 +28,7 @@ $drawer-tokens: defaults(
     --drawer-border-radius: var(--radius-7),
     --drawer-box-shadow: var(--box-shadow-xl),
     --drawer-transition-duration: .3s,
-    --drawer-transition-timing: cubic-bezier(.22, 1, .36, 1),
+    --drawer-transition-timing: var(--transition-timing-overlay),
     --drawer-title-line-height: 1.5,
     --drawer-backdrop-bg: color-mix(in oklch, var(--bg-body) 25%, transparent),
     --drawer-backdrop-blur: 8px,
