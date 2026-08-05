@@ -282,6 +282,18 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   ```
 
 - **Collapse triggers now use `aria-expanded` as the state signal.** Bootstrap v6 no longer adds or removes a `.collapsed` class on collapse trigger elements. If you styled or queried trigger state with `.collapsed`, migrate those selectors to `[aria-expanded="false"]` and open-state selectors to `[aria-expanded="true"]`.
+- **Removed the Collapse `toggle` option.** The constructor now keeps the state your markup declares, instead of flipping it. Drop `toggle: false` from your config, it is the behavior you already get. If you relied on the old `toggle: true` default to change the state on init, call the matching method instead.
+
+  ```js
+  // v5
+  new bootstrap.Collapse(el)                  // opened a closed element
+  new bootstrap.Collapse(el, { toggle: false })
+
+  // v6
+  new bootstrap.Collapse(el).show()
+  new bootstrap.Collapse(el)
+  ```
+
 - **Dismiss triggers now find responsive drawers.** `data-bs-dismiss="drawer"` resolves breakpoint-prefixed drawers such as `.lg:drawer`, so a close button inside a responsive drawer no longer needs `data-bs-target`. Existing `data-bs-target` attributes keep working.
 - **The navbar no longer computes heights.** v5 derived `$navbar-brand-height` and `$navbar-brand-padding-y` from the nav link font size, line height, and padding, so the brand matched the links. v6 drops that math. `.navbar` is a flex container that centers its children, so padding and content set the height. `--navbar-brand-padding-y` is now `.375rem`, which matches the nav link block padding, so the brand and the links keep the same click target. A new `--navbar-min-height` token gives the bar a `3.5rem` floor, so a default [navbar]([[docsref:/components/navbar]]) is 56px high. Taller content, such as a logo, still makes the bar grow past the floor. Set `--navbar-padding-y` or `--navbar-min-height` to control the height of the bar.
 - **Navbar toggler icon now uses a CSS mask.** `.navbar-toggler-icon` renders via `mask-image` (`--navbar-toggler-icon`) tinted with `background-color: currentcolor` instead of an embedded `background-image` SVG. The markup stays an empty `<span class="navbar-toggler-icon">`, but the icon now inherits the current text color (including dark mode), so the separate light/dark toggler SVGs are no longer needed.

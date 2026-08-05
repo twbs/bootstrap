@@ -151,7 +151,6 @@ const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Co
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 `parent` | selector, DOM element | `null` | If parent is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the `card` class). The attribute has to be set on the target collapsible area. |
-`toggle` | boolean | `true` | Toggles the collapsible element on invocation. |
 </BsTable>
 
 ### Methods
@@ -160,12 +159,11 @@ const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Co
 
 Activates your content as a collapsible element. Accepts an optional options `object`.
 
-You can create a collapse instance with the constructor, for example:
+The constructor keeps the state that your markup declares. Add `.show` to open the element, and leave it off to keep the element closed. Call `show()`, `hide()`, or `toggle()` to change the state.
 
 ```js
-const bsCollapse = new bootstrap.Collapse('#myCollapse', {
-  toggle: false
-})
+const bsCollapse = new bootstrap.Collapse('#myCollapse')
+bsCollapse.show()
 ```
 
 <BsTable>
