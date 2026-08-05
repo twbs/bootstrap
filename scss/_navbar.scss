@@ -21,16 +21,12 @@ $navbar-tokens: defaults(
   (
     --navbar-padding-x: 0,
     --navbar-padding-y: .5rem,
-    // A floor, not a fixed height. It keeps a consistent baseline for the default
-    // navbar, but taller content (a logo, larger text) still makes the bar grow.
     --navbar-min-height: 3.5rem,
     --navbar-color: var(--fg-2),
     --navbar-hover-color: var(--fg-1),
     --navbar-disabled-color: var(--fg-3),
     --navbar-active-color: var(--fg-body),
-    // Matches the nav link block padding, so the brand and the nav links present the
-    // same click target. `.navbar` centers its children, so this sets no height.
-    --navbar-brand-padding-y: .375rem,
+    --navbar-brand-padding-y: .375rem, // Match nav link padding-y
     --navbar-brand-margin-end: 1rem,
     --navbar-brand-font-size: var(--font-size-md),
     --navbar-brand-font-weight: var(--font-weight-medium),
