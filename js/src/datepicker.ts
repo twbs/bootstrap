@@ -135,15 +135,15 @@ class Datepicker extends BaseComponent {
   }
 
   // Public
-  toggle(): void {
+  toggle(): Promise<void> {
     if (this._config.inline) {
-      return // Inline calendars are always visible
+      return Promise.resolve() // Inline calendars are always visible
     }
 
     return this._isShown ? this.hide() : this.show()
   }
 
-  show(): void {
+  async show(): Promise<void> {
     if (this._config.inline) {
       return // Inline calendars are always visible
     }
@@ -163,7 +163,7 @@ class Datepicker extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_SHOWN)
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (this._config.inline) {
       return // Inline calendars are always visible
     }

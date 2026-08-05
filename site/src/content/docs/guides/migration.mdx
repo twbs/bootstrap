@@ -134,6 +134,25 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 ### JavaScript
 
+- **`show()`, `hide()`, `toggle()`, and `close()` now return a promise.** The promise resolves when the transition ends, so you can `await` these methods instead of listening for a `shown.bs.*` or `hidden.bs.*` event. In v5 they returned `undefined`. The events still fire, so existing code keeps working. This covers Alert, Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, Popover, Tab, Toast, and Tooltip. Carousel’s `next()`, `prev()`, and `to()` are unchanged.
+
+  **Before (v5):**
+  ```js
+  myCollapseEl.addEventListener('shown.bs.collapse', () => {
+    // Runs once the collapsible area is expanded
+  })
+
+  collapse.show()
+  ```
+
+  **After (v6):**
+  ```js
+  await collapse.show()
+  // The collapsible area is now expanded
+  ```
+
+  The promise resolves with no value, and it resolves even when the call does nothing — for example when the component is already open or a listener prevents the `show.bs.*` event. Check the component state yourself if you need to know whether it changed.
+
 - **Bootstrap’s JavaScript is now ESM-only.** We no longer ship UMD bundles. All dist files (`bootstrap.js`, `bootstrap.bundle.js`, and their minified versions) are native ES modules. The plugin APIs themselves are unchanged—only how you load and reference them is different.
   - CDN `<script>` tags must add `type="module"`:
     ```html

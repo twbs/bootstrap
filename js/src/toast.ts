@@ -83,7 +83,7 @@ class Toast extends BaseComponent {
   }
 
   // Public
-  show(): void {
+  async show(): Promise<void> {
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW)
 
     if (showEvent.defaultPrevented) {
@@ -107,10 +107,10 @@ class Toast extends BaseComponent {
     reflow(this._element)
     this._element.classList.add(CLASS_NAME_SHOW, CLASS_NAME_SHOWING)
 
-    this._queueCallback(complete, this._element, this._config.animation)
+    await this._queueCallback(complete, this._element, this._config.animation)
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (!this.isShown()) {
       return
     }
@@ -128,7 +128,7 @@ class Toast extends BaseComponent {
     }
 
     this._element.classList.add(CLASS_NAME_SHOWING)
-    this._queueCallback(complete, this._element, this._config.animation)
+    await this._queueCallback(complete, this._element, this._config.animation)
   }
 
   override dispose(): void {

@@ -118,6 +118,30 @@ tooltipFromSelector.show()
 tooltipFromElement.dispose()
 toast.dispose()
 
+// Show, hide, toggle, and close return a promise that settles once the component
+// finishes, so callers can await them instead of listening for `shown.bs.*`
+const closing: Promise<void> = createdAlert.close()
+const collapseShowing: Promise<void> = collapse.show()
+const collapseHiding: Promise<void> = collapse.hide()
+const collapseToggling: Promise<void> = collapse.toggle()
+const dialogShowing: Promise<void> = dialog.show()
+const drawerHiding: Promise<void> = drawer.hide()
+const toastShowing: Promise<void> = toast.show()
+const tabShowing: Promise<void> = tab.show()
+const tooltipToggling: Promise<void> = tooltipFromElement.toggle()
+const popoverShowing: Promise<void> = popover.show()
+const comboboxToggling: Promise<void> = combobox.toggle()
+const datepickerShowing: Promise<void> = datepicker.show()
+
+// Awaiting a lifecycle method yields no value
+const awaitLifecycle = async (): Promise<void> => {
+  const resolved: void = await collapse.show()
+  return resolved
+}
+
+// @ts-expect-error — the promise resolves to void, not a component
+const wrongResolution: Promise<Collapse> = collapse.show()
+
 // EventHandler.trigger is non-null for a non-null element…
 const triggered: Event = EventHandler.trigger(element, 'shown.bs.tooltip')
 // …and nullable when the element may be null

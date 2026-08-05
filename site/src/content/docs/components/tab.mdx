@@ -260,7 +260,7 @@ To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must a
 
 ### Methods
 
-<Callout name="danger-async-methods" type="danger" />
+<Callout name="info-promise-methods" />
 
 Activates your content as a tab element.
 
@@ -276,7 +276,7 @@ const bsTab = new bootstrap.Tab('#myTab')
 | `dispose` | Destroys an element’s tab. |
 | `getInstance` | Static method which allows you to get the tab instance associated with a DOM element, you can use it like this: `bootstrap.Tab.getInstance(element)`. |
 | `getOrCreateInstance` | Static method which returns a tab instance associated to a DOM element or create a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Tab.getOrCreateInstance(element)`. |
-| `show` | Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (i.e. before the `shown.bs.tab` event occurs). |
+| `show` | Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. **Returns a promise that resolves once the tab pane is shown** (i.e. after the `shown.bs.tab` event fires). |
 </BsTable>
 
 ### Events

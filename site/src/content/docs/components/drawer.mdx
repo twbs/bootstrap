@@ -367,7 +367,7 @@ const drawerList = [...drawerElementList].map(drawerEl => new bootstrap.Drawer(d
 
 ### Methods
 
-<Callout name="danger-async-methods" type="danger" />
+<Callout name="info-promise-methods" />
 
 Activates your content as a drawer element. Accepts an optional options `object`.
 
@@ -383,9 +383,9 @@ const bsDrawer = new bootstrap.Drawer('#myDrawer')
 | `dispose` | Destroys an element’s drawer. |
 | `getInstance` | *Static* method which allows you to get the drawer instance associated with a DOM element. |
 | `getOrCreateInstance` | *Static* method which allows you to get the drawer instance associated with a DOM element, or create a new one in case it wasn’t initialized. |
-| `hide` | Hides a drawer element. **Returns to the caller before the drawer element has actually been hidden** (i.e. before the `hidden.bs.drawer` event occurs). |
-| `show` | Shows a drawer element. **Returns to the caller before the drawer element has actually been shown** (i.e. before the `shown.bs.drawer` event occurs). |
-| `toggle` | Toggles a drawer element to shown or hidden. **Returns to the caller before the drawer element has actually been shown or hidden** (i.e. before the `shown.bs.drawer` or `hidden.bs.drawer` event occurs). |
+| `hide` | Hides a drawer element. **Returns a promise that resolves once the drawer element is hidden** (i.e. after the `hidden.bs.drawer` event fires). |
+| `show` | Shows a drawer element. **Returns a promise that resolves once the drawer element is shown** (i.e. after the `shown.bs.drawer` event fires). |
+| `toggle` | Toggles a drawer element to shown or hidden. **Returns a promise that resolves once the drawer element is shown or hidden** (i.e. after the `shown.bs.drawer` or `hidden.bs.drawer` event fires). |
 </BsTable>
 
 ### Events

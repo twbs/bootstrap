@@ -102,15 +102,11 @@ class Collapse extends BaseComponent {
   }
 
   // Public
-  toggle(): void {
-    if (this._isShown()) {
-      this.hide()
-    } else {
-      this.show()
-    }
+  toggle(): Promise<void> {
+    return this._isShown() ? this.hide() : this.show()
   }
 
-  show(): void {
+  async show(): Promise<void> {
     if (this._isTransitioning || this._isShown()) {
       return
     }
@@ -161,11 +157,15 @@ class Collapse extends BaseComponent {
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
     const scrollSize = `scroll${capitalizedDimension}` as 'scrollWidth' | 'scrollHeight'
 
-    this._queueCallback(complete, this._element, true)
+    // Register the completion callback first, then set the target size to start the
+    // transition. Awaiting here instead would stop the size from ever being applied.
+    const transition = this._queueCallback(complete, this._element, true)
     this._element.style[dimension] = `${this._element[scrollSize]}px`
+
+    await transition
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (this._isTransitioning || !this._isShown()) {
       return
     }
@@ -203,7 +203,7 @@ class Collapse extends BaseComponent {
 
     this._element.style[dimension] = ''
 
-    this._queueCallback(complete, this._element, true)
+    await this._queueCallback(complete, this._element, true)
   }
 
   // Private

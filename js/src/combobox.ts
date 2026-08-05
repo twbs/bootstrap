@@ -129,11 +129,11 @@ class Combobox extends BaseComponent {
   }
 
   // Public
-  toggle(): void {
+  toggle(): Promise<void> {
     return this._isShown() ? this.hide() : this.show()
   }
 
-  show(): void {
+  async show(): Promise<void> {
     if (isDisabled(this._toggle) || this._isShown()) {
       return
     }
@@ -154,7 +154,7 @@ class Combobox extends BaseComponent {
     EventHandler.trigger(this._toggle, EVENT_SHOWN)
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (!this._isShown()) {
       return
     }

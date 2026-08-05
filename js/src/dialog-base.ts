@@ -58,11 +58,11 @@ class DialogBase extends BaseComponent {
 
   // Public — shared lifecycle methods
 
-  toggle(relatedTarget?: HTMLElement): void {
+  toggle(relatedTarget?: HTMLElement): Promise<void> {
     return this._element.open ? this.hide() : this.show(relatedTarget)
   }
 
-  show(relatedTarget?: HTMLElement): void {
+  async show(relatedTarget?: HTMLElement): Promise<void> {
     if (this._element.open || this._isTransitioning) {
       return
     }
@@ -83,7 +83,7 @@ class DialogBase extends BaseComponent {
     const { modal, preventBodyScroll } = this._getShowOptions()
     this._showElement({ modal, preventBodyScroll })
 
-    this._queueCallback(() => {
+    await this._queueCallback(() => {
       this._isTransitioning = false
       EventHandler.trigger(
         this._element,
@@ -93,7 +93,7 @@ class DialogBase extends BaseComponent {
     }, this._element, this._isAnimated())
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (!this._element.open || this._isTransitioning) {
       return
     }
@@ -110,7 +110,7 @@ class DialogBase extends BaseComponent {
     this._isTransitioning = true
     this._hideElement()
 
-    this._queueCallback(() => {
+    await this._queueCallback(() => {
       // For subclasses that defer close() until the exit transition ends
       // (so the dialog stays in the top layer with its ::backdrop), close()
       // happens here instead of in _hideElement().

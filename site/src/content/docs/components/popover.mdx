@@ -275,7 +275,7 @@ const popover = new bootstrap.Popover(element, {
 
 ### Methods
 
-<Callout name="danger-async-methods" type="danger" />
+<Callout name="info-promise-methods" />
 
 <BsTable>
 | Method | Description |
@@ -285,10 +285,10 @@ const popover = new bootstrap.Popover(element, {
 | `enable` | Gives an element’s popover the ability to be shown. **Popovers are enabled by default.** |
 | `getInstance` | _Static_ method which allows you to get the popover instance associated with a DOM element. |
 | `getOrCreateInstance` | _Static_ method which allows you to get the popover instance associated with a DOM element, or create a new one in case it wasn’t initialized. |
-| `hide` | Hides an element’s popover. **Returns to the caller before the popover has actually been hidden** (i.e. before the `hidden.bs.popover` event occurs). This is considered a “manual” triggering of the popover. |
+| `hide` | Hides an element’s popover. **Returns a promise that resolves once the popover is hidden** (i.e. after the `hidden.bs.popover` event fires). This is considered a “manual” triggering of the popover. |
 | `setContent` | Gives a way to change the popover’s content after its initialization. |
-| `show` | Reveals an element’s popover. **Returns to the caller before the popover has actually been shown** (i.e. before the `shown.bs.popover` event occurs). This is considered a “manual” triggering of the popover. Popovers whose title and content are both zero-length are never displayed. |
-| `toggle` | Toggles an element’s popover. **Returns to the caller before the popover has actually been shown or hidden** (i.e. before the `shown.bs.popover` or `hidden.bs.popover` event occurs). This is considered a “manual” triggering of the popover. |
+| `show` | Reveals an element’s popover. **Returns a promise that resolves once the popover is shown** (i.e. after the `shown.bs.popover` event fires). This is considered a “manual” triggering of the popover. Popovers whose title and content are both zero-length are never displayed. |
+| `toggle` | Toggles an element’s popover. **Returns a promise that resolves once the popover is shown or hidden** (i.e. after the `shown.bs.popover` or `hidden.bs.popover` event fires). This is considered a “manual” triggering of the popover. |
 | `toggleEnabled` | Toggles the ability for an element’s popover to be shown or hidden. |
 | `update` | Updates the position of an element’s popover. |
 </BsTable>

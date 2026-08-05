@@ -212,11 +212,11 @@ class Menu extends BaseComponent {
   }
 
   // Public
-  toggle(): void {
+  toggle(): Promise<void> {
     return this._isShown() ? this.hide() : this.show()
   }
 
-  show(): void {
+  async show(): Promise<void> {
     if (isDisabled(this._element) || this._isShown()) {
       return
     }
@@ -254,7 +254,7 @@ class Menu extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (isDisabled(this._element) || !this._isShown()) {
       return
     }

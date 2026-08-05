@@ -503,6 +503,8 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
+<Callout name="info-promise-methods" />
+
 #### Passing options
 
 Activates your content as a dialog. Accepts an optional options object.
@@ -515,9 +517,9 @@ const myDialog = new bootstrap.Dialog('#myDialog', {
 <BsTable>
 | Method | Description |
 | --- | --- |
-| `show` | Opens the dialog. **Returns to the caller before the dialog has actually been shown** (i.e. before the `shown.bs.dialog` event occurs). |
-| `hide` | Hides the dialog. **Returns to the caller before the dialog has actually been hidden** (i.e. before the `hidden.bs.dialog` event occurs). |
-| `toggle` | Toggles the dialog. **Returns to the caller before the dialog has actually been shown or hidden** (i.e. before the `shown.bs.dialog` or `hidden.bs.dialog` event occurs). |
+| `show` | Opens the dialog. **Returns a promise that resolves once the dialog is shown** (i.e. after the `shown.bs.dialog` event fires). |
+| `hide` | Hides the dialog. **Returns a promise that resolves once the dialog is hidden** (i.e. after the `hidden.bs.dialog` event fires). |
+| `toggle` | Toggles the dialog. **Returns a promise that resolves once the dialog is shown or hidden** (i.e. after the `shown.bs.dialog` or `hidden.bs.dialog` event fires). |
 | `handleUpdate` | Provided for API consistency with Modal. Native dialogs handle their own positioning. |
 | `dispose` | Destroys an element’s dialog. |
 | `getInstance` | Static method which allows you to get the dialog instance associated with a DOM element. |
