@@ -222,17 +222,17 @@ If you need more `.order-*` classes, you can add new ones by modifying our `$uti
 ```scss
 // _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/config" as *;
 @use "bootstrap/scss/utilities";
 
-bs.$utilities: map.merge(
-  bs.$utilities,
+$utilities: map.merge(
+  $utilities,
   (
     "order": map.merge(
-      map.get(bs.$utilities, "order"),
+      map.get($utilities, "order"),
       (
         values: map.merge(
-          map.get(map.get(bs.$utilities, "order"), "values"),
+          map.get(map.get($utilities, "order"), "values"),
           (
             6: 6, // Add a new `.{breakpoint}:order-6` utility
             last: 7, // Change the `.{breakpoint}:order-last` utility to use the next number

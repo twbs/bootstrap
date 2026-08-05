@@ -575,14 +575,14 @@ Set `enabled: false` to suppress output for a utility without removing it from t
 ```scss
 // _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/config" as *;
 @use "bootstrap/scss/utilities";
 
-bs.$utilities: map.merge(
-  bs.$utilities,
+$utilities: map.merge(
+  $utilities,
   (
     "float": map.merge(
-      map.get(bs.$utilities, "float"),
+      map.get($utilities, "float"),
       (enabled: false),
     ),
   )
@@ -642,6 +642,8 @@ The one-file pattern needs one `@use` rule:
 Bootstrap merges your map with `map.merge()`. This merge is shallow. Your utility group replaces the whole default group with the same key. Supply the `property` and `values` keys in every group that emits CSS.
 
 Sass cannot read a module and configure the same module in one file. Some changes therefore need the two-file pattern. The `bootstrap/scss/config` module declares `$utilities`. The `bootstrap/scss/utilities` module fills it with the default definitions. Your partial loads both modules. Then it writes the new map back to the config module.
+
+The partial loads the config module with `as *`. This avoids a namespace prefix, so you can reference `$utilities` directly. An assignment to `$utilities` then writes back to the config module.
 
 For a utility-only build, load `bootstrap/scss/utilities` and then `bootstrap/scss/utilities/api`. The API module emits the utility classes and nothing else.
 
@@ -703,18 +705,18 @@ Modify an existing utility with `map.get()` and `map.merge()`. This change reads
 ```scss
 // _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/config" as bs;
-// Fills `bs.$utilities` with the default definitions
+@use "bootstrap/scss/config" as *;
+// Fills `$utilities` with the default definitions
 @use "bootstrap/scss/utilities";
 
-bs.$utilities: map.merge(
-  bs.$utilities,
+$utilities: map.merge(
+  $utilities,
   (
     "width": map.merge(
-      map.get(bs.$utilities, "width"),
+      map.get($utilities, "width"),
       (
         values: map.merge(
-          map.get(map.get(bs.$utilities, "width"), "values"),
+          map.get(map.get($utilities, "width"), "values"),
           (10: 10%),
         ),
       ),
@@ -738,14 +740,14 @@ You can enable responsive classes for an existing set of utilities that are not 
 ```scss
 // _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/config" as *;
 @use "bootstrap/scss/utilities";
 
-bs.$utilities: map.merge(
-  bs.$utilities,
+$utilities: map.merge(
+  $utilities,
   (
     "border": map.merge(
-      map.get(bs.$utilities, "border"),
+      map.get($utilities, "border"),
       (responsive: true),
     ),
   )
@@ -793,14 +795,14 @@ Missing v4 utilities, or used to another naming convention? The utilities API ca
 ```scss
 // _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/config" as *;
 @use "bootstrap/scss/utilities";
 
-bs.$utilities: map.merge(
-  bs.$utilities,
+$utilities: map.merge(
+  $utilities,
   (
     "margin-start": map.merge(
-      map.get(bs.$utilities, "margin-start"),
+      map.get($utilities, "margin-start"),
       (class: ml),
     ),
   )
@@ -828,10 +830,10 @@ You can also remove utilities with the [`map.remove()` Sass function](https://sa
 ```scss
 // _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/config" as *;
 @use "bootstrap/scss/utilities";
 
-bs.$utilities: map.remove(bs.$utilities, "width", "float");
+$utilities: map.remove($utilities, "width", "float");
 ```
 
 Load this partial before `bootstrap/scss/bootstrap`, as shown above.
@@ -843,17 +845,17 @@ You can add, remove, and modify many utilities all at once with the [`map.merge(
 ```scss
 // _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/config" as *;
 @use "bootstrap/scss/utilities";
 
-bs.$utilities: map.merge(
-  bs.$utilities,
+$utilities: map.merge(
+  $utilities,
   (
     // Remove the `width` utility
     "width": null,
     // Make an existing utility responsive
     "border": map.merge(
-      map.get(bs.$utilities, "border"),
+      map.get($utilities, "border"),
       (responsive: true),
     ),
     // Add a new utility
