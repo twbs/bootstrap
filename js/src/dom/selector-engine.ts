@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { isDisabled, isVisible, parseSelector } from '../util/index.js'
+import { parseSelector } from '../util/index.js'
 
 const getSelector = (element: Element): string | null => {
   let selector = element.getAttribute('data-bs-target')
@@ -39,10 +39,6 @@ const SelectorEngine = {
 
   findOne<T extends Element = HTMLElement>(selector: string, element: ParentNode = document.documentElement): T | null {
     return Element.prototype.querySelector.call(element as Element, selector) as T | null
-  },
-
-  children<T extends Element = HTMLElement>(element: Element, selector: string): T[] {
-    return [...element.children].filter(child => child.matches(selector)) as T[]
   },
 
   parents(element: Element, selector: string): Element[] {
@@ -87,21 +83,6 @@ const SelectorEngine = {
     }
 
     return []
-  },
-
-  focusableChildren(element: Element): HTMLElement[] {
-    const focusables = [
-      'a',
-      'button',
-      'input',
-      'textarea',
-      'select',
-      'details',
-      '[tabindex]',
-      '[contenteditable="true"]'
-    ].map(selector => `${selector}:not([tabindex^="-"])`).join(',')
-
-    return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el))
   },
 
   getSelectorFromElement(element: Element): string | null {
