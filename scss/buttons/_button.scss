@@ -31,9 +31,9 @@ $button-tokens: defaults(
     --btn-border-radius: var(--radius-5),
     --btn-hover-border-color: transparent,
     --btn-disabled-opacity: .65,
-    --btn-transition-timing: .15s ease-in-out,
     --btn-transition-property: "color, background-color, border-color, box-shadow",
-    --btn-transition: var(--btn-transition-property) var(--btn-transition-timing),
+    --btn-transition-duration: .15s,
+    --btn-transition-timing: ease-in-out,
   ),
   $button-tokens
 );
@@ -196,7 +196,11 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     background-color: var(--btn-bg, var(--bg-2));
     border: var(--btn-border-width) solid var(--btn-border-color);
     @include border-radius(var(--btn-border-radius));
-    @include transition(var(--btn-transition));
+    @include transition-props(
+      var(--btn-transition-property),
+      var(--btn-transition-duration),
+      var(--btn-transition-timing)
+    );
 
     &:hover {
       color: var(--btn-hover-color);

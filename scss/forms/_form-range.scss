@@ -29,8 +29,8 @@ $range-tokens: defaults(
     --range-thumb-active-bg: color-mix(in oklch, var(--primary-base) 70%, var(--bg-body)),
     --range-thumb-disabled-bg: var(--fg-3),
     --range-thumb-transition-property: "background-color, border-color, box-shadow",
-    --range-thumb-transition-timing: .15s ease-in-out,
-    --range-thumb-transition: var(--range-thumb-transition-property) var(--range-thumb-transition-timing),
+    --range-thumb-transition-duration: .15s,
+    --range-thumb-transition-timing: ease-in-out,
     --range-tick-width: var(--border-width),
     --range-tick-height: .5rem,
     --range-tick-bg: var(--border-color),
@@ -49,7 +49,11 @@ $range-tokens: defaults(
   border: var(--range-thumb-border);
   @include border-radius(var(--range-thumb-border-radius));
   @include box-shadow(var(--range-thumb-box-shadow));
-  @include transition(var(--range-thumb-transition));
+  @include transition-props(
+    var(--range-thumb-transition-property),
+    var(--range-thumb-transition-duration),
+    var(--range-thumb-transition-timing)
+  );
 
   &:active {
     @include gradient-bg(var(--range-thumb-active-bg));

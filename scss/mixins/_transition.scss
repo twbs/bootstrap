@@ -18,14 +18,37 @@ $transition-base: all .2s ease-in-out !default;
   }
 
   @if $enable-transitions {
-    @if list.nth($transition, 1) != null {
-      transition: $transition;
-    }
+    $first: list.nth($transition, 1);
 
-    @if $enable-reduced-motion and list.nth($transition, 1) != null and list.nth($transition, 1) != none {
-      @media (prefers-reduced-motion: reduce) {
-        transition: none;
+    @if $first != null {
+      // `none` force-disables a transition, so it must reach every reader. It
+      // arrives bare or as `none !important`, hence the list test.
+      @if $enable-reduced-motion and not list.index($first, none) {
+        @media (prefers-reduced-motion: no-preference) {
+          transition: $transition;
+        }
+      } @else {
+        transition: $transition;
       }
+    }
+  }
+}
+
+// Set the `transition-*` properties one by one. In the shorthand a trailing
+// duration binds to the last property only, so `color, box-shadow .15s` leaves
+// `color` at `0s`. Set apart, one duration and easing cover every property.
+@mixin transition-props($property, $duration, $timing) {
+  @if $enable-transitions {
+    @if $enable-reduced-motion {
+      @media (prefers-reduced-motion: no-preference) {
+        transition-timing-function: $timing;
+        transition-duration: $duration;
+        transition-property: $property;
+      }
+    } @else {
+      transition-timing-function: $timing;
+      transition-duration: $duration;
+      transition-property: $property;
     }
   }
 }
