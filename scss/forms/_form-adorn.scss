@@ -22,6 +22,9 @@ $form-adorn-tokens: defaults(
 
     gap: var(--form-adorn-gap);
     align-items: center;
+    // The wrapper looks like an input, so it should feel like one everywhere, not only
+    // over the inner `.form-ghost`
+    cursor: text;
 
     // Prevent default `.form-control` focus
     &:focus-visible {
