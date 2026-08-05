@@ -313,6 +313,16 @@ $utilities: map.merge(
       class: min-vw,
       values: (100: 100vw)
     ),
+    "dynamic-viewport-width": (
+      property: width,
+      class: dvw,
+      values: (100: 100dvw)
+    ),
+    "min-dynamic-viewport-width": (
+      property: min-width,
+      class: min-dvw,
+      values: (100: 100dvw)
+    ),
     // scss-docs-end utils-width
     // scss-docs-start utils-height
     "height": (
@@ -351,6 +361,16 @@ $utilities: map.merge(
       property: min-height,
       class: min-vh,
       values: (100: 100vh)
+    ),
+    "dynamic-viewport-height": (
+      property: height,
+      class: dvh,
+      values: (100: 100dvh)
+    ),
+    "min-dynamic-viewport-height": (
+      property: min-height,
+      class: min-dvh,
+      values: (100: 100dvh)
     ),
     // scss-docs-end utils-height
     // Flex utilities
