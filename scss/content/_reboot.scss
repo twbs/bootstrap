@@ -342,6 +342,7 @@ $reboot-mark-tokens: defaults(
   // 1. Remove browser default top margin
   // 2. Reset browser default of `1em` to use `rem`s
   // 3. Don't allow content to break outside
+  // 4. Reserve room for the scrollbar so it cannot sit on top of the last line
 
   pre {
     display: block;
@@ -350,6 +351,7 @@ $reboot-mark-tokens: defaults(
     overflow: auto; // 3
     font-size: var(--code-font-size);
     color: var(--code-color, inherit);
+    scrollbar-gutter: stable; // 4
 
     // Account for some code outputs that place code tags in pre tags
     code {
