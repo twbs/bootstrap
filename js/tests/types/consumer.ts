@@ -60,7 +60,7 @@ declare const element: HTMLElement
 const tooltipFromSelector: Tooltip = new Tooltip('#tip', { animation: false })
 const tooltipFromElement: Tooltip = new Tooltip(element)
 const toast: Toast = new Toast(element, { autohide: false, delay: 5000 })
-const collapse: Collapse = new Collapse(element, { toggle: false })
+const collapse: Collapse = new Collapse(element, { parent: '#accordion' })
 const carousel: Carousel = new Carousel(element, { interval: 2000 })
 const dialog: Dialog = new Dialog(element, { modal: true, keyboard: false })
 const drawer: Drawer = new Drawer(element, { scroll: true })
@@ -148,7 +148,7 @@ const inputs: HTMLInputElement[] = SelectorEngine.find<HTMLInputElement>('input'
 new Toast(element, { autohype: true })
 
 // @ts-expect-error — config value types are enforced
-new Collapse(element, { toggle: 'yes' })
+new Collapse(element, { parent: 42 })
 
 // getOrCreateInstance types its config per component through the shipped types
 Toast.getOrCreateInstance(element, { autohide: false })

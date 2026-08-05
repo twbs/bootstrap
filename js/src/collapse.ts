@@ -44,17 +44,14 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 type CollapseConfig = {
   parent: string | Element | null
-  toggle: boolean
 }
 
 const Default: CollapseConfig = {
-  parent: null,
-  toggle: true
+  parent: null
 }
 
 const DefaultType = {
-  parent: '(null|element)',
-  toggle: 'boolean'
+  parent: '(null|element)'
 }
 
 /**
@@ -88,10 +85,6 @@ class Collapse extends BaseComponent {
 
     if (!this._config.parent) {
       this._setAriaExpanded(this._triggerArray, this._isShown())
-    }
-
-    if (this._config.toggle) {
-      this.toggle()
     }
   }
 
@@ -128,7 +121,7 @@ class Collapse extends BaseComponent {
     if (this._config.parent) {
       activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES)
         .filter(element => element !== this._element)
-        .map(element => Collapse.getOrCreateInstance(element, { toggle: false }))
+        .map(element => Collapse.getOrCreateInstance(element))
     }
 
     if (activeChildren.length && activeChildren[0]._isTransitioning) {
@@ -219,7 +212,6 @@ class Collapse extends BaseComponent {
   }
 
   protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
-    config.toggle = Boolean(config.toggle) // Coerce string values
     config.parent = getElement(config.parent)
     return config
   }
@@ -272,7 +264,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   }
 
   for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) {
-    Collapse.getOrCreateInstance(element, { toggle: false }).toggle()
+    Collapse.getOrCreateInstance(element).toggle()
   }
 })
 
