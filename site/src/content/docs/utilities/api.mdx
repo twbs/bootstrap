@@ -570,15 +570,20 @@ Output:
 
 ### Enabled
 
-Set `enabled: false` to suppress output for a utility without removing it from the `$utilities` map. This is useful when you want to keep the utility's definition available for reference or downstream `map.get()` calls, but don't want it to emit any CSS.
+Set `enabled: false` to suppress output for a utility without removing it from the `$utilities` map. This is useful when you want to keep the utility's definition available for reference or downstream `map.get()` calls, but don't want it to emit any CSS. See [Using the API](#using-the-api) for the load order this example needs.
 
 ```scss
-$utilities: map.merge(
-  $utilities,
+// _my-utilities.scss
+@use "sass:map";
+@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/utilities";
+
+bs.$utilities: map.merge(
+  bs.$utilities,
   (
     "float": map.merge(
-      map.get($utilities, "float"),
-      ( enabled: false ),
+      map.get(bs.$utilities, "float"),
+      (enabled: false),
     ),
   )
 );
@@ -618,14 +623,41 @@ This will generate utilities with `!important`:
 
 Now that you’re familiar with how the utilities API works, learn how to add your own custom classes and modify our default utilities.
 
-The examples below use two different import styles depending on the use case:
+The examples below use two patterns. Pick the pattern that matches your change.
 
-- **`@use "bootstrap" with (...)`**—Use this when compiling the full Bootstrap framework from a single entrypoint. Configuration is passed via `with (...)` and Bootstrap handles merging in one step.
-- **`@use "bootstrap/scss/utilities" as *` + `@use "bootstrap/scss/utilities/api"`**—Use this for focused, utility-only builds where you need to read from or merge the existing `$utilities` map before passing it to the API layer. Using `as *` avoids a namespace prefix so you can reference `$utilities` directly.
+- **One file**—Configure `$utilities` when you load `bootstrap/scss/bootstrap`. Use this pattern to add a utility, to replace a utility, or to remove a utility.
+- **Two files**—Put a `map.merge()` call in a partial. Then load the partial before `bootstrap/scss/bootstrap`. Use this pattern when your change must read the default definition. Examples are a new value, a new class prefix, or new responsive variants on a group you keep.
+
+The one-file pattern needs one `@use` rule:
+
+```scss
+// my-bootstrap.scss
+@use "bootstrap/scss/bootstrap" with (
+  $utilities: (
+    // Your utility groups go here
+  )
+);
+```
+
+Bootstrap merges your map with `map.merge()`. This merge is shallow. Your utility group replaces the whole default group with the same key. Supply the `property` and `values` keys in every group that emits CSS.
+
+Sass cannot read a module and configure the same module in one file. Some changes therefore need the two-file pattern. The `bootstrap/scss/config` module declares `$utilities`. The `bootstrap/scss/utilities` module fills it with the default definitions. Your partial loads both modules. Then it writes the new map back to the config module.
+
+For a utility-only build, load `bootstrap/scss/utilities` and then `bootstrap/scss/utilities/api`. The API module emits the utility classes and nothing else.
+
+```scss
+// my-bootstrap-utilities.scss
+@use "bootstrap/scss/utilities" with (
+  $utilities: (
+    // Your utility groups go here
+  )
+);
+@use "bootstrap/scss/utilities/api";
+```
 
 ### Override utilities
 
-Override existing utilities by using the same key and passing the new definition via the `$utilities` configuration variable when loading Bootstrap. For example, take our existing overflow utility class definition:
+Override an existing utility with the same key. Pass the new definition in the `$utilities` configuration when you load Bootstrap. For example, take our existing overflow utility class definition:
 
 <ScssDocs name="utils-overflow" file="scss/_utilities.scss" />
 
@@ -633,82 +665,94 @@ If you want to make those responsive, and adjust the values used, you can do thi
 
 ```scss
 // my-bootstrap.scss
-@use "bootstrap" with (
+@use "bootstrap/scss/bootstrap" with (
   $utilities: (
     "overflow": (
+      property: overflow,
       responsive: true,
-      // property: overflow,
       values: visible hidden scroll auto,
     ),
   )
 );
 ```
 
+Your group replaces the default group. Keep the `property` key, or the build stops with an error.
+
 ### Add utilities
 
-New utilities can be added to the default `$utilities` map by passing them via the `$utilities` configuration variable when loading Bootstrap. Bootstrap merges your map on top of its defaults, so only supply the new utilities you want to add.
+Add a new utility with the `$utilities` configuration. Bootstrap merges your map on top of its defaults, so supply only the new utilities.
 
 ```scss
 // my-bootstrap.scss
-@use "bootstrap" with (
+@use "bootstrap/scss/bootstrap" with (
   $utilities: (
     "cursor": (
       property: cursor,
       class: cursor,
       responsive: true,
       values: auto pointer grab,
-    )
+    ),
   )
 );
 ```
 
 ### Modify utilities
 
-Modify existing utilities by passing a modified copy of the utility via the `$utilities` configuration variable. Use `map.get` and `map.merge` to build the new value from the existing definition. In the example below, we’re adding an additional value to the `width` utilities:
+Modify an existing utility with `map.get()` and `map.merge()`. This change reads the default definition, so it needs the two-file pattern. In the example below, we’re adding an additional value to the `width` utilities:
 
 ```scss
-// my-bootstrap.scss
+// _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as *;
+@use "bootstrap/scss/config" as bs;
+// Fills `bs.$utilities` with the default definitions
+@use "bootstrap/scss/utilities";
 
-$utilities: map.merge(
-  $utilities,
+bs.$utilities: map.merge(
+  bs.$utilities,
   (
     "width": map.merge(
-      map.get($utilities, "width"),
+      map.get(bs.$utilities, "width"),
       (
         values: map.merge(
-          map.get(map.get($utilities, "width"), "values"),
+          map.get(map.get(bs.$utilities, "width"), "values"),
           (10: 10%),
         ),
       ),
     ),
   )
 );
+```
 
-@use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
+Load your partial first. Then load Bootstrap:
+
+```scss
+// my-bootstrap.scss
+@use "my-utilities";
+@use "bootstrap/scss/bootstrap";
 ```
 
 #### Enable responsive
 
-You can enable responsive classes for an existing set of utilities that are not currently responsive by default. For example, to make the `border` classes responsive:
+You can enable responsive classes for an existing set of utilities that are not currently responsive by default. This change keeps the default definition, so it needs the two-file pattern. For example, to make the `border` classes responsive:
 
 ```scss
+// _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as *;
+@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/utilities";
 
-$utilities: map.merge(
-  $utilities,
+bs.$utilities: map.merge(
+  bs.$utilities,
   (
     "border": map.merge(
-      map.get($utilities, "border"),
-      ( responsive: true ),
+      map.get(bs.$utilities, "border"),
+      (responsive: true),
     ),
   )
 );
-
-@use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
 ```
+
+Load this partial before `bootstrap/scss/bootstrap`, as shown above. You can also restate the whole group with the one-file pattern. See [Override utilities](#override-utilities).
 
 This will now generate responsive variations of `.border` and `.border-0` for each breakpoint. Your generated CSS will look like this:
 
@@ -744,81 +788,89 @@ This will now generate responsive variations of `.border` and `.border-0` for ea
 
 #### Rename utilities
 
-Missing v4 utilities, or used to another naming convention? The utilities API can be used to override the resulting `class` of a given utility—for example, to rename `.ms-*` utilities to oldish `.ml-*`:
+Missing v4 utilities, or used to another naming convention? The utilities API can be used to override the resulting `class` of a given utility. This change keeps the default definition, so it needs the two-file pattern. For example, to rename `.ms-*` utilities to oldish `.ml-*`:
 
 ```scss
+// _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as *;
+@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/utilities";
 
-$utilities: map.merge(
-  $utilities,
+bs.$utilities: map.merge(
+  bs.$utilities,
   (
     "margin-start": map.merge(
-      map.get($utilities, "margin-start"),
-      ( class: ml ),
+      map.get(bs.$utilities, "margin-start"),
+      (class: ml),
     ),
   )
 );
-
-@use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
 ```
+
+Load this partial before `bootstrap/scss/bootstrap`, as shown above.
 
 ### Remove utilities
 
-Remove any of the default utilities with the [`map.remove()` Sass function](https://sass-lang.com/documentation/modules/map/#remove).
+Remove a default utility with the `$utilities` configuration. Set the group key to `null`.
 
 ```scss
-@use "sass:map";
-@use "bootstrap/scss/utilities" as *;
-
-$utilities: map.remove($utilities, "width", "float");
-
-@use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
-```
-
-You can also use the [`map.merge()` Sass function](https://sass-lang.com/documentation/modules/map/#merge) and set the group key to `null` to remove the utility.
-
-```scss
-@use "sass:map";
-@use "bootstrap/scss/utilities" as *;
-
-$utilities: map.merge(
-  $utilities,
-  (
-    "width": null
+// my-bootstrap.scss
+@use "bootstrap/scss/bootstrap" with (
+  $utilities: (
+    "width": null,
+    "float": null,
   )
 );
-
-@use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
 ```
+
+You can also remove utilities with the [`map.remove()` Sass function](https://sass-lang.com/documentation/modules/map/#remove). This function reads the default map, so it needs the two-file pattern.
+
+```scss
+// _my-utilities.scss
+@use "sass:map";
+@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/utilities";
+
+bs.$utilities: map.remove(bs.$utilities, "width", "float");
+```
+
+Load this partial before `bootstrap/scss/bootstrap`, as shown above.
 
 ### Add, remove, modify
 
 You can add, remove, and modify many utilities all at once with the [`map.merge()` Sass function](https://sass-lang.com/documentation/modules/map/#merge). Here’s how you can combine the previous examples into one larger map.
 
 ```scss
+// _my-utilities.scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as *;
+@use "bootstrap/scss/config" as bs;
+@use "bootstrap/scss/utilities";
 
-$utilities: map.merge(
-  $utilities,
+bs.$utilities: map.merge(
+  bs.$utilities,
   (
     // Remove the `width` utility
     "width": null,
     // Make an existing utility responsive
     "border": map.merge(
-      map.get($utilities, "border"),
-      ( responsive: true ),
+      map.get(bs.$utilities, "border"),
+      (responsive: true),
     ),
-    // Add new utilities
+    // Add a new utility
     "cursor": (
       property: cursor,
       class: cursor,
       responsive: true,
       values: auto pointer grab,
-    )
+    ),
   )
 );
+```
 
-@use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
+Then load the partial before Bootstrap:
+
+```scss
+// my-bootstrap.scss
+@use "my-utilities";
+@use "bootstrap/scss/bootstrap";
 ```

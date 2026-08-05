@@ -1,6 +1,10 @@
 // scss-docs-start import-stack
 @forward "banner";
 
+// Configuration variables and maps, such as $utilities. Forwarding config makes
+// them configurable from this entrypoint with `@use ... with (...)`. Emits no CSS.
+@forward "config";
+
 @forward "colors";
 
 // Global CSS variables, layer definitions, and configuration
