@@ -2,6 +2,7 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/tokens" as *;
+@use "mixins/transition" as *;
 
 $toast-tokens: () !default;
 
@@ -25,6 +26,8 @@ $toast-tokens: defaults(
     --toast-header-color: var(--fg-3),
     --toast-header-bg: var(--bg-1),
     --toast-header-border-color: var(--border-color-translucent),
+    --toast-transition-duration: .15s,
+    --toast-transition-timing: linear,
   ),
   $toast-tokens
 );
@@ -35,7 +38,7 @@ $toast-tokens: defaults(
   .toast {
     @include tokens($toast-tokens);
 
-    display: flex;
+    display: none;
     flex-direction: column;
     width: var(--toast-max-width);
     max-width: 100%;
@@ -49,12 +52,27 @@ $toast-tokens: defaults(
     box-shadow: var(--toast-box-shadow);
     @include border-radius(var(--toast-border-radius, var(--radius-7)));
 
-    &.showing {
+    // Animated variant (default). `display` transitions discretely so the toast
+    // stays laid out until the fade-out finishes. Add .toast-instant to skip it.
+    &:not(.toast-instant) {
       opacity: 0;
+      @include transition(
+        opacity var(--toast-transition-duration) var(--toast-transition-timing),
+        display var(--toast-transition-duration) allow-discrete
+      );
     }
 
-    &:not(.show) {
-      display: none;
+    &.show {
+      display: flex;
+      opacity: 1;
+    }
+  }
+
+  // The toast is not rendered before .show lands, so the fade-in needs an
+  // explicit starting state — the base opacity above cannot serve as one.
+  @starting-style {
+    .toast:not(.toast-instant).show {
+      opacity: 0;
     }
   }
 

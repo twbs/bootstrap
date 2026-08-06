@@ -8,7 +8,6 @@
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import { enableDismissTrigger } from './util/component-functions.js'
-import { reflow } from './util/index.js'
 
 /**
  * Constants
@@ -27,25 +26,20 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_HIDE = 'hide' // @deprecated - kept here only for backwards compatibility
+const CLASS_NAME_INSTANT = 'toast-instant'
 const CLASS_NAME_SHOW = 'show'
-const CLASS_NAME_SHOWING = 'showing'
 
 type ToastConfig = {
-  animation: boolean
   autohide: boolean
   delay: number
 }
 
 const DefaultType = {
-  animation: 'boolean',
   autohide: 'boolean',
   delay: 'number'
 }
 
 const Default: ToastConfig = {
-  animation: true,
   autohide: true,
   delay: 5000
 }
@@ -92,22 +86,15 @@ class Toast extends BaseComponent {
 
     this._clearTimeout()
 
-    if (this._config.animation) {
-      this._element.classList.add(CLASS_NAME_FADE)
-    }
-
     const complete = () => {
-      this._element.classList.remove(CLASS_NAME_SHOWING)
       EventHandler.trigger(this._element, EVENT_SHOWN)
 
       this._maybeScheduleHide()
     }
 
-    this._element.classList.remove(CLASS_NAME_HIDE) // @deprecated
-    reflow(this._element)
-    this._element.classList.add(CLASS_NAME_SHOW, CLASS_NAME_SHOWING)
+    this._element.classList.add(CLASS_NAME_SHOW)
 
-    await this._queueCallback(complete, this._element, this._config.animation)
+    await this._queueCallback(complete, this._element, this._isAnimated())
   }
 
   async hide(): Promise<void> {
@@ -122,13 +109,13 @@ class Toast extends BaseComponent {
     }
 
     const complete = () => {
-      this._element.classList.add(CLASS_NAME_HIDE) // @deprecated
-      this._element.classList.remove(CLASS_NAME_SHOWING, CLASS_NAME_SHOW)
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
-    this._element.classList.add(CLASS_NAME_SHOWING)
-    await this._queueCallback(complete, this._element, this._config.animation)
+    // Removing .show starts the fade-out. The discrete `display` transition
+    // keeps the toast laid out until the fade finishes.
+    this._element.classList.remove(CLASS_NAME_SHOW)
+    await this._queueCallback(complete, this._element, this._isAnimated())
   }
 
   override dispose(): void {
@@ -146,6 +133,10 @@ class Toast extends BaseComponent {
   }
 
   // Private
+  protected _isAnimated(): boolean {
+    return !this._element.classList.contains(CLASS_NAME_INSTANT)
+  }
+
   protected _maybeScheduleHide(): void {
     if (!this._config.autohide) {
       return
