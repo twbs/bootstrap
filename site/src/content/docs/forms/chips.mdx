@@ -198,7 +198,7 @@ Options can be passed via data attributes or JavaScript:
 | `maxChips` | number \| null | `null` | Maximum number of chips allowed. `null` for unlimited. |
 | `placeholder` | string | `''` | Placeholder text for dynamically created inputs. |
 | `dismissible` | boolean | `true` | Add dismiss buttons to created chips. |
-| `dismissIcon` | string | `'<svg>...</svg>'` | HTML string for the dismiss button icon. |
+| `dismissIcon` | string | `'<svg>...</svg>'` | HTML string for the dismiss button icon. Passed through the [icon content sanitizer]([[docsref:/getting-started/javascript#sanitizer]]) before insertion. |
 | `createOnBlur` | boolean | `true` | Create chip from input value when the input loses focus. |
 </BsTable>
 

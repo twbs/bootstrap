@@ -312,8 +312,8 @@ const navOverflow = new bootstrap.NavOverflow(navElement, {
 | `collapseBelow` | number\|string | `0` | Width threshold below which all items collapse into the overflow dropdown. Pass a breakpoint name (e.g., `'md'`) to resolve from `--bs-breakpoint-{name}`, or a number for a direct pixel value. `0` disables. |
 | `iconPlacement` | string | `'start'` | Position of the icon relative to the text in the toggle button. Use `'start'` for before the text or `'end'` for after. |
 | `menuPlacement` | string | `'bottom-end'` | Placement of the overflow dropdown menu, passed as `data-bs-placement` to the menu toggle. |
-| `moreText` | string | `'More'` | Text label for the overflow toggle button. |
-| `moreIcon` | string | `'<svg>...</svg>'` | SVG or HTML icon for the overflow toggle button. Overridden by a child element with `data-bs-overflow-icon` if present. |
+| `moreText` | string | `'More'` | Text label for the overflow toggle button. Inserted as plain text. |
+| `moreIcon` | string | `'<svg>...</svg>'` | SVG or HTML icon for the overflow toggle button. Passed through the [icon content sanitizer]([[docsref:/getting-started/javascript#sanitizer]]) before insertion. Overridden by a child element with `data-bs-overflow-icon` if present (also sanitized). |
 | `threshold` | number | `0` | Minimum number of items to keep visible before showing overflow. |
 </BsTable>
 
