@@ -67,7 +67,13 @@ describe('Sanitizer', () => {
         'jav\u0000ascript:alert();'
       ]
 
-      for (const url of invalidUrls) {
+      const dangerousDataUrls = [
+        'data:text/html,hello',
+        'data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==',
+        'vbscript:msgbox(1)'
+      ]
+
+      for (const url of [...invalidUrls, ...dangerousDataUrls]) {
         const template = [
           '<div>',
           `  <a href="${url}">Click me</a>`,
