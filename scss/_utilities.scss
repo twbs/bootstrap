@@ -929,6 +929,20 @@ $utilities: map.merge(
       class: bg,
       values: (gradient: var(--gradient))
     ),
+    // scss-docs-start utils-color-scheme
+    // `light dark` follows the system preference, also inside a forced theme.
+    // A browser can send `light` and `dark` into an embedded document, so use
+    // them on one iframe only. See https://github.com/twbs/bootstrap/issues/38750
+    "color-scheme": (
+      property: color-scheme,
+      class: color-scheme,
+      values: (
+        light: light,
+        dark: dark,
+        light-dark: light dark,
+      )
+    ),
+    // scss-docs-end utils-color-scheme
     // scss-docs-start utils-user-select
     "user-select": (
       property: user-select,
