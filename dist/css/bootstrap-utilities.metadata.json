@@ -1296,7 +1296,7 @@
       "classes": [
         "color-scheme-light",
         "color-scheme-dark",
-        "color-scheme-light-dark"
+        "color-scheme-auto"
       ]
     },
     "user-select": {

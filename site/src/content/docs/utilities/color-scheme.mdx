@@ -32,10 +32,10 @@ Use `data-bs-theme` to switch a whole subtree, because it sets both the color sc
 
 ## Follow the system preference
 
-Add `.color-scheme-light-dark` to make an element support both schemes. The browser then follows the system preference for that element, also when `data-bs-theme` forces a theme.
+Add `.color-scheme-auto` to make an element support both schemes. The browser then follows the system preference for that element, also when `data-bs-theme` forces a theme.
 
 ```html
-<iframe class="color-scheme-light-dark" src="..."></iframe>
+<iframe class="color-scheme-auto" src="..."></iframe>
 ```
 
 The warning above applies here too. Our colors follow the system preference inside this element, and no longer the theme you forced.
@@ -70,7 +70,7 @@ Add the values you need with the [utilities API]([[docsref:/utilities/api#overri
       values: (
         light: light,
         dark: dark,
-        light-dark: light dark,
+        auto: light dark,
         normal: normal,
         only-light: only light
       )

@@ -936,7 +936,7 @@ $utilities: map.merge(
       values: (
         light: light,
         dark: dark,
-        light-dark: light dark,
+        auto: light dark,
       )
     ),
     // scss-docs-end utils-color-scheme
