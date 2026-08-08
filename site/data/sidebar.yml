@@ -189,6 +189,9 @@
       pages:
         - title: Colors
         - title: Background
+        - title: Color scheme
+          meta:
+            - added: 6.0.0
         - title: Theme
           meta:
             - added: 6.0.0

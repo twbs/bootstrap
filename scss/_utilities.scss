@@ -929,6 +929,17 @@ $utilities: map.merge(
       class: bg,
       values: (gradient: var(--gradient))
     ),
+    // scss-docs-start utils-color-scheme
+    "color-scheme": (
+      property: color-scheme,
+      class: color-scheme,
+      values: (
+        light: light,
+        dark: dark,
+        auto: light dark,
+      )
+    ),
+    // scss-docs-end utils-color-scheme
     // scss-docs-start utils-user-select
     "user-select": (
       property: user-select,

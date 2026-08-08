@@ -389,6 +389,20 @@
         "min-vw-100"
       ]
     },
+    "dynamic-viewport-width": {
+      "class": "dvw",
+      "property": "width",
+      "classes": [
+        "dvw-100"
+      ]
+    },
+    "min-dynamic-viewport-width": {
+      "class": "min-dvw",
+      "property": "min-width",
+      "classes": [
+        "min-dvw-100"
+      ]
+    },
     "height": {
       "class": "h",
       "property": "height",
@@ -430,6 +444,20 @@
       "property": "min-height",
       "classes": [
         "min-vh-100"
+      ]
+    },
+    "dynamic-viewport-height": {
+      "class": "dvh",
+      "property": "height",
+      "classes": [
+        "dvh-100"
+      ]
+    },
+    "min-dynamic-viewport-height": {
+      "class": "min-dvh",
+      "property": "min-height",
+      "classes": [
+        "min-dvh-100"
       ]
     },
     "flex": {
@@ -1260,6 +1288,15 @@
       "property": "background-image",
       "classes": [
         "bg-gradient"
+      ]
+    },
+    "color-scheme": {
+      "class": "color-scheme",
+      "property": "color-scheme",
+      "classes": [
+        "color-scheme-light",
+        "color-scheme-dark",
+        "color-scheme-auto"
       ]
     },
     "user-select": {

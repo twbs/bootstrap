@@ -364,6 +364,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed the `::-moz-focus-inner` styles, as the pseudo selector is deprecated in Firefox.
 - Removed `text-transform: none` from `button` and `select` elements, as Firefox no longer incorrectly inherits text-transform.
 - Added `accent-color: var(--primary-base)` on `:root`, which applies the primary theme color to native form controls (checkboxes, radios, range inputs, progress bars) globally.
+- **Reboot now sets `color-scheme: light dark` on every `iframe`.** This keeps an embed transparent when you force a theme with `data-bs-theme`. Remove any v5 workaround like `[data-bs-theme="dark"] { color-scheme: unset; }`. v6 resolves its color tokens with `light-dark()`, which reads `color-scheme`. An `unset` there turns off dark mode for the whole subtree. For a third-party embed with no dark mode, add the new `.color-scheme-light` utility to that one iframe instead—see [Reboot]([[docsref:/content/reboot#third-party-embeds-with-no-dark-mode]]).
 
 ### Forms
 
@@ -572,6 +573,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Added `.min-h-*` and `.min-w-*` utilities with two default values, `0` and `100%`
   - Added `auto`, `min-content`, `max-content`, and `fit-content` to `width` and `height` utilities.
 - **New dynamic viewport utilities.** `.dvh-100` and `.min-dvh-100` set `height: 100dvh` and `min-height: 100dvh`. `.dvw-100` and `.min-dvw-100` set `width: 100dvw` and `min-width: 100dvw`. The browser updates a `dv*` unit when it expands or retracts a browser interface. Use `.dvh-100` for full-screen mobile layouts, because the section no longer overflows while a mobile browser shows its URL bar. Note that `dvw` does not fix the `100vw` scrollbar overflow, because CSS sizes every viewport width unit as if the scrollbar does not exist. The v5 `.vh-100`, `.min-vh-100`, `.vw-100`, and `.min-vw-100` utilities are unchanged. Add `svh`, `lvh`, `svw`, and `lvw` utilities yourself with the utilities API — see [Height]([[docsref:/utilities/height]]) and [Width]([[docsref:/utilities/width]]).
+- **New `color-scheme` utilities.** `.color-scheme-light`, `.color-scheme-dark`, and `.color-scheme-auto` set the `color-scheme` property on one element. Use them when one element needs a different scheme than the rest of the page, for example a third-party `<iframe>` that has no dark mode — see [Color scheme]([[docsref:/utilities/color-scheme]]). Reboot sets `color-scheme` on the page and on every `iframe` for you, so you need these utilities only for a single element — see the Reboot section above.
 - **Flex & Grid utilities:**
   - Added `.place-items` and `.justify-items` utilities.
   - Added `.grid-cols-*` utilities for `grid-template-columns` (1–4 and 6 column layouts), `.grid-cols-fill` for spanning all columns, `.grid-cols-subgrid` for adopting a parent grid's column tracks, and `.grid-auto-flow` utility.
