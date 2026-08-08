@@ -197,6 +197,7 @@ class Menu extends BaseComponent {
 
     this._parseResponsivePlacements()
     this._setupSubmenuListeners()
+    this._initSubmenuTriggers()
   }
 
   // Getters
@@ -678,6 +679,26 @@ class Menu extends BaseComponent {
     }
   }
 
+  // Announce every submenu trigger up front. Waiting until the submenu opens hides
+  // the popup from assistive technology until a user has already found it.
+  protected _initSubmenuTriggers(): void {
+    if (!this._menu) {
+      return
+    }
+
+    for (const trigger of SelectorEngine.find(SELECTOR_SUBMENU_TOGGLE, this._menu)) {
+      if (!SelectorEngine.findOne(SELECTOR_MENU, trigger.parentElement!)) {
+        continue
+      }
+
+      trigger.setAttribute('aria-haspopup', 'true')
+
+      if (!trigger.hasAttribute('aria-expanded')) {
+        trigger.setAttribute('aria-expanded', 'false')
+      }
+    }
+  }
+
   protected _openSubmenu(trigger: HTMLElement, submenu: HTMLElement, submenuWrapper: Element): void {
     if (this._openSubmenus.has(submenu)) {
       return
@@ -855,16 +876,40 @@ class Menu extends BaseComponent {
   // Keyboard navigation
   // -------------------------------------------------------------------------
 
+  // Items sit either directly in `.menu`, or as a submenu trigger one level deeper
+  // (`.menu > .submenu > .menu-item`). Both are navigable at the same level.
+  protected _getItemsInMenu(menu: Element): HTMLElement[] {
+    return SelectorEngine.find(
+      `:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS}`,
+      menu
+    ).filter(element => isVisible(element))
+  }
+
   protected _selectMenuItem({ key, target }: BootstrapEvent): void {
     const currentMenu = (target as Element).closest(SELECTOR_MENU) || this._menu
-    const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
-      .filter(element => isVisible(element))
+    const items = this._getItemsInMenu(currentMenu)
 
     if (!items.length) {
       return
     }
 
-    getNextActiveElement(items, target as HTMLElement, key === ARROW_DOWN_KEY, !items.includes(target as HTMLElement)).focus()
+    const nextItem = getNextActiveElement(items, target as HTMLElement, key === ARROW_DOWN_KEY, !items.includes(target as HTMLElement))
+    nextItem.focus()
+    this._closeUnrelatedSubmenus(currentMenu, nextItem)
+  }
+
+  // Moving focus along one level closes the submenus focus left behind, matching
+  // what hover and click already do through `_closeSiblingSubmenus`.
+  protected _closeUnrelatedSubmenus(currentMenu: Element, focusedElement: HTMLElement): void {
+    for (const [submenu] of this._openSubmenus) {
+      const submenuWrapper = submenu.closest(SELECTOR_SUBMENU)
+
+      if (!submenuWrapper || submenuWrapper.parentElement !== currentMenu || submenuWrapper.contains(focusedElement)) {
+        continue
+      }
+
+      this._closeSubmenu(submenu, submenuWrapper)
+    }
   }
 
   protected _handleSubmenuKeydown(event: BootstrapEvent): boolean {
@@ -877,26 +922,9 @@ class Menu extends BaseComponent {
     const submenuWrapper = (target as Element).closest(SELECTOR_SUBMENU)
     const isSubmenuToggle = (target as Element).matches(SELECTOR_SUBMENU_TOGGLE)
 
-    if ((key === ENTER_KEY || key === SPACE_KEY) && submenuWrapper && isSubmenuToggle) {
-      event.preventDefault()
-      event.stopPropagation()
+    const isOpenKey = key === ENTER_KEY || key === SPACE_KEY || key === enterKey
 
-      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
-      if (submenu) {
-        this._closeSiblingSubmenus(submenuWrapper)
-        this._openSubmenu(target as HTMLElement, submenu, submenuWrapper)
-        requestAnimationFrame(() => {
-          const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
-          if (firstItem) {
-            firstItem.focus()
-          }
-        })
-      }
-
-      return true
-    }
-
-    if (key === enterKey && submenuWrapper && isSubmenuToggle) {
+    if (isOpenKey && submenuWrapper && isSubmenuToggle) {
       event.preventDefault()
       event.stopPropagation()
 
@@ -938,12 +966,12 @@ class Menu extends BaseComponent {
       event.stopPropagation()
 
       const currentMenu = (target as Element).closest(SELECTOR_MENU)!
-      const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
-        .filter(element => isVisible(element))
+      const items = this._getItemsInMenu(currentMenu)
 
       if (items.length) {
         const targetItem = key === HOME_KEY ? items[0] : items.at(-1)!
         targetItem.focus()
+        this._closeUnrelatedSubmenus(currentMenu, targetItem)
       }
 
       return true
@@ -991,6 +1019,27 @@ class Menu extends BaseComponent {
     }
   }
 
+  // The keydown handler is delegated on both the toggle and `.menu`, and delegation
+  // stops at the innermost match. So for a key pressed inside a submenu panel, or
+  // inside a menu moved to `container`, the toggle is not a sibling of the element
+  // the handler ran on. Ask the open instances which menu owns the event first, and
+  // only then fall back to the sibling and wrapper lookups.
+  protected static _getToggleFromKeydownContext(element: HTMLElement, event: BootstrapEvent): HTMLElement | null {
+    if (element.matches(SELECTOR_DATA_TOGGLE)) {
+      return element
+    }
+
+    for (const instance of Menu._openInstances) {
+      if (instance._element === event.target || instance._menu?.contains(event.target as Node)) {
+        return instance._element
+      }
+    }
+
+    return SelectorEngine.prev(element, SELECTOR_DATA_TOGGLE)[0] as HTMLElement ||
+      SelectorEngine.next(element, SELECTOR_DATA_TOGGLE)[0] as HTMLElement ||
+      SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
+  }
+
   static dataApiKeydownHandler(this: HTMLElement, event: BootstrapEvent): void {
     // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
     // menu doesn't hijack their arrow keys.
@@ -1012,11 +1061,7 @@ class Menu extends BaseComponent {
       return
     }
 
-    const getToggleButton: any = this.matches(SELECTOR_DATA_TOGGLE) ?
-      this :
-      (SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
-        SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
-        SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode))
+    const getToggleButton = Menu._getToggleFromKeydownContext(this, event)
 
     if (!getToggleButton) {
       return
