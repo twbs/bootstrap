@@ -38,16 +38,19 @@ type NavOverflowConfig = {
   collapseBelow: number | string
   iconPlacement: string
   menuPlacement: string
-  moreText: string
+  moreText: string | false
   moreIcon: string
   threshold: number
 }
+
+// Also names an icon-only toggle, which has no text to name it
+const DEFAULT_TEXT = 'More'
 
 const Default: NavOverflowConfig = {
   collapseBelow: 0,
   iconPlacement: 'start',
   menuPlacement: 'bottom-end',
-  moreText: 'More',
+  moreText: DEFAULT_TEXT,
   moreIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>',
   threshold: 0 // Minimum items to keep visible before showing overflow
 }
@@ -56,7 +59,7 @@ const DefaultType = {
   collapseBelow: '(number|string)',
   iconPlacement: 'string',
   menuPlacement: 'string',
-  moreText: 'string',
+  moreText: '(string|boolean)',
   moreIcon: 'string',
   threshold: 'number'
 }
@@ -175,6 +178,9 @@ class NavOverflow extends BaseComponent {
 
     // Build with DOM APIs instead of string templates so user-supplied
     // moreText / menuPlacement / moreIcon cannot break out of their slots.
+    const { moreText } = this._config
+    const label = typeof moreText === 'string' ? moreText : ''
+
     const overflowItem = document.createElement('li')
     overflowItem.className = 'nav-item nav-overflow-item'
 
@@ -185,18 +191,28 @@ class NavOverflow extends BaseComponent {
     button.setAttribute('data-bs-placement', this._config.menuPlacement)
     button.setAttribute('aria-expanded', 'false')
 
+    // An icon-only toggle still needs a name. Fall back to the default text,
+    // and let authors who need another one write their own toggle.
+    if (label === '') {
+      button.setAttribute('aria-label', DEFAULT_TEXT)
+    }
+
     const iconSpan = document.createElement('span')
     iconSpan.className = 'nav-overflow-icon'
     iconSpan.innerHTML = sanitizeHtml(this._resolveIcon(), DefaultIconAllowlist)
 
-    const textSpan = document.createElement('span')
-    textSpan.className = 'nav-overflow-text'
-    textSpan.textContent = this._config.moreText
-
-    if (this._config.iconPlacement === 'end') {
-      button.append(textSpan, iconSpan)
+    if (label === '') {
+      button.append(iconSpan)
     } else {
-      button.append(iconSpan, textSpan)
+      const textSpan = document.createElement('span')
+      textSpan.className = 'nav-overflow-text'
+      textSpan.textContent = label
+
+      if (this._config.iconPlacement === 'end') {
+        button.append(textSpan, iconSpan)
+      } else {
+        button.append(iconSpan, textSpan)
+      }
     }
 
     const menu = document.createElement('div')

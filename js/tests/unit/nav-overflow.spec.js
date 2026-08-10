@@ -652,10 +652,73 @@ describe('NavOverflow', () => {
         collapseBelow: '(number|string)',
         iconPlacement: 'string',
         menuPlacement: 'string',
-        moreText: 'string',
+        moreText: '(string|boolean)',
         moreIcon: 'string',
         threshold: 'number'
       }))
+    })
+
+    it('should drop the text element when moreText is false', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
+        moreText: false
+      })
+
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      expect(wrapperEl.querySelector('.nav-overflow-text')).toBeNull()
+      expect(wrapperEl.querySelector('.nav-overflow-icon')).not.toBeNull()
+
+      // The icon alone cannot name the button, so fall back to the default text
+      expect(toggle.getAttribute('aria-label')).toEqual('More')
+
+      navOverflow.dispose()
+    })
+
+    it('should treat an empty moreText like false', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
+        moreText: ''
+      })
+
+      expect(wrapperEl.querySelector('.nav-overflow-text')).toBeNull()
+      expect(wrapperEl.querySelector('.nav-overflow-toggle').getAttribute('aria-label')).toEqual('More')
+
+      navOverflow.dispose()
+    })
+
+    it('should not set aria-label when the toggle shows text', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      expect(toggle.hasAttribute('aria-label')).toBeFalse()
+      expect(wrapperEl.querySelector('.nav-overflow-text').textContent).toEqual('More')
+
+      navOverflow.dispose()
     })
 
     it('should respect custom menuPlacement option', () => {
