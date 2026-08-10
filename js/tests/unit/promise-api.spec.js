@@ -177,7 +177,9 @@ describe('Promise-returning API', () => {
     })
 
     it('disposing mid-transition settles the pending promise', async () => {
-      fixtureEl.innerHTML = '<div class="collapse"><div>content</div></div>'
+      // The specs run without the stylesheet, so the fixture declares the
+      // transition the collapse waits on
+      fixtureEl.innerHTML = '<div class="collapse" style="transition: block-size .1s"><div>content</div></div>'
 
       const collapseEl = fixtureEl.querySelector('.collapse')
       const collapse = new Collapse(collapseEl)
@@ -223,7 +225,6 @@ describe('Promise-returning API', () => {
 
       await collapse.hide()
       expect(collapseEl).not.toHaveClass('show')
-      expect(collapseEl).not.toHaveClass('collapsing')
     })
   })
 })

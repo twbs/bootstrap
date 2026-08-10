@@ -29,7 +29,7 @@ JavaScript adds and removes a small, fixed set of classes. Style these, and your
 <BsTable>
 | Class | Meaning |
 | --- | --- |
-| `.show` | The component is shown. Its absence is the hidden state. Used by collapse, menu, popover, toast, and tooltip. |
+| `.show` | The component is shown. Its absence is the hidden state. Used by collapse, menu, popover, toast, and tooltip. Collapse toggles nothing else. |
 | `.active` | The shown state for tab panes, where it also marks the selected pane. |
 | `.hiding` | Present only while an exit transition plays. Bootstrap removes it after the transition ends. Used by alert, dialog, and drawer. |
 | `.{component}-instant` | Opts one element out of its transition, such as `.toast-instant` or `.dialog-instant`. |
@@ -82,6 +82,14 @@ Because the property list is a token, you can animate something new without rewr
 <Callout>
 Keep the discrete property in the list. The toast and the menu need `display`, and the dialog and the drawer need `visibility`. That property is what keeps the element rendered until the exit animation ends.
 </Callout>
+
+### Size animations
+
+Collapse and accordion animate a size, not an opacity, so they add [`interpolate-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size) to let `0` interpolate to the `auto` of the open state. No JavaScript measures the content. Browsers without `interpolate-size` open and close the element at once, which is why the collapse clips the animated axis at all times.
+
+The collapse trio carries the component name last, because the two components share it.
+
+<ScssDocs name="collapse-transition" file="scss/_transitions.scss" />
 
 ### Shared easing
 
