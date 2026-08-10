@@ -2,6 +2,7 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/tokens" as *;
+@use "mixins/transition" as *;
 
 $alert-tokens: () !default;
 
@@ -18,6 +19,9 @@ $alert-tokens: defaults(
     --alert-border: var(--border-width) solid var(--alert-border-color),
     --alert-border-radius: var(--radius-5),
     --alert-link-color: inherit,
+    --alert-transition-property: "opacity",
+    --alert-transition-duration: .15s,
+    --alert-transition-timing: linear,
     --hr-border-color: var(--theme-border, var(--border-color)),
   ),
   $alert-tokens
@@ -36,6 +40,23 @@ $alert-tokens: defaults(
     background-color: var(--alert-bg);
     border: var(--alert-border);
     @include border-radius(var(--alert-border-radius));
+
+    // scss-docs-start alert-transition
+    // An alert is visible in the markup, so only the exit animates. The JS adds
+    // .hiding for the length of it, then removes the element. Add
+    // .alert-instant to remove the alert at once instead.
+    &:not(.alert-instant) {
+      @include transition-props(
+        var(--alert-transition-property),
+        var(--alert-transition-duration),
+        var(--alert-transition-timing)
+      );
+    }
+
+    &.hiding {
+      opacity: 0;
+    }
+    // scss-docs-end alert-transition
   }
 
   .alert > p {

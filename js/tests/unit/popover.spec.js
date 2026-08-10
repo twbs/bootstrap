@@ -310,6 +310,7 @@ describe('Popover', () => {
           expect(spy).toHaveBeenCalledTimes(0)
           if (times > 1) {
             resolve()
+            return
           }
 
           times++

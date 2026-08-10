@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import { enableDismissTrigger } from './util/component-functions.js'
+import { getTransitionDurationFromElement } from './util/index.js'
 
 /**
  * Constants
@@ -19,7 +20,7 @@ const EVENT_KEY = `.${DATA_KEY}`
 
 const EVENT_CLOSE = `close${EVENT_KEY}`
 const EVENT_CLOSED = `closed${EVENT_KEY}`
-const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_HIDING = 'hiding'
 const CLASS_NAME_SHOW = 'show'
 
 /**
@@ -40,9 +41,12 @@ class Alert extends BaseComponent {
       return
     }
 
+    // .hiding drives the exit transition in CSS. An alert is visible in the
+    // markup, with or without .show, so its absence cannot mark the exit.
     this._element.classList.remove(CLASS_NAME_SHOW)
+    this._element.classList.add(CLASS_NAME_HIDING)
 
-    const isAnimated = this._element.classList.contains(CLASS_NAME_FADE)
+    const isAnimated = getTransitionDurationFromElement(this._element) > 0
     await this._queueCallback(() => this._destroyElement(), this._element, isAnimated)
   }
 

@@ -1108,6 +1108,37 @@ describe('Tab', () => {
       })
     })
 
+    it('should activate and show a pane in the same frame', async () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item" role="presentation">',
+        '    <button type="button" id="firstNav" class="nav-link active" data-bs-target="#home" role="tab" data-bs-toggle="tab">Home</button>',
+        '  </li>',
+        '  <li class="nav-item" role="presentation">',
+        '    <button type="button" id="secondNav" class="nav-link" data-bs-target="#profile" role="tab" data-bs-toggle="tab">Profile</button>',
+        '  </li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div role="tabpanel" class="tab-pane show active" id="home">test 1</div>',
+        '  <div role="tabpanel" class="tab-pane" id="profile">test 2</div>',
+        '</div>'
+      ].join('')
+
+      const homeEl = fixtureEl.querySelector('#home')
+      const profileEl = fixtureEl.querySelector('#profile')
+      const tab = new Tab(fixtureEl.querySelector('#secondNav'))
+
+      const shown = tab.show()
+
+      // The CSS drives the fade off .active, so both classes land at once
+      expect(profileEl).toHaveClass('active')
+      expect(profileEl).toHaveClass('show')
+      expect(homeEl).not.toHaveClass('active')
+      expect(homeEl).not.toHaveClass('show')
+
+      await shown
+    })
+
     it('should add show class to tab panes if there is a `.fade` class', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [

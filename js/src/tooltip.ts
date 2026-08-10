@@ -21,7 +21,7 @@ import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import type { ComponentConfig } from './util/config.js'
 import {
-  execute, findShadowRoot, getElement, getUID, isRTL, noop
+  execute, findShadowRoot, getElement, getTransitionDurationFromElement, getUID, isRTL, noop
 } from './util/index.js'
 import { DefaultAllowlist, type SanitizerAllowList } from './util/sanitizer.js'
 import TemplateFactory, { type TemplateContentEntry } from './util/template-factory.js'
@@ -46,7 +46,6 @@ const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
 const ESCAPE_KEY = 'Escape'
 
-const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_MODAL = 'modal'
 const CLASS_NAME_SHOW = 'show'
 
@@ -312,7 +311,7 @@ class Tooltip extends BaseComponent {
       this._isHovered = false
     }
 
-    await this._queueCallback(complete, this.tip!, this._isAnimated()!)
+    await this._queueCallback(complete, this.tip!, this._isAnimated())
   }
 
   async hide(): Promise<void> {
@@ -356,7 +355,7 @@ class Tooltip extends BaseComponent {
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN))
     }
 
-    await this._queueCallback(complete, this.tip!, this._isAnimated()!)
+    await this._queueCallback(complete, this.tip!, this._isAnimated())
   }
 
   update(): void {
@@ -389,15 +388,17 @@ class Tooltip extends BaseComponent {
   protected _createTipElement(content: Record<string, TemplateContentEntry>): HTMLElement {
     const tip = this._getTemplateFactory(content).toHtml()
 
-    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+    tip.classList.remove(CLASS_NAME_SHOW)
     tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
     const tipId = getUID(this.constructor.NAME).toString()
 
     tip.setAttribute('id', tipId)
 
-    if (this._isAnimated()) {
-      tip.classList.add(CLASS_NAME_FADE)
+    // The tip fades in CSS, from a @starting-style rule. `animation: false`
+    // opts out through the same class an author can add.
+    if (!this._config.animation) {
+      tip.classList.add(this._getInstantClassName())
     }
 
     return tip
@@ -442,8 +443,14 @@ class Tooltip extends BaseComponent {
     return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
 
-  protected _isAnimated(): boolean | null {
-    return this._config.animation || (this.tip && this.tip.classList.contains(CLASS_NAME_FADE))
+  protected _getInstantClassName(): string {
+    return `${this.constructor.NAME}-instant`
+  }
+
+  // The tip declares its transition in CSS, so a zero computed duration (an
+  // instant tip, reduced motion, or transitions disabled) means no wait.
+  protected _isAnimated(): boolean {
+    return getTransitionDurationFromElement(this.tip) > 0
   }
 
   protected _isShown(): boolean | null {

@@ -101,6 +101,21 @@ describe('Alert', () => {
       })
     })
 
+    it('should mark the exit with the hiding class', async () => {
+      fixtureEl.innerHTML = '<div class="alert show"></div>'
+
+      const alertEl = document.querySelector('.alert')
+      const alert = new Alert(alertEl)
+      const closed = alert.close()
+
+      expect(alertEl).toHaveClass('hiding')
+      expect(alertEl).not.toHaveClass('show')
+
+      await closed
+
+      expect(document.querySelectorAll('.alert')).toHaveSize(0)
+    })
+
     it('should not remove alert if close event is prevented', () => {
       return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="alert"></div>'

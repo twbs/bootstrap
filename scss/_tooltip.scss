@@ -3,6 +3,7 @@
 @use "mixins/border-radius" as *;
 @use "mixins/reset-text" as *;
 @use "mixins/tokens" as *;
+@use "mixins/transition" as *;
 
 $tooltip-tokens: () !default;
 
@@ -21,6 +22,9 @@ $tooltip-tokens: defaults(
     --tooltip-opacity: .95,
     --tooltip-arrow-width: .8rem,
     --tooltip-arrow-height: .4rem,
+    --tooltip-transition-property: "opacity",
+    --tooltip-transition-duration: .15s,
+    --tooltip-transition-timing: linear,
   ),
   $tooltip-tokens
 );
@@ -40,6 +44,16 @@ $tooltip-tokens: defaults(
     word-wrap: break-word;
     opacity: 0;
 
+    // The JS inserts the tip, so the fade needs a starting state below. Add
+    // .tooltip-instant, or pass `animation: false`, to skip it.
+    &:not(.tooltip-instant) {
+      @include transition-props(
+        var(--tooltip-transition-property),
+        var(--tooltip-transition-duration),
+        var(--tooltip-transition-timing)
+      );
+    }
+
     &.show { opacity: var(--tooltip-opacity); }
 
     .tooltip-arrow {
@@ -53,6 +67,12 @@ $tooltip-tokens: defaults(
         border-color: transparent;
         border-style: solid;
       }
+    }
+  }
+
+  @starting-style {
+    .tooltip:not(.tooltip-instant).show {
+      opacity: 0;
     }
   }
 

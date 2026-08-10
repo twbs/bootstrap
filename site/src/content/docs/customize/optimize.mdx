@@ -103,7 +103,7 @@ export default {
   defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
   safelist: {
     // Classes added at runtime by Bootstrap's JS that never appear in your HTML
-    standard: ['show', 'collapsing', 'active', 'fade', 'dialog-open'],
+    standard: ['show', 'collapsing', 'active', 'hiding', 'dialog-open'],
     // Keep component families that are generated or toggled dynamically
     greedy: [/^carousel/, /^menu/, /^drawer/, /^dialog/, /^tooltip/, /^popover/]
   }

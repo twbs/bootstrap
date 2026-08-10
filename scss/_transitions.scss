@@ -26,6 +26,8 @@ $collapse-tokens: defaults(
 );
 // scss-docs-end collapse-transition
 
+// A generic fade for your own markup. No Bootstrap component needs it: each one
+// declares its own transition and its own tokens. See the Transitions page.
 .fade {
   @include tokens($fade-tokens);
   @include transition(opacity var(--transition-fade-duration) var(--transition-fade-timing));

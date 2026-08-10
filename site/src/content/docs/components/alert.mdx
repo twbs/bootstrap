@@ -78,11 +78,12 @@ Using the alert JavaScript plugin, it’s possible to dismiss any alert inline. 
 - Be sure you’ve loaded the alert plugin, or the compiled Bootstrap JavaScript.
 - Add a [close button]([[docsref:/components/close-button]]) and use flexbox utilities (e.g. `ms-auto`) to position it within the alert.
 - On the close button, add the `data-bs-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
-- To animate alerts when dismissing them, be sure to add the `.fade` and `.show` classes.
+
+An alert fades out before it is removed. The plugin adds `.hiding` for the length of the transition, so no extra classes are needed in your markup. Add `.alert-instant` to remove the alert at once instead. See [Transitions]([[docsref:/customize/transitions]]) for the tokens that tune the fade.
 
 You can see this in action with a live demo:
 
-<Example code={`<div class="alert theme-warning fade show" role="alert">
+<Example code={`<div class="alert theme-warning" role="alert">
     <p>Something’s wrong, check the fields below and try again.</p>
     <CloseButton dismiss="alert" class="ms-auto" />
   </div>`} />
@@ -153,7 +154,7 @@ This makes an alert listen for click events on descendant elements which have th
 <BsTable>
 | Method | Description |
 | --- | --- |
-| `close` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. **Returns a promise that resolves once the alert is removed** (i.e. after the `closed.bs.alert` event fires). |
+| `close` | Closes an alert by removing it from the DOM. The alert fades out first, unless it has `.alert-instant`. **Returns a promise that resolves once the alert is removed** (i.e. after the `closed.bs.alert` event fires). |
 | `dispose` | Destroys an element’s alert. (Removes stored data on the DOM element) |
 | `getInstance` | Static method which allows you to get the alert instance associated to a DOM element. For example: `bootstrap.Alert.getInstance(alert)`. |
 | `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Alert.getOrCreateInstance(element)`. |
