@@ -52,6 +52,7 @@ $toast-tokens: defaults(
     box-shadow: var(--toast-box-shadow);
     @include border-radius(var(--toast-border-radius, var(--radius-7)));
 
+    // scss-docs-start toast-transition
     // Animated variant (default). `display` transitions discretely so the toast
     // stays laid out until the fade-out finishes. Add .toast-instant to skip it.
     &:not(.toast-instant) {
@@ -66,6 +67,7 @@ $toast-tokens: defaults(
       display: flex;
       opacity: 1;
     }
+    // scss-docs-end toast-transition
   }
 
   // The toast is not rendered before .show lands, so the fade-in needs an
