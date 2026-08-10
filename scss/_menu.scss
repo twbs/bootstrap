@@ -44,6 +44,7 @@ $menu-tokens: defaults(
     --menu-header-color: var(--fg-3),
     --menu-header-padding-x: .75rem,
     --menu-header-padding-y: .25rem,
+    --menu-transition-property: "opacity, transform, display",
     --menu-transition-duration: .15s,
     --menu-transition-timing: var(--transition-timing-overlay),
   ),
@@ -97,10 +98,14 @@ $menu-tokens: defaults(
       transform-origin: top end;
     }
 
-    @include transition(
-      opacity var(--menu-transition-duration) var(--menu-transition-timing),
-      transform var(--menu-transition-duration) var(--menu-transition-timing),
-      display var(--menu-transition-duration) allow-discrete
+    // `display` transitions discretely so the menu stays laid out until the
+    // fade-out finishes. Keep it in --menu-transition-property when you
+    // override the list.
+    @include transition-props(
+      var(--menu-transition-property),
+      var(--menu-transition-duration),
+      var(--menu-transition-timing),
+      allow-discrete
     );
 
     &.show {

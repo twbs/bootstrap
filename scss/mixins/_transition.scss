@@ -37,18 +37,31 @@ $transition-base: all .2s ease-in-out !default;
 // Set the `transition-*` properties one by one. In the shorthand a trailing
 // duration binds to the last property only, so `color, box-shadow .15s` leaves
 // `color` at `0s`. Set apart, one duration and easing cover every property.
-@mixin transition-props($property, $duration, $timing) {
+//
+// This also keeps the property list in a custom property. A single token then
+// adds a property to the animation, where the shorthand would need the whole
+// declaration again.
+//
+// Pass `$behavior: allow-discrete` for a list that animates a discrete
+// property, such as `display` or `content-visibility`.
+@mixin transition-props($property, $duration, $timing, $behavior: null) {
   @if $enable-transitions {
     @if $enable-reduced-motion {
       @media (prefers-reduced-motion: no-preference) {
-        transition-timing-function: $timing;
-        transition-duration: $duration;
-        transition-property: $property;
+        @include transition-longhands($property, $duration, $timing, $behavior);
       }
     } @else {
-      transition-timing-function: $timing;
-      transition-duration: $duration;
-      transition-property: $property;
+      @include transition-longhands($property, $duration, $timing, $behavior);
     }
+  }
+}
+
+@mixin transition-longhands($property, $duration, $timing, $behavior) {
+  transition-timing-function: $timing;
+  transition-duration: $duration;
+  transition-property: $property;
+
+  @if $behavior {
+    transition-behavior: $behavior;
   }
 }

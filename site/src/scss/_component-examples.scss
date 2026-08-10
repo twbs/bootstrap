@@ -322,6 +322,19 @@
     min-height: 300px;
   }
 
+  // Transitions page — a toast that slides in with token overrides only
+  .bd-toast-slide {
+    --bs-toast-transition-property: opacity, transform, display;
+    --bs-toast-transition-duration: .3s;
+    --bs-toast-transition-timing: ease-out;
+
+    transform: translateY(1rem);
+
+    &.show {
+      transform: none;
+    }
+  }
+
   .bd-example-zindex-levels {
     min-height: 15rem;
 

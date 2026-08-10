@@ -52,24 +52,35 @@ Every animated component exposes the same three custom properties.
 | `--bs-{component}-transition-timing` | The easing curve. |
 </BsTable>
 
-Because the property list is a token, you can animate something new without rewriting the whole declaration. This toast slides up as it fades in:
+Because the property list is a token, you can animate something new without rewriting the whole declaration. Add `transform` to the toast list, and the toast slides as it fades. Press the button to replay it.
+
+<div class="bd-example">
+  <div class="toast-container position-static">
+    <div class="toast bd-toast-slide" id="slideToast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body">
+        This toast slides up as it fades in.
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn-solid theme-primary mt-3" id="slideToastBtn">Replay</button>
+</div>
 
 ```css
-.toast {
+.toast-slide {
   --bs-toast-transition-property: opacity, transform, display;
   --bs-toast-transition-duration: .3s;
   --bs-toast-transition-timing: ease-out;
 
-  translate: 0 1rem;
+  transform: translateY(1rem);
 }
 
-.toast.show {
-  translate: none;
+.toast-slide.show {
+  transform: none;
 }
 ```
 
 <Callout>
-Keep `display` in the property list for components that transition it. It is what keeps the element laid out during the exit animation.
+Keep the discrete property in the list. The toast and the menu need `display`, and the dialog and the drawer need `visibility`. That property is what keeps the element rendered until the exit animation ends.
 </Callout>
 
 ### Shared easing
