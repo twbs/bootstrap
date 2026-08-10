@@ -520,7 +520,7 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 | Range | `.form-range` (+ `data-bs-bubble`, ticks) | Enhanced range slider with a value bubble |
 | Strength | `data-bs-strength` | Password-strength meter |
 | OTP input | `data-bs-otp` | One-time-code input |
-| Nav overflow | `.nav-overflow` | Collapses overflowing nav items into a menu |
+| Nav overflow | `.nav-overflow` wrapper around a `.nav` | Collapses overflowing nav items into a menu |
 | Toggler | `data-bs-toggle="toggler"` | Generic class/attribute toggler |
 | Submenu | `.submenu` (within Menu) | Nested menus (`submenuTrigger`, `submenuDelay`) |
 | Stepper | `.stepper` | Multi-step workflow (CSS-only) |
