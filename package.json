@@ -165,7 +165,7 @@
     "mime": "^4.1.0",
     "nodemon": "^3.1.14",
     "npm-run-all2": "^9.0.2",
-    "postcss": "^8.5.21",
+    "postcss": "^8.5.26",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
