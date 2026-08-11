@@ -40,7 +40,7 @@ Or remove borders:
 
 ## Width
 
-Border width utilities are available in increments of 1px from 0 to 5px.
+Border width utilities are available in increments of 1px from 0 to 5px. These set `border-width` on all sides.
 
 <Example class="bd-example-border-utils" code={`<span class="border border-keyline"></span>
 <span class="border border-1"></span>
@@ -48,6 +48,64 @@ Border width utilities are available in increments of 1px from 0 to 5px.
 <span class="border border-3"></span>
 <span class="border border-4"></span>
 <span class="border border-5"></span>`} />
+
+### Per-side widths
+
+We do not ship per-side border width utilities. Combine a side utility with a width utility when one side needs a thicker border:
+
+<Example class="bd-example-border-utils" code={`<span class="border-top border-2"></span>
+<span class="border-end border-3"></span>
+<span class="border-bottom border-4"></span>
+<span class="border-start border-5"></span>`} />
+
+### Extend utilities
+
+Extend the border classes with our [utilities API]([[docsref:/utilities/api#add-utilities]]) when you need different widths on different sides, without combining classes as shown above. Here‘s an example using the width longhands instead of the border shorthand so values from `$border-widths` apply cleanly.
+
+```scss
+// _my-utilities.scss
+@use "sass:map";
+@use "bootstrap/scss/config" as *;
+@use "bootstrap/scss/utilities";
+
+$border-width-values: map.merge($border-widths, (keyline: var(--border-width-keyline)));
+
+$utilities: map.merge(
+  $utilities,
+  (
+    "border-top-width": (
+      property: border-block-start-width,
+      class: border-t,
+      values: $border-width-values
+    ),
+    "border-end-width": (
+      property: border-inline-end-width,
+      class: border-e,
+      values: $border-width-values
+    ),
+    "border-bottom-width": (
+      property: border-block-end-width,
+      class: border-b,
+      values: $border-width-values
+    ),
+    "border-start-width": (
+      property: border-inline-start-width,
+      class: border-s,
+      values: $border-width-values
+    )
+  )
+);
+```
+
+Load that partial before Bootstrap:
+
+```scss
+// my-bootstrap.scss
+@use "my-utilities";
+@use "bootstrap/scss/bootstrap";
+```
+
+This adds classes like `.border-t-5`, `.border-e-5`, `.border-b-5`, and `.border-s-5`. Pair them with `.border` or a side utility such as `.border-bottom` so the border still has a style and color.
 
 ## CSS
 
