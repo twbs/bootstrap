@@ -10,7 +10,7 @@ import { getData } from '@libs/data'
 
 Cards are flexible and extensible content containers with support for headers and footers, a wide variety of content, contextual background colors, and additional display options. **Cards have no fixed width to start**, so they’ll naturally fill the width of their parent element, or slot into your grid columns.
 
-<Example code={`<section class="card" style="width: 280px">
+<Example code={`<section class="card" style="max-width: 320px">
     <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
@@ -63,7 +63,7 @@ Titles, text, and links within cards all have required class names for managing 
 - For a subtitle, use `.card-subtitle`. This uses a negative margin to position itself closer to the title.
 - For text, use `.card-text`. This removes block margins from the element.
 
-<Example code={`<div class="card" style="width: 18rem;">
+<Example code={`<div class="card" style="max-width: 320px;">
     <div class="card-body">
       <h4 class="card-title">Example card title</h4>
       <p class="card-subtitle fg-3">With a card subtitle</p>
