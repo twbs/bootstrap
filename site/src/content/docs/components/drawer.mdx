@@ -13,7 +13,7 @@ Drawer builds on the native `<dialog>` element and our Dialog component to manag
 
 - **Drawer shares the same base as [our Dialog component]([[docsref:/components/dialog]])**, using native `<dialog>` APIs for focus trapping, backdrop, and top-layer rendering.
 - **Use the `<dialog>` element**, not a `<div>`. Due to how CSS handles animations, don’t apply `margin` or `translate` directly to `.drawer` — wrap it if you need those.
-- **Modal by default, or scroll-through** — the default opens the drawer modally with a backdrop; set `scroll: true` to render without a backdrop and without locking body scroll.
+- **Modal by default** — opens with `showModal()`, a backdrop, and focus trapping. Set `scroll: true` and `backdrop: false` to open as a non-modal drawer with `show()`: body scrolling stays on, and focus is not trapped.
 - **Built-in backdrop** via `::backdrop` (modal only) closes the drawer on click; set `backdrop: "static"` to lock clicks outside, or `backdrop: false` to hide it.
 - **Escape key handling** closes the drawer by default; set `keyboard: false` to disable.
 - **Swipe to dismiss** — drawer auto-wires a placement-aware swipe (swipe left to close `drawer-start` in LTR, swipe down to close `drawer-bottom`, etc.).
@@ -74,7 +74,7 @@ Use the buttons below to show and hide a drawer element via JavaScript. You can 
 
 ### Body scrolling
 
-Scrolling the `<body>` element is disabled when a drawer and its backdrop are visible. Use the `data-bs-scroll` attribute to enable `<body>` scrolling.
+Scrolling the `<body>` element is disabled when a drawer opens modally. Use `data-bs-scroll="true"` with `data-bs-backdrop="false"` to keep body scrolling and open the drawer as non-modal. Focus moves into the drawer, but is not trapped, so the page stays interactive.
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerScrolling" aria-controls="drawerScrolling">Enable body scrolling</button>
 
@@ -90,7 +90,7 @@ Scrolling the `<body>` element is disabled when a drawer and its backdrop are vi
 
 ### Body scrolling and backdrop
 
-You can also enable `<body>` scrolling with a visible backdrop.
+You can also allow `<body>` scrolling while keeping a backdrop. With a backdrop present, the drawer stays modal (`showModal()` and focus trapping) even when `scroll` is `true`.
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerWithBothOptions" aria-controls="drawerWithBothOptions">Enable both scrolling & backdrop</button>
 
@@ -292,7 +292,7 @@ Add an optional `.drawer-footer` for action buttons or other content at the bott
 
 ## Accessibility
 
-Since the drawer panel is built on the native `<dialog>` element, it inherently has the correct `dialog` role and modal semantics. Be sure to add `aria-labelledby="..."`—referencing the drawer title—to the `<dialog>` element.
+Since the drawer is a native `<dialog>`, it gets the correct `dialog` role. Modal drawers also get modal semantics and focus trapping from `showModal()`. Non-modal drawers (`scroll: true` and `backdrop: false`) use `show()` instead, so they do not trap focus or mark the rest of the page as inert. Add `aria-labelledby` that points at the drawer title.
 
 ## CSS
 
@@ -362,7 +362,7 @@ const drawerList = [...drawerElementList].map(drawerEl => new bootstrap.Drawer(d
 | --- | --- | --- | --- |
 | `backdrop` | boolean or the string `static` | `true` | Apply a backdrop on body while drawer is open. Alternatively, specify `static` for a backdrop which doesn’t close the drawer when clicked. |
 | `keyboard` | boolean | `true` | Closes the drawer when escape key is pressed. |
-| `scroll` | boolean | `false` | Allow body scrolling while drawer is open. |
+| `scroll` | boolean | `false` | Allow body scrolling while the drawer is open. Combined with `backdrop: false`, opens the drawer as non-modal (no focus trap). |
 </BsTable>
 
 ### Methods
