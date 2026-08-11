@@ -46,7 +46,6 @@ $card-tokens: defaults(
     color: var(--fg-body);
     word-wrap: break-word;
     background-color: var(--card-bg);
-    // border: var(--card-border-width) solid var(--card-border-color);
     @include border-radius(var(--card-border-radius));
     @include box-shadow(var(--card-box-shadow));
 
