@@ -18,7 +18,6 @@ $bd-callout-variants: info, warning, danger;
     --bd-toc-color: var(--bs-fg-body);
     --bd-sidebar-link-bg: light-dark(color-mix(in srgb, var(--bd-violet), transparent 90%), color-mix(in srgb, var(--bd-violet), transparent 70%));
     --bd-callout-link: var(--blue-600);
-    --bd-callout-code-color: light-dark(var(--bs-pink-600), var(--bs-pink-300));
     --bd-pre-bg: var(--bs-bg-body);
     --bd-swatch-shadow: inset 0 0 0 1px light-dark(rgb(0 0 0 / .1), rgb(255 255 255 / .1));
   }
