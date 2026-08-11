@@ -6,5 +6,8 @@
   "editor.renderWhitespace": "all",
   "scss.validate": false,
   "stylelint.enable": true,
-  "stylelint.validate": ["scss"]
+  "stylelint.validate": ["scss"],
+  "[scss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  }
 }
