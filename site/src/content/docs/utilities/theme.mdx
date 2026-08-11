@@ -35,6 +35,10 @@ And with borders:
 
 <Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-2 theme-${themeColor.name} theme-subtle theme-border">.theme-${themeColor.name} .theme-subtle .theme-border</div>`)} />
 
+Nested links inherit the subtle foreground so they stay legible on the subtle background:
+
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-subtle">Theme ${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">nested link</a> inside.</div>`)} />
+
 ### Muted
 
 Muted pairs the `bg-muted` theme token with the `text-emphasis` text color for a lower-contrast, more muted appearance. Like subtle, this combination will automatically adjust to the current color mode.
@@ -45,14 +49,18 @@ And with borders:
 
 <Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-2 theme-${themeColor.name} theme-muted theme-border">.theme-${themeColor.name} .theme-muted .theme-border</div>`)} />
 
+Nested links inherit the muted foreground so they stay legible on the muted background:
+
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-muted">Theme ${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">nested link</a> inside.</div>`)} />
+
 ## Comparison
 
 Here’s a side-by-side comparison of all three styles for each theme color, including nested links:
 
 <Example code={getData('theme-colors').map((themeColor) => `<div class="d-flex gap-2 mb-2">
-    <div class="theme-${themeColor.name} theme-contrast p-3 flex-fill text-center rounded">${themeColor.title} with a <a href="#">link</a></div>
-    <div class="theme-${themeColor.name} theme-subtle p-3 flex-fill text-center rounded">${themeColor.title} with a <a href="#">link</a></div>
-    <div class="theme-${themeColor.name} theme-muted p-3 flex-fill text-center rounded">${themeColor.title} with a <a href="#">link</a></div>
+    <div class="theme-${themeColor.name} theme-contrast p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">link</a></div>
+    <div class="theme-${themeColor.name} theme-subtle p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">link</a></div>
+    <div class="theme-${themeColor.name} theme-muted p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">link</a></div>
   </div>`)} />
 
 ## With components
@@ -102,6 +110,7 @@ The theme style classes generate the following CSS:
 }
 
 .theme-muted {
+  --theme-fg: var(--theme-fg-emphasis);
   background-color: var(--theme-bg-muted);
   color: var(--theme-fg-emphasis);
 }
