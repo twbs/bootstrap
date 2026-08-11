@@ -66,8 +66,9 @@ const uriAttributes = new Set([
 const SAFE_URL_PATTERN = /^(?!(?:javascript|data|vbscript):)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i
 
 /**
- * A pattern that matches safe data URLs. Only matches image, video and audio
- * types — notably NOT `data:text/html`, which is an XSS vector.
+ * A pattern that matches safe data URLs. Only matches base64-encoded image,
+ * video and audio types — notably NOT `data:text/html`, and not non-base64
+ * media payloads (e.g. `data:image/png,...` without `;base64,`).
  *
  * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L49
  */
