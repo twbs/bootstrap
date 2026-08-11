@@ -836,17 +836,19 @@ describe('NavOverflow', () => {
 
     it('should treat moreText as plain text, not HTML', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         moreText: '<img src=x onerror="window.__navTextXss=1">More'
       })
 
-      const toggleText = navEl.querySelector('.nav-overflow-text')
+      const toggleText = wrapperEl.querySelector('.nav-overflow-text')
       expect(toggleText.querySelector('img')).toBeNull()
       expect(toggleText.textContent).toEqual('<img src=x onerror="window.__navTextXss=1">More')
       expect(window.__navTextXss).toBeUndefined()
@@ -856,17 +858,19 @@ describe('NavOverflow', () => {
 
     it('should sanitize moreIcon HTML before inserting it', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         moreIcon: '<img src=x onerror="window.__navIconXss=1"><span class="safe-icon">…</span>'
       })
 
-      const iconContainer = navEl.querySelector('.nav-overflow-icon')
+      const iconContainer = wrapperEl.querySelector('.nav-overflow-icon')
       expect(iconContainer.querySelector('img')).toBeNull()
       expect(iconContainer.innerHTML).not.toMatch(/onerror/i)
       expect(iconContainer.querySelector('.safe-icon')).not.toBeNull()
@@ -877,20 +881,22 @@ describe('NavOverflow', () => {
 
     it('should not let menuPlacement break out of its attribute', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
       const maliciousPlacement = 'bottom-end"><img class="broken-out" src=x onerror="window.__navPlacementXss=1">'
-      const navOverflow = new NavOverflow(navEl, {
+      const navOverflow = new NavOverflow(wrapperEl, {
         menuPlacement: maliciousPlacement
       })
 
-      const toggle = navEl.querySelector('.nav-overflow-toggle')
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
       expect(toggle.getAttribute('data-bs-placement')).toEqual(maliciousPlacement)
-      expect(navEl.querySelector('img.broken-out')).toBeNull()
+      expect(wrapperEl.querySelector('img.broken-out')).toBeNull()
       expect(window.__navPlacementXss).toBeUndefined()
 
       navOverflow.dispose()
@@ -898,16 +904,18 @@ describe('NavOverflow', () => {
 
     it('should sanitize markup from [data-bs-overflow-icon]', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
         '  <span data-bs-overflow-icon class="from-markup"><img src=x onerror="window.__navCustomIconXss=1"><i class="bi-ok"></i></span>',
-        '</ul>'
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const iconContainer = navEl.querySelector('.nav-overflow-icon')
+      const iconContainer = wrapperEl.querySelector('.nav-overflow-icon')
       expect(iconContainer.querySelector('img')).toBeNull()
       expect(iconContainer.innerHTML).not.toMatch(/onerror/i)
       expect(iconContainer.querySelector('i.bi-ok')).not.toBeNull()
