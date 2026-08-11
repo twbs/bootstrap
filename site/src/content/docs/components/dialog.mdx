@@ -45,6 +45,31 @@ Toggle a dialog by clicking the button below. The dialog uses the native `showMo
     </div>
   </dialog>`} />
 
+## Without JavaScript
+
+Supported browsers can open and close a dialog with the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)—no Bootstrap JavaScript required. Set `commandfor` to the dialog’s `id`, use `command="show-modal"` to open, and `command="close"` to dismiss.
+
+<Callout type="warning">
+The Invoker Commands API is not supported in all browsers. For guaranteed support, use the `data-bs-toggle` examples above when you need our plugin options, events, or animated close.
+</Callout>
+
+<Example code={`<button type="button" class="btn-solid theme-primary" commandfor="invokerDialog" command="show-modal">
+    Open dialog
+  </button>
+
+  <dialog class="dialog" id="invokerDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Invoker Commands</h1>
+      <button type="button" class="btn-close" commandfor="invokerDialog" command="close" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>This dialog opens with <code>command="show-modal"</code> and closes with <code>command="close"</code>. No Bootstrap JavaScript is involved.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" commandfor="invokerDialog" command="close">Close</button>
+    </div>
+  </dialog>`} />
+
 ## Dark dialog
 
 To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.

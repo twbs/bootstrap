@@ -72,6 +72,28 @@ Use the buttons below to show and hide a drawer element via JavaScript. You can 
     </div>
   </dialog>`} />
 
+### Without JavaScript
+
+Supported browsers can open and close a drawer with the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)—no Bootstrap JavaScript required. Set `commandfor` to the drawer’s `id`, use `command="show-modal"` to open, and `command="close"` to dismiss.
+
+<Callout type="warning">
+The Invoker Commands API is not supported in all browsers. For guaranteed support, use the `data-bs-toggle` examples above when you need our plugin options, events, swipe to dismiss, or animated close.
+</Callout>
+
+<Example code={`<button type="button" class="btn-solid theme-primary" commandfor="invokerDrawer" command="show-modal">
+    Open drawer
+  </button>
+
+  <dialog class="drawer drawer-start" tabindex="-1" id="invokerDrawer" aria-labelledby="invokerDrawerLabel">
+    <div class="drawer-header">
+      <h5 class="drawer-title" id="invokerDrawerLabel">Invoker Commands</h5>
+      <button type="button" class="btn-close" commandfor="invokerDrawer" command="close" aria-label="Close"></button>
+    </div>
+    <div class="drawer-body">
+      <p>This drawer opens with <code>command="show-modal"</code> and closes with <code>command="close"</code>. No Bootstrap JavaScript is involved.</p>
+    </div>
+  </dialog>`} />
+
 ### Body scrolling
 
 Scrolling the `<body>` element is disabled when a drawer and its backdrop are visible. Use the `data-bs-scroll` attribute to enable `<body>` scrolling.
@@ -88,7 +110,7 @@ Scrolling the `<body>` element is disabled when a drawer and its backdrop are vi
     </div>
   </dialog>`} />
 
-### Body scrolling and backdrop
+### Body scrolling & backdrop
 
 You can also enable `<body>` scrolling with a visible backdrop.
 
