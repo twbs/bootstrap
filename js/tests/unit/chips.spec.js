@@ -157,6 +157,42 @@ describe('Chips', () => {
 
       expect(chipsEl.querySelector('.chip-dismiss')).toBeNull()
     })
+
+    it('should keep the default dismiss SVG after sanitization', () => {
+      const { chips, chipsEl } = makeChips()
+      chips.add('alpha')
+
+      const dismiss = chipsEl.querySelector('.chip-dismiss')
+      expect(dismiss.querySelector('svg')).not.toBeNull()
+      expect(dismiss.querySelector('line')).not.toBeNull()
+    })
+
+    it('should sanitize dismissIcon HTML before inserting it', () => {
+      const { chips, chipsEl } = makeChips({
+        dismissIcon: '<img src="x" onerror="window.__chipsXss=1"><svg class="safe-icon" viewBox="0 0 16 16"><circle cx="8" cy="8" r="4"/></svg>'
+      })
+      chips.add('alpha')
+
+      const dismiss = chipsEl.querySelector('.chip-dismiss')
+      expect(dismiss.querySelector('img')).toBeNull()
+      expect(dismiss.innerHTML).not.toMatch(/onerror/i)
+      expect(dismiss.querySelector('svg.safe-icon')).not.toBeNull()
+      expect(window.__chipsXss).toBeUndefined()
+    })
+
+    it('should sanitize dismissIcon supplied via data attributes', () => {
+      const { chips, chipsEl } = makeChips(
+        null,
+        '<div class="chips" data-bs-dismiss-icon=\'<img src=x onerror="window.__chipsDataXss=1"><span class="icon-ok">x</span>\'></div>'
+      )
+      chips.add('alpha')
+
+      const dismiss = chipsEl.querySelector('.chip-dismiss')
+      expect(dismiss.querySelector('img')).toBeNull()
+      expect(dismiss.innerHTML).not.toMatch(/onerror/i)
+      expect(dismiss.querySelector('.icon-ok')).not.toBeNull()
+      expect(window.__chipsDataXss).toBeUndefined()
+    })
   })
 
   describe('remove', () => {

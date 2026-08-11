@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import { DefaultIconAllowlist, sanitizeHtml } from './util/sanitizer.js'
 
 /**
  * Constants
@@ -162,25 +163,40 @@ class NavOverflow extends BaseComponent {
       return
     }
 
-    const iconHtml = this._resolveIcon()
-    const iconSpan = `<span class="nav-overflow-icon">${iconHtml}</span>`
-    const textSpan = `<span class="nav-overflow-text">${this._config.moreText}</span>`
-    const toggleContent = this._config.iconPlacement === 'end' ?
-      `${textSpan}${iconSpan}` :
-      `${iconSpan}${textSpan}`
-
+    // Build with DOM APIs instead of string templates so user-supplied
+    // moreText / menuPlacement / moreIcon cannot break out of their slots.
     const overflowItem = document.createElement('li')
     overflowItem.className = 'nav-item nav-overflow-item'
-    overflowItem.innerHTML = `
-      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu" data-bs-placement="${this._config.menuPlacement}" aria-expanded="false">
-        ${toggleContent}
-      </button>
-      <div class="${CLASS_NAME_OVERFLOW_MENU} menu"></div>
-    `
 
+    const button = document.createElement('button')
+    button.type = 'button'
+    button.className = 'nav-link nav-overflow-toggle'
+    button.setAttribute('data-bs-toggle', 'menu')
+    button.setAttribute('data-bs-placement', this._config.menuPlacement)
+    button.setAttribute('aria-expanded', 'false')
+
+    const iconSpan = document.createElement('span')
+    iconSpan.className = 'nav-overflow-icon'
+    iconSpan.innerHTML = sanitizeHtml(this._resolveIcon(), DefaultIconAllowlist)
+
+    const textSpan = document.createElement('span')
+    textSpan.className = 'nav-overflow-text'
+    textSpan.textContent = this._config.moreText
+
+    if (this._config.iconPlacement === 'end') {
+      button.append(textSpan, iconSpan)
+    } else {
+      button.append(iconSpan, textSpan)
+    }
+
+    const menu = document.createElement('div')
+    menu.className = `${CLASS_NAME_OVERFLOW_MENU} menu`
+
+    overflowItem.append(button, menu)
     this._element.append(overflowItem)
-    this._overflowToggle = overflowItem.querySelector<HTMLElement>(SELECTOR_OVERFLOW_TOGGLE)
-    this._overflowMenu = overflowItem.querySelector<HTMLElement>(SELECTOR_OVERFLOW_MENU)
+
+    this._overflowToggle = button
+    this._overflowMenu = menu
   }
 
   protected _resolveIcon(): string {
@@ -196,6 +212,7 @@ class NavOverflow extends BaseComponent {
 
     customIconElement.remove()
 
+    // Returned HTML is sanitized in `_createOverflowMenu` before insertion.
     return iconHtml
   }
 

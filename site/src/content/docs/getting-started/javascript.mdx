@@ -306,12 +306,18 @@ Every Bootstrap plugin exposes the following methods and static properties.
 
 ## Sanitizer
 
-Our tooltip and popover components are able to render arbitrary HTML to the page if configured to do so.
-To prevent cross-site scripting (XSS) attacks, these components use our built-in content sanitizer to sanitize any options which accept HTML before they are rendered to the page. Content sanitization is enabled by default.
+Some JavaScript components can render or accept arbitrary HTML in their configuration. To prevent cross-site scripting (XSS) attacks, these components use our built-in content sanitizer to sanitize any options which accept HTML before they are rendered to the page. Content sanitization is enabled by default. In particular:
 
-The tags and attributes allowed by default are as follows. Any tags or attributes not explicitly allowed will be removed during sanitization:
+- Popovers and Tooltips can render arbitrary HTML to the page if configured to do so.
+- Chips and Nav overflow can accept HTML for their icon options (`dismissIcon`, `moreIcon`, and `[data-bs-overflow-icon]`).
+
+The tags and attributes allowed by default for tooltip and popover content are as follows. Any tags or attributes not explicitly allowed will be removed during sanitization:
 
 <JsDocs name="allow-list" file="js/src/util/sanitizer.ts" removeIndentation={false} />
+
+Icon options use a separate, tighter allowlist that covers the default SVG icons and common inline-icon markup:
+
+<JsDocs name="icon-allow-list" file="js/src/util/sanitizer.ts" removeIndentation={false} />
 
 <Callout type="warning">
 **Exercise caution when using these advanced options.** Refer to [OWASP’s Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information. Vulnerabilities caused solely by disabling or modifying content sanitization are not considered within scope for Bootstrap’s security model.

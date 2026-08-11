@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import { DefaultIconAllowlist, sanitizeHtml } from './util/sanitizer.js'
 
 /**
  * Constants
@@ -344,7 +345,9 @@ class Chips extends BaseComponent {
     button.className = CLASS_NAME_CHIP_DISMISS
     button.setAttribute('aria-label', 'Remove')
     button.setAttribute('tabindex', '-1') // Not in tab order, chips handle keyboard
-    button.innerHTML = this._config.dismissIcon
+    // dismissIcon accepts HTML (SVGs, icon fonts) and is also settable via the
+    // data API, so run it through the icon allowlist before insertion.
+    button.innerHTML = sanitizeHtml(this._config.dismissIcon, DefaultIconAllowlist)
     return button
   }
 
