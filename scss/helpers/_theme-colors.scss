@@ -3,4 +3,12 @@
 // Generate theme modifier classes (e.g., .theme-primary, .theme-accent, etc.)
 @layer helpers {
   @include generate-theme-classes();
+
+  // Remint fg tokens so reboot links stay legible on --theme-bg.
+  // Keep this out of utilities `variables` — that registers `@property { inherits: false }`.
+  // Do not put --theme-contrast first in reboot’s link stack: .theme-* always defines it.
+  .theme-contrast {
+    --theme-fg: var(--theme-contrast);
+    --theme-fg-emphasis: var(--theme-contrast);
+  }
 }

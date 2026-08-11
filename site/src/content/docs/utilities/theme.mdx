@@ -21,6 +21,10 @@ Contrast pairs the `bg` theme token with the `contrast` text color for maximum r
 
 <Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-2 theme-${themeColor.name} theme-contrast">.theme-${themeColor.name} .theme-contrast</div>`)} />
 
+Nested links inherit the contrast foreground so they stay legible on the solid background:
+
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-contrast">Theme ${themeColor.title} with a <a href="#">nested link</a> inside.</div>`)} />
+
 ### Subtle
 
 Subtle pairs the `bg-subtle` theme token with the `text` text color for a lower-contrast, more subtle appearance. This combination will automatically adjust to the current color mode.
@@ -43,12 +47,12 @@ And with borders:
 
 ## Comparison
 
-Here’s a side-by-side comparison of all three styles for each theme color:
+Here’s a side-by-side comparison of all three styles for each theme color, including nested links:
 
 <Example code={getData('theme-colors').map((themeColor) => `<div class="d-flex gap-2 mb-2">
-    <div class="theme-${themeColor.name} theme-contrast p-3 flex-fill text-center rounded">${themeColor.title} contrast</div>
-    <div class="theme-${themeColor.name} theme-subtle p-3 flex-fill text-center rounded">${themeColor.title} subtle</div>
-    <div class="theme-${themeColor.name} theme-muted p-3 flex-fill text-center rounded">${themeColor.title} muted</div>
+    <div class="theme-${themeColor.name} theme-contrast p-3 flex-fill text-center rounded">${themeColor.title} with a <a href="#">link</a></div>
+    <div class="theme-${themeColor.name} theme-subtle p-3 flex-fill text-center rounded">${themeColor.title} with a <a href="#">link</a></div>
+    <div class="theme-${themeColor.name} theme-muted p-3 flex-fill text-center rounded">${themeColor.title} with a <a href="#">link</a></div>
   </div>`)} />
 
 ## With components
@@ -86,6 +90,8 @@ The theme style classes generate the following CSS:
 
 ```css
 .theme-contrast {
+  --theme-fg: var(--theme-contrast);
+  --theme-fg-emphasis: var(--theme-contrast);
   background-color: var(--theme-bg);
   color: var(--theme-contrast);
 }
