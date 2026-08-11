@@ -174,13 +174,14 @@ describe('Collapse', () => {
 
     it('should show a collapsed element', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<div class="collapse" style="height: 0px;"></div>'
+        fixtureEl.innerHTML = '<div class="collapse"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
         const collapse = new Collapse(collapseEl)
 
+        // The CSS animates the size, so the element keeps its own styles
         collapseEl.addEventListener('show.bs.collapse', () => {
-          expect(collapseEl.style.height).toEqual('0px')
+          expect(collapseEl.style.height).toEqual('')
         })
         collapseEl.addEventListener('shown.bs.collapse', () => {
           expect(collapseEl).toHaveClass('show')
@@ -194,13 +195,13 @@ describe('Collapse', () => {
 
     it('should show a collapsed element on width', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<div class="collapse collapse-horizontal" style="width: 0px;"></div>'
+        fixtureEl.innerHTML = '<div class="collapse collapse-horizontal"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
         const collapse = new Collapse(collapseEl)
 
         collapseEl.addEventListener('show.bs.collapse', () => {
-          expect(collapseEl.style.width).toEqual('0px')
+          expect(collapseEl.style.width).toEqual('')
         })
         collapseEl.addEventListener('shown.bs.collapse', () => {
           expect(collapseEl).toHaveClass('show')
@@ -795,17 +796,22 @@ describe('Collapse', () => {
         const collapseTwo = fixtureEl.querySelector('#collapseTwo')
         const nestedCollapseOne = fixtureEl.querySelector('#nestedCollapseOne')
 
+        // `shown.bs.collapse` bubbles, so each handler stops listening before it
+        // opens the next collapse
         function handlerCollapseOne() {
+          collapseOne.removeEventListener('shown.bs.collapse', handlerCollapseOne)
+
           expect(collapseOne).toHaveClass('show')
           expect(collapseTwo).not.toHaveClass('show')
           expect(nestedCollapseOne).not.toHaveClass('show')
 
           nestedCollapseOne.addEventListener('shown.bs.collapse', handlerNestedCollapseOne)
           nestedTrigger.click()
-          collapseOne.removeEventListener('shown.bs.collapse', handlerCollapseOne)
         }
 
         function handlerNestedCollapseOne() {
+          nestedCollapseOne.removeEventListener('shown.bs.collapse', handlerNestedCollapseOne)
+
           expect(collapseOne).toHaveClass('show')
           expect(collapseTwo).not.toHaveClass('show')
           expect(nestedCollapseOne).toHaveClass('show')
@@ -818,7 +824,6 @@ describe('Collapse', () => {
           })
 
           triggerTwo.click()
-          nestedCollapseOne.removeEventListener('shown.bs.collapse', handlerNestedCollapseOne)
         }
 
         collapseOne.addEventListener('shown.bs.collapse', handlerCollapseOne)

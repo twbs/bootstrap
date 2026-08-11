@@ -79,6 +79,18 @@ export default () => {
   }
   // js-docs-end live-toast
 
+  // Replay the sliding toast on the Transitions page
+  const slideToastTrigger = document.getElementById('slideToastBtn')
+  const slideToastEl = document.getElementById('slideToast')
+
+  if (slideToastTrigger) {
+    const slideToast = Toast.getOrCreateInstance(slideToastEl, { autohide: false })
+    slideToastTrigger.addEventListener('click', async () => {
+      await slideToast.hide()
+      slideToast.show()
+    })
+  }
+
   const dialogToastTrigger = document.getElementById('dialogToastBtn')
   const dialogToastEl = document.getElementById('dialogToast')
 

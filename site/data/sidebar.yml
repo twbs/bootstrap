@@ -39,6 +39,9 @@
     - title: Theme
     - title: Color modes
     - title: Components
+    - title: Transitions
+      meta:
+        - added: 6.0.0
     - title: RTL
     - title: Optimize
 

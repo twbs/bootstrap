@@ -4,6 +4,7 @@
 @use "mixins/box-shadow" as *;
 @use "mixins/reset-text" as *;
 @use "mixins/tokens" as *;
+@use "mixins/transition" as *;
 
 $popover-tokens: () !default;
 
@@ -31,6 +32,9 @@ $popover-tokens: defaults(
     --popover-arrow-width: 1rem,
     --popover-arrow-height: .5rem,
     --popover-arrow-border: var(--popover-border-color),
+    --popover-transition-property: "opacity",
+    --popover-transition-duration: .15s,
+    --popover-transition-timing: linear,
   ),
   $popover-tokens
 );
@@ -56,6 +60,21 @@ $popover-tokens: defaults(
     border: var(--popover-border-width) solid var(--popover-border-color);
     @include border-radius(var(--popover-border-radius));
     @include box-shadow(var(--popover-box-shadow));
+    opacity: 0;
+
+    // The JS inserts the popover, so the fade needs a starting state below. Add
+    // .popover-instant, or pass `animation: false`, to skip it.
+    &:not(.popover-instant) {
+      @include transition-props(
+        var(--popover-transition-property),
+        var(--popover-transition-duration),
+        var(--popover-transition-timing)
+      );
+    }
+
+    &.show {
+      opacity: 1;
+    }
 
     .popover-arrow {
       display: block;
@@ -71,6 +90,12 @@ $popover-tokens: defaults(
         border-style: solid;
         border-width: 0;
       }
+    }
+  }
+
+  @starting-style {
+    .popover:not(.popover-instant).show {
+      opacity: 0;
     }
   }
 

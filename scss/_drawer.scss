@@ -27,6 +27,7 @@ $drawer-tokens: defaults(
     --drawer-border-color: var(--border-color-translucent),
     --drawer-border-radius: var(--radius-7),
     --drawer-box-shadow: var(--box-shadow-xl),
+    --drawer-transition-property: "transform, visibility",
     --drawer-transition-duration: .3s,
     --drawer-transition-timing: var(--transition-timing-overlay),
     --drawer-title-line-height: 1.5,
@@ -126,7 +127,17 @@ $drawer-backdrop-tokens: defaults(
         // Animated variant (default) — transitions + off-screen transforms.
         // Adding .drawer-instant skips all animations.
         &:not(.drawer-instant) {
-          @include transition(transform var(--drawer-transition-duration) var(--drawer-transition-timing), visibility 0s var(--drawer-transition-duration));
+          // One transition covers both directions. `visibility` animates with
+          // the transform because it interpolates as a step that stays
+          // `visible` while either end is visible: it flips visible at once on
+          // entry, and only after the slide on exit. Keep it in
+          // --drawer-transition-property when you override the list, or the
+          // exit becomes invisible.
+          @include transition-props(
+            var(--drawer-transition-property),
+            var(--drawer-transition-duration),
+            var(--drawer-transition-timing)
+          );
 
           // Off-screen transforms per placement
           &:where(.drawer-start) {
@@ -160,7 +171,6 @@ $drawer-backdrop-tokens: defaults(
           // Open state: slide in with transition
           &[open] {
             visibility: visible;
-            @include transition(transform var(--drawer-transition-duration) var(--drawer-transition-timing), visibility 0s);
             transform: none;
           }
         }

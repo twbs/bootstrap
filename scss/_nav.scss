@@ -83,6 +83,20 @@ $nav-underline-tokens: defaults(
 );
 // scss-docs-end nav-underline-tokens
 
+$tab-pane-tokens: () !default;
+
+// scss-docs-start tab-pane-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$tab-pane-tokens: defaults(
+  (
+    --tab-pane-transition-property: "opacity",
+    --tab-pane-transition-duration: .15s,
+    --tab-pane-transition-timing: linear,
+  ),
+  $tab-pane-tokens
+);
+// scss-docs-end tab-pane-tokens
+
 // Base class
 //
 // Kickstart any navigation component with a set of style resets. Works with
@@ -284,10 +298,31 @@ $nav-underline-tokens: defaults(
 
   .tab-content {
     > .tab-pane {
+      @include tokens($tab-pane-tokens);
+
       display: none;
+
+      // The pane fades in on its own, from the starting state below. Only the
+      // entry animates: two in-flow panes cannot cross-fade without stacking,
+      // so the outgoing pane leaves at once. Add .tab-pane-instant to skip it.
+      &:not(.tab-pane-instant) {
+        @include transition-props(
+          var(--tab-pane-transition-property),
+          var(--tab-pane-transition-duration),
+          var(--tab-pane-transition-timing)
+        );
+      }
     }
     > .active {
       display: block;
+    }
+  }
+
+  // The pane is not rendered before .active lands, so the fade-in needs an
+  // explicit starting state.
+  @starting-style {
+    .tab-content > .tab-pane:not(.tab-pane-instant).active {
+      opacity: 0;
     }
   }
 }

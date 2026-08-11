@@ -17,15 +17,20 @@ $fade-tokens: defaults(
 // scss-docs-end fade-transition
 
 // scss-docs-start collapse-transition
+// stylelint-disable custom-property-no-missing-var-function
 $collapse-tokens: defaults(
   (
+    --transition-collapse-property: "block-size, display",
     --transition-collapse-duration: .35s,
     --transition-collapse-timing: ease,
   ),
   $collapse-tokens
 );
+// stylelint-enable custom-property-no-missing-var-function
 // scss-docs-end collapse-transition
 
+// A generic fade for your own markup. No Bootstrap component needs it: each one
+// declares its own transition and its own tokens. See the Transitions page.
 .fade {
   @include tokens($fade-tokens);
   @include transition(opacity var(--transition-fade-duration) var(--transition-fade-timing));
@@ -36,22 +41,59 @@ $collapse-tokens: defaults(
 }
 
 // scss-docs-start collapse-classes
+// The browser animates the size itself. `interpolate-size` lets the `0` of the
+// closed state interpolate to the `auto` of the open one, and `display`
+// transitions discretely, so the element stays laid out until the size reaches
+// `0`. The animated axis is clipped, so the content cannot spill while it moves.
 .collapse {
+  @include tokens($collapse-tokens);
+
+  overflow-y: clip;
+  @include transition-props(
+    var(--transition-collapse-property),
+    var(--transition-collapse-duration),
+    var(--transition-collapse-timing),
+    allow-discrete
+  );
+
+  // Browsers without `interpolate-size` open and close the element at once.
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords;
+  }
+
   &:not(.show) {
     display: none;
+    block-size: 0;
   }
-}
 
-.collapsing {
-  @include tokens($collapse-tokens);
-  height: 0;
-  overflow: hidden;
-  @include transition(height var(--transition-collapse-duration) var(--transition-collapse-timing));
+  // A closed collapse is not rendered, so the open side needs a start value of
+  // its own. Without it the element appears at full size at once.
+  &.show {
+    @starting-style {
+      block-size: 0;
+    }
+  }
 
+  // Horizontal collapses animate the inline size instead. The open size is
+  // `fit-content`, so the element is as wide as its content, not as wide as its
+  // container.
   &.collapse-horizontal {
-    width: 0;
-    height: auto;
-    @include transition(width var(--transition-collapse-duration) var(--transition-collapse-timing));
+    --transition-collapse-property: inline-size, display;
+
+    inline-size: fit-content;
+    overflow-x: clip;
+    overflow-y: visible;
+
+    &:not(.show) {
+      inline-size: 0;
+      block-size: auto;
+    }
+
+    &.show {
+      @starting-style {
+        inline-size: 0;
+      }
+    }
   }
 }
 // scss-docs-end collapse-classes

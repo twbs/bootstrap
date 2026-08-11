@@ -28,6 +28,7 @@ $dialog-tokens: defaults(
     --dialog-border-width: var(--border-width),
     --dialog-border-radius: var(--radius-7),
     --dialog-box-shadow: var(--box-shadow-xl),
+    --dialog-transition-property: "opacity, transform, visibility",
     --dialog-transition-duration: .3s,
     --dialog-transition-timing: var(--transition-timing-overlay),
     --dialog-backdrop-bg: light-dark(rgb(0 0 0 / 50%), rgb(0 0 0 / 65%)),
@@ -94,12 +95,15 @@ $dialog-sizes: defaults(
       // Exit state: faded out
       opacity: 0;
 
-      // Exit transition: opacity and transform animate out, then visibility
-      // flips hidden after the animation completes (via the delay).
-      @include transition(
-        opacity var(--dialog-transition-duration) var(--dialog-transition-timing),
-        transform var(--dialog-transition-duration) var(--dialog-transition-timing),
-        visibility 0s var(--dialog-transition-duration)
+      // One transition covers both directions. `visibility` animates with the
+      // rest because it interpolates as a step that stays `visible` while
+      // either end is visible: it flips visible at once on entry, and only
+      // after the animation on exit. Keep it in --dialog-transition-property
+      // when you override the list, or the exit becomes invisible.
+      @include transition-props(
+        var(--dialog-transition-property),
+        var(--dialog-transition-duration),
+        var(--dialog-transition-timing)
       );
 
       // Slide-down variant: enters from above sliding down, exits by reversing
@@ -117,8 +121,6 @@ $dialog-sizes: defaults(
       }
 
       // Open state: visible and faded in.
-      // Entry transition: visibility flips visible immediately (0s, no delay),
-      // then opacity and transform animate in.
       // The :not(.hiding) qualifier lets the exit transition fall back to the
       // base "exit" state above while [open] is still present (the JS keeps
       // the dialog in the top layer during the exit so the ::backdrop and
@@ -127,11 +129,6 @@ $dialog-sizes: defaults(
         overflow: visible;
         visibility: visible;
         opacity: 1;
-        @include transition(
-          opacity var(--dialog-transition-duration) var(--dialog-transition-timing),
-          transform var(--dialog-transition-duration) var(--dialog-transition-timing),
-          visibility 0s
-        );
         transform: none;
       }
 

@@ -18,6 +18,9 @@ $accordion-tokens: defaults(
     --accordion-transition-property: "color, background-color, border-radius",
     --accordion-transition-duration: .15s,
     --accordion-transition-timing: ease-in-out,
+    --accordion-panel-transition-property: "content-visibility, block-size",
+    --accordion-panel-transition-duration: .2s,
+    --accordion-panel-transition-timing: ease,
     --accordion-border-color: var(--border-color),
     --accordion-border-width: var(--border-width),
     --accordion-border-radius: var(--accordion-radius, var(--radius-7)),
@@ -91,10 +94,17 @@ $accordion-tokens: defaults(
       interpolate-size: allow-keywords;
     }
 
+    // The panel animates its own height, so it gets its own token trio. The
+    // header trio above animates the colors.
     &::details-content {
       block-size: 0;
       overflow-y: clip;
-      @include transition(content-visibility .2s allow-discrete, block-size .2s);
+      @include transition-props(
+        var(--accordion-panel-transition-property),
+        var(--accordion-panel-transition-duration),
+        var(--accordion-panel-transition-timing),
+        allow-discrete
+      );
     }
 
     &:first-of-type {

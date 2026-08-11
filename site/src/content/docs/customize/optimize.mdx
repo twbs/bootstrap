@@ -103,7 +103,7 @@ export default {
   defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
   safelist: {
     // Classes added at runtime by Bootstrap's JS that never appear in your HTML
-    standard: ['show', 'collapsing', 'active', 'fade', 'dialog-open'],
+    standard: ['show', 'active', 'hiding', 'dialog-open'],
     // Keep component families that are generated or toggled dynamically
     greedy: [/^carousel/, /^menu/, /^drawer/, /^dialog/, /^tooltip/, /^popover/]
   }
@@ -119,7 +119,7 @@ npx purgecss --config purgecss.config.js
 Then serve `bootstrap.purged.css` instead of the full file.
 
 <Callout type="warning">
-**Test thoroughly after purging.** Bootstrap toggles many classes with JavaScript (`.show`, `.active`, `.collapsing`, and more) and generates others dynamically (carousels, menus, dialogs). Anything PurgeCSS can’t find in the files it scans will be removed, so use the `safelist` option to protect runtime classes and verify every interactive component still works.
+**Test thoroughly after purging.** Bootstrap toggles many classes with JavaScript (`.show`, `.active`, `.hiding`, and more) and generates others dynamically (carousels, menus, dialogs). Anything PurgeCSS can’t find in the files it scans will be removed, so use the `safelist` option to protect runtime classes and verify every interactive component still works.
 </Callout>
 
 For deeper walkthroughs, the community has written some helpful guides:

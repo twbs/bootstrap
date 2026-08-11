@@ -8,7 +8,9 @@ js: required
 
 ## How it works
 
-The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. The plugin only adds and removes `.show`—the CSS animates the size from `0` to the content size. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+
+The animation needs [`interpolate-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size). Browsers without it open and close the element at once. See [Transitions]([[docsref:/customize/transitions]]) to change the timing or to remove it.
 
 <Callout name="info-prefersreducedmotion" />
 
@@ -17,7 +19,6 @@ The collapse JavaScript plugin is used to show and hide content. Buttons or anch
 Click the buttons below to show and hide another element via class changes:
 
 - `.collapse` hides content
-- `.collapsing` is applied during transitions
 - `.collapse.show` shows content
 
 Generally, we recommend using a `<button>` with the `data-bs-target` attribute. While not recommended from a semantic point of view, you can also use an `<a>` link with the `href` attribute (and a `role="button"`). In both cases, the `data-bs-toggle="collapse"` is required.
@@ -38,7 +39,7 @@ Generally, we recommend using a `<button>` with the `data-bs-target` attribute. 
 
 ## Horizontal
 
-The collapse plugin supports horizontal collapsing. Add the `.collapse-horizontal` modifier class to transition the `width` instead of `height` and set a `width` on the immediate child element. Feel free to write your own custom Sass, use inline styles, or use our [width utilities]([[docsref:/utilities/width]]).
+The collapse plugin supports horizontal collapsing. Add the `.collapse-horizontal` modifier class to transition the inline size instead of the block size, and set a `width` on the immediate child element. Feel free to write your own custom Sass, use inline styles, or use our [width utilities]([[docsref:/utilities/width]]).
 
 <Callout>
 Please note that while the example below has a `min-height` set to avoid excessive repaints in our docs, this is not explicitly required. **Only the `width` on the child element is required.**
@@ -49,7 +50,7 @@ Please note that while the example below has a `min-height` set to avoid excessi
       Toggle width collapse
     </button>
   </p>
-  <div style="min-height: 120px;">
+  <div style="min-height: 140px;">
     <div class="collapse collapse-horizontal" id="collapseWidthExample">
       <div class="card card-body" style="width: 300px;">
         This is some placeholder content for a horizontal collapse. It’s hidden by default and shown when triggered.
@@ -108,13 +109,12 @@ Collapse transition classes can be found in `scss/_transitions.scss` as these ar
 
 ## Usage
 
-The collapse plugin utilizes a few classes to handle the heavy lifting:
+The collapse plugin utilizes two classes to handle the heavy lifting:
 
 - `.collapse` hides the content
 - `.collapse.show` shows the content
-- `.collapsing` is added when the transition starts, and removed when it finishes
 
-These classes can be found in `_transitions.scss`.
+These classes can be found in `_transitions.scss`. The plugin toggles `.show` and then waits for the CSS transition to finish before it fires `shown.bs.collapse` or `hidden.bs.collapse`.
 
 ### Via data attributes
 

@@ -672,6 +672,7 @@ describe('Tooltip', () => {
           const tip = document.querySelector('.tooltip')
 
           expect(tip).not.toBeNull()
+          expect(tip).toHaveClass('tooltip-instant')
           expect(tip).not.toHaveClass('fade')
           resolve()
         })
@@ -1337,7 +1338,7 @@ describe('Tooltip', () => {
       tooltip.setContent(tip)
 
       expect(tip).not.toHaveClass('show')
-      expect(tip).not.toHaveClass('fade')
+      expect(tip).toHaveClass('tooltip-instant')
       expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Another tooltip')
     })
 
