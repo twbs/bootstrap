@@ -36,11 +36,6 @@ Toasts are as flexible as you need and have very little required markup. At a mi
       Hello, world! This is a toast message.
     </div>
   </div>`} />
-
-<Callout type="warning">
-Previously, our scripts dynamically added the `.hide` class to completely hide a toast (with `display:none`, rather than just with `opacity:0`). This is now not necessary anymore. However, for backwards compatibility, our script will continue to toggle the class (even though there is no practical need for it) until the next major version.
-</Callout>
-
 ### Live example
 
 Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default.
