@@ -174,6 +174,8 @@ describe('Sanitizer', () => {
       expect(result).toContain('<svg')
       expect(result).toContain('<line')
       expect(result).toContain('stroke-width')
+      // Sanitizer matches allowlist names in lowercase; `viewBox` must survive.
+      expect(result.toLowerCase()).toContain('viewbox')
     })
 
     it('should strip scripts, images, and event handlers from icon HTML', () => {
@@ -187,6 +189,16 @@ describe('Sanitizer', () => {
       expect(result).not.toContain('<img')
       expect(result).not.toMatch(/onload/i)
       expect(result).not.toMatch(/onerror/i)
+    })
+
+    it('should strip <use> from icon HTML to avoid external SVG loads', () => {
+      const template = '<svg><use href="https://evil.example/sprite.svg#icon"></use><path d="M0 0"/></svg>'
+
+      const result = sanitizeHtml(template, DefaultIconAllowlist, null)
+
+      expect(result).not.toContain('<use')
+      expect(result).not.toContain('evil.example')
+      expect(result).toContain('<path')
     })
   })
 })
