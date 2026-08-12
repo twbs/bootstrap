@@ -14,7 +14,7 @@ deps:
 
 ## Overview
 
-Click the button below to trigger a popover:
+Click the button below to show and close a popover.
 
 <Example addStackblitzJs code={`<button type="button" class="btn-solid theme-primary"
           data-bs-toggle="popover"
@@ -147,6 +147,7 @@ You can customize the appearance of popovers using [CSS variables](#variables). 
 ### Dismiss on next click
 
 Use the `focus` trigger to dismiss popovers on the user’s next click of an element other than the toggle element.
+**Clicks and focus inside the popover itself do not dismiss it**, so users can select text or use controls in the content.
 
 <Callout type="danger">
 **Dismissing on next click requires specific HTML for proper cross-browser and cross-platform behavior.** You can only use `<a>` elements, not `<button>`s, and you must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex).
