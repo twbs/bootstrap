@@ -194,11 +194,15 @@ $table-striped-columns-order: even !default;
       margin-bottom: 0;
     }
 
-    // Drop the last row border so it does not stack on the wrapper border
+    // Drop the last row border so it does not stack on the wrapper border.
+    // Same universal cell targeting as `.table`; wrapper + optional responsive
+    // nest pushes compound/combinator counts over the defaults.
+    // stylelint-disable selector-max-compound-selectors, selector-max-universal, selector-max-combinators
     > .table > :not(caption):last-child > *:last-child > *,
     > [class*="table-responsive"] > .table > :not(caption):last-child > *:last-child > * {
       border-block-end-width: 0;
     }
+    // stylelint-enable selector-max-compound-selectors, selector-max-universal, selector-max-combinators
   }
 
   // Responsive tables
