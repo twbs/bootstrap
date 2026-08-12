@@ -1,6 +1,27 @@
 ---
 import { getConfig } from '@libs/config'
+
+const fathomSite = getConfig().analytics.fathom_site
 ---
 
-<script is:inline defer src="https://cdn.usefathom.com/script.js" data-site={getConfig().analytics.fathom_site}
-></script>
+{/* Load Fathom only after activation so prerendered pages do not inflate views. */}
+<script
+  is:inline
+  set:html={`
+(() => {
+  const loadFathom = () => {
+    const script = document.createElement('script')
+    script.src = 'https://cdn.usefathom.com/script.js'
+    script.defer = true
+    script.dataset.site = ${JSON.stringify(fathomSite)}
+    document.head.appendChild(script)
+  }
+
+  if (document.prerendering) {
+    document.addEventListener('prerenderingchange', loadFathom, { once: true })
+  } else {
+    loadFathom()
+  }
+})()
+`}
+/>
