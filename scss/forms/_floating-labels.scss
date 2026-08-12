@@ -91,12 +91,39 @@ $form-floating-tokens: defaults(
       }
     }
 
+    // Date and time inputs (and `<select>`) do not support `:placeholder-shown`
+    // the way textual inputs do, so keep their padding in the floated state.
+    // See https://github.com/twbs/bootstrap/issues/39257.
+    > :is(
+      .form-control:is(
+        [type="date"],
+        [type="month"],
+        [type="week"],
+        [type="time"],
+        [type="datetime-local"]
+      ),
+      select.form-control
+    ) {
+      padding-top: var(--form-floating-input-padding-t);
+      padding-bottom: var(--form-floating-input-padding-b);
+    }
+
     // The label precedes the control in the DOM so screen readers announce it
     // before the field's value, so we look forward with `:has()` to react to the
     // control's state (focus, value, disabled, etc.).
     > label:has(~ .form-control:focus),
     > label:has(~ .form-control:not(:placeholder-shown)),
-    > label:has(~ .form-control-plaintext) {
+    > label:has(~ .form-control-plaintext),
+    > label:has(~ :is(
+      .form-control:is(
+        [type="date"],
+        [type="month"],
+        [type="week"],
+        [type="time"],
+        [type="datetime-local"]
+      ),
+      select.form-control
+    )) {
       transform: var(--form-floating-label-transform);
     }
 

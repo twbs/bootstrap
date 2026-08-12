@@ -66,6 +66,19 @@ Select elements work in the same way, but unlike `<input>`s, they’ll always sh
     </select>
   </div>`} />
 
+## Date and time
+
+Date, time, datetime-local, month, and week inputs also always show the `<label>` in its floated state. These controls do not support placeholders the way textual inputs do, so a `placeholder` attribute is not required (and is ignored by most browsers on these types).
+
+<Example class="vstack gap-3" code={`<div class="form-floating">
+    <label for="floatingDate">Date</label>
+    <input type="date" class="form-control" id="floatingDate">
+  </div>
+  <div class="form-floating">
+    <label for="floatingTime">Time</label>
+    <input type="time" class="form-control" id="floatingTime">
+  </div>`} />
+
 ## Disabled
 
 Add the `disabled` boolean attribute on an input, a textarea or a select to give it a grayed out appearance, remove pointer events, and prevent focusing.
