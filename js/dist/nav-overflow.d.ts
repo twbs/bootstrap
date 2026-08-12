@@ -9,7 +9,7 @@ type NavOverflowConfig = {
     collapseBelow: number | string;
     iconPlacement: string;
     menuPlacement: string;
-    moreText: string;
+    moreText: string | false;
     moreIcon: string;
     threshold: number;
 };
@@ -18,6 +18,7 @@ type NavOverflowConfig = {
  */
 declare class NavOverflow extends BaseComponent {
     protected _config: NavOverflowConfig;
+    protected _nav: HTMLElement;
     protected _items: HTMLElement[];
     protected _overflowItems: HTMLElement[];
     protected _overflowMenu: HTMLElement | null;
@@ -36,7 +37,10 @@ declare class NavOverflow extends BaseComponent {
     protected _resolveIcon(): string;
     protected _resolveCollapseBelow(): number;
     protected _setupResizeObserver(): void;
+    protected _availableWidth(): number;
+    protected _navGap(): number;
     protected _calculateOverflow(): void;
+    protected _applyOverflow(items: HTMLElement[], overflowItem: HTMLElement | null): void;
     protected _moveToOverflow(items: HTMLElement[]): void;
     protected _restoreItems(): void;
 }

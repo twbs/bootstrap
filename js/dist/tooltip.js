@@ -7,7 +7,7 @@ import { arrow, autoUpdate, computePosition, flip, offset, shift } from "@floati
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import Manipulator from "./dom/manipulator.js";
-import { execute, findShadowRoot, getElement, getUID, isRTL, noop } from "./util/index.js";
+import { execute, findShadowRoot, getElement, getTransitionDurationFromElement, getUID, isRTL, noop } from "./util/index.js";
 import { DefaultAllowlist } from "./util/sanitizer.js";
 import TemplateFactory from "./util/template-factory.js";
 import { createBreakpointListeners, disposeBreakpointListeners, getResponsivePlacement, parseResponsivePlacement, toFloatingOffset } from "./util/floating-ui.js";
@@ -28,7 +28,6 @@ const DISALLOWED_ATTRIBUTES = /* @__PURE__ */ new Set([
 	"sanitizeFn"
 ]);
 const ESCAPE_KEY = "Escape";
-const CLASS_NAME_FADE = "fade";
 const CLASS_NAME_MODAL = "modal";
 const CLASS_NAME_SHOW = "show";
 const SELECTOR_TOOLTIP_INNER = ".tooltip-inner";
@@ -109,6 +108,7 @@ var Tooltip = class extends BaseComponent {
 		super(element, config);
 		this._isEnabled = true;
 		this._timeout = 0;
+		this._resolveTimeout = null;
 		this._isHovered = null;
 		this._activeTrigger = {};
 		this._floatingCleanup = null;
@@ -141,15 +141,11 @@ var Tooltip = class extends BaseComponent {
 		this._isEnabled = !this._isEnabled;
 	}
 	toggle() {
-		if (!this._isEnabled) return;
-		if (this._isShown()) {
-			this._leave();
-			return;
-		}
-		this._enter();
+		if (!this._isEnabled) return Promise.resolve();
+		return this._isShown() ? this._leave() : this._enter();
 	}
 	dispose() {
-		clearTimeout(this._timeout);
+		this._clearTimeout();
 		this._removeEscapeListener();
 		EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
 		if (this._element.getAttribute("data-bs-original-title")) this._element.setAttribute("title", this._element.getAttribute("data-bs-original-title"));
@@ -185,9 +181,9 @@ var Tooltip = class extends BaseComponent {
 			if (this._isHovered === false) this._leave();
 			this._isHovered = false;
 		};
-		this._queueCallback(complete, this.tip, this._isAnimated());
+		await this._queueCallback(complete, this.tip, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (!this._isShown()) return;
 		if (EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDE)).defaultPrevented) return;
 		this._removeEscapeListener();
@@ -203,7 +199,7 @@ var Tooltip = class extends BaseComponent {
 			this._element.removeAttribute("aria-describedby");
 			EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN));
 		};
-		this._queueCallback(complete, this.tip, this._isAnimated());
+		await this._queueCallback(complete, this.tip, this._isAnimated());
 	}
 	update() {
 		if (this._floatingCleanup && this.tip) this._updateFloatingPosition();
@@ -220,11 +216,11 @@ var Tooltip = class extends BaseComponent {
 	}
 	_createTipElement(content) {
 		const tip = this._getTemplateFactory(content).toHtml();
-		tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW);
+		tip.classList.remove(CLASS_NAME_SHOW);
 		tip.classList.add(`bs-${this.constructor.NAME}-auto`);
 		const tipId = getUID(this.constructor.NAME).toString();
 		tip.setAttribute("id", tipId);
-		if (this._isAnimated()) tip.classList.add(CLASS_NAME_FADE);
+		if (!this._config.animation) tip.classList.add(this._getInstantClassName());
 		return tip;
 	}
 	setContent(content) {
@@ -252,8 +248,11 @@ var Tooltip = class extends BaseComponent {
 	_initializeOnDelegatedTarget(event) {
 		return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig());
 	}
+	_getInstantClassName() {
+		return `${this.constructor.NAME}-instant`;
+	}
 	_isAnimated() {
-		return this._config.animation || this.tip && this.tip.classList.contains(CLASS_NAME_FADE);
+		return getTransitionDurationFromElement(this.tip) > 0;
 	}
 	_isShown() {
 		return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW);
@@ -405,23 +404,32 @@ var Tooltip = class extends BaseComponent {
 	_enter() {
 		if (this._isShown() || this._isHovered) {
 			this._isHovered = true;
-			return;
+			return Promise.resolve();
 		}
 		this._isHovered = true;
-		this._setTimeout(() => {
-			if (this._isHovered) this.show();
-		}, this._config.delay.show);
+		return this._setTimeout(() => this._isHovered ? this.show() : void 0, this._config.delay.show);
 	}
 	_leave() {
-		if (this._isWithActiveTrigger()) return;
+		if (this._isWithActiveTrigger()) return Promise.resolve();
 		this._isHovered = false;
-		this._setTimeout(() => {
-			if (!this._isHovered) this.hide();
-		}, this._config.delay.hide);
+		return this._setTimeout(() => this._isHovered ? void 0 : this.hide(), this._config.delay.hide);
 	}
 	_setTimeout(handler, timeout) {
+		this._clearTimeout();
+		return new Promise((resolve) => {
+			this._resolveTimeout = resolve;
+			this._timeout = setTimeout(() => {
+				this._resolveTimeout = null;
+				resolve(handler());
+			}, timeout);
+		});
+	}
+	_clearTimeout() {
 		clearTimeout(this._timeout);
-		this._timeout = setTimeout(handler, timeout);
+		if (this._resolveTimeout) {
+			this._resolveTimeout();
+			this._resolveTimeout = null;
+		}
 	}
 	_isWithActiveTrigger() {
 		return Object.values(this._activeTrigger).includes(true);

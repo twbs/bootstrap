@@ -32,9 +32,9 @@ declare class DialogBase extends BaseComponent {
     protected _cancelHandler: (event: BootstrapEvent) => void;
     constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null);
     static get NAME(): string;
-    toggle(relatedTarget?: HTMLElement): void;
-    show(relatedTarget?: HTMLElement): void;
-    hide(): void;
+    toggle(relatedTarget?: HTMLElement): Promise<void>;
+    show(relatedTarget?: HTMLElement): Promise<void>;
+    hide(): Promise<void>;
     dispose(): void;
     protected _getShowOptions(): {
         modal: boolean;

@@ -6,7 +6,6 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import { enableDismissTrigger } from "./util/component-functions.js";
-import { reflow } from "./util/index.js";
 //#region js/src/toast.ts
 /**
 * --------------------------------------------------------------------------
@@ -27,17 +26,13 @@ const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
-const CLASS_NAME_FADE = "fade";
-const CLASS_NAME_HIDE = "hide";
+const CLASS_NAME_INSTANT = "toast-instant";
 const CLASS_NAME_SHOW = "show";
-const CLASS_NAME_SHOWING = "showing";
 const DefaultType = {
-	animation: "boolean",
 	autohide: "boolean",
 	delay: "number"
 };
 const Default = {
-	animation: true,
 	autohide: true,
 	delay: 5e3
 };
@@ -61,30 +56,24 @@ var Toast = class extends BaseComponent {
 	static get NAME() {
 		return NAME;
 	}
-	show() {
+	async show() {
 		if (EventHandler.trigger(this._element, EVENT_SHOW).defaultPrevented) return;
 		this._clearTimeout();
-		if (this._config.animation) this._element.classList.add(CLASS_NAME_FADE);
 		const complete = () => {
-			this._element.classList.remove(CLASS_NAME_SHOWING);
 			EventHandler.trigger(this._element, EVENT_SHOWN);
 			this._maybeScheduleHide();
 		};
-		this._element.classList.remove(CLASS_NAME_HIDE);
-		reflow(this._element);
-		this._element.classList.add(CLASS_NAME_SHOW, CLASS_NAME_SHOWING);
-		this._queueCallback(complete, this._element, this._config.animation);
+		this._element.classList.add(CLASS_NAME_SHOW);
+		await this._queueCallback(complete, this._element, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (!this.isShown()) return;
 		if (EventHandler.trigger(this._element, EVENT_HIDE).defaultPrevented) return;
 		const complete = () => {
-			this._element.classList.add(CLASS_NAME_HIDE);
-			this._element.classList.remove(CLASS_NAME_SHOWING, CLASS_NAME_SHOW);
 			EventHandler.trigger(this._element, EVENT_HIDDEN);
 		};
-		this._element.classList.add(CLASS_NAME_SHOWING);
-		this._queueCallback(complete, this._element, this._config.animation);
+		this._element.classList.remove(CLASS_NAME_SHOW);
+		await this._queueCallback(complete, this._element, this._isAnimated());
 	}
 	dispose() {
 		this._clearTimeout();
@@ -93,6 +82,9 @@ var Toast = class extends BaseComponent {
 	}
 	isShown() {
 		return this._element.classList.contains(CLASS_NAME_SHOW);
+	}
+	_isAnimated() {
+		return !this._element.classList.contains(CLASS_NAME_INSTANT);
 	}
 	_maybeScheduleHide() {
 		if (!this._config.autohide) return;

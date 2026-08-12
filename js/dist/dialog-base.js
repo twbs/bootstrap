@@ -45,7 +45,7 @@ var DialogBase = class extends BaseComponent {
 	toggle(relatedTarget) {
 		return this._element.open ? this.hide() : this.show(relatedTarget);
 	}
-	show(relatedTarget) {
+	async show(relatedTarget) {
 		if (this._element.open || this._isTransitioning) return;
 		if (EventHandler.trigger(this._element, this.constructor.eventName("show"), { relatedTarget }).defaultPrevented) return;
 		this._isTransitioning = true;
@@ -55,17 +55,17 @@ var DialogBase = class extends BaseComponent {
 			modal,
 			preventBodyScroll
 		});
-		this._queueCallback(() => {
+		await this._queueCallback(() => {
 			this._isTransitioning = false;
 			EventHandler.trigger(this._element, this.constructor.eventName("shown"), { relatedTarget });
 		}, this._element, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (!this._element.open || this._isTransitioning) return;
 		if (EventHandler.trigger(this._element, this.constructor.eventName("hide")).defaultPrevented) return;
 		this._isTransitioning = true;
 		this._hideElement();
-		this._queueCallback(() => {
+		await this._queueCallback(() => {
 			if (this._element.open) this._closeAndCleanup();
 			this._element.classList.remove("hiding");
 			this._onAfterHide();

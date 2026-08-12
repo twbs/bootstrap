@@ -42,9 +42,9 @@ declare class Datepicker extends BaseComponent {
     static get Default(): DatepickerConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
-    toggle(): void;
-    show(): void;
-    hide(): void;
+    toggle(): Promise<void>;
+    show(): Promise<void>;
+    hide(): Promise<void>;
     dispose(): void;
     getSelectedDates(): string[];
     setSelectedDates(dates: DatesArr): void;

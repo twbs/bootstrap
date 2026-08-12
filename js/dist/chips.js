@@ -6,6 +6,7 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
+import { DefaultIconAllowlist, sanitizeHtml } from "./util/sanitizer.js";
 //#region js/src/chips.ts
 /**
 * --------------------------------------------------------------------------
@@ -207,7 +208,7 @@ var Chips = class extends BaseComponent {
 		button.className = CLASS_NAME_CHIP_DISMISS;
 		button.setAttribute("aria-label", "Remove");
 		button.setAttribute("tabindex", "-1");
-		button.innerHTML = this._config.dismissIcon;
+		button.innerHTML = sanitizeHtml(this._config.dismissIcon, DefaultIconAllowlist);
 		return button;
 	}
 	_findChipByValue(value) {

@@ -6,6 +6,7 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import { enableDismissTrigger } from "./util/component-functions.js";
+import { getTransitionDurationFromElement } from "./util/index.js";
 //#region js/src/alert.ts
 /**
 * --------------------------------------------------------------------------
@@ -20,7 +21,7 @@ const NAME = "alert";
 const EVENT_KEY = `.bs.alert`;
 const EVENT_CLOSE = `close${EVENT_KEY}`;
 const EVENT_CLOSED = `closed${EVENT_KEY}`;
-const CLASS_NAME_FADE = "fade";
+const CLASS_NAME_HIDING = "hiding";
 const CLASS_NAME_SHOW = "show";
 /**
 * Class definition
@@ -29,11 +30,12 @@ var Alert = class extends BaseComponent {
 	static get NAME() {
 		return NAME;
 	}
-	close() {
+	async close() {
 		if (EventHandler.trigger(this._element, EVENT_CLOSE).defaultPrevented) return;
 		this._element.classList.remove(CLASS_NAME_SHOW);
-		const isAnimated = this._element.classList.contains(CLASS_NAME_FADE);
-		this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
+		this._element.classList.add(CLASS_NAME_HIDING);
+		const isAnimated = getTransitionDurationFromElement(this._element) > 0;
+		await this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
 	}
 	_destroyElement() {
 		this._element.remove();

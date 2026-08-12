@@ -6,7 +6,7 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
-import { getNextActiveElement, isDisabled, setAriaAttribute } from "./util/index.js";
+import { getNextActiveElement, getTransitionDurationFromElement, isDisabled, setAriaAttribute } from "./util/index.js";
 //#region js/src/tab.ts
 /**
 * --------------------------------------------------------------------------
@@ -33,7 +33,6 @@ const ARROW_DOWN_KEY = "ArrowDown";
 const HOME_KEY = "Home";
 const END_KEY = "End";
 const CLASS_NAME_ACTIVE = "active";
-const CLASS_NAME_FADE = "fade";
 const CLASS_NAME_SHOW = "show";
 const SELECTOR_MENU_TOGGLE = "[data-bs-toggle=\"menu\"]";
 const SELECTOR_MENU = ".menu";
@@ -58,47 +57,48 @@ var Tab = class Tab extends BaseComponent {
 	static get NAME() {
 		return NAME;
 	}
-	show() {
+	async show() {
 		const innerElem = this._element;
 		if (this._elemIsActive(innerElem)) return;
 		const active = this._getActiveElem();
 		const hideEvent = active ? EventHandler.trigger(active, EVENT_HIDE, { relatedTarget: innerElem }) : null;
 		if (EventHandler.trigger(innerElem, EVENT_SHOW, { relatedTarget: active }).defaultPrevented || hideEvent && hideEvent.defaultPrevented) return;
 		this._deactivate(active, innerElem);
-		this._activate(innerElem, active);
+		await this._activate(innerElem, active);
 	}
-	_activate(element, relatedElem) {
+	async _activate(element, relatedElem) {
 		if (!element) return;
 		element.classList.add(CLASS_NAME_ACTIVE);
-		this._activate(SelectorEngine.getElementFromSelector(element));
+		if (element.getAttribute("role") !== "tab") {
+			element.classList.add(CLASS_NAME_SHOW);
+			return;
+		}
+		const pane = SelectorEngine.getElementFromSelector(element);
+		this._activate(pane);
 		const complete = () => {
-			if (element.getAttribute("role") !== "tab") {
-				element.classList.add(CLASS_NAME_SHOW);
-				return;
-			}
 			element.removeAttribute("tabindex");
 			setAriaAttribute(element, "aria-selected", true);
 			this._toggleMenu(element, true);
 			EventHandler.trigger(element, EVENT_SHOWN, { relatedTarget: relatedElem });
 		};
-		this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE));
+		await this._queueCallback(complete, pane ?? element, getTransitionDurationFromElement(pane) > 0);
 	}
-	_deactivate(element, relatedElem) {
+	async _deactivate(element, relatedElem) {
 		if (!element) return;
 		element.classList.remove(CLASS_NAME_ACTIVE);
 		element.blur();
+		if (element.getAttribute("role") !== "tab") {
+			element.classList.remove(CLASS_NAME_SHOW);
+			return;
+		}
 		this._deactivate(SelectorEngine.getElementFromSelector(element));
 		const complete = () => {
-			if (element.getAttribute("role") !== "tab") {
-				element.classList.remove(CLASS_NAME_SHOW);
-				return;
-			}
 			setAriaAttribute(element, "aria-selected", false);
 			element.setAttribute("tabindex", "-1");
 			this._toggleMenu(element, false);
 			EventHandler.trigger(element, EVENT_HIDDEN, { relatedTarget: relatedElem });
 		};
-		this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE));
+		await this._queueCallback(complete, element, false);
 	}
 	_keydown(event) {
 		if (![

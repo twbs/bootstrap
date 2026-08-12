@@ -8,7 +8,7 @@ import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import Manipulator from "./dom/manipulator.js";
 import SelectorEngine from "./dom/selector-engine.js";
-import { execute, getElement, getNextActiveElement, isDisabled, isElement, isRTL, isVisible, noop } from "./util/index.js";
+import { execute, getElement, getNextActiveElement, getTransitionDurationFromElement, isDisabled, isElement, isRTL, isVisible, noop } from "./util/index.js";
 import { createBreakpointListeners, disposeBreakpointListeners, getResponsivePlacement, parseResponsivePlacement, toFloatingOffset } from "./util/floating-ui.js";
 //#region js/src/menu.ts
 /**
@@ -105,6 +105,7 @@ var Menu = class Menu extends BaseComponent {
 		this._menuOriginalParent = this._menu?.parentNode;
 		this._parseResponsivePlacements();
 		this._setupSubmenuListeners();
+		this._initSubmenuTriggers();
 	}
 	static get Default() {
 		return Default;
@@ -118,7 +119,7 @@ var Menu = class Menu extends BaseComponent {
 	toggle() {
 		return this._isShown() ? this.hide() : this.show();
 	}
-	show() {
+	async show() {
 		if (isDisabled(this._element) || this._isShown()) return;
 		const relatedTarget = { relatedTarget: this._element };
 		if (EventHandler.trigger(this._element, EVENT_SHOW, relatedTarget).defaultPrevented) return;
@@ -131,12 +132,14 @@ var Menu = class Menu extends BaseComponent {
 		this._element.classList.add(CLASS_NAME_SHOW);
 		if (this._parent) this._parent.classList.add(CLASS_NAME_SHOW);
 		Menu._openInstances.add(this);
-		EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
+		await this._queueCallback(() => {
+			if (this._isShown()) EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
+		}, this._menu, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (isDisabled(this._element) || !this._isShown()) return;
 		const relatedTarget = { relatedTarget: this._element };
-		this._completeHide(relatedTarget);
+		await this._completeHide(relatedTarget);
 	}
 	dispose() {
 		this._disposeFloating();
@@ -159,20 +162,23 @@ var Menu = class Menu extends BaseComponent {
 		while (wrapper instanceof Element && !wrapper.contains(menu)) wrapper = wrapper.parentNode;
 		return wrapper instanceof Element ? wrapper : this._element.parentNode;
 	}
-	_completeHide(relatedTarget) {
+	async _completeHide(relatedTarget) {
 		if (EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget).defaultPrevented) return;
 		this._closeAllSubmenus();
 		if ("ontouchstart" in document.documentElement) for (const element of document.body.children) EventHandler.off(element, "mouseover", noop);
-		this._disposeFloating();
-		this._restoreMenuToOriginalParent();
 		this._menu.classList.remove(CLASS_NAME_SHOW);
 		this._element.classList.remove(CLASS_NAME_SHOW);
 		if (this._parent) this._parent.classList.remove(CLASS_NAME_SHOW);
 		this._element.setAttribute("aria-expanded", "false");
-		Manipulator.removeDataAttribute(this._menu, "placement");
-		Manipulator.removeDataAttribute(this._menu, "display");
 		Menu._openInstances.delete(this);
-		EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
+		await this._queueCallback(() => {
+			if (this._isShown()) return;
+			this._disposeFloating();
+			this._restoreMenuToOriginalParent();
+			Manipulator.removeDataAttribute(this._menu, "placement");
+			Manipulator.removeDataAttribute(this._menu, "display");
+			EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
+		}, this._menu, this._isAnimated());
 	}
 	_getConfig(config) {
 		config = super._getConfig(config);
@@ -204,6 +210,9 @@ var Menu = class Menu extends BaseComponent {
 	}
 	_isShown() {
 		return this._menu.classList.contains(CLASS_NAME_SHOW);
+	}
+	_isAnimated() {
+		return getTransitionDurationFromElement(this._menu) > 0;
 	}
 	_getPlacement() {
 		const placement = this._responsivePlacements ? getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT) : this._config.placement;
@@ -239,7 +248,10 @@ var Menu = class Menu extends BaseComponent {
 		const offsetValue = this._getOffset();
 		return [
 			offset(typeof offsetValue === "function" ? offsetValue : toFloatingOffset(offsetValue)),
-			flip({ fallbackPlacements: this._getFallbackPlacements() }),
+			flip({
+				fallbackPlacements: this._getFallbackPlacements(),
+				fallbackStrategy: "initialPlacement"
+			}),
 			shift({ boundary: this._config.boundary === "clippingParents" ? "clippingAncestors" : this._config.boundary })
 		];
 	}
@@ -423,6 +435,14 @@ var Menu = class Menu extends BaseComponent {
 			this._openSubmenu(trigger, submenu, submenuWrapper);
 		}
 	}
+	_initSubmenuTriggers() {
+		if (!this._menu) return;
+		for (const trigger of SelectorEngine.find(SELECTOR_SUBMENU_TOGGLE, this._menu)) {
+			if (!SelectorEngine.findOne(SELECTOR_MENU, trigger.parentElement)) continue;
+			trigger.setAttribute("aria-haspopup", "true");
+			if (!trigger.hasAttribute("aria-expanded")) trigger.setAttribute("aria-expanded", "false");
+		}
+	}
 	_openSubmenu(trigger, submenu, submenuWrapper) {
 		if (this._openSubmenus.has(submenu)) return;
 		trigger.setAttribute("aria-expanded", "true");
@@ -543,11 +563,23 @@ var Menu = class Menu extends BaseComponent {
 		const d3 = triangleSign(point, v3, v1);
 		return !((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0));
 	}
+	_getItemsInMenu(menu) {
+		return SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS}`, menu).filter((element) => isVisible(element));
+	}
 	_selectMenuItem({ key, target }) {
 		const currentMenu = target.closest(SELECTOR_MENU) || this._menu;
-		const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu).filter((element) => isVisible(element));
+		const items = this._getItemsInMenu(currentMenu);
 		if (!items.length) return;
-		getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus();
+		const nextItem = getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target));
+		nextItem.focus();
+		this._closeUnrelatedSubmenus(currentMenu, nextItem);
+	}
+	_closeUnrelatedSubmenus(currentMenu, focusedElement) {
+		for (const [submenu] of this._openSubmenus) {
+			const submenuWrapper = submenu.closest(SELECTOR_SUBMENU);
+			if (!submenuWrapper || submenuWrapper.parentElement !== currentMenu || submenuWrapper.contains(focusedElement)) continue;
+			this._closeSubmenu(submenu, submenuWrapper);
+		}
 	}
 	_handleSubmenuKeydown(event) {
 		const { key, target } = event;
@@ -556,21 +588,7 @@ var Menu = class Menu extends BaseComponent {
 		const exitKey = isRtl ? ARROW_RIGHT_KEY : ARROW_LEFT_KEY;
 		const submenuWrapper = target.closest(SELECTOR_SUBMENU);
 		const isSubmenuToggle = target.matches(SELECTOR_SUBMENU_TOGGLE);
-		if ((key === ENTER_KEY || key === SPACE_KEY) && submenuWrapper && isSubmenuToggle) {
-			event.preventDefault();
-			event.stopPropagation();
-			const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
-			if (submenu) {
-				this._closeSiblingSubmenus(submenuWrapper);
-				this._openSubmenu(target, submenu, submenuWrapper);
-				requestAnimationFrame(() => {
-					const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu);
-					if (firstItem) firstItem.focus();
-				});
-			}
-			return true;
-		}
-		if (key === enterKey && submenuWrapper && isSubmenuToggle) {
+		if ((key === ENTER_KEY || key === SPACE_KEY || key === enterKey) && submenuWrapper && isSubmenuToggle) {
 			event.preventDefault();
 			event.stopPropagation();
 			const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
@@ -600,8 +618,12 @@ var Menu = class Menu extends BaseComponent {
 			event.preventDefault();
 			event.stopPropagation();
 			const currentMenu = target.closest(SELECTOR_MENU);
-			const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu).filter((element) => isVisible(element));
-			if (items.length) (key === HOME_KEY ? items[0] : items.at(-1)).focus();
+			const items = this._getItemsInMenu(currentMenu);
+			if (items.length) {
+				const targetItem = key === HOME_KEY ? items[0] : items.at(-1);
+				targetItem.focus();
+				this._closeUnrelatedSubmenus(currentMenu, targetItem);
+			}
 			return true;
 		}
 		return false;
@@ -621,6 +643,11 @@ var Menu = class Menu extends BaseComponent {
 			instance._completeHide(relatedTarget);
 		}
 	}
+	static _getToggleFromKeydownContext(element, event) {
+		if (element.matches(SELECTOR_DATA_TOGGLE)) return element;
+		for (const instance of Menu._openInstances) if (instance._element === event.target || instance._menu?.contains(event.target)) return instance._element;
+		return SelectorEngine.prev(element, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine.next(element, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode);
+	}
 	static dataApiKeydownHandler(event) {
 		const isInput = /input|textarea/i.test(event.target.tagName) || event.target.isContentEditable;
 		const isEscapeEvent = event.key === ESCAPE_KEY;
@@ -631,7 +658,7 @@ var Menu = class Menu extends BaseComponent {
 		const isSubmenuTrigger = event.target.matches(SELECTOR_SUBMENU_TOGGLE);
 		if (!isUpOrDownEvent && !isEscapeEvent && !isLeftOrRightEvent && !isHomeOrEndEvent && !(isEnterOrSpaceEvent && isSubmenuTrigger)) return;
 		if (isInput && !isEscapeEvent) return;
-		const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode);
+		const getToggleButton = Menu._getToggleFromKeydownContext(this, event);
 		if (!getToggleButton) return;
 		const instance = Menu.getOrCreateInstance(getToggleButton);
 		if ((isLeftOrRightEvent || isHomeOrEndEvent || isEnterOrSpaceEvent && isSubmenuTrigger) && instance._handleSubmenuKeydown(event)) return;

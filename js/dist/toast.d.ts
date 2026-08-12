@@ -7,7 +7,6 @@
 import BaseComponent from './base-component.js';
 import { type BootstrapEvent } from './dom/event-handler.js';
 type ToastConfig = {
-    animation: boolean;
     autohide: boolean;
     delay: number;
 };
@@ -23,10 +22,11 @@ declare class Toast extends BaseComponent {
     static get Default(): ToastConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
-    show(): void;
-    hide(): void;
+    show(): Promise<void>;
+    hide(): Promise<void>;
     dispose(): void;
     isShown(): boolean;
+    protected _isAnimated(): boolean;
     protected _maybeScheduleHide(): void;
     protected _onInteraction(event: BootstrapEvent, isInteracting: boolean): void;
     protected _setListeners(): void;

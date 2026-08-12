@@ -114,78 +114,76 @@ function getElementEvents(element) {
 	eventRegistry[uid] = eventRegistry[uid] || {};
 	return eventRegistry[uid];
 }
-function bootstrapHandler(element, fn) {
+function isMouseEventWithinTarget(event) {
+	const { delegateTarget, relatedTarget } = event;
+	return Boolean(relatedTarget && delegateTarget.contains(relatedTarget));
+}
+function bootstrapHandler(element, fn, handlerTypeEvent) {
+	const isCustomMouseEvent = handlerTypeEvent in customEvents;
 	return function handler(event) {
-		hydrateObj(event, { delegateTarget: element });
-		if (handler.oneOff) EventHandler.off(element, event.type, fn);
-		return fn.apply(element, [event]);
+		const bootstrapEvent = hydrateObj(event, { delegateTarget: element });
+		if (isCustomMouseEvent && isMouseEventWithinTarget(bootstrapEvent)) return;
+		if (handler.oneOff) EventHandler.off(element, handlerTypeEvent, fn);
+		return fn.apply(element, [bootstrapEvent]);
 	};
 }
-function bootstrapDelegationHandler(element, selector, fn) {
+function bootstrapDelegationHandler(element, selector, fn, handlerTypeEvent) {
+	const isCustomMouseEvent = handlerTypeEvent in customEvents;
 	return function handler(event) {
 		const domElements = element.querySelectorAll(selector);
 		for (let { target } = event; target && target !== this; target = target.parentNode) for (const domElement of domElements) {
 			if (domElement !== target) continue;
-			hydrateObj(event, { delegateTarget: target });
-			if (handler.oneOff) EventHandler.off(element, event.type, selector, fn);
-			return fn.apply(target, [event]);
+			const bootstrapEvent = hydrateObj(event, { delegateTarget: target });
+			if (isCustomMouseEvent && isMouseEventWithinTarget(bootstrapEvent)) return;
+			if (handler.oneOff) EventHandler.off(element, handlerTypeEvent, selector, fn);
+			return fn.apply(target, [bootstrapEvent]);
 		}
 	};
 }
-function findHandler(events, callable, delegationSelector = null) {
-	return Object.values(events).find((event) => event.callable === callable && event.delegationSelector === delegationSelector);
+function findHandler(events, callable, handlerTypeEvent, delegationSelector = null) {
+	return Object.values(events).find((event) => event.callable === callable && event.handlerTypeEvent === handlerTypeEvent && event.delegationSelector === delegationSelector);
 }
 function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
 	const isDelegated = typeof handler === "string";
 	const callable = isDelegated ? delegationFunction : handler || delegationFunction;
-	let typeEvent = getTypeEvent(originalTypeEvent);
+	const baseTypeEvent = originalTypeEvent.replace(stripNameRegex, "");
+	let typeEvent = customEvents[baseTypeEvent] || baseTypeEvent;
 	if (!nativeEvents.has(typeEvent)) typeEvent = originalTypeEvent;
-	return [
+	const handlerTypeEvent = baseTypeEvent in customEvents ? baseTypeEvent : typeEvent;
+	return {
 		isDelegated,
 		callable,
-		typeEvent
-	];
+		typeEvent,
+		handlerTypeEvent
+	};
 }
 function addHandler(element, originalTypeEvent, handler, delegationFunction, oneOff) {
 	if (typeof originalTypeEvent !== "string" || !element) return;
-	let [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction);
-	if (originalTypeEvent in customEvents) {
-		const wrapFunction = (fn) => {
-			return function(event) {
-				if (!event.relatedTarget || event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget)) return fn.call(this, event);
-			};
-		};
-		callable = wrapFunction(callable);
-	}
+	const { isDelegated, callable, typeEvent, handlerTypeEvent } = normalizeParameters(originalTypeEvent, handler, delegationFunction);
 	const events = getElementEvents(element);
 	const handlers = events[typeEvent] || (events[typeEvent] = {});
-	const previousFunction = findHandler(handlers, callable, isDelegated ? handler : null);
+	const previousFunction = findHandler(handlers, callable, handlerTypeEvent, isDelegated ? handler : null);
 	if (previousFunction) {
 		previousFunction.oneOff = previousFunction.oneOff && oneOff;
 		return;
 	}
 	const uid = makeEventUid(callable, originalTypeEvent.replace(namespaceRegex, ""));
-	const fn = isDelegated ? bootstrapDelegationHandler(element, handler, callable) : bootstrapHandler(element, callable);
+	const fn = isDelegated ? bootstrapDelegationHandler(element, handler, callable, handlerTypeEvent) : bootstrapHandler(element, callable, handlerTypeEvent);
 	fn.delegationSelector = isDelegated ? handler : null;
 	fn.callable = callable;
+	fn.handlerTypeEvent = handlerTypeEvent;
 	fn.oneOff = oneOff;
 	fn.uidEvent = uid;
 	handlers[uid] = fn;
 	element.addEventListener(typeEvent, fn, isDelegated);
 }
-function removeHandler(element, events, typeEvent, handler, delegationSelector) {
-	const fn = findHandler(events[typeEvent], handler, delegationSelector);
-	if (!fn) return;
-	element.removeEventListener(typeEvent, fn, Boolean(delegationSelector));
-	delete events[typeEvent][fn.uidEvent];
+function removeHandler(element, events, typeEvent, handler) {
+	element.removeEventListener(typeEvent, handler, Boolean(handler.delegationSelector));
+	delete events[typeEvent][handler.uidEvent];
 }
 function removeNamespacedHandlers(element, events, typeEvent, namespace) {
 	const storeElementEvent = events[typeEvent] || {};
-	for (const [handlerKey, event] of Object.entries(storeElementEvent)) if (handlerKey.includes(namespace)) removeHandler(element, events, typeEvent, event.callable, event.delegationSelector);
-}
-function getTypeEvent(event) {
-	event = event.replace(stripNameRegex, "");
-	return customEvents[event] || event;
+	for (const [handlerKey, event] of Object.entries(storeElementEvent)) if (handlerKey.includes(namespace)) removeHandler(element, events, typeEvent, event);
 }
 function trigger(element, event, args) {
 	if (typeof event !== "string" || !element) return null;
@@ -205,20 +203,21 @@ const EventHandler = {
 	},
 	off(element, originalTypeEvent, handler, delegationFunction) {
 		if (typeof originalTypeEvent !== "string" || !element) return;
-		const [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction);
-		const inNamespace = typeEvent !== originalTypeEvent;
+		const { isDelegated, callable, typeEvent, handlerTypeEvent } = normalizeParameters(originalTypeEvent, handler, delegationFunction);
+		const inNamespace = typeEvent !== originalTypeEvent && handlerTypeEvent !== originalTypeEvent;
 		const events = getElementEvents(element);
 		const storeElementEvent = events[typeEvent] || {};
 		const isNamespace = originalTypeEvent.startsWith(".");
 		if (typeof callable !== "undefined") {
 			if (!Object.keys(storeElementEvent).length) return;
-			removeHandler(element, events, typeEvent, callable, isDelegated ? handler : null);
+			const fn = findHandler(storeElementEvent, callable, handlerTypeEvent, isDelegated ? handler : null);
+			if (fn) removeHandler(element, events, typeEvent, fn);
 			return;
 		}
 		if (isNamespace) for (const elementEvent of Object.keys(events)) removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
 		for (const [keyHandlers, event] of Object.entries(storeElementEvent)) {
 			const handlerKey = keyHandlers.replace(stripUidRegex, "");
-			if (!inNamespace || originalTypeEvent.includes(handlerKey)) removeHandler(element, events, typeEvent, event.callable, event.delegationSelector);
+			if (event.handlerTypeEvent === handlerTypeEvent && (!inNamespace || originalTypeEvent.includes(handlerKey))) removeHandler(element, events, typeEvent, event);
 		}
 	},
 	trigger
@@ -365,14 +364,6 @@ const findShadowRoot = (element) => {
 	return findShadowRoot(element.parentNode);
 };
 const noop = () => {};
-/**
-* Trick to restart an element's animation
-*
-* @see https://www.harrytheo.com/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
-*/
-const reflow = (element) => {
-	element.offsetHeight;
-};
 const isRTL$1 = () => document.documentElement.dir === "rtl";
 const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
 	return typeof possibleCallback === "function" ? possibleCallback.call(...args) : defaultValue;
@@ -491,10 +482,12 @@ var BaseComponent = class extends Config {
 		for (const propertyName of Object.getOwnPropertyNames(this)) this[propertyName] = null;
 	}
 	_queueCallback(callback, element, isAnimated = true) {
-		executeAfterTransition(() => {
-			if (!this._element) return;
-			callback();
-		}, element, isAnimated);
+		return new Promise((resolve) => {
+			executeAfterTransition(() => {
+				if (this._element) callback();
+				resolve();
+			}, element, isAnimated);
+		});
 	}
 	_getConfig(config) {
 		config = this._mergeConfigObj(config, this._element);
@@ -546,9 +539,6 @@ const SelectorEngine = {
 	findOne(selector, element = document.documentElement) {
 		return Element.prototype.querySelector.call(element, selector);
 	},
-	children(element, selector) {
-		return [...element.children].filter((child) => child.matches(selector));
-	},
 	parents(element, selector) {
 		const parents = [];
 		let ancestor = element.parentNode.closest(selector);
@@ -577,19 +567,6 @@ const SelectorEngine = {
 		}
 		return [];
 	},
-	focusableChildren(element) {
-		const focusables = [
-			"a",
-			"button",
-			"input",
-			"textarea",
-			"select",
-			"details",
-			"[tabindex]",
-			"[contenteditable=\"true\"]"
-		].map((selector) => `${selector}:not([tabindex^="-"])`).join(",");
-		return this.find(focusables, element).filter((el) => !isDisabled(el) && isVisible(el));
-	},
 	getSelectorFromElement(element) {
 		const selector = getSelector(element);
 		if (selector) return SelectorEngine.findOne(selector) ? selector : null;
@@ -612,7 +589,7 @@ const enableDismissTrigger = (component, method = "hide") => {
 	EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function(event) {
 		if (["A", "AREA"].includes(this.tagName)) event.preventDefault();
 		if (isDisabled(this)) return;
-		const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}`);
+		const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}, [class*=":${name}"]`);
 		component.getOrCreateInstance(target)[method]();
 	});
 };
@@ -652,7 +629,7 @@ const NAME$21 = "alert";
 const EVENT_KEY$18 = `.bs.alert`;
 const EVENT_CLOSE = `close${EVENT_KEY$18}`;
 const EVENT_CLOSED = `closed${EVENT_KEY$18}`;
-const CLASS_NAME_FADE$4 = "fade";
+const CLASS_NAME_HIDING = "hiding";
 const CLASS_NAME_SHOW$6 = "show";
 /**
 * Class definition
@@ -661,11 +638,12 @@ var Alert = class extends BaseComponent {
 	static get NAME() {
 		return NAME$21;
 	}
-	close() {
+	async close() {
 		if (EventHandler.trigger(this._element, EVENT_CLOSE).defaultPrevented) return;
 		this._element.classList.remove(CLASS_NAME_SHOW$6);
-		const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$4);
-		this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
+		this._element.classList.add(CLASS_NAME_HIDING);
+		const isAnimated = getTransitionDurationFromElement(this._element) > 0;
+		await this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
 	}
 	_destroyElement() {
 		this._element.remove();
@@ -694,6 +672,7 @@ const DATA_API_KEY$12 = ".data-api";
 const CLASS_NAME_ACTIVE$4 = "active";
 const SELECTOR_DATA_TOGGLE$10 = "[data-bs-toggle=\"button\"]";
 const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$17}${DATA_API_KEY$12}`;
+const EVENT_DOM_CONTENT_LOADED$1 = `DOMContentLoaded${EVENT_KEY$17}${DATA_API_KEY$12}`;
 /**
 * Class definition
 */
@@ -712,6 +691,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$8, SELECTOR_DATA_TOGGLE$10, (even
 	event.preventDefault();
 	const button = event.target.closest(SELECTOR_DATA_TOGGLE$10);
 	Button.getOrCreateInstance(button).toggle();
+});
+EventHandler.on(document, EVENT_DOM_CONTENT_LOADED$1, () => {
+	for (const element of SelectorEngine.find(SELECTOR_DATA_TOGGLE$10)) if (!element.hasAttribute("aria-pressed")) setAriaAttribute(element, "aria-pressed", element.classList.contains(CLASS_NAME_ACTIVE$4));
 });
 //#endregion
 //#region js/src/carousel.ts
@@ -741,7 +723,7 @@ const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$16}${DATA_API_KEY$11}`;
 const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$16}${DATA_API_KEY$11}`;
 const CLASS_NAME_CAROUSEL = "carousel";
 const CLASS_NAME_ACTIVE$3 = "active";
-const CLASS_NAME_FADE$3 = "carousel-fade";
+const CLASS_NAME_FADE = "carousel-fade";
 const CLASS_NAME_CENTER = "carousel-center";
 const CLASS_NAME_AUTO = "carousel-auto";
 const CLASS_NAME_CLONE = "carousel-item-clone";
@@ -1173,7 +1155,7 @@ var Carousel = class extends BaseComponent {
 		if (label) this._playPauseElement.setAttribute("aria-label", label);
 	}
 	_isFade() {
-		return this._element.classList.contains(CLASS_NAME_FADE$3);
+		return this._element.classList.contains(CLASS_NAME_FADE);
 	}
 	_prefersReducedMotion() {
 		return typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1239,22 +1221,11 @@ const EVENT_HIDDEN$8 = `hidden${EVENT_KEY$15}`;
 const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$15}${DATA_API_KEY$10}`;
 const CLASS_NAME_SHOW$5 = "show";
 const CLASS_NAME_COLLAPSE = "collapse";
-const CLASS_NAME_COLLAPSING = "collapsing";
-const CLASS_NAME_COLLAPSED = "collapsed";
 const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`;
-const CLASS_NAME_HORIZONTAL = "collapse-horizontal";
-const WIDTH = "width";
-const HEIGHT = "height";
-const SELECTOR_ACTIVES = ".collapse.show, .collapse.collapsing";
+const SELECTOR_ACTIVES = ".collapse.show";
 const SELECTOR_DATA_TOGGLE$9 = "[data-bs-toggle=\"collapse\"]";
-const Default$17 = {
-	parent: null,
-	toggle: true
-};
-const DefaultType$17 = {
-	parent: "(null|element)",
-	toggle: "boolean"
-};
+const Default$17 = { parent: null };
+const DefaultType$17 = { parent: "(null|element)" };
 /**
 * Class definition
 */
@@ -1270,8 +1241,7 @@ var Collapse = class Collapse extends BaseComponent {
 			if (selector !== null && filterElement.length) this._triggerArray.push(elem);
 		}
 		this._initializeChildren();
-		if (!this._config.parent) this._addAriaAndCollapsedClass(this._triggerArray, this._isShown());
-		if (this._config.toggle) this.toggle();
+		if (!this._config.parent) this._setAriaExpanded(this._triggerArray, this._isShown());
 	}
 	static get Default() {
 		return Default$17;
@@ -1283,84 +1253,67 @@ var Collapse = class Collapse extends BaseComponent {
 		return NAME$18;
 	}
 	toggle() {
-		if (this._isShown()) this.hide();
-		else this.show();
+		return this._isShown() ? this.hide() : this.show();
 	}
-	show() {
+	async show() {
 		if (this._isTransitioning || this._isShown()) return;
 		let activeChildren = [];
-		if (this._config.parent) activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES).filter((element) => element !== this._element).map((element) => Collapse.getOrCreateInstance(element, { toggle: false }));
+		if (this._config.parent) activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES).filter((element) => element !== this._element && !this._sharesTrigger(element)).map((element) => Collapse.getOrCreateInstance(element));
 		if (activeChildren.length && activeChildren[0]._isTransitioning) return;
 		if (EventHandler.trigger(this._element, EVENT_SHOW$7).defaultPrevented) return;
 		for (const activeInstance of activeChildren) activeInstance.hide();
-		const dimension = this._getDimension();
-		this._element.classList.remove(CLASS_NAME_COLLAPSE);
-		this._element.classList.add(CLASS_NAME_COLLAPSING);
-		this._element.style[dimension] = 0;
-		this._addAriaAndCollapsedClass(this._triggerArray, true);
+		this._element.classList.add(CLASS_NAME_SHOW$5);
+		this._setAriaExpanded(this._triggerArray, true);
 		this._isTransitioning = true;
 		const complete = () => {
 			this._isTransitioning = false;
-			this._element.classList.remove(CLASS_NAME_COLLAPSING);
-			this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$5);
-			this._element.style[dimension] = "";
 			EventHandler.trigger(this._element, EVENT_SHOWN$6);
 		};
-		const scrollSize = `scroll${dimension[0].toUpperCase() + dimension.slice(1)}`;
-		this._queueCallback(complete, this._element, true);
-		this._element.style[dimension] = `${this._element[scrollSize]}px`;
+		await this._queueCallback(complete, this._element, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (this._isTransitioning || !this._isShown()) return;
 		if (EventHandler.trigger(this._element, EVENT_HIDE$6).defaultPrevented) return;
-		const dimension = this._getDimension();
-		this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
-		reflow(this._element);
-		this._element.classList.add(CLASS_NAME_COLLAPSING);
-		this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$5);
+		this._element.classList.remove(CLASS_NAME_SHOW$5);
 		for (const trigger of this._triggerArray) {
 			const element = SelectorEngine.getElementFromSelector(trigger);
-			if (element && !this._isShown(element)) this._addAriaAndCollapsedClass([trigger], false);
+			if (element && !this._isShown(element)) this._setAriaExpanded([trigger], false);
 		}
 		this._isTransitioning = true;
 		const complete = () => {
 			this._isTransitioning = false;
-			this._element.classList.remove(CLASS_NAME_COLLAPSING);
-			this._element.classList.add(CLASS_NAME_COLLAPSE);
 			EventHandler.trigger(this._element, EVENT_HIDDEN$8);
 		};
-		this._element.style[dimension] = "";
-		this._queueCallback(complete, this._element, true);
+		await this._queueCallback(complete, this._element, this._isAnimated());
 	}
 	_isShown(element = this._element) {
 		return element.classList.contains(CLASS_NAME_SHOW$5);
 	}
+	_isAnimated() {
+		return getTransitionDurationFromElement(this._element) > 0;
+	}
+	_sharesTrigger(element) {
+		return this._triggerArray.some((trigger) => SelectorEngine.getMultipleElementsFromSelector(trigger).includes(element));
+	}
 	_configAfterMerge(config) {
-		config.toggle = Boolean(config.toggle);
 		config.parent = getElement(config.parent);
 		return config;
-	}
-	_getDimension() {
-		return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT;
 	}
 	_initializeChildren() {
 		if (!this._config.parent) return;
 		const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$9);
 		for (const element of children) {
 			const selected = SelectorEngine.getElementFromSelector(element);
-			if (selected) this._addAriaAndCollapsedClass([element], this._isShown(selected));
+			if (selected) this._setAriaExpanded([element], this._isShown(selected));
 		}
 	}
 	_getFirstLevelChildren(selector) {
 		const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent);
 		return SelectorEngine.find(selector, this._config.parent).filter((element) => !children.includes(element));
 	}
-	_addAriaAndCollapsedClass(triggerArray, isOpen) {
+	_setAriaExpanded(triggerArray, isOpen) {
 		if (!triggerArray.length) return;
-		for (const element of triggerArray) {
-			element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen);
-			setAriaAttribute(element, "aria-expanded", isOpen);
-		}
+		for (const element of triggerArray) setAriaAttribute(element, "aria-expanded", isOpen);
 	}
 };
 /**
@@ -1368,7 +1321,7 @@ var Collapse = class Collapse extends BaseComponent {
 */
 EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$9, function(event) {
 	if (event.target.tagName === "A" || event.delegateTarget && event.delegateTarget.tagName === "A") event.preventDefault();
-	for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) Collapse.getOrCreateInstance(element, { toggle: false }).toggle();
+	for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) Collapse.getOrCreateInstance(element).toggle();
 });
 //#endregion
 //#region node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
@@ -2709,6 +2662,7 @@ var Menu = class Menu extends BaseComponent {
 		this._menuOriginalParent = this._menu?.parentNode;
 		this._parseResponsivePlacements();
 		this._setupSubmenuListeners();
+		this._initSubmenuTriggers();
 	}
 	static get Default() {
 		return Default$16;
@@ -2722,7 +2676,7 @@ var Menu = class Menu extends BaseComponent {
 	toggle() {
 		return this._isShown() ? this.hide() : this.show();
 	}
-	show() {
+	async show() {
 		if (isDisabled(this._element) || this._isShown()) return;
 		const relatedTarget = { relatedTarget: this._element };
 		if (EventHandler.trigger(this._element, EVENT_SHOW$6, relatedTarget).defaultPrevented) return;
@@ -2735,12 +2689,14 @@ var Menu = class Menu extends BaseComponent {
 		this._element.classList.add(CLASS_NAME_SHOW$4);
 		if (this._parent) this._parent.classList.add(CLASS_NAME_SHOW$4);
 		Menu._openInstances.add(this);
-		EventHandler.trigger(this._element, EVENT_SHOWN$5, relatedTarget);
+		await this._queueCallback(() => {
+			if (this._isShown()) EventHandler.trigger(this._element, EVENT_SHOWN$5, relatedTarget);
+		}, this._menu, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (isDisabled(this._element) || !this._isShown()) return;
 		const relatedTarget = { relatedTarget: this._element };
-		this._completeHide(relatedTarget);
+		await this._completeHide(relatedTarget);
 	}
 	dispose() {
 		this._disposeFloating();
@@ -2763,20 +2719,23 @@ var Menu = class Menu extends BaseComponent {
 		while (wrapper instanceof Element && !wrapper.contains(menu)) wrapper = wrapper.parentNode;
 		return wrapper instanceof Element ? wrapper : this._element.parentNode;
 	}
-	_completeHide(relatedTarget) {
+	async _completeHide(relatedTarget) {
 		if (EventHandler.trigger(this._element, EVENT_HIDE$5, relatedTarget).defaultPrevented) return;
 		this._closeAllSubmenus();
 		if ("ontouchstart" in document.documentElement) for (const element of document.body.children) EventHandler.off(element, "mouseover", noop);
-		this._disposeFloating();
-		this._restoreMenuToOriginalParent();
 		this._menu.classList.remove(CLASS_NAME_SHOW$4);
 		this._element.classList.remove(CLASS_NAME_SHOW$4);
 		if (this._parent) this._parent.classList.remove(CLASS_NAME_SHOW$4);
 		this._element.setAttribute("aria-expanded", "false");
-		Manipulator.removeDataAttribute(this._menu, "placement");
-		Manipulator.removeDataAttribute(this._menu, "display");
 		Menu._openInstances.delete(this);
-		EventHandler.trigger(this._element, EVENT_HIDDEN$7, relatedTarget);
+		await this._queueCallback(() => {
+			if (this._isShown()) return;
+			this._disposeFloating();
+			this._restoreMenuToOriginalParent();
+			Manipulator.removeDataAttribute(this._menu, "placement");
+			Manipulator.removeDataAttribute(this._menu, "display");
+			EventHandler.trigger(this._element, EVENT_HIDDEN$7, relatedTarget);
+		}, this._menu, this._isAnimated());
 	}
 	_getConfig(config) {
 		config = super._getConfig(config);
@@ -2808,6 +2767,9 @@ var Menu = class Menu extends BaseComponent {
 	}
 	_isShown() {
 		return this._menu.classList.contains(CLASS_NAME_SHOW$4);
+	}
+	_isAnimated() {
+		return getTransitionDurationFromElement(this._menu) > 0;
 	}
 	_getPlacement() {
 		const placement = this._responsivePlacements ? getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT) : this._config.placement;
@@ -2843,7 +2805,10 @@ var Menu = class Menu extends BaseComponent {
 		const offsetValue = this._getOffset();
 		return [
 			offset(typeof offsetValue === "function" ? offsetValue : toFloatingOffset(offsetValue)),
-			flip({ fallbackPlacements: this._getFallbackPlacements() }),
+			flip({
+				fallbackPlacements: this._getFallbackPlacements(),
+				fallbackStrategy: "initialPlacement"
+			}),
 			shift({ boundary: this._config.boundary === "clippingParents" ? "clippingAncestors" : this._config.boundary })
 		];
 	}
@@ -3027,6 +2992,14 @@ var Menu = class Menu extends BaseComponent {
 			this._openSubmenu(trigger, submenu, submenuWrapper);
 		}
 	}
+	_initSubmenuTriggers() {
+		if (!this._menu) return;
+		for (const trigger of SelectorEngine.find(SELECTOR_SUBMENU_TOGGLE, this._menu)) {
+			if (!SelectorEngine.findOne(SELECTOR_MENU$2, trigger.parentElement)) continue;
+			trigger.setAttribute("aria-haspopup", "true");
+			if (!trigger.hasAttribute("aria-expanded")) trigger.setAttribute("aria-expanded", "false");
+		}
+	}
 	_openSubmenu(trigger, submenu, submenuWrapper) {
 		if (this._openSubmenus.has(submenu)) return;
 		trigger.setAttribute("aria-expanded", "true");
@@ -3147,11 +3120,23 @@ var Menu = class Menu extends BaseComponent {
 		const d3 = triangleSign(point, v3, v1);
 		return !((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0));
 	}
+	_getItemsInMenu(menu) {
+		return SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS$1}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS$1}`, menu).filter((element) => isVisible(element));
+	}
 	_selectMenuItem({ key, target }) {
 		const currentMenu = target.closest(SELECTOR_MENU$2) || this._menu;
-		const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS$1}`, currentMenu).filter((element) => isVisible(element));
+		const items = this._getItemsInMenu(currentMenu);
 		if (!items.length) return;
-		getNextActiveElement(items, target, key === ARROW_DOWN_KEY$2, !items.includes(target)).focus();
+		const nextItem = getNextActiveElement(items, target, key === ARROW_DOWN_KEY$2, !items.includes(target));
+		nextItem.focus();
+		this._closeUnrelatedSubmenus(currentMenu, nextItem);
+	}
+	_closeUnrelatedSubmenus(currentMenu, focusedElement) {
+		for (const [submenu] of this._openSubmenus) {
+			const submenuWrapper = submenu.closest(SELECTOR_SUBMENU);
+			if (!submenuWrapper || submenuWrapper.parentElement !== currentMenu || submenuWrapper.contains(focusedElement)) continue;
+			this._closeSubmenu(submenu, submenuWrapper);
+		}
 	}
 	_handleSubmenuKeydown(event) {
 		const { key, target } = event;
@@ -3160,21 +3145,7 @@ var Menu = class Menu extends BaseComponent {
 		const exitKey = isRtl ? ARROW_RIGHT_KEY$1 : ARROW_LEFT_KEY$1;
 		const submenuWrapper = target.closest(SELECTOR_SUBMENU);
 		const isSubmenuToggle = target.matches(SELECTOR_SUBMENU_TOGGLE);
-		if ((key === ENTER_KEY$1 || key === SPACE_KEY$1) && submenuWrapper && isSubmenuToggle) {
-			event.preventDefault();
-			event.stopPropagation();
-			const submenu = SelectorEngine.findOne(SELECTOR_MENU$2, submenuWrapper);
-			if (submenu) {
-				this._closeSiblingSubmenus(submenuWrapper);
-				this._openSubmenu(target, submenu, submenuWrapper);
-				requestAnimationFrame(() => {
-					const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS$1, submenu);
-					if (firstItem) firstItem.focus();
-				});
-			}
-			return true;
-		}
-		if (key === enterKey && submenuWrapper && isSubmenuToggle) {
+		if ((key === ENTER_KEY$1 || key === SPACE_KEY$1 || key === enterKey) && submenuWrapper && isSubmenuToggle) {
 			event.preventDefault();
 			event.stopPropagation();
 			const submenu = SelectorEngine.findOne(SELECTOR_MENU$2, submenuWrapper);
@@ -3204,8 +3175,12 @@ var Menu = class Menu extends BaseComponent {
 			event.preventDefault();
 			event.stopPropagation();
 			const currentMenu = target.closest(SELECTOR_MENU$2);
-			const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS$1}`, currentMenu).filter((element) => isVisible(element));
-			if (items.length) (key === HOME_KEY$2 ? items[0] : items.at(-1)).focus();
+			const items = this._getItemsInMenu(currentMenu);
+			if (items.length) {
+				const targetItem = key === HOME_KEY$2 ? items[0] : items.at(-1);
+				targetItem.focus();
+				this._closeUnrelatedSubmenus(currentMenu, targetItem);
+			}
 			return true;
 		}
 		return false;
@@ -3225,6 +3200,11 @@ var Menu = class Menu extends BaseComponent {
 			instance._completeHide(relatedTarget);
 		}
 	}
+	static _getToggleFromKeydownContext(element, event) {
+		if (element.matches(SELECTOR_DATA_TOGGLE$8)) return element;
+		for (const instance of Menu._openInstances) if (instance._element === event.target || instance._menu?.contains(event.target)) return instance._element;
+		return SelectorEngine.prev(element, SELECTOR_DATA_TOGGLE$8)[0] || SelectorEngine.next(element, SELECTOR_DATA_TOGGLE$8)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$8, event.delegateTarget.parentNode);
+	}
 	static dataApiKeydownHandler(event) {
 		const isInput = /input|textarea/i.test(event.target.tagName) || event.target.isContentEditable;
 		const isEscapeEvent = event.key === ESCAPE_KEY$2;
@@ -3235,7 +3215,7 @@ var Menu = class Menu extends BaseComponent {
 		const isSubmenuTrigger = event.target.matches(SELECTOR_SUBMENU_TOGGLE);
 		if (!isUpOrDownEvent && !isEscapeEvent && !isLeftOrRightEvent && !isHomeOrEndEvent && !(isEnterOrSpaceEvent && isSubmenuTrigger)) return;
 		if (isInput && !isEscapeEvent) return;
-		const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$8) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$8)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE$8)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$8, event.delegateTarget.parentNode);
+		const getToggleButton = Menu._getToggleFromKeydownContext(this, event);
 		if (!getToggleButton) return;
 		const instance = Menu.getOrCreateInstance(getToggleButton);
 		if ((isLeftOrRightEvent || isHomeOrEndEvent || isEnterOrSpaceEvent && isSubmenuTrigger) && instance._handleSubmenuKeydown(event)) return;
@@ -3361,7 +3341,7 @@ var Combobox = class extends BaseComponent {
 	toggle() {
 		return this._isShown() ? this.hide() : this.show();
 	}
-	show() {
+	async show() {
 		if (isDisabled(this._toggle) || this._isShown()) return;
 		if (EventHandler.trigger(this._toggle, EVENT_SHOW$5).defaultPrevented) return;
 		this._menuInstance.show();
@@ -3372,7 +3352,7 @@ var Combobox = class extends BaseComponent {
 		}
 		EventHandler.trigger(this._toggle, EVENT_SHOWN$4);
 	}
-	hide() {
+	async hide() {
 		if (!this._isShown()) return;
 		if (EventHandler.trigger(this._toggle, EVENT_HIDE$4).defaultPrevented) return;
 		this._menuInstance.hide();
@@ -4880,10 +4860,10 @@ var Datepicker = class extends BaseComponent {
 		return NAME$15;
 	}
 	toggle() {
-		if (this._config.inline) return;
+		if (this._config.inline) return Promise.resolve();
 		return this._isShown ? this.hide() : this.show();
 	}
-	show() {
+	async show() {
 		if (this._config.inline) return;
 		if (!this._calendar || isDisabled(this._element) || this._isShown) return;
 		if (EventHandler.trigger(this._element, EVENT_SHOW$4).defaultPrevented) return;
@@ -4891,7 +4871,7 @@ var Datepicker = class extends BaseComponent {
 		this._isShown = true;
 		EventHandler.trigger(this._element, EVENT_SHOWN$3);
 	}
-	hide() {
+	async hide() {
 		if (this._config.inline) return;
 		if (!this._calendar || !this._isShown) return;
 		if (EventHandler.trigger(this._element, EVENT_HIDE$3).defaultPrevented) return;
@@ -5113,7 +5093,7 @@ var DialogBase = class extends BaseComponent {
 	toggle(relatedTarget) {
 		return this._element.open ? this.hide() : this.show(relatedTarget);
 	}
-	show(relatedTarget) {
+	async show(relatedTarget) {
 		if (this._element.open || this._isTransitioning) return;
 		if (EventHandler.trigger(this._element, this.constructor.eventName("show"), { relatedTarget }).defaultPrevented) return;
 		this._isTransitioning = true;
@@ -5123,17 +5103,17 @@ var DialogBase = class extends BaseComponent {
 			modal,
 			preventBodyScroll
 		});
-		this._queueCallback(() => {
+		await this._queueCallback(() => {
 			this._isTransitioning = false;
 			EventHandler.trigger(this._element, this.constructor.eventName("shown"), { relatedTarget });
 		}, this._element, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (!this._element.open || this._isTransitioning) return;
 		if (EventHandler.trigger(this._element, this.constructor.eventName("hide")).defaultPrevented) return;
 		this._isTransitioning = true;
 		this._hideElement();
-		this._queueCallback(() => {
+		await this._queueCallback(() => {
 			if (this._element.open) this._closeAndCleanup();
 			this._element.classList.remove("hiding");
 			this._onAfterHide();
@@ -5249,7 +5229,7 @@ const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$11}`;
 const EVENT_CANCEL = `cancel${EVENT_KEY$11}`;
 const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$11}${DATA_API_KEY$6}`;
 const CLASS_NAME_NONMODAL = "dialog-nonmodal";
-const CLASS_NAME_INSTANT = "dialog-instant";
+const CLASS_NAME_INSTANT$1 = "dialog-instant";
 const CLASS_NAME_SWAP_IN = "dialog-swap-in";
 const SELECTOR_DATA_TOGGLE$5 = "[data-bs-toggle=\"dialog\"]";
 const Default$13 = {
@@ -5321,9 +5301,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, functi
 		});
 		const currentInstance = Dialog.getInstance(currentDialog);
 		if (currentInstance) {
-			currentDialog.classList.add(CLASS_NAME_INSTANT);
+			currentDialog.classList.add(CLASS_NAME_INSTANT$1);
 			EventHandler.one(currentDialog, EVENT_HIDDEN$4, () => {
-				currentDialog.classList.remove(CLASS_NAME_INSTANT);
+				currentDialog.classList.remove(CLASS_NAME_INSTANT$1);
 			});
 			currentInstance.hide();
 		}
@@ -5332,6 +5312,193 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, functi
 	Dialog.getOrCreateInstance(target, config).toggle(this);
 });
 enableDismissTrigger(Dialog);
+//#endregion
+//#region js/src/util/sanitizer.ts
+const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
+const DefaultAllowlist = {
+	"*": [
+		"class",
+		"dir",
+		"id",
+		"lang",
+		"role",
+		ARIA_ATTRIBUTE_PATTERN
+	],
+	a: [
+		"target",
+		"href",
+		"title",
+		"rel"
+	],
+	area: [],
+	b: [],
+	br: [],
+	col: [],
+	code: [],
+	dd: [],
+	div: [],
+	dl: [],
+	dt: [],
+	em: [],
+	hr: [],
+	h1: [],
+	h2: [],
+	h3: [],
+	h4: [],
+	h5: [],
+	h6: [],
+	i: [],
+	img: [
+		"src",
+		"srcset",
+		"alt",
+		"title",
+		"width",
+		"height"
+	],
+	li: [],
+	ol: [],
+	p: [],
+	pre: [],
+	s: [],
+	small: [],
+	span: [],
+	sub: [],
+	sup: [],
+	strong: [],
+	u: [],
+	ul: []
+};
+/**
+* Allowlist for icon HTML options (Chips `dismissIcon`, NavOverflow `moreIcon`,
+* and markup supplied via `[data-bs-overflow-icon]`). Covers the default SVG
+* icons plus common inline-icon markup. Event-handler attributes and tags not
+* listed here are stripped by `sanitizeHtml`.
+*/
+const DefaultIconAllowlist = {
+	"*": [
+		"class",
+		"role",
+		ARIA_ATTRIBUTE_PATTERN
+	],
+	svg: [
+		"xmlns",
+		"width",
+		"height",
+		"viewbox",
+		"fill",
+		"stroke",
+		"stroke-width",
+		"stroke-linecap",
+		"stroke-linejoin",
+		"focusable"
+	],
+	path: [
+		"d",
+		"fill",
+		"stroke",
+		"stroke-width",
+		"fill-rule",
+		"clip-rule"
+	],
+	line: [
+		"x1",
+		"y1",
+		"x2",
+		"y2",
+		"stroke",
+		"stroke-width",
+		"stroke-linecap"
+	],
+	circle: [
+		"cx",
+		"cy",
+		"r",
+		"fill",
+		"stroke",
+		"stroke-width"
+	],
+	rect: [
+		"x",
+		"y",
+		"width",
+		"height",
+		"rx",
+		"ry",
+		"fill",
+		"stroke",
+		"stroke-width"
+	],
+	polyline: [
+		"points",
+		"fill",
+		"stroke",
+		"stroke-width"
+	],
+	polygon: [
+		"points",
+		"fill",
+		"stroke",
+		"stroke-width"
+	],
+	g: [
+		"fill",
+		"stroke",
+		"stroke-width",
+		"transform"
+	],
+	span: [],
+	i: []
+};
+const uriAttributes = /* @__PURE__ */ new Set([
+	"background",
+	"cite",
+	"href",
+	"itemtype",
+	"longdesc",
+	"poster",
+	"src",
+	"xlink:href"
+]);
+/**
+* A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
+* contexts.
+*
+* Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
+*/
+const SAFE_URL_PATTERN = /^(?!(?:javascript|data|vbscript):)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
+/**
+* A pattern that matches safe data URLs. Only matches image, video and audio
+* types — notably NOT `data:text/html`, which is an XSS vector.
+*
+* Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L49
+*/
+const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z=]+$/i;
+const allowedAttribute = (attribute, allowedAttributeList) => {
+	const attributeName = attribute.nodeName.toLowerCase();
+	if (allowedAttributeList.includes(attributeName)) {
+		if (uriAttributes.has(attributeName)) return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue) || DATA_URL_PATTERN.test(attribute.nodeValue));
+		return true;
+	}
+	return allowedAttributeList.filter((attributeRegex) => attributeRegex instanceof RegExp).some((regex) => regex.test(attributeName));
+};
+function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
+	if (!unsafeHtml.length) return unsafeHtml;
+	if (sanitizeFunction && typeof sanitizeFunction === "function") return sanitizeFunction(unsafeHtml);
+	const createdDocument = new window.DOMParser().parseFromString(unsafeHtml, "text/html");
+	const elements = [...createdDocument.body.querySelectorAll("*")];
+	for (const element of elements) {
+		const elementName = element.nodeName.toLowerCase();
+		if (!Object.keys(allowList).includes(elementName)) {
+			element.remove();
+			continue;
+		}
+		const attributeList = [...element.attributes];
+		const allowedAttributes = [...allowList["*"] || [], ...allowList[elementName] || []];
+		for (const attribute of attributeList) if (!allowedAttribute(attribute, allowedAttributes)) element.removeAttribute(attribute.nodeName);
+	}
+	return createdDocument.body.innerHTML;
+}
 //#endregion
 //#region js/src/nav-overflow.ts
 /**
@@ -5351,17 +5518,19 @@ const EVENT_RESIZE$2 = `resize${EVENT_KEY$10}`;
 const CLASS_NAME_OVERFLOW = "nav-overflow";
 const CLASS_NAME_OVERFLOW_MENU = "nav-overflow-menu";
 const CLASS_NAME_HIDDEN = "d-none";
+const CLASS_NAME_KEEP = "nav-overflow-keep";
+const SELECTOR_NAV = ".nav";
 const SELECTOR_NAV_ITEM = ".nav-item";
 const SELECTOR_NAV_LINK = ".nav-link";
 const SELECTOR_OVERFLOW_TOGGLE = ".nav-overflow-toggle";
 const SELECTOR_OVERFLOW_MENU = ".nav-overflow-menu";
 const SELECTOR_CUSTOM_ICON = "[data-bs-overflow-icon]";
-const CLASS_NAME_KEEP = "nav-overflow-keep";
+const DEFAULT_TEXT = "More";
 const Default$12 = {
 	collapseBelow: 0,
 	iconPlacement: "start",
 	menuPlacement: "bottom-end",
-	moreText: "More",
+	moreText: DEFAULT_TEXT,
 	moreIcon: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" viewBox=\"0 0 16 16\"><path d=\"M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3\"/></svg>",
 	threshold: 0
 };
@@ -5369,7 +5538,7 @@ const DefaultType$12 = {
 	collapseBelow: "(number|string)",
 	iconPlacement: "string",
 	menuPlacement: "string",
-	moreText: "string",
+	moreText: "(string|boolean)",
 	moreIcon: "string",
 	threshold: "number"
 };
@@ -5379,6 +5548,9 @@ const DefaultType$12 = {
 var NavOverflow = class extends BaseComponent {
 	constructor(element, config) {
 		super(element, config);
+		const nav = SelectorEngine.findOne(SELECTOR_NAV, this._element);
+		if (!nav) throw new TypeError(`${this._element.outerHTML} has no child ${SELECTOR_NAV} to collapse`);
+		this._nav = nav;
 		this._items = [];
 		this._overflowItems = [];
 		this._overflowMenu = null;
@@ -5410,7 +5582,7 @@ var NavOverflow = class extends BaseComponent {
 	}
 	_init() {
 		this._element.classList.add(CLASS_NAME_OVERFLOW);
-		this._items = [...SelectorEngine.find(SELECTOR_NAV_ITEM, this._element)];
+		this._items = SelectorEngine.find(SELECTOR_NAV_ITEM, this._nav).filter((item) => !item.querySelector(SELECTOR_OVERFLOW_TOGGLE));
 		for (const [index, item] of this._items.entries()) item.dataset.bsNavOrder = index;
 		this._collapseBelow = this._resolveCollapseBelow();
 		this._createOverflowMenu();
@@ -5423,20 +5595,34 @@ var NavOverflow = class extends BaseComponent {
 			this._overflowMenu = SelectorEngine.findOne(SELECTOR_OVERFLOW_MENU, this._element);
 			return;
 		}
-		const iconSpan = `<span class="nav-overflow-icon">${this._resolveIcon()}</span>`;
-		const textSpan = `<span class="nav-overflow-text">${this._config.moreText}</span>`;
-		const toggleContent = this._config.iconPlacement === "end" ? `${textSpan}${iconSpan}` : `${iconSpan}${textSpan}`;
+		const { moreText } = this._config;
+		const label = typeof moreText === "string" ? moreText : "";
 		const overflowItem = document.createElement("li");
 		overflowItem.className = "nav-item nav-overflow-item";
-		overflowItem.innerHTML = `
-      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu" data-bs-placement="${this._config.menuPlacement}" aria-expanded="false">
-        ${toggleContent}
-      </button>
-      <div class="${CLASS_NAME_OVERFLOW_MENU} menu"></div>
-    `;
-		this._element.append(overflowItem);
-		this._overflowToggle = overflowItem.querySelector(SELECTOR_OVERFLOW_TOGGLE);
-		this._overflowMenu = overflowItem.querySelector(SELECTOR_OVERFLOW_MENU);
+		const button = document.createElement("button");
+		button.type = "button";
+		button.className = "nav-link nav-overflow-toggle";
+		button.setAttribute("data-bs-toggle", "menu");
+		button.setAttribute("data-bs-placement", this._config.menuPlacement);
+		button.setAttribute("aria-expanded", "false");
+		if (label === "") button.setAttribute("aria-label", DEFAULT_TEXT);
+		const iconSpan = document.createElement("span");
+		iconSpan.className = "nav-overflow-icon";
+		iconSpan.innerHTML = sanitizeHtml(this._resolveIcon(), DefaultIconAllowlist);
+		if (label === "") button.append(iconSpan);
+		else {
+			const textSpan = document.createElement("span");
+			textSpan.className = "nav-overflow-text";
+			textSpan.textContent = label;
+			if (this._config.iconPlacement === "end") button.append(textSpan, iconSpan);
+			else button.append(iconSpan, textSpan);
+		}
+		const menu = document.createElement("div");
+		menu.className = `${CLASS_NAME_OVERFLOW_MENU} menu`;
+		overflowItem.append(button, menu);
+		this._nav.append(overflowItem);
+		this._overflowToggle = button;
+		this._overflowMenu = menu;
 	}
 	_resolveIcon() {
 		const customIconElement = SelectorEngine.findOne(SELECTOR_CUSTOM_ICON, this._element);
@@ -5467,42 +5653,42 @@ var NavOverflow = class extends BaseComponent {
 		});
 		this._resizeObserver.observe(this._element);
 	}
+	_availableWidth() {
+		const { paddingInlineStart, paddingInlineEnd } = getComputedStyle(this._element);
+		const padding = (Number.parseFloat(paddingInlineStart) || 0) + (Number.parseFloat(paddingInlineEnd) || 0);
+		return this._element.clientWidth - padding;
+	}
+	_navGap() {
+		return Number.parseFloat(getComputedStyle(this._nav).columnGap) || 0;
+	}
 	_calculateOverflow() {
 		this._restoreItems();
-		const navWidth = this._element.offsetWidth;
-		const overflowItem = this._overflowToggle?.closest(".nav-item");
-		if (this._collapseBelow > 0 && navWidth < this._collapseBelow) {
-			const itemsToOverflow = this._items.filter((item) => !item.classList.contains(CLASS_NAME_KEEP));
-			this._moveToOverflow(itemsToOverflow);
-			if (overflowItem) if (itemsToOverflow.length > 0) overflowItem.classList.remove(CLASS_NAME_HIDDEN);
-			else overflowItem.classList.add(CLASS_NAME_HIDDEN);
-			if (itemsToOverflow.length > 0) EventHandler.trigger(this._element, EVENT_OVERFLOW, {
-				overflowCount: itemsToOverflow.length,
-				visibleCount: this._items.length - itemsToOverflow.length
-			});
+		const availableWidth = this._availableWidth();
+		const overflowItem = this._overflowToggle?.closest(SELECTOR_NAV_ITEM) ?? null;
+		const candidates = this._items.filter((item) => !item.classList.contains(CLASS_NAME_KEEP));
+		if (this._collapseBelow > 0 && availableWidth < this._collapseBelow) {
+			this._applyOverflow(candidates, overflowItem);
 			return;
 		}
-		const overflowWidth = overflowItem?.offsetWidth || 0;
-		const keepWidth = this._items.filter((item) => item.classList.contains(CLASS_NAME_KEEP)).reduce((sum, item) => sum + item.offsetWidth, 0);
+		const gap = this._navGap();
+		const keepWidth = this._items.filter((item) => item.classList.contains(CLASS_NAME_KEEP)).reduce((sum, item) => sum + item.offsetWidth + gap, 0);
+		const overflowWidth = overflowItem ? overflowItem.offsetWidth + gap : 0;
+		const limit = availableWidth - keepWidth - overflowWidth;
 		let usedWidth = 0;
-		const itemsToOverflow = [];
-		const overflowThreshold = navWidth - overflowWidth - keepWidth - 10;
-		for (const item of this._items) {
-			if (item.classList.contains(CLASS_NAME_KEEP)) continue;
-			usedWidth += item.offsetWidth;
-			if (usedWidth > overflowThreshold) itemsToOverflow.push(item);
+		let itemsToOverflow = [];
+		for (const item of candidates) {
+			usedWidth += item.offsetWidth + gap;
+			if (usedWidth > limit + 1) itemsToOverflow.push(item);
 		}
-		if (this._items.length - itemsToOverflow.length < this._config.threshold && this._items.length > this._config.threshold) {
-			const toMove = this._items.slice(this._config.threshold).filter((item) => !item.classList.contains(CLASS_NAME_KEEP));
-			itemsToOverflow.length = 0;
-			itemsToOverflow.push(...toMove);
-		}
-		this._moveToOverflow(itemsToOverflow);
-		if (overflowItem) if (itemsToOverflow.length > 0) overflowItem.classList.remove(CLASS_NAME_HIDDEN);
-		else overflowItem.classList.add(CLASS_NAME_HIDDEN);
-		if (itemsToOverflow.length > 0) EventHandler.trigger(this._element, EVENT_OVERFLOW, {
-			overflowCount: itemsToOverflow.length,
-			visibleCount: this._items.length - itemsToOverflow.length
+		if (this._items.length - itemsToOverflow.length < this._config.threshold && this._items.length > this._config.threshold) itemsToOverflow = this._items.slice(this._config.threshold).filter((item) => !item.classList.contains(CLASS_NAME_KEEP));
+		this._applyOverflow(itemsToOverflow, overflowItem);
+	}
+	_applyOverflow(items, overflowItem) {
+		this._moveToOverflow(items);
+		overflowItem?.classList.toggle(CLASS_NAME_HIDDEN, items.length === 0);
+		if (items.length > 0) EventHandler.trigger(this._element, EVENT_OVERFLOW, {
+			overflowCount: items.length,
+			visibleCount: this._items.length - items.length
 		});
 	}
 	_moveToOverflow(items) {
@@ -5527,6 +5713,7 @@ var NavOverflow = class extends BaseComponent {
 			item.classList.remove(CLASS_NAME_HIDDEN);
 			delete item.dataset.bsNavOverflow;
 		}
+		this._overflowToggle?.closest(SELECTOR_NAV_ITEM)?.classList.remove(CLASS_NAME_HIDDEN);
 		if (this._overflowMenu) this._overflowMenu.innerHTML = "";
 		this._overflowItems = [];
 	}
@@ -6406,7 +6593,7 @@ var Chips = class extends BaseComponent {
 		button.className = CLASS_NAME_CHIP_DISMISS;
 		button.setAttribute("aria-label", "Remove");
 		button.setAttribute("tabindex", "-1");
-		button.innerHTML = this._config.dismissIcon;
+		button.innerHTML = sanitizeHtml(this._config.dismissIcon, DefaultIconAllowlist);
 		return button;
 	}
 	_findChipByValue(value) {
@@ -6614,109 +6801,6 @@ var Chips = class extends BaseComponent {
 EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`, () => {
 	for (const element of SelectorEngine.find(SELECTOR_DATA_CHIPS)) Chips.getOrCreateInstance(element);
 });
-const DefaultAllowlist = {
-	"*": [
-		"class",
-		"dir",
-		"id",
-		"lang",
-		"role",
-		/^aria-[\w-]*$/i
-	],
-	a: [
-		"target",
-		"href",
-		"title",
-		"rel"
-	],
-	area: [],
-	b: [],
-	br: [],
-	col: [],
-	code: [],
-	dd: [],
-	div: [],
-	dl: [],
-	dt: [],
-	em: [],
-	hr: [],
-	h1: [],
-	h2: [],
-	h3: [],
-	h4: [],
-	h5: [],
-	h6: [],
-	i: [],
-	img: [
-		"src",
-		"srcset",
-		"alt",
-		"title",
-		"width",
-		"height"
-	],
-	li: [],
-	ol: [],
-	p: [],
-	pre: [],
-	s: [],
-	small: [],
-	span: [],
-	sub: [],
-	sup: [],
-	strong: [],
-	u: [],
-	ul: []
-};
-const uriAttributes = /* @__PURE__ */ new Set([
-	"background",
-	"cite",
-	"href",
-	"itemtype",
-	"longdesc",
-	"poster",
-	"src",
-	"xlink:href"
-]);
-/**
-* A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
-* contexts.
-*
-* Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
-*/
-const SAFE_URL_PATTERN = /^(?!(?:javascript|data|vbscript):)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
-/**
-* A pattern that matches safe data URLs. Only matches image, video and audio
-* types — notably NOT `data:text/html`, which is an XSS vector.
-*
-* Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L49
-*/
-const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z=]+$/i;
-const allowedAttribute = (attribute, allowedAttributeList) => {
-	const attributeName = attribute.nodeName.toLowerCase();
-	if (allowedAttributeList.includes(attributeName)) {
-		if (uriAttributes.has(attributeName)) return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue) || DATA_URL_PATTERN.test(attribute.nodeValue));
-		return true;
-	}
-	return allowedAttributeList.filter((attributeRegex) => attributeRegex instanceof RegExp).some((regex) => regex.test(attributeName));
-};
-function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
-	if (!unsafeHtml.length) return unsafeHtml;
-	if (sanitizeFunction && typeof sanitizeFunction === "function") return sanitizeFunction(unsafeHtml);
-	const createdDocument = new window.DOMParser().parseFromString(unsafeHtml, "text/html");
-	const elements = [...createdDocument.body.querySelectorAll("*")];
-	for (const element of elements) {
-		const elementName = element.nodeName.toLowerCase();
-		if (!Object.keys(allowList).includes(elementName)) {
-			element.remove();
-			continue;
-		}
-		const attributeList = [...element.attributes];
-		const allowedAttributes = [...allowList["*"] || [], ...allowList[elementName] || []];
-		for (const attribute of attributeList) if (!allowedAttribute(attribute, allowedAttributes)) element.removeAttribute(attribute.nodeName);
-	}
-	return createdDocument.body.innerHTML;
-}
 //#endregion
 //#region js/src/util/template-factory.ts
 /**
@@ -6852,7 +6936,6 @@ const DISALLOWED_ATTRIBUTES = /* @__PURE__ */ new Set([
 	"sanitizeFn"
 ]);
 const ESCAPE_KEY = "Escape";
-const CLASS_NAME_FADE$2 = "fade";
 const CLASS_NAME_MODAL = "modal";
 const CLASS_NAME_SHOW$2 = "show";
 const SELECTOR_TOOLTIP_INNER = ".tooltip-inner";
@@ -6933,6 +7016,7 @@ var Tooltip = class extends BaseComponent {
 		super(element, config);
 		this._isEnabled = true;
 		this._timeout = 0;
+		this._resolveTimeout = null;
 		this._isHovered = null;
 		this._activeTrigger = {};
 		this._floatingCleanup = null;
@@ -6965,15 +7049,11 @@ var Tooltip = class extends BaseComponent {
 		this._isEnabled = !this._isEnabled;
 	}
 	toggle() {
-		if (!this._isEnabled) return;
-		if (this._isShown()) {
-			this._leave();
-			return;
-		}
-		this._enter();
+		if (!this._isEnabled) return Promise.resolve();
+		return this._isShown() ? this._leave() : this._enter();
 	}
 	dispose() {
-		clearTimeout(this._timeout);
+		this._clearTimeout();
 		this._removeEscapeListener();
 		EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
 		if (this._element.getAttribute("data-bs-original-title")) this._element.setAttribute("title", this._element.getAttribute("data-bs-original-title"));
@@ -7009,9 +7089,9 @@ var Tooltip = class extends BaseComponent {
 			if (this._isHovered === false) this._leave();
 			this._isHovered = false;
 		};
-		this._queueCallback(complete, this.tip, this._isAnimated());
+		await this._queueCallback(complete, this.tip, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (!this._isShown()) return;
 		if (EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDE$2)).defaultPrevented) return;
 		this._removeEscapeListener();
@@ -7027,7 +7107,7 @@ var Tooltip = class extends BaseComponent {
 			this._element.removeAttribute("aria-describedby");
 			EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN$2));
 		};
-		this._queueCallback(complete, this.tip, this._isAnimated());
+		await this._queueCallback(complete, this.tip, this._isAnimated());
 	}
 	update() {
 		if (this._floatingCleanup && this.tip) this._updateFloatingPosition();
@@ -7044,11 +7124,11 @@ var Tooltip = class extends BaseComponent {
 	}
 	_createTipElement(content) {
 		const tip = this._getTemplateFactory(content).toHtml();
-		tip.classList.remove(CLASS_NAME_FADE$2, CLASS_NAME_SHOW$2);
+		tip.classList.remove(CLASS_NAME_SHOW$2);
 		tip.classList.add(`bs-${this.constructor.NAME}-auto`);
 		const tipId = getUID(this.constructor.NAME).toString();
 		tip.setAttribute("id", tipId);
-		if (this._isAnimated()) tip.classList.add(CLASS_NAME_FADE$2);
+		if (!this._config.animation) tip.classList.add(this._getInstantClassName());
 		return tip;
 	}
 	setContent(content) {
@@ -7076,8 +7156,11 @@ var Tooltip = class extends BaseComponent {
 	_initializeOnDelegatedTarget(event) {
 		return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig());
 	}
+	_getInstantClassName() {
+		return `${this.constructor.NAME}-instant`;
+	}
 	_isAnimated() {
-		return this._config.animation || this.tip && this.tip.classList.contains(CLASS_NAME_FADE$2);
+		return getTransitionDurationFromElement(this.tip) > 0;
 	}
 	_isShown() {
 		return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW$2);
@@ -7229,23 +7312,32 @@ var Tooltip = class extends BaseComponent {
 	_enter() {
 		if (this._isShown() || this._isHovered) {
 			this._isHovered = true;
-			return;
+			return Promise.resolve();
 		}
 		this._isHovered = true;
-		this._setTimeout(() => {
-			if (this._isHovered) this.show();
-		}, this._config.delay.show);
+		return this._setTimeout(() => this._isHovered ? this.show() : void 0, this._config.delay.show);
 	}
 	_leave() {
-		if (this._isWithActiveTrigger()) return;
+		if (this._isWithActiveTrigger()) return Promise.resolve();
 		this._isHovered = false;
-		this._setTimeout(() => {
-			if (!this._isHovered) this.hide();
-		}, this._config.delay.hide);
+		return this._setTimeout(() => this._isHovered ? void 0 : this.hide(), this._config.delay.hide);
 	}
 	_setTimeout(handler, timeout) {
+		this._clearTimeout();
+		return new Promise((resolve) => {
+			this._resolveTimeout = resolve;
+			this._timeout = setTimeout(() => {
+				this._resolveTimeout = null;
+				resolve(handler());
+			}, timeout);
+		});
+	}
+	_clearTimeout() {
 		clearTimeout(this._timeout);
-		this._timeout = setTimeout(handler, timeout);
+		if (this._resolveTimeout) {
+			this._resolveTimeout();
+			this._resolveTimeout = null;
+		}
 	}
 	_isWithActiveTrigger() {
 		return Object.values(this._activeTrigger).includes(true);
@@ -7884,7 +7976,6 @@ const ARROW_DOWN_KEY = "ArrowDown";
 const HOME_KEY = "Home";
 const END_KEY = "End";
 const CLASS_NAME_ACTIVE = "active";
-const CLASS_NAME_FADE$1 = "fade";
 const CLASS_NAME_SHOW$1 = "show";
 const SELECTOR_MENU_TOGGLE = "[data-bs-toggle=\"menu\"]";
 const SELECTOR_MENU = ".menu";
@@ -7909,47 +8000,48 @@ var Tab = class Tab extends BaseComponent {
 	static get NAME() {
 		return NAME$2;
 	}
-	show() {
+	async show() {
 		const innerElem = this._element;
 		if (this._elemIsActive(innerElem)) return;
 		const active = this._getActiveElem();
 		const hideEvent = active ? EventHandler.trigger(active, EVENT_HIDE$1, { relatedTarget: innerElem }) : null;
 		if (EventHandler.trigger(innerElem, EVENT_SHOW$1, { relatedTarget: active }).defaultPrevented || hideEvent && hideEvent.defaultPrevented) return;
 		this._deactivate(active, innerElem);
-		this._activate(innerElem, active);
+		await this._activate(innerElem, active);
 	}
-	_activate(element, relatedElem) {
+	async _activate(element, relatedElem) {
 		if (!element) return;
 		element.classList.add(CLASS_NAME_ACTIVE);
-		this._activate(SelectorEngine.getElementFromSelector(element));
+		if (element.getAttribute("role") !== "tab") {
+			element.classList.add(CLASS_NAME_SHOW$1);
+			return;
+		}
+		const pane = SelectorEngine.getElementFromSelector(element);
+		this._activate(pane);
 		const complete = () => {
-			if (element.getAttribute("role") !== "tab") {
-				element.classList.add(CLASS_NAME_SHOW$1);
-				return;
-			}
 			element.removeAttribute("tabindex");
 			setAriaAttribute(element, "aria-selected", true);
 			this._toggleMenu(element, true);
 			EventHandler.trigger(element, EVENT_SHOWN$1, { relatedTarget: relatedElem });
 		};
-		this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE$1));
+		await this._queueCallback(complete, pane ?? element, getTransitionDurationFromElement(pane) > 0);
 	}
-	_deactivate(element, relatedElem) {
+	async _deactivate(element, relatedElem) {
 		if (!element) return;
 		element.classList.remove(CLASS_NAME_ACTIVE);
 		element.blur();
+		if (element.getAttribute("role") !== "tab") {
+			element.classList.remove(CLASS_NAME_SHOW$1);
+			return;
+		}
 		this._deactivate(SelectorEngine.getElementFromSelector(element));
 		const complete = () => {
-			if (element.getAttribute("role") !== "tab") {
-				element.classList.remove(CLASS_NAME_SHOW$1);
-				return;
-			}
 			setAriaAttribute(element, "aria-selected", false);
 			element.setAttribute("tabindex", "-1");
 			this._toggleMenu(element, false);
 			EventHandler.trigger(element, EVENT_HIDDEN$1, { relatedTarget: relatedElem });
 		};
-		this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE$1));
+		await this._queueCallback(complete, element, false);
 	}
 	_keydown(event) {
 		if (![
@@ -8058,17 +8150,13 @@ const EVENT_HIDE = `hide${EVENT_KEY$1}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY$1}`;
 const EVENT_SHOW = `show${EVENT_KEY$1}`;
 const EVENT_SHOWN = `shown${EVENT_KEY$1}`;
-const CLASS_NAME_FADE = "fade";
-const CLASS_NAME_HIDE = "hide";
+const CLASS_NAME_INSTANT = "toast-instant";
 const CLASS_NAME_SHOW = "show";
-const CLASS_NAME_SHOWING = "showing";
 const DefaultType$1 = {
-	animation: "boolean",
 	autohide: "boolean",
 	delay: "number"
 };
 const Default$1 = {
-	animation: true,
 	autohide: true,
 	delay: 5e3
 };
@@ -8092,30 +8180,24 @@ var Toast = class extends BaseComponent {
 	static get NAME() {
 		return NAME$1;
 	}
-	show() {
+	async show() {
 		if (EventHandler.trigger(this._element, EVENT_SHOW).defaultPrevented) return;
 		this._clearTimeout();
-		if (this._config.animation) this._element.classList.add(CLASS_NAME_FADE);
 		const complete = () => {
-			this._element.classList.remove(CLASS_NAME_SHOWING);
 			EventHandler.trigger(this._element, EVENT_SHOWN);
 			this._maybeScheduleHide();
 		};
-		this._element.classList.remove(CLASS_NAME_HIDE);
-		reflow(this._element);
-		this._element.classList.add(CLASS_NAME_SHOW, CLASS_NAME_SHOWING);
-		this._queueCallback(complete, this._element, this._config.animation);
+		this._element.classList.add(CLASS_NAME_SHOW);
+		await this._queueCallback(complete, this._element, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (!this.isShown()) return;
 		if (EventHandler.trigger(this._element, EVENT_HIDE).defaultPrevented) return;
 		const complete = () => {
-			this._element.classList.add(CLASS_NAME_HIDE);
-			this._element.classList.remove(CLASS_NAME_SHOWING, CLASS_NAME_SHOW);
 			EventHandler.trigger(this._element, EVENT_HIDDEN);
 		};
-		this._element.classList.add(CLASS_NAME_SHOWING);
-		this._queueCallback(complete, this._element, this._config.animation);
+		this._element.classList.remove(CLASS_NAME_SHOW);
+		await this._queueCallback(complete, this._element, this._isAnimated());
 	}
 	dispose() {
 		this._clearTimeout();
@@ -8124,6 +8206,9 @@ var Toast = class extends BaseComponent {
 	}
 	isShown() {
 		return this._element.classList.contains(CLASS_NAME_SHOW);
+	}
+	_isAnimated() {
+		return !this._element.classList.contains(CLASS_NAME_INSTANT);
 	}
 	_maybeScheduleHide() {
 		if (!this._config.autohide) return;
@@ -8186,7 +8271,7 @@ const EVENT_CLICK = "click";
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"toggler\"]";
 const DefaultType = {
 	attribute: "string",
-	value: "(string|number|boolean)"
+	value: "(string|number|boolean|null)"
 };
 const Default = {
 	attribute: "class",
@@ -8213,6 +8298,7 @@ var Toggler = class extends BaseComponent {
 	_execute() {
 		const { attribute, value } = this._config;
 		if (attribute === "id") return;
+		if (value === null || value === void 0) return;
 		if (attribute === "class") {
 			this._element.classList.toggle(value);
 			return;

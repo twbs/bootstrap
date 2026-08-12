@@ -13,7 +13,7 @@ const enableDismissTrigger = (component, method = "hide") => {
 	EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function(event) {
 		if (["A", "AREA"].includes(this.tagName)) event.preventDefault();
 		if (isDisabled(this)) return;
-		const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}`);
+		const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}, [class*=":${name}"]`);
 		component.getOrCreateInstance(target)[method]();
 	});
 };

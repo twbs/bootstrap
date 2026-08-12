@@ -95,7 +95,7 @@ var Combobox = class extends BaseComponent {
 	toggle() {
 		return this._isShown() ? this.hide() : this.show();
 	}
-	show() {
+	async show() {
 		if (isDisabled(this._toggle) || this._isShown()) return;
 		if (EventHandler.trigger(this._toggle, EVENT_SHOW).defaultPrevented) return;
 		this._menuInstance.show();
@@ -106,7 +106,7 @@ var Combobox = class extends BaseComponent {
 		}
 		EventHandler.trigger(this._toggle, EVENT_SHOWN);
 	}
-	hide() {
+	async hide() {
 		if (!this._isShown()) return;
 		if (EventHandler.trigger(this._toggle, EVENT_HIDE).defaultPrevented) return;
 		this._menuInstance.hide();

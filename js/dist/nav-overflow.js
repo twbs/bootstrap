@@ -6,6 +6,7 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
+import { DefaultIconAllowlist, sanitizeHtml } from "./util/sanitizer.js";
 //#region js/src/nav-overflow.ts
 /**
 * --------------------------------------------------------------------------
@@ -24,17 +25,19 @@ const EVENT_RESIZE = `resize${EVENT_KEY}`;
 const CLASS_NAME_OVERFLOW = "nav-overflow";
 const CLASS_NAME_OVERFLOW_MENU = "nav-overflow-menu";
 const CLASS_NAME_HIDDEN = "d-none";
+const CLASS_NAME_KEEP = "nav-overflow-keep";
+const SELECTOR_NAV = ".nav";
 const SELECTOR_NAV_ITEM = ".nav-item";
 const SELECTOR_NAV_LINK = ".nav-link";
 const SELECTOR_OVERFLOW_TOGGLE = ".nav-overflow-toggle";
 const SELECTOR_OVERFLOW_MENU = ".nav-overflow-menu";
 const SELECTOR_CUSTOM_ICON = "[data-bs-overflow-icon]";
-const CLASS_NAME_KEEP = "nav-overflow-keep";
+const DEFAULT_TEXT = "More";
 const Default = {
 	collapseBelow: 0,
 	iconPlacement: "start",
 	menuPlacement: "bottom-end",
-	moreText: "More",
+	moreText: DEFAULT_TEXT,
 	moreIcon: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" viewBox=\"0 0 16 16\"><path d=\"M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3\"/></svg>",
 	threshold: 0
 };
@@ -42,7 +45,7 @@ const DefaultType = {
 	collapseBelow: "(number|string)",
 	iconPlacement: "string",
 	menuPlacement: "string",
-	moreText: "string",
+	moreText: "(string|boolean)",
 	moreIcon: "string",
 	threshold: "number"
 };
@@ -52,6 +55,9 @@ const DefaultType = {
 var NavOverflow = class extends BaseComponent {
 	constructor(element, config) {
 		super(element, config);
+		const nav = SelectorEngine.findOne(SELECTOR_NAV, this._element);
+		if (!nav) throw new TypeError(`${this._element.outerHTML} has no child ${SELECTOR_NAV} to collapse`);
+		this._nav = nav;
 		this._items = [];
 		this._overflowItems = [];
 		this._overflowMenu = null;
@@ -83,7 +89,7 @@ var NavOverflow = class extends BaseComponent {
 	}
 	_init() {
 		this._element.classList.add(CLASS_NAME_OVERFLOW);
-		this._items = [...SelectorEngine.find(SELECTOR_NAV_ITEM, this._element)];
+		this._items = SelectorEngine.find(SELECTOR_NAV_ITEM, this._nav).filter((item) => !item.querySelector(SELECTOR_OVERFLOW_TOGGLE));
 		for (const [index, item] of this._items.entries()) item.dataset.bsNavOrder = index;
 		this._collapseBelow = this._resolveCollapseBelow();
 		this._createOverflowMenu();
@@ -96,20 +102,34 @@ var NavOverflow = class extends BaseComponent {
 			this._overflowMenu = SelectorEngine.findOne(SELECTOR_OVERFLOW_MENU, this._element);
 			return;
 		}
-		const iconSpan = `<span class="nav-overflow-icon">${this._resolveIcon()}</span>`;
-		const textSpan = `<span class="nav-overflow-text">${this._config.moreText}</span>`;
-		const toggleContent = this._config.iconPlacement === "end" ? `${textSpan}${iconSpan}` : `${iconSpan}${textSpan}`;
+		const { moreText } = this._config;
+		const label = typeof moreText === "string" ? moreText : "";
 		const overflowItem = document.createElement("li");
 		overflowItem.className = "nav-item nav-overflow-item";
-		overflowItem.innerHTML = `
-      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu" data-bs-placement="${this._config.menuPlacement}" aria-expanded="false">
-        ${toggleContent}
-      </button>
-      <div class="${CLASS_NAME_OVERFLOW_MENU} menu"></div>
-    `;
-		this._element.append(overflowItem);
-		this._overflowToggle = overflowItem.querySelector(SELECTOR_OVERFLOW_TOGGLE);
-		this._overflowMenu = overflowItem.querySelector(SELECTOR_OVERFLOW_MENU);
+		const button = document.createElement("button");
+		button.type = "button";
+		button.className = "nav-link nav-overflow-toggle";
+		button.setAttribute("data-bs-toggle", "menu");
+		button.setAttribute("data-bs-placement", this._config.menuPlacement);
+		button.setAttribute("aria-expanded", "false");
+		if (label === "") button.setAttribute("aria-label", DEFAULT_TEXT);
+		const iconSpan = document.createElement("span");
+		iconSpan.className = "nav-overflow-icon";
+		iconSpan.innerHTML = sanitizeHtml(this._resolveIcon(), DefaultIconAllowlist);
+		if (label === "") button.append(iconSpan);
+		else {
+			const textSpan = document.createElement("span");
+			textSpan.className = "nav-overflow-text";
+			textSpan.textContent = label;
+			if (this._config.iconPlacement === "end") button.append(textSpan, iconSpan);
+			else button.append(iconSpan, textSpan);
+		}
+		const menu = document.createElement("div");
+		menu.className = `${CLASS_NAME_OVERFLOW_MENU} menu`;
+		overflowItem.append(button, menu);
+		this._nav.append(overflowItem);
+		this._overflowToggle = button;
+		this._overflowMenu = menu;
 	}
 	_resolveIcon() {
 		const customIconElement = SelectorEngine.findOne(SELECTOR_CUSTOM_ICON, this._element);
@@ -140,42 +160,42 @@ var NavOverflow = class extends BaseComponent {
 		});
 		this._resizeObserver.observe(this._element);
 	}
+	_availableWidth() {
+		const { paddingInlineStart, paddingInlineEnd } = getComputedStyle(this._element);
+		const padding = (Number.parseFloat(paddingInlineStart) || 0) + (Number.parseFloat(paddingInlineEnd) || 0);
+		return this._element.clientWidth - padding;
+	}
+	_navGap() {
+		return Number.parseFloat(getComputedStyle(this._nav).columnGap) || 0;
+	}
 	_calculateOverflow() {
 		this._restoreItems();
-		const navWidth = this._element.offsetWidth;
-		const overflowItem = this._overflowToggle?.closest(".nav-item");
-		if (this._collapseBelow > 0 && navWidth < this._collapseBelow) {
-			const itemsToOverflow = this._items.filter((item) => !item.classList.contains(CLASS_NAME_KEEP));
-			this._moveToOverflow(itemsToOverflow);
-			if (overflowItem) if (itemsToOverflow.length > 0) overflowItem.classList.remove(CLASS_NAME_HIDDEN);
-			else overflowItem.classList.add(CLASS_NAME_HIDDEN);
-			if (itemsToOverflow.length > 0) EventHandler.trigger(this._element, EVENT_OVERFLOW, {
-				overflowCount: itemsToOverflow.length,
-				visibleCount: this._items.length - itemsToOverflow.length
-			});
+		const availableWidth = this._availableWidth();
+		const overflowItem = this._overflowToggle?.closest(SELECTOR_NAV_ITEM) ?? null;
+		const candidates = this._items.filter((item) => !item.classList.contains(CLASS_NAME_KEEP));
+		if (this._collapseBelow > 0 && availableWidth < this._collapseBelow) {
+			this._applyOverflow(candidates, overflowItem);
 			return;
 		}
-		const overflowWidth = overflowItem?.offsetWidth || 0;
-		const keepWidth = this._items.filter((item) => item.classList.contains(CLASS_NAME_KEEP)).reduce((sum, item) => sum + item.offsetWidth, 0);
+		const gap = this._navGap();
+		const keepWidth = this._items.filter((item) => item.classList.contains(CLASS_NAME_KEEP)).reduce((sum, item) => sum + item.offsetWidth + gap, 0);
+		const overflowWidth = overflowItem ? overflowItem.offsetWidth + gap : 0;
+		const limit = availableWidth - keepWidth - overflowWidth;
 		let usedWidth = 0;
-		const itemsToOverflow = [];
-		const overflowThreshold = navWidth - overflowWidth - keepWidth - 10;
-		for (const item of this._items) {
-			if (item.classList.contains(CLASS_NAME_KEEP)) continue;
-			usedWidth += item.offsetWidth;
-			if (usedWidth > overflowThreshold) itemsToOverflow.push(item);
+		let itemsToOverflow = [];
+		for (const item of candidates) {
+			usedWidth += item.offsetWidth + gap;
+			if (usedWidth > limit + 1) itemsToOverflow.push(item);
 		}
-		if (this._items.length - itemsToOverflow.length < this._config.threshold && this._items.length > this._config.threshold) {
-			const toMove = this._items.slice(this._config.threshold).filter((item) => !item.classList.contains(CLASS_NAME_KEEP));
-			itemsToOverflow.length = 0;
-			itemsToOverflow.push(...toMove);
-		}
-		this._moveToOverflow(itemsToOverflow);
-		if (overflowItem) if (itemsToOverflow.length > 0) overflowItem.classList.remove(CLASS_NAME_HIDDEN);
-		else overflowItem.classList.add(CLASS_NAME_HIDDEN);
-		if (itemsToOverflow.length > 0) EventHandler.trigger(this._element, EVENT_OVERFLOW, {
-			overflowCount: itemsToOverflow.length,
-			visibleCount: this._items.length - itemsToOverflow.length
+		if (this._items.length - itemsToOverflow.length < this._config.threshold && this._items.length > this._config.threshold) itemsToOverflow = this._items.slice(this._config.threshold).filter((item) => !item.classList.contains(CLASS_NAME_KEEP));
+		this._applyOverflow(itemsToOverflow, overflowItem);
+	}
+	_applyOverflow(items, overflowItem) {
+		this._moveToOverflow(items);
+		overflowItem?.classList.toggle(CLASS_NAME_HIDDEN, items.length === 0);
+		if (items.length > 0) EventHandler.trigger(this._element, EVENT_OVERFLOW, {
+			overflowCount: items.length,
+			visibleCount: this._items.length - items.length
 		});
 	}
 	_moveToOverflow(items) {
@@ -200,6 +220,7 @@ var NavOverflow = class extends BaseComponent {
 			item.classList.remove(CLASS_NAME_HIDDEN);
 			delete item.dataset.bsNavOverflow;
 		}
+		this._overflowToggle?.closest(SELECTOR_NAV_ITEM)?.classList.remove(CLASS_NAME_HIDDEN);
 		if (this._overflowMenu) this._overflowMenu.innerHTML = "";
 		this._overflowItems = [];
 	}

@@ -10,7 +10,7 @@ import BaseComponent from './base-component.js';
  */
 declare class Alert extends BaseComponent {
     static get NAME(): string;
-    close(): void;
+    close(): Promise<void>;
     protected _destroyElement(): void;
 }
 export default Alert;

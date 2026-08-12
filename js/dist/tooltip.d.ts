@@ -41,6 +41,7 @@ declare class Tooltip extends BaseComponent {
     protected _config: TooltipConfig;
     protected _isEnabled: boolean;
     protected _timeout: number;
+    protected _resolveTimeout: (() => void) | null;
     protected _isHovered: boolean | null;
     protected _activeTrigger: Record<string, boolean>;
     protected _floatingCleanup: (() => void) | null;
@@ -58,10 +59,10 @@ declare class Tooltip extends BaseComponent {
     enable(): void;
     disable(): void;
     toggleEnabled(): void;
-    toggle(): void;
+    toggle(): Promise<void>;
     dispose(): void;
     show(): Promise<void>;
-    hide(): void;
+    hide(): Promise<void>;
     update(): void;
     protected _isWithContent(): boolean;
     protected _hasNewContent(): boolean;
@@ -72,7 +73,8 @@ declare class Tooltip extends BaseComponent {
     protected _getContentForTemplate(): Record<string, TemplateContentEntry>;
     protected _getTitle(): string | Element | null;
     protected _initializeOnDelegatedTarget(event: BootstrapEvent): Tooltip;
-    protected _isAnimated(): boolean | null;
+    protected _getInstantClassName(): string;
+    protected _isAnimated(): boolean;
     protected _isShown(): boolean | null;
     protected _getPlacement(tip: HTMLElement): string;
     protected _parseResponsivePlacements(): void;
@@ -88,9 +90,10 @@ declare class Tooltip extends BaseComponent {
     protected _setEscapeListener(): void;
     protected _removeEscapeListener(): void;
     protected _fixTitle(): void;
-    protected _enter(): void;
-    protected _leave(): void;
-    protected _setTimeout(handler: () => void, timeout: number): void;
+    protected _enter(): Promise<void>;
+    protected _leave(): Promise<void>;
+    protected _setTimeout(handler: () => void | Promise<void>, timeout: number): Promise<void>;
+    protected _clearTimeout(): void;
     protected _isWithActiveTrigger(): boolean;
     protected _getConfig(config?: ComponentConfig | null): ComponentConfig;
     protected _configAfterMerge(config: ComponentConfig): ComponentConfig;

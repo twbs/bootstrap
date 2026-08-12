@@ -3,7 +3,7 @@
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
-import { isDisabled, isVisible, parseSelector } from "../util/index.js";
+import { parseSelector } from "../util/index.js";
 //#region js/src/dom/selector-engine.ts
 /**
 * --------------------------------------------------------------------------
@@ -27,9 +27,6 @@ const SelectorEngine = {
 	},
 	findOne(selector, element = document.documentElement) {
 		return Element.prototype.querySelector.call(element, selector);
-	},
-	children(element, selector) {
-		return [...element.children].filter((child) => child.matches(selector));
 	},
 	parents(element, selector) {
 		const parents = [];
@@ -58,19 +55,6 @@ const SelectorEngine = {
 			next = next.nextElementSibling;
 		}
 		return [];
-	},
-	focusableChildren(element) {
-		const focusables = [
-			"a",
-			"button",
-			"input",
-			"textarea",
-			"select",
-			"details",
-			"[tabindex]",
-			"[contenteditable=\"true\"]"
-		].map((selector) => `${selector}:not([tabindex^="-"])`).join(",");
-		return this.find(focusables, element).filter((el) => !isDisabled(el) && isVisible(el));
 	},
 	getSelectorFromElement(element) {
 		const selector = getSelector(element);

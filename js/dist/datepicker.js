@@ -81,10 +81,10 @@ var Datepicker = class extends BaseComponent {
 		return NAME;
 	}
 	toggle() {
-		if (this._config.inline) return;
+		if (this._config.inline) return Promise.resolve();
 		return this._isShown ? this.hide() : this.show();
 	}
-	show() {
+	async show() {
 		if (this._config.inline) return;
 		if (!this._calendar || isDisabled(this._element) || this._isShown) return;
 		if (EventHandler.trigger(this._element, EVENT_SHOW).defaultPrevented) return;
@@ -92,7 +92,7 @@ var Datepicker = class extends BaseComponent {
 		this._isShown = true;
 		EventHandler.trigger(this._element, EVENT_SHOWN);
 	}
-	hide() {
+	async hide() {
 		if (this._config.inline) return;
 		if (!this._calendar || !this._isShown) return;
 		if (EventHandler.trigger(this._element, EVENT_HIDE).defaultPrevented) return;

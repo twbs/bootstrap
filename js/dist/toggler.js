@@ -24,7 +24,7 @@ const EVENT_CLICK = "click";
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"toggler\"]";
 const DefaultType = {
 	attribute: "string",
-	value: "(string|number|boolean)"
+	value: "(string|number|boolean|null)"
 };
 const Default = {
 	attribute: "class",
@@ -51,6 +51,7 @@ var Toggler = class extends BaseComponent {
 	_execute() {
 		const { attribute, value } = this._config;
 		if (attribute === "id") return;
+		if (value === null || value === void 0) return;
 		if (attribute === "class") {
 			this._element.classList.toggle(value);
 			return;

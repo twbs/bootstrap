@@ -220,7 +220,7 @@
   --bs-black: #000;
   --bs-white: #fff;
   --bs-gradient: linear-gradient(180deg, color-mix(var(--bs-white) 15%, transparent), color-mix(var(--bs-white) 0%, transparent));
-  --bs-body-font-family: system-ui;
+  --bs-body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: var(--bs-font-weight-normal);
   --bs-body-line-height: 1.5;
@@ -230,7 +230,7 @@
   --bs-link-decoration: underline;
   --bs-link-underline-offset: 0.2em;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
-  --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;;
+  --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;
   --bs-code-font-size: 95%;
   --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
@@ -240,6 +240,7 @@
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
   --bs-shadow-color: #000;
   --bs-shadow-strength: 1;
+  --bs-transition-timing-overlay: cubic-bezier(0.22, 1, 0.36, 1);
   --bs-spacer: 1rem;
   --bs-focus-ring-width: 3px;
   --bs-focus-ring-offset: 1px;
@@ -251,26 +252,32 @@
   --bs-control-active-border-color: var(--bs-control-active-bg);
   --bs-control-disabled-bg: var(--bs-bg-3);
   --bs-control-disabled-opacity: 0.65;
+  --bs-control-transition-duration: 0.15s;
+  --bs-control-transition-timing: cubic-bezier(0.34, 1.56, 0.64, 1);
   --bs-btn-input-fg: var(--bs-fg-body);
   --bs-btn-input-bg: var(--bs-bg-body);
+  --bs-btn-input-gap: 0.375rem;
   --bs-btn-input-min-height: 2.375rem;
   --bs-btn-input-padding-y: 0.375rem;
   --bs-btn-input-padding-x: 0.75rem;
   --bs-btn-input-font-size: var(--bs-body-font-size);
   --bs-btn-input-line-height: var(--bs-body-line-height);
   --bs-btn-input-border-radius: var(--bs-radius-5);
+  --bs-btn-input-xs-gap: var(--bs-spacer-1);
   --bs-btn-input-xs-min-height: 1.5rem;
   --bs-btn-input-xs-padding-y: 0.125rem;
   --bs-btn-input-xs-padding-x: 0.5rem;
   --bs-btn-input-xs-font-size: var(--bs-font-size-xs);
   --bs-btn-input-xs-line-height: 1.125;
   --bs-btn-input-xs-border-radius: var(--bs-radius-5);
+  --bs-btn-input-sm-gap: 0.375rem;
   --bs-btn-input-sm-min-height: 2rem;
   --bs-btn-input-sm-padding-y: 0.25rem;
   --bs-btn-input-sm-padding-x: 0.625rem;
   --bs-btn-input-sm-font-size: var(--bs-font-size-sm);
   --bs-btn-input-sm-line-height: var(--bs-line-height-sm);
   --bs-btn-input-sm-border-radius: var(--bs-radius-5);
+  --bs-btn-input-lg-gap: 0.375rem;
   --bs-btn-input-lg-min-height: 2.75rem;
   --bs-btn-input-lg-padding-y: 0.5rem;
   --bs-btn-input-lg-padding-x: 1rem;
@@ -653,6 +660,7 @@
     overflow: auto;
     font-size: var(--bs-code-font-size);
     color: var(--bs-code-color, inherit);
+    scrollbar-gutter: stable;
   }
   pre code {
     font-size: inherit;
@@ -1335,11 +1343,10 @@
     text-decoration: underline;
     text-decoration-color: color-mix(in srgb, var(--bs-link-color) 25%, transparent);
     text-underline-offset: 4px;
-    transition: 0.1s text-decoration-color ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .prose :where(a:not([class])):not(:where(.not-prose, .not-prose *)) {
-      transition: none;
+      transition: 0.1s text-decoration-color ease-in-out;
     }
   }
   .prose :where(a:not([class])):not(:where(.not-prose, .not-prose *)):hover {
@@ -3116,8 +3123,8 @@
     --bs-control-action-bg: var(--bs-bg-1);
     --bs-control-action-hover-bg: var(--bs-bg-2);
     --bs-control-transition-property: border-color, box-shadow;
-    --bs-control-transition-timing: 0.15s ease-in-out;
-    --bs-control-transition: var(--bs-control-transition-property) var(--bs-control-transition-timing);
+    --bs-control-transition-duration: 0.15s;
+    --bs-control-transition-timing: ease-in-out;
     --bs-control-placeholder-color: var(--bs-fg-3);
     --bs-control-disabled-color: var(--bs-control-fg);
     --bs-control-disabled-bg: var(--bs-bg-2);
@@ -3139,14 +3146,15 @@
     border: var(--bs-control-border-width) solid var(--bs-control-border-color);
     border-radius: var(--bs-control-border-radius);
     box-shadow: var(--bs-control-box-shadow);
-    transition: var(--bs-control-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .form-control {
-      transition: none;
+      transition-timing-function: var(--bs-control-transition-timing);
+      transition-duration: var(--bs-control-transition-duration);
+      transition-property: var(--bs-control-transition-property);
     }
   }
-  .form-control:focus-visible {
+  .form-control:focus-visible, .form-control:focus-within {
     --bs-focus-ring-offset: -1px;
     outline: var(--bs-focus-ring);
     outline-offset: var(--bs-focus-ring-offset);
@@ -3184,11 +3192,12 @@
     border-width: 0;
     border-inline-end-width: var(--bs-control-border-width);
     border-radius: 0;
-    transition: var(--bs-control-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .form-control::file-selector-button {
-      transition: none;
+      transition-timing-function: var(--bs-control-transition-timing);
+      transition-duration: var(--bs-control-transition-duration);
+      transition-property: var(--bs-control-transition-property);
     }
   }
   .form-control:hover:not(:disabled, [readonly])::file-selector-button {
@@ -3209,8 +3218,8 @@
     --bs-control-action-bg: var(--bs-bg-1);
     --bs-control-action-hover-bg: var(--bs-bg-2);
     --bs-control-transition-property: border-color, box-shadow;
-    --bs-control-transition-timing: 0.15s ease-in-out;
-    --bs-control-transition: var(--bs-control-transition-property) var(--bs-control-transition-timing);
+    --bs-control-transition-duration: 0.15s;
+    --bs-control-transition-timing: ease-in-out;
     --bs-control-placeholder-color: var(--bs-fg-3);
     --bs-control-disabled-color: var(--bs-control-fg);
     --bs-control-disabled-bg: var(--bs-bg-2);
@@ -3333,22 +3342,36 @@
     border: 1px solid var(--bs-theme-bg, var(--bs-check-border-color));
     border-radius: 33%;
   }
-  .check:checked, .check:indeterminate {
-    background-color: var(--bs-theme-bg, var(--bs-check-checked-bg));
-    border-color: var(--bs-theme-bg, var(--bs-check-checked-border-color));
+  @media (prefers-reduced-motion: no-preference) {
+    .check {
+      transition: background-color var(--bs-control-transition-duration) var(--bs-control-transition-timing), border-color var(--bs-control-transition-duration) var(--bs-control-transition-timing);
+    }
   }
-  .check:checked::before, .check:indeterminate::before {
+  .check::before {
     position: absolute;
     inset: 0;
     pointer-events: none;
     content: "";
     background-color: var(--bs-theme-contrast, var(--bs-primary-contrast));
+    opacity: 0;
+    transform: scale(0);
+    mask-image: var(--bs-check-icon-checked);
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: contain;
   }
-  .check:checked::before {
-    mask-image: var(--bs-check-icon-checked);
+  @media (prefers-reduced-motion: no-preference) {
+    .check::before {
+      transition: opacity var(--bs-control-transition-duration) var(--bs-control-transition-timing), transform var(--bs-control-transition-duration) var(--bs-control-transition-timing);
+    }
+  }
+  .check:checked, .check:indeterminate {
+    background-color: var(--bs-theme-bg, var(--bs-check-checked-bg));
+    border-color: var(--bs-theme-bg, var(--bs-check-checked-border-color));
+  }
+  .check:checked::before, .check:indeterminate::before {
+    opacity: 1;
+    transform: scale(1);
   }
   .check:indeterminate::before {
     mask-image: var(--bs-check-icon-indeterminate);
@@ -3402,17 +3425,33 @@
     border: 1px solid var(--bs-theme-bg, var(--bs-radio-border-color));
     border-radius: 50%;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .radio {
+      transition: color var(--bs-control-transition-duration) var(--bs-control-transition-timing), background-color var(--bs-control-transition-duration) var(--bs-control-transition-timing), border-color var(--bs-control-transition-duration) var(--bs-control-transition-timing);
+    }
+  }
+  .radio::before {
+    position: absolute;
+    inset: calc(var(--bs-radio-size) * 0.25);
+    content: "";
+    background-color: currentcolor;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .radio::before {
+      transition: opacity var(--bs-control-transition-duration) var(--bs-control-transition-timing), transform var(--bs-control-transition-duration) var(--bs-control-transition-timing);
+    }
+  }
   .radio:checked {
     color: var(--bs-theme-contrast, var(--bs-primary-contrast));
     background-color: var(--bs-theme-bg, var(--bs-radio-checked-bg));
     border-color: var(--bs-theme-bg, var(--bs-radio-checked-border-color));
   }
   .radio:checked::before {
-    position: absolute;
-    inset: calc(var(--bs-radio-size) * 0.25);
-    content: "";
-    background-color: currentcolor;
-    border-radius: 50%;
+    opacity: 1;
+    transform: scale(1);
   }
   .radio:disabled {
     --bs-radio-bg: var(--bs-radio-disabled-bg);
@@ -3448,6 +3487,8 @@
     --bs-switch-width: calc(var(--bs-switch-height) * 1.75);
     --bs-switch-padding: 0.0625rem;
     --bs-switch-margin-block: 0.125rem;
+    --bs-switch-transition-duration: var(--bs-control-transition-duration);
+    --bs-switch-transition-timing: var(--bs-control-transition-timing);
     --bs-switch-bg: var(--bs-bg-3);
     --bs-switch-border-width: var(--bs-border-width);
     --bs-switch-border-color: var(--bs-border-color);
@@ -3469,7 +3510,11 @@
     border: var(--bs-switch-border-width) solid var(--bs-switch-border-color);
     border-radius: 10rem;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.15s ease-in-out;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .switch {
+      transition: background-color var(--bs-switch-transition-duration) var(--bs-switch-transition-timing);
+    }
   }
   .switch::before {
     position: absolute;
@@ -3481,7 +3526,11 @@
     background-color: var(--bs-theme-contrast, var(--bs-switch-indicator-bg));
     border-radius: 10rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    transition: inset-inline-start 0.15s ease-in-out;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .switch::before {
+      transition: inset-inline-start var(--bs-switch-transition-duration) var(--bs-switch-transition-timing);
+    }
   }
   .switch input {
     position: absolute;
@@ -3551,8 +3600,8 @@
     --bs-range-thumb-active-bg: color-mix(in oklch, var(--bs-primary-base) 70%, var(--bs-bg-body));
     --bs-range-thumb-disabled-bg: var(--bs-fg-3);
     --bs-range-thumb-transition-property: background-color, border-color, box-shadow;
-    --bs-range-thumb-transition-timing: 0.15s ease-in-out;
-    --bs-range-thumb-transition: var(--bs-range-thumb-transition-property) var(--bs-range-thumb-transition-timing);
+    --bs-range-thumb-transition-duration: 0.15s;
+    --bs-range-thumb-transition-timing: ease-in-out;
     --bs-range-tick-width: var(--bs-border-width);
     --bs-range-tick-height: 0.5rem;
     --bs-range-tick-bg: var(--bs-border-color);
@@ -3599,11 +3648,13 @@
     border: var(--bs-range-thumb-border);
     border-radius: var(--bs-range-thumb-border-radius);
     box-shadow: var(--bs-range-thumb-box-shadow);
-    transition: var(--bs-range-thumb-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .form-range-input::-webkit-slider-thumb {
-      transition: none;
+      transition-timing-function: var(--bs-range-thumb-transition-timing);
+      transition-duration: var(--bs-range-thumb-transition-duration);
+      -webkit-transition-property: var(--bs-range-thumb-transition-property);
+      transition-property: var(--bs-range-thumb-transition-property);
     }
   }
   .form-range-input::-webkit-slider-thumb:active {
@@ -3622,11 +3673,13 @@
     border: var(--bs-range-thumb-border);
     border-radius: var(--bs-range-thumb-border-radius);
     box-shadow: var(--bs-range-thumb-box-shadow);
-    transition: var(--bs-range-thumb-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .form-range-input::-moz-range-thumb {
-      transition: none;
+      transition-timing-function: var(--bs-range-thumb-transition-timing);
+      transition-duration: var(--bs-range-thumb-transition-duration);
+      -moz-transition-property: var(--bs-range-thumb-transition-property);
+      transition-property: var(--bs-range-thumb-transition-property);
     }
   }
   .form-range-input::-moz-range-thumb:active {
@@ -3729,8 +3782,8 @@
     --bs-form-floating-label-transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
     --bs-form-floating-label-disabled-color: var(--bs-fg-3);
     --bs-form-floating-transition-property: opacity, transform;
-    --bs-form-floating-transition-timing: 0.1s ease-in-out;
-    --bs-form-floating-transition: var(--bs-form-floating-transition-property) var(--bs-form-floating-transition-timing);
+    --bs-form-floating-transition-duration: 0.1s;
+    --bs-form-floating-transition-timing: ease-in-out;
     position: relative;
   }
   .form-floating > label {
@@ -3751,11 +3804,12 @@
     pointer-events: none;
     border: var(--bs-border-width) solid transparent;
     transform-origin: 0 0;
-    transition: var(--bs-form-floating-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .form-floating > label {
-      transition: none;
+      transition-timing-function: var(--bs-form-floating-transition-timing);
+      transition-duration: var(--bs-form-floating-transition-duration);
+      transition-property: var(--bs-form-floating-transition-property);
     }
   }
   .form-floating > label:has(~ textarea) {
@@ -3917,11 +3971,10 @@
     height: var(--bs-strength-height);
     background-color: var(--bs-strength-bg);
     border-radius: var(--bs-strength-border-radius);
-    transition: background-color 0.2s ease-in-out, width 0.3s ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .strength-segment {
-      transition: none;
+      transition: background-color 0.2s ease-in-out, width 0.3s ease-in-out;
     }
   }
   .strength-segment.active {
@@ -3944,11 +3997,10 @@
     margin-top: var(--bs-strength-margin-top);
     font-size: var(--bs-font-size-xs);
     color: var(--bs-strength-color, var(--bs-fg-3));
-    transition: color 0.2s ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .strength-text {
-      transition: none;
+      transition: color 0.2s ease-in-out;
     }
   }
   .strength-text:empty {
@@ -3981,11 +4033,10 @@
     content: "";
     background-color: var(--bs-strength-color);
     border-radius: var(--bs-strength-border-radius);
-    transition: background-color 0.2s ease-in-out, width 0.3s ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .strength-bar::after {
-      transition: none;
+      transition: background-color 0.2s ease-in-out, width 0.3s ease-in-out;
     }
   }
   .strength-bar[data-bs-strength=weak] {
@@ -4058,11 +4109,10 @@
     border: var(--bs-otp-slot-border-width) solid var(--bs-otp-slot-border-color);
     border-radius: var(--bs-otp-slot-border-radius);
     box-shadow: var(--bs-box-shadow-inset);
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .otp-slot {
-      transition: none;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
   }
   .otp-slot-active {
@@ -4131,15 +4181,10 @@
     --bs-form-adorn-icon-color: var(--bs-fg-2);
     gap: var(--bs-form-adorn-gap);
     align-items: center;
+    cursor: text;
   }
   .form-adorn:focus-visible {
     outline: 0;
-  }
-  .form-adorn:focus-within {
-    --bs-focus-ring-offset: -1px;
-    border-color: var(--bs-focus-ring-color);
-    outline: var(--bs-focus-ring);
-    outline-offset: var(--bs-focus-ring-offset);
   }
   .form-adorn > .form-ghost {
     flex: 1;
@@ -4246,11 +4291,10 @@
   }
   .combobox-caret {
     flex-shrink: 0;
-    transition: transform 0.2s ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .combobox-caret {
-      transition: none;
+      transition: transform 0.2s ease-in-out;
     }
   }
   .show > .combobox-caret {
@@ -4841,6 +4885,7 @@
 }
 @layer components {
   .btn, .btn-link, .btn-icon, .btn-solid, .btn-outline, .btn-subtle, .btn-text {
+    --bs-btn-gap: var(--bs-btn-input-gap);
     --bs-btn-min-height: var(--bs-btn-input-min-height);
     --bs-btn-padding-x: var(--bs-btn-input-padding-x);
     --bs-btn-padding-y: var(--bs-btn-input-padding-y);
@@ -4854,11 +4899,11 @@
     --bs-btn-border-radius: var(--bs-radius-5);
     --bs-btn-hover-border-color: transparent;
     --bs-btn-disabled-opacity: 0.65;
-    --bs-btn-transition-timing: 0.15s ease-in-out;
     --bs-btn-transition-property: color, background-color, border-color, box-shadow;
-    --bs-btn-transition: var(--bs-btn-transition-property) var(--bs-btn-transition-timing);
+    --bs-btn-transition-duration: 0.15s;
+    --bs-btn-transition-timing: ease-in-out;
     display: inline-flex;
-    gap: var(--bs-btn-gap, 0.375rem);
+    gap: var(--bs-btn-gap);
     align-items: center;
     justify-content: center;
     min-height: var(--bs-btn-min-height);
@@ -4876,11 +4921,12 @@
     background-color: var(--bs-btn-bg, var(--bs-bg-2));
     border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
     border-radius: var(--bs-btn-border-radius);
-    transition: var(--bs-btn-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .btn, .btn-link, .btn-icon, .btn-solid, .btn-outline, .btn-subtle, .btn-text {
-      transition: none;
+      transition-timing-function: var(--bs-btn-transition-timing);
+      transition-duration: var(--bs-btn-transition-duration);
+      transition-property: var(--bs-btn-transition-property);
     }
   }
   .btn:hover, .btn-link:hover, .btn-icon:hover, .btn-solid:hover, .btn-outline:hover, .btn-subtle:hover, .btn-text:hover {
@@ -5046,6 +5092,7 @@
   }
   .btn-xs,
   .btn-group-xs > [class*=btn-] {
+    --bs-btn-gap: var(--bs-btn-input-xs-gap);
     --bs-btn-min-height: var(--bs-btn-input-xs-min-height);
     --bs-btn-padding-y: var(--bs-btn-input-xs-padding-y);
     --bs-btn-padding-x: var(--bs-btn-input-xs-padding-x);
@@ -5055,6 +5102,7 @@
   }
   .btn-sm,
   .btn-group-sm > [class*=btn-] {
+    --bs-btn-gap: var(--bs-btn-input-sm-gap);
     --bs-btn-min-height: var(--bs-btn-input-sm-min-height);
     --bs-btn-padding-y: var(--bs-btn-input-sm-padding-y);
     --bs-btn-padding-x: var(--bs-btn-input-sm-padding-x);
@@ -5064,6 +5112,7 @@
   }
   .btn-lg,
   .btn-group-lg > [class*=btn-] {
+    --bs-btn-gap: var(--bs-btn-input-lg-gap);
     --bs-btn-min-height: var(--bs-btn-input-lg-min-height);
     --bs-btn-padding-y: var(--bs-btn-input-lg-padding-y);
     --bs-btn-padding-x: var(--bs-btn-input-lg-padding-x);
@@ -5231,7 +5280,7 @@
 }
 @layer components {
   .btn-close {
-    --bs-btn-close-size: 1.5rem;
+    --bs-btn-close-size: 1.25rem;
     --bs-btn-close-color: inherit;
     --bs-btn-close-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath d='M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z'/%3e%3c/svg%3e");
     --bs-btn-close-opacity: 0.5;
@@ -5245,7 +5294,7 @@
     color: var(--bs-btn-close-color);
     background-color: currentcolor;
     border: 0;
-    border-radius: var(--bs-radius-5);
+    border-radius: var(--bs-radius-4);
     opacity: var(--bs-btn-close-opacity);
     mask-image: var(--bs-btn-close-icon);
     mask-repeat: no-repeat;
@@ -5275,8 +5324,11 @@
     --bs-accordion-color: var(--bs-fg-body);
     --bs-accordion-bg: var(--bs-bg-body);
     --bs-accordion-transition-property: color, background-color, border-radius;
-    --bs-accordion-transition-timing: .15s ease-in-out;
-    --bs-accordion-transition: var(--bs-accordion-transition-property) var(--bs-accordion-transition-timing);
+    --bs-accordion-transition-duration: 0.15s;
+    --bs-accordion-transition-timing: ease-in-out;
+    --bs-accordion-panel-transition-property: content-visibility, block-size;
+    --bs-accordion-panel-transition-duration: 0.2s;
+    --bs-accordion-panel-transition-timing: ease;
     --bs-accordion-border-color: var(--bs-border-color);
     --bs-accordion-border-width: var(--bs-border-width);
     --bs-accordion-border-radius: var(--bs-accordion-radius, var(--bs-radius-7));
@@ -5299,11 +5351,12 @@
     list-style: none;
     cursor: pointer;
     background-color: var(--bs-accordion-btn-bg);
-    transition: var(--bs-accordion-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .accordion-header {
-      transition: none;
+      transition-timing-function: var(--bs-accordion-transition-timing);
+      transition-duration: var(--bs-accordion-transition-duration);
+      transition-property: var(--bs-accordion-transition-property);
     }
   }
   .accordion-header::-webkit-details-marker {
@@ -5315,11 +5368,10 @@
     height: var(--bs-accordion-btn-icon-width);
     margin-inline-start: auto;
     color: currentcolor;
-    transition: var(--bs-accordion-btn-icon-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .accordion-header .accordion-icon {
-      transition: none;
+      transition: var(--bs-accordion-btn-icon-transition);
     }
   }
   .accordion-header:hover {
@@ -5346,11 +5398,13 @@
   .accordion-item::details-content {
     block-size: 0;
     overflow-y: clip;
-    transition: content-visibility 0.2s allow-discrete, block-size 0.2s;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .accordion-item::details-content {
-      transition: none;
+      transition-timing-function: var(--bs-accordion-panel-transition-timing);
+      transition-duration: var(--bs-accordion-panel-transition-duration);
+      transition-property: var(--bs-accordion-panel-transition-property);
+      transition-behavior: allow-discrete;
     }
   }
   .accordion-item:first-of-type {
@@ -5431,6 +5485,9 @@
     --bs-alert-border: var(--bs-border-width) solid var(--bs-alert-border-color);
     --bs-alert-border-radius: var(--bs-radius-5);
     --bs-alert-link-color: inherit;
+    --bs-alert-transition-property: opacity;
+    --bs-alert-transition-duration: 0.15s;
+    --bs-alert-transition-timing: linear;
     --bs-hr-border-color: var(--bs-theme-border, var(--bs-border-color));
     display: flex;
     gap: var(--bs-alert-gap);
@@ -5440,6 +5497,16 @@
     background-color: var(--bs-alert-bg);
     border: var(--bs-alert-border);
     border-radius: var(--bs-alert-border-radius);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .alert:not(.alert-instant) {
+      transition-timing-function: var(--bs-alert-transition-timing);
+      transition-duration: var(--bs-alert-transition-duration);
+      transition-property: var(--bs-alert-transition-property);
+    }
+  }
+  .alert.hiding {
+    opacity: 0;
   }
   .alert > p {
     margin-bottom: 0;
@@ -5524,11 +5591,10 @@
     margin-left: calc(var(--bs-avatar-size) * var(--bs-avatar-stack-spacing));
     border: var(--bs-avatar-border-width) solid var(--bs-avatar-border-color);
     mask-image: none;
-    transition: var(--bs-avatar-stack-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .avatar-stack .avatar {
-      transition: none;
+      transition: var(--bs-avatar-stack-transition);
     }
   }
   .avatar-stack .avatar:last-child {
@@ -5674,11 +5740,10 @@
     color: var(--bs-breadcrumb-link-color);
     text-decoration: none;
     border-radius: var(--bs-breadcrumb-link-border-radius);
-    transition: 0.1s text-decoration-color ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .breadcrumb-link {
-      transition: none;
+      transition: 0.1s text-decoration-color ease-in-out;
     }
   }
   .breadcrumb-link:hover {
@@ -6039,7 +6104,10 @@
     --bs-carousel-indicator-width: 0.75rem;
     --bs-carousel-indicator-height: 0.75rem;
     --bs-carousel-indicator-spacer: 0.25rem;
-    --bs-carousel-indicator-transition: opacity .6s ease, width .3s ease;
+    --bs-carousel-indicator-opacity-duration: 0.6s;
+    --bs-carousel-indicator-opacity-timing: ease;
+    --bs-carousel-indicator-width-duration: 0.3s;
+    --bs-carousel-indicator-width-timing: ease;
     --bs-carousel-indicator-progress-bg: var(--bs-carousel-indicator-bg);
     --bs-carousel-control-icon-width: 1rem;
     --bs-carousel-control-prev-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>");
@@ -6050,6 +6118,7 @@
     --bs-carousel-items-gap: 0px;
     --bs-carousel-items-peek: 0px;
     --bs-carousel-fade-duration: 0.6s;
+    --bs-carousel-fade-timing: ease;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -6096,21 +6165,19 @@
     width: 100%;
     visibility: hidden;
     opacity: 0;
-    transition: opacity var(--bs-carousel-fade-duration) ease, visibility 0s linear var(--bs-carousel-fade-duration);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .carousel-fade .carousel-item {
-      transition: none;
+      transition: opacity var(--bs-carousel-fade-duration) var(--bs-carousel-fade-timing), visibility 0s linear var(--bs-carousel-fade-duration);
     }
   }
   .carousel-fade .carousel-item.active {
     visibility: visible;
     opacity: 1;
-    transition: opacity var(--bs-carousel-fade-duration) ease;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .carousel-fade .carousel-item.active {
-      transition: none;
+      transition: opacity var(--bs-carousel-fade-duration) var(--bs-carousel-fade-timing);
     }
   }
   .carousel-icon-prev,
@@ -6164,11 +6231,10 @@
     background-color: transparent;
     border: 1px solid var(--bs-carousel-indicator-bg);
     border-radius: var(--bs-carousel-indicator-width);
-    transition: var(--bs-carousel-indicator-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .carousel-indicators [data-bs-target] {
-      transition: none;
+      transition: opacity var(--bs-carousel-indicator-opacity-duration) var(--bs-carousel-indicator-opacity-timing), width var(--bs-carousel-indicator-width-duration) var(--bs-carousel-indicator-width-timing);
     }
   }
   .carousel-indicators .active {
@@ -6240,7 +6306,7 @@
     flex-direction: column;
     min-width: var(--bs-datepicker-min-width);
     padding: var(--bs-datepicker-padding);
-    font-family: var(--bs-font-sans-serif);
+    font-family: var(--bs-body-font-family);
     font-size: var(--bs-datepicker-font-size);
     color: var(--bs-datepicker-color);
     color-scheme: light dark;
@@ -6556,8 +6622,9 @@
     --bs-dialog-border-width: var(--bs-border-width);
     --bs-dialog-border-radius: var(--bs-radius-7);
     --bs-dialog-box-shadow: var(--bs-box-shadow-xl);
+    --bs-dialog-transition-property: opacity, transform, visibility;
     --bs-dialog-transition-duration: 0.3s;
-    --bs-dialog-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --bs-dialog-transition-timing: var(--bs-transition-timing-overlay);
     --bs-dialog-backdrop-bg: light-dark(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65));
     --bs-dialog-backdrop-blur: 8px;
     --bs-dialog-header-padding: 1rem;
@@ -6585,11 +6652,12 @@
   }
   .dialog:not(.dialog-instant) {
     opacity: 0;
-    transition: opacity var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), transform var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), visibility 0s var(--bs-dialog-transition-duration);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .dialog:not(.dialog-instant) {
-      transition: none;
+      transition-timing-function: var(--bs-dialog-transition-timing);
+      transition-duration: var(--bs-dialog-transition-duration);
+      transition-property: var(--bs-dialog-transition-property);
     }
   }
   .dialog:not(.dialog-instant).dialog-slide-down {
@@ -6602,14 +6670,6 @@
     overflow: visible;
     visibility: visible;
     opacity: 1;
-    transition: opacity var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), transform var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), visibility 0s;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .dialog:not(.dialog-instant)[open]:not(.hiding) {
-      transition: none;
-    }
-  }
-  .dialog:not(.dialog-instant)[open]:not(.hiding) {
     transform: none;
   }
   .dialog:not(.dialog-instant)[open].dialog-static:not(.hiding) {
@@ -6618,11 +6678,10 @@
   .dialog:not(.dialog-instant)::backdrop {
     background-color: var(--bs-dialog-backdrop-bg);
     backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
-    transition: background-color var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .dialog:not(.dialog-instant)::backdrop {
-      transition: none;
+      transition: background-color var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete;
     }
   }
   .dialog:not(.dialog-instant).hiding::backdrop {
@@ -6749,7 +6808,7 @@
   }
   .dialog-title {
     margin-bottom: 0;
-    line-height: 1.5;
+    line-height: 1.25;
     font-size: var(--bs-font-size-md);
   }
   .dialog-body {
@@ -6799,8 +6858,9 @@
     --bs-menu-header-color: var(--bs-fg-3);
     --bs-menu-header-padding-x: 0.75rem;
     --bs-menu-header-padding-y: 0.25rem;
+    --bs-menu-transition-property: opacity, transform, display;
     --bs-menu-transition-duration: 0.15s;
-    --bs-menu-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --bs-menu-transition-timing: var(--bs-transition-timing-overlay);
     position: absolute;
     z-index: var(--bs-menu-zindex);
     display: none;
@@ -6837,12 +6897,12 @@
   .menu[data-bs-placement^=left] {
     transform-origin: top end;
   }
-  .menu {
-    transition: opacity var(--bs-menu-transition-duration) var(--bs-menu-transition-timing), transform var(--bs-menu-transition-duration) var(--bs-menu-transition-timing), display var(--bs-menu-transition-duration) allow-discrete;
-  }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .menu {
-      transition: none;
+      transition-timing-function: var(--bs-menu-transition-timing);
+      transition-duration: var(--bs-menu-transition-duration);
+      transition-property: var(--bs-menu-transition-property);
+      transition-behavior: allow-discrete;
     }
   }
   .menu.show {
@@ -7244,8 +7304,8 @@
     --bs-nav-link-disabled-color: var(--bs-fg-4);
     --bs-nav-link-border-width: var(--bs-border-width);
     --bs-nav-link-transition-property: color, background-color, border-color;
-    --bs-nav-link-transition-timing: 0.15s ease-in-out;
-    --bs-nav-link-transition: var(--bs-nav-link-transition-property) var(--bs-nav-link-transition-timing);
+    --bs-nav-link-transition-duration: 0.15s;
+    --bs-nav-link-transition-timing: ease-in-out;
     display: flex;
     flex-wrap: wrap;
     gap: var(--bs-nav-gap);
@@ -7269,11 +7329,12 @@
     background: none;
     border: var(--bs-nav-link-border-width) solid transparent;
     border-radius: var(--bs-radius-5);
-    transition: var(--bs-nav-link-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .nav-link {
-      transition: none;
+      transition-timing-function: var(--bs-nav-link-transition-timing);
+      transition-duration: var(--bs-nav-link-transition-duration);
+      transition-property: var(--bs-nav-link-transition-property);
     }
   }
   .nav-link:hover, .nav-link:focus {
@@ -7394,43 +7455,58 @@
     width: 100%;
   }
   .tab-content > .tab-pane {
+    --bs-tab-pane-transition-property: opacity;
+    --bs-tab-pane-transition-duration: 0.15s;
+    --bs-tab-pane-transition-timing: linear;
     display: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .tab-content > .tab-pane:not(.tab-pane-instant) {
+      transition-timing-function: var(--bs-tab-pane-transition-timing);
+      transition-duration: var(--bs-tab-pane-transition-duration);
+      transition-property: var(--bs-tab-pane-transition-property);
+    }
   }
   .tab-content > .active {
     display: block;
   }
+  @starting-style {
+    .tab-content > .tab-pane:not(.tab-pane-instant).active {
+      opacity: 0;
+    }
+  }
 }
 @layer components {
   .nav-overflow {
+    container-type: inline-size;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .nav-overflow > .nav {
+    display: flex;
     flex-wrap: nowrap;
     min-width: 0;
   }
-  .nav-pills.nav-overflow {
-    display: flex;
-  }
-  .navbar-nav.nav-overflow {
-    flex: 1 1 0;
+  .nav-overflow > .nav > .nav-item {
+    flex-shrink: 0;
   }
   .nav-overflow-item {
-    flex-shrink: 0;
     margin-inline-start: auto;
   }
   .nav-overflow [data-bs-nav-overflow=true] {
     display: none;
-  }
-  .nav-overflow-keep {
-    flex-shrink: 0;
   }
 }
 @layer components {
   .navbar {
     --bs-navbar-padding-x: 0;
     --bs-navbar-padding-y: 0.5rem;
+    --bs-navbar-min-height: 3.5rem;
     --bs-navbar-color: var(--bs-fg-2);
     --bs-navbar-hover-color: var(--bs-fg-1);
     --bs-navbar-disabled-color: var(--bs-fg-3);
     --bs-navbar-active-color: var(--bs-fg-body);
-    --bs-navbar-brand-padding-y: 0.75rem;
+    --bs-navbar-brand-padding-y: 0.375rem;
     --bs-navbar-brand-margin-end: 1rem;
     --bs-navbar-brand-font-size: var(--bs-font-size-md);
     --bs-navbar-brand-font-weight: var(--bs-font-weight-medium);
@@ -7451,6 +7527,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    min-height: var(--bs-navbar-min-height);
     padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
     container-type: inline-size;
     color: var(--bs-navbar-color, var(--bs-fg-body));
@@ -7512,6 +7589,11 @@
   .navbar-toggler {
     --bs-btn-bg: transparent;
     --bs-btn-hover-bg: var(--bs-bg-2);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .navbar-toggler {
+      transition: var(--bs-navbar-toggler-transition);
+    }
   }
   .navbar-toggler-icon {
     display: inline-block;
@@ -7798,11 +7880,6 @@
   .navbar [class*=drawer]:not([open], .hiding) {
     transition: none !important;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .navbar [class*=drawer]:not([open], .hiding) {
-      transition: none;
-    }
-  }
   .navbar-translucent {
     position: relative;
     background-color: transparent;
@@ -7839,8 +7916,9 @@
   --bs-drawer-border-color: var(--bs-border-color-translucent);
   --bs-drawer-border-radius: var(--bs-radius-7);
   --bs-drawer-box-shadow: var(--bs-box-shadow-xl);
+  --bs-drawer-transition-property: transform, visibility;
   --bs-drawer-transition-duration: 0.3s;
-  --bs-drawer-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+  --bs-drawer-transition-timing: var(--bs-transition-timing-overlay);
   --bs-drawer-title-line-height: 1.5;
   --bs-drawer-backdrop-bg: color-mix(in oklch, var(--bs-bg-body) 25%, transparent);
   --bs-drawer-backdrop-blur: 8px;
@@ -7895,13 +7973,12 @@
       height: auto;
       max-height: none;
     }
-    .sm\:drawer:not(.drawer-instant) {
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s var(--bs-drawer-transition-duration);
-    }
   }
-  @media (width < 576px) and (prefers-reduced-motion: reduce) {
+  @media (width < 576px) and (prefers-reduced-motion: no-preference) {
     .sm\:drawer:not(.drawer-instant) {
-      transition: none;
+      transition-timing-function: var(--bs-drawer-transition-timing);
+      transition-duration: var(--bs-drawer-transition-duration);
+      transition-property: var(--bs-drawer-transition-property);
     }
   }
   @media (width < 576px) {
@@ -7928,16 +8005,8 @@
     }
     .sm\:drawer:not(.drawer-instant)[open] {
       visibility: visible;
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s;
       transform: none;
     }
-  }
-  @media (width < 576px) and (prefers-reduced-motion: reduce) {
-    .sm\:drawer:not(.drawer-instant)[open] {
-      transition: none;
-    }
-  }
-  @media (width < 576px) {
     .sm\:drawer[open] {
       visibility: visible;
       transform: none;
@@ -7963,16 +8032,7 @@
       border: 0 !important;
       transform: none !important;
       transition: none !important;
-      border-radius: 0;
-      box-shadow: none;
     }
-  }
-  @media (width >= 576px) and (prefers-reduced-motion: reduce) {
-    .sm\:drawer {
-      transition: none;
-    }
-  }
-  @media (width >= 576px) {
     .sm\:drawer .drawer-header {
       display: none;
     }
@@ -7984,6 +8044,10 @@
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
+    }
+    .sm\:drawer {
+      border-radius: 0;
+      box-shadow: none;
     }
   }
   @media (width < 768px) {
@@ -8034,13 +8098,12 @@
       height: auto;
       max-height: none;
     }
-    .md\:drawer:not(.drawer-instant) {
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s var(--bs-drawer-transition-duration);
-    }
   }
-  @media (width < 768px) and (prefers-reduced-motion: reduce) {
+  @media (width < 768px) and (prefers-reduced-motion: no-preference) {
     .md\:drawer:not(.drawer-instant) {
-      transition: none;
+      transition-timing-function: var(--bs-drawer-transition-timing);
+      transition-duration: var(--bs-drawer-transition-duration);
+      transition-property: var(--bs-drawer-transition-property);
     }
   }
   @media (width < 768px) {
@@ -8067,16 +8130,8 @@
     }
     .md\:drawer:not(.drawer-instant)[open] {
       visibility: visible;
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s;
       transform: none;
     }
-  }
-  @media (width < 768px) and (prefers-reduced-motion: reduce) {
-    .md\:drawer:not(.drawer-instant)[open] {
-      transition: none;
-    }
-  }
-  @media (width < 768px) {
     .md\:drawer[open] {
       visibility: visible;
       transform: none;
@@ -8102,16 +8157,7 @@
       border: 0 !important;
       transform: none !important;
       transition: none !important;
-      border-radius: 0;
-      box-shadow: none;
     }
-  }
-  @media (width >= 768px) and (prefers-reduced-motion: reduce) {
-    .md\:drawer {
-      transition: none;
-    }
-  }
-  @media (width >= 768px) {
     .md\:drawer .drawer-header {
       display: none;
     }
@@ -8123,6 +8169,10 @@
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
+    }
+    .md\:drawer {
+      border-radius: 0;
+      box-shadow: none;
     }
   }
   @media (width < 1024px) {
@@ -8173,13 +8223,12 @@
       height: auto;
       max-height: none;
     }
-    .lg\:drawer:not(.drawer-instant) {
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s var(--bs-drawer-transition-duration);
-    }
   }
-  @media (width < 1024px) and (prefers-reduced-motion: reduce) {
+  @media (width < 1024px) and (prefers-reduced-motion: no-preference) {
     .lg\:drawer:not(.drawer-instant) {
-      transition: none;
+      transition-timing-function: var(--bs-drawer-transition-timing);
+      transition-duration: var(--bs-drawer-transition-duration);
+      transition-property: var(--bs-drawer-transition-property);
     }
   }
   @media (width < 1024px) {
@@ -8206,16 +8255,8 @@
     }
     .lg\:drawer:not(.drawer-instant)[open] {
       visibility: visible;
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s;
       transform: none;
     }
-  }
-  @media (width < 1024px) and (prefers-reduced-motion: reduce) {
-    .lg\:drawer:not(.drawer-instant)[open] {
-      transition: none;
-    }
-  }
-  @media (width < 1024px) {
     .lg\:drawer[open] {
       visibility: visible;
       transform: none;
@@ -8241,16 +8282,7 @@
       border: 0 !important;
       transform: none !important;
       transition: none !important;
-      border-radius: 0;
-      box-shadow: none;
     }
-  }
-  @media (width >= 1024px) and (prefers-reduced-motion: reduce) {
-    .lg\:drawer {
-      transition: none;
-    }
-  }
-  @media (width >= 1024px) {
     .lg\:drawer .drawer-header {
       display: none;
     }
@@ -8262,6 +8294,10 @@
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
+    }
+    .lg\:drawer {
+      border-radius: 0;
+      box-shadow: none;
     }
   }
   @media (width < 1280px) {
@@ -8312,13 +8348,12 @@
       height: auto;
       max-height: none;
     }
-    .xl\:drawer:not(.drawer-instant) {
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s var(--bs-drawer-transition-duration);
-    }
   }
-  @media (width < 1280px) and (prefers-reduced-motion: reduce) {
+  @media (width < 1280px) and (prefers-reduced-motion: no-preference) {
     .xl\:drawer:not(.drawer-instant) {
-      transition: none;
+      transition-timing-function: var(--bs-drawer-transition-timing);
+      transition-duration: var(--bs-drawer-transition-duration);
+      transition-property: var(--bs-drawer-transition-property);
     }
   }
   @media (width < 1280px) {
@@ -8345,16 +8380,8 @@
     }
     .xl\:drawer:not(.drawer-instant)[open] {
       visibility: visible;
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s;
       transform: none;
     }
-  }
-  @media (width < 1280px) and (prefers-reduced-motion: reduce) {
-    .xl\:drawer:not(.drawer-instant)[open] {
-      transition: none;
-    }
-  }
-  @media (width < 1280px) {
     .xl\:drawer[open] {
       visibility: visible;
       transform: none;
@@ -8380,16 +8407,7 @@
       border: 0 !important;
       transform: none !important;
       transition: none !important;
-      border-radius: 0;
-      box-shadow: none;
     }
-  }
-  @media (width >= 1280px) and (prefers-reduced-motion: reduce) {
-    .xl\:drawer {
-      transition: none;
-    }
-  }
-  @media (width >= 1280px) {
     .xl\:drawer .drawer-header {
       display: none;
     }
@@ -8401,6 +8419,10 @@
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
+    }
+    .xl\:drawer {
+      border-radius: 0;
+      box-shadow: none;
     }
   }
   @media (width < 1536px) {
@@ -8451,13 +8473,12 @@
       height: auto;
       max-height: none;
     }
-    .\32 xl\:drawer:not(.drawer-instant) {
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s var(--bs-drawer-transition-duration);
-    }
   }
-  @media (width < 1536px) and (prefers-reduced-motion: reduce) {
+  @media (width < 1536px) and (prefers-reduced-motion: no-preference) {
     .\32 xl\:drawer:not(.drawer-instant) {
-      transition: none;
+      transition-timing-function: var(--bs-drawer-transition-timing);
+      transition-duration: var(--bs-drawer-transition-duration);
+      transition-property: var(--bs-drawer-transition-property);
     }
   }
   @media (width < 1536px) {
@@ -8484,16 +8505,8 @@
     }
     .\32 xl\:drawer:not(.drawer-instant)[open] {
       visibility: visible;
-      transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s;
       transform: none;
     }
-  }
-  @media (width < 1536px) and (prefers-reduced-motion: reduce) {
-    .\32 xl\:drawer:not(.drawer-instant)[open] {
-      transition: none;
-    }
-  }
-  @media (width < 1536px) {
     .\32 xl\:drawer[open] {
       visibility: visible;
       transform: none;
@@ -8519,16 +8532,7 @@
       border: 0 !important;
       transform: none !important;
       transition: none !important;
-      border-radius: 0;
-      box-shadow: none;
     }
-  }
-  @media (width >= 1536px) and (prefers-reduced-motion: reduce) {
-    .\32 xl\:drawer {
-      transition: none;
-    }
-  }
-  @media (width >= 1536px) {
     .\32 xl\:drawer .drawer-header {
       display: none;
     }
@@ -8540,6 +8544,10 @@
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
+    }
+    .\32 xl\:drawer {
+      border-radius: 0;
+      box-shadow: none;
     }
   }
   .drawer {
@@ -8589,12 +8597,11 @@
     height: auto;
     max-height: none;
   }
-  .drawer:not(.drawer-instant) {
-    transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s var(--bs-drawer-transition-duration);
-  }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .drawer:not(.drawer-instant) {
-      transition: none;
+      transition-timing-function: var(--bs-drawer-transition-timing);
+      transition-duration: var(--bs-drawer-transition-duration);
+      transition-property: var(--bs-drawer-transition-property);
     }
   }
   .drawer:not(.drawer-instant):where(.drawer-start) {
@@ -8620,14 +8627,6 @@
   }
   .drawer:not(.drawer-instant)[open] {
     visibility: visible;
-    transition: transform var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), visibility 0s;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .drawer:not(.drawer-instant)[open] {
-      transition: none;
-    }
-  }
-  .drawer:not(.drawer-instant)[open] {
     transform: none;
   }
   .drawer[open] {
@@ -8637,61 +8636,55 @@
   .sm\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
-    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .sm\:drawer::backdrop {
-      transition: none;
+      transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
     }
   }
   .md\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
-    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .md\:drawer::backdrop {
-      transition: none;
+      transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
     }
   }
   .lg\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
-    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .lg\:drawer::backdrop {
-      transition: none;
+      transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
     }
   }
   .xl\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
-    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .xl\:drawer::backdrop {
-      transition: none;
+      transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
     }
   }
   .\32 xl\:drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
-    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .\32 xl\:drawer::backdrop {
-      transition: none;
+      transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
     }
   }
   .drawer::backdrop {
     background-color: var(--bs-drawer-backdrop-bg);
     backdrop-filter: blur(var(--bs-drawer-backdrop-blur));
-    transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .drawer::backdrop {
-      transition: none;
+      transition: background-color var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), backdrop-filter var(--bs-drawer-transition-duration) var(--bs-drawer-transition-timing), display var(--bs-drawer-transition-duration) allow-discrete, overlay var(--bs-drawer-transition-duration) allow-discrete;
     }
   }
   @starting-style {
@@ -8757,6 +8750,7 @@
     line-height: var(--bs-drawer-title-line-height);
   }
   .drawer-body {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--bs-drawer-padding-y);
@@ -8815,11 +8809,10 @@
     text-decoration: none;
     background-color: var(--bs-pagination-bg);
     border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .page-link {
-      transition: none;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
   }
   .page-link:hover {
@@ -8898,6 +8891,11 @@
   .placeholder-glow .placeholder {
     animation: placeholder-glow 2s ease-in-out infinite;
   }
+  @media (prefers-reduced-motion: reduce) {
+    .placeholder-glow .placeholder {
+      animation: none;
+    }
+  }
   @keyframes placeholder-glow {
     50% {
       opacity: var(--bs-placeholder-opacity-min);
@@ -8907,6 +8905,11 @@
     mask-image: linear-gradient(130deg, #000 55%, rgb(0, 0, 0, calc(1 - var(--bs-placeholder-opacity-min))) 75%, #000 95%);
     mask-size: 200% 100%;
     animation: placeholder-wave 2s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .placeholder-wave {
+      animation: none;
+    }
   }
   @keyframes placeholder-wave {
     100% {
@@ -8936,6 +8939,9 @@
     --bs-popover-arrow-width: 1rem;
     --bs-popover-arrow-height: 0.5rem;
     --bs-popover-arrow-border: var(--bs-popover-border-color);
+    --bs-popover-transition-property: opacity;
+    --bs-popover-transition-duration: 0.15s;
+    --bs-popover-transition-timing: linear;
     z-index: var(--bs-popover-zindex);
     display: block;
     max-width: var(--bs-popover-max-width);
@@ -8959,6 +8965,17 @@
     border: var(--bs-popover-border-width) solid var(--bs-popover-border-color);
     border-radius: var(--bs-popover-border-radius);
     box-shadow: var(--bs-popover-box-shadow);
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .popover:not(.popover-instant) {
+      transition-timing-function: var(--bs-popover-transition-timing);
+      transition-duration: var(--bs-popover-transition-duration);
+      transition-property: var(--bs-popover-transition-property);
+    }
+  }
+  .popover.show {
+    opacity: 1;
   }
   .popover .popover-arrow {
     display: block;
@@ -8972,6 +8989,11 @@
     border-color: transparent;
     border-style: solid;
     border-width: 0;
+  }
+  @starting-style {
+    .popover:not(.popover-instant).show {
+      opacity: 0;
+    }
   }
   .bs-popover-top > .popover-arrow, .bs-popover-auto[data-bs-placement^=top] > .popover-arrow {
     bottom: calc(-1 * (var(--bs-popover-arrow-height)) - var(--bs-popover-border-width));
@@ -9098,11 +9120,10 @@
     text-align: center;
     white-space: nowrap;
     background-color: var(--bs-theme-bg, var(--bs-progress-bar-bg));
-    transition: var(--bs-progress-bar-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .progress-bar {
-      transition: none;
+      transition: var(--bs-progress-bar-transition);
     }
   }
   .progress-bar-striped {
@@ -9421,7 +9442,10 @@
     --bs-toast-header-color: var(--bs-fg-3);
     --bs-toast-header-bg: var(--bs-bg-1);
     --bs-toast-header-border-color: var(--bs-border-color-translucent);
-    display: flex;
+    --bs-toast-transition-property: opacity, display;
+    --bs-toast-transition-duration: 0.15s;
+    --bs-toast-transition-timing: linear;
+    display: none;
     flex-direction: column;
     width: var(--bs-toast-max-width);
     max-width: 100%;
@@ -9435,11 +9459,25 @@
     box-shadow: var(--bs-toast-box-shadow);
     border-radius: var(--bs-toast-border-radius, var(--bs-radius-7));
   }
-  .toast.showing {
+  .toast:not(.toast-instant) {
     opacity: 0;
   }
-  .toast:not(.show) {
-    display: none;
+  @media (prefers-reduced-motion: no-preference) {
+    .toast:not(.toast-instant) {
+      transition-timing-function: var(--bs-toast-transition-timing);
+      transition-duration: var(--bs-toast-transition-duration);
+      transition-property: var(--bs-toast-transition-property);
+      transition-behavior: allow-discrete;
+    }
+  }
+  .toast.show {
+    display: flex;
+    opacity: 1;
+  }
+  @starting-style {
+    .toast:not(.toast-instant).show {
+      opacity: 0;
+    }
   }
   .toast-container {
     --bs-toast-zindex: var(--bs-z-toast);
@@ -9486,6 +9524,9 @@
     --bs-tooltip-opacity: 0.95;
     --bs-tooltip-arrow-width: 0.8rem;
     --bs-tooltip-arrow-height: 0.4rem;
+    --bs-tooltip-transition-property: opacity;
+    --bs-tooltip-transition-duration: 0.15s;
+    --bs-tooltip-transition-timing: linear;
     z-index: var(--bs-tooltip-zindex);
     display: block;
     font-family: var(--bs-body-font-family);
@@ -9505,6 +9546,13 @@
     word-wrap: break-word;
     opacity: 0;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .tooltip:not(.tooltip-instant) {
+      transition-timing-function: var(--bs-tooltip-transition-timing);
+      transition-duration: var(--bs-tooltip-transition-duration);
+      transition-property: var(--bs-tooltip-transition-property);
+    }
+  }
   .tooltip.show {
     opacity: var(--bs-tooltip-opacity);
   }
@@ -9518,6 +9566,11 @@
     content: "";
     border-color: transparent;
     border-style: solid;
+  }
+  @starting-style {
+    .tooltip:not(.tooltip-instant).show {
+      opacity: 0;
+    }
   }
   .bs-tooltip-top .tooltip-arrow, .bs-tooltip-auto[data-bs-placement^=top] .tooltip-arrow {
     bottom: calc(-1 * var(--bs-tooltip-arrow-height));
@@ -9565,48 +9618,82 @@
   }
 }
 .fade {
-  --bs-transition-fade: opacity 0.15s linear;
-  transition: var(--bs-transition-fade);
+  --bs-transition-fade-duration: 0.15s;
+  --bs-transition-fade-timing: linear;
 }
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: no-preference) {
   .fade {
-    transition: none;
+    transition: opacity var(--bs-transition-fade-duration) var(--bs-transition-fade-timing);
   }
 }
 .fade:not(.show) {
   opacity: 0;
 }
 
-.collapse:not(.show) {
-  display: none;
+.collapse {
+  --bs-transition-collapse-property: block-size, display;
+  --bs-transition-collapse-duration: 0.35s;
+  --bs-transition-collapse-timing: ease;
+  overflow-y: clip;
 }
-
-.collapsing {
-  --bs-transition-collapse: height 0.35s ease;
-  --bs-transition-collapse-width: width 0.35s ease;
-  height: 0;
-  overflow: hidden;
-  transition: var(--bs-transition-collapse);
-}
-@media (prefers-reduced-motion: reduce) {
-  .collapsing {
-    transition: none;
+@media (prefers-reduced-motion: no-preference) {
+  .collapse {
+    transition-timing-function: var(--bs-transition-collapse-timing);
+    transition-duration: var(--bs-transition-collapse-duration);
+    transition-property: var(--bs-transition-collapse-property);
+    transition-behavior: allow-discrete;
   }
 }
-.collapsing.collapse-horizontal {
-  width: 0;
-  height: auto;
-  transition: var(--bs-transition-collapse-width);
+@media (prefers-reduced-motion: no-preference) {
+  .collapse {
+    interpolate-size: allow-keywords;
+  }
 }
-@media (prefers-reduced-motion: reduce) {
-  .collapsing.collapse-horizontal {
-    transition: none;
+.collapse:not(.show) {
+  display: none;
+  block-size: 0;
+}
+@starting-style {
+  .collapse.show {
+    block-size: 0;
+  }
+}
+.collapse.collapse-horizontal {
+  --bs-transition-collapse-property: inline-size, display;
+  inline-size: fit-content;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+.collapse.collapse-horizontal:not(.show) {
+  inline-size: 0;
+  block-size: auto;
+}
+@starting-style {
+  .collapse.collapse-horizontal.show {
+    inline-size: 0;
   }
 }
 
 @layer helpers {
   .focus-ring:focus-visible {
     outline: var(--bs-focus-ring-width) solid var(--bs-theme-focus-ring, var(--bs-focus-ring-color));
+  }
+}
+@layer helpers {
+  .hover-lift {
+    --bs-hover-lift-transition-duration: 0.2s;
+    --bs-hover-lift-transition-timing: ease;
+    --bs-hover-lift-transform: translateY(-0.25rem);
+    --bs-hover-lift-box-shadow: var(--bs-box-shadow-lg);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hover-lift {
+      transition: transform var(--bs-hover-lift-transition-duration) var(--bs-hover-lift-transition-timing), box-shadow var(--bs-hover-lift-transition-duration) var(--bs-hover-lift-transition-timing);
+    }
+  }
+  .hover-lift:hover, .hover-lift:focus-visible {
+    transform: var(--bs-hover-lift-transform);
+    box-shadow: var(--bs-hover-lift-box-shadow);
   }
 }
 @layer helpers {
@@ -9628,11 +9715,10 @@
     width: var(--bs-icon-link-icon-size);
     height: var(--bs-icon-link-icon-size);
     fill: currentcolor;
-    transition: var(--bs-icon-link-icon-transition);
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     .icon-link > .bi {
-      transition: none;
+      transition: var(--bs-icon-link-icon-transition);
     }
   }
   .icon-link-hover:hover > .bi, .icon-link-hover:focus-visible > .bi {
@@ -9890,6 +9976,13 @@
     --bs-theme-border: var(--bs-secondary-border);
     --bs-theme-focus-ring: var(--bs-secondary-focus-ring);
     --bs-theme-contrast: var(--bs-secondary-contrast);
+  }
+  .theme-contrast {
+    --bs-theme-fg: var(--bs-theme-contrast);
+    --bs-theme-fg-emphasis: var(--bs-theme-contrast);
+  }
+  .theme-muted {
+    --bs-theme-fg: var(--bs-theme-fg-emphasis);
   }
 }
 @layer helpers {
@@ -10527,6 +10620,12 @@
   .min-vw-100 {
     min-width: 100vw;
   }
+  .dvw-100 {
+    width: 100dvw;
+  }
+  .min-dvw-100 {
+    min-width: 100dvw;
+  }
   .h-25 {
     height: 25%;
   }
@@ -10565,6 +10664,12 @@
   }
   .min-vh-100 {
     min-height: 100vh;
+  }
+  .dvh-100 {
+    height: 100dvh;
+  }
+  .min-dvh-100 {
+    min-height: 100dvh;
   }
   .flex-fill {
     flex: 1 1 auto;
@@ -12073,6 +12178,15 @@
   .bg-gradient {
     background-image: var(--bs-gradient);
   }
+  .color-scheme-light {
+    color-scheme: light;
+  }
+  .color-scheme-dark {
+    color-scheme: dark;
+  }
+  .color-scheme-auto {
+    color-scheme: light dark;
+  }
   .user-select-all {
     -webkit-user-select: all;
     user-select: all;
@@ -12438,6 +12552,18 @@
   }
   .z-toast {
     z-index: 1070;
+  }
+  .transition-none {
+    transition: none;
+  }
+  .animation-none {
+    animation: none;
+  }
+  .animation-shake {
+    animation: animation-shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+  .animation-pop {
+    animation: animation-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   }
   @media (width >= 576px) {
     .sm\:float-start {
@@ -16843,6 +16969,34 @@
     .\32 xl\:text-center {
       text-align: center;
     }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animation-shake,
+    .animation-pop {
+      animation: none;
+    }
+  }
+}
+@keyframes animation-shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+@keyframes animation-pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
   }
 }
 

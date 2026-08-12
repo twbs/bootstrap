@@ -6,7 +6,7 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
-import { getElement, reflow, setAriaAttribute } from "./util/index.js";
+import { getElement, getTransitionDurationFromElement, setAriaAttribute } from "./util/index.js";
 //#region js/src/collapse.ts
 /**
 * --------------------------------------------------------------------------
@@ -27,22 +27,11 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const CLASS_NAME_SHOW = "show";
 const CLASS_NAME_COLLAPSE = "collapse";
-const CLASS_NAME_COLLAPSING = "collapsing";
-const CLASS_NAME_COLLAPSED = "collapsed";
 const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`;
-const CLASS_NAME_HORIZONTAL = "collapse-horizontal";
-const WIDTH = "width";
-const HEIGHT = "height";
-const SELECTOR_ACTIVES = ".collapse.show, .collapse.collapsing";
+const SELECTOR_ACTIVES = ".collapse.show";
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"collapse\"]";
-const Default = {
-	parent: null,
-	toggle: true
-};
-const DefaultType = {
-	parent: "(null|element)",
-	toggle: "boolean"
-};
+const Default = { parent: null };
+const DefaultType = { parent: "(null|element)" };
 /**
 * Class definition
 */
@@ -58,8 +47,7 @@ var Collapse = class Collapse extends BaseComponent {
 			if (selector !== null && filterElement.length) this._triggerArray.push(elem);
 		}
 		this._initializeChildren();
-		if (!this._config.parent) this._addAriaAndCollapsedClass(this._triggerArray, this._isShown());
-		if (this._config.toggle) this.toggle();
+		if (!this._config.parent) this._setAriaExpanded(this._triggerArray, this._isShown());
 	}
 	static get Default() {
 		return Default;
@@ -71,84 +59,67 @@ var Collapse = class Collapse extends BaseComponent {
 		return NAME;
 	}
 	toggle() {
-		if (this._isShown()) this.hide();
-		else this.show();
+		return this._isShown() ? this.hide() : this.show();
 	}
-	show() {
+	async show() {
 		if (this._isTransitioning || this._isShown()) return;
 		let activeChildren = [];
-		if (this._config.parent) activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES).filter((element) => element !== this._element).map((element) => Collapse.getOrCreateInstance(element, { toggle: false }));
+		if (this._config.parent) activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES).filter((element) => element !== this._element && !this._sharesTrigger(element)).map((element) => Collapse.getOrCreateInstance(element));
 		if (activeChildren.length && activeChildren[0]._isTransitioning) return;
 		if (EventHandler.trigger(this._element, EVENT_SHOW).defaultPrevented) return;
 		for (const activeInstance of activeChildren) activeInstance.hide();
-		const dimension = this._getDimension();
-		this._element.classList.remove(CLASS_NAME_COLLAPSE);
-		this._element.classList.add(CLASS_NAME_COLLAPSING);
-		this._element.style[dimension] = 0;
-		this._addAriaAndCollapsedClass(this._triggerArray, true);
+		this._element.classList.add(CLASS_NAME_SHOW);
+		this._setAriaExpanded(this._triggerArray, true);
 		this._isTransitioning = true;
 		const complete = () => {
 			this._isTransitioning = false;
-			this._element.classList.remove(CLASS_NAME_COLLAPSING);
-			this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
-			this._element.style[dimension] = "";
 			EventHandler.trigger(this._element, EVENT_SHOWN);
 		};
-		const scrollSize = `scroll${dimension[0].toUpperCase() + dimension.slice(1)}`;
-		this._queueCallback(complete, this._element, true);
-		this._element.style[dimension] = `${this._element[scrollSize]}px`;
+		await this._queueCallback(complete, this._element, this._isAnimated());
 	}
-	hide() {
+	async hide() {
 		if (this._isTransitioning || !this._isShown()) return;
 		if (EventHandler.trigger(this._element, EVENT_HIDE).defaultPrevented) return;
-		const dimension = this._getDimension();
-		this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
-		reflow(this._element);
-		this._element.classList.add(CLASS_NAME_COLLAPSING);
-		this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
+		this._element.classList.remove(CLASS_NAME_SHOW);
 		for (const trigger of this._triggerArray) {
 			const element = SelectorEngine.getElementFromSelector(trigger);
-			if (element && !this._isShown(element)) this._addAriaAndCollapsedClass([trigger], false);
+			if (element && !this._isShown(element)) this._setAriaExpanded([trigger], false);
 		}
 		this._isTransitioning = true;
 		const complete = () => {
 			this._isTransitioning = false;
-			this._element.classList.remove(CLASS_NAME_COLLAPSING);
-			this._element.classList.add(CLASS_NAME_COLLAPSE);
 			EventHandler.trigger(this._element, EVENT_HIDDEN);
 		};
-		this._element.style[dimension] = "";
-		this._queueCallback(complete, this._element, true);
+		await this._queueCallback(complete, this._element, this._isAnimated());
 	}
 	_isShown(element = this._element) {
 		return element.classList.contains(CLASS_NAME_SHOW);
 	}
+	_isAnimated() {
+		return getTransitionDurationFromElement(this._element) > 0;
+	}
+	_sharesTrigger(element) {
+		return this._triggerArray.some((trigger) => SelectorEngine.getMultipleElementsFromSelector(trigger).includes(element));
+	}
 	_configAfterMerge(config) {
-		config.toggle = Boolean(config.toggle);
 		config.parent = getElement(config.parent);
 		return config;
-	}
-	_getDimension() {
-		return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT;
 	}
 	_initializeChildren() {
 		if (!this._config.parent) return;
 		const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE);
 		for (const element of children) {
 			const selected = SelectorEngine.getElementFromSelector(element);
-			if (selected) this._addAriaAndCollapsedClass([element], this._isShown(selected));
+			if (selected) this._setAriaExpanded([element], this._isShown(selected));
 		}
 	}
 	_getFirstLevelChildren(selector) {
 		const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent);
 		return SelectorEngine.find(selector, this._config.parent).filter((element) => !children.includes(element));
 	}
-	_addAriaAndCollapsedClass(triggerArray, isOpen) {
+	_setAriaExpanded(triggerArray, isOpen) {
 		if (!triggerArray.length) return;
-		for (const element of triggerArray) {
-			element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen);
-			setAriaAttribute(element, "aria-expanded", isOpen);
-		}
+		for (const element of triggerArray) setAriaAttribute(element, "aria-expanded", isOpen);
 	}
 };
 /**
@@ -156,7 +127,7 @@ var Collapse = class Collapse extends BaseComponent {
 */
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function(event) {
 	if (event.target.tagName === "A" || event.delegateTarget && event.delegateTarget.tagName === "A") event.preventDefault();
-	for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) Collapse.getOrCreateInstance(element, { toggle: false }).toggle();
+	for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) Collapse.getOrCreateInstance(element).toggle();
 });
 //#endregion
 export { Collapse as default };
