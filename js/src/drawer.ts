@@ -177,7 +177,9 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 })
 
 EventHandler.on(window, EVENT_RESIZE, () => {
-  for (const element of SelectorEngine.find('dialog[open][class*="\\:drawer"]')) {
+  // Match plain `.drawer` (navbar expand) and responsive `.{bp}:drawer`.
+  // Hide when CSS has dropped the panel out of fixed positioning.
+  for (const element of SelectorEngine.find('dialog[open][class*="drawer"]')) {
     if (getComputedStyle(element).position !== 'fixed') {
       Drawer.getOrCreateInstance(element).hide()
     }

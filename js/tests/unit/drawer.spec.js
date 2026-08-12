@@ -232,6 +232,28 @@ describe('Drawer', () => {
         drawer.show()
       })
     })
+
+    it('should call `hide` on resize for plain `.drawer` when position is not fixed', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-end"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('dialog')
+        const drawer = new Drawer(drawerEl)
+
+        const spy = spyOn(drawer, 'hide').and.callThrough()
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawerEl.style.position = 'static'
+
+          const resizeEvent = createEvent('resize')
+          window.dispatchEvent(resizeEvent)
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
   })
 
   describe('config', () => {
