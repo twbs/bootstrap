@@ -75,7 +75,8 @@ $form-control-sizes: defaults(
     );
 
     // Customize the `:focus` state to imitate native WebKit styles.
-    &:focus-visible {
+    &:focus-visible,
+    &:focus-within {
       --focus-ring-offset: -1px;
       @include focus-ring(true);
     }

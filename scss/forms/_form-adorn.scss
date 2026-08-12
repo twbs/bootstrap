@@ -1,5 +1,4 @@
 @use "../functions" as *;
-@use "../mixins/focus-ring" as *;
 @use "../mixins/tokens" as *;
 
 $form-adorn-tokens: () !default;
@@ -29,12 +28,6 @@ $form-adorn-tokens: defaults(
     // Prevent default `.form-control` focus
     &:focus-visible {
       outline: 0;
-    }
-
-    &:focus-within {
-      --focus-ring-offset: -1px;
-      border-color: var(--focus-ring-color);
-      @include focus-ring(true);
     }
 
     // Ghost input fills remaining space
