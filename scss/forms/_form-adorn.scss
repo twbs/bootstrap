@@ -31,12 +31,6 @@ $form-adorn-tokens: defaults(
       outline: 0;
     }
 
-    &:focus-within {
-      --focus-ring-offset: -1px;
-      border-color: var(--focus-ring-color);
-      @include focus-ring(true);
-    }
-
     // Ghost input fills remaining space
     > .form-ghost {
       flex: 1;
