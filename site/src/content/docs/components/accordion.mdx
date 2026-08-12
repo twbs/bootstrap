@@ -190,6 +190,46 @@ Omit the `name` attribute on each `<details>` element to allow multiple accordio
     <!-- More accordion items here -->
   </div>`} />
 
+## Expand & Collapse all
+
+To enable expanding and collapsing of all accordion items at once, remove the `name` attribute from each `<details>` element using JavaScript. This allows multiple accordion items to be open simultaneously. Restore the `name` attribute when you collapse the items again if you want exclusive behavior back.
+
+<Example code={`<button type="button" class="btn-subtle btn-sm theme-secondary mb-3" id="btnAccordionToggleAll" aria-expanded="false">Expand all</button>
+
+  <div class="accordion accordion-sm" id="accordionExpandCollapse">
+    <details class="accordion-item" name="accordionExpandCollapse" open>
+      <summary class="accordion-header">
+        Accordion Item #1
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the first item’s accordion body.</strong> Use Expand all to open every item, even when they share a <code>name</code>.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionExpandCollapse">
+      <summary class="accordion-header">
+        Accordion Item #2
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the second item’s accordion body.</strong> Collapse all closes every item and restores exclusive <code>name</code> grouping.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionExpandCollapse">
+      <summary class="accordion-header">
+        Accordion Item #3
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the third item’s accordion body.</strong> If your accordion has no <code>name</code>, you only need to set <code>open</code> on each item.
+      </div>
+    </details>
+  </div>`} />
+
+We use the following JavaScript for this demo:
+
+<JsDocs name="accordion-expand-collapse" file="site/src/assets/partials/snippets.js" />
+
 ## Nested
 
 Accordions can be nested inside each other by placing a full `.accordion` within an `.accordion-body`. Use unique `name` attribute values for each level so the parent and child accordions operate independently.
