@@ -457,6 +457,187 @@ describe('Popover', () => {
     })
   })
 
+  describe('dismiss on next click', () => {
+    it('should not hide when focus moves into the popover', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" tabindex="0">Dismissible</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        const popover = new Popover(popoverEl, {
+          trigger: 'focus',
+          html: true,
+          content: '<a href="#inside" class="inside-link">Inside</a>'
+        })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          const tip = document.querySelector('.popover')
+          const insideLink = tip.querySelector('.inside-link')
+          const leaveSpy = spyOn(popover, '_leave').and.callThrough()
+
+          popoverEl.dispatchEvent(new FocusEvent('focusout', {
+            bubbles: true,
+            relatedTarget: insideLink
+          }))
+
+          expect(leaveSpy).toHaveBeenCalled()
+          expect(popover._activeTrigger.focus).toBeTrue()
+          expect(tip).toHaveClass('show')
+          resolve()
+        })
+
+        popoverEl.dispatchEvent(createEvent('focusin'))
+      })
+    })
+
+    it('should hide when focus leaves the trigger for outside content', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" tabindex="0">Dismissible</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        // eslint-disable-next-line no-new
+        new Popover(popoverEl, {
+          trigger: 'focus',
+          content: 'Selectable text'
+        })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          popoverEl.addEventListener('hidden.bs.popover', () => {
+            expect(document.querySelector('.popover')).toBeNull()
+            resolve()
+          })
+
+          popoverEl.dispatchEvent(new FocusEvent('focusout', {
+            bubbles: true,
+            relatedTarget: document.body
+          }))
+        })
+
+        popoverEl.dispatchEvent(createEvent('focusin'))
+      })
+    })
+
+    it('should stay open when the pointer presses inside the tip', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" tabindex="0">Dismissible</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        const popover = new Popover(popoverEl, {
+          trigger: 'focus',
+          content: 'Selectable text'
+        })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          const tip = document.querySelector('.popover')
+          const body = tip.querySelector('.popover-body')
+
+          body.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))
+          popoverEl.dispatchEvent(new FocusEvent('focusout', {
+            bubbles: true,
+            relatedTarget: null
+          }))
+
+          expect(popover._activeTrigger.focus).toBeTrue()
+          expect(tip).toHaveClass('show')
+          resolve()
+        })
+
+        popoverEl.dispatchEvent(createEvent('focusin'))
+      })
+    })
+
+    it('should dismiss on pointerdown outside the tip after tip interaction', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" tabindex="0">Dismissible</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        // eslint-disable-next-line no-new
+        new Popover(popoverEl, {
+          trigger: 'focus',
+          content: 'Selectable text'
+        })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          const tip = document.querySelector('.popover')
+          const body = tip.querySelector('.popover-body')
+
+          popoverEl.addEventListener('hidden.bs.popover', () => {
+            expect(document.querySelector('.popover')).toBeNull()
+            resolve()
+          })
+
+          body.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))
+          popoverEl.dispatchEvent(new FocusEvent('focusout', {
+            bubbles: true,
+            relatedTarget: null
+          }))
+          document.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }))
+          document.body.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))
+        })
+
+        popoverEl.dispatchEvent(createEvent('focusin'))
+      })
+    })
+
+    it('should allow focusable tip content to receive focus without dismissing', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" tabindex="0">Dismissible</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        const popover = new Popover(popoverEl, {
+          trigger: 'focus',
+          html: true,
+          content: '<a href="#action" class="inside-link">Action</a>'
+        })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          const tip = document.querySelector('.popover')
+          const link = tip.querySelector('.inside-link')
+
+          popoverEl.dispatchEvent(new FocusEvent('focusout', {
+            bubbles: true,
+            relatedTarget: link
+          }))
+
+          expect(popover._activeTrigger.focus).toBeTrue()
+          expect(tip).toHaveClass('show')
+          resolve()
+        })
+
+        popoverEl.dispatchEvent(createEvent('focusin'))
+      })
+    })
+
+    it('should hide when focus leaves focusable tip content for outside content', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" tabindex="0">Dismissible</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        // eslint-disable-next-line no-new
+        new Popover(popoverEl, {
+          trigger: 'focus',
+          html: true,
+          content: '<a href="#action" class="inside-link">Action</a>'
+        })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          const tip = document.querySelector('.popover')
+
+          popoverEl.addEventListener('hidden.bs.popover', () => {
+            expect(document.querySelector('.popover')).toBeNull()
+            resolve()
+          })
+
+          tip.dispatchEvent(new FocusEvent('focusout', {
+            bubbles: true,
+            relatedTarget: document.body
+          }))
+        })
+
+        popoverEl.dispatchEvent(createEvent('focusin'))
+      })
+    })
+  })
+
   describe('data-api', () => {
     it('should toggle popover on click via data-api', () => {
       return new Promise(resolve => {
