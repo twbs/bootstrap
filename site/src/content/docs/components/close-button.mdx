@@ -7,24 +7,32 @@ css_layer: components
 
 ## Example
 
-Provide an option to dismiss or close a component with `.btn-close`. The icon is rendered with a CSS `mask-image`, so it inherits the `color` from the `.btn-close` class—no inline SVG required. **Be sure to include text for screen readers**, as we’ve done with `aria-label`.
+Provide an option to dismiss or close a component with `.btn-close`. The icon is rendered with a CSS `mask-image`, so it inherits the `color` from the `.btn-close` class—no inline SVG required. **Include a visually hidden text label** for screen readers and for when CSS fails to load. Prefer that over `aria-label` so browser translation can update the label.
 
-<Example code={`<button type="button" class="btn-close" aria-label="Close"></button>`} />
+<Example code={`<button type="button" class="btn-close">
+  <span class="visually-hidden">Close</span>
+</button>`} />
 
 ## Disabled state
 
 Disabled close buttons change their `opacity`. We’ve also applied `pointer-events: none` and `user-select: none` to preventing hover and active states from triggering.
 
-<Example code={`<button type="button" class="btn-close" disabled aria-label="Close"></button>`} />
+<Example code={`<button type="button" class="btn-close" disabled>
+  <span class="visually-hidden">Close</span>
+</button>`} />
 
 ## Dark variant
 
 Add `data-bs-theme="dark"` to the `.btn-close`, or to its parent element, to invert the close button. This happens automatically when in dark mode.
 
 <Example class="bg-inverse" code={`<div data-bs-theme="dark">
-    <button type="button" class="btn-close" aria-label="Close"></button>
-    <button type="button" class="btn-close" disabled aria-label="Close"></button>
-  </div>`} />
+  <button type="button" class="btn-close">
+    <span class="visually-hidden">Close</span>
+  </button>
+  <button type="button" class="btn-close" disabled>
+    <span class="visually-hidden">Close</span>
+  </button>
+</div>`} />
 
 ## CSS
 

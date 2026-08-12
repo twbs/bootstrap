@@ -649,7 +649,7 @@ export const body_class = 'bg-1'
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
         <div class="alert theme-${themeColor.name} mb-3" role="alert">
           <p>A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</p>
-          <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button>
         </div>
         `)} />
 
@@ -1459,7 +1459,7 @@ export const body_class = 'bg-1'
             <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
             <strong class="me-auto">Bootstrap</strong>
             <small class="fg-2">11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
           </div>
           <div class="toast-body">
             Hello, world! This is a toast message.
@@ -1490,7 +1490,7 @@ export const body_class = 'bg-1'
 <dialog class="dialog" id="exampleDialog">
   <div class="dialog-header">
     <h1 class="dialog-title fs-lg">Dialog title</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog"><span class="visually-hidden">Close</span></button>
   </div>
   <div class="dialog-body">
     <p>This is a native dialog element using Bootstrap's Dialog component.</p>
@@ -1504,7 +1504,7 @@ export const body_class = 'bg-1'
 <dialog class="dialog" id="staticBackdropDialog" data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="dialog-header">
     <h1 class="dialog-title fs-lg">Static backdrop</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog"><span class="visually-hidden">Close</span></button>
   </div>
   <div class="dialog-body">
     <p>I will not close if you click outside of me. Use the close button or press Escape.</p>

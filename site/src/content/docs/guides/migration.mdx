@@ -271,7 +271,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - The expand/collapse icon now uses an `.accordion-icon` element (typically an SVG) inside the summary, replacing the CSS `background-image` approach.
   - Open state styling uses `details[open]` instead of JavaScript-toggled classes.
   - Theme coloring via `.theme-*` classes on the `.accordion` wrapper.
-- **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance, and the `.btn-close-white` class has been removed—on dark backgrounds (e.g., `.text-bg-dark`) the icon now inherits the contrast color automatically.
+- **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance, and the `.btn-close-white` class has been removed—on dark backgrounds (e.g., `.text-bg-dark`) the icon now inherits the contrast color automatically. Docs and examples now label close buttons with `<span class="visually-hidden">Close</span>` instead of `aria-label="Close"`.
 - **Removed `.alert-dismissible`.** Dismissible alerts no longer require the `.alert-dismissible` modifier class. Place a `.btn-close` directly inside the alert—the alert's flex layout positions it automatically. Remove any `.alert-dismissible` class from your markup.
 - **Restructured cards.** Borders now live on `.card-body` and `.card-list` segments rather than a single outer `.card` border. Added `--card-box-shadow` and `--card-body-gap` tokens. New variant classes: `.card-translucent` (frosted glass effect) and `.card-subtle` (themed with subtle backgrounds). Horizontal cards use a new `.card-row` class. Removed `.card-link` class. `.card-body` is now a flex column container. You may need to add `.flex-row` when using additional flex utilities for custom layouts.
 - **Card groups now use container queries.** `.card-group` switches to its attached, equal-width row layout with a `@container` query instead of a viewport `@media` query, so it responds to the width of a parent query container rather than the viewport. Wrap the card group in a query container—e.g. add the `.contains-inline` utility to a parent element—or the cards stay stacked.
@@ -312,7 +312,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
         <div class="drawer-header">
           <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="drawer"><span class="visually-hidden">Close</span></button>
         </div>
         <div class="drawer-body">
           <ul class="nav navbar-nav me-auto">

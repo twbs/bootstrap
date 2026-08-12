@@ -113,7 +113,7 @@ export default () => {
     wrapper.innerHTML = [
       `<div class="alert theme-${type}" role="alert">`,
       `   <p>${message}</p>`,
-      '   <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '   <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button>',
       '</div>'
     ].join('')
 

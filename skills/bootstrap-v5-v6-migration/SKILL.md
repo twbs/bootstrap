@@ -204,7 +204,7 @@ Remove the `.modal-dialog` and `.modal-content` wrappers. Use a single `<dialog>
 <dialog class="dialog" id="exampleDialog">
   <div class="dialog-header">
     <h5 class="dialog-title">Title</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog"><span class="visually-hidden">Close</span></button>
   </div>
   <div class="dialog-body">Content</div>
   <div class="dialog-footer">
@@ -270,11 +270,14 @@ Remove `.dropdown` wrapper and `.dropdown-toggle`. Flatten `<ul><li><a>` to `<di
 
 ### Close button
 
-The markup does **not** change — `.btn-close` stays an empty element. Do **not** add a child SVG (that double-renders the icon). What changed is internal: v6 draws the icon with a CSS `mask` (`--btn-close-icon`) over `background-color: currentcolor`, so the button now inherits the current text `color` instead of a fixed image.
+Do **not** add a child SVG (that double-renders the icon). v6 draws the icon with a CSS `mask` (`--btn-close-icon`) over `background-color: currentcolor`, so the button inherits the current text `color` instead of a fixed image. Prefer a visually hidden text label over `aria-label` for the accessible name.
 
 ```html
-<!-- v5 and v6 — identical markup -->
+<!-- v5 -->
 <button type="button" class="btn-close" aria-label="Close"></button>
+
+<!-- v6 -->
+<button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
 ```
 
 Because the icon is `currentcolor`, the v5 `.btn-close-white` variant is **removed** — to get a light close button, set the text color (e.g. place it in a dark `.theme-*` context or add a `.fg-*` / `color` utility) instead.

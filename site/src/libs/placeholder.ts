@@ -68,7 +68,7 @@ function renderCloseButtonToString(attributes: Record<string, string>): string {
   const targetAttr = target ? ` data-bs-target="${target}"` : ''
   const classValue = extraClass ? `btn-close ${extraClass}` : 'btn-close'
 
-  return `<button type="button" class="${classValue}"${dismissAttr}${targetAttr} aria-label="Close"></button>`
+  return `<button type="button" class="${classValue}"${dismissAttr}${targetAttr}><span class="visually-hidden">Close</span></button>`
 }
 
 /**
