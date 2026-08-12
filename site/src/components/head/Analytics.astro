@@ -5,7 +5,9 @@ const fathomSite = getConfig().analytics.fathom_site
 ---
 
 {/* Load Fathom only after activation so prerendered pages do not inflate views. */}
-<script is:inline set:html={`
+<script
+  is:inline
+  set:html={`
 (() => {
   const loadFathom = () => {
     const script = document.createElement('script')
@@ -21,4 +23,5 @@ const fathomSite = getConfig().analytics.fathom_site
     loadFathom()
   }
 })()
-`} />
+`}
+/>
