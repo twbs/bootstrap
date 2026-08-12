@@ -51,8 +51,13 @@
   }
 
   .bd-example {
+    --bd-example-min-height: 12rem;
+
     position: relative;
-    display: flow-root;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // vertically center the content wrapper
+    min-height: var(--bd-example-min-height);
     padding: var(--bd-example-padding);
     font-size: var(--body-font-size);
     line-height: var(--body-line-height);
@@ -64,41 +69,6 @@
 
     + p {
       margin-top: 2rem;
-    }
-
-    > .tab-content {
-      min-height: 120px;
-      padding: var(--bs-spacer);
-      background-color: var(--bs-bg-1);
-      @include border-radius(var(--bd-example-radius));
-    }
-
-    > .menu.position-static {
-      max-width: fit-content;
-    }
-
-    // > :last-child,
-    > nav:last-child .breadcrumb {
-      margin-bottom: 0;
-    }
-
-    > hr:last-child {
-      margin-bottom: var(--spacer);
-    }
-
-    // Images
-    > svg + svg,
-    > img + img {
-      margin-inline-start: .5rem;
-    }
-
-    // List groups
-    > .list-group {
-      max-width: 400px;
-    }
-
-    > [class*="list-group-horizontal"] {
-      max-width: 100%;
     }
 
     // Navbars
@@ -118,6 +88,68 @@
     // Pagination
     .pagination {
       margin-bottom: 0;
+    }
+  }
+
+  // Preview content wrapper. It keeps normal flow so loose inline items (buttons,
+  // badges, links) stay on one centered line, while block components keep full
+  // width. The frame centers this wrapper vertically.
+  .bd-example-content {
+    display: flow-root;
+    width: 100%;
+    text-align: center;
+    // Inert in normal flow. When an example sets `d-flex`/`d-grid`/`vstack` on
+    // the wrapper, this centers the row on the main axis. Utilities still win.
+    justify-content: center;
+
+    // Keep block-level components left-aligned inside. Only loose inline items
+    // (buttons, badges, links, icons) pick up the centered text-align above.
+    // Utilities still win via layer order, so `.text-center` etc. is unaffected.
+    > * {
+      text-align: start;
+    }
+
+    // Center width-constrained block components (cards, wrappers). Full-width
+    // blocks (alerts, forms) are unaffected. Grid rows keep their negative
+    // gutters, so exclude `.row` and grid containers.
+    > *:not(.row):not([class*="grid"]) {
+      margin-inline: auto;
+    }
+
+    > .tab-content {
+      min-height: 120px;
+      padding: var(--bs-spacer);
+      background-color: var(--bs-bg-1);
+      @include border-radius(var(--bd-example-radius));
+    }
+
+    > .menu.position-static {
+      max-width: fit-content;
+      margin-inline: auto;
+    }
+
+    > nav:last-child .breadcrumb {
+      margin-bottom: 0;
+    }
+
+    > hr:last-child {
+      margin-bottom: var(--spacer);
+    }
+
+    // Images
+    > svg + svg,
+    > img + img {
+      margin-inline-start: .5rem;
+    }
+
+    // List groups
+    > .list-group {
+      max-width: 400px;
+      margin-inline: auto;
+    }
+
+    > [class*="list-group-horizontal"] {
+      max-width: 100%;
     }
   }
 

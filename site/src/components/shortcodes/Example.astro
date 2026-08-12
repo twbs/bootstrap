@@ -86,8 +86,10 @@ const simplifiedMarkup = sourceMarkup
 <div class="bd-example-snippet bd-code-snippet not-prose" data-pagefind-ignore>
   {
     showPreview && (
-      <div id={id} class:list={['bd-example', className]}>
-        <Fragment set:html={markup} />
+      <div id={id} class="bd-example">
+        <div class:list={['bd-example-content', className]}>
+          <Fragment set:html={markup} />
+        </div>
       </div>
     )
   }
