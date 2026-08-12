@@ -3,6 +3,16 @@ import {
   clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
+const setHash = hash => {
+  const url = new URL(window.location.href)
+  url.hash = hash
+  window.history.replaceState(null, '', url)
+}
+
+const clearHash = () => {
+  setHash('')
+}
+
 describe('Tab', () => {
   let fixtureEl
 
@@ -12,6 +22,7 @@ describe('Tab', () => {
 
   afterEach(() => {
     clearFixture()
+    clearHash()
   })
 
   describe('VERSION', () => {
@@ -1242,6 +1253,109 @@ describe('Tab', () => {
           resolve()
         }, 30)
       })
+    })
+  })
+
+  describe('hash target', () => {
+    it('should scroll the trigger, show the pane, then scroll the pane on load', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<ul class="nav nav-tabs" role="tablist">',
+          '  <li class="nav-item" role="presentation"><button type="button" data-bs-toggle="tab" data-bs-target="#homeHash" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
+          '  <li class="nav-item" role="presentation"><button type="button" id="triggerProfileHash" data-bs-toggle="tab" data-bs-target="#profileHash" class="nav-link" role="tab">Profile</button></li>',
+          '</ul>',
+          '<div class="tab-content">',
+          '  <div class="tab-pane active" id="homeHash" role="tabpanel"></div>',
+          '  <div class="tab-pane" id="profileHash" role="tabpanel" data-bs-hash></div>',
+          '</div>'
+        ].join('')
+
+        const trigger = fixtureEl.querySelector('#triggerProfileHash')
+        const pane = fixtureEl.querySelector('#profileHash')
+        const triggerScrollSpy = spyOn(trigger, 'scrollIntoView')
+
+        spyOn(pane, 'scrollIntoView').and.callFake(() => {
+          expect(triggerScrollSpy).toHaveBeenCalled()
+          expect(trigger).toHaveClass('active')
+          expect(pane).toHaveClass('active')
+          resolve()
+        })
+
+        setHash('profileHash')
+        window.dispatchEvent(createEvent('load'))
+      })
+    })
+
+    it('should scroll the trigger, show the pane, then scroll the pane on hashchange', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<ul class="nav nav-tabs" role="tablist">',
+          '  <li class="nav-item" role="presentation"><button type="button" data-bs-toggle="tab" data-bs-target="#homeHashChange" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
+          '  <li class="nav-item" role="presentation"><button type="button" id="triggerProfileHashChange" data-bs-toggle="tab" data-bs-target="#profileHashChange" class="nav-link" role="tab">Profile</button></li>',
+          '</ul>',
+          '<div class="tab-content">',
+          '  <div class="tab-pane active" id="homeHashChange" role="tabpanel"></div>',
+          '  <div class="tab-pane" id="profileHashChange" role="tabpanel" data-bs-hash></div>',
+          '</div>'
+        ].join('')
+
+        const trigger = fixtureEl.querySelector('#triggerProfileHashChange')
+        const pane = fixtureEl.querySelector('#profileHashChange')
+        const triggerScrollSpy = spyOn(trigger, 'scrollIntoView')
+
+        spyOn(pane, 'scrollIntoView').and.callFake(() => {
+          expect(triggerScrollSpy).toHaveBeenCalled()
+          expect(trigger).toHaveClass('active')
+          expect(pane).toHaveClass('active')
+          resolve()
+        })
+
+        setHash('profileHashChange')
+        window.dispatchEvent(createEvent('hashchange'))
+      })
+    })
+
+    it('should scroll an already-active hash tab pane into view', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-toggle="tab" data-bs-target="#homeHashOpen" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane active" id="homeHashOpen" role="tabpanel" data-bs-hash></div>',
+        '</div>'
+      ].join('')
+
+      const pane = fixtureEl.querySelector('#homeHashOpen')
+      const scrollSpy = spyOn(pane, 'scrollIntoView')
+      const showSpy = spyOn(Tab.prototype, 'show').and.callThrough()
+
+      setHash('homeHashOpen')
+      window.dispatchEvent(createEvent('load'))
+
+      expect(showSpy).not.toHaveBeenCalled()
+      expect(scrollSpy).toHaveBeenCalled()
+    })
+
+    it('should ignore tab panes without data-bs-hash', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs" role="tablist">',
+        '  <li class="nav-item" role="presentation"><button type="button" data-bs-toggle="tab" data-bs-target="#homeNoHash" class="nav-link active" role="tab" aria-selected="true">Home</button></li>',
+        '  <li class="nav-item" role="presentation"><button type="button" id="triggerProfileNoHash" data-bs-toggle="tab" data-bs-target="#profileNoHash" class="nav-link" role="tab">Profile</button></li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane active" id="homeNoHash" role="tabpanel"></div>',
+        '  <div class="tab-pane" id="profileNoHash" role="tabpanel"></div>',
+        '</div>'
+      ].join('')
+
+      const trigger = fixtureEl.querySelector('#triggerProfileNoHash')
+      const showSpy = spyOn(Tab.prototype, 'show').and.callThrough()
+
+      setHash('profileNoHash')
+      window.dispatchEvent(createEvent('load'))
+
+      expect(trigger).not.toHaveClass('active')
+      expect(showSpy).not.toHaveBeenCalled()
     })
   })
 })
