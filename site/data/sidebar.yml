@@ -127,6 +127,9 @@
     - title: Breadcrumb
     - title: Button
     - title: Button group
+    - title: Calendar
+      meta:
+        - added: 6.0.0
     - title: Card
     - title: Carousel
     - title: Close button
