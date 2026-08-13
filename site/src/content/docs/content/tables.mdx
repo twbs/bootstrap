@@ -205,7 +205,7 @@ Highlight a table row or cell by adding a `.table-active` class.
 </table>
 `} />
 
-## How do the variants and accented tables work?
+## Variants explained
 
 For the accented tables ([striped rows](#striped-rows), [striped columns](#striped-columns), [hoverable rows](#hoverable-rows), and [active tables](#active-tables)), we used some techniques to make these effects work for all our [table variants](#variants):
 
@@ -225,7 +225,7 @@ Behind the scenes it looks like this:
 
 ## Table borders
 
-### Bordered tables
+### Bordered
 
 Add `.table-bordered` for borders on all sides of the table and cells.
 
@@ -235,7 +235,7 @@ Add `.table-bordered` for borders on all sides of the table and cells.
 
 <Table class="table table-bordered border-primary" />
 
-### Tables without borders
+### No borders
 
 Add `.table-borderless` for a table without borders.
 
@@ -427,7 +427,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
 </table>
 `} />
 
-## How nesting works
+### How nesting works
 
 To prevent *any* styles from leaking to nested tables, we use the child combinator (`>`) selector in our CSS. Since we need to target all the `td`s and `th`s in the `thead`, `tbody`, and `tfoot`, our selector would look pretty long without it. As such, we use the rather odd looking `.table > :not(caption) > * > *` selector to target all `td`s and `th`s of the `.table`, but none of any potential nested tables.
 
@@ -618,6 +618,76 @@ Both `.table-stacked` and `.table-responsive` use container queries, so the `.ta
   <table class="table md:table-stacked">...</table>
 </div>
 ```
+
+## Sticky table headers
+
+Add `.thead-sticky` to a `<thead>` to keep it in view while the `<tbody>` contents scroll. The table needs a scrollable parent, such as a container with a fixed height. Set the `--bs-table-thead-sticky-top` CSS variable to offset any fixed headers or navigation above the table.
+
+<Example code={`<div style="max-height: 300px; overflow-y: auto;">
+  <table class="table" style="--bs-table-thead-sticky-top: 0;">
+    <thead class="thead-sticky">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">9</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>`} />
 
 ## Responsive tables
 

@@ -29,6 +29,8 @@ $table-tokens: defaults(
     --table-hover-color: var(--table-color),
     --table-hover-bg-factor: 7.5%,
     --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
+    --table-thead-sticky-top: 0,
+    --table-thead-sticky-zindex: var(--z-3),
   ),
   $table-tokens
 );
@@ -174,6 +176,17 @@ $table-striped-columns-order: even !default;
       --table-color-state: var(--theme-fg, var(--table-hover-color));
       --table-bg-state: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-hover-bg-factor), transparent);
     }
+  }
+
+  // Sticky table headers
+  //
+  // Add `.thead-sticky` to a `<thead>` to keep it in view while the `<tbody>`
+  // scrolls. Set `--table-thead-sticky-top` to offset any fixed headers.
+
+  .thead-sticky {
+    position: sticky;
+    top: var(--table-thead-sticky-top);
+    z-index: var(--table-thead-sticky-zindex);
   }
 
   // Responsive tables
