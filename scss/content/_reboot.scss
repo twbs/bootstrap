@@ -27,7 +27,8 @@ $type-tokens: defaults(
 );
 // scss-docs-end type-tokens
 
-:root {
+:root,
+:host {
   @include tokens($type-tokens);
 }
 
@@ -81,7 +82,8 @@ $reboot-mark-tokens: defaults(
   // Ability to the value of the root font sizes, affecting the value of `rem`.
   // null by default, thus nothing is generated.
 
-  :root {
+  :root,
+  :host {
     // Assume browser default font-size of 16px, or a user's preference
     accent-color: var(--primary-base);
 

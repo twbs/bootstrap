@@ -27,7 +27,8 @@
           }
         }
         @media (prefers-color-scheme: dark) {
-          :root {
+          :root,
+          :host {
             --custom-color: #{color.mix($indigo, $blue, 50%, oklch)};
           }
         }

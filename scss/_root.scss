@@ -198,7 +198,8 @@ $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
   $root-tokens: map.set($root-tokens, --z-#{$key}, $value);
 }
 
-:root {
+:root,
+:host {
   @include tokens($root-tokens);
 
   color-scheme: light dark;
@@ -210,7 +211,8 @@ $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
 // Deepen shadows in dark mode. The shadow-strength token is a plain number, so it
 // can't use light-dark() (colors only); vary it alongside color-scheme instead.
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root,
+  :host {
     --shadow-strength: 2.4;
   }
 }
