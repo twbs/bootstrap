@@ -2,7 +2,7 @@
 export const title = 'Dropdowns'
 export const extra_css = [
   'dropdowns.css',
-  { href: 'https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.2.0/styles/index.css', integrity: 'sha384-w6sa7pgLkfru8v6gmHWXjKqc5G/LU4dY6r9rv9TseV6CGv4YzaA7zMppsYf6aVSn' }
+  'https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.2.0/styles/index.css'
 ]
 export const extra_js = [
   { src: 'https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.2.0/index.js', integrity: 'sha384-Nmj6AV8cFRUm0oF47PA1CrV2zSb62d7NHV4P9DLKwHb6p/bDfRnDuqKOxz0aPY5R' },
@@ -52,6 +52,7 @@ export const extra_js = [
     <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
   </symbol>
 </svg>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.2.0/styles/index.css" integrity="sha384-w6sa7pgLkfru8v6gmHWXjKqc5G/LU4dY6r9rv9TseV6CGv4YzaA7zMppsYf6aVSn" crossorigin="anonymous" />
 
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
   <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" data-bs-theme="light">
@@ -209,71 +210,15 @@ export const extra_js = [
 
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
   <div class="dropdown-menu d-block position-static p-2 mx-0 shadow rounded-3 w-340px" data-bs-theme="light">
-    <div class="d-grid gap-1">
-      <div id="calendar-light"></div>
-    </div>
+        <div class="d-grid gap-1">
+          <div id="calendar-light"></div>
+        </div>
   </div>
 
   <div class="dropdown-menu d-block position-static p-2 mx-0 shadow rounded-3 w-340px" data-bs-theme="dark">
-    <div class="d-grid gap-1">
-      <div id="calendar-dark"></div>
-            <option value="December">December</option>
-          </select>
-          <button class="btn cal-btn" type="button" aria-label="next month">
-            <svg class="bi" width="16" height="16" aria-hidden="true"><use xlink:href="#arrow-right-short"/></svg>
-          </button>
+        <div class="d-grid gap-1">
+          <div id="calendar-dark"></div>
         </div>
-        <div class="cal-weekdays text-body-secondary">
-          <div class="cal-weekday">Sun</div>
-          <div class="cal-weekday">Mon</div>
-          <div class="cal-weekday">Tue</div>
-          <div class="cal-weekday">Wed</div>
-          <div class="cal-weekday">Thu</div>
-          <div class="cal-weekday">Fri</div>
-          <div class="cal-weekday">Sat</div>
-        </div>
-        <div class="cal-days">
-          <button class="btn cal-btn" disabled type="button">30</button>
-          <button class="btn cal-btn" disabled type="button">31</button>
-
-          <button class="btn cal-btn" type="button">1</button>
-          <button class="btn cal-btn" type="button">2</button>
-          <button class="btn cal-btn" type="button">3</button>
-          <button class="btn cal-btn" type="button">4</button>
-          <button class="btn cal-btn" type="button">5</button>
-          <button class="btn cal-btn" type="button">6</button>
-          <button class="btn cal-btn" type="button">7</button>
-
-          <button class="btn cal-btn" type="button">8</button>
-          <button class="btn cal-btn" type="button">9</button>
-          <button class="btn cal-btn" type="button">10</button>
-          <button class="btn cal-btn" type="button">11</button>
-          <button class="btn cal-btn" type="button">12</button>
-          <button class="btn cal-btn" type="button">13</button>
-          <button class="btn cal-btn" type="button">14</button>
-
-          <button class="btn cal-btn" type="button">15</button>
-          <button class="btn cal-btn" type="button">16</button>
-          <button class="btn cal-btn" type="button">17</button>
-          <button class="btn cal-btn" type="button">18</button>
-          <button class="btn cal-btn" type="button">19</button>
-          <button class="btn cal-btn" type="button">20</button>
-          <button class="btn cal-btn" type="button">21</button>
-
-          <button class="btn cal-btn" type="button">22</button>
-          <button class="btn cal-btn" type="button">23</button>
-          <button class="btn cal-btn" type="button">24</button>
-          <button class="btn cal-btn" type="button">25</button>
-          <button class="btn cal-btn" type="button">26</button>
-          <button class="btn cal-btn" type="button">27</button>
-          <button class="btn cal-btn" type="button">28</button>
-
-          <button class="btn cal-btn" type="button">29</button>
-          <button class="btn cal-btn" type="button">30</button>
-          <button class="btn cal-btn" type="button">31</button>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
