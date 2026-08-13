@@ -69,10 +69,10 @@ const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))
 const isSafeUrl = url => Boolean(SAFE_URL_PATTERN.test(url))
 
 // `srcset` is a comma-separated list of candidates. The first comma in a
-// `data:` URL starts the payload; later commas (with surrounding space) start
-// the next candidate. Do not search the whole remainder for `1x`/`2x`/`w`.
+// `data:` URL starts the payload. A later comma starts the next candidate when
+// what follows looks like a URL (scheme, path, or file), with or without spaces.
 const SRCSET_DESCRIPTOR = /\s+[\d.]+[wx]\s*(?:,|$)/i
-const SRCSET_NEXT_CANDIDATE = /\s*,\s+(?=\S)/
+const SRCSET_NEXT_CANDIDATE = /\s*,\s*(?=[^\s,]*(?:[a-z][a-z0-9+.-]*:|\/|\.))/i
 
 const extractSrcsetUrls = value => {
   const urls = []
