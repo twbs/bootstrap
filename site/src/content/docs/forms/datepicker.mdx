@@ -205,9 +205,31 @@ Use `data-bs-datepicker-theme` to set the datepicker popup’s theme independent
 <Example code={`<label for="datepickerTheme" class="form-label">Light input, dark datepicker</label>
 <input type="text" class="form-control w-12" id="datepickerTheme" data-bs-toggle="datepicker" autocomplete="off" data-bs-datepicker-theme="dark" placeholder="Select a date">`} />
 
+## Shadow DOM
+
+The calendar renders inside a shadow root, which is useful for encapsulated web components. Two things differ from normal use:
+
+- Initialize the datepicker with JavaScript. Delegated events retarget at the shadow boundary, so `data-bs-toggle="datepicker"` does not reach elements inside a shadow root.
+- Adopt Bootstrap’s stylesheet into the shadow root. Document styles do not cross the boundary, so the calendar renders unstyled without it.
+
+```js
+const sheet = new CSSStyleSheet()
+sheet.replaceSync(await (await fetch('/path/to/bootstrap.min.css')).text())
+
+const root = host.attachShadow({ mode: 'open' })
+root.adoptedStyleSheets = [sheet]
+root.innerHTML = '<input type="text" id="shadowDatepicker">'
+
+new bootstrap.Datepicker(root.getElementById('shadowDatepicker'))
+```
+
 ## CSS
 
 ### Variables
+
+The calendar grid and the popup surface use separate token maps. Style an inline calendar with the `--calendar-*` tokens. The `--datepicker-*` tokens only apply to the popup that the datepicker adds.
+
+<ScssDocs name="calendar-tokens" file="scss/_calendar.scss" />
 
 <ScssDocs name="datepicker-tokens" file="scss/_datepicker.scss" />
 
