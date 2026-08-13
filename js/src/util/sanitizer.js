@@ -68,9 +68,11 @@ const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))
 
 const isSafeUrl = url => Boolean(SAFE_URL_PATTERN.test(url))
 
-// `srcset` is a comma-separated list of candidates. Commas also appear inside
-// `data:` URLs, so the whole attribute string cannot be checked as one URI.
+// `srcset` is a comma-separated list of candidates. The first comma in a
+// `data:` URL starts the payload; later commas (with surrounding space) start
+// the next candidate. Do not search the whole remainder for `1x`/`2x`/`w`.
 const SRCSET_DESCRIPTOR = /\s+[\d.]+[wx]\s*(?:,|$)/i
+const SRCSET_NEXT_CANDIDATE = /\s*,\s+(?=\S)/
 
 const extractSrcsetUrls = value => {
   const urls = []
@@ -78,16 +80,33 @@ const extractSrcsetUrls = value => {
 
   while (rest) {
     if (/^data:/i.test(rest)) {
-      const descriptor = rest.match(SRCSET_DESCRIPTOR)
+      const headerComma = rest.indexOf(',')
 
-      if (descriptor) {
-        urls.push(rest.slice(0, descriptor.index).trim())
-        rest = rest.slice(descriptor.index + descriptor[0].length).replace(/^,/, '').trim()
-      } else {
+      if (headerComma === -1) {
         urls.push(rest)
-        rest = ''
+        break
       }
 
+      const payload = rest.slice(headerComma + 1)
+      const descriptor = payload.match(SRCSET_DESCRIPTOR)
+      const nextCandidate = payload.match(SRCSET_NEXT_CANDIDATE)
+      const descriptorAt = descriptor ? descriptor.index : Number.POSITIVE_INFINITY
+      const nextAt = nextCandidate ? nextCandidate.index : Number.POSITIVE_INFINITY
+
+      if (nextAt !== Number.POSITIVE_INFINITY && nextAt <= descriptorAt) {
+        urls.push(rest.slice(0, headerComma + 1 + nextAt).trim())
+        rest = payload.slice(nextAt).replace(/^,/, '').trim()
+        continue
+      }
+
+      if (descriptor) {
+        urls.push(rest.slice(0, headerComma + 1 + descriptor.index).trim())
+        rest = payload.slice(descriptor.index + descriptor[0].length).replace(/^,/, '').trim()
+        continue
+      }
+
+      urls.push(rest)
+      rest = ''
       continue
     }
 

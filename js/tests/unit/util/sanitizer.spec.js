@@ -190,6 +190,16 @@ describe('Sanitizer', () => {
       expect(result).not.toContain('srcset')
     })
 
+    it('should drop srcset when a data: candidate is followed by an unsafe candidate', () => {
+      // eslint-disable-next-line no-script-url
+      const unsafeSrcset = 'javascript:alert(1)'
+      const template = `<img src="safe.jpg" srcset="data:image/png;base64,AAAA , ${unsafeSrcset} 2x">`
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).not.toContain('srcset')
+    })
+
     it('should keep a data-URI srcset whose commas belong to the payload', () => {
       const dataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/'
       const template = `<img src="safe.jpg" srcset="${dataUrl} 1x">`
