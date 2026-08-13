@@ -171,6 +171,7 @@ describe('Sanitizer', () => {
     })
 
     it('should drop srcset when any candidate is a javascript: URL', () => {
+      // eslint-disable-next-line no-script-url -- fixture for the sanitizer
       const template = '<img src="safe.jpg" srcset="javascript:alert(1)">'
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
@@ -180,6 +181,7 @@ describe('Sanitizer', () => {
     })
 
     it('should drop a mixed srcset if one candidate is unsafe', () => {
+      // eslint-disable-next-line no-script-url -- fixture for the sanitizer
       const template = '<img src="safe.jpg" srcset="safe.jpg 1x, javascript:alert(1) 2x">'
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
