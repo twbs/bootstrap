@@ -133,6 +133,17 @@ With an SVG:
     </svg>
   </a>`} />
 
+### Interactive tooltips
+
+Move the pointer onto the tip to reach interactive content inside it, such as a link. The tooltip stays open while the pointer is over the trigger or the tip. It hides when the pointer leaves both, or when you press the <kbd>Escape</kbd> key. This helps satisfy the [WCAG 1.4.13 “Content on Hover or Focus”](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html) success criterion.
+
+<Example class="tooltip-demo" addStackblitzJs code={`<button type="button" class="btn-solid theme-primary"
+          data-bs-toggle="tooltip"
+          data-bs-html="true"
+          data-bs-title="Read the <a href='https://getbootstrap.com/'>full docs</a> for more.">
+    Hover, then move onto the tip
+  </button>`} />
+
 ### Disabled elements
 
 Elements with the `disabled` attribute aren’t interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
@@ -201,7 +212,7 @@ The required markup for a tooltip is only a `data` attribute and `title` on the 
 **Keep tooltips accessible to keyboard and assistive technology users** by only adding them to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). While other HTML elements can be made focusable by adding `tabindex="0"`, this can create annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce tooltips in this situation. Additionally, do not rely solely on `hover` as the trigger for your tooltips as this will make them impossible to trigger for keyboard users.
 </Callout>
 
-A shown tooltip can be dismissed by pressing the <kbd>Escape</kbd> key, helping satisfy the [WCAG 1.4.13 “Content on Hover or Focus”](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html) success criterion. As with dropdown menus, a tooltip shown inside a dialog is dismissed on its own: the first <kbd>Escape</kbd> closes the tooltip and a subsequent one closes the dialog.
+A shown tooltip can be dismissed by pressing the <kbd>Escape</kbd> key, helping satisfy the [WCAG 1.4.13 “Content on Hover or Focus”](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html) success criterion. The tooltip also stays open while the pointer moves onto the tip, so users can reach interactive content inside it. As with dropdown menus, a tooltip shown inside a dialog is dismissed on its own: the first <kbd>Escape</kbd> closes the tooltip and a subsequent one closes the dialog.
 
 ```html
 <!-- HTML to write -->
