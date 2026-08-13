@@ -1,0 +1,98 @@
+---
+title: Calendar
+description: The date grid that powers the datepicker. Render it inline for a standalone calendar, and style it with its own set of tokens.
+toc: true
+css_layer: components
+js: required
+deps:
+  - title: Datepicker
+  - title: Vanilla Calendar Pro
+    url: https://vanilla-calendar.pro/
+---
+
+## How it works
+
+The calendar is the date grid: the header, the weekdays, the dates, and the month and year views. The [datepicker]([[docsref:/forms/datepicker]]) adds the popup surface around it and binds it to a form control.
+
+- [Vanilla Calendar Pro](https://vanilla-calendar.pro/) builds the markup. Bootstrap styles the `data-vc-*` attributes it writes.
+- Bootstrap has no separate `Calendar` class. Render a calendar with the datepicker’s `inline` option.
+- A calendar renders unadorned. It has no background, border, or padding, so it sits in your own container.
+- The datepicker adds the popup surface only when it owns a popup. Style the two parts apart with `--calendar-*` and `--datepicker-*` tokens.
+
+Add `data-bs-inline="true"` to render a calendar instead of a popup. Bootstrap initializes inline calendars on page load, so they need no extra JavaScript.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true"></div>`} />
+
+Point at the month or the year in the header to switch to the month or year view.
+
+## Examples
+
+### In a card
+
+A calendar inherits the page background and adds no padding of its own. Put it in a [card]([[docsref:/components/card]]) to give it a surface.
+
+<Example code={`<div class="card w-fit">
+    <div class="card-body">
+      <div data-bs-toggle="datepicker" data-bs-inline="true"></div>
+    </div>
+  </div>`} />
+
+### Range selection
+
+Add `data-bs-selection-mode="multiple-ranged"` to select a start date and an end date.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-selection-mode="multiple-ranged"></div>`} />
+
+### Multiple dates
+
+Add `data-bs-selection-mode="multiple"` to select any number of dates.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-selection-mode="multiple"></div>`} />
+
+### Multiple months
+
+Add `data-bs-display-months-count` to show more than one month side by side.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-display-months-count="2"></div>`} />
+
+### Form binding
+
+Put a hidden input inside the calendar to submit the selection with a form. Bootstrap writes the selected dates to it in `YYYY-MM-DD` format, separated by commas.
+
+<Example code={`<form>
+    <div data-bs-toggle="datepicker" data-bs-inline="true">
+      <input type="hidden" name="selected_date">
+    </div>
+    <button type="submit" class="btn-solid theme-primary mt-3">Submit</button>
+  </form>`} />
+
+## Color modes
+
+The calendar follows Bootstrap’s color modes. Set `data-bs-theme` on any ancestor and the calendar picks it up.
+
+<Example code={`<div data-bs-theme="dark" class="p-3 bg-body rounded w-fit">
+    <div data-bs-toggle="datepicker" data-bs-inline="true"></div>
+  </div>`} />
+
+## Accessibility
+
+Vanilla Calendar Pro marks up the grid with `role="grid"`, `role="row"`, and `role="gridcell"`, and it labels each date. It also handles keyboard navigation. Give the calendar an accessible name when the surrounding content does not already name it.
+
+## Usage
+
+The calendar has no JavaScript of its own. Use the [datepicker]([[docsref:/forms/datepicker]]) for options, methods, and events, and pass `inline: true` to render a calendar.
+
+```js
+const calendar = new bootstrap.Datepicker(element, {
+  inline: true,
+  selectionMode: 'multiple-ranged'
+})
+```
+
+## CSS
+
+### Variables
+
+The calendar owns the tokens for the grid. The datepicker owns the tokens for the popup surface, such as its background, border, and shadow. Override the `--calendar-*` tokens to restyle a calendar in both places at once.
+
+<ScssDocs name="calendar-tokens" file="scss/_calendar.scss" />

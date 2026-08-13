@@ -209,7 +209,7 @@ Use `data-bs-datepicker-theme` to set the datepicker popup’s theme independent
 
 The calendar renders inside a shadow root, which is useful for encapsulated web components. Two things differ from normal use:
 
-- Initialize the datepicker with JavaScript. Delegated events retarget at the shadow boundary, so `data-bs-toggle="datepicker"` does not reach elements inside a shadow root.
+- Initialize the datepicker with JavaScript. Delegated events change their target at the shadow boundary, so `data-bs-toggle="datepicker"` does not reach elements inside a shadow root.
 - Adopt Bootstrap’s stylesheet into the shadow root. Document styles do not cross the boundary, so the calendar renders unstyled without it.
 
 ```js
