@@ -79,6 +79,11 @@ $form-floating-tokens: defaults(
         color: transparent;
       }
 
+      // Show the placeholder once focused so the floated label has a hint.
+      &:focus::placeholder {
+        color: var(--control-placeholder-color);
+      }
+
       &:focus,
       &:not(:placeholder-shown) {
         padding-top: var(--form-floating-input-padding-t);
@@ -155,6 +160,41 @@ $form-floating-tokens: defaults(
     > label:has(~ :disabled),
     > label:has(~ .form-control:disabled) { // Required for `.form-control`s because of specificity
       color: var(--form-floating-label-disabled-color);
+    }
+  }
+
+  // Opt in to an always-floated label with a visible placeholder. Works on the
+  // `.form-floating` itself or as a wrapper around one.
+  .form-floating-always {
+    &.form-floating,
+    .form-floating {
+      > .form-control {
+        padding-top: var(--form-floating-input-padding-t);
+        padding-bottom: var(--form-floating-input-padding-b);
+
+        &::placeholder,
+        &:focus::placeholder {
+          color: var(--control-placeholder-color);
+        }
+      }
+
+      > label {
+        transform: var(--form-floating-label-transform);
+      }
+
+      > label:has(~ textarea)::after {
+        position: absolute;
+        inset: var(--form-floating-padding-y) calc(var(--form-floating-padding-x) * .5);
+        z-index: -1;
+        height: var(--form-floating-label-height);
+        content: "";
+        background-color: var(--form-floating-label-bg);
+        @include border-radius(var(--btn-input-border-radius));
+      }
+
+      > label:has(~ textarea:disabled)::after {
+        background-color: var(--form-floating-label-disabled-bg);
+      }
     }
   }
 }
