@@ -159,5 +159,62 @@ describe('Sanitizer', () => {
       expect(firstResult).toContain('src')
       expect(secondResult).toContain('src')
     })
+
+    it('should keep safe srcset candidates', () => {
+      const template = '<img src="safe.jpg" srcset="safe.jpg 1x, /images/two.png 2x">'
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).toContain('srcset=')
+      expect(result).toContain('safe.jpg')
+      expect(result).toContain('/images/two.png')
+    })
+
+    it('should drop srcset when any candidate is a javascript: URL', () => {
+      const template = '<img src="safe.jpg" srcset="javascript:alert(1)">'
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).not.toContain('srcset')
+      expect(result).not.toContain('javascript:')
+    })
+
+    it('should drop a mixed srcset if one candidate is unsafe', () => {
+      const template = '<img src="safe.jpg" srcset="safe.jpg 1x, javascript:alert(1) 2x">'
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).not.toContain('srcset')
+      expect(result).not.toContain('javascript:')
+    })
+
+    it('should keep a data-URI srcset whose commas belong to the payload', () => {
+      const dataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/'
+      const template = `<img src="safe.jpg" srcset="${dataUrl} 1x">`
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).toContain('srcset=')
+      expect(result).toContain('data:image/png;base64,')
+    })
+
+    it('should return an empty string if DOMParser is unavailable', () => {
+      const original = window.DOMParser
+      window.DOMParser = undefined
+
+      const result = sanitizeHtml('<div><a href="https://example.com">x</a></div>', DefaultAllowlist, null)
+
+      window.DOMParser = original
+
+      expect(result).toEqual('')
+    })
+
+    it('should return an empty string if DOMParser throws', () => {
+      spyOn(DOMParser.prototype, 'parseFromString').and.throwError('clobbered')
+
+      const result = sanitizeHtml('<div>content</div>', DefaultAllowlist, null)
+
+      expect(result).toEqual('')
+    })
   })
 })

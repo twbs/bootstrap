@@ -54,6 +54,7 @@ const uriAttributes = new Set([
   'longdesc',
   'poster',
   'src',
+  'srcset',
   'xlink:href'
 ])
 
@@ -65,12 +66,56 @@ const uriAttributes = new Set([
  */
 const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i
 
+const isSafeUrl = url => Boolean(SAFE_URL_PATTERN.test(url))
+
+// `srcset` is a comma-separated list of candidates. Commas also appear inside
+// `data:` URLs, so the whole attribute string cannot be checked as one URI.
+const SRCSET_DESCRIPTOR = /\s+[\d.]+[wx]\s*(?:,|$)/i
+
+const extractSrcsetUrls = value => {
+  const urls = []
+  let rest = String(value).trim()
+
+  while (rest) {
+    if (/^data:/i.test(rest)) {
+      const descriptor = rest.match(SRCSET_DESCRIPTOR)
+
+      if (descriptor) {
+        urls.push(rest.slice(0, descriptor.index).trim())
+        rest = rest.slice(descriptor.index + descriptor[0].length).replace(/^,/, '').trim()
+      } else {
+        urls.push(rest)
+        rest = ''
+      }
+
+      continue
+    }
+
+    const commaIndex = rest.indexOf(',')
+    const candidate = (commaIndex === -1 ? rest : rest.slice(0, commaIndex)).trim()
+    const url = candidate.split(/\s+/, 1)[0]
+
+    if (url) {
+      urls.push(url)
+    }
+
+    rest = commaIndex === -1 ? '' : rest.slice(commaIndex + 1).trim()
+  }
+
+  return urls
+}
+
 const allowedAttribute = (attribute, allowedAttributeList) => {
   const attributeName = attribute.nodeName.toLowerCase()
 
   if (allowedAttributeList.includes(attributeName)) {
+    if (attributeName === 'srcset') {
+      const urls = extractSrcsetUrls(attribute.nodeValue)
+      return urls.length > 0 && urls.every(url => isSafeUrl(url))
+    }
+
     if (uriAttributes.has(attributeName)) {
-      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue))
+      return isSafeUrl(attribute.nodeValue)
     }
 
     return true
@@ -90,8 +135,25 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
     return sanitizeFunction(unsafeHtml)
   }
 
-  const domParser = new window.DOMParser()
-  const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
+  // Fail closed if the parser is missing, clobbered, or throws. Returning the
+  // original string here would skip sanitization (the Bootstrap 3 DOM-clobber
+  // pattern). Returning an empty string drops the HTML instead.
+  let createdDocument
+
+  try {
+    if (typeof window.DOMParser !== 'function') {
+      return ''
+    }
+
+    createdDocument = new window.DOMParser().parseFromString(unsafeHtml, 'text/html')
+
+    if (!createdDocument || !createdDocument.body) {
+      return ''
+    }
+  } catch {
+    return ''
+  }
+
   const elements = [].concat(...createdDocument.body.querySelectorAll('*'))
 
   for (const element of elements) {
