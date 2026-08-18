@@ -1,0 +1,51 @@
+@use "sass:map";
+
+// Configure a custom theme through the entrypoint. This fails if `bootstrap.scss`
+// does not forward the `theme` module. See twbs/bootstrap#42847.
+@use "../../bootstrap" as * with (
+  $theme-colors: (
+    "custom": (
+      "base": black,
+      "bg": black,
+    ),
+  )
+);
+
+$true-terminal-output: false;
+
+@include describe("Theme color configuration") {
+  @include describe("@use bootstrap with $theme-colors") {
+    @include it("should add a custom theme through the entrypoint") {
+      @include assert-equal(
+        map.get(map.get($theme-colors, "custom"), "base"),
+        black,
+        "The custom theme base color should be configurable via @use ... with"
+      );
+    }
+
+    @include it("should merge custom themes on top of the built-ins") {
+      @include assert-true(
+        map.has-key($theme-colors, "primary"),
+        "Adding a theme must not drop the built-in primary theme"
+      );
+    }
+
+    @include it("should emit CSS custom properties for the custom theme") {
+      @include assert() {
+        @include output() {
+          .test {
+            base: map.get(map.get($theme-colors, "custom"), "base");
+            bg: map.get(map.get($theme-colors, "custom"), "bg");
+          }
+        }
+
+        @include expect() {
+          .test {
+            base: black;
+            bg: black;
+          }
+        }
+      }
+    }
+  }
+}

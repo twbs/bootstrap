@@ -206,17 +206,18 @@ Bootstrap includes several Sass maps that generate families of related CSS custo
 
 The `$theme-colors` map defines the semantic color palette. Each entry is a nested map with sub-keys like `base`, `text`, `bg`, `border`, and more. See the [Theme documentation]([[docsref:/customize/theme]]) for the full map, sub-key reference, and usage examples.
 
-To modify, add, or remove theme colors at compile time:
+To add, modify, or remove theme colors at compile time, configure `$theme-colors` through the main entrypoint with `@use ... with ()`. `defaults()` merges your map on top of the built-ins, so the standard themes stay intact and you only add what you need:
 
 ```scss
-@use "sass:map";
-@use "../node_modules/bootstrap/scss/theme" with (
+@use "../node_modules/bootstrap/scss/bootstrap" with (
   $theme-colors: (
-    "primary": (
+    "brand": (
       "base": var(--indigo-500),
-      "text": light-dark(var(--indigo-600), var(--indigo-400)),
+      "fg": light-dark(var(--indigo-600), var(--indigo-400)),
+      "fg-emphasis": light-dark(var(--indigo-800), var(--indigo-300)),
       "bg": var(--indigo-500),
       "bg-subtle": light-dark(var(--indigo-100), var(--indigo-900)),
+      "bg-muted": light-dark(var(--indigo-200), var(--indigo-800)),
       "border": light-dark(var(--indigo-300), var(--indigo-600)),
       "focus-ring": light-dark(color-mix(in oklch, var(--indigo-500) 50%, var(--bg-body)), color-mix(in oklch, var(--indigo-500) 75%, var(--bg-body))),
       "contrast": var(--white)
@@ -224,6 +225,10 @@ To modify, add, or remove theme colors at compile time:
   )
 );
 ```
+
+<Callout type="warning">
+Each theme color is a **nested** map, so the merge is one level deep. To change one sub-key of a built-in theme, pass the whole sub-map for that theme. A partial sub-map replaces the theme’s other sub-keys rather than merging with them. To remove a theme, set its key to `null`.
+</Callout>
 
 ### Global token maps
 
