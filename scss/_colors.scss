@@ -60,23 +60,33 @@ $color-mix-space: lab !default;
 $tint-color: var(--white) !default;
 $shade-color: var(--black) !default;
 
-$color-tints: (
-  "025": 94%,
-  "050": 90%,
-  "100": 80%,
-  "200": 60%,
-  "300": 40%,
-  "400": 20%,
-) !default;
+$color-tints: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$color-tints: defaults(
+  (
+    "025": 94%,
+    "050": 90%,
+    "100": 80%,
+    "200": 60%,
+    "300": 40%,
+    "400": 20%,
+  ),
+  $color-tints
+);
 
-$color-shades: (
-  "600": 16%,
-  "700": 32%,
-  "800": 48%,
-  "900": 64%,
-  "950": 76%,
-  "975": 88%,
-) !default;
+$color-shades: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$color-shades: defaults(
+  (
+    "600": 16%,
+    "700": 32%,
+    "800": 48%,
+    "900": 64%,
+    "950": 76%,
+    "975": 88%,
+  ),
+  $color-shades
+);
 // scss-docs-end color-mix-options
 
 // scss-docs-start color-tokens

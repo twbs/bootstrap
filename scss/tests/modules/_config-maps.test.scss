@@ -1,0 +1,45 @@
+@use "sass:map";
+
+// Configure global config maps through the entrypoint. This checks that
+// `defaults()` merges overrides on top of the built-ins instead of replacing
+// the whole map.
+@use "../../bootstrap" as * with (
+  $spacers: (
+    "custom": 4rem,
+  ),
+  $badge-variants: (
+    "brand": (
+      "color": "contrast",
+      "bg": "bg",
+      "border-color": "transparent"
+    ),
+  )
+);
+
+$true-terminal-output: false;
+
+@include describe("Config map configuration") {
+  @include describe("@use bootstrap with config maps") {
+    @include it("should add a custom spacer and keep the built-ins") {
+      @include assert-true(
+        map.has-key($spacers, "custom"),
+        "The custom spacer should be configurable via @use ... with"
+      );
+      @include assert-true(
+        map.has-key($spacers, 3),
+        "Adding a spacer must not drop the built-in spacers"
+      );
+    }
+
+    @include it("should add a custom badge variant and keep the built-ins") {
+      @include assert-true(
+        map.has-key($badge-variants, "brand"),
+        "The custom badge variant should merge on top of the built-ins"
+      );
+      @include assert-true(
+        map.has-key($badge-variants, "subtle"),
+        "Adding a variant must not drop the built-in badge variants"
+      );
+    }
+  }
+}
