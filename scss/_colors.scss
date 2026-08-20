@@ -107,6 +107,7 @@ $-color-defaults: () !default;
 $color-tokens: defaults($-color-defaults, $color-tokens);
 // scss-docs-end color-tokens
 
-:root {
+:root,
+:host {
   @include tokens($color-tokens);
 }
