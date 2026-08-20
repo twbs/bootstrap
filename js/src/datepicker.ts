@@ -191,8 +191,6 @@ class Datepicker extends BaseComponent {
       this._themeObserver = null
     }
 
-    // The focus listener lives on `document`, so `BaseComponent.dispose()`, which
-    // only clears listeners on `this._element`, cannot remove it.
     if (this._onFocusIn) {
       EventHandler.off(document, EVENT_FOCUSIN, this._onFocusIn)
     }
@@ -354,11 +352,7 @@ class Datepicker extends BaseComponent {
     })
   }
 
-  // Vanilla Calendar Pro closes the popup on an outside click and on Escape, but
-  // it ignores focus. It also mounts the popup on `<body>`, not inside the
-  // trigger, so a listener on the trigger never sees focus leave the calendar.
-  // Watch focus on the document instead, and close when focus lands outside both
-  // the trigger and the calendar.
+  // VCP ignores focus and mounts the popup on `<body>`.
   protected _setupDismissOnFocus(): void {
     if (this._isInline) {
       return
@@ -372,9 +366,6 @@ class Datepicker extends BaseComponent {
       const { target } = event
       const mainElement = this._calendar?.context?.mainElement
 
-      // Focus stayed on the trigger or moved into the calendar popup. A focusin
-      // only fires when focus actually moves, so a click on the calendar's own
-      // padding raises no event and leaves the popup open, which VCP owns.
       if (target instanceof Node && (this._element.contains(target) || mainElement?.contains(target))) {
         return
       }
@@ -408,7 +399,6 @@ class Datepicker extends BaseComponent {
         this._syncThemeAttribute(self.context.mainElement)
       },
       onShow: () => {
-        // Vanilla Calendar Pro defers the popup, so this can land after `dispose()`.
         if (!this._calendar) {
           return
         }

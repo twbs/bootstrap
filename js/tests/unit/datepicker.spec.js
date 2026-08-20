@@ -872,10 +872,6 @@ describe('Datepicker', () => {
     })
   })
 
-  // Vanilla Calendar Pro hides the popup on an outside click and on Escape, but
-  // it never reacts to focus, and it mounts the popup on `<body>`. A document
-  // focus listener closes the popup when focus lands outside both the trigger
-  // and the calendar.
   describe('dismiss on focus', () => {
     const showDatepicker = (html = '<input type="text" data-bs-toggle="datepicker">') => {
       fixtureEl.innerHTML = `${html}<button type="button" id="outside">Outside</button>`
@@ -910,8 +906,6 @@ describe('Datepicker', () => {
       })
     })
 
-    // The popup mounts on `<body>`, so focus moving into it never bubbles
-    // through the trigger. The listener must still keep the popup open.
     it('should not hide when focus moves into the calendar', () => {
       return showDatepicker().then(({ datepicker }) => {
         const dateBtn = datepicker._calendar.context.mainElement.querySelector('[data-vc-date-btn]')
