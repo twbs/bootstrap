@@ -1,0 +1,85 @@
+---
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+
+const { baseURL, repo } = getConfig()
+const skillsSource = new URL(repo).pathname.slice(1)
+const skillsInstall = `npx skills add ${skillsSource}`
+const llmsUrl = new URL('/llms.txt', baseURL).href
+const agentPrompt = `Read ${llmsUrl} so I can ask questions about Bootstrap 6.`
+const chatgptHref = `https://chatgpt.com/?q=${encodeURIComponent(agentPrompt)}`
+const claudeHref = `https://claude.ai/new?q=${encodeURIComponent(agentPrompt)}`
+---
+
+<script>
+  document.querySelectorAll('[data-bd-agents-copy]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const text = button.getAttribute('data-clipboard-text')
+
+      if (!text) {
+        return
+      }
+
+      try {
+        await navigator.clipboard.writeText(text)
+      } catch {
+        return
+      }
+
+      const useEl = button.querySelector('.bi use')
+      const originalHref = useEl?.getAttribute('href')
+
+      if (!useEl || originalHref === '#check2') {
+        return
+      }
+
+      useEl.setAttribute('href', '#check2')
+
+      setTimeout(() => {
+        if (originalHref) {
+          useEl.setAttribute('href', originalHref)
+        }
+      }, 2000)
+    })
+  })
+</script>
+
+<button
+  class="btn-solid btn-styled theme-inverse btn-lg fw-medium"
+  type="button"
+  data-bs-toggle="menu"
+  data-bs-auto-close="outside"
+  data-bs-placement="bottom-end"
+  aria-expanded="false"
+>
+  <svg class="bi" aria-hidden="true"><use href="#rocket-takeoff-fill"></use></svg>
+  For Agents
+  <svg class="bi me--1" aria-hidden="true"><use href="#chevron-expand"></use></svg>
+</button>
+<div class="menu border-keyline" style="--bs-menu-min-width: 14rem;">
+  <button
+    class="menu-item"
+    type="button"
+    data-bd-agents-copy
+    data-clipboard-text={skillsInstall}
+  >
+    Install v6 migration skill
+    <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#copy"></use></svg>
+  </button>
+  <hr class="menu-divider" />
+  <a class="menu-item" href={getVersionedDocsPath('getting-started/ai')}>
+    Bootstrap & AI docs
+  </a>
+  <a class="menu-item" href={getVersionedDocsPath('getting-started/ai#skills')}>
+    Explore all skills
+  </a>
+  <hr class="menu-divider" />
+  <a class="menu-item" href={chatgptHref} rel="noopener" target="_blank">
+    Ask ChatGPT
+    <svg class="bi bi-sm ms-auto fg-3" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+  </a>
+  <a class="menu-item" href={claudeHref} rel="noopener" target="_blank">
+    Ask Claude
+    <svg class="bi bi-sm ms-auto fg-3" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+  </a>
+</div>
