@@ -2,6 +2,7 @@
 import { getConfig } from '@libs/config'
 import { getVersionedDocsPath } from '@libs/path'
 import Ads from '@components/Ads.astro'
+import ForAgents from '@components/home/ForAgents.astro'
 import CodeCopy from '@components/shortcodes/CodeCopy.astro'
 ---
 
@@ -33,9 +34,10 @@ import CodeCopy from '@components/shortcodes/CodeCopy.astro'
           href={getVersionedDocsPath('getting-started/install')}
           class="btn-solid btn-styled theme-accent btn-lg justify-content-center fw-medium"
         >
-          <svg class="bi me-2" aria-hidden="true"><use href="#book-half"></use></svg>
+          <svg class="bi" aria-hidden="true"><use href="#book-half"></use></svg>
           Read the docs
         </a>
+        <ForAgents />
       </div>
       <p class="fg-2 mb-0">
         Currently <strong>v{getConfig().current_version}</strong>
