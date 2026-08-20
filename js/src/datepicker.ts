@@ -34,6 +34,7 @@ const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_FOCUSIN = `focusin${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY}${DATA_API_KEY}`
 
@@ -111,6 +112,7 @@ class Datepicker extends BaseComponent {
   protected declare _positionElement: HTMLElement
   protected declare _displayElement: HTMLElement | false | null
   protected declare _themeObserver: MutationObserver | null
+  protected declare _onFocusIn: (event: Event) => void
 
   constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null) {
     super(element, config)
@@ -189,6 +191,12 @@ class Datepicker extends BaseComponent {
       this._themeObserver = null
     }
 
+    // The focus listener lives on `document`, so `BaseComponent.dispose()`, which
+    // only clears listeners on `this._element`, cannot remove it.
+    if (this._onFocusIn) {
+      EventHandler.off(document, EVENT_FOCUSIN, this._onFocusIn)
+    }
+
     if (this._calendar) {
       this._calendar.destroy()
     }
@@ -230,6 +238,8 @@ class Datepicker extends BaseComponent {
 
     // Watch for theme changes on ancestor elements (for live theme switching)
     this._setupThemeObserver()
+
+    this._setupDismissOnFocus()
 
     // Set initial value if input has a value
     if (this._isInput && this._element.value) {
@@ -344,6 +354,37 @@ class Datepicker extends BaseComponent {
     })
   }
 
+  // Vanilla Calendar Pro closes the popup on an outside click and on Escape, but
+  // it ignores focus. It also mounts the popup on `<body>`, not inside the
+  // trigger, so a listener on the trigger never sees focus leave the calendar.
+  // Watch focus on the document instead, and close when focus lands outside both
+  // the trigger and the calendar.
+  protected _setupDismissOnFocus(): void {
+    if (this._isInline) {
+      return
+    }
+
+    this._onFocusIn = event => {
+      if (!this._isShown) {
+        return
+      }
+
+      const { target } = event
+      const mainElement = this._calendar?.context?.mainElement
+
+      // Focus stayed on the trigger or moved into the calendar popup. A focusin
+      // only fires when focus actually moves, so a click on the calendar's own
+      // padding raises no event and leaves the popup open, which VCP owns.
+      if (target instanceof Node && (this._element.contains(target) || mainElement?.contains(target))) {
+        return
+      }
+
+      this.hide()
+    }
+
+    EventHandler.on(document, EVENT_FOCUSIN, this._onFocusIn)
+  }
+
   protected _buildCalendarOptions(): Options {
     // Get theme for VCP - use 'system' for auto-detection if no explicit theme
     const theme = this._getEffectiveTheme()
@@ -367,8 +408,13 @@ class Datepicker extends BaseComponent {
         this._syncThemeAttribute(self.context.mainElement)
       },
       onShow: () => {
+        // Vanilla Calendar Pro defers the popup, so this can land after `dispose()`.
+        if (!this._calendar) {
+          return
+        }
+
         this._isShown = true
-        this._syncThemeAttribute(this._calendar!.context.mainElement)
+        this._syncThemeAttribute(this._calendar.context.mainElement)
       },
       onHide: () => {
         this._isShown = false

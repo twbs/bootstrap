@@ -2425,6 +2425,7 @@ const EVENT_SHOW$4 = `show${EVENT_KEY$12}`;
 const EVENT_SHOWN$3 = `shown${EVENT_KEY$12}`;
 const EVENT_HIDE$3 = `hide${EVENT_KEY$12}`;
 const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$12}`;
+const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$12}`;
 const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$12}${DATA_API_KEY$7}`;
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$12}${DATA_API_KEY$7}`;
 const SELECTOR_DATA_TOGGLE$6 = "[data-bs-toggle=\"datepicker\"]";
@@ -2505,6 +2506,7 @@ var Datepicker = class extends BaseComponent {
 			this._themeObserver.disconnect();
 			this._themeObserver = null;
 		}
+		if (this._onFocusIn) EventHandler.off(document, EVENT_FOCUSIN$3, this._onFocusIn);
 		if (this._calendar) this._calendar.destroy();
 		this._calendar = null;
 		super.dispose();
@@ -2526,6 +2528,7 @@ var Datepicker = class extends BaseComponent {
 		this._calendar = new Calendar(this._positionElement, calendarOptions);
 		this._calendar.init();
 		this._setupThemeObserver();
+		this._setupDismissOnFocus();
 		if (this._isInput && this._element.value) this._parseInputValue();
 		this._updateDisplayWithSelectedDates();
 	}
@@ -2577,6 +2580,17 @@ var Datepicker = class extends BaseComponent {
 			attributeFilter: ["data-bs-theme"]
 		});
 	}
+	_setupDismissOnFocus() {
+		if (this._isInline) return;
+		this._onFocusIn = (event) => {
+			if (!this._isShown) return;
+			const { target } = event;
+			const mainElement = this._calendar?.context?.mainElement;
+			if (target instanceof Node && (this._element.contains(target) || mainElement?.contains(target))) return;
+			this.hide();
+		};
+		EventHandler.on(document, EVENT_FOCUSIN$3, this._onFocusIn);
+	}
 	_buildCalendarOptions() {
 		const theme = this._getEffectiveTheme();
 		const vcpTheme = !theme || theme === "auto" ? "system" : theme;
@@ -2597,6 +2611,7 @@ var Datepicker = class extends BaseComponent {
 				this._syncThemeAttribute(self.context.mainElement);
 			},
 			onShow: () => {
+				if (!this._calendar) return;
 				this._isShown = true;
 				this._syncThemeAttribute(this._calendar.context.mainElement);
 			},

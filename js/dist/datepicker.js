@@ -25,6 +25,7 @@ const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
+const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY}${DATA_API_KEY}`;
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"datepicker\"]";
@@ -105,6 +106,7 @@ var Datepicker = class extends BaseComponent {
 			this._themeObserver.disconnect();
 			this._themeObserver = null;
 		}
+		if (this._onFocusIn) EventHandler.off(document, EVENT_FOCUSIN, this._onFocusIn);
 		if (this._calendar) this._calendar.destroy();
 		this._calendar = null;
 		super.dispose();
@@ -126,6 +128,7 @@ var Datepicker = class extends BaseComponent {
 		this._calendar = new Calendar(this._positionElement, calendarOptions);
 		this._calendar.init();
 		this._setupThemeObserver();
+		this._setupDismissOnFocus();
 		if (this._isInput && this._element.value) this._parseInputValue();
 		this._updateDisplayWithSelectedDates();
 	}
@@ -177,6 +180,17 @@ var Datepicker = class extends BaseComponent {
 			attributeFilter: ["data-bs-theme"]
 		});
 	}
+	_setupDismissOnFocus() {
+		if (this._isInline) return;
+		this._onFocusIn = (event) => {
+			if (!this._isShown) return;
+			const { target } = event;
+			const mainElement = this._calendar?.context?.mainElement;
+			if (target instanceof Node && (this._element.contains(target) || mainElement?.contains(target))) return;
+			this.hide();
+		};
+		EventHandler.on(document, EVENT_FOCUSIN, this._onFocusIn);
+	}
 	_buildCalendarOptions() {
 		const theme = this._getEffectiveTheme();
 		const vcpTheme = !theme || theme === "auto" ? "system" : theme;
@@ -197,6 +211,7 @@ var Datepicker = class extends BaseComponent {
 				this._syncThemeAttribute(self.context.mainElement);
 			},
 			onShow: () => {
+				if (!this._calendar) return;
 				this._isShown = true;
 				this._syncThemeAttribute(this._calendar.context.mainElement);
 			},
