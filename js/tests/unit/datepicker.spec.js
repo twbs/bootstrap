@@ -872,6 +872,91 @@ describe('Datepicker', () => {
     })
   })
 
+  describe('dismiss on focus', () => {
+    const showDatepicker = (html = '<input type="text" data-bs-toggle="datepicker">') => {
+      fixtureEl.innerHTML = `${html}<button type="button" id="outside">Outside</button>`
+
+      const triggerEl = fixtureEl.querySelector('[data-bs-toggle="datepicker"]')
+      const datepicker = new Datepicker(triggerEl)
+
+      return datepicker.show().then(() => ({ datepicker, triggerEl }))
+    }
+
+    const focusInto = element => {
+      element.dispatchEvent(new FocusEvent('focusin', { bubbles: true }))
+    }
+
+    it('should hide when focus moves to an element outside the calendar', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        expect(datepicker._isShown).toBeTrue()
+
+        focusInto(fixtureEl.querySelector('#outside'))
+
+        expect(datepicker._isShown).toBeFalse()
+      })
+    })
+
+    it('should hide a button trigger when focus moves outside', () => {
+      return showDatepicker('<button type="button" data-bs-toggle="datepicker">Select date</button>').then(({ datepicker }) => {
+        expect(datepicker._isShown).toBeTrue()
+
+        focusInto(fixtureEl.querySelector('#outside'))
+
+        expect(datepicker._isShown).toBeFalse()
+      })
+    })
+
+    it('should not hide when focus moves into the calendar', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        const dateBtn = datepicker._calendar.context.mainElement.querySelector('[data-vc-date-btn]')
+
+        focusInto(dateBtn)
+
+        expect(datepicker._isShown).toBeTrue()
+      })
+    })
+
+    it('should not hide when focus stays on the trigger', () => {
+      return showDatepicker().then(({ datepicker, triggerEl }) => {
+        focusInto(triggerEl)
+
+        expect(datepicker._isShown).toBeTrue()
+      })
+    })
+
+    it('should not hide when the popup is not shown', async () => {
+      const { datepicker } = await showDatepicker()
+      await datepicker.hide()
+
+      const hideSpy = spyOn(datepicker, 'hide')
+
+      focusInto(fixtureEl.querySelector('#outside'))
+
+      expect(hideSpy).not.toHaveBeenCalled()
+    })
+
+    it('should not register a listener for inline datepickers', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-inline="true"></div><button type="button" id="outside">Outside</button>'
+
+      const divEl = fixtureEl.querySelector('div')
+      const datepicker = new Datepicker(divEl)
+
+      expect(datepicker._onFocusIn).toBeUndefined()
+      expect(datepicker._isInline).toBeTrue()
+    })
+
+    it('should remove the document listener on dispose', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        const handler = datepicker._onFocusIn
+        const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+
+        datepicker.dispose()
+
+        expect(offSpy).toHaveBeenCalledWith(document, 'focusin.bs.datepicker', handler)
+      })
+    })
+  })
+
   describe('getInstance', () => {
     it('should return datepicker instance', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
