@@ -3561,7 +3561,7 @@ EventHandler.on(document, "DOMContentLoaded", () => {
 });
 //#endregion
 //#region node_modules/vanilla-calendar-pro/index.mjs
-/*! name: vanilla-calendar-pro v3.2.0 | url: https://github.com/uvarov-frontend/vanilla-calendar-pro */
+/*! name: vanilla-calendar-pro v3.1.0 | url: https://github.com/uvarov-frontend/vanilla-calendar-pro */
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
 var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
@@ -3582,10 +3582,8 @@ var __spreadValues = (e, t) => {
 var __spreadProps = (e, t) => __defProps(e, __getOwnPropDescs(t));
 var __publicField = (e, t, n) => (__defNormalProp(e, "symbol" != typeof t ? t + "" : t, n), n);
 const errorMessages = {
-	notFoundSelector: (e) => `${e} is not found, check the first argument passed to new Calendar. If the element lives inside a Shadow DOM, a string selector can't reach it - resolve the element yourself (e.g. shadowRoot.querySelector(...)) and pass it directly instead.`,
+	notFoundSelector: (e) => `${e} is not found, check the first argument passed to new Calendar.`,
 	notInit: "The calendar has not been initialized, please initialize it using the \"init()\" method first.",
-	alreadyInit: "The calendar has already been initialized, calling init() again is not allowed. Create a new Calendar instance instead.",
-	alreadyDestroyed: "The calendar has already been destroyed, calling destroy() again is not allowed.",
 	notLocale: "You specified an incorrect language label or did not specify the required number of values ​​for «locale.weekdays» or «locale.months».",
 	incorrectTime: "The value of the time property can be: false, 12 or 24.",
 	incorrectMonthsCount: "For the «multiple» calendar type, the «displayMonthsCount» parameter can have a value from 2 to 12, and for all others it cannot be greater than 1."
@@ -3594,12 +3592,10 @@ const setContext = (e, t, n) => {
 	e.context[t] = n;
 };
 const destroy = (e) => {
-	var t, n, a, o, l, s, i;
+	var t, n, a, o, l;
 	if (!e.context.isInit) throw new Error(errorMessages.notInit);
-	if (e.context.isDestroyed) throw new Error(errorMessages.alreadyDestroyed);
-	null == (n = (t = e.context).cleanupSystemTheme) || n.call(t), e.inputMode ? (e.context.mainElement !== e.context.inputElement && (null == (a = e.context.mainElement.parentElement) || a.removeChild(e.context.mainElement)), null == (l = null == (o = e.context.inputElement) ? void 0 : o.replaceWith) || l.call(o, e.context.originalElement), setContext(e, "inputElement", void 0)) : null == (i = (s = e.context.mainElement).replaceWith) || i.call(s, e.context.originalElement), setContext(e, "mainElement", e.context.originalElement), setContext(e, "isDestroyed", !0), e.onDestroy && e.onDestroy(e);
+	e.inputMode ? (null == (t = e.context.mainElement.parentElement) || t.removeChild(e.context.mainElement), null == (a = null == (n = e.context.inputElement) ? void 0 : n.replaceWith) || a.call(n, e.context.originalElement), setContext(e, "inputElement", void 0)) : null == (l = (o = e.context.mainElement).replaceWith) || l.call(o, e.context.originalElement), setContext(e, "mainElement", e.context.originalElement), e.onDestroy && e.onDestroy(e);
 };
-const getRootNode = (e) => e.getRootNode ? e.getRootNode() : document;
 const skipOpenOnFocus = /* @__PURE__ */ new WeakSet();
 const shouldSkipOpenOnFocus = (e) => skipOpenOnFocus.has(e);
 const setSkipOpenOnFocus = (e) => {
@@ -3633,23 +3629,10 @@ const restoreTabbing = (e) => {
 };
 const hide = (e) => {
 	if (e.context.isShowInInputMode && e.context.currentType) {
-		if (e.context.mainElement.dataset.vcCalendarHidden = "", setContext(e, "isShowInInputMode", !1), e.inputMode && disableTabbing(e.context.mainElement), e.context.cleanupHandlers[0] && (e.context.cleanupHandlers.forEach(((e) => e())), setContext(e, "cleanupHandlers", [])), e.inputMode && e.context.inputElement && e.context.mainElement.contains(getRootNode(e.context.mainElement).activeElement)) ("function" == typeof e.openOnFocus || !0 === e.openOnFocus) && setSkipOpenOnFocus(e), e.context.inputElement.focus();
+		if (e.context.mainElement.dataset.vcCalendarHidden = "", setContext(e, "isShowInInputMode", !1), e.inputMode && disableTabbing(e.context.mainElement), e.context.cleanupHandlers[0] && (e.context.cleanupHandlers.forEach(((e) => e())), setContext(e, "cleanupHandlers", [])), e.inputMode && e.context.inputElement && e.context.mainElement.contains(document.activeElement)) ("function" == typeof e.openOnFocus || !0 === e.openOnFocus) && setSkipOpenOnFocus(e), e.context.inputElement.focus();
 		e.onHide && e.onHide(e);
 	}
 };
-const getDate = (e) => /* @__PURE__ */ new Date(`${e}T00:00:00`);
-const getDateString = (e) => `${e.getFullYear()}-${String(e.getMonth() + 1).padStart(2, "0")}-${String(e.getDate()).padStart(2, "0")}`;
-const parseDates = (e) => e.reduce(((e, t) => {
-	if (t instanceof Date || "number" == typeof t) {
-		const n = t instanceof Date ? t : new Date(t);
-		e.push(getDateString(n));
-	} else t.match(/^(\d{4}-\d{2}-\d{2})$/g) ? e.push(t) : t.replace(/(\d{4}-\d{2}-\d{2}).*?(\d{4}-\d{2}-\d{2})/g, ((t, n, a) => {
-		const o = getDate(n), l = getDate(a), s = new Date(o.getTime());
-		for (; s <= l; s.setDate(s.getDate() + 1)) e.push(getDateString(s));
-		return t;
-	}));
-	return e;
-}), []);
 function getOffset(e) {
 	if (!e || !e.getBoundingClientRect) return {
 		top: 0,
@@ -3744,10 +3727,21 @@ const handleDay = (e, t, n, a) => {
 };
 const createDatePopup = (e, t) => {
 	var n;
-	e.popups && (null == (n = Object.entries(e.popups)) || n.forEach((([n, a]) => {
-		parseDates([n]).forEach(((n) => handleDay(e, n, a, t)));
-	})));
+	e.popups && (null == (n = Object.entries(e.popups)) || n.forEach((([n, a]) => handleDay(e, n, a, t))));
 };
+const getDate = (e) => /* @__PURE__ */ new Date(`${e}T00:00:00`);
+const getDateString = (e) => `${e.getFullYear()}-${String(e.getMonth() + 1).padStart(2, "0")}-${String(e.getDate()).padStart(2, "0")}`;
+const parseDates = (e) => e.reduce(((e, t) => {
+	if (t instanceof Date || "number" == typeof t) {
+		const n = t instanceof Date ? t : new Date(t);
+		e.push(n.toISOString().substring(0, 10));
+	} else t.match(/^(\d{4}-\d{2}-\d{2})$/g) ? e.push(t) : t.replace(/(\d{4}-\d{2}-\d{2}).*?(\d{4}-\d{2}-\d{2})/g, ((t, n, a) => {
+		const o = getDate(n), l = getDate(a), s = new Date(o.getTime());
+		for (; s <= l; s.setDate(s.getDate() + 1)) e.push(getDateString(s));
+		return t;
+	}));
+	return e;
+}), []);
 const updateAttribute = (e, t, n, a = "") => {
 	t ? e.setAttribute(n, a) : e.getAttribute(n) === a && e.removeAttribute(n);
 };
@@ -3764,7 +3758,7 @@ const setDateModifier = (e, t, n, a, o, l, s) => {
 const getLocaleString = (e, t, n) => (/* @__PURE__ */ new Date(`${e}T00:00:00.000Z`)).toLocaleString(t, n);
 const getWeekNumber = (e, t) => {
 	const n = getDate(e), a = (n.getDay() - t + 7) % 7;
-	n.setDate(n.getDate() + 3 - a);
+	n.setDate(n.getDate() + 4 - a);
 	const o = new Date(n.getFullYear(), 0, 1), l = Math.ceil(((+n - +o) / 864e5 + 1) / 7);
 	return {
 		year: n.getFullYear(),
@@ -3845,19 +3839,19 @@ const createDates = (e) => {
 };
 const layoutDefault = (e) => `\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <#WeekNumbers />\n    <div class="${e.styles.content}" data-vc="content" role="grid">\n      <#Week />\n      <#Dates />\n      <#DateRangeTooltip />\n    </div>\n  </div>\n  <#ControlTime />\n`;
 const layoutMonths = (e) => `\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <div class="${e.styles.content}" data-vc="content">\n      <#Months />\n    </div>\n  </div>\n`;
-const layoutMultiple = (e) => `\n  <div class="${e.styles.controls}" data-vc="controls" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.grid}" data-vc="grid">\n    <#Multiple>\n      <div class="${e.styles.column}" data-vc="column" role="region">\n        <div class="${e.styles.header}" data-vc="header">\n          <div class="${e.styles.headerContent}" data-vc-header="content">\n            <#Month />\n            <#Year />\n          </div>\n        </div>\n        <div class="${e.styles.wrapper}" data-vc="wrapper">\n          <#WeekNumbers />\n          <div class="${e.styles.content}" data-vc="content" role="grid" aria-multiselectable="true">\n            <#Week />\n            <#Dates />\n          </div>\n        </div>\n      </div>\n    <#/Multiple>\n    <#DateRangeTooltip />\n  </div>\n  <#ControlTime />\n`;
+const layoutMultiple = (e) => `\n  <div class="${e.styles.controls}" data-vc="controls" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.grid}" data-vc="grid">\n    <#Multiple>\n      <div class="${e.styles.column}" data-vc="column" role="region">\n        <div class="${e.styles.header}" data-vc="header">\n          <div class="${e.styles.headerContent}" data-vc-header="content">\n            <#Month />\n            <#Year />\n          </div>\n        </div>\n        <div class="${e.styles.wrapper}" data-vc="wrapper">\n          <#WeekNumbers />\n          <div class="${e.styles.content}" data-vc="content" role="grid">\n            <#Week />\n            <#Dates />\n          </div>\n        </div>\n      </div>\n    <#/Multiple>\n    <#DateRangeTooltip />\n  </div>\n  <#ControlTime />\n`;
 const layoutYears = (e) => `\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [year] />\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n    <#ArrowNext [year] />\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <div class="${e.styles.content}" data-vc="content">\n      <#Years />\n    </div>\n  </div>\n`;
 const ArrowNext = (e, t) => `<button type="button" class="${e.styles.arrowNext}" data-vc-arrow="next" aria-label="${e.labels.arrowNext[t]}"></button>`;
 const ArrowPrev = (e, t) => `<button type="button" class="${e.styles.arrowPrev}" data-vc-arrow="prev" aria-label="${e.labels.arrowPrev[t]}"></button>`;
 const ControlTime = (e) => e.selectionTimeMode ? `<div class="${e.styles.time}" data-vc="time" role="group" aria-label="${e.labels.selectingTime}"></div>` : "";
 const DateRangeTooltip = (e) => e.onCreateDateRangeTooltip ? `<div class="${e.styles.dateRangeTooltip}" data-vc-date-range-tooltip="hidden"></div>` : "";
-const Dates = (e) => `<div class="${e.styles.dates}" data-vc="dates" role="rowgroup" aria-label="${e.labels.dates}"></div>`;
+const Dates = (e) => `<div class="${e.styles.dates}" data-vc="dates" aria-live="assertive" aria-label="${e.labels.dates}" ${"multiple" === e.type ? "aria-multiselectable" : ""}></div>`;
 const Month = (e) => `<button type="button" class="${e.styles.month}" data-vc="month"></button>`;
-const Months = (e) => `<div class="${e.styles.months}" data-vc="months" role="grid" aria-label="${e.labels.months}"></div>`;
+const Months = (e) => `<div class="${e.styles.months}" data-vc="months" role="grid" aria-live="assertive" aria-label="${e.labels.months}"></div>`;
 const Week = (e) => `<div class="${e.styles.week}" data-vc="week" role="row" aria-label="${e.labels.week}"></div>`;
 const WeekNumbers = (e) => e.enableWeekNumbers ? `<div class="${e.styles.weekNumbers}" data-vc-week="numbers" role="row" aria-label="${e.labels.weekNumber}"></div>` : "";
 const Year = (e) => `<button type="button" class="${e.styles.year}" data-vc="year"></button>`;
-const Years = (e) => `<div class="${e.styles.years}" data-vc="years" role="grid" aria-label="${e.labels.years}"></div>`;
+const Years = (e) => `<div class="${e.styles.years}" data-vc="years" role="grid" aria-live="assertive" aria-label="${e.labels.years}"></div>`;
 const components = {
 	ArrowNext,
 	ArrowPrev,
@@ -3948,11 +3942,11 @@ const visibilityTitle = (e) => {
 	[t, n].forEach(((t) => null == t ? void 0 : t.forEach(((t, n) => visibilityHandler(e, t, n, a, t.dataset.vc)))));
 };
 const setYearModifier = (e, t, n, a, o) => {
-	var l, s;
-	const i = {
+	var l;
+	const s = {
 		month: "[data-vc-months-month]",
 		year: "[data-vc-years-year]"
-	}, r = {
+	}, i = {
 		month: {
 			selected: "data-vc-months-month-selected",
 			aria: "aria-selected",
@@ -3966,10 +3960,9 @@ const setYearModifier = (e, t, n, a, o) => {
 			selectedProperty: "selectedYear"
 		}
 	};
-	o && (null == (l = e.context.mainElement.querySelectorAll(i[n])) || l.forEach(((e) => {
-		var t;
-		e.removeAttribute(r[n].selected), null == (t = e.parentElement) || t.removeAttribute(r[n].aria);
-	})), setContext(e, r[n].selectedProperty, Number(t.dataset[r[n].value])), visibilityTitle(e), "year" === n && visibilityArrows(e)), a && (t.setAttribute(r[n].selected, ""), null == (s = t.parentElement) || s.setAttribute(r[n].aria, "true"));
+	o && (null == (l = e.context.mainElement.querySelectorAll(s[n])) || l.forEach(((e) => {
+		e.removeAttribute(i[n].selected), e.removeAttribute(i[n].aria);
+	})), setContext(e, i[n].selectedProperty, Number(t.dataset[i[n].value])), visibilityTitle(e), "year" === n && visibilityArrows(e)), a && (t.setAttribute(i[n].selected, ""), t.setAttribute(i[n].aria, "true"));
 };
 const getColumnID = (e, t) => {
 	var n;
@@ -3984,10 +3977,8 @@ const getColumnID = (e, t) => {
 	};
 };
 const createMonthEl = (e, t, n, a, o, l, s) => {
-	const i = document.createElement("div");
-	i.className = e.styles.monthsCell, i.dataset.vcMonths = "cell", i.role = "gridcell";
-	const r = t.cloneNode(!1);
-	return r.className = e.styles.monthsMonth, r.innerText = a, r.ariaLabel = o, r.dataset.vcMonthsMonth = `${s}`, l && (r.ariaDisabled = "true"), l && (r.tabIndex = -1), r.disabled = l, i.appendChild(r), setYearModifier(e, r, "month", n === s, !1), i;
+	const i = t.cloneNode(!1);
+	return i.className = e.styles.monthsMonth, i.innerText = a, i.ariaLabel = o, i.role = "gridcell", i.dataset.vcMonthsMonth = `${s}`, l && (i.ariaDisabled = "true"), l && (i.tabIndex = -1), i.disabled = l, setYearModifier(e, i, "month", n === s, !1), i;
 };
 const createMonths = (e, t) => {
 	var n, a;
@@ -3996,12 +3987,10 @@ const createMonths = (e, t) => {
 	const i = e.context.mainElement.querySelector("[data-vc=\"months\"]");
 	if (!e.selectionMonthsMode || !i) return;
 	const r = e.monthsToSwitch > 1 ? e.context.locale.months.long.map(((t, n) => s - e.monthsToSwitch * n)).concat(e.context.locale.months.long.map(((t, n) => s + e.monthsToSwitch * n))).filter(((e) => e >= 0 && e <= 12)) : Array.from(Array(12).keys()), c = document.createElement("button");
-	let d;
 	c.type = "button";
 	for (let t = 0; t < 12; t++) {
-		t % 4 == 0 && (d = document.createElement("div"), d.className = e.styles.monthsRow, d.dataset.vcMonths = "row", d.role = "row", i.appendChild(d));
-		const n = getDate(e.context.dateMin), a = getDate(e.context.dateMax), o = e.context.displayMonthsCount - 1, { columnID: u } = getColumnID(e, "month"), m = l <= n.getFullYear() && t < n.getMonth() + u || l >= a.getFullYear() && t > a.getMonth() - o + u || l > a.getFullYear() || t !== s && !r.includes(t), p = createMonthEl(e, c, s, e.context.locale.months.short[t], e.context.locale.months.long[t], m, t);
-		d?.appendChild(p), e.onCreateMonthEls && e.onCreateMonthEls(e, p);
+		const n = getDate(e.context.dateMin), a = getDate(e.context.dateMax), o = e.context.displayMonthsCount - 1, { columnID: d } = getColumnID(e, "month"), u = l <= n.getFullYear() && t < n.getMonth() + d || l >= a.getFullYear() && t > a.getMonth() - o + d || l > a.getFullYear() || t !== s && !r.includes(t), m = createMonthEl(e, c, s, e.context.locale.months.short[t], e.context.locale.months.long[t], u, t);
+		i.appendChild(m), e.onCreateMonthEls && e.onCreateMonthEls(e, m);
 	}
 	null == (a = e.context.mainElement.querySelector("[data-vc-months-month]:not([disabled])")) || a.focus();
 };
@@ -4180,10 +4169,8 @@ const createWeek = (e) => {
 	}));
 };
 const createYearEl = (e, t, n, a, o) => {
-	const l = document.createElement("div");
-	l.className = e.styles.yearsCell, l.dataset.vcYears = "cell", l.role = "gridcell";
-	const s = t.cloneNode(!1);
-	return s.className = e.styles.yearsYear, s.innerText = String(o), s.ariaLabel = String(o), s.dataset.vcYearsYear = `${o}`, a && (s.ariaDisabled = "true"), a && (s.tabIndex = -1), s.disabled = a, l.appendChild(s), setYearModifier(e, s, "year", n === o, !1), l;
+	const l = t.cloneNode(!1);
+	return l.className = e.styles.yearsYear, l.innerText = String(o), l.ariaLabel = String(o), l.role = "gridcell", l.dataset.vcYearsYear = `${o}`, a && (l.ariaDisabled = "true"), a && (l.tabIndex = -1), l.disabled = a, setYearModifier(e, l, "year", n === o, !1), l;
 };
 const createYears = (e, t) => {
 	var n;
@@ -4192,12 +4179,10 @@ const createYears = (e, t) => {
 	const o = e.context.mainElement.querySelector("[data-vc=\"years\"]");
 	if (!e.selectionYearsMode || !o) return;
 	const l = "multiple" !== e.type || e.context.selectedYear === a ? 0 : 1, s = document.createElement("button");
-	let i;
 	s.type = "button";
 	for (let t = e.context.displayYear - 7; t < e.context.displayYear + 8; t++) {
-		(t - (e.context.displayYear - 7)) % 5 == 0 && (i = document.createElement("div"), i.className = e.styles.yearsRow, i.dataset.vcYears = "row", i.role = "row", o.appendChild(i));
-		const n = t < getDate(e.context.dateMin).getFullYear() + l || t > getDate(e.context.dateMax).getFullYear(), r = createYearEl(e, s, a, n, t);
-		i?.appendChild(r), e.onCreateYearEls && e.onCreateYearEls(e, r);
+		const n = t < getDate(e.context.dateMin).getFullYear() + l || t > getDate(e.context.dateMax).getFullYear(), i = createYearEl(e, s, a, n, t);
+		o.appendChild(i), e.onCreateYearEls && e.onCreateYearEls(e, i);
 	}
 	null == (n = e.context.mainElement.querySelector("[data-vc-years-year]:not([disabled])")) || n.focus();
 };
@@ -4215,17 +4200,12 @@ const haveListener = {
 	check: () => haveListener.value
 };
 const setTheme = (e, t) => e.dataset.vcTheme = t;
-const addMediaQueryListener = (e, t) => e.addEventListener ? (e.addEventListener("change", t), () => e.removeEventListener("change", t)) : (e.addListener(t), () => e.removeListener(t));
 const trackChangesThemeInSystemSettings = (e, t) => {
-	if (setTheme(e.context.mainElement, t.matches ? "dark" : "light"), "system" !== e.selectedTheme || e.context.cleanupSystemTheme) return;
-	if (getRootNode(e.context.mainElement) !== document) {
-		setContext(e, "cleanupSystemTheme", addMediaQueryListener(t, ((t) => setTheme(e.context.mainElement, t.matches ? "dark" : "light"))));
-		return;
-	}
-	if (haveListener.check()) return;
-	addMediaQueryListener(t, ((e) => {
+	if (setTheme(e.context.mainElement, t.matches ? "dark" : "light"), "system" !== e.selectedTheme || haveListener.check()) return;
+	const n = (e) => {
 		document.querySelectorAll("[data-vc=\"calendar\"]")?.forEach(((t) => setTheme(t, e.matches ? "dark" : "light")));
-	})), haveListener.set();
+	};
+	t.addEventListener ? t.addEventListener("change", n) : t.addListener(n), haveListener.set();
 };
 const detectTheme = (e, t) => {
 	const n = e.themeAttrDetect.length ? document.querySelector(e.themeAttrDetect) : null, a = e.themeAttrDetect.replace(/^.*\[(.+)\]/g, ((e, t) => t));
@@ -4281,12 +4261,6 @@ const create = (e) => {
 		month: () => createMonths(e),
 		year: () => createYears(e)
 	}[e.context.currentType]();
-};
-const updateDateModifiers = (e) => {
-	e.context.mainElement.querySelectorAll("[data-vc-date]").forEach(((t) => {
-		const n = t.querySelector("[data-vc-date-btn]"), a = t.dataset.vcDate, o = getDate(a).getDay();
-		setDateModifier(e, e.context.selectedYear, t, n, o, a, "current");
-	}));
 };
 const handleArrowKeys = (e) => {
 	const t = (t) => {
@@ -4425,6 +4399,12 @@ const handleSelectDateRange = (e, t) => {
 		}
 	})[1 === e.context.selectedDates.length ? "set" : "reset"]();
 };
+const updateDateModifier = (e) => {
+	e.context.mainElement.querySelectorAll("[data-vc-date]").forEach(((t) => {
+		const n = t.querySelector("[data-vc-date-btn]"), a = t.dataset.vcDate, o = getDate(a).getDay();
+		setDateModifier(e, e.context.selectedYear, t, n, o, a, "current");
+	}));
+};
 const handleClickDate = (e, t) => {
 	var n;
 	const a = t.target, o = a.closest("[data-vc-date-btn]");
@@ -4441,9 +4421,9 @@ const handleClickDate = (e, t) => {
 	})[e.selectionDatesMode](), null == (n = e.context.selectedDates) || n.sort(((e, t) => +new Date(e) - +new Date(t))), e.onClickDate && e.onClickDate(e, t), e.inputMode && e.context.inputElement && e.context.mainElement && e.onChangeToInput && e.onChangeToInput(e, t);
 	const s = a.closest("[data-vc-date-month=\"prev\"]"), i = a.closest("[data-vc-date-month=\"next\"]");
 	({
-		prev: () => e.enableMonthChangeOnDayClick ? handleMonth(e, "prev") : updateDateModifiers(e),
-		next: () => e.enableMonthChangeOnDayClick ? handleMonth(e, "next") : updateDateModifiers(e),
-		current: () => updateDateModifiers(e)
+		prev: () => e.enableMonthChangeOnDayClick ? handleMonth(e, "prev") : updateDateModifier(e),
+		next: () => e.enableMonthChangeOnDayClick ? handleMonth(e, "next") : updateDateModifier(e),
+		current: () => updateDateModifier(e)
 	})[s ? "prev" : i ? "next" : "current"]();
 };
 const typeClick = ["month", "year"];
@@ -4607,9 +4587,7 @@ const reset = (e, { year: t, month: n, dates: a, time: o, locale: l }, s = !0) =
 };
 const createToInput = (e) => {
 	const t = document.createElement("div");
-	t.className = e.styles.calendar, t.dataset.vc = "calendar", t.dataset.vcInput = "", t.dataset.vcCalendarHidden = "";
-	const n = getRootNode(e.context.mainElement), a = n === document ? document.body : n;
-	return setContext(e, "inputModeInit", !0), setContext(e, "isShowInInputMode", !1), setContext(e, "mainElement", t), a.appendChild(e.context.mainElement), reset(e, {
+	return t.className = e.styles.calendar, t.dataset.vc = "calendar", t.dataset.vcInput = "", t.dataset.vcCalendarHidden = "", setContext(e, "inputModeInit", !0), setContext(e, "isShowInInputMode", !1), setContext(e, "mainElement", t), document.body.appendChild(e.context.mainElement), reset(e, {
 		year: !0,
 		month: !0,
 		dates: !0,
@@ -4638,7 +4616,7 @@ const handleInput = (e) => {
 		(n || a) && ((t) => {
 			var n;
 			if (!e.context.isShowInInputMode) return !1;
-			if (getRootNode(e.context.mainElement).activeElement !== e.context.inputElement) return !1;
+			if (document.activeElement !== e.context.inputElement) return !1;
 			const a = (e) => e.tabIndex >= 0 && !e.hasAttribute("disabled") && "true" !== e.getAttribute("aria-disabled"), o = null != (n = document.createTreeWalker(e.context.mainElement, NodeFilter.SHOW_ELEMENT, { acceptNode: (e) => a(e) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP }).nextNode()) ? n : a(e.context.mainElement) ? e.context.mainElement : null;
 			!o || o.tabIndex < 0 || (t.preventDefault(), o.focus());
 		})(t);
@@ -4647,10 +4625,7 @@ const handleInput = (e) => {
 		e.context.inputElement.removeEventListener("click", t), n && e.context.inputElement.removeEventListener("focus", a), e.context.inputElement.removeEventListener("keydown", o);
 	};
 };
-const init = (e) => {
-	if (e.context.isInit) throw new Error(errorMessages.alreadyInit);
-	return setContext(e, "originalElement", e.context.mainElement.cloneNode(!0)), setContext(e, "isInit", !0), e.inputMode ? handleInput(e) : (initAllVariables(e), create(e), "multiple-ranged" === e.selectionDatesMode && 1 === e.context.selectedDates.length && (handleSelectDateRange(e, null), updateDateModifiers(e)), e.onInit && e.onInit(e), handleArrowKeys(e), handleClick(e));
-};
+const init = (e) => (setContext(e, "originalElement", e.context.mainElement.cloneNode(!0)), setContext(e, "isInit", !0), e.inputMode ? handleInput(e) : (initAllVariables(e), create(e), e.onInit && e.onInit(e), handleArrowKeys(e), handleClick(e)));
 const update = (e, t) => {
 	if (!e.context.isInit) throw new Error(errorMessages.notInit);
 	reset(e, __spreadValues(__spreadValues({}, {
@@ -4665,7 +4640,7 @@ const replaceProperties = (e, t) => {
 	const n = Object.keys(t);
 	for (let a = 0; a < n.length; a++) {
 		const o = n[a];
-		"object" != typeof e[o] || null === e[o] || "object" != typeof t[o] || null === t[o] || t[o] instanceof Date || Array.isArray(t[o]) ? void 0 !== t[o] && (e[o] = t[o]) : replaceProperties(e[o], t[o]);
+		"object" != typeof e[o] || "object" != typeof t[o] || t[o] instanceof Date || Array.isArray(t[o]) ? void 0 !== t[o] && (e[o] = t[o]) : replaceProperties(e[o], t[o]);
 	}
 };
 const set = (e, t, n) => {
@@ -4712,9 +4687,7 @@ const show = (e) => {
 	};
 	document.addEventListener("keydown", n), e.context.cleanupHandlers.push((() => document.removeEventListener("keydown", n)));
 	const a = (t) => {
-		var n;
-		const a = null != (n = t.composedPath()[0]) ? n : t.target;
-		a === e.context.inputElement || e.context.mainElement.contains(a) || hide(e);
+		t.target === e.context.inputElement || e.context.mainElement.contains(t.target) || hide(e);
 	};
 	document.addEventListener("click", a, { capture: !0 }), e.context.cleanupHandlers.push((() => document.removeEventListener("click", a, { capture: !0 }))), e.onShow && e.onShow(e);
 };
@@ -4757,12 +4730,8 @@ const styles = {
 	wrapper: "vc-wrapper",
 	content: "vc-content",
 	months: "vc-months",
-	monthsRow: "vc-months__row",
-	monthsCell: "vc-months__cell",
 	monthsMonth: "vc-months__month",
 	years: "vc-years",
-	yearsRow: "vc-years__row",
-	yearsCell: "vc-years__cell",
 	yearsYear: "vc-years__year",
 	week: "vc-week",
 	weekDay: "vc-week__day",
@@ -4797,10 +4766,7 @@ var OptionsCalendar = class {
 const _Calendar = class e extends OptionsCalendar {
 	constructor(t, n) {
 		var a;
-		super(), __publicField(this, "init", (() => init(this))), __publicField(this, "update", ((e) => update(this, e))), __publicField(this, "destroy", (() => {
-			const t = this.inputMode ? this.context.inputElement : this.context.mainElement;
-			if (destroy(this), t) for (const [n, a] of e.memoizedElements) a === t && e.memoizedElements.delete(n);
-		})), __publicField(this, "show", (() => show(this))), __publicField(this, "hide", (() => hide(this))), __publicField(this, "set", ((e, t) => set(this, e, t))), __publicField(this, "context"), this.context = __spreadProps(__spreadValues({}, this.context), { locale: {
+		super(), __publicField(this, "init", (() => init(this))), __publicField(this, "update", ((e) => update(this, e))), __publicField(this, "destroy", (() => destroy(this))), __publicField(this, "show", (() => show(this))), __publicField(this, "hide", (() => hide(this))), __publicField(this, "set", ((e, t) => set(this, e, t))), __publicField(this, "context"), this.context = __spreadProps(__spreadValues({}, this.context), { locale: {
 			months: {
 				short: [],
 				long: []
@@ -4838,7 +4804,6 @@ const EVENT_SHOW$4 = `show${EVENT_KEY$12}`;
 const EVENT_SHOWN$3 = `shown${EVENT_KEY$12}`;
 const EVENT_HIDE$3 = `hide${EVENT_KEY$12}`;
 const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$12}`;
-const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$12}`;
 const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$12}${DATA_API_KEY$7}`;
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$12}${DATA_API_KEY$7}`;
 const SELECTOR_DATA_TOGGLE$6 = "[data-bs-toggle=\"datepicker\"]";
@@ -4919,7 +4884,6 @@ var Datepicker = class extends BaseComponent {
 			this._themeObserver.disconnect();
 			this._themeObserver = null;
 		}
-		if (this._onFocusIn) EventHandler.off(document, EVENT_FOCUSIN$3, this._onFocusIn);
 		if (this._calendar) this._calendar.destroy();
 		this._calendar = null;
 		super.dispose();
@@ -4941,7 +4905,6 @@ var Datepicker = class extends BaseComponent {
 		this._calendar = new Calendar(this._positionElement, calendarOptions);
 		this._calendar.init();
 		this._setupThemeObserver();
-		this._setupDismissOnFocus();
 		if (this._isInput && this._element.value) this._parseInputValue();
 		this._updateDisplayWithSelectedDates();
 	}
@@ -4993,17 +4956,6 @@ var Datepicker = class extends BaseComponent {
 			attributeFilter: ["data-bs-theme"]
 		});
 	}
-	_setupDismissOnFocus() {
-		if (this._isInline) return;
-		this._onFocusIn = (event) => {
-			if (!this._isShown) return;
-			const { target } = event;
-			const mainElement = this._calendar?.context?.mainElement;
-			if (target instanceof Node && (this._element.contains(target) || mainElement?.contains(target))) return;
-			this.hide();
-		};
-		EventHandler.on(document, EVENT_FOCUSIN$3, this._onFocusIn);
-	}
 	_buildCalendarOptions() {
 		const theme = this._getEffectiveTheme();
 		const vcpTheme = !theme || theme === "auto" ? "system" : theme;
@@ -5024,7 +4976,6 @@ var Datepicker = class extends BaseComponent {
 				this._syncThemeAttribute(self.context.mainElement);
 			},
 			onShow: () => {
-				if (!this._calendar) return;
 				this._isShown = true;
 				this._syncThemeAttribute(this._calendar.context.mainElement);
 			},

@@ -56,7 +56,6 @@ declare class Datepicker extends BaseComponent {
     protected _getEffectiveTheme(): string | null;
     protected _syncThemeAttribute(element: HTMLElement | undefined): void;
     protected _setupThemeObserver(): void;
-    protected _setupFocusOut(): void;
     protected _buildCalendarOptions(): Options;
     protected _handleDateClick(self: Calendar, event: MouseEvent): void;
     protected _maybeHideAfterSelection(selectedDates: string[]): void;
