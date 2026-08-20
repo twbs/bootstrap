@@ -7,6 +7,10 @@
 
 @forward "colors";
 
+// Theme color maps ($theme-colors, $theme-bgs, etc.). Forwarding makes them
+// configurable from this entrypoint with `@use ... with (...)`. Emits no CSS.
+@forward "theme";
+
 // Global CSS variables, layer definitions, and configuration
 @forward "root";
 
