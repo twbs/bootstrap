@@ -102,6 +102,14 @@
     width: 100%;
     text-align: center;
 
+    // When an example turns the wrapper into a flexbox (`d-flex`, `vstack`,
+    // `hstack`), center its items on the cross axis too, so column layouts do
+    // not sit left in the tall min-height frame. Grid wrappers are excluded so
+    // grid items keep stretching to equal heights.
+    &:not([class*="grid"]) {
+      align-items: center;
+    }
+
     // Keep block-level components left-aligned inside. Only loose inline items
     // (buttons, badges, links, icons) pick up the centered text-align above.
     // Utilities still win via layer order, so `.text-center` etc. is unaffected.
