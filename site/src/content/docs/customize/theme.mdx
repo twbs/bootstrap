@@ -303,6 +303,28 @@ This also means you can override a container’s theme color with another theme 
     </div>
   </div>`} />
 
+### Reset
+
+Use `.theme-reset` on a nested container to stop inheriting those tokens. Theme-aware children then use their component defaults again.
+
+<Example code={`<div class="vstack gap-3 theme-primary"><!-- [!code highlight] -->
+    <div class="alert"><p>Primary alert</p></div>
+    <div>
+      <button type="button" class="btn-solid">Primary button</button>
+      <span class="badge">Primary badge</span>
+    </div>
+
+    <div class="theme-reset vstack gap-3"><!-- [!code highlight] -->
+      <div class="alert"><p>Default alert</p></div>
+      <div>
+        <button type="button" class="btn-solid">Default button</button>
+        <span class="badge">Default badge</span>
+      </div>
+    </div>
+  </div>`} />
+
+The class sets each `--theme-*` custom property to `initial`. That makes the property invalid, so `var(--theme-bg, fallback)` uses the fallback. Do not use `unset` here—`unset` inherits from the parent again.
+
 ## Theme Sass map
 
 We use a large, nested Sass map to generate our theme color values.

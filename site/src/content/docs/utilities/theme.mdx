@@ -90,6 +90,15 @@ You can also mix theme colors within the same container by applying different `.
     <div class="theme-danger theme-contrast p-3 rounded">Danger</div>
   </div>`} />
 
+## Reset
+
+Use `.theme-reset` when a nested subtree should drop the inherited theme and return to component defaults. See [Theme utility classes]([[docsref:/customize/theme#reset]]) for details.
+
+<Example code={`<div class="theme-primary p-3 rounded">
+    <span class="badge theme-contrast">Primary badge</span>
+    <span class="badge theme-reset">Default badge</span>
+  </div>`} />
+
 ## CSS
 
 ### Generated CSS
