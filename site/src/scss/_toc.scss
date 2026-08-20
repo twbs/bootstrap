@@ -86,10 +86,6 @@
       min-height: 0;
       margin-bottom: auto;
       overflow-y: auto;
-
-      // Fade the top and bottom edges while the list scrolls. The fade lengths
-      // are driven by `toc-scroll.js`; both are 0 at rest so nothing is clipped
-      // when there is no overflow.
       mask-image:
         linear-gradient(
           to bottom,
