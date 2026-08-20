@@ -3,7 +3,8 @@
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
-:root {
+:root,
+:host {
   --bs-blue-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.24 240deg));
   --bs-blue-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.24 240deg));
   --bs-blue-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.24 240deg));
@@ -215,7 +216,8 @@
 }
 
 @layer colors, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
-:root {
+:root,
+:host {
   --bs-black: #000;
   --bs-white: #fff;
   --bs-gradient: linear-gradient(180deg, color-mix(var(--bs-white) 15%, transparent), color-mix(var(--bs-white) 0%, transparent));
@@ -459,7 +461,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root,
+  :host {
     --bs-shadow-strength: 2.4;
   }
 }

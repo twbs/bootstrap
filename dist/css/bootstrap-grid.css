@@ -6297,7 +6297,8 @@
     }
   }
 }
-:root {
+:root,
+:host {
   --bs-breakpoint-xs: 0;
   --bs-breakpoint-sm: 576px;
   --bs-breakpoint-md: 768px;
