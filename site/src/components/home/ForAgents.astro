@@ -57,22 +57,13 @@ const claudeHref = `https://claude.ai/new?q=${encodeURIComponent(agentPrompt)}`
   <svg class="bi me--1" aria-hidden="true"><use href="#chevron-expand"></use></svg>
 </button>
 <div class="menu border-keyline" style="--bs-menu-min-width: 14rem;">
-  <button
-    class="menu-item"
-    type="button"
-    data-bd-agents-copy
-    data-clipboard-text={skillsInstall}
-  >
+  <button class="menu-item" type="button" data-bd-agents-copy data-clipboard-text={skillsInstall}>
     Install v6 migration skill
     <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#copy"></use></svg>
   </button>
   <hr class="menu-divider" />
-  <a class="menu-item" href={getVersionedDocsPath('getting-started/ai')}>
-    Bootstrap & AI docs
-  </a>
-  <a class="menu-item" href={getVersionedDocsPath('getting-started/ai#skills')}>
-    Explore all skills
-  </a>
+  <a class="menu-item" href={getVersionedDocsPath('getting-started/ai')}> Bootstrap & AI docs </a>
+  <a class="menu-item" href={getVersionedDocsPath('getting-started/ai#skills')}> Explore all skills </a>
   <hr class="menu-divider" />
   <a class="menu-item" href={chatgptHref} rel="noopener" target="_blank">
     Ask ChatGPT
