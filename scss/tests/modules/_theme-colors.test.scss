@@ -5,8 +5,8 @@
 @use "../../bootstrap" as * with (
   $theme-colors: (
     "custom": (
-      "base": black,
-      "bg": black,
+      "base": var(--black),
+      "bg": var(--black),
     ),
   )
 );
@@ -18,7 +18,7 @@ $true-terminal-output: false;
     @include it("should add a custom theme through the entrypoint") {
       @include assert-equal(
         map.get(map.get($theme-colors, "custom"), "base"),
-        black,
+        var(--black),
         "The custom theme base color should be configurable via @use ... with"
       );
     }
@@ -41,8 +41,8 @@ $true-terminal-output: false;
 
         @include expect() {
           .test {
-            base: black;
-            bg: black;
+            base: var(--black);
+            bg: var(--black);
           }
         }
       }
