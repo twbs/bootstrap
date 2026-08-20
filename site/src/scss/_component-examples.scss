@@ -96,11 +96,11 @@
   // width. The frame centers this wrapper vertically.
   .bd-example-content {
     display: flow-root;
-    width: 100%;
-    text-align: center;
     // Inert in normal flow. When an example sets `d-flex`/`d-grid`/`vstack` on
     // the wrapper, this centers the row on the main axis. Utilities still win.
     justify-content: center;
+    width: 100%;
+    text-align: center;
 
     // Keep block-level components left-aligned inside. Only loose inline items
     // (buttons, badges, links, icons) pick up the centered text-align above.
@@ -112,7 +112,7 @@
     // Center width-constrained block components (cards, wrappers). Full-width
     // blocks (alerts, forms) are unaffected. Grid rows keep their negative
     // gutters, so exclude `.row` and grid containers.
-    > *:not(.row):not([class*="grid"]) {
+    > *:not(.row, [class*="grid"]) {
       margin-inline: auto;
     }
 
