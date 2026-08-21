@@ -29,7 +29,7 @@ $table-tokens: defaults(
     --table-hover-color: var(--table-color),
     --table-hover-bg-factor: 7.5%,
     --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
-    --table-thead-sticky-top: 0,
+    --table-thead-sticky-top: 0px,
     --table-thead-sticky-zindex: var(--z-3),
   ),
   $table-tokens
@@ -180,13 +180,14 @@ $table-striped-columns-order: even !default;
 
   // Sticky table headers
   //
-  // Add `.thead-sticky` to a `<thead>` to keep it in view while the `<tbody>`
-  // scrolls. Set `--table-thead-sticky-top` to offset any fixed headers.
+  // Subtract the collapsed cell border so scrolling rows cannot show through a
+  // 1px gap at the top of the scrollport.
 
   .thead-sticky {
     position: sticky;
-    top: var(--table-thead-sticky-top);
+    top: calc(var(--table-thead-sticky-top) - var(--table-border-width, 1px));
     z-index: var(--table-thead-sticky-zindex);
+    background-color: var(--theme-bg-subtle, var(--table-bg));
   }
 
   // Responsive tables
