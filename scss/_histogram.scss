@@ -1,0 +1,167 @@
+@use "config" as *;
+@use "functions" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/focus-ring" as *;
+@use "mixins/transition" as *;
+@use "mixins/tokens" as *;
+
+// Number of items that get a staggered reveal. Later items reveal with the
+// same delay as the last one in the sequence.
+$histogram-stagger-items: 12 !default;
+
+$histogram-tokens: () !default;
+
+// scss-docs-start histogram-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$histogram-tokens: defaults(
+  (
+    --histogram-track-width: 2.5rem,
+    --histogram-item-height: .75rem,
+    --histogram-item-hover-height: 1.5rem,
+    --histogram-item-hover-color: var(--fg-body),
+    --histogram-item-active-color: var(--theme-fg, var(--primary-fg)),
+    --histogram-bar-length: 100%,
+    --histogram-bar-size: .125rem,
+    --histogram-bar-border-radius: var(--radius-pill),
+    --histogram-bar-bg: var(--fg-4),
+    --histogram-bar-active-bg: var(--theme-bg, var(--primary-bg)),
+    --histogram-label-color: var(--fg-2),
+    --histogram-label-font-size: var(--font-size-sm),
+    --histogram-stagger: 30ms,
+    --histogram-transition-property: "block-size, color, opacity, background-color",
+    --histogram-transition-duration: .2s,
+    --histogram-transition-timing: var(--transition-timing-overlay),
+  ),
+  $histogram-tokens
+);
+// scss-docs-end histogram-tokens
+
+@layer components {
+  .histogram {
+    @include tokens($histogram-tokens);
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Each item stacks a bar and a label in the same grid cell, so the label
+  // takes over the row without moving anything. The bar keeps its own column
+  // so its length stays a share of the track, not of the label.
+  .histogram-item {
+    // Items past the stagger cap match no `nth-child` rule below, so they fall
+    // back to this max delay and reveal with the last staggered row instead of
+    // jumping to the front.
+    --histogram-item-delay: calc(#{$histogram-stagger-items - 1} * var(--histogram-stagger));
+
+    display: grid;
+    grid-template-columns: var(--histogram-track-width) minmax(0, 1fr);
+    align-items: center;
+    block-size: var(--histogram-item-height);
+    padding: 0;
+    color: var(--histogram-label-color);
+    text-align: start;
+    text-decoration: none;
+    background-color: transparent;
+    border: 0;
+    @include transition-props(
+      var(--histogram-transition-property),
+      var(--histogram-transition-duration),
+      var(--histogram-transition-timing)
+    );
+
+    &:hover {
+      color: var(--histogram-item-hover-color);
+    }
+
+    &:focus-visible {
+      @include focus-ring(true);
+    }
+
+    &.active {
+      color: var(--histogram-item-active-color);
+
+      .histogram-bar {
+        background-color: var(--histogram-bar-active-bg);
+      }
+    }
+  }
+
+  .histogram-bar {
+    grid-area: 1 / 1;
+    inline-size: var(--histogram-bar-length);
+    block-size: var(--histogram-bar-size);
+    background-color: var(--histogram-bar-bg);
+    @include border-radius(var(--histogram-bar-border-radius));
+    @include transition-props(
+      var(--histogram-transition-property),
+      var(--histogram-transition-duration),
+      var(--histogram-transition-timing)
+    );
+  }
+
+  .histogram-label {
+    grid-area: 1 / 1 / 2 / -1;
+    overflow: hidden;
+    font-size: var(--histogram-label-font-size);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0;
+    @include transition-props(
+      var(--histogram-transition-property),
+      var(--histogram-transition-duration),
+      var(--histogram-transition-timing)
+    );
+  }
+
+  // Bars trade places with labels as soon as a pointer or the keyboard enters
+  // the histogram. Rows grow at the same time to make room for the text.
+  .histogram:hover,
+  .histogram:focus-within {
+    .histogram-item {
+      block-size: var(--histogram-item-hover-height);
+    }
+
+    .histogram-bar {
+      opacity: 0;
+    }
+
+    .histogram-label {
+      opacity: 1;
+
+      // The delay drives the staggered reveal, so it must follow the same
+      // reduced-motion gate as the transition itself. Otherwise the labels
+      // still pop in one by one for a user who asked for less motion.
+      @if $enable-reduced-motion {
+        @media (prefers-reduced-motion: no-preference) {
+          transition-delay: var(--histogram-item-delay, 0s);
+        }
+      } @else {
+        transition-delay: var(--histogram-item-delay, 0s);
+      }
+    }
+  }
+
+  // Reveal the labels top to bottom instead of all at once. Only the reveal
+  // is staggered — leaving the histogram collapses every row together.
+  @for $i from 1 through $histogram-stagger-items {
+    .histogram-item:nth-child(#{$i}) {
+      --histogram-item-delay: calc(#{$i - 1} * var(--histogram-stagger));
+    }
+  }
+
+  // Mirror the histogram for a sidebar on the end edge of the conversation.
+  .histogram-end {
+    .histogram-item {
+      grid-template-columns: minmax(0, 1fr) var(--histogram-track-width);
+    }
+
+    .histogram-bar {
+      grid-area: 1 / 2;
+      margin-inline-start: auto;
+    }
+
+    .histogram-label {
+      text-align: end;
+    }
+  }
+}

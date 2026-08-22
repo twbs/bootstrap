@@ -140,6 +140,9 @@
     - title: Drawer
       meta:
         - added: 6.0.0
+    - title: Histogram
+      meta:
+        - added: 6.0.0
     - title: List group
     - title: Menu
       meta:
