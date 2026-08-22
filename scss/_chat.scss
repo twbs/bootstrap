@@ -1,0 +1,191 @@
+@use "config" as *;
+@use "functions" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/tokens" as *;
+
+$chat-tokens: () !default;
+
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start chat-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$chat-tokens: defaults(
+  (
+    --chat-bg: var(--bg-body),
+    --chat-border-color: var(--border-muted),
+    --chat-padding: 1rem,
+    --chat-gap: .75rem,
+    --chat-message-gap: .25rem,
+    --chat-message-max-width: 75%,
+    --chat-message-padding-x: .875rem,
+    --chat-message-padding-y: .5rem,
+    --chat-message-border-radius: var(--radius-8),
+    --chat-message-group-radius: var(--radius-2),
+    --chat-message-group-start-radius: var(--chat-message-group-radius),
+    --chat-message-group-end-radius: var(--chat-message-border-radius),
+    --chat-message-tail-size: 1rem,
+    --chat-message-color: var(--theme-fg, var(--fg-body)),
+    --chat-message-bg: var(--theme-bg-subtle, var(--bg-2)),
+    --chat-message-you-color: var(--theme-contrast, var(--primary-contrast)),
+    --chat-message-you-bg: var(--theme-bg, var(--primary-bg)),
+    --chat-status-gap: .5rem,
+    --chat-thinking-font-size: var(--font-size-sm),
+    --chat-thinking-color: var(--fg-4),
+    --chat-thinking-highlight-color: var(--fg-body),
+    --chat-thinking-animation-duration: 2s,
+  ),
+  $chat-tokens
+);
+// scss-docs-end chat-tokens
+// stylelint-enable custom-property-no-missing-var-function
+
+@layer components {
+  .chat {
+    @include tokens($chat-tokens);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--chat-gap);
+    padding: var(--chat-padding);
+    background-color: var(--chat-bg);
+    border: var(--border-width) solid var(--chat-border-color);
+    @include border-radius(var(--radius-5));
+  }
+
+  .chat-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--chat-message-gap);
+    align-items: flex-start;
+  }
+
+  .chat-row-you {
+    align-items: flex-end;
+  }
+
+  .chat-message {
+    position: relative;
+    display: inline-block;
+    max-width: var(--chat-message-max-width);
+    padding: var(--chat-message-padding-y) var(--chat-message-padding-x);
+    color: var(--chat-message-color);
+    background-color: var(--chat-message-bg);
+    @include border-radius(var(--chat-message-border-radius));
+
+    &:last-child {
+      margin-bottom: calc(var(--chat-message-tail-size) * .5);
+    }
+
+    // Inside a group, tighten the corners that face the neighbor bubble. The
+    // sender side keeps the tight corners, as iOS does.
+    &:not(:first-child) {
+      border-start-start-radius: var(--chat-message-group-start-radius);
+      border-start-end-radius: var(--chat-message-group-end-radius);
+    }
+
+    &:not(:last-child) {
+      border-end-start-radius: var(--chat-message-group-start-radius);
+      border-end-end-radius: var(--chat-message-group-end-radius);
+    }
+  }
+
+  // Message tail
+  //
+  // The ::before element paints the tail in the bubble color. The ::after
+  // element cuts the notch back into the panel background so the tail
+  // connects to the last bubble of the group.
+  //
+  // Logical properties keep the tail on the sender's edge, so it stays attached
+  // to the bubble in both writing directions.
+  .chat-message:last-child::before,
+  .chat-message:last-child::after {
+    position: absolute;
+    inset-block-end: 0;
+    content: "";
+  }
+
+  .chat-message:last-child::before {
+    inset-inline-start: calc(var(--chat-message-tail-size) * -.35);
+    z-index: 0;
+    width: var(--chat-message-tail-size);
+    height: var(--chat-message-tail-size);
+    background-color: var(--chat-message-bg);
+    @include border-bottom-end-radius(calc(var(--chat-message-tail-size) * .75));
+  }
+
+  .chat-message:last-child::after {
+    inset-inline-start: calc(var(--chat-message-tail-size) * -.5);
+    z-index: 1;
+    width: calc(var(--chat-message-tail-size) * .5);
+    height: var(--chat-message-tail-size);
+    background-color: var(--chat-bg);
+    @include border-bottom-end-radius(calc(var(--chat-message-tail-size) * .5));
+  }
+
+  .chat-message-you {
+    --chat-message-bg: var(--chat-message-you-bg);
+    --chat-message-color: var(--chat-message-you-color);
+    --chat-message-group-start-radius: var(--chat-message-border-radius);
+    --chat-message-group-end-radius: var(--chat-message-group-radius);
+
+    &:last-child::before {
+      inset-inline-start: auto;
+      inset-inline-end: calc(var(--chat-message-tail-size) * -.35);
+      border-end-end-radius: 0;
+      @include border-bottom-start-radius(calc(var(--chat-message-tail-size) * .75));
+    }
+
+    &:last-child::after {
+      inset-inline-start: auto;
+      inset-inline-end: calc(var(--chat-message-tail-size) * -.5);
+      border-end-end-radius: 0;
+      @include border-bottom-start-radius(calc(var(--chat-message-tail-size) * .5));
+    }
+  }
+
+  // Status rows
+  //
+  // Thinking states and tool calls report on the work, so they stay outside a
+  // bubble. The inline padding lines their text up with the text in a bubble.
+  .chat-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--chat-status-gap);
+    align-items: center;
+    padding-inline: var(--chat-message-padding-x);
+  }
+
+  // A gradient sweeps across the label while the agent works. The text is
+  // transparent, so the background paints the glyphs.
+  .chat-thinking {
+    font-size: var(--chat-thinking-font-size);
+    color: transparent;
+    background-image:
+      linear-gradient(
+        90deg,
+        var(--chat-thinking-color) 35%,
+        var(--chat-thinking-highlight-color) 50%,
+        var(--chat-thinking-color) 65%
+      );
+    background-clip: text;
+    background-size: 200% 100%;
+    animation: chat-thinking var(--chat-thinking-animation-duration) linear infinite;
+
+    @if $enable-reduced-motion {
+      // The glyphs come from the background, so the label needs a color back
+      // when the sweep stops.
+      @media (prefers-reduced-motion: reduce) {
+        color: var(--chat-thinking-highlight-color);
+        background-image: none;
+        animation: none;
+      }
+    }
+  }
+
+  // The gradient tiles, and one iteration moves it by its own width, so the
+  // sweep repeats without a jump.
+  @keyframes chat-thinking {
+    to {
+      background-position: -200% 0;
+    }
+  }
+}

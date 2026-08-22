@@ -129,6 +129,9 @@
     - title: Button group
     - title: Card
     - title: Carousel
+    - title: Chat
+      meta:
+        - added: 6.0.0
     - title: Close button
     - title: Collapse
     - title: Dialog
