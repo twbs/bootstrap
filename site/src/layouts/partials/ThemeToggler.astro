@@ -9,17 +9,23 @@ const { layout } = Astro.props
 ---
 
 <button
-  class=`btn ${layout === 'examples' ? 'btn-solid theme-accent' : 'btn-link nav-link'} px-1 gap-1`
+  class:list={['btn', layout === 'examples' ? 'btn-solid btn-icon theme-accent' : 'btn-link nav-link px-1 gap-1']}
   id="bd-theme"
   type="button"
   aria-expanded="false"
   data-bs-toggle="menu"
-  data-bs-placement="bottom-end"
+  data-bs-placement={layout === 'examples' ? 'top-end' : 'bottom-end'}
   aria-label="Toggle theme (auto)"
 >
   <svg class="bi theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
   <span class="visually-hidden">Toggle theme</span>
-  <svg class="bi bi-sm" aria-hidden="true"><use href="#chevron-expand"></use></svg>
+  {
+    layout !== 'examples' && (
+      <svg class="bi bi-sm" aria-hidden="true">
+        <use href="#chevron-expand" />
+      </svg>
+    )
+  }
 </button>
 <div class="menu border-keyline" id="bd-theme-menu" aria-labelledby="bd-theme" style="--bs-menu-min-width: 8rem;">
   <button type="button" class="menu-item" data-bs-theme-value="light" aria-pressed="false">
