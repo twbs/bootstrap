@@ -15,6 +15,7 @@ module.exports = {
     '**/modules/_config-maps.test.scss',
     '**/modules/_root-tokens.test.scss',
     '**/modules/_theme-colors.test.scss',
+    '**/modules/_theme-reset.test.scss',
     '**/forms/_validation.test.scss',
     '**/mixins/_color-mode-*.test.scss'
   ],

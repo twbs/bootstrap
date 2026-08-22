@@ -68,6 +68,26 @@
   @return $result;
 }
 
+// Set each --theme-* token to `initial` so descendants drop inherited theme colors.
+// Use `initial`, not `unset`. `unset` inherits from the parent again.
+// scss-docs-start generate-theme-reset
+@mixin generate-theme-reset() {
+  .theme-reset {
+    $keys: ();
+
+    @each $color-map in map.values($theme-colors) {
+      @each $key in map.keys($color-map) {
+        $keys: map.merge($keys, ($key: true));
+      }
+    }
+
+    @each $key in map.keys($keys) {
+      --theme-#{$key}: initial;
+    }
+  }
+}
+// scss-docs-end generate-theme-reset
+
 // Generate theme classes dynamically based on the keys in each theme color map
 @mixin generate-theme-classes() {
   @each $color-name, $color-map in $theme-colors {
@@ -77,6 +97,8 @@
       }
     }
   }
+
+  @include generate-theme-reset();
 }
 
 // Theme maps use the `defaults()` pattern so `@use ... with (...)` merges custom

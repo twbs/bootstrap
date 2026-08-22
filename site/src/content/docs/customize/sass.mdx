@@ -542,15 +542,18 @@ A shorthand mixin for the `prefers-color-scheme` media query is available with s
 
 ### Theme classes
 
-The `generate-theme-classes()` mixin loops over the `$theme-colors` map and outputs a `.theme-*` class for each color. Each class maps generic `--theme-*` custom properties to the color’s specific values, so components can reference `--theme-base`, `--theme-bg`, etc., and pick up the right palette from a parent `.theme-*` class:
+The `generate-theme-classes()` mixin loops over the `$theme-colors` map and outputs a `.theme-*` class for each color. Each class maps generic `--theme-*` custom properties to the color’s specific values, so components can reference `--theme-base`, `--theme-bg`, etc., and pick up the right palette from a parent `.theme-*` class. It also emits `.theme-reset`, which sets those tokens to `initial` so nested components use their own defaults again:
 
 ```scss
 @include generate-theme-classes();
 // Outputs:
 // .theme-primary { --theme-base: var(--primary-base); --theme-bg: var(--primary-bg); ... }
 // .theme-success { --theme-base: var(--success-base); --theme-bg: var(--success-bg); ... }
+// .theme-reset { --theme-base: initial; --theme-bg: initial; ... }
 // ...
 ```
+
+<ScssDocs name="generate-theme-reset" file="scss/_theme.scss" />
 
 ### Mask icons
 
