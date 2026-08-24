@@ -51,3 +51,5 @@ jobs:
           skip: >-
             ^http://localhost
             ^https://popper.js.org/docs/v2/
+            ^https://www.reddit.com
+            ^https://medium.com
