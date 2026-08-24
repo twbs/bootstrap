@@ -29,7 +29,7 @@ jobs:
           persist-credentials: false
 
       - name: Run cspell
-        uses: streetsidesoftware/cspell-action@de2a73e963e7443969755b648a1008f77033c5b2 # v8.4.0
+        uses: streetsidesoftware/cspell-action@e0668cf020899e887ee8ad4d173c31738a79eae8 # v9.0.1
         with:
           config: ".cspell.json"
           files: |
