@@ -45,7 +45,11 @@ jobs:
           paths: _site
           recurse: true
           verbosity: error
+          # github.com URLs are skipped because they will be broken until the next release is published.
           skip: >-
             ^http://localhost
             ^https://www.reddit.com
             ^https://medium.com
+            ^https://getbootstrap.com/docs/6.0
+            ^https://github.com/twbs/bootstrap/blob/v6.0.0-alpha1
+            ^https://github.com/twbs/bootstrap/tree/v5-dev
