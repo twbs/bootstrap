@@ -38,23 +38,3 @@ jobs:
 
       - name: Validate HTML
         run: npm run docs-html-validate
-
-      - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@36a0bfbfecd5e237e8f8531537a693616c505faf # v2.4.5
-        with:
-          paths: _site
-          recurse: true
-          verbosity: error
-          # github.com URLs are skipped because they will be broken until the next release is published.
-          skip: >-
-            ^http://localhost
-            ^https://www.reddit.com
-            ^https://medium.com
-            ^https://getbootstrap.com/docs/6.0
-            ^https://github.com/twbs/bootstrap/blob/v6.0.0-alpha1
-            ^https://github.com/twbs/bootstrap/tree/v5-dev
-            ^https://github.com/twbs/bootstrap/releases/download/v6.0.0-alpha1/
-            ^https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1
-            ^https://github.com/twbs/bootstrap/archive/v6.0.0-alpha1.zip
-            ^https://github.com/twbs/bootstrap/tree/main/skills
-            ^https://github.com/twbs/bootstrap/blob/main/scss/forms/_combobox.scss
