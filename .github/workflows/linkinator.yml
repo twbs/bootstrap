@@ -40,10 +40,8 @@ jobs:
           paths: _site
           recurse: true
           verbosity: error
-          # Skipping popper.js.org as the website is down and the links are not valid.
-          # TODO: it must be replaced with https://github.com/floating-ui/popper-docs
           skip: >-
             ^http://localhost
-            ^https://popper.js.org/docs/v2/
+            ^https://github.com/floating-ui/popper-docs/blob/main/docs/v2/
             ^https://www.reddit.com
             ^https://medium.com
