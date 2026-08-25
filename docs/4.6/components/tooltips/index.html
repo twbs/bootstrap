@@ -95,7 +95,7 @@
       <li class="nav-item">
         <a class="nav-link" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="https://expo.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank" rel="noopener">Expo</a>
       </li>
@@ -287,7 +287,7 @@
 
         </div>
 
-        
+
           <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
             <nav id="TableOfContents">
   <ul>
@@ -330,7 +330,7 @@
           <h2 id="overview">Overview</h2>
 <p>Things to know when using the tooltip plugin:</p>
 <ul>
-<li>Tooltips rely on the 3rd party library <a href="https://popper.js.org/">Popper</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper in order for tooltips to work!</li>
+<li>Tooltips rely on the 3rd party library <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md">Popper</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper in order for tooltips to work!</li>
 <li>If you&rsquo;re building our JavaScript from source, it <a href="/docs/4.6/getting-started/javascript/#util">requires <code>util.js</code></a>.</li>
 <li>Tooltips are opt-in for performance reasons, so <strong>you must initialize them yourself</strong>.</li>
 <li>Tooltips with zero-length titles are never displayed.</li>
@@ -528,7 +528,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <td>
         <p>Offset of the tooltip relative to its target.</p>
         <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
-        <p>For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</p>
+        <p>For more information refer to Popper's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..offset.offset">offset docs</a>.</p>
       </td>
     </tr>
     <tr>
@@ -536,7 +536,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <td>string | array</td>
       <td>'flip'</td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
-      Popper's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
+      Popper's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
     <tr>
       <td>customClass</td>
@@ -551,7 +551,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <td>boundary</td>
       <td>string | element</td>
       <td>'scrollParent'</td>
-      <td>Overflow constraint boundary of the tooltip. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the tooltip. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td>sanitize</td>
@@ -575,7 +575,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <td>popperConfig</td>
       <td>null | object</td>
       <td>null</td>
-      <td>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper's configuration</a></td>
+      <td>To change Bootstrap's default Popper config, see <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#Popper.Defaults">Popper's configuration</a></td>
     </tr>
   </tbody>
 </table>

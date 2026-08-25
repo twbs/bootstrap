@@ -95,7 +95,7 @@
         <li class="nav-item col-6 col-md-auto">
           <a class="nav-link p-2" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
         </li>
-        
+
         <li class="nav-item col-6 col-md-auto">
           <a class="nav-link p-2" href="https://blog.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
         </li>
@@ -371,7 +371,7 @@
           </ul>
         </div>
       </li>
-      
+
       <li>
         <a href="/docs/5.0/migration/" class="d-inline-flex align-items-center rounded">
           Migration
@@ -445,7 +445,7 @@
         <h2 id="overview">Overview</h2>
 <p>Things to know when using the popover plugin:</p>
 <ul>
-<li>Popovers rely on the 3rd party library <a href="https://popper.js.org/">Popper</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper in order for popovers to work!</li>
+<li>Popovers rely on the 3rd party library <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md">Popper</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper in order for popovers to work!</li>
 <li>Popovers require the <a href="/docs/5.0/components/tooltips/">tooltip plugin</a> as a dependency.</li>
 <li>Popovers are opt-in for performance reasons, so <strong>you must initialize them yourself</strong>.</li>
 <li>Zero-length <code>title</code> and <code>content</code> values will never show a popover.</li>
@@ -670,13 +670,13 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <td>array</td>
       <td><code>['top', 'right', 'bottom', 'left']</code></td>
       <td>Define fallback placements by providing a list of placements in array (in order of preference). For more information refer to
-      Popper's <a href="https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements">behavior docs</a></td>
+      Popper's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/flip.md/#fallbackplacements">behavior docs</a></td>
     </tr>
     <tr>
       <td><code>boundary</code></td>
       <td>string | element</td>
       <td><code>'clippingParents'</code></td>
-      <td>Overflow constraint boundary of the popover (applies only to Popper's preventOverflow modifier). By default it's <code>'clippingParents'</code> and can accept an HTMLElement reference (via JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">detectOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the popover (applies only to Popper's preventOverflow modifier). By default it's <code>'clippingParents'</code> and can accept an HTMLElement reference (via JavaScript only). For more information refer to Popper's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/utils/detect-overflow.md/#boundary">detectOverflow docs</a>.</td>
     </tr>
     <tr>
       <td><code>customClass</code></td>
@@ -711,8 +711,8 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <td><code>[0, 8]</code></td>
       <td>
         <p>Offset of the popover relative to its target. You can pass a string in data attributes with comma separated values like: <code>data-bs-offset="10,20"</code></p>
-        <p>When a function is used to determine the offset, it is called with an object containing the popper placement, the reference, and popper rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: <code>[<a href="https://popper.js.org/docs/v2/modifiers/offset/#skidding-1">skidding</a>, <a href="https://popper.js.org/docs/v2/modifiers/offset/#distance-1">distance</a>]</code>.</p>
-        <p>For more information refer to Popper's <a href="https://popper.js.org/docs/v2/modifiers/offset/#options">offset docs</a>.</p>
+        <p>When a function is used to determine the offset, it is called with an object containing the popper placement, the reference, and popper rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: <code>[<a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/offset.md/#skidding-1">skidding</a>, <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/offset.md/#distance-1">distance</a>]</code>.</p>
+        <p>For more information refer to Popper's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/offset.md/#options">offset docs</a>.</p>
       </td>
     </tr>
     <tr>
@@ -720,7 +720,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
       <td>null | object | function</td>
       <td><code>null</code></td>
       <td>
-        <p>To change Bootstrap's default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper's configuration</a>.</p>
+        <p>To change Bootstrap's default Popper config, see <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/constructors.md/#options">Popper's configuration</a>.</p>
         <p>When a function is used to create the Popper configuration, it's called with an object that contains the Bootstrap's default Popper configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Popper.</p>
       </td>
     </tr>
@@ -840,7 +840,7 @@ Note that for security reasons the <code>sanitize</code>, <code>sanitizeFn</code
           <li class="mb-2"><a href="/">Home</a></li>
           <li class="mb-2"><a href="/docs/5.0/">Docs</a></li>
           <li class="mb-2"><a href="/docs/5.0/examples/">Examples</a></li>
-          
+
           <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
           <li class="mb-2"><a href="https://cottonbureau.com/people/bootstrap">Swag Store</a></li>
         </ul>

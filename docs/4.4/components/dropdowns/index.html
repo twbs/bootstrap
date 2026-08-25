@@ -87,7 +87,7 @@
       <li class="nav-item">
         <a class="nav-link" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');">Icons</a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="https://expo.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank" rel="noopener">Expo</a>
       </li>
@@ -522,7 +522,7 @@
 
 <p>Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They’re made interactive with the included Bootstrap dropdown JavaScript plugin. They’re toggled by clicking, not by hovering; this is <a href="http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/">an intentional design decision</a>.</p>
 
-<p>Dropdowns are built on a third party library, <a href="https://popper.js.org/">Popper.js</a>, which provides dynamic positioning and viewport detection. Be sure to include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">popper.min.js</a> before Bootstrap’s JavaScript or use <code class="highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js. Popper.js isn’t used to position dropdowns in navbars though as dynamic positioning isn’t required.</p>
+<p>Dropdowns are built on a third party library, <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md">Popper.js</a>, which provides dynamic positioning and viewport detection. Be sure to include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">popper.min.js</a> before Bootstrap’s JavaScript or use <code class="highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js. Popper.js isn’t used to position dropdowns in navbars though as dynamic positioning isn’t required.</p>
 
 <p>If you’re building our JavaScript from source, it <a href="/docs/4.4/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</p>
 
@@ -1492,26 +1492,26 @@
       <td>
         <p>Offset of the dropdown relative to its target.</p>
         <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
-        <p>For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</p>
+        <p>For more information refer to Popper.js's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..offset.offset">offset docs</a>.</p>
       </td>
     </tr>
     <tr>
       <td>flip</td>
       <td>boolean</td>
       <td>true</td>
-      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.enabled">flip docs</a>.</td>
+      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..flip.enabled">flip docs</a>.</td>
     </tr>
     <tr>
       <td>boundary</td>
       <td>string | element</td>
       <td>'scrollParent'</td>
-      <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td>reference</td>
       <td>string | element</td>
       <td>'toggle'</td>
-      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#referenceObject">referenceObject docs</a>.</td>
+      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#referenceObject">referenceObject docs</a>.</td>
     </tr>
     <tr>
       <td>display</td>
@@ -1523,7 +1523,7 @@
       <td>popperConfig</td>
       <td>null | object</td>
       <td>null</td>
-      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js's configuration</a></td>
+      <td>To change Bootstrap's default Popper.js config, see <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#Popper.Defaults">Popper.js's configuration</a></td>
     </tr>
   </tbody>
 </table>
