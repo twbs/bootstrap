@@ -1,0 +1,55 @@
+name: Linkinator
+
+on:
+  schedule:
+    - cron: "0 4 1 * *"
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 2
+
+permissions:
+  contents: read
+
+jobs:
+  linkinator:
+    runs-on: ubuntu-latest
+    if: github.repository == 'twbs/bootstrap'
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build docs
+        run: npm run docs-build
+
+      - name: Run linkinator
+        uses: JustinBeckwith/linkinator-action@36a0bfbfecd5e237e8f8531537a693616c505faf # v2.4.5
+        with:
+          paths: _site
+          recurse: true
+          verbosity: error
+          # github.com URLs are skipped because they will be broken until the next release is published.
+          skip: >-
+            ^http://localhost
+            ^https://www.reddit.com
+            ^https://medium.com
+            ^https://getbootstrap.com/docs/6.0
+            ^https://github.com/twbs/bootstrap/blob/v6.0.0-alpha1
+            ^https://github.com/twbs/bootstrap/tree/v5-dev
+            ^https://github.com/twbs/bootstrap/releases/download/v6.0.0-alpha1/
+            ^https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1
+            ^https://github.com/twbs/bootstrap/archive/v6.0.0-alpha1.zip
+            ^https://github.com/twbs/bootstrap/tree/main/skills
+            ^https://github.com/twbs/bootstrap/blob/main/scss/forms/_combobox.scss
