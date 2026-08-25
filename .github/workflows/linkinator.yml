@@ -1,0 +1,49 @@
+name: Linkinator
+
+on:
+  schedule:
+    - cron: "0 4 1 * *"
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 2
+
+permissions:
+  contents: read
+
+jobs:
+  linkinator:
+    runs-on: ubuntu-latest
+    if: github.repository == 'twbs/bootstrap'
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build docs
+        run: npm run docs-build
+
+      - name: Run linkinator
+        uses: JustinBeckwith/linkinator-action@36a0bfbfecd5e237e8f8531537a693616c505faf # v2.4.5
+        with:
+          paths: _site
+          recurse: true
+          verbosity: error
+          # Skipping popper.js.org as the website is down and the links are not valid.
+          # TODO: it must be replaced with https://github.com/floating-ui/popper-docs
+          skip: >-
+            ^http://localhost
+            ^https://popper.js.org/docs/v2/
+            ^https://www.reddit.com
+            ^https://medium.com

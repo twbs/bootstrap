@@ -39,17 +39,3 @@ jobs:
 
       - name: Validate HTML
         run: npm run docs-vnu
-
-      - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@36a0bfbfecd5e237e8f8531537a693616c505faf # v2.4.5
-        with:
-          paths: _site
-          recurse: true
-          verbosity: error
-          # Skipping popper.js.org as the website is down and the links are not valid.
-          # TODO: it must be replaced with https://github.com/floating-ui/popper-docs
-          skip: >-
-            ^http://localhost
-            ^https://popper.js.org/docs/v2/
-            ^https://www.reddit.com
-            ^https://medium.com
