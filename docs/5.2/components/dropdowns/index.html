@@ -184,7 +184,7 @@
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-2 px-0 px-lg-2" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
           </li>
-          
+
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-2 px-0 px-lg-2" href="https://blog.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
           </li>
@@ -448,7 +448,7 @@
             <li><a href="/docs/5.2/about/translations/" class="bd-links-link d-inline-block rounded">Translations</a></li>
         </ul>
       </li>
-      
+
       <li class="bd-links-span-all">
         <a href="/docs/5.2/migration/" class="bd-links-link d-inline-block rounded small ">
           Migration
@@ -557,7 +557,7 @@
 
         <h2 id="overview">Overview <a class="anchor-link" href="#overview" aria-label="Link to this section: Overview"></a></h2>
 <p>Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They&rsquo;re made interactive with the included Bootstrap dropdown JavaScript plugin. They&rsquo;re toggled by clicking, not by hovering; this is <a href="https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/">an intentional design decision</a>.</p>
-<p>Dropdowns are built on a third party library, <a href="https://popper.js.org/">Popper</a>, which provides dynamic positioning and viewport detection. Be sure to include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js">popper.min.js</a> before Bootstrap&rsquo;s JavaScript or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper. Popper isn&rsquo;t used to position dropdowns in navbars though as dynamic positioning isn&rsquo;t required.</p>
+<p>Dropdowns are built on a third party library, <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md">Popper</a>, which provides dynamic positioning and viewport detection. Be sure to include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js">popper.min.js</a> before Bootstrap&rsquo;s JavaScript or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper. Popper isn&rsquo;t used to position dropdowns in navbars though as dynamic positioning isn&rsquo;t required.</p>
 <h2 id="accessibility">Accessibility <a class="anchor-link" href="#accessibility" aria-label="Link to this section: Accessibility"></a></h2>
 <p>The <a href="https://www.w3.org/TR/wai-aria/"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr></a> standard defines an actual <a href="https://www.w3.org/TR/wai-aria/#menu"><code>role=&quot;menu&quot;</code> widget</a>, but this is specific to application-like menus which trigger actions or functions. <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus can only contain menu items, checkbox menu items, radio button menu items, radio button groups, and sub-menus.</p>
 <p>Bootstrap&rsquo;s dropdowns, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create dropdowns that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the <code>role</code> and <code>aria-</code> attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.</p>
@@ -2194,7 +2194,7 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
 <td><code>boundary</code></td>
 <td>string, element</td>
 <td><code>'clippingParents'</code></td>
-<td>Overflow constraint boundary of the dropdown menu (applies only to Popper&rsquo;s preventOverflow modifier). By default it&rsquo;s <code>clippingParents</code> and can accept an HTMLElement reference (via JavaScript only). For more information refer to Popper&rsquo;s <a href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">detectOverflow docs</a>.</td>
+<td>Overflow constraint boundary of the dropdown menu (applies only to Popper&rsquo;s preventOverflow modifier). By default it&rsquo;s <code>clippingParents</code> and can accept an HTMLElement reference (via JavaScript only). For more information refer to Popper&rsquo;s <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/utils/detect-overflow.md/#boundary">detectOverflow docs</a>.</td>
 </tr>
 <tr>
 <td><code>display</code></td>
@@ -2206,19 +2206,19 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
 <td><code>offset</code></td>
 <td>array, string, function</td>
 <td><code>[0, 2]</code></td>
-<td>Offset of the dropdown relative to its target. You can pass a string in data attributes with comma separated values like: <code>data-bs-offset=&quot;10,20&quot;</code>. When a function is used to determine the offset, it is called with an object containing the popper placement, the reference, and popper rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: <a href="https://popper.js.org/docs/v2/modifiers/offset/#skidding-1">skidding</a>, <a href="https://popper.js.org/docs/v2/modifiers/offset/#distance-1">distance</a>. For more information refer to Popper&rsquo;s <a href="https://popper.js.org/docs/v2/modifiers/offset/#options">offset docs</a>.</td>
+<td>Offset of the dropdown relative to its target. You can pass a string in data attributes with comma separated values like: <code>data-bs-offset=&quot;10,20&quot;</code>. When a function is used to determine the offset, it is called with an object containing the popper placement, the reference, and popper rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/offset.md/#skidding-1">skidding</a>, <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/offset.md/#distance-1">distance</a>. For more information refer to Popper&rsquo;s <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/offset.md/#options">offset docs</a>.</td>
 </tr>
 <tr>
 <td><code>popperConfig</code></td>
 <td>null, object, function</td>
 <td><code>null</code></td>
-<td>To change Bootstrap&rsquo;s default Popper config, see <a href="https://popper.js.org/docs/v2/constructors/#options">Popper&rsquo;s configuration</a>. When a function is used to create the Popper configuration, it&rsquo;s called with an object that contains the Bootstrap&rsquo;s default Popper configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Popper.</td>
+<td>To change Bootstrap&rsquo;s default Popper config, see <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/constructors.md/#options">Popper&rsquo;s configuration</a>. When a function is used to create the Popper configuration, it&rsquo;s called with an object that contains the Bootstrap&rsquo;s default Popper configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Popper.</td>
 </tr>
 <tr>
 <td><code>reference</code></td>
 <td>string, element, object</td>
 <td><code>'toggle'</code></td>
-<td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, an HTMLElement reference or an object providing <code>getBoundingClientRect</code>. For more information refer to Popper&rsquo;s <a href="https://popper.js.org/docs/v2/constructors/#createpopper">constructor docs</a> and <a href="https://popper.js.org/docs/v2/virtual-elements/">virtual element docs</a>.</td>
+<td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, an HTMLElement reference or an object providing <code>getBoundingClientRect</code>. For more information refer to Popper&rsquo;s <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/constructors.md/#createpopper">constructor docs</a> and <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v2/virtual-elements.md/">virtual element docs</a>.</td>
 </tr>
 </tbody>
 </table></div>
@@ -2330,7 +2330,7 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
           <li class="mb-2"><a href="/docs/5.2/">Docs</a></li>
           <li class="mb-2"><a href="/docs/5.2/examples/">Examples</a></li>
           <li class="mb-2"><a href="https://icons.getbootstrap.com/">Icons</a></li>
-          
+
           <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
           <li class="mb-2"><a href="https://cottonbureau.com/people/bootstrap">Swag Store</a></li>
         </ul>
