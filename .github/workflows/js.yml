@@ -44,7 +44,7 @@ jobs:
         run: npm run js-test
 
       - name: Run Coveralls
-        uses: coverallsapp/github-action@5cbfd81b66ca5d10c19b062c04de0199c215fb6e # v2.3.7
+        uses: coverallsapp/github-action@8d6379e14d29928660c4ba802d8e85393440b329 # v2.3.8
         if: ${{ !github.event.repository.fork }}
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
