@@ -87,7 +87,7 @@
       <li class="nav-item">
         <a class="nav-link" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');">Icons</a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="https://expo.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank" rel="noopener">Expo</a>
       </li>
@@ -502,7 +502,7 @@
 <p>Things to know when using the tooltip plugin:</p>
 
 <ul>
-  <li>Tooltips rely on the 3rd party library <a href="https://popper.js.org/">Popper.js</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code class="highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js in order for tooltips to work!</li>
+  <li>Tooltips rely on the 3rd party library <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md">Popper.js</a> for positioning. You must include <a href="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code class="highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js in order for tooltips to work!</li>
   <li>If you’re building our JavaScript from source, it <a href="/docs/4.4/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</li>
   <li>Tooltips are opt-in for performance reasons, so <strong>you must initialize them yourself</strong>.</li>
   <li>Tooltips with zero-length titles are never displayed.</li>
@@ -727,7 +727,7 @@
       <td>
         <p>Offset of the tooltip relative to its target.</p>
         <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
-        <p>For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</p>
+        <p>For more information refer to Popper.js's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..offset.offset">offset docs</a>.</p>
       </td>
     </tr>
     <tr>
@@ -735,13 +735,13 @@
       <td>string | array</td>
       <td>'flip'</td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
-      Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
+      Popper.js's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
     <tr>
       <td>boundary</td>
       <td>string | element</td>
       <td>'scrollParent'</td>
-      <td>Overflow constraint boundary of the tooltip. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the tooltip. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td>sanitize</td>
@@ -765,7 +765,7 @@
       <td>popperConfig</td>
       <td>null | object</td>
       <td>null</td>
-      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js's configuration</a></td>
+      <td>To change Bootstrap's default Popper.js config, see <a href="https://github.com/floating-ui/popper-docs/blob/main/docs/v1/index.md#Popper.Defaults">Popper.js's configuration</a></td>
     </tr>
   </tbody>
 </table>
