@@ -120,6 +120,7 @@ class Datepicker extends BaseComponent {
   protected declare _positionElement: HTMLElement
   protected declare _displayElement: HTMLElement | false | null
   protected declare _themeObserver: MutationObserver | null
+  protected declare _themeAncestor: Element | null | undefined
   protected declare _onFocusIn: (event: Event) => void
 
   constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null) {
@@ -319,7 +320,14 @@ class Datepicker extends BaseComponent {
   }
 
   protected _getThemeAncestor(): Element | null {
-    return this._element.closest('[data-bs-theme]')
+    // Cache on first lookup: for an inline calendar, `_syncThemeAttribute` writes
+    // `data-bs-theme` onto this same element (it doubles as VCP's main element), which
+    // would make a later `closest()` match itself instead of the real ancestor.
+    if (this._themeAncestor === undefined) {
+      this._themeAncestor = this._element.closest('[data-bs-theme]')
+    }
+
+    return this._themeAncestor
   }
 
   protected _getEffectiveTheme(): string | null {
