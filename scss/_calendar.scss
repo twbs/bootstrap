@@ -127,6 +127,29 @@ $calendar-tokens: defaults(
     min-width: 240px;
   }
 
+  // Animated transitions
+  //
+  // With the `animation` option on, VCP clips the outgoing view (`data-vc-clip`)
+  // and layers a `data-vc-ghost` clone of it on top while the incoming view
+  // animates in. Without the clip and the absolute positioning, the outgoing
+  // clone stays in normal flow and shows through underneath the calendar.
+  [data-vc-clip] {
+    position: relative;
+    overflow: clip;
+  }
+
+  [data-vc-ghost] {
+    position: absolute;
+    overflow: clip;
+    pointer-events: none;
+  }
+
+  [data-vc-collapsing] {
+    flex-shrink: 0;
+    align-content: start;
+    overflow: clip;
+  }
+
   //
   // Header
   //

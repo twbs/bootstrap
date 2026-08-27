@@ -391,7 +391,9 @@ class Datepicker extends BaseComponent {
       selectionDatesMode: this._config.selectionMode,
       selectedDates: this._config.selectedDates,
       displayMonthsCount: this._config.displayMonthsCount,
-      type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
+      // Multiple months require VCP's 'multiple' type; otherwise let vcpOptions.type
+      // through (e.g. 'week') instead of always forcing the single-month default.
+      type: this._config.displayMonthsCount > 1 ? 'multiple' : (this._config.vcpOptions.type ?? 'default'),
       selectedTheme: vcpTheme,
       themeAttrDetect: '[data-bs-theme]',
       onClickDate: (self, event) => this._handleDateClick(self, event),

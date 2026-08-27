@@ -89,6 +89,30 @@ For selecting date ranges that span multiple months, combine `data-bs-selection-
 <Example code={`<label for="datepickerRangeTwoMonths" class="form-label">Select date range</label>
   <input type="text" class="form-control" id="datepickerRangeTwoMonths" data-bs-toggle="datepicker" autocomplete="off" data-bs-selection-mode="multiple-ranged" data-bs-display-months-count="2" data-bs-selected-dates='["2026-06-25", "2026-07-08"]' placeholder="Select start and end dates…">`} />
 
+### Week view
+
+Show a single week instead of a full month. Pass `type: 'week'` through `vcpOptions`. The picker steps week by week.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"type": "week"}'></div>`} />
+
+### Animated transitions
+
+Animate paging between months and switching views. Pass `animation: true` through `vcpOptions`. Animation is off by default, and it respects `prefers-reduced-motion`.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"animation": true}'></div>`} />
+
+### Swipe navigation
+
+Page through months, weeks, or years with a mouse, touch, or pen. Pass `enableSwipe: true` through `vcpOptions`.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"enableSwipe": true}'></div>`} />
+
+### Collapse to a week
+
+Fold a month down to the week that holds the selected date. Drag the grabber, or click it, to expand the month back. Pass `enableCollapse: true` through `vcpOptions`.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"enableCollapse": true}'></div>`} />
+
 ## Options
 
 ### First day of week
@@ -304,6 +328,8 @@ const datepicker = new bootstrap.Datepicker(element, {
 ```
 
 See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options.
+
+`vcpOptions.type` sets the calendar view (for example `'week'`, shown above). `displayMonthsCount` takes priority: set it above `1` and the datepicker forces the `'multiple'` type, overriding `vcpOptions.type`.
 
 ### Methods
 

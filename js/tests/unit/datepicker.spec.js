@@ -1132,6 +1132,42 @@ describe('Datepicker', () => {
 
       expect(datepicker._config.vcpOptions.jumpMonths).toEqual(2)
     })
+
+    it('should default to the single-month calendar type', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker._buildCalendarOptions().type).toEqual('default')
+    })
+
+    it('should let vcpOptions.type override the default calendar type', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        vcpOptions: {
+          type: 'week'
+        }
+      })
+
+      expect(datepicker._buildCalendarOptions().type).toEqual('week')
+    })
+
+    it('should force the multiple calendar type when displayMonthsCount is greater than 1, ignoring vcpOptions.type', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        displayMonthsCount: 2,
+        vcpOptions: {
+          type: 'week'
+        }
+      })
+
+      expect(datepicker._buildCalendarOptions().type).toEqual('multiple')
+    })
   })
 
   describe('date selection handling', () => {
