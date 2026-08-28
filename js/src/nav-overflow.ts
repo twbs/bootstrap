@@ -83,7 +83,7 @@ class NavOverflow extends BaseComponent {
   protected declare _resizeObserver: ResizeObserver | null
   protected declare _resizeHandler: (() => void) | null
   protected declare _collapseBelow: number
-  protected declare _relocatedMenus: Map<HTMLElement, { menu: HTMLElement, parent: Node, nextSibling: ChildNode | null }>
+  protected declare _relocatedMenus: Map<HTMLElement, { menu: HTMLElement, parent: ParentNode, nextSibling: ChildNode | null }>
 
   constructor(element?: string | Element | null, config?: Partial<NavOverflowConfig> | null) {
     super(element, config)
