@@ -24,6 +24,7 @@ $accordion-tokens: defaults(
     --accordion-border-color: var(--border-color),
     --accordion-border-width: var(--border-width),
     --accordion-border-radius: var(--accordion-radius, var(--radius-7)),
+    --accordion-gap: 0,
     --accordion-btn-color: var(--fg-2),
     --accordion-btn-bg: var(--bg-body),
     --accordion-btn-icon-width: 1rem,
@@ -117,7 +118,7 @@ $accordion-tokens: defaults(
 
     &:not(:first-of-type) {
       // border-block-start: 0;
-      margin-top: calc(-1 * var(--accordion-border-width));
+      margin-block-start: calc(-1 * var(--accordion-border-width));
     }
 
     // Only set a border-radius on the last item if the accordion is collapsed
@@ -176,6 +177,34 @@ $accordion-tokens: defaults(
     --accordion-border-radius: var(--radius-5);
     --accordion-font-size: var(--font-size-sm);
     // scss-docs-end accordion-sm-css-vars
+  }
+
+
+  // Gapped accordion
+  //
+  // Put the gap on the accordion, not the panel. Flex gap stays constant, so
+  // it does not join the block-size transition. Overflow clip holds a stable
+  // radius on every item, so corners do not retarget while the panel opens.
+
+  .accordion-gap {
+    // scss-docs-start accordion-gap-css-vars
+    --accordion-gap: var(--spacer-2);
+    // scss-docs-end accordion-gap-css-vars
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--accordion-gap);
+
+    > .accordion-item {
+      margin-block-start: 0;
+      overflow: clip;
+      @include border-radius(var(--accordion-border-radius));
+
+      > .accordion-header,
+      > .accordion-body {
+        @include border-radius(0);
+      }
+    }
   }
 
 
