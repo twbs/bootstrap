@@ -56,7 +56,7 @@ $colors: defaults(
 // scss-docs-end colors-map
 
 // scss-docs-start color-mix-options
-$color-mix-space: lab !default;
+$color-mix-space: oklch !default;
 $tint-color: var(--white) !default;
 $shade-color: var(--black) !default;
 
@@ -82,8 +82,8 @@ $color-shades: defaults(
     "700": 32%,
     "800": 48%,
     "900": 64%,
-    "950": 76%,
-    "975": 88%,
+    "950": 70%,
+    "975": 76%,
   ),
   $color-shades
 );
