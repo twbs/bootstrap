@@ -177,14 +177,14 @@ $dialog-sizes: defaults(
     }
 
     // Non-modal dialog positioning
-    // show() doesn't use the top layer, so we need explicit positioning and z-index
+    // `show()` doesn't use the top layer, so we need explicit positioning and
+    // z-index. Center with inset + `margin: auto` (already on `.dialog`) and
+    // `height: fit-content` so the open-state `transform: none` doesn't un-center it.
     &.dialog-nonmodal {
       position: fixed;
-      inset-block-start: 50%;
-      inset-inline-start: 50%;
+      inset: 0;
       z-index: var(--z-dialog);
-      margin-inline: 0;
-      transform: translate(-50%, -50%);
+      height: fit-content;
     }
 
     // Scrollable dialog body (header/footer stay fixed)
