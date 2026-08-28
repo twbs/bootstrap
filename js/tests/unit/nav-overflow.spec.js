@@ -1127,6 +1127,73 @@ describe('NavOverflow', () => {
       }
     })
 
+    it('should wrap an overflowing menu host as a submenu and relocate its menu', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
+        '    <li class="nav-item" id="products-item" style="flex: 0 0 100px; width: 100px;">',
+        '      <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">Products</button>',
+        '      <div class="menu" id="products-menu">',
+        '        <a class="menu-item" href="#">Laptops</a>',
+        '        <div class="submenu">',
+        '          <button class="menu-item" type="button">Phones</button>',
+        '          <div class="menu">',
+        '            <a class="menu-item" href="#">iPhone</a>',
+        '          </div>',
+        '        </div>',
+        '      </div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const productsMenu = wrapperEl.querySelector('#products-menu')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const overflowMenu = wrapperEl.querySelector('.nav-overflow-menu')
+      const submenu = overflowMenu.querySelector(':scope > .submenu')
+      const trigger = submenu?.querySelector(':scope > .menu-item')
+
+      expect(wrapperEl.querySelector('#products-item')).toHaveClass('d-none')
+      expect(submenu).not.toBeNull()
+      expect(trigger.textContent).toEqual('Products')
+      expect(trigger.getAttribute('data-bs-toggle')).toBeNull()
+      expect(trigger.getAttribute('aria-haspopup')).toEqual('true')
+      expect(submenu.querySelector(':scope > .menu')).toEqual(productsMenu)
+      expect(productsMenu.querySelector('.submenu > .menu-item').textContent).toEqual('Phones')
+
+      navOverflow.dispose()
+    })
+
+    it('should move a relocated menu back onto its nav item on restore', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
+        '    <li class="nav-item" id="products-item" style="flex: 0 0 100px; width: 100px;">',
+        '      <button class="nav-link" type="button" data-bs-toggle="menu">Products</button>',
+        '      <div class="menu" id="products-menu">',
+        '        <a class="menu-item" href="#">Laptops</a>',
+        '      </div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const productsItem = wrapperEl.querySelector('#products-item')
+      const productsMenu = wrapperEl.querySelector('#products-menu')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      expect(productsMenu.parentElement).toHaveClass('submenu')
+
+      navOverflow.dispose()
+
+      expect(productsMenu.parentElement).toEqual(productsItem)
+      expect(productsItem).not.toHaveClass('d-none')
+    })
+
     it('should restore hidden items on dispose', () => {
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
