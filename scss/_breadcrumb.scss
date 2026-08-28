@@ -10,7 +10,6 @@ $breadcrumb-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $breadcrumb-tokens: defaults(
   (
-    --breadcrumb-margin-bottom: 1rem,
     --breadcrumb-font-size: inherit,
     --breadcrumb-bg: transparent,
     --breadcrumb-border-radius: var(--radius-5),
@@ -38,6 +37,7 @@ $breadcrumb-tokens: defaults(
     flex-wrap: wrap;
     align-items: center;
     padding: var(--breadcrumb-padding-y, 0) var(--breadcrumb-padding-x, 0);
+    margin-bottom: 0;
     font-size: var(--breadcrumb-font-size);
     list-style-type: "";
     background-color: var(--breadcrumb-bg);
