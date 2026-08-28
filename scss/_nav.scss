@@ -220,8 +220,8 @@ $tab-pane-tokens: defaults(
 
     .nav-link.active,
     .show > .nav-link {
-      color: var(--nav-pills-link-active-color);
-      @include gradient-bg(var(--nav-pills-link-active-bg));
+      color: var(--theme-contrast, var(--nav-pills-link-active-color));
+      @include gradient-bg(var(--theme-bg, var(--nav-pills-link-active-bg)));
     }
   }
 
