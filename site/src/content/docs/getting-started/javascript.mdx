@@ -140,9 +140,9 @@ Bootstrap provides custom events for most plugins' unique actions. Generally, th
 All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
 ```js
-const myDialog = document.querySelector('#myDialog')
+const myDialogEl = document.querySelector('#myDialog')
 
-myDialog.addEventListener('show.bs.dialog', event => {
+myDialogEl.addEventListener('show.bs.dialog', event => {
   return event.preventDefault() // stops dialog from being shown
 })
 ```
@@ -213,15 +213,15 @@ These methods return a promise:
 The promise resolves with no value. It resolves at the same moment the matching `shown.bs.*`, `hidden.bs.*`, or `closed.bs.*` event fires, so both styles run your code at the same time. Use the event when you must react to every change, including ones your own code did not start.
 
 ```js
-const drawerEl = document.querySelector('#myDrawer')
-const drawer = bootstrap.Drawer.getOrCreateInstance(drawerEl)
+const myDrawerEl = document.querySelector('#myDrawer')
+const drawer = bootstrap.Drawer.getOrCreateInstance(myDrawerEl)
 
 // Await the method you called…
 await drawer.hide()
 saveState()
 
 // …or listen for every hide, whoever started it
-drawerEl.addEventListener('hidden.bs.drawer', () => {
+myDrawerEl.addEventListener('hidden.bs.drawer', () => {
   saveState()
 })
 ```
@@ -266,10 +266,10 @@ toast.dispose()
 The event-based equivalent also works:
 
 ```js
-const myToast = document.querySelector('#myToast')
-const toast = bootstrap.Toast.getInstance(myToast)
+const myToastEl = document.querySelector('#myToast')
+const toast = bootstrap.Toast.getInstance(myToastEl)
 
-myToast.addEventListener('hidden.bs.toast', () => {
+myToastEl.addEventListener('hidden.bs.toast', () => {
   toast.dispose()
 })
 
@@ -343,8 +343,8 @@ myDefaultAllowList['*'].push(myCustomRegex)
 You can also replace our sanitizer with a dedicated library, for example [DOMPurify](https://www.npmjs.com/package/dompurify):
 
 ```js
-const yourTooltipEl = document.querySelector('#yourTooltip')
-const tooltip = new bootstrap.Tooltip(yourTooltipEl, {
+const myTooltipEl = document.querySelector('#myTooltip')
+const tooltip = new bootstrap.Tooltip(myTooltipEl, {
   sanitizeFn(content) {
     return DOMPurify.sanitize(content)
   }
