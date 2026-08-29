@@ -89,6 +89,30 @@ For selecting date ranges that span multiple months, combine `data-bs-selection-
 <Example code={`<label for="datepickerRangeTwoMonths" class="form-label">Select date range</label>
   <input type="text" class="form-control" id="datepickerRangeTwoMonths" data-bs-toggle="datepicker" autocomplete="off" data-bs-selection-mode="multiple-ranged" data-bs-display-months-count="2" data-bs-selected-dates='["2026-06-25", "2026-07-08"]' placeholder="Select start and end dates…">`} />
 
+### Week view
+
+Show a single week instead of a full month. Pass `type: 'week'` through `vcpOptions`. The picker steps week by week.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"type": "week"}'></div>`} />
+
+### Animated transitions
+
+Animate paging between months and switching views. Pass `animation: true` through `vcpOptions`. Animation is off by default, and it respects `prefers-reduced-motion`.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"animation": true}'></div>`} />
+
+### Swipe navigation
+
+Page through months, weeks, or years with a mouse, touch, or pen. Pass `enableSwipe: true` through `vcpOptions`.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"enableSwipe": true}'></div>`} />
+
+### Collapse to a week
+
+Fold a month down to the week that holds the selected date. Drag the grabber, or click it, to expand the month back. Pass `enableCollapse: true` through `vcpOptions`.
+
+<Example code={`<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"enableCollapse": true}'></div>`} />
+
 ## Options
 
 ### First day of week
@@ -205,9 +229,31 @@ Use `data-bs-datepicker-theme` to set the datepicker popup’s theme independent
 <Example code={`<label for="datepickerTheme" class="form-label">Light input, dark datepicker</label>
 <input type="text" class="form-control w-12" id="datepickerTheme" data-bs-toggle="datepicker" autocomplete="off" data-bs-datepicker-theme="dark" placeholder="Select a date">`} />
 
+## Shadow DOM
+
+The calendar renders inside a shadow root, which is useful for encapsulated web components. Two things differ from normal use:
+
+- Initialize the datepicker with JavaScript. Delegated events change their target at the shadow boundary, so `data-bs-toggle="datepicker"` does not reach elements inside a shadow root.
+- Adopt Bootstrap’s stylesheet into the shadow root. Document styles do not cross the boundary, so the calendar renders unstyled without it.
+
+```js
+const sheet = new CSSStyleSheet()
+sheet.replaceSync(await (await fetch('/path/to/bootstrap.min.css')).text())
+
+const root = host.attachShadow({ mode: 'open' })
+root.adoptedStyleSheets = [sheet]
+root.innerHTML = '<input type="text" id="shadowDatepicker">'
+
+new bootstrap.Datepicker(root.getElementById('shadowDatepicker'))
+```
+
 ## CSS
 
 ### Variables
+
+The calendar grid and the popup surface use separate token maps. Style an inline calendar with the `--calendar-*` tokens. The `--datepicker-*` tokens only apply to the popup that the datepicker adds.
+
+<ScssDocs name="calendar-tokens" file="scss/_calendar.scss" />
 
 <ScssDocs name="datepicker-tokens" file="scss/_datepicker.scss" />
 
@@ -282,6 +328,8 @@ const datepicker = new bootstrap.Datepicker(element, {
 ```
 
 See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options.
+
+`vcpOptions.type` sets the calendar view (for example `'week'`, shown above). `displayMonthsCount` takes priority: set it above `1` and the datepicker forces the `'multiple'` type, overriding `vcpOptions.type`.
 
 ### Methods
 

@@ -113,6 +113,7 @@ class Datepicker extends BaseComponent {
   protected declare _displayElement: HTMLElement | false | null
   protected declare _themeObserver: MutationObserver | null
   protected declare _onFocusIn: (event: Event) => void
+  protected declare _themeAncestor: Element | null | undefined
 
   constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null) {
     super(element, config)
@@ -304,7 +305,14 @@ class Datepicker extends BaseComponent {
   }
 
   protected _getThemeAncestor(): Element | null {
-    return this._element.closest('[data-bs-theme]')
+    // Cache on first lookup: for an inline calendar, `_syncThemeAttribute` writes
+    // `data-bs-theme` onto this same element (it doubles as VCP's main element), which
+    // would make a later `closest()` match itself instead of the real ancestor.
+    if (this._themeAncestor === undefined) {
+      this._themeAncestor = this._element.closest('[data-bs-theme]')
+    }
+
+    return this._themeAncestor
   }
 
   protected _getEffectiveTheme(): string | null {
@@ -391,7 +399,9 @@ class Datepicker extends BaseComponent {
       selectionDatesMode: this._config.selectionMode,
       selectedDates: this._config.selectedDates,
       displayMonthsCount: this._config.displayMonthsCount,
-      type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
+      // Multiple months require VCP's 'multiple' type; otherwise let vcpOptions.type
+      // through (e.g. 'week') instead of always forcing the single-month default.
+      type: this._config.displayMonthsCount > 1 ? 'multiple' : (this._config.vcpOptions.type ?? 'default'),
       selectedTheme: vcpTheme,
       themeAttrDetect: '[data-bs-theme]',
       onClickDate: (self, event) => this._handleDateClick(self, event),

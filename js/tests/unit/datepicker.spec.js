@@ -788,6 +788,62 @@ describe('Datepicker', () => {
     })
   })
 
+  // These assertions pin the Vanilla Calendar Pro markup that our Sass targets.
+  // VCP 3.2.0 added the row and cell wrappers for ARIA, which moved the grid
+  // columns off the container and broke the month and year layout silently.
+  describe('calendar markup', () => {
+    const createInlineCalendar = () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-inline="true"></div>'
+
+      const divEl = fixtureEl.querySelector('div')
+      Datepicker.getOrCreateInstance(divEl)
+
+      return divEl
+    }
+
+    it('should wrap months in rows and cells', () => {
+      const divEl = createInlineCalendar()
+
+      divEl.querySelector('[data-vc="month"]').click()
+
+      const monthsEl = divEl.querySelector('[data-vc="months"]')
+
+      expect(monthsEl.querySelectorAll('[data-vc-months="row"]')).toHaveSize(3)
+      expect(monthsEl.querySelectorAll('[data-vc-months="row"] > [data-vc-months="cell"] > [data-vc-months-month]')).toHaveSize(12)
+    })
+
+    it('should wrap years in rows and cells', () => {
+      const divEl = createInlineCalendar()
+
+      divEl.querySelector('[data-vc="year"]').click()
+
+      const yearsEl = divEl.querySelector('[data-vc="years"]')
+
+      expect(yearsEl.querySelectorAll('[data-vc-years="row"]')).toHaveSize(3)
+      expect(yearsEl.querySelectorAll('[data-vc-years="row"] > [data-vc-years="cell"] > [data-vc-years-year]')).toHaveSize(15)
+    })
+
+    it('should not mark inline calendars with data-vc-input', () => {
+      const divEl = createInlineCalendar()
+
+      expect(divEl.getAttribute('data-vc')).toEqual('calendar')
+      expect(divEl.hasAttribute('data-vc-input')).toBeFalse()
+    })
+
+    it('should mark popup calendars with data-vc-input', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      return datepicker.show().then(() => {
+        const calendarEl = datepicker._calendar.context.mainElement
+
+        expect(calendarEl.hasAttribute('data-vc-input')).toBeTrue()
+      })
+    })
+  })
+
   describe('data-api', () => {
     it('should toggle on click for buttons', () => {
       return new Promise(resolve => {
@@ -1075,6 +1131,42 @@ describe('Datepicker', () => {
       })
 
       expect(datepicker._config.vcpOptions.jumpMonths).toEqual(2)
+    })
+
+    it('should default to the single-month calendar type', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker._buildCalendarOptions().type).toEqual('default')
+    })
+
+    it('should let vcpOptions.type override the default calendar type', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        vcpOptions: {
+          type: 'week'
+        }
+      })
+
+      expect(datepicker._buildCalendarOptions().type).toEqual('week')
+    })
+
+    it('should force the multiple calendar type when displayMonthsCount is greater than 1, ignoring vcpOptions.type', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        displayMonthsCount: 2,
+        vcpOptions: {
+          type: 'week'
+        }
+      })
+
+      expect(datepicker._buildCalendarOptions().type).toEqual('multiple')
     })
   })
 
