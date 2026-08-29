@@ -109,9 +109,9 @@ Bootstrap provides custom events for most plugins’ unique actions. Generally, 
 All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
 ```js
-const myModal = document.querySelector('#myModal')
+const myModalEl = document.querySelector('#myModal')
 
-myModal.addEventListener('show.bs.modal', event => {
+myModalEl.addEventListener('show.bs.modal', event => {
   return event.preventDefault() // stops modal from being shown
 })
 ```
