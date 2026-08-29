@@ -109,9 +109,9 @@ Bootstrap provides custom events for most plugins’ unique actions. Generally, 
 All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
 ```js
-const myModal = document.querySelector('#myModal')
+const myModalEl = document.querySelector('#myModal')
 
-myModal.addEventListener('show.bs.modal', event => {
+myModalEl.addEventListener('show.bs.modal', event => {
   return event.preventDefault() // stops modal from being shown
 })
 ```
@@ -186,10 +186,12 @@ carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not 
 While it may seem correct to use the `dispose` method immediately after `hide()`, it will lead to incorrect results. Here’s an example of the problem use:
 
 ```js
-const myModal = document.querySelector('#myModal')
+const myModalEl = document.querySelector('#myModal')
+const myModal = bootstrap.Modal.getInstance(myModalEl)
+
 myModal.hide() // it is asynchronous
 
-myModal.addEventListener('shown.bs.hidden', event => {
+myModalEl.addEventListener('hidden.bs.modal', event => {
   myModal.dispose()
 })
 ```
