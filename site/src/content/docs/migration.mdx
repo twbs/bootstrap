@@ -327,8 +327,6 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 - Added [striped columns]([[docsref:/content/tables#striped-columns]]) support to tables via the new `.table-striped-columns` class.
 
-For a complete list of changes, [see the v5.2.0 project on GitHub](https://github.com/twbs/bootstrap/projects/32).
-
 ## v5.1.0
 
 <hr class="mb-4"/>
@@ -606,7 +604,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 - Dropdown menus now have a `data-bs-popper="static"` attribute set when the positioning of the dropdown is static, or dropdown is in the navbar. This is added by our JavaScript and helps us use custom position styles without interfering with Popper’s positioning.
 
-- <span class="badge text-bg-danger">Breaking</span> Dropped `flip` option for dropdown plugin in favor of native Popper configuration. You can now disable the flipping behavior by passing an empty array for [`fallbackPlacements`](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements) option in [flip](https://popper.js.org/docs/v2/modifiers/flip/) modifier.
+- <span class="badge text-bg-danger">Breaking</span> Dropped `flip` option for dropdown plugin in favor of native Popper configuration. You can now disable the flipping behavior by passing an empty array for [`fallbackPlacements`](https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/flip.md/#fallbackplacements) option in [flip](https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/flip.md/) modifier.
 
 - Dropdown menus can now be clickable with a new `autoClose` option to handle the [auto close behavior]([[docsref:/components/dropdowns#auto-close-behavior]]). You can use this option to accept the click inside or outside the dropdown menu to make it interactive.
 

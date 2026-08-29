@@ -63,6 +63,9 @@ updates:
         update-types:
           - "version-update:semver-major"
           - "version-update:semver-minor"
+      - dependency-name: "jasmine"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "jquery"
         update-types:
           - "version-update:semver-major"

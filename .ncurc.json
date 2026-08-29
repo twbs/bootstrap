@@ -10,6 +10,7 @@
     "eslint-config-xo",
     "eslint-plugin-unicorn",
     "hammer-simulator",
+    "jasmine",
     "jquery",
     "karma-browserstack-launcher",
     "karma-rollup-preprocessor",
