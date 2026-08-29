@@ -151,6 +151,46 @@ Add `.accordion-flush` to remove some borders and rounded corners to render acco
     <!-- Accordion items here -->
   </div>`} />
 
+## Gap
+
+Add `.accordion-gap` to put space between accordion items. Each item is a separate rounded card.
+
+The gap lives on the accordion, not the panel. The panel still animates only its `block-size`, so the open and close transition stays smooth.
+
+<Example code={`<div class="accordion accordion-gap">
+    <details class="accordion-item" name="accordionGapExample" open>
+      <summary class="accordion-header">
+        Accordion Item #1
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the first item’s accordion body.</strong> The <code>.accordion-gap</code> class spaces items apart. Each item keeps a full border radius while the panel opens and closes.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionGapExample">
+      <summary class="accordion-header">
+        Accordion Item #2
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the second item’s accordion body.</strong> The gap does not change during the transition, so adjacent items do not jump.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionGapExample">
+      <summary class="accordion-header">
+        Accordion Item #3
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the third item’s accordion body.</strong> Override <code>--accordion-gap</code> to change the space between items.
+      </div>
+    </details>
+  </div>`} customMarkup={`<div class="accordion accordion-gap"><!--[!code highlight]-->
+    <!-- Accordion items here -->
+  </div>`} />
+
+<ScssDocs name="accordion-gap-css-vars" file="scss/_accordion.scss" />
+
 ## Always open
 
 Omit the `name` attribute on each `<details>` element to allow multiple accordion items to be open simultaneously.
