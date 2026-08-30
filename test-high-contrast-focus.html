@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Contrast Focus Test</title>
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <style>
+        /* Simulate high contrast mode for testing */
+        @media (prefers-contrast: high) {
+            body {
+                background: black;
+                color: white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>High Contrast Focus Indicator Test</h1>
+        <p>This page demonstrates the improved focus indicators for high contrast mode.</p>
+
+        <div class="mb-3">
+            <label for="testInput" class="form-label">Test Input</label>
+            <input type="text" class="form-control" id="testInput" placeholder="Focus on this input">
+        </div>
+
+        <div class="mb-3">
+            <label for="testTextarea" class="form-label">Test Textarea</label>
+            <textarea class="form-control" id="testTextarea" rows="3" placeholder="Focus on this textarea"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary">Primary Button</button>
+            <button type="button" class="btn btn-secondary">Secondary Button</button>
+        </div>
+
+        <div class="alert alert-info">
+            <strong>Testing Instructions:</strong>
+            <ul>
+                <li>Tab through the form elements to see focus indicators</li>
+                <li>In normal mode, you'll see the blue box-shadow focus ring</li>
+                <li>In high contrast mode (or when box-shadow is disabled), you'll see a solid outline</li>
+                <li>To test high contrast mode: Enable it in your OS settings or use browser dev tools to simulate it
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
