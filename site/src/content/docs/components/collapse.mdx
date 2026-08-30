@@ -82,6 +82,36 @@ Conversely, multiple `<button>` or `<a>` elements can show and hide the same ele
     </div>
   </div>`} />
 
+## Nested collapse
+
+Collapse triggers can be placed inside another `.collapse` element. This is useful when you want to progressively reveal additional content.
+
+<Example code={`<p class="d-inline-flex gap-1">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNestedParent" aria-expanded="false" aria-controls="collapseNestedParent">
+      Toggle parent
+    </button>
+  </p>
+
+  <div class="collapse" id="collapseNestedParent">
+    <div class="card card-body">
+      <p class="mb-2">
+        This is the parent collapse. It can contain links, buttons, and even other collapse triggers.
+      </p>
+
+      <p class="d-inline-flex gap-1 mb-0">
+        <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNestedChild" aria-expanded="false" aria-controls="collapseNestedChild">
+          Toggle nested collapse
+        </button>
+      </p>
+
+      <div class="collapse mt-2" id="collapseNestedChild">
+        <div class="card card-body">
+          This is the nested collapse content.
+        </div>
+      </div>
+    </div>
+  </div>`} />
+
 ## Accessibility
 
 Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you’ve set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element’s HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
