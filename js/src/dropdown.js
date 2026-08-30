@@ -419,11 +419,25 @@ class Dropdown extends BaseComponent {
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     if (isUpOrDownEvent) {
-      event.stopPropagation()
-      instance.show()
-      instance._selectMenuItem(event)
-      return
+      event.stopPropagation();
+
+      // Prevent reopening menus that should auto-close
+      const nextMenu = event.target.nextElementSibling;
+
+      // If navigating down into a submenu, open it (optional)
+      if (event.key === 'ArrowDown' && nextMenu && !nextMenu.classList.contains('show')) {
+        const dropdown = new Dropdown(
+          event.target.closest('.dropdown').querySelector('[data-bs-toggle="dropdown"]')
+        );
+        dropdown.show();
+      }
+
+      // Move focus within menu items
+      instance._selectMenuItem(event);
+
+      return;
     }
+
 
     if (instance._isShown()) { // else is escape and we check if it is shown
       event.stopPropagation()
