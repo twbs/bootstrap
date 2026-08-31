@@ -2425,6 +2425,7 @@ const EVENT_SHOW$4 = `show${EVENT_KEY$12}`;
 const EVENT_SHOWN$3 = `shown${EVENT_KEY$12}`;
 const EVENT_HIDE$3 = `hide${EVENT_KEY$12}`;
 const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$12}`;
+const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$12}`;
 const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$12}${DATA_API_KEY$7}`;
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$12}${DATA_API_KEY$7}`;
 const SELECTOR_DATA_TOGGLE$6 = "[data-bs-toggle=\"datepicker\"]";
@@ -2505,6 +2506,7 @@ var Datepicker = class extends BaseComponent {
 			this._themeObserver.disconnect();
 			this._themeObserver = null;
 		}
+		if (this._onFocusIn) EventHandler.off(document, EVENT_FOCUSIN$3, this._onFocusIn);
 		if (this._calendar) this._calendar.destroy();
 		this._calendar = null;
 		super.dispose();
@@ -2526,6 +2528,7 @@ var Datepicker = class extends BaseComponent {
 		this._calendar = new Calendar(this._positionElement, calendarOptions);
 		this._calendar.init();
 		this._setupThemeObserver();
+		this._setupDismissOnFocus();
 		if (this._isInput && this._element.value) this._parseInputValue();
 		this._updateDisplayWithSelectedDates();
 	}
@@ -2577,6 +2580,17 @@ var Datepicker = class extends BaseComponent {
 			attributeFilter: ["data-bs-theme"]
 		});
 	}
+	_setupDismissOnFocus() {
+		if (this._isInline) return;
+		this._onFocusIn = (event) => {
+			if (!this._isShown) return;
+			const { target } = event;
+			const mainElement = this._calendar?.context?.mainElement;
+			if (target instanceof Node && (this._element.contains(target) || mainElement?.contains(target))) return;
+			this.hide();
+		};
+		EventHandler.on(document, EVENT_FOCUSIN$3, this._onFocusIn);
+	}
 	_buildCalendarOptions() {
 		const theme = this._getEffectiveTheme();
 		const vcpTheme = !theme || theme === "auto" ? "system" : theme;
@@ -2597,6 +2611,7 @@ var Datepicker = class extends BaseComponent {
 				this._syncThemeAttribute(self.context.mainElement);
 			},
 			onShow: () => {
+				if (!this._calendar) return;
 				this._isShown = true;
 				this._syncThemeAttribute(this._calendar.context.mainElement);
 			},
@@ -4642,6 +4657,7 @@ var Tooltip = class extends BaseComponent {
 		this._activeTrigger = {};
 		this._floatingCleanup = null;
 		this._keydownHandler = null;
+		this._tipEventOut = null;
 		this._templateFactory = null;
 		this._newContent = null;
 		this._mediaQueryListeners = [];
@@ -4700,6 +4716,7 @@ var Tooltip = class extends BaseComponent {
 		if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
 			container.append(tip);
 			EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED));
+			this._setTipListeners(tip);
 		}
 		await this._createFloating(tip);
 		tip.classList.add(CLASS_NAME_SHOW$2);
@@ -4890,8 +4907,7 @@ var Tooltip = class extends BaseComponent {
 			context.toggle();
 		});
 		else if (trigger !== TRIGGER_MANUAL) {
-			const eventIn = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSEENTER$1) : this.constructor.eventName(EVENT_FOCUSIN$2);
-			const eventOut = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSELEAVE) : this.constructor.eventName(EVENT_FOCUSOUT$1);
+			const [eventIn, eventOut] = this._getTriggerEvents(trigger);
 			EventHandler.on(this._element, eventIn, this._config.selector, (event) => {
 				const context = this._initializeOnDelegatedTarget(event);
 				context._activeTrigger[event.type === "focusin" ? TRIGGER_FOCUS : TRIGGER_HOVER] = true;
@@ -4899,7 +4915,7 @@ var Tooltip = class extends BaseComponent {
 			});
 			EventHandler.on(this._element, eventOut, this._config.selector, (event) => {
 				const context = this._initializeOnDelegatedTarget(event);
-				context._activeTrigger[event.type === "focusout" ? TRIGGER_FOCUS : TRIGGER_HOVER] = context._element.contains(event.relatedTarget);
+				context._activeTrigger[event.type === "focusout" ? TRIGGER_FOCUS : TRIGGER_HOVER] = context._isInside(event.relatedTarget);
 				context._leave();
 			});
 		}
@@ -4907,6 +4923,39 @@ var Tooltip = class extends BaseComponent {
 			if (this._element) this.hide();
 		};
 		EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
+	}
+	_setTipListeners(tip) {
+		const trigger = this._getTrigger();
+		if (trigger === TRIGGER_MANUAL || trigger.includes(TRIGGER_CLICK)) return;
+		this._tipEventOut = (event) => {
+			this._activeTrigger[event.type === "focusout" ? TRIGGER_FOCUS : TRIGGER_HOVER] = this._isInside(event.relatedTarget);
+			this._leave();
+		};
+		for (const name of trigger.split(" ")) if (name === TRIGGER_HOVER || name === TRIGGER_FOCUS) {
+			const [, eventOut] = this._getTriggerEvents(name);
+			EventHandler.on(tip, eventOut, this._tipEventOut);
+		}
+	}
+	_removeTipListeners(tip) {
+		if (!this._tipEventOut) return;
+		const trigger = this._getTrigger();
+		for (const name of trigger.split(" ")) if (name === TRIGGER_HOVER || name === TRIGGER_FOCUS) {
+			const [, eventOut] = this._getTriggerEvents(name);
+			EventHandler.off(tip, eventOut, this._tipEventOut);
+		}
+		this._tipEventOut = null;
+	}
+	_isInside(element) {
+		return this._element.contains(element) || Boolean(this.tip?.contains(element));
+	}
+	_getTrigger() {
+		return this._config._trigger;
+	}
+	_getTriggerEvents(trigger) {
+		return {
+			[TRIGGER_HOVER]: [this.constructor.eventName(EVENT_MOUSEENTER$1), this.constructor.eventName(EVENT_MOUSELEAVE)],
+			[TRIGGER_FOCUS]: [this.constructor.eventName(EVENT_FOCUSIN$2), this.constructor.eventName(EVENT_FOCUSOUT$1)]
+		}[trigger];
 	}
 	_setEscapeListener() {
 		if (this._keydownHandler) return;
@@ -4977,6 +5026,7 @@ var Tooltip = class extends BaseComponent {
 	}
 	_configAfterMerge(config) {
 		config.container = config.container === false ? document.body : getElement(config.container);
+		config._trigger = config._trigger || config.trigger;
 		if (typeof config.delay === "number") config.delay = {
 			show: config.delay,
 			hide: config.delay
@@ -4998,6 +5048,7 @@ var Tooltip = class extends BaseComponent {
 			this._floatingCleanup = null;
 		}
 		if (this.tip) {
+			this._removeTipListeners(this.tip);
 			this.tip.remove();
 			this.tip = null;
 		}

@@ -6,214 +6,214 @@
   */
 :root,
 :host {
-  --bs-blue-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.24 240deg));
-  --bs-blue-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.24 240deg));
-  --bs-blue-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.24 240deg));
-  --bs-blue-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.24 240deg));
-  --bs-blue-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.24 240deg));
-  --bs-blue-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.24 240deg));
+  --bs-blue-025: color-mix(in oklch, var(--bs-white) 94%, oklch(60% 0.24 240deg));
+  --bs-blue-050: color-mix(in oklch, var(--bs-white) 90%, oklch(60% 0.24 240deg));
+  --bs-blue-100: color-mix(in oklch, var(--bs-white) 80%, oklch(60% 0.24 240deg));
+  --bs-blue-200: color-mix(in oklch, var(--bs-white) 60%, oklch(60% 0.24 240deg));
+  --bs-blue-300: color-mix(in oklch, var(--bs-white) 40%, oklch(60% 0.24 240deg));
+  --bs-blue-400: color-mix(in oklch, var(--bs-white) 20%, oklch(60% 0.24 240deg));
   --bs-blue-500: oklch(60% 0.24 240deg);
-  --bs-blue-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.24 240deg));
-  --bs-blue-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.24 240deg));
-  --bs-blue-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.24 240deg));
-  --bs-blue-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.24 240deg));
-  --bs-blue-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.24 240deg));
-  --bs-blue-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.24 240deg));
-  --bs-indigo-025: color-mix(in lab, var(--bs-white) 94%, oklch(56% 0.26 288deg));
-  --bs-indigo-050: color-mix(in lab, var(--bs-white) 90%, oklch(56% 0.26 288deg));
-  --bs-indigo-100: color-mix(in lab, var(--bs-white) 80%, oklch(56% 0.26 288deg));
-  --bs-indigo-200: color-mix(in lab, var(--bs-white) 60%, oklch(56% 0.26 288deg));
-  --bs-indigo-300: color-mix(in lab, var(--bs-white) 40%, oklch(56% 0.26 288deg));
-  --bs-indigo-400: color-mix(in lab, var(--bs-white) 20%, oklch(56% 0.26 288deg));
+  --bs-blue-600: color-mix(in oklch, var(--bs-black) 16%, oklch(60% 0.24 240deg));
+  --bs-blue-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.24 240deg));
+  --bs-blue-800: color-mix(in oklch, var(--bs-black) 48%, oklch(60% 0.24 240deg));
+  --bs-blue-900: color-mix(in oklch, var(--bs-black) 64%, oklch(60% 0.24 240deg));
+  --bs-blue-950: color-mix(in oklch, var(--bs-black) 70%, oklch(60% 0.24 240deg));
+  --bs-blue-975: color-mix(in oklch, var(--bs-black) 76%, oklch(60% 0.24 240deg));
+  --bs-indigo-025: color-mix(in oklch, var(--bs-white) 94%, oklch(56% 0.26 288deg));
+  --bs-indigo-050: color-mix(in oklch, var(--bs-white) 90%, oklch(56% 0.26 288deg));
+  --bs-indigo-100: color-mix(in oklch, var(--bs-white) 80%, oklch(56% 0.26 288deg));
+  --bs-indigo-200: color-mix(in oklch, var(--bs-white) 60%, oklch(56% 0.26 288deg));
+  --bs-indigo-300: color-mix(in oklch, var(--bs-white) 40%, oklch(56% 0.26 288deg));
+  --bs-indigo-400: color-mix(in oklch, var(--bs-white) 20%, oklch(56% 0.26 288deg));
   --bs-indigo-500: oklch(56% 0.26 288deg);
-  --bs-indigo-600: color-mix(in lab, var(--bs-black) 16%, oklch(56% 0.26 288deg));
-  --bs-indigo-700: color-mix(in lab, var(--bs-black) 32%, oklch(56% 0.26 288deg));
-  --bs-indigo-800: color-mix(in lab, var(--bs-black) 48%, oklch(56% 0.26 288deg));
-  --bs-indigo-900: color-mix(in lab, var(--bs-black) 64%, oklch(56% 0.26 288deg));
-  --bs-indigo-950: color-mix(in lab, var(--bs-black) 76%, oklch(56% 0.26 288deg));
-  --bs-indigo-975: color-mix(in lab, var(--bs-black) 88%, oklch(56% 0.26 288deg));
-  --bs-violet-025: color-mix(in lab, var(--bs-white) 94%, oklch(56% 0.24 300deg));
-  --bs-violet-050: color-mix(in lab, var(--bs-white) 90%, oklch(56% 0.24 300deg));
-  --bs-violet-100: color-mix(in lab, var(--bs-white) 80%, oklch(56% 0.24 300deg));
-  --bs-violet-200: color-mix(in lab, var(--bs-white) 60%, oklch(56% 0.24 300deg));
-  --bs-violet-300: color-mix(in lab, var(--bs-white) 40%, oklch(56% 0.24 300deg));
-  --bs-violet-400: color-mix(in lab, var(--bs-white) 20%, oklch(56% 0.24 300deg));
+  --bs-indigo-600: color-mix(in oklch, var(--bs-black) 16%, oklch(56% 0.26 288deg));
+  --bs-indigo-700: color-mix(in oklch, var(--bs-black) 32%, oklch(56% 0.26 288deg));
+  --bs-indigo-800: color-mix(in oklch, var(--bs-black) 48%, oklch(56% 0.26 288deg));
+  --bs-indigo-900: color-mix(in oklch, var(--bs-black) 64%, oklch(56% 0.26 288deg));
+  --bs-indigo-950: color-mix(in oklch, var(--bs-black) 70%, oklch(56% 0.26 288deg));
+  --bs-indigo-975: color-mix(in oklch, var(--bs-black) 76%, oklch(56% 0.26 288deg));
+  --bs-violet-025: color-mix(in oklch, var(--bs-white) 94%, oklch(56% 0.24 300deg));
+  --bs-violet-050: color-mix(in oklch, var(--bs-white) 90%, oklch(56% 0.24 300deg));
+  --bs-violet-100: color-mix(in oklch, var(--bs-white) 80%, oklch(56% 0.24 300deg));
+  --bs-violet-200: color-mix(in oklch, var(--bs-white) 60%, oklch(56% 0.24 300deg));
+  --bs-violet-300: color-mix(in oklch, var(--bs-white) 40%, oklch(56% 0.24 300deg));
+  --bs-violet-400: color-mix(in oklch, var(--bs-white) 20%, oklch(56% 0.24 300deg));
   --bs-violet-500: oklch(56% 0.24 300deg);
-  --bs-violet-600: color-mix(in lab, var(--bs-black) 16%, oklch(56% 0.24 300deg));
-  --bs-violet-700: color-mix(in lab, var(--bs-black) 32%, oklch(56% 0.24 300deg));
-  --bs-violet-800: color-mix(in lab, var(--bs-black) 48%, oklch(56% 0.24 300deg));
-  --bs-violet-900: color-mix(in lab, var(--bs-black) 64%, oklch(56% 0.24 300deg));
-  --bs-violet-950: color-mix(in lab, var(--bs-black) 76%, oklch(56% 0.24 300deg));
-  --bs-violet-975: color-mix(in lab, var(--bs-black) 88%, oklch(56% 0.24 300deg));
-  --bs-purple-025: color-mix(in lab, var(--bs-white) 94%, oklch(56% 0.24 320deg));
-  --bs-purple-050: color-mix(in lab, var(--bs-white) 90%, oklch(56% 0.24 320deg));
-  --bs-purple-100: color-mix(in lab, var(--bs-white) 80%, oklch(56% 0.24 320deg));
-  --bs-purple-200: color-mix(in lab, var(--bs-white) 60%, oklch(56% 0.24 320deg));
-  --bs-purple-300: color-mix(in lab, var(--bs-white) 40%, oklch(56% 0.24 320deg));
-  --bs-purple-400: color-mix(in lab, var(--bs-white) 20%, oklch(56% 0.24 320deg));
+  --bs-violet-600: color-mix(in oklch, var(--bs-black) 16%, oklch(56% 0.24 300deg));
+  --bs-violet-700: color-mix(in oklch, var(--bs-black) 32%, oklch(56% 0.24 300deg));
+  --bs-violet-800: color-mix(in oklch, var(--bs-black) 48%, oklch(56% 0.24 300deg));
+  --bs-violet-900: color-mix(in oklch, var(--bs-black) 64%, oklch(56% 0.24 300deg));
+  --bs-violet-950: color-mix(in oklch, var(--bs-black) 70%, oklch(56% 0.24 300deg));
+  --bs-violet-975: color-mix(in oklch, var(--bs-black) 76%, oklch(56% 0.24 300deg));
+  --bs-purple-025: color-mix(in oklch, var(--bs-white) 94%, oklch(56% 0.24 320deg));
+  --bs-purple-050: color-mix(in oklch, var(--bs-white) 90%, oklch(56% 0.24 320deg));
+  --bs-purple-100: color-mix(in oklch, var(--bs-white) 80%, oklch(56% 0.24 320deg));
+  --bs-purple-200: color-mix(in oklch, var(--bs-white) 60%, oklch(56% 0.24 320deg));
+  --bs-purple-300: color-mix(in oklch, var(--bs-white) 40%, oklch(56% 0.24 320deg));
+  --bs-purple-400: color-mix(in oklch, var(--bs-white) 20%, oklch(56% 0.24 320deg));
   --bs-purple-500: oklch(56% 0.24 320deg);
-  --bs-purple-600: color-mix(in lab, var(--bs-black) 16%, oklch(56% 0.24 320deg));
-  --bs-purple-700: color-mix(in lab, var(--bs-black) 32%, oklch(56% 0.24 320deg));
-  --bs-purple-800: color-mix(in lab, var(--bs-black) 48%, oklch(56% 0.24 320deg));
-  --bs-purple-900: color-mix(in lab, var(--bs-black) 64%, oklch(56% 0.24 320deg));
-  --bs-purple-950: color-mix(in lab, var(--bs-black) 76%, oklch(56% 0.24 320deg));
-  --bs-purple-975: color-mix(in lab, var(--bs-black) 88%, oklch(56% 0.24 320deg));
-  --bs-pink-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.22 4deg));
-  --bs-pink-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.22 4deg));
-  --bs-pink-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.22 4deg));
-  --bs-pink-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.22 4deg));
-  --bs-pink-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.22 4deg));
-  --bs-pink-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.22 4deg));
+  --bs-purple-600: color-mix(in oklch, var(--bs-black) 16%, oklch(56% 0.24 320deg));
+  --bs-purple-700: color-mix(in oklch, var(--bs-black) 32%, oklch(56% 0.24 320deg));
+  --bs-purple-800: color-mix(in oklch, var(--bs-black) 48%, oklch(56% 0.24 320deg));
+  --bs-purple-900: color-mix(in oklch, var(--bs-black) 64%, oklch(56% 0.24 320deg));
+  --bs-purple-950: color-mix(in oklch, var(--bs-black) 70%, oklch(56% 0.24 320deg));
+  --bs-purple-975: color-mix(in oklch, var(--bs-black) 76%, oklch(56% 0.24 320deg));
+  --bs-pink-025: color-mix(in oklch, var(--bs-white) 94%, oklch(60% 0.22 4deg));
+  --bs-pink-050: color-mix(in oklch, var(--bs-white) 90%, oklch(60% 0.22 4deg));
+  --bs-pink-100: color-mix(in oklch, var(--bs-white) 80%, oklch(60% 0.22 4deg));
+  --bs-pink-200: color-mix(in oklch, var(--bs-white) 60%, oklch(60% 0.22 4deg));
+  --bs-pink-300: color-mix(in oklch, var(--bs-white) 40%, oklch(60% 0.22 4deg));
+  --bs-pink-400: color-mix(in oklch, var(--bs-white) 20%, oklch(60% 0.22 4deg));
   --bs-pink-500: oklch(60% 0.22 4deg);
-  --bs-pink-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.22 4deg));
-  --bs-pink-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.22 4deg));
-  --bs-pink-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.22 4deg));
-  --bs-pink-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.22 4deg));
-  --bs-pink-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.22 4deg));
-  --bs-pink-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.22 4deg));
-  --bs-red-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.22 20deg));
-  --bs-red-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.22 20deg));
-  --bs-red-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.22 20deg));
-  --bs-red-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.22 20deg));
-  --bs-red-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.22 20deg));
-  --bs-red-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.22 20deg));
+  --bs-pink-600: color-mix(in oklch, var(--bs-black) 16%, oklch(60% 0.22 4deg));
+  --bs-pink-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.22 4deg));
+  --bs-pink-800: color-mix(in oklch, var(--bs-black) 48%, oklch(60% 0.22 4deg));
+  --bs-pink-900: color-mix(in oklch, var(--bs-black) 64%, oklch(60% 0.22 4deg));
+  --bs-pink-950: color-mix(in oklch, var(--bs-black) 70%, oklch(60% 0.22 4deg));
+  --bs-pink-975: color-mix(in oklch, var(--bs-black) 76%, oklch(60% 0.22 4deg));
+  --bs-red-025: color-mix(in oklch, var(--bs-white) 94%, oklch(60% 0.22 20deg));
+  --bs-red-050: color-mix(in oklch, var(--bs-white) 90%, oklch(60% 0.22 20deg));
+  --bs-red-100: color-mix(in oklch, var(--bs-white) 80%, oklch(60% 0.22 20deg));
+  --bs-red-200: color-mix(in oklch, var(--bs-white) 60%, oklch(60% 0.22 20deg));
+  --bs-red-300: color-mix(in oklch, var(--bs-white) 40%, oklch(60% 0.22 20deg));
+  --bs-red-400: color-mix(in oklch, var(--bs-white) 20%, oklch(60% 0.22 20deg));
   --bs-red-500: oklch(60% 0.22 20deg);
-  --bs-red-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.22 20deg));
-  --bs-red-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.22 20deg));
-  --bs-red-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.22 20deg));
-  --bs-red-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.22 20deg));
-  --bs-red-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.22 20deg));
-  --bs-red-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.22 20deg));
-  --bs-orange-025: color-mix(in lab, var(--bs-white) 94%, oklch(70% 0.22 52deg));
-  --bs-orange-050: color-mix(in lab, var(--bs-white) 90%, oklch(70% 0.22 52deg));
-  --bs-orange-100: color-mix(in lab, var(--bs-white) 80%, oklch(70% 0.22 52deg));
-  --bs-orange-200: color-mix(in lab, var(--bs-white) 60%, oklch(70% 0.22 52deg));
-  --bs-orange-300: color-mix(in lab, var(--bs-white) 40%, oklch(70% 0.22 52deg));
-  --bs-orange-400: color-mix(in lab, var(--bs-white) 20%, oklch(70% 0.22 52deg));
+  --bs-red-600: color-mix(in oklch, var(--bs-black) 16%, oklch(60% 0.22 20deg));
+  --bs-red-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.22 20deg));
+  --bs-red-800: color-mix(in oklch, var(--bs-black) 48%, oklch(60% 0.22 20deg));
+  --bs-red-900: color-mix(in oklch, var(--bs-black) 64%, oklch(60% 0.22 20deg));
+  --bs-red-950: color-mix(in oklch, var(--bs-black) 70%, oklch(60% 0.22 20deg));
+  --bs-red-975: color-mix(in oklch, var(--bs-black) 76%, oklch(60% 0.22 20deg));
+  --bs-orange-025: color-mix(in oklch, var(--bs-white) 94%, oklch(70% 0.22 52deg));
+  --bs-orange-050: color-mix(in oklch, var(--bs-white) 90%, oklch(70% 0.22 52deg));
+  --bs-orange-100: color-mix(in oklch, var(--bs-white) 80%, oklch(70% 0.22 52deg));
+  --bs-orange-200: color-mix(in oklch, var(--bs-white) 60%, oklch(70% 0.22 52deg));
+  --bs-orange-300: color-mix(in oklch, var(--bs-white) 40%, oklch(70% 0.22 52deg));
+  --bs-orange-400: color-mix(in oklch, var(--bs-white) 20%, oklch(70% 0.22 52deg));
   --bs-orange-500: oklch(70% 0.22 52deg);
-  --bs-orange-600: color-mix(in lab, var(--bs-black) 16%, oklch(70% 0.22 52deg));
-  --bs-orange-700: color-mix(in lab, var(--bs-black) 32%, oklch(70% 0.22 52deg));
-  --bs-orange-800: color-mix(in lab, var(--bs-black) 48%, oklch(70% 0.22 52deg));
-  --bs-orange-900: color-mix(in lab, var(--bs-black) 64%, oklch(70% 0.22 52deg));
-  --bs-orange-950: color-mix(in lab, var(--bs-black) 76%, oklch(70% 0.22 52deg));
-  --bs-orange-975: color-mix(in lab, var(--bs-black) 88%, oklch(70% 0.22 52deg));
-  --bs-amber-025: color-mix(in lab, var(--bs-white) 94%, oklch(79% 0.2 78deg));
-  --bs-amber-050: color-mix(in lab, var(--bs-white) 90%, oklch(79% 0.2 78deg));
-  --bs-amber-100: color-mix(in lab, var(--bs-white) 80%, oklch(79% 0.2 78deg));
-  --bs-amber-200: color-mix(in lab, var(--bs-white) 60%, oklch(79% 0.2 78deg));
-  --bs-amber-300: color-mix(in lab, var(--bs-white) 40%, oklch(79% 0.2 78deg));
-  --bs-amber-400: color-mix(in lab, var(--bs-white) 20%, oklch(79% 0.2 78deg));
+  --bs-orange-600: color-mix(in oklch, var(--bs-black) 16%, oklch(70% 0.22 52deg));
+  --bs-orange-700: color-mix(in oklch, var(--bs-black) 32%, oklch(70% 0.22 52deg));
+  --bs-orange-800: color-mix(in oklch, var(--bs-black) 48%, oklch(70% 0.22 52deg));
+  --bs-orange-900: color-mix(in oklch, var(--bs-black) 64%, oklch(70% 0.22 52deg));
+  --bs-orange-950: color-mix(in oklch, var(--bs-black) 70%, oklch(70% 0.22 52deg));
+  --bs-orange-975: color-mix(in oklch, var(--bs-black) 76%, oklch(70% 0.22 52deg));
+  --bs-amber-025: color-mix(in oklch, var(--bs-white) 94%, oklch(79% 0.2 78deg));
+  --bs-amber-050: color-mix(in oklch, var(--bs-white) 90%, oklch(79% 0.2 78deg));
+  --bs-amber-100: color-mix(in oklch, var(--bs-white) 80%, oklch(79% 0.2 78deg));
+  --bs-amber-200: color-mix(in oklch, var(--bs-white) 60%, oklch(79% 0.2 78deg));
+  --bs-amber-300: color-mix(in oklch, var(--bs-white) 40%, oklch(79% 0.2 78deg));
+  --bs-amber-400: color-mix(in oklch, var(--bs-white) 20%, oklch(79% 0.2 78deg));
   --bs-amber-500: oklch(79% 0.2 78deg);
-  --bs-amber-600: color-mix(in lab, var(--bs-black) 16%, oklch(79% 0.2 78deg));
-  --bs-amber-700: color-mix(in lab, var(--bs-black) 32%, oklch(79% 0.2 78deg));
-  --bs-amber-800: color-mix(in lab, var(--bs-black) 48%, oklch(79% 0.2 78deg));
-  --bs-amber-900: color-mix(in lab, var(--bs-black) 64%, oklch(79% 0.2 78deg));
-  --bs-amber-950: color-mix(in lab, var(--bs-black) 76%, oklch(79% 0.2 78deg));
-  --bs-amber-975: color-mix(in lab, var(--bs-black) 88%, oklch(79% 0.2 78deg));
-  --bs-yellow-025: color-mix(in lab, var(--bs-white) 94%, oklch(88% 0.24 88deg));
-  --bs-yellow-050: color-mix(in lab, var(--bs-white) 90%, oklch(88% 0.24 88deg));
-  --bs-yellow-100: color-mix(in lab, var(--bs-white) 80%, oklch(88% 0.24 88deg));
-  --bs-yellow-200: color-mix(in lab, var(--bs-white) 60%, oklch(88% 0.24 88deg));
-  --bs-yellow-300: color-mix(in lab, var(--bs-white) 40%, oklch(88% 0.24 88deg));
-  --bs-yellow-400: color-mix(in lab, var(--bs-white) 20%, oklch(88% 0.24 88deg));
+  --bs-amber-600: color-mix(in oklch, var(--bs-black) 16%, oklch(79% 0.2 78deg));
+  --bs-amber-700: color-mix(in oklch, var(--bs-black) 32%, oklch(79% 0.2 78deg));
+  --bs-amber-800: color-mix(in oklch, var(--bs-black) 48%, oklch(79% 0.2 78deg));
+  --bs-amber-900: color-mix(in oklch, var(--bs-black) 64%, oklch(79% 0.2 78deg));
+  --bs-amber-950: color-mix(in oklch, var(--bs-black) 70%, oklch(79% 0.2 78deg));
+  --bs-amber-975: color-mix(in oklch, var(--bs-black) 76%, oklch(79% 0.2 78deg));
+  --bs-yellow-025: color-mix(in oklch, var(--bs-white) 94%, oklch(88% 0.24 88deg));
+  --bs-yellow-050: color-mix(in oklch, var(--bs-white) 90%, oklch(88% 0.24 88deg));
+  --bs-yellow-100: color-mix(in oklch, var(--bs-white) 80%, oklch(88% 0.24 88deg));
+  --bs-yellow-200: color-mix(in oklch, var(--bs-white) 60%, oklch(88% 0.24 88deg));
+  --bs-yellow-300: color-mix(in oklch, var(--bs-white) 40%, oklch(88% 0.24 88deg));
+  --bs-yellow-400: color-mix(in oklch, var(--bs-white) 20%, oklch(88% 0.24 88deg));
   --bs-yellow-500: oklch(88% 0.24 88deg);
-  --bs-yellow-600: color-mix(in lab, var(--bs-black) 16%, oklch(88% 0.24 88deg));
-  --bs-yellow-700: color-mix(in lab, var(--bs-black) 32%, oklch(88% 0.24 88deg));
-  --bs-yellow-800: color-mix(in lab, var(--bs-black) 48%, oklch(88% 0.24 88deg));
-  --bs-yellow-900: color-mix(in lab, var(--bs-black) 64%, oklch(88% 0.24 88deg));
-  --bs-yellow-950: color-mix(in lab, var(--bs-black) 76%, oklch(88% 0.24 88deg));
-  --bs-yellow-975: color-mix(in lab, var(--bs-black) 88%, oklch(88% 0.24 88deg));
-  --bs-lime-025: color-mix(in lab, var(--bs-white) 94%, oklch(65% 0.24 135deg));
-  --bs-lime-050: color-mix(in lab, var(--bs-white) 90%, oklch(65% 0.24 135deg));
-  --bs-lime-100: color-mix(in lab, var(--bs-white) 80%, oklch(65% 0.24 135deg));
-  --bs-lime-200: color-mix(in lab, var(--bs-white) 60%, oklch(65% 0.24 135deg));
-  --bs-lime-300: color-mix(in lab, var(--bs-white) 40%, oklch(65% 0.24 135deg));
-  --bs-lime-400: color-mix(in lab, var(--bs-white) 20%, oklch(65% 0.24 135deg));
+  --bs-yellow-600: color-mix(in oklch, var(--bs-black) 16%, oklch(88% 0.24 88deg));
+  --bs-yellow-700: color-mix(in oklch, var(--bs-black) 32%, oklch(88% 0.24 88deg));
+  --bs-yellow-800: color-mix(in oklch, var(--bs-black) 48%, oklch(88% 0.24 88deg));
+  --bs-yellow-900: color-mix(in oklch, var(--bs-black) 64%, oklch(88% 0.24 88deg));
+  --bs-yellow-950: color-mix(in oklch, var(--bs-black) 70%, oklch(88% 0.24 88deg));
+  --bs-yellow-975: color-mix(in oklch, var(--bs-black) 76%, oklch(88% 0.24 88deg));
+  --bs-lime-025: color-mix(in oklch, var(--bs-white) 94%, oklch(65% 0.24 135deg));
+  --bs-lime-050: color-mix(in oklch, var(--bs-white) 90%, oklch(65% 0.24 135deg));
+  --bs-lime-100: color-mix(in oklch, var(--bs-white) 80%, oklch(65% 0.24 135deg));
+  --bs-lime-200: color-mix(in oklch, var(--bs-white) 60%, oklch(65% 0.24 135deg));
+  --bs-lime-300: color-mix(in oklch, var(--bs-white) 40%, oklch(65% 0.24 135deg));
+  --bs-lime-400: color-mix(in oklch, var(--bs-white) 20%, oklch(65% 0.24 135deg));
   --bs-lime-500: oklch(65% 0.24 135deg);
-  --bs-lime-600: color-mix(in lab, var(--bs-black) 16%, oklch(65% 0.24 135deg));
-  --bs-lime-700: color-mix(in lab, var(--bs-black) 32%, oklch(65% 0.24 135deg));
-  --bs-lime-800: color-mix(in lab, var(--bs-black) 48%, oklch(65% 0.24 135deg));
-  --bs-lime-900: color-mix(in lab, var(--bs-black) 64%, oklch(65% 0.24 135deg));
-  --bs-lime-950: color-mix(in lab, var(--bs-black) 76%, oklch(65% 0.24 135deg));
-  --bs-lime-975: color-mix(in lab, var(--bs-black) 88%, oklch(65% 0.24 135deg));
-  --bs-green-025: color-mix(in lab, var(--bs-white) 94%, oklch(64% 0.22 160deg));
-  --bs-green-050: color-mix(in lab, var(--bs-white) 90%, oklch(64% 0.22 160deg));
-  --bs-green-100: color-mix(in lab, var(--bs-white) 80%, oklch(64% 0.22 160deg));
-  --bs-green-200: color-mix(in lab, var(--bs-white) 60%, oklch(64% 0.22 160deg));
-  --bs-green-300: color-mix(in lab, var(--bs-white) 40%, oklch(64% 0.22 160deg));
-  --bs-green-400: color-mix(in lab, var(--bs-white) 20%, oklch(64% 0.22 160deg));
+  --bs-lime-600: color-mix(in oklch, var(--bs-black) 16%, oklch(65% 0.24 135deg));
+  --bs-lime-700: color-mix(in oklch, var(--bs-black) 32%, oklch(65% 0.24 135deg));
+  --bs-lime-800: color-mix(in oklch, var(--bs-black) 48%, oklch(65% 0.24 135deg));
+  --bs-lime-900: color-mix(in oklch, var(--bs-black) 64%, oklch(65% 0.24 135deg));
+  --bs-lime-950: color-mix(in oklch, var(--bs-black) 70%, oklch(65% 0.24 135deg));
+  --bs-lime-975: color-mix(in oklch, var(--bs-black) 76%, oklch(65% 0.24 135deg));
+  --bs-green-025: color-mix(in oklch, var(--bs-white) 94%, oklch(64% 0.22 160deg));
+  --bs-green-050: color-mix(in oklch, var(--bs-white) 90%, oklch(64% 0.22 160deg));
+  --bs-green-100: color-mix(in oklch, var(--bs-white) 80%, oklch(64% 0.22 160deg));
+  --bs-green-200: color-mix(in oklch, var(--bs-white) 60%, oklch(64% 0.22 160deg));
+  --bs-green-300: color-mix(in oklch, var(--bs-white) 40%, oklch(64% 0.22 160deg));
+  --bs-green-400: color-mix(in oklch, var(--bs-white) 20%, oklch(64% 0.22 160deg));
   --bs-green-500: oklch(64% 0.22 160deg);
-  --bs-green-600: color-mix(in lab, var(--bs-black) 16%, oklch(64% 0.22 160deg));
-  --bs-green-700: color-mix(in lab, var(--bs-black) 32%, oklch(64% 0.22 160deg));
-  --bs-green-800: color-mix(in lab, var(--bs-black) 48%, oklch(64% 0.22 160deg));
-  --bs-green-900: color-mix(in lab, var(--bs-black) 64%, oklch(64% 0.22 160deg));
-  --bs-green-950: color-mix(in lab, var(--bs-black) 76%, oklch(64% 0.22 160deg));
-  --bs-green-975: color-mix(in lab, var(--bs-black) 88%, oklch(64% 0.22 160deg));
-  --bs-teal-025: color-mix(in lab, var(--bs-white) 94%, oklch(68% 0.22 190deg));
-  --bs-teal-050: color-mix(in lab, var(--bs-white) 90%, oklch(68% 0.22 190deg));
-  --bs-teal-100: color-mix(in lab, var(--bs-white) 80%, oklch(68% 0.22 190deg));
-  --bs-teal-200: color-mix(in lab, var(--bs-white) 60%, oklch(68% 0.22 190deg));
-  --bs-teal-300: color-mix(in lab, var(--bs-white) 40%, oklch(68% 0.22 190deg));
-  --bs-teal-400: color-mix(in lab, var(--bs-white) 20%, oklch(68% 0.22 190deg));
+  --bs-green-600: color-mix(in oklch, var(--bs-black) 16%, oklch(64% 0.22 160deg));
+  --bs-green-700: color-mix(in oklch, var(--bs-black) 32%, oklch(64% 0.22 160deg));
+  --bs-green-800: color-mix(in oklch, var(--bs-black) 48%, oklch(64% 0.22 160deg));
+  --bs-green-900: color-mix(in oklch, var(--bs-black) 64%, oklch(64% 0.22 160deg));
+  --bs-green-950: color-mix(in oklch, var(--bs-black) 70%, oklch(64% 0.22 160deg));
+  --bs-green-975: color-mix(in oklch, var(--bs-black) 76%, oklch(64% 0.22 160deg));
+  --bs-teal-025: color-mix(in oklch, var(--bs-white) 94%, oklch(68% 0.22 190deg));
+  --bs-teal-050: color-mix(in oklch, var(--bs-white) 90%, oklch(68% 0.22 190deg));
+  --bs-teal-100: color-mix(in oklch, var(--bs-white) 80%, oklch(68% 0.22 190deg));
+  --bs-teal-200: color-mix(in oklch, var(--bs-white) 60%, oklch(68% 0.22 190deg));
+  --bs-teal-300: color-mix(in oklch, var(--bs-white) 40%, oklch(68% 0.22 190deg));
+  --bs-teal-400: color-mix(in oklch, var(--bs-white) 20%, oklch(68% 0.22 190deg));
   --bs-teal-500: oklch(68% 0.22 190deg);
-  --bs-teal-600: color-mix(in lab, var(--bs-black) 16%, oklch(68% 0.22 190deg));
-  --bs-teal-700: color-mix(in lab, var(--bs-black) 32%, oklch(68% 0.22 190deg));
-  --bs-teal-800: color-mix(in lab, var(--bs-black) 48%, oklch(68% 0.22 190deg));
-  --bs-teal-900: color-mix(in lab, var(--bs-black) 64%, oklch(68% 0.22 190deg));
-  --bs-teal-950: color-mix(in lab, var(--bs-black) 76%, oklch(68% 0.22 190deg));
-  --bs-teal-975: color-mix(in lab, var(--bs-black) 88%, oklch(68% 0.22 190deg));
-  --bs-cyan-025: color-mix(in lab, var(--bs-white) 94%, oklch(69% 0.22 220deg));
-  --bs-cyan-050: color-mix(in lab, var(--bs-white) 90%, oklch(69% 0.22 220deg));
-  --bs-cyan-100: color-mix(in lab, var(--bs-white) 80%, oklch(69% 0.22 220deg));
-  --bs-cyan-200: color-mix(in lab, var(--bs-white) 60%, oklch(69% 0.22 220deg));
-  --bs-cyan-300: color-mix(in lab, var(--bs-white) 40%, oklch(69% 0.22 220deg));
-  --bs-cyan-400: color-mix(in lab, var(--bs-white) 20%, oklch(69% 0.22 220deg));
+  --bs-teal-600: color-mix(in oklch, var(--bs-black) 16%, oklch(68% 0.22 190deg));
+  --bs-teal-700: color-mix(in oklch, var(--bs-black) 32%, oklch(68% 0.22 190deg));
+  --bs-teal-800: color-mix(in oklch, var(--bs-black) 48%, oklch(68% 0.22 190deg));
+  --bs-teal-900: color-mix(in oklch, var(--bs-black) 64%, oklch(68% 0.22 190deg));
+  --bs-teal-950: color-mix(in oklch, var(--bs-black) 70%, oklch(68% 0.22 190deg));
+  --bs-teal-975: color-mix(in oklch, var(--bs-black) 76%, oklch(68% 0.22 190deg));
+  --bs-cyan-025: color-mix(in oklch, var(--bs-white) 94%, oklch(69% 0.22 220deg));
+  --bs-cyan-050: color-mix(in oklch, var(--bs-white) 90%, oklch(69% 0.22 220deg));
+  --bs-cyan-100: color-mix(in oklch, var(--bs-white) 80%, oklch(69% 0.22 220deg));
+  --bs-cyan-200: color-mix(in oklch, var(--bs-white) 60%, oklch(69% 0.22 220deg));
+  --bs-cyan-300: color-mix(in oklch, var(--bs-white) 40%, oklch(69% 0.22 220deg));
+  --bs-cyan-400: color-mix(in oklch, var(--bs-white) 20%, oklch(69% 0.22 220deg));
   --bs-cyan-500: oklch(69% 0.22 220deg);
-  --bs-cyan-600: color-mix(in lab, var(--bs-black) 16%, oklch(69% 0.22 220deg));
-  --bs-cyan-700: color-mix(in lab, var(--bs-black) 32%, oklch(69% 0.22 220deg));
-  --bs-cyan-800: color-mix(in lab, var(--bs-black) 48%, oklch(69% 0.22 220deg));
-  --bs-cyan-900: color-mix(in lab, var(--bs-black) 64%, oklch(69% 0.22 220deg));
-  --bs-cyan-950: color-mix(in lab, var(--bs-black) 76%, oklch(69% 0.22 220deg));
-  --bs-cyan-975: color-mix(in lab, var(--bs-black) 88%, oklch(69% 0.22 220deg));
-  --bs-brown-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.12 54deg));
-  --bs-brown-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.12 54deg));
-  --bs-brown-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.12 54deg));
-  --bs-brown-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.12 54deg));
-  --bs-brown-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.12 54deg));
-  --bs-brown-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.12 54deg));
+  --bs-cyan-600: color-mix(in oklch, var(--bs-black) 16%, oklch(69% 0.22 220deg));
+  --bs-cyan-700: color-mix(in oklch, var(--bs-black) 32%, oklch(69% 0.22 220deg));
+  --bs-cyan-800: color-mix(in oklch, var(--bs-black) 48%, oklch(69% 0.22 220deg));
+  --bs-cyan-900: color-mix(in oklch, var(--bs-black) 64%, oklch(69% 0.22 220deg));
+  --bs-cyan-950: color-mix(in oklch, var(--bs-black) 70%, oklch(69% 0.22 220deg));
+  --bs-cyan-975: color-mix(in oklch, var(--bs-black) 76%, oklch(69% 0.22 220deg));
+  --bs-brown-025: color-mix(in oklch, var(--bs-white) 94%, oklch(60% 0.12 54deg));
+  --bs-brown-050: color-mix(in oklch, var(--bs-white) 90%, oklch(60% 0.12 54deg));
+  --bs-brown-100: color-mix(in oklch, var(--bs-white) 80%, oklch(60% 0.12 54deg));
+  --bs-brown-200: color-mix(in oklch, var(--bs-white) 60%, oklch(60% 0.12 54deg));
+  --bs-brown-300: color-mix(in oklch, var(--bs-white) 40%, oklch(60% 0.12 54deg));
+  --bs-brown-400: color-mix(in oklch, var(--bs-white) 20%, oklch(60% 0.12 54deg));
   --bs-brown-500: oklch(60% 0.12 54deg);
-  --bs-brown-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.12 54deg));
-  --bs-brown-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.12 54deg));
-  --bs-brown-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.12 54deg));
-  --bs-brown-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.12 54deg));
-  --bs-brown-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.12 54deg));
-  --bs-brown-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.12 54deg));
-  --bs-gray-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.02 245deg));
-  --bs-gray-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.02 245deg));
-  --bs-gray-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.02 245deg));
-  --bs-gray-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.02 245deg));
-  --bs-gray-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.02 245deg));
-  --bs-gray-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.02 245deg));
+  --bs-brown-600: color-mix(in oklch, var(--bs-black) 16%, oklch(60% 0.12 54deg));
+  --bs-brown-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.12 54deg));
+  --bs-brown-800: color-mix(in oklch, var(--bs-black) 48%, oklch(60% 0.12 54deg));
+  --bs-brown-900: color-mix(in oklch, var(--bs-black) 64%, oklch(60% 0.12 54deg));
+  --bs-brown-950: color-mix(in oklch, var(--bs-black) 70%, oklch(60% 0.12 54deg));
+  --bs-brown-975: color-mix(in oklch, var(--bs-black) 76%, oklch(60% 0.12 54deg));
+  --bs-gray-025: color-mix(in oklch, var(--bs-white) 94%, oklch(60% 0.02 245deg));
+  --bs-gray-050: color-mix(in oklch, var(--bs-white) 90%, oklch(60% 0.02 245deg));
+  --bs-gray-100: color-mix(in oklch, var(--bs-white) 80%, oklch(60% 0.02 245deg));
+  --bs-gray-200: color-mix(in oklch, var(--bs-white) 60%, oklch(60% 0.02 245deg));
+  --bs-gray-300: color-mix(in oklch, var(--bs-white) 40%, oklch(60% 0.02 245deg));
+  --bs-gray-400: color-mix(in oklch, var(--bs-white) 20%, oklch(60% 0.02 245deg));
   --bs-gray-500: oklch(60% 0.02 245deg);
-  --bs-gray-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.02 245deg));
-  --bs-gray-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.02 245deg));
-  --bs-gray-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.02 245deg));
-  --bs-gray-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.02 245deg));
-  --bs-gray-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.02 245deg));
-  --bs-gray-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.02 245deg));
-  --bs-pewter-025: color-mix(in lab, var(--bs-white) 94%, oklch(65% 0.01 290deg));
-  --bs-pewter-050: color-mix(in lab, var(--bs-white) 90%, oklch(65% 0.01 290deg));
-  --bs-pewter-100: color-mix(in lab, var(--bs-white) 80%, oklch(65% 0.01 290deg));
-  --bs-pewter-200: color-mix(in lab, var(--bs-white) 60%, oklch(65% 0.01 290deg));
-  --bs-pewter-300: color-mix(in lab, var(--bs-white) 40%, oklch(65% 0.01 290deg));
-  --bs-pewter-400: color-mix(in lab, var(--bs-white) 20%, oklch(65% 0.01 290deg));
+  --bs-gray-600: color-mix(in oklch, var(--bs-black) 16%, oklch(60% 0.02 245deg));
+  --bs-gray-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.02 245deg));
+  --bs-gray-800: color-mix(in oklch, var(--bs-black) 48%, oklch(60% 0.02 245deg));
+  --bs-gray-900: color-mix(in oklch, var(--bs-black) 64%, oklch(60% 0.02 245deg));
+  --bs-gray-950: color-mix(in oklch, var(--bs-black) 70%, oklch(60% 0.02 245deg));
+  --bs-gray-975: color-mix(in oklch, var(--bs-black) 76%, oklch(60% 0.02 245deg));
+  --bs-pewter-025: color-mix(in oklch, var(--bs-white) 94%, oklch(65% 0.01 290deg));
+  --bs-pewter-050: color-mix(in oklch, var(--bs-white) 90%, oklch(65% 0.01 290deg));
+  --bs-pewter-100: color-mix(in oklch, var(--bs-white) 80%, oklch(65% 0.01 290deg));
+  --bs-pewter-200: color-mix(in oklch, var(--bs-white) 60%, oklch(65% 0.01 290deg));
+  --bs-pewter-300: color-mix(in oklch, var(--bs-white) 40%, oklch(65% 0.01 290deg));
+  --bs-pewter-400: color-mix(in oklch, var(--bs-white) 20%, oklch(65% 0.01 290deg));
   --bs-pewter-500: oklch(65% 0.01 290deg);
-  --bs-pewter-600: color-mix(in lab, var(--bs-black) 16%, oklch(65% 0.01 290deg));
-  --bs-pewter-700: color-mix(in lab, var(--bs-black) 32%, oklch(65% 0.01 290deg));
-  --bs-pewter-800: color-mix(in lab, var(--bs-black) 48%, oklch(65% 0.01 290deg));
-  --bs-pewter-900: color-mix(in lab, var(--bs-black) 64%, oklch(65% 0.01 290deg));
-  --bs-pewter-950: color-mix(in lab, var(--bs-black) 76%, oklch(65% 0.01 290deg));
-  --bs-pewter-975: color-mix(in lab, var(--bs-black) 88%, oklch(65% 0.01 290deg));
+  --bs-pewter-600: color-mix(in oklch, var(--bs-black) 16%, oklch(65% 0.01 290deg));
+  --bs-pewter-700: color-mix(in oklch, var(--bs-black) 32%, oklch(65% 0.01 290deg));
+  --bs-pewter-800: color-mix(in oklch, var(--bs-black) 48%, oklch(65% 0.01 290deg));
+  --bs-pewter-900: color-mix(in oklch, var(--bs-black) 64%, oklch(65% 0.01 290deg));
+  --bs-pewter-950: color-mix(in oklch, var(--bs-black) 70%, oklch(65% 0.01 290deg));
+  --bs-pewter-975: color-mix(in oklch, var(--bs-black) 76%, oklch(65% 0.01 290deg));
 }
 
 @layer colors, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
@@ -407,7 +407,7 @@
   --bs-border-bg: var(--bs-bg-body);
   --bs-border-body: light-dark(var(--bs-gray-300), var(--bs-gray-800));
   --bs-border-muted: light-dark(var(--bs-gray-200), var(--bs-gray-800));
-  --bs-border-subtle: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-900));
+  --bs-border-subtle: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), color-mix(in oklch, var(--bs-gray-800), var(--bs-gray-900)));
   --bs-border-emphasized: light-dark(var(--bs-gray-400), var(--bs-gray-600));
   --bs-border-white: var(--bs-white);
   --bs-border-black: var(--bs-black);
@@ -5337,6 +5337,7 @@
     --bs-accordion-border-color: var(--bs-border-color);
     --bs-accordion-border-width: var(--bs-border-width);
     --bs-accordion-border-radius: var(--bs-accordion-radius, var(--bs-radius-7));
+    --bs-accordion-gap: 0;
     --bs-accordion-btn-color: var(--bs-fg-2);
     --bs-accordion-btn-bg: var(--bs-bg-body);
     --bs-accordion-btn-icon-width: 1rem;
@@ -5421,7 +5422,7 @@
     border-start-end-radius: calc(var(--bs-accordion-border-radius) - var(--bs-accordion-border-width));
   }
   .accordion-item:not(:first-of-type) {
-    margin-top: calc(-1 * var(--bs-accordion-border-width));
+    margin-block-start: calc(-1 * var(--bs-accordion-border-width));
   }
   .accordion-item:last-of-type {
     border-end-start-radius: var(--bs-accordion-border-radius);
@@ -5463,6 +5464,21 @@
     --bs-accordion-padding-y: .625rem;
     --bs-accordion-border-radius: var(--bs-radius-5);
     --bs-accordion-font-size: var(--bs-font-size-sm);
+  }
+  .accordion-gap {
+    --bs-accordion-gap: var(--bs-spacer-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--bs-accordion-gap);
+  }
+  .accordion-gap > .accordion-item {
+    margin-block-start: 0;
+    overflow: clip;
+    border-radius: var(--bs-accordion-border-radius);
+  }
+  .accordion-gap > .accordion-item > .accordion-header,
+  .accordion-gap > .accordion-item > .accordion-body {
+    border-radius: 0;
   }
   .accordion-flush > .accordion-item {
     border-inline: 0;
@@ -5693,7 +5709,6 @@
 }
 @layer components {
   .breadcrumb {
-    --bs-breadcrumb-margin-bottom: 1rem;
     --bs-breadcrumb-font-size: inherit;
     --bs-breadcrumb-bg: transparent;
     --bs-breadcrumb-border-radius: var(--bs-radius-5);
@@ -5712,6 +5727,7 @@
     flex-wrap: wrap;
     align-items: center;
     padding: var(--bs-breadcrumb-padding-y, 0) var(--bs-breadcrumb-padding-x, 0);
+    margin-bottom: 0;
     font-size: var(--bs-breadcrumb-font-size);
     list-style-type: "";
     background-color: var(--bs-breadcrumb-bg);
@@ -5758,6 +5774,314 @@
   }
   .breadcrumb-link.active {
     color: var(--bs-breadcrumb-link-active-color);
+  }
+}
+@layer components {
+  [data-vc=calendar] {
+    --bs-calendar-padding: 0;
+    --bs-calendar-color: var(--bs-fg-body);
+    --bs-calendar-font-size: var(--bs-font-size-sm);
+    --bs-calendar-header-font-weight: 600;
+    --bs-calendar-weekday-color: var(--bs-fg-3);
+    --bs-calendar-day-hover-bg: var(--bs-bg-1);
+    --bs-calendar-day-selected-bg: var(--bs-primary-bg);
+    --bs-calendar-day-selected-color: var(--bs-primary-contrast);
+    --bs-calendar-day-today-bg: var(--bs-bg-2);
+    --bs-calendar-day-today-color: var(--bs-fg-1);
+    --bs-calendar-day-disabled-color: var(--bs-fg-4);
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: var(--bs-calendar-padding);
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-calendar-font-size);
+    color: var(--bs-calendar-color);
+    color-scheme: light dark;
+  }
+  [data-vc=calendar][data-bs-theme=light] {
+    color-scheme: light;
+  }
+  [data-vc=calendar][data-bs-theme=dark] {
+    color-scheme: dark;
+  }
+  [data-vc=calendar] button:focus-visible {
+    position: relative;
+    z-index: 1;
+    outline: var(--bs-focus-ring);
+  }
+  [data-vc-arrow] {
+    position: relative;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    color: var(--bs-calendar-color);
+    pointer-events: auto;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--bs-radius-5);
+  }
+  [data-vc-arrow]::before {
+    position: absolute;
+    inset: 0.25rem;
+    content: "";
+    background-color: var(--bs-calendar-color);
+    mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/></svg>");
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+  [data-vc-arrow]:hover {
+    background-color: var(--bs-calendar-day-hover-bg);
+  }
+  [data-vc-arrow=prev]::before {
+    transform: rotate(90deg);
+  }
+  [data-vc-arrow=next]::before {
+    transform: rotate(-90deg);
+  }
+  [data-vc=controls] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block-start: var(--bs-calendar-padding);
+    padding-inline: var(--bs-calendar-padding);
+    pointer-events: none;
+  }
+  [data-vc=grid] {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+  }
+  [data-vc=column] {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    min-width: 240px;
+  }
+  [data-vc=header] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  [data-vc-header=content] {
+    display: inline-flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+  }
+  [data-vc=month],
+  [data-vc=year] {
+    padding: 0.25rem 0.5rem;
+    margin-inline: -0.125rem;
+    font-size: 1rem;
+    font-weight: var(--bs-calendar-header-font-weight);
+    color: var(--bs-calendar-color);
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--bs-radius-5);
+  }
+  [data-vc=month]:disabled,
+  [data-vc=year]:disabled {
+    color: var(--bs-calendar-day-disabled-color);
+    pointer-events: none;
+  }
+  [data-vc=month]:hover:not(:disabled),
+  [data-vc=year]:hover:not(:disabled) {
+    background-color: var(--bs-calendar-day-hover-bg);
+  }
+  [data-vc=content] {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+  [data-vc=months],
+  [data-vc=years] {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+  [data-vc-months=row],
+  [data-vc-years=row] {
+    display: grid;
+    grid-template-columns: repeat(var(--bs-calendar-columns, 4), minmax(0, 1fr));
+    column-gap: 0.25rem;
+    align-items: center;
+  }
+  [data-vc=years] {
+    --bs-calendar-columns: 5;
+  }
+  [data-vc-months=cell],
+  [data-vc-years=cell] {
+    display: flex;
+  }
+  [data-vc-months-month],
+  [data-vc-years-year] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1rem;
+    color: var(--bs-calendar-weekday-color);
+    text-align: center;
+    word-break: break-all;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--bs-radius-5);
+  }
+  [data-vc-months-month]:disabled,
+  [data-vc-years-year]:disabled {
+    color: var(--bs-calendar-day-disabled-color);
+    pointer-events: none;
+  }
+  [data-vc-months-month]:hover:not(:disabled),
+  [data-vc-years-year]:hover:not(:disabled) {
+    background-color: var(--bs-calendar-day-hover-bg);
+  }
+  [data-vc-months-month][data-vc-months-month-selected], [data-vc-months-month][data-vc-years-year-selected],
+  [data-vc-years-year][data-vc-months-month-selected],
+  [data-vc-years-year][data-vc-years-year-selected] {
+    color: var(--bs-calendar-day-selected-color);
+    background-color: var(--bs-calendar-day-selected-bg);
+  }
+  [data-vc-months-month][data-vc-months-month-selected]:hover, [data-vc-months-month][data-vc-years-year-selected]:hover,
+  [data-vc-years-year][data-vc-months-month-selected]:hover,
+  [data-vc-years-year][data-vc-years-year-selected]:hover {
+    color: var(--bs-calendar-day-selected-color);
+    background-color: var(--bs-calendar-day-selected-bg);
+  }
+  [data-vc=week] {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    margin-bottom: 0.5rem;
+  }
+  [data-vc-week-day] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 1.875rem;
+    padding: 0;
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1rem;
+    color: var(--bs-calendar-weekday-color);
+    background-color: transparent;
+    border: 0;
+  }
+  button[data-vc-week-day] {
+    cursor: pointer;
+  }
+  [data-vc=dates] {
+    pointer-events: none;
+  }
+  [data-vc-dates=row] {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+  }
+  [data-vc-date] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    pointer-events: auto;
+  }
+  [data-vc-date]:not(:has([data-vc-date-btn])), [data-vc-date][data-vc-date-disabled], [data-vc-date][data-vc-date-disabled] [data-vc-date-btn] {
+    pointer-events: none;
+  }
+  [data-vc-date-btn] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 1.875rem;
+    height: 100%;
+    min-height: 1.875rem;
+    padding: 0;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1rem;
+    color: var(--bs-calendar-color);
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--bs-radius-5);
+  }
+  [data-vc-date-btn]:hover {
+    background-color: var(--bs-calendar-day-hover-bg);
+  }
+  [data-vc-date-today] [data-vc-date-btn] {
+    font-weight: 600;
+    color: var(--bs-calendar-day-today-color);
+    background-color: var(--bs-calendar-day-today-bg);
+  }
+  [data-vc-date-month=next] [data-vc-date-btn],
+  [data-vc-date-month=prev] [data-vc-date-btn] {
+    opacity: 0.5;
+  }
+  [data-vc-date-disabled] [data-vc-date-btn] {
+    color: var(--bs-calendar-day-disabled-color);
+  }
+  [data-vc-date-hover] [data-vc-date-btn] {
+    background-color: var(--bs-calendar-day-hover-bg);
+    border-radius: 0;
+  }
+  [data-vc-date-hover=first] [data-vc-date-btn] {
+    border-start-start-radius: var(--bs-radius-5);
+    border-end-start-radius: var(--bs-radius-5);
+  }
+  [data-vc-date-hover=last] [data-vc-date-btn] {
+    border-start-end-radius: var(--bs-radius-5);
+    border-end-end-radius: var(--bs-radius-5);
+  }
+  [data-vc-date-hover=first-and-last] [data-vc-date-btn] {
+    border-radius: var(--bs-radius-5);
+  }
+  [data-vc-date-selected=middle] [data-vc-date-btn] {
+    border-radius: 0;
+    opacity: 0.8;
+  }
+  [data-vc-date-selected] [data-vc-date-btn] {
+    color: var(--bs-calendar-day-selected-color);
+    background-color: var(--bs-calendar-day-selected-bg);
+  }
+  [data-vc-date-selected=first] [data-vc-date-btn] {
+    border-top-left-radius: var(--bs-radius-5);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: var(--bs-radius-5);
+  }
+  [data-vc-date-selected=last] [data-vc-date-btn] {
+    border-top-left-radius: 0;
+    border-top-right-radius: var(--bs-radius-5);
+    border-bottom-right-radius: var(--bs-radius-5);
+    border-bottom-left-radius: 0;
+  }
+  [data-vc-date-selected=first-and-last] [data-vc-date-btn] {
+    border-radius: var(--bs-radius-5);
   }
 }
 @layer components {
@@ -6285,332 +6609,34 @@
   }
 }
 @layer components {
-  [data-vc=calendar] {
+  [data-vc=calendar][data-vc-input] {
     --bs-datepicker-padding: 1rem;
     --bs-datepicker-bg: var(--bs-bg-body);
-    --bs-datepicker-color: var(--bs-fg-body);
     --bs-datepicker-border-color: var(--bs-border-color-translucent);
     --bs-datepicker-border-width: var(--bs-border-width);
     --bs-datepicker-border-radius: var(--bs-radius-7);
     --bs-datepicker-box-shadow: var(--bs-box-shadow);
-    --bs-datepicker-font-size: var(--bs-font-size-sm);
     --bs-datepicker-min-width: 280px;
     --bs-datepicker-zindex: var(--bs-z-menu);
-    --bs-datepicker-header-font-weight: 600;
-    --bs-datepicker-weekday-color: var(--bs-fg-3);
-    --bs-datepicker-day-hover-bg: var(--bs-bg-1);
-    --bs-datepicker-day-selected-bg: var(--bs-primary-bg);
-    --bs-datepicker-day-selected-color: var(--bs-primary-contrast);
-    --bs-datepicker-day-today-bg: var(--bs-bg-2);
-    --bs-datepicker-day-today-color: var(--bs-fg-1);
-    --bs-datepicker-day-disabled-color: var(--bs-fg-4);
+    --bs-calendar-padding: var(--bs-datepicker-padding);
     position: absolute;
     z-index: var(--bs-datepicker-zindex);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
     min-width: var(--bs-datepicker-min-width);
-    padding: var(--bs-datepicker-padding);
-    font-family: var(--bs-body-font-family);
-    font-size: var(--bs-datepicker-font-size);
-    color: var(--bs-datepicker-color);
-    color-scheme: light dark;
     background-color: var(--bs-datepicker-bg);
     border: var(--bs-datepicker-border-width) solid var(--bs-datepicker-border-color);
     box-shadow: var(--bs-datepicker-box-shadow);
     opacity: 1;
     border-radius: var(--bs-datepicker-border-radius);
   }
-  [data-vc=calendar][data-bs-theme=light] {
-    color-scheme: light;
-  }
-  [data-vc=calendar][data-bs-theme=dark] {
-    color-scheme: dark;
-  }
-  [data-vc=calendar] button:focus-visible {
-    position: relative;
-    z-index: 1;
-    outline: var(--bs-focus-ring);
-  }
   [data-vc-calendar-hidden] {
     pointer-events: none;
     opacity: 0;
-  }
-  [data-vc=calendar]:not([data-vc-input]) {
-    position: relative;
-    width: fit-content;
-    padding: 0;
-    border: 0;
-    box-shadow: none;
   }
   [data-vc-position=bottom] {
     margin-block-start: 0.25rem;
   }
   [data-vc-position=top] {
     margin-block-end: -0.25rem;
-  }
-  [data-vc-arrow] {
-    position: relative;
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    color: var(--bs-datepicker-color);
-    pointer-events: auto;
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    border-radius: var(--bs-radius-5);
-  }
-  [data-vc-arrow]::before {
-    position: absolute;
-    inset: 0.25rem;
-    content: "";
-    background-color: var(--bs-datepicker-color);
-    mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/></svg>");
-    mask-repeat: no-repeat;
-    mask-position: center;
-  }
-  [data-vc-arrow]:hover {
-    background-color: var(--bs-datepicker-day-hover-bg);
-  }
-  [data-vc-arrow=prev]::before {
-    transform: rotate(90deg);
-  }
-  [data-vc-arrow=next]::before {
-    transform: rotate(-90deg);
-  }
-  [data-vc=controls] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 1rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    pointer-events: none;
-  }
-  [data-vc=grid] {
-    display: flex;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    gap: 1.75rem;
-  }
-  [data-vc=column] {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    min-width: 240px;
-  }
-  [data-vc=header] {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.75rem;
-  }
-  [data-vc-header=content] {
-    display: inline-flex;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-    white-space: pre-wrap;
-  }
-  [data-vc=month],
-  [data-vc=year] {
-    padding: 0.25rem 0.5rem;
-    margin-inline: -0.125rem;
-    font-size: 1rem;
-    font-weight: var(--bs-datepicker-header-font-weight);
-    color: var(--bs-datepicker-color);
-    background-color: transparent;
-    border: 0;
-    border-radius: var(--bs-radius-5);
-  }
-  [data-vc=month]:disabled,
-  [data-vc=year]:disabled {
-    color: var(--bs-datepicker-day-disabled-color);
-    pointer-events: none;
-  }
-  [data-vc=month]:hover:not(:disabled),
-  [data-vc=year]:hover:not(:disabled) {
-    background-color: var(--bs-datepicker-day-hover-bg);
-  }
-  [data-vc=content] {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-  }
-  [data-vc=months],
-  [data-vc=years] {
-    display: grid;
-    flex-grow: 1;
-    grid-template-columns: repeat(var(--bs-vc-columns, 4), minmax(0, 1fr));
-    row-gap: 1rem;
-    column-gap: 0.25rem;
-    align-items: center;
-  }
-  [data-vc=years] {
-    --bs-vc-columns: 5;
-  }
-  [data-vc-months-month],
-  [data-vc-years-year] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.5rem;
-    padding: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1rem;
-    color: var(--bs-datepicker-weekday-color);
-    text-align: center;
-    word-break: break-all;
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    border-radius: var(--bs-radius-5);
-  }
-  [data-vc-months-month]:disabled,
-  [data-vc-years-year]:disabled {
-    color: var(--bs-datepicker-day-disabled-color);
-    pointer-events: none;
-  }
-  [data-vc-months-month]:hover:not(:disabled),
-  [data-vc-years-year]:hover:not(:disabled) {
-    background-color: var(--bs-datepicker-day-hover-bg);
-  }
-  [data-vc-months-month][data-vc-months-month-selected], [data-vc-months-month][data-vc-years-year-selected],
-  [data-vc-years-year][data-vc-months-month-selected],
-  [data-vc-years-year][data-vc-years-year-selected] {
-    color: var(--bs-datepicker-day-selected-color);
-    background-color: var(--bs-datepicker-day-selected-bg);
-  }
-  [data-vc-months-month][data-vc-months-month-selected]:hover, [data-vc-months-month][data-vc-years-year-selected]:hover,
-  [data-vc-years-year][data-vc-months-month-selected]:hover,
-  [data-vc-years-year][data-vc-years-year-selected]:hover {
-    color: var(--bs-datepicker-day-selected-color);
-    background-color: var(--bs-datepicker-day-selected-bg);
-  }
-  [data-vc=week] {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    justify-items: center;
-    margin-bottom: 0.5rem;
-  }
-  [data-vc-week-day] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-width: 1.875rem;
-    padding: 0;
-    margin: 0;
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1rem;
-    color: var(--bs-datepicker-weekday-color);
-    background-color: transparent;
-    border: 0;
-  }
-  button[data-vc-week-day] {
-    cursor: pointer;
-  }
-  [data-vc=dates] {
-    pointer-events: none;
-  }
-  [data-vc-dates=row] {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    align-items: center;
-    justify-items: center;
-    width: 100%;
-  }
-  [data-vc-date] {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding-top: 0.125rem;
-    padding-bottom: 0.125rem;
-    pointer-events: auto;
-  }
-  [data-vc-date]:not(:has([data-vc-date-btn])), [data-vc-date][data-vc-date-disabled], [data-vc-date][data-vc-date-disabled] [data-vc-date-btn] {
-    pointer-events: none;
-  }
-  [data-vc-date-btn] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-width: 1.875rem;
-    height: 100%;
-    min-height: 1.875rem;
-    padding: 0;
-    font-size: 0.75rem;
-    font-weight: 400;
-    line-height: 1rem;
-    color: var(--bs-datepicker-color);
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    border-radius: var(--bs-radius-5);
-  }
-  [data-vc-date-btn]:hover {
-    background-color: var(--bs-datepicker-day-hover-bg);
-  }
-  [data-vc-date-today] [data-vc-date-btn] {
-    font-weight: 600;
-    color: var(--bs-datepicker-day-today-color);
-    background-color: var(--bs-datepicker-day-today-bg);
-  }
-  [data-vc-date-month=next] [data-vc-date-btn],
-  [data-vc-date-month=prev] [data-vc-date-btn] {
-    opacity: 0.5;
-  }
-  [data-vc-date-disabled] [data-vc-date-btn] {
-    color: var(--bs-datepicker-day-disabled-color);
-  }
-  [data-vc-date-hover] [data-vc-date-btn] {
-    background-color: var(--bs-datepicker-day-hover-bg);
-    border-radius: 0;
-  }
-  [data-vc-date-hover=first] [data-vc-date-btn] {
-    border-start-start-radius: var(--bs-radius-5);
-    border-end-start-radius: var(--bs-radius-5);
-  }
-  [data-vc-date-hover=last] [data-vc-date-btn] {
-    border-start-end-radius: var(--bs-radius-5);
-    border-end-end-radius: var(--bs-radius-5);
-  }
-  [data-vc-date-hover=first-and-last] [data-vc-date-btn] {
-    border-radius: var(--bs-radius-5);
-  }
-  [data-vc-date-selected=middle] [data-vc-date-btn] {
-    border-radius: 0;
-    opacity: 0.8;
-  }
-  [data-vc-date-selected] [data-vc-date-btn] {
-    color: var(--bs-datepicker-day-selected-color);
-    background-color: var(--bs-datepicker-day-selected-bg);
-  }
-  [data-vc-date-selected=first] [data-vc-date-btn] {
-    border-top-left-radius: var(--bs-radius-5);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: var(--bs-radius-5);
-  }
-  [data-vc-date-selected=last] [data-vc-date-btn] {
-    border-top-left-radius: 0;
-    border-top-right-radius: var(--bs-radius-5);
-    border-bottom-right-radius: var(--bs-radius-5);
-    border-bottom-left-radius: 0;
-  }
-  [data-vc-date-selected=first-and-last] [data-vc-date-btn] {
-    border-radius: var(--bs-radius-5);
   }
 }
 @layer components {
@@ -6705,11 +6731,9 @@
   }
   .dialog.dialog-nonmodal {
     position: fixed;
-    inset-block-start: 50%;
-    inset-inline-start: 50%;
+    inset: 0;
     z-index: var(--bs-z-dialog);
-    margin-inline: 0;
-    transform: translate(-50%, -50%);
+    height: fit-content;
   }
   .dialog.dialog-scrollable[open] {
     max-height: calc(100% - var(--bs-dialog-margin) * 2);
@@ -7411,8 +7435,8 @@
   }
   .nav-pills .nav-link.active,
   .nav-pills .show > .nav-link {
-    color: var(--bs-nav-pills-link-active-color);
-    background-color: var(--bs-nav-pills-link-active-bg);
+    color: var(--bs-theme-contrast, var(--bs-nav-pills-link-active-color));
+    background-color: var(--bs-theme-bg, var(--bs-nav-pills-link-active-bg));
     background-image: var(--bs-gradient);
   }
   .nav-pills-vertical {
@@ -9981,6 +10005,17 @@
     --bs-theme-border: var(--bs-secondary-border);
     --bs-theme-focus-ring: var(--bs-secondary-focus-ring);
     --bs-theme-contrast: var(--bs-secondary-contrast);
+  }
+  .theme-reset {
+    --bs-theme-base: initial;
+    --bs-theme-fg: initial;
+    --bs-theme-fg-emphasis: initial;
+    --bs-theme-bg: initial;
+    --bs-theme-bg-subtle: initial;
+    --bs-theme-bg-muted: initial;
+    --bs-theme-border: initial;
+    --bs-theme-focus-ring: initial;
+    --bs-theme-contrast: initial;
   }
   .theme-contrast {
     --bs-theme-fg: var(--bs-theme-contrast);

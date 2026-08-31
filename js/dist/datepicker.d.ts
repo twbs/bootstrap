@@ -38,6 +38,7 @@ declare class Datepicker extends BaseComponent {
     protected _positionElement: HTMLElement;
     protected _displayElement: HTMLElement | false | null;
     protected _themeObserver: MutationObserver | null;
+    protected _onFocusIn: (event: Event) => void;
     constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null);
     static get Default(): DatepickerConfig;
     static get DefaultType(): Record<string, string>;
@@ -56,6 +57,7 @@ declare class Datepicker extends BaseComponent {
     protected _getEffectiveTheme(): string | null;
     protected _syncThemeAttribute(element: HTMLElement | undefined): void;
     protected _setupThemeObserver(): void;
+    protected _setupDismissOnFocus(): void;
     protected _buildCalendarOptions(): Options;
     protected _handleDateClick(self: Calendar, event: MouseEvent): void;
     protected _maybeHideAfterSelection(selectedDates: string[]): void;
