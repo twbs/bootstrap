@@ -197,7 +197,7 @@ Once the project builds and renders on Bootstrap 5, switch to the **`bootstrap-v
 
 That stage covers, among other things:
 
-- `@import` to `@use`, and the move from Sass scalars to CSS token maps
+- `@import` to `@use`, and the move from Sass scalars to CSS token maps (`defaults()` merges theme maps again in v6)
 - Popper to Floating UI
 - The `md:` responsive prefix syntax replacing `-md-` infixes
 - Modal to Dialog, Offcanvas to Drawer, Dropdown to Menu

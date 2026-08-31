@@ -126,6 +126,8 @@ Per-color classes are replaced by variant + `.theme-*` composition. Apply to all
 
 New button variants: `.btn-solid`, `.btn-outline`, `.btn-subtle`, `.btn-text`, `.btn-styled`, `.btn-link`.
 
+Use `.theme-reset` on a nested subtree to drop inherited `--theme-*` tokens and return to component defaults.
+
 ### Utility class renames
 
 | v5 | v6 |
@@ -215,7 +217,7 @@ Remove the `.modal-dialog` and `.modal-content` wrappers. Use a single `<dialog>
 
 ### Accordion
 
-Replace Collapse JS with native `<details>`/`<summary>`. The `name` attribute creates exclusive groups (replaces `data-bs-parent`). Add `.accordion-icon` SVG inside `<summary>`. Remove `.accordion-button` and `.accordion-collapse`.
+Replace Collapse JS with native `<details>`/`<summary>`. The `name` attribute creates exclusive groups (replaces `data-bs-parent`). Add `.accordion-icon` SVG inside `<summary>`. Remove `.accordion-button` and `.accordion-collapse`. New modifiers: `.accordion-sm` for compact padding and type, `.accordion-gap` to space items as separate rounded cards.
 
 ```html
 <!-- v5 -->
@@ -281,7 +283,7 @@ Because the icon is `currentcolor`, the v5 `.btn-close-white` variant is **remov
 
 ### Checkbox
 
-Replace `.form-check` wrapper with `.check`. Add an SVG with `.checked` and `.indeterminate` paths. Radios (`.radio`) and switches (`.switch`) use similar wrappers but do not need SVG icons.
+Apply `.check` directly on the `<input>`. No wrapper and no inline SVG — the mark is a CSS `mask` on `::before`. Radios (`.radio`) follow the same pattern. Switches keep a `.switch` wrapper around the input.
 
 ```html
 <!-- v5 -->
@@ -292,13 +294,7 @@ Replace `.form-check` wrapper with `.check`. Add an SVG with `.checked` and `.in
 
 <!-- v6 -->
 <div class="form-field">
-  <div class="check">
-    <input type="checkbox" id="check1">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path class="checked" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 8 3 3 5-5"/>
-      <path class="indeterminate" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 8.5h6"/>
-    </svg>
-  </div>
+  <input type="checkbox" id="check1" class="check">
   <label for="check1">Check me</label>
 </div>
 ```
@@ -339,7 +335,7 @@ Input is now nested inside the label. `.btn-check` goes on the label. No `id`/`f
 
 ### Breadcrumbs
 
-Add `.breadcrumb-link` on `<a>` elements. Add `.breadcrumb-divider` separator elements between items (replaces `::before` pseudo-elements).
+Add `.breadcrumb-link` on `<a>` elements. Add empty `.breadcrumb-divider` separators between items (replaces `::before` pseudo-elements). An empty divider renders a default chevron via a CSS mask. The default bottom margin is gone (v5 used `$spacer`).
 
 ```html
 <!-- v5 -->
@@ -351,7 +347,7 @@ Add `.breadcrumb-link` on `<a>` elements. Add `.breadcrumb-divider` separator el
 <!-- v6 -->
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Home</a></li>
-  <li class="breadcrumb-divider">/</li>
+  <li class="breadcrumb-divider"></li>
   <li class="breadcrumb-item"><a class="breadcrumb-link active" href="#">Library</a></li>
 </ol>
 ```
@@ -400,6 +396,14 @@ Data attribute APIs (`data-bs-toggle`, etc.) are unchanged — just add `type="m
 
 Replace `@popperjs/core` with `@floating-ui/dom`. Rename the `popperConfig` option to `floatingConfig` on Tooltip, Popover, and Menu.
 
+### Lifecycle methods return a promise
+
+`show()`, `hide()`, `toggle()`, and `close()` now return a promise that resolves when the transition ends. You can `await` them instead of listening for `shown.bs.*` / `hidden.bs.*`. The events still fire.
+
+Hover and focus tooltips stay open while the pointer or focus is on the tip itself (WCAG 1.4.13). Press Escape or leave both the trigger and the tip to hide it.
+
+Popup datepickers close when focus leaves the input and the calendar.
+
 ### Removed
 
 - jQuery support
@@ -431,7 +435,7 @@ document.querySelectorAll('form[data-bs-validate]')
 | `_maps.scss` | Removed |
 | `_placeholders.scss` | `_placeholder.scss` |
 | `_spinners.scss` | `_spinner.scss` |
-| `_form-check.scss` | `_checkbox.scss`, `_radio.scss`, `_switch.scss` |
+| `_form-check.scss` | `_check.scss`, `_radio.scss`, `_switch.scss` |
 | `mixins/_forms.scss` | `mixins/_form-validation.scss` |
 | `forms/_form-variables.scss` | Removed |
 | `vendor/_rfs.scss` | Removed |
@@ -448,7 +452,7 @@ document.querySelectorAll('form[data-bs-validate]')
 | `$zindex-dropdown` | `$zindex-menu` |
 | `$zindex-offcanvas` | `$zindex-drawer` |
 | `$form-validation-states` | `$validation-states` |
-| `$btn-close-white-filter` | `$btn-close-filter-dark` |
+| `$btn-close-white-filter` | Removed — icon uses `currentcolor` |
 | `add()` / `subtract()` | `calc()` |
 | `breakpoint-infix()` | `breakpoint-prefix()` (returns `"md\:"` not `"-md"`) |
 | `$infix` (in loop mixins) | `$prefix` |
@@ -485,6 +489,12 @@ The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem
 
 Removed `css-var`, `css-variable-name`, and `local-vars` options. Use `property` map and `variables` instead.
 
+### Theme maps merge
+
+`$theme-colors`, `$theme-bgs`, `$theme-fgs`, `$theme-borders`, `$badge-variants`, and other global maps use `defaults()`. Pass only the keys you want to change through `@use ... with ()`. Set a key to `null` to drop it. Nested theme-color maps merge one level deep — pass the whole sub-map to change one role.
+
+Root tokens emit on `:root, :host`. Repeat `:root` overrides on `:host` if you use shadow DOM.
+
 ---
 
 ## Rebuilt behavior & new components
@@ -517,6 +527,7 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 | Combobox | `data-bs-toggle="combobox"` | Filterable/autocomplete select built on Menu |
 | Chip / Chip input | `.chip`, `.chip-input` (`data-bs-chips`) | Tags / tokens + interactive entry |
 | Datepicker | `data-bs-toggle="datepicker"` | Date picker (peer dep `vanilla-calendar-pro`) |
+| Calendar | Datepicker `inline: true` | CSS-only date grid (no `Calendar` JS class) |
 | Range | `.form-range` (+ `data-bs-bubble`, ticks) | Enhanced range slider with a value bubble |
 | Strength | `data-bs-strength` | Password-strength meter |
 | OTP input | `data-bs-otp` | One-time-code input |
@@ -560,4 +571,6 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
    - `.fs-1`–`.fs-6` (should be `.fs-4xl` … `.fs-md`)
    - `.link-offset-*` / `.link-underline-*` (now `.underline-offset-*` / `.underline-*`)
    - ScrollSpy `offset` / `method` options (removed — use `topMargin`)
+   - inline SVG inside `.check` (icon is a CSS mask on the input)
+   - `$theme-colors` full-map replacements (v6 merges via `defaults()`)
 3. Test in browser — v6 requires support for `oklch()` and `color-mix()`.

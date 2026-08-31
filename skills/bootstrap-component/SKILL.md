@@ -121,18 +121,22 @@ When a component has a set of contextual treatments, drive them from an overrida
 
 ```scss
 // scss-docs-start widget-variants
-$widget-variants: (
-  "subtle": (
-    "color": "fg",
-    "bg": "bg-subtle",
-    "border-color": "transparent"
+$widget-variants: () !default;
+$widget-variants: defaults(
+  (
+    "subtle": (
+      "color": "fg",
+      "bg": "bg-subtle",
+      "border-color": "transparent"
+    ),
+    "outline": (
+      "color": "fg",
+      "bg": "transparent",
+      "border-color": "border"
+    )
   ),
-  "outline": (
-    "color": "fg",
-    "bg": "transparent",
-    "border-color": "border"
-  )
-) !default;
+  $widget-variants
+);
 // scss-docs-end widget-variants
 
 @layer components {
@@ -185,6 +189,8 @@ Unthemed markup uses the fallbacks; adding a theme class recolors the component 
 ```html
 <div class="widget theme-danger">…</div>
 ```
+
+Use `.theme-reset` on a nested subtree to drop inherited `--theme-*` tokens and return to those fallbacks.
 
 Do not hardcode `var(--red-500)` or a specific theme color in component tokens. Adding or overriding theme colors themselves is covered by the `bootstrap-color-system` skill.
 

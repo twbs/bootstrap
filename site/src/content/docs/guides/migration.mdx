@@ -75,6 +75,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Increased the `2xl` breakpoint from 1400px to 1536px, and its container from 1320px to 1440px.
 - **Adopted modern CSS color functions.** All Sass color variables now use `oklch()` notation (e.g., `$blue: oklch(60% 0.24 240)`) and tint/shade scales are generated with `color-mix(in lab, ...)` in the compiled CSS. The v5 `$*-rgb` CSS custom properties and `rgba()` patterns have been removed. This requires browser support for `color-mix()` and `oklch()`.
 - **New theme token system with `.theme-*` classes.** Per-component color variant classes (like `.alert-primary`, `.badge.bg-primary`, `.btn-primary`, `.table-primary`) are replaced by a composable `.theme-{name}` pattern. Adding `.theme-primary` to a component sets `--theme-bg`, `--theme-fg`, `--theme-border`, `--theme-contrast`, and other semantic CSS custom properties that the component reads. This applies across buttons, badges, alerts, tables, cards, accordions, and more. Use `.theme-reset` on a nested subtree to return to component defaults.
+- **Root tokens now emit on `:root, :host`.** Custom properties live on both selectors so a shadow root that adopts Bootstrap’s stylesheet can read the tokens. If you override `:root` only, Web Components will not see those overrides—repeat them on `:host`, or use a selector that covers both.
 - **Responsive and state classes now use a prefix instead of an infix or suffix.** Class names follow the Tailwind-style `prefix:class` pattern (e.g., `md:d-none` instead of `d-md-none`, `hover:opacity-50` instead of `opacity-50-hover`). In HTML, use the unescaped colon: `class="md:d-none"`. This applies to utilities, grid, pseudo-state variants, and all responsive components.
 
 <BsTable>
@@ -118,6 +119,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Renamed Sass files for consistency.** `_placeholders.scss` is now `_placeholder.scss` and `_spinners.scss` is now `_spinner.scss`. Update any individual `@use` imports for these files.
 - **Standardized focus styles with `focus-ring` mixin.** All component-specific `*-focus-box-shadow` Sass variables (e.g., `$btn-focus-box-shadow`, `$input-focus-box-shadow`, `$accordion-button-focus-box-shadow`) have been removed. Focus styles are now handled by a shared `@mixin focus-ring()` using `--focus-ring`, `--focus-ring-width`, `--focus-ring-offset`, and `--focus-ring-color` CSS custom properties. Customize focus styles by overriding these tokens in `_root.scss` instead of individual Sass variables.
 - **Renamed `$grid-breakpoints` to `$breakpoints`.**
+- **Theme and config maps now merge via `defaults()`.** `$theme-colors`, `$theme-bgs`, `$theme-fgs`, `$theme-borders`, `$badge-variants`, and the other global maps accept a partial `@use ... with ()` override. v5 required a full map replacement. Set a key to `null` to drop it. Nested theme-color maps merge one level deep—pass the whole sub-map to change one role. See [Sass]([[docsref:/customize/sass]]).
 - **Removed `$enable-dark-mode`.** Dark mode support is always compiled; control it at runtime with `data-bs-theme` (or the `color-mode()` mixin) instead of toggling a Sass flag.
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.
@@ -200,7 +202,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Renamed the data key from `bs.dropdown` to `bs.menu` (affects `Menu.getInstance()` and `Menu.getOrCreateInstance()`).
 - **Added new Combobox component.** A searchable select built on top of Menu, with single and multi-select support. See the [Combobox docs]([[docsref:/forms/combobox]]).
 - Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for menu, tooltip, and popover positioning. The `popperConfig` option on Tooltip, Popover, and Menu (formerly Dropdown) has been renamed to `floatingConfig`. Update any custom positioning configuration accordingly.
-- Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component.
+- Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component. Popup datepickers close when focus leaves the input and the calendar.
 - Removed the `jspm` configuration from `package.json`.
 - Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap’s plugins register at the top level.
 - Added `"exports"` map to `package.json` for explicit subpath access to source, dist, and Sass files.
@@ -248,6 +250,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - **Alerts fade out on their own.** `close()` adds `.hiding` for the length of the transition, then removes the element, so `.fade` and `.show` are no longer needed in the markup. Alerts that never had `.fade` now animate too, which delays `closed.bs.alert` by the transition. Add `.alert-instant` to keep the old instant removal.
   - **Tab panes fade in on their own.** The plugin adds `.active` and `.show` in the same frame instead of sequencing them, and the CSS animates from `@starting-style`. The pane you leave hides at once, since two in-flow panes cannot cross-fade. `shown.bs.tab` now fires after the incoming pane finishes. Add `.tab-pane-instant` for an instant swap.
   - **Tooltips and popovers animate from `@starting-style`.** The plugin no longer adds `.fade` to the tip. `animation: false` adds `.tooltip-instant` or `.popover-instant` instead, which you can also write in a custom `template`.
+  - **Hover and focus tooltips stay open on the tip.** In v5 the tooltip hid as soon as the pointer left the trigger. v6 keeps it open while the pointer or focus is on the tip itself, so links inside the tooltip are reachable ([WCAG 1.4.13](https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html)). Press Escape or leave both the trigger and the tip to hide it. See [Tooltips]([[docsref:/components/tooltip]]).
 - **Collapse animates its size natively.** The plugin toggles `.show` and nothing else. The CSS animates the size with [`interpolate-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size), as the accordion already does:
   - Removed the `.collapsing` class, and with it the inline `height` and `width` the plugin used to write. Replace any CSS, tests, or selectors that depend on either.
   - Browsers without `interpolate-size` open and close the element at once. Firefox is the one to watch.
@@ -271,6 +274,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - The expand/collapse icon now uses an `.accordion-icon` element (typically an SVG) inside the summary, replacing the CSS `background-image` approach.
   - Open state styling uses `details[open]` instead of JavaScript-toggled classes.
   - Theme coloring via `.theme-*` classes on the `.accordion` wrapper.
+  - New modifiers: `.accordion-sm` for compact padding and type, and `.accordion-gap` to space items as separate rounded cards (`--accordion-gap`).
 - **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance, and the `.btn-close-white` class has been removed—on dark backgrounds (e.g., `.text-bg-dark`) the icon now inherits the contrast color automatically.
 - **Removed `.alert-dismissible`.** Dismissible alerts no longer require the `.alert-dismissible` modifier class. Place a `.btn-close` directly inside the alert—the alert's flex layout positions it automatically. Remove any `.alert-dismissible` class from your markup.
 - **Restructured cards.** Borders now live on `.card-body` and `.card-list` segments rather than a single outer `.card` border. Added `--card-box-shadow` and `--card-body-gap` tokens. New variant classes: `.card-translucent` (frosted glass effect) and `.card-subtle` (themed with subtle backgrounds). Horizontal cards use a new `.card-row` class. Removed `.card-link` class. `.card-body` is now a flex column container. You may need to add `.flex-row` when using additional flex utilities for custom layouts.
@@ -278,7 +282,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **List group horizontal variants now use container queries.** The `.*:list-group-horizontal` classes switch between vertical and horizontal layouts with `@container` queries instead of viewport `@media` queries, responding to a parent query container rather than the viewport. Wrap the list group in a query container (e.g. `.contains-inline`) for the responsive variants to take effect.
 - **Reworked badge variants.** Badge color variants now use `.badge-subtle` and `.badge-outline` combined with `.theme-*` classes (e.g., `.badge-subtle .theme-primary`), replacing the v5 `.bg-primary` utility pattern on badges.
 - **Added theme variant support to pagination.** Add a `.theme-{color}` class to `.pagination` (e.g., `.pagination.theme-primary`) to color links, hover, focus, and the active page item with a semantic theme color, matching the pattern already used by alerts and accordions.
-- **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and explicit `.breadcrumb-divider` elements as separators between items. An empty `.breadcrumb-divider` renders a default chevron via a CSS `mask-image` (`--breadcrumb-divider-icon`) tinted with `background-color: currentcolor`; add your own SVG, text, or markup inside it to override. This replaces the v5 `--bs-breadcrumb-divider` content string on the `.breadcrumb-item::before` pseudo-element.
+- **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and explicit `.breadcrumb-divider` elements as separators between items. An empty `.breadcrumb-divider` renders a default chevron via a CSS `mask-image` (`--breadcrumb-divider-icon`) tinted with `background-color: currentcolor`; add your own SVG, text, or markup inside it to override. This replaces the v5 `--bs-breadcrumb-divider` content string on the `.breadcrumb-item::before` pseudo-element. The default bottom margin is gone (v5 used `$spacer` / `1rem`). Add a spacer utility if you still want space below the trail.
 - **Navbar responsive collapsing now uses the Drawer, not Collapse.** The v5 collapsible navbar—a `.navbar-toggler` toggling a `.collapse.navbar-collapse` region through the Collapse plugin—has been replaced by the [Drawer]([[docsref:/components/drawer]]). On narrow viewports the navigation slides in as a `<dialog class="drawer">`; from your `.{breakpoint}:navbar-expand` breakpoint up it lays out inline as before. Three things change: the toggler targets a drawer (`data-bs-toggle="drawer"`) instead of a collapse; the collapsible region becomes a `<dialog class="drawer">` with `.drawer-header` / `.drawer-body`; and the `.navbar-expand-{bp}` infix becomes the `.{bp}:navbar-expand` prefix. The v5 `.navbar-light` / `.navbar-dark` color-scheme classes have also been removed—set the surface with a background utility such as `.bg-1` and let [color modes]([[docsref:/customize/color-modes]]) handle light and dark.
 
   **Before (v5):**
@@ -381,7 +385,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 ### Forms
 
 - **Refactor checks, radios, and switches.**
-  - Split apart `_form-check.scss` into separate stylesheets: `_checkbox.scss`, `_radio.scss`, and `_switch.scss`.
+  - Split apart `_form-check.scss` into separate stylesheets: `_check.scss`, `_radio.scss`, and `_switch.scss`.
   - Also split apart the documentation pages for checks, radios, and switches.
   - Added new CSS variables on each of these components. *Side note: we could’ve shared variables here, but chose not to for simplicity’s sake.*
   - Removed several now unused Sass variables.
@@ -392,6 +396,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `.form-select`—use `.form-control` on `<select>` elements now. Too much abstraction and duplication at the same time.
   - Adds new CSS variables on `.form-control` for easier customization without Sass compilation.
   - `.form-control` now has a `min-height` at all times as opposed to just on `<textarea>` elements. This reduces some CSS for us.
+  - `.form-control` applies the focus ring on `:focus-within` as well as `:focus-visible`, so a wrapper such as `.form-adorn` shows focus when a nested input is focused.
 - **Range is now a JavaScript component.** The native range can’t draw a filled track cross-browser in CSS alone, so `.form-range` is JS-driven.
   - `.form-range` is now a **wrapper** element; the `<input type="range">` takes `.form-range-input` (previously `.form-range` went directly on the input). The wrapper owns the component’s tokens, so the input and decorations inherit them. Every `.form-range` is initialized automatically.
   - Draws a filled track by default, plus an optional value bubble (`data-bs-bubble`, which reuses the tooltip styles) and tick marks generated from a linked `<datalist>`.
@@ -607,6 +612,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Range** — `Range` JavaScript plugin that turns `.form-range` into a styled slider with a filled track, optional value bubble, and `<datalist>` tick marks, with a `changed.bs.range` event.
 - **Toggler** — `Toggler` JavaScript plugin for toggling classes or attributes on elements via `data-bs-toggle="toggler"`.
 - **Datepicker** — `Datepicker` JavaScript plugin built on Vanilla Calendar Pro, with events: `change.bs.datepicker`, `show.bs.datepicker`, `hide.bs.datepicker`.
+- **Calendar** — CSS-only date grid that styles Vanilla Calendar Pro’s `data-vc-*` markup. There is no `Calendar` JavaScript class. Render an inline calendar with the Datepicker `inline` option. See the [Calendar docs]([[docsref:/components/calendar]]).
 - **Form Adorn** — new `.form-adorn` component for adding icons or text decoration to form inputs.
 - **Prose** — new `.prose` class for rich typography scoping and `.not-prose` to opt out of prose styles within a prose container.
 - **NavOverflow** — Wrap a `.nav` in `<div class="nav-overflow" data-bs-toggle="nav-overflow">` to collapse overflowing items into a menu. The plugin measures and observes the wrapper (not the nav), and events fire there too. See the [Nav overflow docs]([[docsref:/components/nav-overflow]]).
