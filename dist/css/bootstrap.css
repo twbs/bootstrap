@@ -6199,9 +6199,9 @@
     --bs-card-subtitle-color: inherit;
     --bs-card-border-width: var(--bs-border-width);
     --bs-card-border-color: var(--bs-border-color-translucent);
-    --bs-card-border-radius: var(--bs-radius-7);
+    --bs-card-border-radius: var(--bs-radius-8);
     --bs-card-box-shadow: none;
-    --bs-card-inner-border-radius: calc(var(--bs-radius-7) - var(--bs-border-width));
+    --bs-card-inner-border-radius: calc(var(--bs-card-border-radius) - var(--bs-border-width));
     --bs-card-cap-padding-y: var(--bs-spacer-3);
     --bs-card-cap-padding-x: var(--bs-spacer);
     --bs-card-cap-bg: var(--bs-bg-1);
@@ -6264,11 +6264,6 @@
   .card-body:has(+ .card-footer),
   .card-list:has(+ .card-footer) {
     border-block-end-width: 0;
-  }
-  .card-title,
-  .card-subtitle,
-  .card-text {
-    align-self: stretch;
   }
   .card-subtitle {
     margin-top: calc(var(--bs-card-body-gap) * -0.5);
@@ -6339,12 +6334,13 @@
     outline: var(--bs-card-border-width) solid var(--bs-card-border-color);
     outline-offset: calc(var(--bs-card-border-width) * -1);
   }
-  .card-img,
+  .card-img {
+    border-radius: var(--bs-radius-5);
+  }
   .card-img-top {
     border-start-start-radius: var(--bs-card-inner-border-radius);
     border-start-end-radius: var(--bs-card-inner-border-radius);
   }
-  .card-img,
   .card-img-bottom {
     border-end-start-radius: var(--bs-card-inner-border-radius);
     border-end-end-radius: var(--bs-card-inner-border-radius);
