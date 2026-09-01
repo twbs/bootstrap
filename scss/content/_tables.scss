@@ -29,6 +29,8 @@ $table-tokens: defaults(
     --table-hover-color: var(--table-color),
     --table-hover-bg-factor: 7.5%,
     --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
+    --table-thead-sticky-top: 0px,
+    --table-thead-sticky-zindex: var(--z-3),
   ),
   $table-tokens
 );
@@ -174,6 +176,18 @@ $table-striped-columns-order: even !default;
       --table-color-state: var(--theme-fg, var(--table-hover-color));
       --table-bg-state: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-hover-bg-factor), transparent);
     }
+  }
+
+  // Sticky table headers
+  //
+  // Subtract the collapsed cell border so scrolling rows cannot show through a
+  // 1px gap at the top of the scrollport.
+
+  .thead-sticky {
+    position: sticky;
+    top: calc(var(--table-thead-sticky-top) - var(--table-border-width, 1px));
+    z-index: var(--table-thead-sticky-zindex);
+    background-color: var(--theme-bg-subtle, var(--table-bg));
   }
 
   // Responsive tables
