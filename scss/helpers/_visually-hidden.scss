@@ -6,3 +6,20 @@
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
   @include visually-hidden();
 }
+
+// Responsive visually hidden utilities
+//
+// Generates `.visually{-breakpoint}-hidden` classes that apply the
+// `visually-hidden` mixin starting at each breakpoint and up,
+// enabling screen-reader-only content that is conditionally hidden
+// based on viewport size.
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @include media-breakpoint-up($breakpoint) {
+    .visually#{$infix}-hidden {
+      @include visually-hidden();
+    }
+  }
+}
