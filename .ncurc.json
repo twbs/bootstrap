@@ -6,6 +6,7 @@
     "@babel/preset-env",
     "@docsearch/js",
     "astro",
+    "astro-auto-import",
     "eslint",
     "eslint-config-xo",
     "eslint-plugin-unicorn",
