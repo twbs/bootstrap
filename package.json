@@ -128,7 +128,7 @@
     "@types/mime": "^4.0.0",
     "@types/prismjs": "^1.26.6",
     "astro": "5.18.2",
-    "astro-auto-import": "^0.6.0",
+    "astro-auto-import": "^0.5.2",
     "astro-broken-links-checker": "^1.1.0",
     "autoprefixer": "^10.5.4",
     "bundlewatch": "^0.4.2",
