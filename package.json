@@ -166,7 +166,7 @@
     "htmlparser2": "^12.0.0",
     "image-size": "^2.0.2",
     "jasmine": "^6.3.0",
-    "js-yaml": "^5.4.0",
+    "js-yaml": "^5.4.1",
     "lightningcss": "^1.32.0",
     "lockfile-lint": "^5.0.1",
     "markdownlint-cli": "^0.49.0",
