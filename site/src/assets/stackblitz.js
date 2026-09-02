@@ -23,12 +23,14 @@ export default () => {
   document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', event => {
       const codeSnippet = event.target.closest('.bd-code-snippet')
-      const exampleEl = codeSnippet.querySelector('.bd-example')
+      // The preview markup and any author-supplied classes live on the inner
+      // content wrapper. Fall back to `.bd-example` for older markup.
+      const exampleEl = codeSnippet.querySelector('.bd-example-content') || codeSnippet.querySelector('.bd-example')
 
       const htmlSnippet = exampleEl.innerHTML
       const jsSnippet = codeSnippet.querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
-      // Get extra classes for this example
-      const classes = [...exampleEl.classList].join(' ')
+      // Get extra classes for this example, minus the docs-only wrapper class
+      const classes = [...exampleEl.classList].filter(cls => cls !== 'bd-example-content').join(' ')
 
       openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
     })
