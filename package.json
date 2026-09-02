@@ -112,7 +112,7 @@
     "release-zip-examples": "node build/zip-examples.mjs",
     "dist": "npm-run-all --aggregate-output --parallel css js",
     "test": "npm-run-all lint dist js-typecheck-dist js-test docs-build docs-lint",
-    "netlify": "npm-run-all dist release-sri astro-build",
+    "vercel": "npm-run-all dist release-sri astro-build",
     "watch": "npm-run-all --parallel watch-*",
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile css-prefix\"",
     "watch-css-docs": "nodemon --watch site/src/scss/ --ext scss --exec \"npm run css-lint\"",
