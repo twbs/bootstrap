@@ -1,6 +1,6 @@
 {
-  "name": "bootstrap",
-  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+  "name": "@millicast/bootstrap-ml",
+  "description": "Bootstrap 4.6.2 scoped under .ml-viewer for the Millicast web viewer",
   "version": "4.6.2",
   "config": {
     "version_short": "4.6"
@@ -14,7 +14,7 @@
     "framework",
     "web"
   ],
-  "homepage": "https://getbootstrap.com/",
+  "homepage": "https://github.com/millicast/bootstrap/tree/ml-viewer",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
   "contributors": [
     "Twitter, Inc."
@@ -22,21 +22,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/twbs/bootstrap.git"
+    "url": "git+https://github.com/millicast/bootstrap.git"
   },
   "bugs": {
-    "url": "https://github.com/twbs/bootstrap/issues"
+    "url": "https://github.com/millicast/bootstrap/issues"
   },
-  "funding": [
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/twbs"
-    },
-    {
-      "type": "opencollective",
-      "url": "https://opencollective.com/bootstrap"
-    }
-  ],
   "main": "dist/js/bootstrap.js",
   "sass": "scss/bootstrap.scss",
   "style": "dist/css/bootstrap.css",
@@ -149,6 +139,9 @@
     "js/{src,dist}/**/*.{js,map}",
     "scss/**/*.scss"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "hugo-bin": {
     "buildTags": "extended"
   },

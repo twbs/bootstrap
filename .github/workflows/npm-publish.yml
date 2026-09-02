@@ -1,0 +1,47 @@
+name: npm-publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'git reference to publish (defaults to the current branch)'
+        required: false
+        type: string
+      dist_tag:
+        description: 'Distribution tag to publish package with'
+        required: false
+        type: string
+      dryun:
+        description: 'dryrun'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    name: "publish ${{ inputs.ref || github.ref_name }}"
+    runs-on: ubuntu-latest
+    container: node:24-alpine
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref || github.ref_name }}
+
+      - name: "npm publish"
+        env:
+          dist_tag: ${{ inputs.dist_tag }}
+          dryrun: ${{ inputs.dryrun }}
+        shell: 'ash -e -o pipefail {0}'
+        run: |
+          set --
+          if [ -n "${dist_tag}" ]; then
+            set -- "$@" --tag "${dist_tag}"
+          fi
+          if [ "${dryrun}" = 'true' ]; then
+            set -- "$@" --dry-run
+          fi
+
+          npm publish --provenance --access public "$@"
