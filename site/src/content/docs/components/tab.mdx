@@ -162,6 +162,38 @@ The tab plugin also works with [list groups]([[docsref:/components/list-group]])
   </div>
 </div>`} />
 
+## Hash links
+
+Add `data-bs-hash` to a tab pane to show it when the URL fragment matches its `id`. Use a normal in-page link to try it. You may need to use `scroll-margin-block-start` for some viewport offsetting if using a stickied or fixed navbar.
+
+<Example class="vstack gap-3" code={`<p class="d-inline-flex gap-2 mb-0">
+    <a href="#hash-home">#hash-home</a>
+    <a href="#hash-profile">#hash-profile</a>
+    <a href="#hash-contact">#hash-contact</a>
+  </p>
+  <ul class="nav nav-tabs" id="hashTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="hash-home-tab" data-bs-toggle="tab" data-bs-target="#hash-home" type="button" role="tab" aria-controls="hash-home" aria-selected="true">Home</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="hash-profile-tab" data-bs-toggle="tab" data-bs-target="#hash-profile" type="button" role="tab" aria-controls="hash-profile" aria-selected="false">Profile</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="hash-contact-tab" data-bs-toggle="tab" data-bs-target="#hash-contact" type="button" role="tab" aria-controls="hash-contact" aria-selected="false">Contact</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="hashTabContent">
+    <div class="tab-pane show active" id="hash-home" role="tabpanel" aria-labelledby="hash-home-tab" tabindex="0" data-bs-hash>
+      <p>This is some placeholder content the <strong>Home tab’s</strong> associated content.</p>
+    </div>
+    <div class="tab-pane" id="hash-profile" role="tabpanel" aria-labelledby="hash-profile-tab" tabindex="0" data-bs-hash>
+      <p>This is some placeholder content the <strong>Profile tab’s</strong> associated content.</p>
+    </div>
+    <div class="tab-pane" id="hash-contact" role="tabpanel" aria-labelledby="hash-contact-tab" tabindex="0" data-bs-hash>
+      <p>This is some placeholder content the <strong>Contact tab’s</strong> associated content.</p>
+    </div>
+  </div>`} />
+
 ## Accessibility
 
 Dynamic tabbed interfaces, as described in the [ARIA Authoring Practices Guide tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/), require `role="tablist"`, `role="tab"`, `role="tabpanel"`, and additional `aria-` attributes in order to convey their structure, functionality, and current state to users of assistive technologies (such as screen readers). As a best practice, we recommend using `<button>` elements for the tabs, as these are controls that trigger a dynamic change, rather than links that navigate to a new page or location.
@@ -187,6 +219,7 @@ You can activate a tab navigation without writing any JavaScript by simply speci
 | --- | --- |
 | `data-bs-toggle="tab"` | Activates tab navigation on the trigger. |
 | `data-bs-target` | CSS selector for the tab pane to show (must pair with a corresponding `.tab-pane`). |
+| `data-bs-hash` | When set on the tab pane, shows that pane when the URL fragment matches its `id` (on load and `hashchange`). See [Hash links](#hash-links). |
 </BsTable>
 
 ```html
