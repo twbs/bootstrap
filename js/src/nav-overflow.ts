@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import Menu from './menu.js'
 import { DefaultIconAllowlist, sanitizeHtml } from './util/sanitizer.js'
 
 /**
@@ -26,6 +27,8 @@ const CLASS_NAME_OVERFLOW = 'nav-overflow'
 const CLASS_NAME_OVERFLOW_MENU = 'nav-overflow-menu'
 const CLASS_NAME_HIDDEN = 'd-none'
 const CLASS_NAME_KEEP = 'nav-overflow-keep'
+const CLASS_NAME_SUBMENU = 'submenu'
+const CLASS_NAME_SHOW = 'show'
 
 const SELECTOR_NAV = '.nav'
 const SELECTOR_NAV_ITEM = '.nav-item'
@@ -33,6 +36,8 @@ const SELECTOR_NAV_LINK = '.nav-link'
 const SELECTOR_OVERFLOW_TOGGLE = '.nav-overflow-toggle'
 const SELECTOR_OVERFLOW_MENU = '.nav-overflow-menu'
 const SELECTOR_CUSTOM_ICON = '[data-bs-overflow-icon]'
+const SELECTOR_MENU = '.menu'
+const SELECTOR_MENU_TOGGLE = '[data-bs-toggle="menu"]'
 
 type NavOverflowConfig = {
   collapseBelow: number | string
@@ -78,6 +83,7 @@ class NavOverflow extends BaseComponent {
   protected declare _resizeObserver: ResizeObserver | null
   protected declare _resizeHandler: (() => void) | null
   protected declare _collapseBelow: number
+  protected declare _relocatedMenus: Map<HTMLElement, { menu: HTMLElement, parent: ParentNode, nextSibling: ChildNode | null }>
 
   constructor(element?: string | Element | null, config?: Partial<NavOverflowConfig> | null) {
     super(element, config)
@@ -96,6 +102,7 @@ class NavOverflow extends BaseComponent {
     this._resizeObserver = null
     this._resizeHandler = null
     this._collapseBelow = 0
+    this._relocatedMenus = new Map()
 
     this._init()
   }
@@ -357,8 +364,7 @@ class NavOverflow extends BaseComponent {
       return
     }
 
-    // Clear existing overflow items
-    this._overflowMenu.innerHTML = ''
+    this._overflowMenu.replaceChildren()
     this._overflowItems = []
 
     for (const item of items) {
@@ -367,20 +373,14 @@ class NavOverflow extends BaseComponent {
         continue
       }
 
-      const clonedLink = link.cloneNode(true) as HTMLElement
-      clonedLink.className = 'menu-item'
+      const menu = this._findItemMenu(item, link)
 
-      if (link.classList.contains('active')) {
-        clonedLink.classList.add('active')
+      if (menu && link.matches(SELECTOR_MENU_TOGGLE)) {
+        this._overflowMenu.append(this._relocateAsSubmenu(item, link, menu))
+      } else {
+        this._overflowMenu.append(this._cloneAsMenuItem(link))
       }
 
-      if (link.classList.contains('disabled') || link.hasAttribute('disabled')) {
-        clonedLink.classList.add('disabled')
-      }
-
-      this._overflowMenu.append(clonedLink)
-
-      // Hide original item
       item.classList.add(CLASS_NAME_HIDDEN)
       item.dataset.bsNavOverflow = 'true'
 
@@ -388,7 +388,93 @@ class NavOverflow extends BaseComponent {
     }
   }
 
+  // A nav item that already hosts a Menu becomes a submenu of the overflow
+  // menu. Move the original `.menu` (do not clone it) so nested submenus,
+  // ids, and live node state stay on one element.
+  protected _relocateAsSubmenu(item: HTMLElement, link: HTMLElement, menu: HTMLElement): HTMLElement {
+    Menu.getInstance(link)?.dispose()
+    menu.classList.remove(CLASS_NAME_SHOW)
+
+    this._relocatedMenus.set(item, {
+      menu,
+      parent: menu.parentNode!,
+      nextSibling: menu.nextSibling
+    })
+
+    const submenu = document.createElement('div')
+    submenu.className = CLASS_NAME_SUBMENU
+    submenu.append(this._cloneAsMenuItem(link, true), menu)
+
+    return submenu
+  }
+
+  protected _cloneAsMenuItem(link: HTMLElement, submenu = false): HTMLElement {
+    const clonedLink = link.cloneNode(true) as HTMLElement
+    clonedLink.className = 'menu-item'
+    clonedLink.removeAttribute('id')
+
+    if (link.classList.contains('active')) {
+      clonedLink.classList.add('active')
+    }
+
+    if (link.classList.contains('disabled') || link.hasAttribute('disabled')) {
+      clonedLink.classList.add('disabled')
+    }
+
+    if (submenu) {
+      for (const name of clonedLink.getAttributeNames()) {
+        if (name.startsWith('data-bs-') && name !== 'data-bs-theme') {
+          clonedLink.removeAttribute(name)
+        }
+      }
+
+      clonedLink.removeAttribute('href')
+      clonedLink.setAttribute('aria-haspopup', 'true')
+      clonedLink.setAttribute('aria-expanded', 'false')
+
+      if (clonedLink.tagName === 'A') {
+        clonedLink.setAttribute('role', 'button')
+      }
+    }
+
+    return clonedLink
+  }
+
+  protected _findItemMenu(item: HTMLElement, link: HTMLElement): HTMLElement | null {
+    const sibling = SelectorEngine.next(link, SELECTOR_MENU)[0] as HTMLElement | undefined
+
+    if (sibling && !sibling.classList.contains(CLASS_NAME_OVERFLOW_MENU)) {
+      return sibling
+    }
+
+    const nested = SelectorEngine.findOne(SELECTOR_MENU, item)
+
+    if (nested && !nested.classList.contains(CLASS_NAME_OVERFLOW_MENU)) {
+      return nested
+    }
+
+    return null
+  }
+
+  protected _restoreRelocatedMenus(): void {
+    for (const { menu, parent, nextSibling } of this._relocatedMenus.values()) {
+      if (nextSibling) {
+        nextSibling.before(menu)
+      } else {
+        parent.append(menu)
+      }
+    }
+
+    this._relocatedMenus.clear()
+  }
+
   protected _restoreItems(): void {
+    if (this._overflowToggle) {
+      Menu.getInstance(this._overflowToggle)?.dispose()
+    }
+
+    this._restoreRelocatedMenus()
+
     for (const item of this._items) {
       item.classList.remove(CLASS_NAME_HIDDEN)
       delete item.dataset.bsNavOverflow
@@ -397,10 +483,7 @@ class NavOverflow extends BaseComponent {
     // Show the toggle too, so it is measured at its real width and not zero
     this._overflowToggle?.closest(SELECTOR_NAV_ITEM)?.classList.remove(CLASS_NAME_HIDDEN)
 
-    if (this._overflowMenu) {
-      this._overflowMenu.innerHTML = ''
-    }
-
+    this._overflowMenu?.replaceChildren()
     this._overflowItems = []
   }
 }

@@ -15,7 +15,7 @@ Here’s what you need to know before getting started:
 - Wrap your `.nav` in a `.nav-overflow` element and add `data-bs-toggle="nav-overflow"` to that wrapper.
 - **Responds to container size**, not viewport size. The component watches the wrapper with a ResizeObserver, so it works in embedded contexts, documentation examples, and responsive containers.
 - The wrapper is what makes this reliable. Collapsing items changes the width of the nav, so the component measures the wrapper instead. Measuring the nav would feed the result back in as the input.
-- Overflow items are cloned into a "More" menu while the originals are hidden.
+- Overflow items are cloned into a "More" menu while the originals are hidden. A nav item that hosts a menu is the exception: its `.menu` moves into a submenu of the overflow menu.
 - Works with all nav styles: default, pills, tabs, and underline.
 - Active and disabled states are preserved in the overflow menu.
 
@@ -194,6 +194,59 @@ The nav overflow pattern can also be used within a [navbar]([[docsref:/component
       </div>
     </div>
   </nav>`} />
+
+### With menus
+
+A nav item that already hosts a [menu]([[docsref:/components/menu]]) becomes a submenu of the overflow menu. The plugin moves the original `.menu` rather than cloning it, so nested submenus stay intact.
+
+<ResizableExample code={`<div class="nav-overflow" data-bs-toggle="nav-overflow">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
+          Products
+        </button>
+        <div class="menu">
+          <a class="menu-item" href="#">Laptops</a>
+          <div class="submenu">
+            <button class="menu-item" type="button">Phones</button>
+            <div class="menu">
+              <a class="menu-item" href="#">iPhone</a>
+              <a class="menu-item" href="#">Android</a>
+            </div>
+          </div>
+          <a class="menu-item" href="#">Tablets</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
+          Company
+        </button>
+        <div class="menu">
+          <a class="menu-item" href="#">About</a>
+          <a class="menu-item" href="#">Careers</a>
+          <a class="menu-item" href="#">Press</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Analytics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Reports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Help</a>
+      </li>
+    </ul>
+  </div>`} />
 
 ## Customizing the toggle
 
