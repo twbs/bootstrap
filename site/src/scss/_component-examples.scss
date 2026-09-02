@@ -317,6 +317,19 @@
     }
   }
 
+  // Histogram
+  .bd-example-histogram {
+    .histogram {
+      max-width: 18rem;
+    }
+  }
+
+  .bd-example-histogram-end {
+    .histogram {
+      margin-inline-start: auto;
+    }
+  }
+
   // Toasts
   .bd-example-toasts {
     min-height: 300px;
