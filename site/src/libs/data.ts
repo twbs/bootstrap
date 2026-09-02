@@ -35,6 +35,24 @@ const dataDefinitions = {
       versions: z.union([zVersionSemver, zVersionMajorMinor]).array()
     })
     .array(),
+  extensions: z
+    .object({
+      name: z.string(),
+      // A project homepage or docs site, and/or its source repository. At least
+      // one is required so every entry links somewhere.
+      site: z.url().optional(),
+      github_repo: z.url().optional(),
+      description: z.string(),
+      category: z.enum(['Forms', 'Integrations', 'Pickers', 'Tables', 'Themes', 'UI']),
+      versions: z
+        .union([z.literal(4), z.literal(5), z.literal(6)])
+        .array()
+        .nonempty()
+    })
+    .refine((extension) => extension.site !== undefined || extension.github_repo !== undefined, {
+      error: 'Each extension needs a `site`, a `github_repo`, or both.'
+    })
+    .array(),
   examples: z
     .object({
       category: z.string(),

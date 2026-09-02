@@ -1,0 +1,107 @@
+---
+import SingleLayout from '@layouts/SingleLayout.astro'
+import Callout from '@components/shortcodes/Callout.astro'
+import CloseButton from '@components/shortcodes/CloseButton.astro'
+import Code from '@components/shortcodes/Code.astro'
+import PluginRegistry from '@components/shortcodes/PluginRegistry.astro'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { version: getConfig().docs_version }
+    }
+  ]
+}
+
+const registryFile = `${getConfig().repo}/blob/main/site/data/extensions.yml`
+---
+
+<SingleLayout
+  title="Extend Bootstrap"
+  description="Explore an open registry of community-maintained plugins and add-ons that extend Bootstrap with new components, form controls, integrations, and more."
+>
+  <Fragment slot="main-content">
+    <div class="bd-content">
+      <PluginRegistry />
+
+      <dialog class="dialog dialog-lg dialog-scrollable" id="addPluginDialog" aria-labelledby="addPluginDialogLabel">
+        <div class="dialog-header">
+          <h2 class="dialog-title" id="addPluginDialogLabel">Add your plugin</h2>
+          <CloseButton dismiss="dialog" />
+        </div>
+        <div class="dialog-body">
+          <p>
+            Append a block to <a href={registryFile}>{'site/data/extensions.yml'}</a>:
+          </p>
+
+          <Code
+            lang="yaml"
+            code={`- name: Your plugin
+  site: https://example.com/
+  github_repo: https://github.com/you/your-plugin
+  description: One sentence describing what it does.
+  category: Forms
+  versions: [5, 6]`}
+            containerClass="mb-5"
+          />
+
+          <p>
+            Provide a <code>site</code>, a <code>github_repo</code>, or both—entries with both show a GitHub link next
+            to the name. Every other field is required.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table sm:table-stacked">
+              <thead>
+                <tr>
+                  <th scope="col">Field</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>name</code></td>
+                  <td>The plugin’s name as its authors write it.</td>
+                </tr>
+                <tr>
+                  <td><code>site</code></td>
+                  <td>The project homepage or documentation site.</td>
+                </tr>
+                <tr>
+                  <td><code>github_repo</code></td>
+                  <td>The source repository.</td>
+                </tr>
+                <tr>
+                  <td><code>description</code></td>
+                  <td>A single sentence, ending with a period.</td>
+                </tr>
+                <tr>
+                  <td><code>category</code></td>
+                  <td>
+                    One of <code>Forms</code>, <code>Integrations</code>, <code>Pickers</code>, <code>Tables</code>,
+                    <code>Themes</code>, or <code>UI</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>versions</code></td>
+                  <td>The Bootstrap major versions the plugin supports, such as <code>[4, 5]</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="mb-0">
+            Keep entries sorted by category, then by name. The docs build validates the file, so a missing or misspelled
+            field fails CI with a message pointing at the problem.
+          </p>
+        </div>
+        <div class="dialog-footer">
+          <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+          <a class="btn-solid theme-primary" href={registryFile} target="_blank">Edit extensions.yml</a>
+        </div>
+      </dialog>
+    </div>
+  </Fragment>
+</SingleLayout>
