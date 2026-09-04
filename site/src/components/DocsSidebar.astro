@@ -7,8 +7,8 @@ import { getSlug } from '@libs/utils'
 const sidebar = getData('sidebar')
 ---
 
-<nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
-  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+<nav class="w-100 bd-links" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="list-unstyled mb-0 pe-lg-2 pb-3 pb-md-2 bd-links-nav">
     {
       sidebar.map((group) => {
         const groupSlug = getSlug(group.title)

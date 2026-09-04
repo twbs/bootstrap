@@ -4,25 +4,25 @@ import { getVersionedDocsPath } from '@libs/path'
 import Code from '@shortcodes/Code.astro'
 ---
 
-<div class="col-lg-7 mx-auto pb-3 mb-3 mb-md-5 text-md-center">
-  <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-violet-rgb);">
-    <svg class="bi fs-1" aria-hidden="true"><use xlink:href="#code"></use></svg>
+<div class="col-lg-7 mx-auto mb-3 mb-md-5 pb-3 text-md-center">
+  <div class="d-inline-block mb-3 masthead-followup-icon" style="--bg-rgb: var(--bd-violet-rgb);">
+    <svg class="fs-1 bi" aria-hidden="true"><use xlink:href="#code"></use></svg>
   </div>
   <h2 class="display-5 mb-3 fw-semibold lh-sm">Get started any way you&nbsp;want</h2>
   <p class="lead fw-normal">
     Jump right into building with Bootstrap—use the CDN, install it via package manager, or download the source code.
   </p>
-  <p class="d-flex justify-content-md-center lead fw-normal">
-    <a href={getVersionedDocsPath('getting-started/download/')} class="icon-link icon-link-hover fw-semibold ps-md-4">
+  <p class="lead d-flex justify-content-md-center fw-normal">
+    <a href={getVersionedDocsPath('getting-started/download/')} class="icon-link icon-link-hover ps-md-4 fw-semibold">
       Read installation docs
       <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
     </a>
   </p>
 </div>
 
-<section class="row g-3 g-md-5 mb-5 pb-5 justify-content-center">
+<section class="row g-3 g-md-5 justify-content-center mb-5 pb-5">
   <div class="col-lg-6 py-lg-4 pe-lg-5">
-    <svg class="bi mb-2 fs-2 text-body-secondary" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
+    <svg class="mb-2 fs-2 text-body-secondary bi" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
     <h3 class="fw-semibold">Install via package manager</h3>
     <p class="pe-lg-5">
       Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package-managed
@@ -37,8 +37,8 @@ import Code from '@shortcodes/Code.astro'
       package managers.
     </p>
   </div>
-  <div class="col-lg-6 py-lg-4 ps-lg-5 border-lg-start">
-    <svg class="bi mb-2 fs-2 text-body-secondary" aria-hidden="true"><use xlink:href="#globe2"></use></svg>
+  <div class="col-lg-6 border-lg-start py-lg-4 ps-lg-5">
+    <svg class="mb-2 fs-2 text-body-secondary bi" aria-hidden="true"><use xlink:href="#globe2"></use></svg>
     <h3 class="fw-semibold">Include via CDN</h3>
     <p class="pe-lg-5">
       When you only need to include Bootstrap’s compiled CSS or JS, you can use <a
@@ -67,7 +67,7 @@ import Code from '@shortcodes/Code.astro'
   <div class="col-md-8 mx-auto text-center">
     <h4 class="fw-semibold">Read our getting started guides</h4>
     <p>Get a jump on including Bootstrap's source files in a new project with our official guides.</p>
-    <div class="d-flex flex-wrap align-items-center justify-content-center gap-4 mt-4">
+    <div class="d-flex flex-wrap justify-content-center align-items-center mt-4 gap-4">
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
         href={getVersionedDocsPath('getting-started/webpack/')}

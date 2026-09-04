@@ -27,10 +27,10 @@ const addedIn52 = addedIn?.version === '5.2'
 const addedIn53 = addedIn?.version === '5.3'
 ---
 
-<li class="nav-item dropdown">
+<li class="dropdown nav-item">
   <button
     type="button"
-    class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle"
+    class="btn btn-link dropdown-toggle nav-link px-0 px-lg-2 py-2"
     data-bs-toggle="dropdown"
     aria-expanded="false"
     data-bs-display="static"
@@ -44,7 +44,7 @@ const addedIn53 = addedIn?.version === '5.3'
     <li><h6 class="dropdown-header">v5 releases</h6></li>
     <li>
       <a
-        class="dropdown-item d-flex align-items-center justify-content-between active"
+        class="dropdown-item d-flex justify-content-between align-items-center active"
         aria-current="true"
         href={isHome ? '/' : `/docs/${getConfig().docs_version}/${versionsLink}`}
       >

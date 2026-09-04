@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/prettierrc",
   "arrowParens": "always",
-  "plugins": ["prettier-plugin-astro"],
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-bootstrap"],
   "printWidth": 120,
   "semi": false,
   "singleQuote": true,

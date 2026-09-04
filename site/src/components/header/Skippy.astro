@@ -8,9 +8,9 @@ interface Props {
 const { layout } = Astro.props
 ---
 
-<div class="skippy visually-hidden-focusable overflow-hidden">
+<div class="visually-hidden-focusable overflow-hidden skippy">
   <div class="container-xl">
-    <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
+    <a class="d-inline-flex m-1 p-2" href="#content">Skip to main content</a>
     {
       layout === 'docs' && (
         <a class="d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">
