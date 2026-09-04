@@ -261,19 +261,58 @@ $drawer-backdrop-tokens: defaults(
 
   // Sheet variant: flush-to-edge panel with no inset, border-radius, or shadow.
   // Overrides tokens so placement transforms (which use calc() with --drawer-inset)
-  // automatically position the drawer at the viewport edge.
+  // automatically position the drawer at the viewport edge. Placement-aware:
+  // bottom/top sheets are full-bleed horizontally (capped at a max-width on
+  // large screens), start/end sheets are full-bleed vertically (capped at a
+  // max-height on large screens).
   .drawer-sheet {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    margin-inline: auto;
-    margin-bottom: calc(-1 * var(--drawer-border-width));
-    border-end-start-radius: 0;
-    border-end-end-radius: 0;
+    &:where(.drawer-bottom, .drawer-top) {
+      right: 0;
+      left: 0;
+      width: 100vw;
+      margin-inline: auto;
 
-    @include media-breakpoint-up(lg) {
-      max-width: var(--drawer-sheet-width, 760px);
+      @include media-breakpoint-up(lg) {
+        max-width: var(--drawer-sheet-width, 760px);
+      }
+    }
+
+    &:where(.drawer-bottom) {
+      bottom: 0;
+      margin-bottom: calc(-1 * var(--drawer-border-width));
+      border-end-start-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    &:where(.drawer-top) {
+      top: 0;
+      margin-top: calc(-1 * var(--drawer-border-width));
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+
+    &:where(.drawer-start, .drawer-end) {
+      inset-block: 0;
+      height: 100vh;
+      margin-block: auto;
+
+      @include media-breakpoint-up(lg) {
+        max-height: var(--drawer-sheet-height, 760px);
+      }
+    }
+
+    &:where(.drawer-start) {
+      inset-inline-start: 0;
+      margin-inline-start: calc(-1 * var(--drawer-border-width));
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
+
+    &:where(.drawer-end) {
+      inset-inline-end: 0;
+      margin-inline-end: calc(-1 * var(--drawer-border-width));
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
     }
   }
 
