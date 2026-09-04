@@ -1,0 +1,22 @@
+@import "../../functions";
+
+// Simulate Sass color channel functions returning non-integer channel values.
+@function red($color) {
+  @return 241.5;
+}
+
+@function green($color) {
+  @return 135.5;
+}
+
+@function blue($color) {
+  @return 8.5;
+}
+
+@include describe("luminance function") {
+  @include it("should round non-integer channel values before reading the luminance table") {
+    $result: luminance(#f7941c);
+
+    @include assert-true($result > 0 and $result < 1, "Non-integer color channels should not crash luminance()");
+  }
+}
