@@ -115,7 +115,12 @@
       background-color: var(--#{$prefix}list-group-action-active-bg);
     }
   }
+
+  &.active {
+    text-decoration: none;
+  }
 }
+
 
 // Horizontal
 //
