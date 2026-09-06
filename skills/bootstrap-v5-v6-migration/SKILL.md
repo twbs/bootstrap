@@ -246,6 +246,18 @@ Replace Collapse JS with native `<details>`/`<summary>`. The `name` attribute cr
 </div>
 ```
 
+### Cards
+
+Review card markup and any custom card CSS. v6 changes card borders, layout, and several helper classes.
+
+- `.card` owns the background, outer border, radius, shadow, and height. Headers and footers draw only their divider border.
+- `.card-body` is optional. It is now a flex column that removes direct-child block margins and uses `--card-body-gap` for spacing. Add `.flex-row` for a horizontal body.
+- Keep `.list-group-flush` on list groups inside cards. Do not add `.card-list`; that class is not available.
+- `.card-title` and `.card-text` no longer add styles. Keep them only as project hooks. `.card-subtitle` still reduces the gap above the subtitle.
+- `.card-link` is removed. Use normal links and flex or gap utilities when you need a link row.
+- Use `.card-row` for horizontal cards. Use `.card-subtle` or `.card-translucent` for the new visual variants.
+- Card groups now use a container query. Add `.contains-inline` to a parent or the cards remain stacked.
+
 ### Menu (was Dropdown)
 
 Remove `.dropdown` wrapper and `.dropdown-toggle`. Flatten `<ul><li><a>` to `<div><a>`. Toggle and `.menu` are siblings.

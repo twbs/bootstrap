@@ -11,16 +11,16 @@ $card-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $card-tokens: defaults(
   (
-    --card-spacer-y: var(--spacer-5),
-    --card-spacer-x: var(--spacer-5),
+    --card-spacer-y: var(--spacer-6),
+    --card-spacer-x: var(--spacer-6),
     --card-subtitle-color: inherit,
     --card-border-width: var(--border-width),
-    --card-border-color: var(--border-color-translucent),
-    --card-border-radius: var(--radius-8),
+    --card-border-color: var(--border-color),
+    --card-border-radius: var(--radius-7),
     --card-box-shadow: none,
     --card-inner-border-radius: calc(var(--card-border-radius) - var(--border-width)),
     --card-cap-padding-y: var(--spacer-3),
-    --card-cap-padding-x: var(--spacer),
+    --card-cap-padding-x: var(--spacer-5),
     --card-cap-bg: var(--bg-1),
     --card-cap-color: inherit,
     --card-height: auto,
@@ -46,11 +46,33 @@ $card-tokens: defaults(
     color: var(--fg-body);
     word-wrap: break-word;
     background-color: var(--card-bg);
+    border: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
     @include border-radius(var(--card-border-radius));
     @include box-shadow(var(--card-box-shadow));
 
     > hr {
       margin-inline: 0;
+    }
+
+    // Horizontal seams between stacked sections. Header and footer already
+    // draw their own divider, so they are left out of the preceding-sibling
+    // list to avoid a doubled line.
+    > :is(.card-img-top, .card-img-bottom, .card-body, .list-group) {
+      + :is(.card-body, .card-img-bottom, .list-group) {
+        border-block-start: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
+      }
+    }
+
+    // Flush lists zero their own radius; restore the inner card radius when
+    // the list sits on a rounded card edge so items inherit the curve.
+    > .list-group {
+      &:first-child {
+        @include border-top-radius(var(--card-inner-border-radius));
+      }
+
+      &:last-child {
+        @include border-bottom-radius(var(--card-inner-border-radius));
+      }
     }
   }
 
@@ -61,54 +83,32 @@ $card-tokens: defaults(
     flex: 1 1 auto;
     flex-direction: column;
     gap: var(--card-body-gap);
-    align-items: flex-start;
+    align-items: stretch;
     padding: var(--card-spacer-y) var(--card-spacer-x);
     color: var(--card-color);
-    border: solid var(--theme-bg, var(--card-border-color));
-    border-width: 0 var(--card-border-width);
 
     > * {
       margin-block: 0;
     }
-  }
 
-  .card-body,
-  .card-list {
-    border: solid var(--theme-bg, var(--card-border-color));
-    border-width: 0 var(--card-border-width);
-
-    &:first-child {
-      @include border-top-radius(var(--card-border-radius));
-      border-top-width: var(--card-border-width);
-    }
-
-    &:last-child {
-      @include border-bottom-radius(var(--card-border-radius));
-      border-bottom-width: var(--card-border-width);
-    }
-
-    &:not(:first-child, :last-child) {
-      border-block-end-width: var(--card-border-width);
-    }
-
-    // The footer draws a full border (including its top edge), so a body/list
-    // segment that precedes it must not also draw a bottom border or the seam
-    // doubles up.
-    &:has(+ .card-footer) {
-      border-block-end-width: 0;
+    > [class*="btn-"] {
+      align-self: start;
     }
   }
+
 
   .card-subtitle {
     margin-top: calc(var(--card-body-gap) * -.5);
   }
 
   .card-header {
+    display: flex;
+    flex-direction: column;
     padding: var(--card-cap-padding-y) var(--card-cap-padding-x);
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
     color: var(--theme-contrast, var(--card-cap-color));
     background-color: var(--theme-bg, var(--card-cap-bg));
-    border: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
+    border-bottom: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
 
     &:first-child {
       @include border-radius(var(--card-inner-border-radius) var(--card-inner-border-radius) 0 0);
@@ -119,7 +119,7 @@ $card-tokens: defaults(
     padding: var(--card-cap-padding-y) var(--card-cap-padding-x);
     color: var(--card-cap-color);
     background-color: var(--theme-bg, var(--card-cap-bg));
-    border: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
+    border-top: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
 
     &:last-child {
       @include border-radius(0 0 var(--card-inner-border-radius) var(--card-inner-border-radius));
@@ -151,8 +151,7 @@ $card-tokens: defaults(
       border-color: var(--theme-border, var(--card-border-color));
     }
 
-    .card-body,
-    .card-list {
+    > :is(.card-body, .list-group) {
       border-color: var(--theme-border, var(--card-border-color));
     }
   }
@@ -185,12 +184,12 @@ $card-tokens: defaults(
   .card-img-top,
   .card-img-bottom {
     width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-    outline: var(--card-border-width) solid var(--card-border-color);
-    outline-offset: calc(var(--card-border-width) * -1);
   }
 
   .card-img {
     @include border-radius(var(--radius-5));
+    outline: var(--card-border-width) solid var(--card-border-color);
+    outline-offset: calc(var(--card-border-width) * -1);
   }
 
   .card-img-top {
@@ -204,23 +203,20 @@ $card-tokens: defaults(
   .card-row {
     flex-direction: row;
 
-    .card-body,
-    .card-list {
-      border-width: var(--card-border-width) 0;
-      @include border-radius(0);
+    > :is(.card-img-start, .card-img-end, .card-body, .list-group) {
+      + :is(.card-body, .card-img-end, .list-group) {
+        border-block-start: 0;
+        border-inline-start: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
+      }
+    }
 
+    > .list-group {
       &:first-child {
         @include border-start-radius(var(--card-inner-border-radius));
-        border-inline-start-width: var(--card-border-width);
       }
 
       &:last-child {
         @include border-end-radius(var(--card-inner-border-radius));
-        border-inline-end-width: var(--card-border-width);
-      }
-
-      &:not(:first-child, :last-child) {
-        border-inline-end-width: var(--card-border-width);
       }
     }
   }
@@ -256,14 +252,8 @@ $card-tokens: defaults(
         flex: 1 0 0;
         margin-bottom: 0;
 
-        // Borders now live on the inner segments (header, body, list, footer)
-        // and the card images use outlines, so adjacent cards would otherwise
-        // render a doubled-up border at each seam. Pull subsequent cards back by
-        // one border width so their leading edges overlap the previous card's
-        // trailing edge, collapsing the seam into a single line. Gap can't be
-        // negative, so this relies on a negative margin.
         + .card {
-          margin-inline-start: calc(-1 * var(--card-border-width));
+          border-inline-start-width: 0;
         }
 
         // Handle rounded corners
@@ -273,12 +263,12 @@ $card-tokens: defaults(
 
             > .card-img-top,
             > .card-header,
-            > .card-body {
+            > .list-group {
               border-start-end-radius: 0;
             }
             > .card-img-bottom,
             > .card-footer,
-            > .card-body {
+            > .list-group {
               border-end-end-radius: 0;
             }
           }
@@ -288,12 +278,12 @@ $card-tokens: defaults(
 
             > .card-img-top,
             > .card-header,
-            > .card-body {
+            > .list-group {
               border-start-start-radius: 0;
             }
             > .card-img-bottom,
             > .card-footer,
-            > .card-body {
+            > .list-group {
               border-end-start-radius: 0;
             }
           }

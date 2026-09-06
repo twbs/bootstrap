@@ -23,19 +23,15 @@ Cards are flexible and extensible content containers with support for headers an
 
 Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization.
 
-- Cards are built with flexbox, so they offer easy alignment via [flexbox utilities]([[docsref:/utilities/flex]]) and [grid column classes]([[docsref:/layout/grid#column-classes]]).
+- Cards are flexbox containers, so they offer easy alignment via [flexbox utilities]([[docsref:/utilities/flex]]) and [grid column classes]([[docsref:/layout/grid#column-classes]]).
 
-- **Cards require both `.card` and `.card-body`** to best support perfect borders, rounded corners, and various content and layout options.
+- `.card` has no default padding, you need `.card-body` for that. Use it as a modifier class or a child element alongside headers, footers, images, and more. This allows greater flexibility with the least amount of overhead.
 
-- Cards have no `margin` by default, so use [margin utilities]([[docsref:/utilities/margin]]) or [gap utilities]([[docsref:/utilities/gap]]) as needed.
+- Cards have no `margin` by default. Use [margin utilities]([[docsref:/utilities/margin]]) or [gap utilities]([[docsref:/utilities/gap]]) as needed.
 
-- Cards are broken down into three categories of sub-components: header, body, and footer. Headers and footers are optional while **the body is required**. Images can also serve as headers and footers.
+- Cards can contain text, images, lists, and most other HTML.
 
-- Card and card body are both `flex` containers, so content can be aligned and stretched as needed with utilities and whatever HTML you require.
-
-- Cards can have nearly any content, including text, images, lists, and more.
-
-- Our examples use `<div>`s for card elements, but you can use whatever semantic HTML makes sense for your content. Use `<section>` for cards that represent a thematic grouping of content, `<article>` for self-contained compositions like blog posts or news items, or keep using `<div>`s when no additional semantics are needed.
+- Choose semantic HTML that fits the content. We use `<div>`s for simplicity's sake in our documentation, but you can also use  `<section>`, `<article>`, etc.
 
 ## Content types
 
@@ -57,11 +53,13 @@ For simple cards, you can use the `.card-body` class directly on the card elemen
 
 ### Titles, text, and links
 
-Titles, text, and links within cards all have required class names for managing alignment. Size and color is up to you to manage.
+Card bodies arrange their direct children in a column and apply a consistent gap. Use these optional classes as content hooks.
 
 - For a title, use `.card-title`.
-- For a subtitle, use `.card-subtitle`. This uses a negative margin to position itself closer to the title.
-- For text, use `.card-text`. This removes block margins from the element.
+- For a subtitle, use `.card-subtitle`. It reduces the gap above the subtitle.
+- For text, use `.card-text`.
+
+Use type and color utilities as needed. Links need no card-specific class.
 
 <Example code={`<div class="card" style="max-width: 320px;">
     <div class="card-body">
@@ -102,23 +100,21 @@ Use `.card-img-top` and `.card-img-bottom` to round the top and bottom corners o
 
 ### List groups
 
-When your card only contains a list group—no header, footer, or body—simply use a `.list-group` if possible. Card borders are applied to individual card sub-components, so in this case, you‘ll have the list group’s default border.
+When your card only contains a list group—no header, footer, or body—use a `.list-group` on its own. A card already draws an outer border, so a default list group inside a card would double that border.
 
-<Example code={`<div class="card" style="width: 18rem;">
-    <ul class="list-group">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-    </ul>
-  </div>`} />
+<Example code={`<ul class="list-group" style="width: 18rem;">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>`} />
 
-When combined with other card sub-components, use `.card-list` to manage borders and rounded corners.
+When you mix a list group with other card sub-components, add `.list-group-flush` to drop the list’s own outer border.
 
 <Example code={`<div class="card" style="width: 18rem;">
     <div class="card-header">
       Featured
     </div>
-    <ul class="list-group list-group-flush card-list"><!-- [!code highlight] -->
+    <ul class="list-group list-group-flush"><!-- [!code highlight] -->
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -126,7 +122,7 @@ When combined with other card sub-components, use `.card-list` to manage borders
   </div>`} />
 
 <Example code={`<div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush card-list"><!-- [!code highlight] -->
+    <ul class="list-group list-group-flush"><!-- [!code highlight] -->
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -146,7 +142,7 @@ Mix and match multiple content types to create the card you need, or throw every
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
     </div>
-    <ul class="list-group list-group-flush card-list">
+    <ul class="list-group list-group-flush">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
