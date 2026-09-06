@@ -97,6 +97,7 @@ $sizes: defaults(
   $sizes
 );
 
+// scss-docs-start radius-variables-maps
 $radius: .5rem !default;
 $radii: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -115,6 +116,7 @@ $radii: defaults(
   ),
   $radii
 );
+// scss-docs-end radius-variables-maps
 
 // Breakpoints
 //

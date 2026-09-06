@@ -25,7 +25,7 @@ Add classes to an element to easily round its corners.
 
 ### Sizes
 
-Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `5` including `circle` and `pill`, and can be configured by modifying the utilities API.
+Use the scaling classes for larger or smaller rounded corners. Numeric sizes range from `0` to `9`. The `circle` and `pill` values are also available. Modify the utilities API to change these values.
 
 <Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" />
 <Placeholder width="75" height="75" class="rounded-1" title="Example small rounded image" />
@@ -33,6 +33,10 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 <Placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" />
 <Placeholder width="75" height="75" class="rounded-4" title="Example larger rounded image" />
 <Placeholder width="75" height="75" class="rounded-5" title="Example extra large rounded image" />
+<Placeholder width="75" height="75" class="rounded-6" title="Example rounded image, size 6" />
+<Placeholder width="75" height="75" class="rounded-7" title="Example rounded image, size 7" />
+<Placeholder width="75" height="75" class="rounded-8" title="Example rounded image, size 8" />
+<Placeholder width="75" height="75" class="rounded-9" title="Example rounded image, size 9" />
 <Placeholder width="75" height="75" class="rounded-circle" title="Completely round image" />
 <Placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" />`} />
 
@@ -60,13 +64,15 @@ When `.rounded-{n}` is used alongside a side class, the number sets the `--round
 
 ### Variables
 
-Radius tokens are generated from the `$spacers` map in `scss/_root.scss`. [Learn how to use the root tokens.]([[docsref:/utilities/api#using-root-tokens]])
+Radius tokens are generated from the `$radii` map in `scss/_config.scss` and emitted as `--radius-*` custom properties in `scss/_root.scss`. [Learn how to use the root tokens.]([[docsref:/utilities/api#using-root-tokens]])
 
-<ScssDocs name="root-spacer-loop" file="scss/_root.scss" />
+<ScssDocs name="root-radius-loop" file="scss/_root.scss" />
 
 The `--rounded-size` local CSS variable is set by `.rounded-{n}` and `.rounded-size-{n}` and consumed by the side utilities (`.rounded-top`, `.rounded-end`, `.rounded-bottom`, `.rounded-start`) as their default radius. You can also set it directly in your own CSS or via an inline style to control the side utilities from a single point.
 
 ### Sass maps
+
+<ScssDocs name="radius-variables-maps" file="scss/_config.scss" />
 
 ### Sass mixins
 

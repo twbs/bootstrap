@@ -231,21 +231,18 @@ $utilities: (
     property: margin-inline-end,
     class: space-x,
     child-selector: "> :not(:last-child)",
-    values: (
-      1: .25rem,
-      2: .5rem,
-      3: 1rem,
-    )
+    values: $spacers
   )
 );
 ```
 
-Output:
+Output includes:
 
 ```css
 :where(.space-x-1 > :not(:last-child)) { margin-inline-end: .25rem; }
-:where(.space-x-2 > :not(:last-child)) { margin-inline-end: .5rem; }
-:where(.space-x-3 > :not(:last-child)) { margin-inline-end: 1rem; }
+:where(.space-x-2 > :not(:last-child)) { margin-inline-end: .375rem; }
+:where(.space-x-3 > :not(:last-child)) { margin-inline-end: .5rem; }
+/* ...through .space-x-12 */
 ```
 
 The `child-selector` value can be any valid CSS selector. For example, you could create a striped row utility using `:nth-child()`:
