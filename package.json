@@ -126,7 +126,7 @@
     "spellcheck": "cspell --config .cspell.json \".gitignore\" \"**/*.{md,mdx,yml,yaml,json,js,cjs,mjs,ts}\""
   },
   "peerDependencies": {
-    "@floating-ui/dom": "^1.7.6",
+    "@floating-ui/dom": "^1.8.0",
     "vanilla-calendar-pro": "^3.2.0"
   },
   "devDependencies": {
@@ -134,7 +134,7 @@
     "@astrojs/markdown-remark": "^7.2.4",
     "@astrojs/mdx": "^7.0.8",
     "@astrojs/sitemap": "^3.7.3",
-    "@floating-ui/dom": "^1.7.6",
+    "@floating-ui/dom": "^1.8.0",
     "@pagefind/component-ui": "^1.5.2",
     "@shikijs/transformers": "^4.4.3",
     "@stackblitz/sdk": "^1.11.1",
