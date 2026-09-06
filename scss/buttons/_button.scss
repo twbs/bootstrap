@@ -441,7 +441,8 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     }
 
     &:active,
-    &.active {
+    &.active,
+    &.show {
       background-image: none;
       border-color: color-mix(in lab, var(--theme-bg), var(--btn-border-mix-color) var(--btn-border-active-mix-amount));
       box-shadow: var(--btn-active-shadow);
