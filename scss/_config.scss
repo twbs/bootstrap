@@ -51,14 +51,17 @@ $spacers: defaults(
   (
     0: 0,
     1: $spacer * .25,
-    2: $spacer * .5,
-    3: $spacer * .75,
-    4: $spacer,
-    5: $spacer * 1.25,
-    6: $spacer * 1.5,
-    7: $spacer * 2,
-    8: $spacer * 2.5,
-    9: $spacer * 3,
+    2: $spacer * .375,
+    3: $spacer * .5,
+    4: $spacer * .75,
+    5: $spacer * 1,
+    6: $spacer * 1.25,
+    7: $spacer * 1.5,
+    8: $spacer * 1.75,
+    9: $spacer * 2,
+    10: $spacer * 2.25,
+    11: $spacer * 2.5,
+    12: $spacer * 3,
   ),
   $spacers
 );
@@ -107,8 +110,8 @@ $radii: defaults(
     5: $radius,
     6: $radius * 1.25,
     7: $radius * 1.5,
-    8: $radius * 2,
-    9: $radius * 3,
+    8: $radius * 1.75,
+    9: $radius * 2,
   ),
   $radii
 );

@@ -439,21 +439,24 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 ### Utilities
 
-- **Expanded spacer scale.** The `$spacers` map has been expanded from 6 steps (0–5) to 10 steps (0–9) with finer granularity. Note that spacer keys no longer map to the same values as v5:
+- **Expanded spacer scale.** The `$spacers` map has been expanded from 6 steps (0–5) to 13 steps (0–12) with finer granularity. Note that spacer keys no longer map to the same values as v5:
 
 <BsTable>
 | Key | v5 value | v6 value |
 |---|---|---|
 | 0 | `0` | `0` |
 | 1 | `0.25rem` | `0.25rem` |
-| 2 | `0.5rem` | `0.5rem` |
-| 3 | `1rem` | `0.75rem` (new) |
-| 4 | `1.5rem` | `1rem` (was key 3) |
-| 5 | `3rem` | `1.25rem` (new) |
-| 6 | — | `1.5rem` (was key 4) |
-| 7 | — | `2rem` (new) |
-| 8 | — | `2.5rem` (new) |
-| 9 | — | `3rem` (was key 5) |
+| 2 | `0.5rem` | `0.375rem` |
+| 3 | `1rem` | `0.5rem` (was key 2) |
+| 4 | `1.5rem` | `0.75rem` |
+| 5 | `3rem` | `1rem` (was key 3) |
+| 6 | — | `1.25rem` |
+| 7 | — | `1.5rem` (was key 4) |
+| 8 | — | `1.75rem` |
+| 9 | — | `2rem` |
+| 10 | — | `2.25rem` |
+| 11 | — | `2.5rem` |
+| 12 | — | `3rem` (was key 5) |
 </BsTable>
 
 - **New fixed-size scale.** A new `$sizes` map (keys 1–12) provides fixed rem-based widths, merged into the width utility. v5 had no equivalent fixed-size scale in `$sizes`—it only had percentage-based values.
@@ -525,8 +528,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | `$border-radius-sm` / `--border-radius-sm` | `0.25rem` | `--radius-3` | `0.25rem` |
 | `$border-radius` / `--border-radius` | `0.375rem` | `--radius-4` | `0.375rem` |
 | `$border-radius-lg` / `--border-radius-lg` | `0.5rem` | `--radius-5` | `0.5rem` |
-| `$border-radius-xl` / `--border-radius-xl` | `1rem` | `--radius-8` | `1rem` |
-| `$border-radius-xxl` / `--border-radius-2xl` | `2rem` | — (closest: `--radius-9` `1.5rem`) |
+| `$border-radius-xl` / `--border-radius-xl` | `1rem` | `--radius-9` | `1rem` |
+| `$border-radius-xxl` / `--border-radius-2xl` | `2rem` | — (closest: `--radius-9` `1rem`) |
 | `$border-radius-pill` / `--border-radius-pill` | `50rem` | `--radius-pill` | `50rem` |
 </BsTable>
 
@@ -544,13 +547,13 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | `.rounded-5` | `2rem` | `0.5rem` | `var(--radius-5)` |
 | `.rounded-6` | — | `0.625rem` | `var(--radius-6)` |
 | `.rounded-7` | — | `0.75rem` | `var(--radius-7)` |
-| `.rounded-8` | — | `1rem` | `var(--radius-8)` |
-| `.rounded-9` | — | `1.5rem` | `var(--radius-9)` |
+| `.rounded-8` | — | `0.875rem` | `var(--radius-8)` |
+| `.rounded-9` | — | `1rem` | `var(--radius-9)` |
 | `.rounded-circle` | `50%` | `50%` | — |
 | `.rounded-pill` | `50rem` | `50rem` | `var(--radius-pill)` |
 </BsTable>
 
-  To preserve v5 visual roundness, shift class numbers up the scale (e.g. `.rounded-1` &rarr; `.rounded-3`, `.rounded-2` &rarr; `.rounded-4`, `.rounded-3` &rarr; `.rounded-5`, `.rounded-4` &rarr; `.rounded-8`, `.rounded-5` &rarr; `.rounded-9`). The `.rounded-{top,end,bottom,start}-*` directional variants follow the same scale.
+  To preserve v5 visual roundness, shift class numbers up the scale (e.g. `.rounded-1` &rarr; `.rounded-3`, `.rounded-2` &rarr; `.rounded-4`, `.rounded-3` &rarr; `.rounded-5`, `.rounded-4` &rarr; `.rounded-9`). The `.rounded-{top,end,bottom,start}-*` directional variants follow the same scale. v6 has no equivalent for the `2rem` value of v5 `.rounded-5`.
 
 - **Font weight additions.** Added `.fw-medium` (`500`) and `.fw-semibold` (`600`) utilities. v5 only had `lighter`, `light` (`300`), `normal` (`400`), `bold` (`700`), and `bolder`.
 - **Negative margins limited.** Negative spacers are reduced to only `-1` (`-0.25rem`) and `-2` (`-0.5rem`), and only applied to `margin-inline-start` (`.ms--1`, `.ms--2`) and `margin-inline-end` (`.me--1`, `.me--2`). The v5 full negative margin utilities across all sides have been removed.
