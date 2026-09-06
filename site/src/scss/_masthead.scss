@@ -28,10 +28,6 @@
       background-color: transparent;
     }
 
-    .btn-styled {
-      box-shadow: var(--bs-box-shadow), var(--bs-btn-shadow);
-    }
-
     #carbonads { // stylelint-disable-line selector-max-id
       max-width: 400px;
       margin-block-start: 3rem;
@@ -41,6 +37,12 @@
       display: grid;
       place-items: center;
       height: calc(100vh - var(--bd-navbar-offset));
+    }
+
+    .md\:fs-lg {
+      @include media-breakpoint-up(md) {
+        font-size: var(--bs-font-size-lg);
+      }
     }
   }
 }
