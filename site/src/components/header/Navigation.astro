@@ -69,15 +69,9 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
               )
             }
           </a>
-          <a class:list={['menu-item', { active: title === 'Examples' }]} href={getVersionedDocsPath('examples/')}>
+          <a class="menu-item" href={getConfig().examples} target="_blank" rel="noopener">
             Examples
-            {
-              title === 'Examples' && (
-                <svg class="bi ms-auto" aria-hidden="true">
-                  <use href="#check2" />
-                </svg>
-              )
-            }
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
           </a>
           <a class="menu-item" href={getConfig().icons} target="_blank" rel="noopener">
             Icons
@@ -108,7 +102,7 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
         <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/install/')} track>
           Docs
         </LinkItem>
-        <LinkItem active={title === 'Examples'} href={getVersionedDocsPath('examples/')} track>Examples</LinkItem>
+        <LinkItem href={getConfig().examples} target="_blank" rel="noopener" track>Examples</LinkItem>
         <LinkItem href={getConfig().icons} target="_blank" rel="noopener" track>Icons</LinkItem>
         <LinkItem href={getConfig().blog} target="_blank" rel="noopener" track>Blog</LinkItem>
       </ul>
