@@ -9,7 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import {
-  defineJQueryPlugin, getElement, isDisabled, isVisible
+  defineJQueryPlugin, getElement, isDisabled, isVisible, parseSelector
 } from './util/index.js'
 
 /**
@@ -210,11 +210,13 @@ class ScrollSpy extends BaseComponent {
         continue
       }
 
-      const observableSection = SelectorEngine.findOne(decodeURI(anchor.hash), this._element)
+      const withDecodeUri = decodeURI(anchor.hash)
+      const withEscape = parseSelector(withDecodeUri)
+      const observableSection = SelectorEngine.findOne(withEscape, this._element)
 
       // ensure that the observableSection exists & is visible
       if (isVisible(observableSection)) {
-        this._targetLinks.set(decodeURI(anchor.hash), anchor)
+        this._targetLinks.set(withDecodeUri, anchor)
         this._observableSections.set(anchor.hash, observableSection)
       }
     }
