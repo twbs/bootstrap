@@ -1,4 +1,3 @@
-@use "colors" as *;
 @use "config" as *;
 @use "functions" as *;
 @use "mixins/tokens" as *;
@@ -66,7 +65,7 @@ $placeholder-tokens: defaults(
   }
 
   .placeholder-wave {
-    mask-image: linear-gradient(130deg, $black 55%, rgb(0 0 0 / calc(1 - var(--placeholder-opacity-min))) 75%, $black 95%);
+    mask-image: linear-gradient(130deg, var(--black) 55%, rgb(0 0 0 / calc(1 - var(--placeholder-opacity-min))) 75%, var(--black) 95%);
     mask-size: 200% 100%;
     animation: placeholder-wave 2s linear infinite;
 
