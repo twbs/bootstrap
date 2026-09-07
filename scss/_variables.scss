@@ -418,6 +418,19 @@ $spacers: (
 ) !default;
 // scss-docs-end spacer-variables-maps
 
+// Two additional spacing values recur across component defaults below
+// (button/navbar-toggler/pagination/toast padding-x, and hairline-adjacent
+// micro-spacing for borders and form-check alignment) but aren't steps in
+// the $spacers scale above. Naming them here keeps them intentional and
+// traceable instead of leaving them as unexplained literals.
+$spacer-tight:    $spacer * .75  !default; // 12px
+$spacer-hairline: $spacer * .125 !default; // 2px
+
+// Default list indent (ol/ul padding-left in _reboot.scss). Kept separate
+// from $spacer since it's a browser-normalization value, not a UI spacing
+// step, but still named rather than left as a literal.
+$list-indent: 2rem !default;
+
 // Position
 //
 // Define the edge positioning anchors of the position utilities.
@@ -787,7 +800,7 @@ $table-variants: (
 
 // scss-docs-start input-btn-variables
 $input-btn-padding-y:         .375rem !default;
-$input-btn-padding-x:         .75rem !default;
+$input-btn-padding-x:         $spacer-tight !default;
 $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
@@ -939,7 +952,7 @@ $form-color-width:                      3rem !default;
 $form-check-input-width:                  1em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
 $form-check-padding-start:                $form-check-input-width + .5em !default;
-$form-check-margin-bottom:                .125rem !default;
+$form-check-margin-bottom:                $spacer-hairline !default;
 $form-check-label-color:                  null !default;
 $form-check-label-cursor:                 null !default;
 $form-check-transition:                   null !default;
@@ -1200,7 +1213,7 @@ $navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * 
 $navbar-brand-margin-end:           1rem !default;
 
 $navbar-toggler-padding-y:          .25rem !default;
-$navbar-toggler-padding-x:          .75rem !default;
+$navbar-toggler-padding-x:          $spacer-tight !default;
 $navbar-toggler-font-size:          $font-size-lg !default;
 $navbar-toggler-border-radius:      $btn-border-radius !default;
 $navbar-toggler-focus-width:        $btn-focus-width !default;
@@ -1238,7 +1251,7 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
 $dropdown-min-width:                10rem !default;
 $dropdown-padding-x:                0 !default;
 $dropdown-padding-y:                .5rem !default;
-$dropdown-spacer:                   .125rem !default;
+$dropdown-spacer:                   $spacer-hairline !default;
 $dropdown-font-size:                $font-size-base !default;
 $dropdown-color:                    var(--#{$prefix}body-color) !default;
 $dropdown-bg:                       var(--#{$prefix}body-bg) !default;
@@ -1290,10 +1303,10 @@ $dropdown-dark-header-color:        $gray-500 !default;
 
 // scss-docs-start pagination-variables
 $pagination-padding-y:              .375rem !default;
-$pagination-padding-x:              .75rem !default;
+$pagination-padding-x:              $spacer-tight !default;
 $pagination-padding-y-sm:           .25rem !default;
 $pagination-padding-x-sm:           .5rem !default;
-$pagination-padding-y-lg:           .75rem !default;
+$pagination-padding-y-lg:           $spacer-tight !default;
 $pagination-padding-x-lg:           1.5rem !default;
 
 $pagination-font-size:              $font-size-base !default;
@@ -1466,7 +1479,7 @@ $popover-arrow-outer-color:         var(--#{$prefix}border-color-translucent) !d
 
 // scss-docs-start toast-variables
 $toast-max-width:                   350px !default;
-$toast-padding-x:                   .75rem !default;
+$toast-padding-x:                   $spacer-tight !default;
 $toast-padding-y:                   .5rem !default;
 $toast-font-size:                   .875rem !default;
 $toast-color:                       null !default;

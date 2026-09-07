@@ -7,7 +7,7 @@
 #carbonads {
   position: static;
   max-width: 400px;
-  padding: 15px 15px 15px 160px;
+  padding: 1rem 1rem 1rem 160px;
   margin: 1rem 0;
   overflow: hidden;
   @include font-size(.8125rem);
@@ -32,7 +32,7 @@
 
 @container (max-width: 240px) {
   #carbonads {
-    padding-left: 15px;
+    padding-left: 1rem;
   }
 
   .carbon-img {
@@ -57,6 +57,6 @@
 
 .carbon-poweredby {
   display: block;
-  margin-top: .75rem;
+  margin-top: 1rem;
   color: var(--bs-fg-3) !important;
 }

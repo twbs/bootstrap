@@ -28,7 +28,7 @@
 
     a {
       display: block;
-      padding: .125rem 0 .125rem .75rem;
+      padding: .25rem 0 .25rem 1rem;
       color: inherit;
       text-decoration: none;
       border-left: .125rem solid transparent;
@@ -83,7 +83,7 @@
 .bd-toc-collapse {
   @include media-breakpoint-down(md) {
     nav {
-      padding: 1.25rem 1.25rem 1.25rem 1rem;
+      padding: 1.5rem 1.5rem 1.5rem 1rem;
       background-color: var(--bs-tertiary-bg);
       border: 1px solid var(--bs-border-color);
       @include border-radius(var(--bs-border-radius));
