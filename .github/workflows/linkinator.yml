@@ -35,7 +35,7 @@ jobs:
         run: npm run docs-build
 
       - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@36a0bfbfecd5e237e8f8531537a693616c505faf # v2.4.5
+        uses: JustinBeckwith/linkinator-action@12f7a61a56e5e75d659f0dfd6357e2d852ede281 # v2.5.0
         with:
           paths: _site
           recurse: true
