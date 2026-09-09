@@ -186,7 +186,7 @@
     "zod": "^4.5.4"
   },
   "overrides": {
-    "axios": "^1.16.0"
+    "axios": "^1.20.0"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
