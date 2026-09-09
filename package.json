@@ -110,10 +110,10 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/markdown-remark": "^7.3.0",
     "@astrojs/mdx": "4.3.14",
     "@astrojs/prism": "^4.0.1",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@babel/cli": "7.29.7",
     "@babel/core": "7.29.7",
     "@babel/preset-env": "7.29.7",
@@ -135,10 +135,10 @@
     "clean-css-cli": "^5.6.3",
     "clipboard": "^2.0.11",
     "cross-env": "^10.1.0",
-    "cspell": "^10.1.1",
+    "cspell": "^10.2.0",
     "eslint": "8.57.1",
     "eslint-config-xo": "0.45.0",
-    "eslint-plugin-html": "^8.1.4",
+    "eslint-plugin-html": "^8.2.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-unicorn": "56.0.1",
@@ -172,7 +172,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "rollup": "^4.63.0",
+    "rollup": "^4.63.1",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.3.0",
     "sass": "1.78.0",
@@ -180,10 +180,10 @@
     "shelljs": "^0.10.0",
     "stylelint": "16.26.1",
     "stylelint-config-twbs-bootstrap": "^16.1.0",
-    "terser": "^5.50.0",
+    "terser": "^5.51.2",
     "unist-util-visit": "^5.1.0",
     "vnu-jar": "25.11.25",
-    "zod": "^4.4.3"
+    "zod": "^4.5.4"
   },
   "overrides": {
     "axios": "^1.16.0"
