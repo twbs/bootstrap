@@ -1,0 +1,211 @@
+---
+export const title = 'Agent'
+export const extra_css = ['agent.css']
+export const extra_js = [{ src: 'agent.js' }]
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="cpu" viewBox="0 0 16 16">
+    <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14v1h.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14h-1v.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5h-.5a.5.5 0 0 1 0-1H2v-1h-.5a.5.5 0 0 1 0-1H2v-1h-.5a.5.5 0 0 1 0-1H2v-1h-.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 2A1.5 1.5 0 0 0 3 3.5v9A1.5 1.5 0 0 0 4.5 14h7a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 11.5 2h-7zM6 5h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/>
+  </symbol>
+  <symbol id="plus" viewBox="0 0 16 16">
+    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+  </symbol>
+  <symbol id="send" viewBox="0 0 16 16">
+    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+  </symbol>
+  <symbol id="search" viewBox="0 0 16 16">
+    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+  </symbol>
+  <symbol id="file-code" viewBox="0 0 16 16">
+    <path d="M6.646 5.646a.5.5 0 1 1 .708.708L5.207 8.5l2.147 2.147a.5.5 0 0 1-.708.708l-2.5-2.5a.5.5 0 0 1 0-.708l2.5-2.5zm2.5 0a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L10.293 8.5 8.146 6.354a.5.5 0 0 1 0-.708zM13 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h9z"/>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="arrow-clockwise" viewBox="0 0 16 16">
+    <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+  </symbol>
+  <symbol id="chat-left-dots" viewBox="0 0 16 16">
+    <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.293.293 0 0 0 .5.207l2.793-2.793H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+    <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+  </symbol>
+</svg>
+
+<main class="d-flex vh-100 overflow-hidden">
+  <h1 class="visually-hidden">Agent UI example</h1>
+
+  <aside class="agent-sidebar d-flex flex-column flex-shrink-0 p-3 gap-3 bg-1 border-end">
+    <div class="d-flex align-items-center gap-2">
+      <span class="avatar theme-primary">
+        <svg class="bi" width="20" height="20" aria-hidden="true"><use href="#cpu"/></svg>
+      </span>
+      <div class="lh-sm">
+        <strong class="d-block">Bootstrap Agent</strong>
+        <span class="fs-xs fg-2">v6.0 · Production</span>
+      </div>
+    </div>
+
+    <button type="button" class="btn-solid theme-primary d-flex align-items-center justify-content-center gap-1 w-100">
+      <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#plus"/></svg>
+      New chat
+    </button>
+
+    <div>
+      <p class="fs-xs text-uppercase fw-semibold fg-2 mb-2">This conversation</p>
+      <nav class="histogram theme-primary" id="conversationHistogram" aria-label="Conversation">
+        <a class="histogram-item" href="#message-1">
+          <span class="histogram-bar" style="--bs-histogram-bar-length: 55%;"></span>
+          <span class="histogram-label">Ship the pricing revamp</span>
+        </a>
+        <a class="histogram-item" href="#message-2">
+          <span class="histogram-bar" style="--bs-histogram-bar-length: 70%;"></span>
+          <span class="histogram-label">Searching the codebase</span>
+        </a>
+        <a class="histogram-item" href="#message-3">
+          <span class="histogram-bar" style="--bs-histogram-bar-length: 85%;"></span>
+          <span class="histogram-label">Found the components</span>
+        </a>
+        <a class="histogram-item" href="#message-4">
+          <span class="histogram-bar" style="--bs-histogram-bar-length: 40%;"></span>
+          <span class="histogram-label">Summarize the changes</span>
+        </a>
+        <a class="histogram-item" href="#message-5">
+          <span class="histogram-bar" style="--bs-histogram-bar-length: 65%;"></span>
+          <span class="histogram-label">Visual checks passed</span>
+        </a>
+        <a class="histogram-item" href="#message-6">
+          <span class="histogram-bar" style="--bs-histogram-bar-length: 100%;"></span>
+          <span class="histogram-label">Live on the preview</span>
+        </a>
+        <a class="histogram-item" href="#message-7">
+          <span class="histogram-bar" style="--bs-histogram-bar-length: 45%;"></span>
+          <span class="histogram-label">Rewrite the FAQ copy</span>
+        </a>
+        <a class="histogram-item" href="#message-8">
+          <span class="histogram-bar" style="--bs-histogram-bar-length: 30%;"></span>
+          <span class="histogram-label">Drafting the FAQ copy</span>
+        </a>
+      </nav>
+    </div>
+
+    <hr class="my-0">
+
+    <div>
+      <p class="fs-xs text-uppercase fw-semibold fg-2 mb-2">Recent chats</p>
+      <nav class="nav flex-column gap-1" style="--bs-nav-link-justify: start;" aria-label="Recent chats">
+        <a href="#" class="nav-link px-2 py-1 fs-sm rounded-3 text-truncate">
+          <svg class="bi me-2" width="14" height="14" aria-hidden="true"><use href="#chat-left-dots"/></svg>
+          Pricing page revamp
+        </a>
+        <a href="#" class="nav-link px-2 py-1 fs-sm rounded-3 text-truncate">
+          <svg class="bi me-2" width="14" height="14" aria-hidden="true"><use href="#chat-left-dots"/></svg>
+          Dark mode polish
+        </a>
+        <a href="#" class="nav-link px-2 py-1 fs-sm rounded-3 text-truncate">
+          <svg class="bi me-2" width="14" height="14" aria-hidden="true"><use href="#chat-left-dots"/></svg>
+          API docs update
+        </a>
+        <a href="#" class="nav-link px-2 py-1 fs-sm rounded-3 text-truncate">
+          <svg class="bi me-2" width="14" height="14" aria-hidden="true"><use href="#chat-left-dots"/></svg>
+          Deploy log review
+        </a>
+      </nav>
+    </div>
+
+    <div class="mt-auto d-flex align-items-center gap-2">
+      <img src="https://github.com/mdo.png" alt="mdo" width="28" height="28" class="rounded-circle">
+      <div class="lh-sm">
+        <strong class="d-block fs-sm">mdo</strong>
+        <span class="fs-xs fg-2">Admin</span>
+      </div>
+    </div>
+  </aside>
+
+  <section class="d-flex flex-column flex-grow-1 min-w-0">
+    <header class="d-flex align-items-center gap-2 px-4 py-3 border-bottom">
+      <span class="avatar avatar-sm theme-primary">
+        <svg class="bi" width="14" height="14" aria-hidden="true"><use href="#cpu"/></svg>
+      </span>
+      <div class="lh-sm">
+        <strong class="d-block">Pricing page revamp</strong>
+        <span class="fs-xs fg-2">Agent · 12 messages today</span>
+      </div>
+      <div class="ms-auto">
+        <span class="badge badge-subtle theme-success">Online</span>
+      </div>
+    </header>
+
+    <div class="d-flex flex-column flex-grow-1 min-h-0 overflow-y-auto px-4" id="conversation" data-bs-spy="scroll" data-bs-target="#conversationHistogram" data-bs-smooth-scroll="true" tabindex="0">
+      <div class="chat border-0 bg-transparent mt-auto mx-auto w-100" style="max-width: 48rem;">
+        <div class="chat-row chat-row-you" id="message-1">
+          <div class="chat-message chat-message-you">Ship the pricing page revamp and run the visual checks.</div>
+        </div>
+        <div class="chat-row" id="message-2">
+          <div class="chat-status">
+            <span class="chip">
+              <span class="spinner-border spinner-sm" aria-hidden="true"></span>
+              Searching the codebase
+            </span>
+            <span class="chip theme-info">
+              <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#file-code"/></svg>
+              pricing.css · 4 files
+            </span>
+          </div>
+        </div>
+        <div class="chat-row" id="message-3">
+          <div class="chat-message">Found the pricing components. I updated the plan and started the build.</div>
+        </div>
+        <div class="chat-row chat-row-you" id="message-4">
+          <div class="chat-message chat-message-you">Nice. Summarize the changes when it's done.</div>
+        </div>
+        <div class="chat-row" id="message-5">
+          <div class="chat-status">
+            <span class="chip">
+              <span class="spinner-border spinner-sm" aria-hidden="true"></span>
+              Running visual checks
+            </span>
+            <span class="chip theme-success">
+              <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#check2"/></svg>
+              12 passed
+            </span>
+          </div>
+        </div>
+        <div class="chat-row" id="message-6">
+          <div class="chat-message">Done! The revamp is live on the preview.</div>
+          <div class="chat-message">Key changes: new tier cards, an updated FAQ, and a deeper discount for annual plans.</div>
+        </div>
+        <div class="chat-row chat-row-you" id="message-7">
+          <div class="chat-message chat-message-you">Great. Rewrite the FAQ copy too.</div>
+        </div>
+        <div class="chat-row" id="message-8">
+          <div class="chat-status" role="status">
+            <span class="chat-thinking">Drafting the FAQ copy…</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="border-top px-4 py-3 flex-shrink-0">
+      <div class="mx-auto w-100" style="max-width: 48rem;">
+        <label for="agentMessage" class="visually-hidden">Message the agent</label>
+        <textarea class="form-control" id="agentMessage" rows="2" placeholder="Message the agent…"></textarea>
+        <div class="d-flex align-items-center gap-1 mt-2">
+          <span class="chip">
+            <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#search"/></svg>
+            Search code
+          </span>
+          <span class="chip">
+            <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#file-code"/></svg>
+            Read files
+          </span>
+          <button type="button" class="btn-solid theme-primary btn-icon ms-auto" title="Send message" aria-label="Send message">
+            <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#send"/></svg>
+          </button>
+        </div>
+        <p class="fs-xs fg-2 text-center mt-2 mb-0">Agents can make mistakes. Check important info.</p>
+      </div>
+    </footer>
+  </section>
+</main>

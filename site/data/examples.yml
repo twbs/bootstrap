@@ -67,6 +67,8 @@
   examples:
     - name: Album
       description: 'Simple one-page template for photo galleries, portfolios, and more.'
+    - name: Agent
+      description: 'Agent chat interface built with chat bubbles, a histogram rail, chips, and spinners.'
     - name: Pricing
       description: 'Example pricing page built with Cards and featuring a custom header and footer.'
     - name: Checkout

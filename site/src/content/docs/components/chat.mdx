@@ -1,0 +1,187 @@
+---
+title: Chat
+description: Documentation and examples for chat interfaces, including message bubbles, tool call indicators, thinking states, and a histogram for navigating a conversation.
+toc: true
+css_layer: components
+---
+
+## Examples
+
+Chats render conversations as a vertical stack of message groups. Each group of messages from the same sender lives in a `.chat-row`. Messages inside a row appear as iOS-style bubbles with a tail on the last bubble of the group.
+
+<Example code={`<div class="chat">
+    <div class="chat-row chat-row-you">
+      <div class="chat-message chat-message-you">Dude</div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-message">Hey!</div>
+      <div class="chat-message">You there?</div>
+      <div class="chat-message">Hello, how's it going?</div>
+    </div>
+    <div class="chat-row chat-row-you">
+      <div class="chat-message chat-message-you">Great, thanks!</div>
+      <div class="chat-message chat-message-you">How about you?</div>
+    </div>
+  </div>`} />
+
+## Your messages
+
+Use `.chat-message-you` to mark your messages. Your messages align to the right and use the primary color by default. Put them inside a `.chat-row-you` so the whole group aligns to the right.
+
+<Example code={`<div class="chat">
+    <div class="chat-row chat-row-you">
+      <div class="chat-message chat-message-you">Just shipped the fix</div>
+      <div class="chat-message chat-message-you">Can you review it?</div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-message">On it!</div>
+    </div>
+  </div>`} />
+
+## Theme colors
+
+Messages use the theme color tokens. Add a `.theme-*` class to the `.chat` container to recolor every message bubble at once. Without a theme class, your messages use the primary color.
+
+<Example code={`<div class="chat theme-primary">
+    <div class="chat-row chat-row-you">
+      <div class="chat-message chat-message-you">Shipped the dashboard revamp</div>
+      <div class="chat-message chat-message-you">Deploying now</div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-message">Looks great in the preview!</div>
+    </div>
+  </div>`} />
+
+<Example code={`<div class="chat theme-success">
+    <div class="chat-row chat-row-you">
+      <div class="chat-message chat-message-you">All tests pass</div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-message">Merging the pull request</div>
+    </div>
+  </div>`} />
+
+## Status rows
+
+A tool call or a thinking state reports on the work, so it does not belong in a bubble. Put it in a `.chat-status` row instead. The row lines its text up with the text in the bubbles around it.
+
+## Tool calls
+
+Show tool calls with [Chips]([[docsref:/forms/chips]]) or [Badges]([[docsref:/components/badge]]) in a `.chat-status` row. Pair a chip with a `.spinner` while the tool runs, and use `.theme-*` classes to color each result.
+
+<Example code={`<div class="chat">
+    <div class="chat-row chat-row-you">
+      <div class="chat-message chat-message-you">Find the search styles</div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-status">
+        <span class="chip">
+          <span class="spinner-border spinner-sm" aria-hidden="true"></span>
+          Searching the codebase
+        </span>
+        <span class="chip theme-success">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.5 3.5L13 4"/></svg>
+          3 files
+        </span>
+      </div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-message">Found 3 files, starting with <span class="badge badge-subtle">search.scss</span></div>
+    </div>
+  </div>`} />
+
+## Thinking
+
+Show a "thinking" or "working" state with `.chat-thinking`. A gradient sweeps across the label while the agent works. Name the task in the label, such as "Planning…" or "Reading files…".
+
+Add `role="status"` to the row so assistive technologies announce it. Under `prefers-reduced-motion: reduce`, the sweep stops and the label keeps a plain color.
+
+<Example code={`<div class="chat">
+    <div class="chat-row chat-row-you">
+      <div class="chat-message chat-message-you">Anything new?</div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-status" role="status">
+        <span class="chat-thinking">Thinking…</span>
+      </div>
+    </div>
+  </div>`} />
+
+Set `--chat-thinking-animation-duration` for a faster or slower sweep, and set the two colors to change how much the label stands out.
+
+<Example code={`<div class="chat">
+    <div class="chat-row">
+      <div class="chat-status" role="status">
+        <span class="chat-thinking">Planning the migration…</span>
+      </div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-status" role="status">
+        <span class="chat-thinking" style="--bs-chat-thinking-animation-duration: 1s;">Reading 24 files…</span>
+      </div>
+    </div>
+    <div class="chat-row">
+      <div class="chat-status" role="status">
+        <span class="chat-thinking" style="--bs-chat-thinking-highlight-color: var(--bs-primary-fg); --bs-chat-thinking-animation-duration: 3s;">Running the test suite…</span>
+      </div>
+    </div>
+  </div>`} />
+
+## Conversation histogram
+
+Put a [Histogram]([[docsref:/components/histogram]]) next to a long conversation to navigate it. Each `.histogram-item` points at the `id` of a message group, and the bar length hints at how much that group holds. Point at the histogram to read the labels.
+
+Add [Scrollspy]([[docsref:/components/scrollspy]]) to the element that scrolls to move the current row as the reader scrolls.
+
+<Example code={`<div class="d-flex gap-3 align-items-start">
+    <div class="chat flex-grow-1 overflow-y-auto" id="chatConversation" style="max-height: 15rem;" tabindex="0" data-bs-spy="scroll" data-bs-target="#chatConversationHistogram" data-bs-smooth-scroll="true">
+      <div class="chat-row chat-row-you" id="chatMessage1">
+        <div class="chat-message chat-message-you">Morning! Is the summary ready?</div>
+      </div>
+      <div class="chat-row" id="chatMessage2">
+        <div class="chat-message">Yes, here it is:</div>
+        <div class="chat-message">Deploys are green and the new sidebar shipped.</div>
+      </div>
+      <div class="chat-row chat-row-you" id="chatMessage3">
+        <div class="chat-message chat-message-you">Nice work</div>
+      </div>
+      <div class="chat-row" id="chatMessage4">
+        <div class="chat-message">I also cut the bundle by 12% and moved the icons to CSS masks.</div>
+      </div>
+      <div class="chat-row chat-row-you" id="chatMessage5">
+        <div class="chat-message chat-message-you">Ship it</div>
+      </div>
+    </div>
+    <nav class="histogram histogram-end flex-shrink-0" id="chatConversationHistogram" style="width: 11rem;" aria-label="Conversation">
+      <a class="histogram-item" href="#chatMessage1">
+        <span class="histogram-bar" style="--bs-histogram-bar-length: 45%;"></span>
+        <span class="histogram-label">Is the summary ready?</span>
+      </a>
+      <a class="histogram-item" href="#chatMessage2">
+        <span class="histogram-bar" style="--bs-histogram-bar-length: 90%;"></span>
+        <span class="histogram-label">Deploys are green</span>
+      </a>
+      <a class="histogram-item" href="#chatMessage3">
+        <span class="histogram-bar" style="--bs-histogram-bar-length: 25%;"></span>
+        <span class="histogram-label">Nice work</span>
+      </a>
+      <a class="histogram-item" href="#chatMessage4">
+        <span class="histogram-bar" style="--bs-histogram-bar-length: 75%;"></span>
+        <span class="histogram-label">Bundle down 12%</span>
+      </a>
+      <a class="histogram-item" href="#chatMessage5">
+        <span class="histogram-bar" style="--bs-histogram-bar-length: 20%;"></span>
+        <span class="histogram-label">Ship it</span>
+      </a>
+    </nav>
+  </div>`} />
+
+## CSS
+
+### Variables
+
+Chat uses local CSS variables on `.chat` for real-time customization. Values for the CSS variables are generated from Sass maps unique to the component and applied to the aforementioned class.
+
+<CSSVariables component="Chat" className="chat" />
+
+<ScssDocs name="chat-tokens" file="scss/_chat.scss" />

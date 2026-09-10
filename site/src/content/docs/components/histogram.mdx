@@ -1,0 +1,140 @@
+---
+title: Histogram
+description: Documentation and examples for the histogram, a collapsed sidebar of bars that expands into labels on hover for navigating long chats and other lists.
+toc: true
+css_layer: components
+---
+
+## How it works
+
+A histogram is a compact sidebar for a long list, like the messages in a [chat]([[docsref:/components/chat]]). Each row collapses to a single bar, so the whole list reads as a shape. Point at the histogram and the bars trade places with their labels, one row after another.
+
+Every row is a `.histogram-item` with two children:
+
+- `.histogram-bar` draws the bar. Set its length with `--histogram-bar-length` to hint at the size of the row, such as the length of a message.
+- `.histogram-label` holds the text. It stays in the accessibility tree while it is hidden, so it names the link for assistive technologies.
+
+Bars sit in a fixed column, `--histogram-track-width`, and labels fill the width of the histogram. Give the histogram enough width for the labels, and leave the rest of the space empty. The bars never move as a result.
+
+<Example class="bd-example-histogram" code={`<nav class="histogram" aria-label="Conversation">
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 40%;"></span>
+      <span class="histogram-label">Ship the pricing page revamp</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 75%;"></span>
+      <span class="histogram-label">Found the pricing components</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 30%;"></span>
+      <span class="histogram-label">Summarize the changes</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 90%;"></span>
+      <span class="histogram-label">Tier cards, FAQ, and annual pricing</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 55%;"></span>
+      <span class="histogram-label">Deploy it to the preview</span>
+    </a>
+  </nav>`} />
+
+Rows reveal in sequence from the top. Set the step with `--histogram-stagger`, and set it to `0s` to reveal every row at once. Leaving the histogram always collapses the rows together.
+
+## Current item
+
+Add `.active` to mark the row you are on. The bar and the label both pick up the theme color. Add `aria-current="true"` so assistive technologies announce it too.
+
+<Example class="bd-example-histogram" code={`<nav class="histogram" aria-label="Conversation">
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 45%;"></span>
+      <span class="histogram-label">Run the visual checks</span>
+    </a>
+    <a class="histogram-item active" href="#" aria-current="true">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 80%;"></span>
+      <span class="histogram-label">All 12 checks passed</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 35%;"></span>
+      <span class="histogram-label">Merge the pull request</span>
+    </a>
+  </nav>`} />
+
+Pair the histogram with [Scrollspy]([[docsref:/components/scrollspy]]) to move `.active` as the reader scrolls. Point each `.histogram-item` at the `id` of a message and spy on the element that scrolls.
+
+## End alignment
+
+Add `.histogram-end` for a histogram on the end edge of the content. Bars grow from the end edge and labels align to it.
+
+<Example class="bd-example-histogram bd-example-histogram-end" code={`<nav class="histogram histogram-end" aria-label="Conversation">
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 40%;"></span>
+      <span class="histogram-label">Ship the pricing page revamp</span>
+    </a>
+    <a class="histogram-item active" href="#" aria-current="true">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 75%;"></span>
+      <span class="histogram-label">Found the pricing components</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 55%;"></span>
+      <span class="histogram-label">Deploy it to the preview</span>
+    </a>
+  </nav>`} />
+
+## Sizing
+
+Three custom properties control the size of a histogram. `--histogram-track-width` sets the bar column, `--histogram-item-height` sets the collapsed row, and `--histogram-item-hover-height` sets the row while the labels show.
+
+<Example class="bd-example-histogram" code={`<nav class="histogram" style="--bs-histogram-track-width: 4rem; --bs-histogram-item-height: 1rem; --bs-histogram-item-hover-height: 1.75rem; --bs-histogram-bar-size: .25rem;" aria-label="Conversation">
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 50%;"></span>
+      <span class="histogram-label">Read the deploy log</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 100%;"></span>
+      <span class="histogram-label">Two builds failed on the same test</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 70%;"></span>
+      <span class="histogram-label">Retry them with the fix</span>
+    </a>
+  </nav>`} />
+
+## Theme colors
+
+The current row uses the theme color tokens. Add a `.theme-*` class to the histogram to recolor it. Without a theme class the current row uses the primary color.
+
+<Example class="bd-example-histogram" code={`<nav class="histogram theme-success" aria-label="Conversation">
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 45%;"></span>
+      <span class="histogram-label">Run the test suite</span>
+    </a>
+    <a class="histogram-item active" href="#" aria-current="true">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 85%;"></span>
+      <span class="histogram-label">All tests pass</span>
+    </a>
+    <a class="histogram-item" href="#">
+      <span class="histogram-bar" style="--bs-histogram-bar-length: 30%;"></span>
+      <span class="histogram-label">Tag the release</span>
+    </a>
+  </nav>`} />
+
+## Accessibility
+
+Wrap the histogram in a `<nav>` and give it an `aria-label`, because it navigates the content next to it. Use links that point at the `id` of each row, so the histogram works without JavaScript.
+
+The labels stay readable for assistive technologies while they are hidden, since they only lose their opacity. Keyboard users get the same reveal as pointer users: the labels show while any row inside the histogram has focus.
+
+## CSS
+
+### Variables
+
+Histogram uses local CSS variables on `.histogram` for real-time customization. Values for the CSS variables are generated from Sass maps unique to the component and applied to the aforementioned class.
+
+<CSSVariables component="Histogram" className="histogram" />
+
+<ScssDocs name="histogram-tokens" file="scss/_histogram.scss" />
+
+### Sass variables
+
+`$histogram-stagger-items` sets how many rows get their own reveal delay. Rows past that count reveal with the last delay in the sequence.
