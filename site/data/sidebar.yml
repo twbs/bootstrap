@@ -132,6 +132,8 @@
         - added: 6.0.0
     - title: Card
     - title: Carousel
+      meta:
+        - added: 6.0.0
     - title: Close button
     - title: Collapse
     - title: Dialog
@@ -151,12 +153,13 @@
     - title: Navbar
       meta:
         - added: 6.0.0
-
     - title: Pagination
     - title: Placeholder
     - title: Popover
     - title: Progress
     - title: Scrollspy
+      meta:
+        - added: 6.0.0
     - title: Spinner
     - title: Stepper
       meta:
