@@ -76,7 +76,13 @@ gem install bootstrap -v [[config:current_ruby_version]]
 
 ### Using NuGet
 
-If you develop in .NET Framework, you can also install and manage Bootstrap’s [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/). Newer projects should use [libman](https://learn.microsoft.com/en-us/aspnet/core/client-side/libman/) or another method as NuGet is designed for compiled code, not frontend assets.
+[NuGet](https://www.nuget.org/) supports Bootstrap in .NET Framework and SDK-style .NET projects.
+Use the [compiled CSS package](https://www.nuget.org/packages/bootstrap/) when you do not need Sass customization.
+See the [CSS package README]([[config:repo]]/blob/v[[config:current_version]]/nuget/bootstrap/README.md) for file paths and setup instructions.
+
+Use the [Sass package](https://www.nuget.org/packages/bootstrap.sass/) when you want to customize and compile Bootstrap.
+The Sass package requires a Sass compiler.
+See the [Sass package README]([[config:repo]]/blob/v[[config:current_version]]/nuget/bootstrap.sass/README.md) for MSBuild paths and compiler options.
 
 ## CDN
 

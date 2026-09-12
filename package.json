@@ -96,7 +96,7 @@
     "docs-compile": "npm run docs-build",
     "docs-html-validate": "node build/html-validate.mjs",
     "docs-mdx": "markdownlint \"site/src/content/**/*.mdx\"",
-    "docs-md": "markdownlint \"*.md\" \"skills/**/*.md\"",
+    "docs-md": "markdownlint \"*.md\" \"nuget/**/*.md\" \"skills/**/*.md\"",
     "docs-lint": "npm-run-all docs-prettier-check docs-html-validate",
     "docs-prettier-check": "prettier --config site/.prettierrc.json -c --cache site",
     "docs-prettier-format": "prettier --config site/.prettierrc.json --write --cache site",
