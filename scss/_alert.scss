@@ -11,18 +11,17 @@ $alert-tokens: () !default;
 $alert-tokens: defaults(
   (
     --alert-gap: var(--spacer-3),
-    --alert-bg: var(--theme-bg-subtle, var(--bg-1)),
+    --alert-bg: var(--bg-1),
     --alert-padding-x: var(--spacer),
     --alert-padding-y: var(--spacer),
-    --alert-color: var(--theme-fg, inherit),
-    --alert-border-color: var(--theme-border, var(--border-color)),
-    --alert-border: var(--border-width) solid var(--alert-border-color),
-    --alert-border-radius: var(--radius-5),
+    --alert-color: inherit,
+    --alert-border-color: var(--border-color),
+    --alert-border-radius: var(--radius-7),
     --alert-link-color: inherit,
     --alert-transition-property: "opacity",
     --alert-transition-duration: .15s,
     --alert-transition-timing: linear,
-    --hr-border-color: var(--theme-border, var(--border-color)),
+    --hr-border-color: var(--theme-border, var(--alert-border-color)),
   ),
   $alert-tokens
 );
@@ -36,9 +35,9 @@ $alert-tokens: defaults(
     gap: var(--alert-gap);
     align-items: start;
     padding: var(--alert-padding-y) var(--alert-padding-x);
-    color: var(--alert-color);
-    background-color: var(--alert-bg);
-    border: var(--alert-border);
+    color: var(--theme-fg, var(--alert-color));
+    background-color: var(--theme-bg-subtle, var(--alert-bg));
+    border: var(--border-width) solid var(--theme-border, var(--alert-border-color));
     @include border-radius(var(--alert-border-radius));
 
     // scss-docs-start alert-transition
