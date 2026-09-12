@@ -31,9 +31,9 @@ const headingsRangeRegex = new RegExp(`^h[${getConfig().anchors.min}-${getConfig
 const site = isDev
   ? // In development mode, use the local dev server.
     `http://localhost:${port}`
-  : process.env.DEPLOY_PRIME_URL !== undefined
-    ? // If deploying on Netlify, use the `DEPLOY_PRIME_URL` environment variable.
-      process.env.DEPLOY_PRIME_URL
+  : process.env.VERCEL_ENV === 'preview'
+    ? // On Vercel preview deployments, use the `VERCEL_URL` environment variable.
+      `https://${process.env.VERCEL_URL}`
     : // Otherwise, use the `baseURL` value defined in the `config.yml` file.
       getConfig().baseURL
 

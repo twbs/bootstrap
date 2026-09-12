@@ -27,8 +27,8 @@
 *.sublime-workspace
 nbproject
 Thumbs.db
-# Local Netlify folder
-.netlify
+# Local Vercel folder
+.vercel
 
 # Komodo
 .komodotools

@@ -173,11 +173,11 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 
 ## Thanks
 
-<a href="https://www.netlify.com/">
-  <img src="https://www.netlify.com/v3/img/components/full-logo-light.svg" alt="Netlify" width="147" height="40">
+<a href="https://vercel.com/">
+  <img src="https://vercel.com/logotype/dark.svg" alt="Vercel" width="147" height="40">
 </a>
 
-Thanks to [Netlify](https://www.netlify.com/) for providing us with Deploy Previews!
+Thanks to [Vercel](https://vercel.com/) for providing us with Preview Deployments!
 
 ## Sponsors
 
