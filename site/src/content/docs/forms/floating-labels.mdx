@@ -9,7 +9,7 @@ css_layer: forms
 
 Wrap a pair of `<input class="form-control">` and `<label>` elements in `.form-floating` to enable floating labels with Bootstrap’s textual form fields.
 
-A non-empty `placeholder` attribute is required on each `<input>` as our CSS-only floating label implementation relies on the `:placeholder-shown` pseudo-element to detect when the input is empty. The placeholder text itself is not visible; only the `<label>` is shown to users.
+A non-empty `placeholder` attribute is required on each `<input>` as our CSS-only floating label implementation relies on the `:placeholder-shown` pseudo-element to detect when the input is empty. The placeholder stays transparent until the control is focused, then uses the normal placeholder color. Only the `<label>` is shown when the field is empty and unfocused.
 
 Also note that the `<label>` must come first so that screen readers announce it before the field’s value; our CSS reacts to the control’s state with the `:has()` selector.
 
@@ -64,6 +64,19 @@ Select elements work in the same way, but unlike `<input>`s, they’ll always sh
       <option value="2">Two</option>
       <option value="3">Three</option>
     </select>
+  </div>`} />
+
+## Date and time
+
+Date, time, datetime-local, month, and week inputs also always show the `<label>` in its floated state. These controls do not support placeholders the way textual inputs do, so a `placeholder` attribute is not required (and is ignored by most browsers on these types).
+
+<Example class="vstack gap-3" code={`<div class="form-floating">
+    <label for="floatingDate">Date</label>
+    <input type="date" class="form-control" id="floatingDate">
+  </div>
+  <div class="form-floating">
+    <label for="floatingTime">Time</label>
+    <input type="time" class="form-control" id="floatingTime">
   </div>`} />
 
 ## Disabled
@@ -131,6 +144,21 @@ When using `.input-group` and `.form-floating` along with form validation, place
       Please choose a username.
     </div>
   </div>`} />
+
+## Always floating
+
+Add `.form-floating-always` to keep the label floated and show the placeholder. Use it on the `.form-floating` itself or as a wrapper around one.
+
+<Example class="vstack gap-3" code={`<div class="form-floating form-floating-always">
+    <label for="alwaysFloatingInput">Email address</label>
+    <input type="email" class="form-control" id="alwaysFloatingInput" placeholder="name@example.com">
+  </div>
+  <div class="form-floating form-floating-always">
+    <label for="alwaysFloatingPassword">Password</label>
+    <input type="password" class="form-control" id="alwaysFloatingPassword" placeholder="••••••••">
+  </div>`} />
+
+By default, placeholders stay transparent until the control is focused. With `.form-floating-always`, the placeholder stays visible in both states.
 
 ## Layout
 

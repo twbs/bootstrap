@@ -230,9 +230,9 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 Nearly all input types are supported, but not all are documented here. Input types requiring additional classes or changes are shown below.
 
-### Date and time
+### Date & Time
 
-No additional classes are needed for date and time inputs. Exact functionality and appearance are dependent on the browser and operating system.
+No additional classes are needed for date and time inputs. Exact functionality and appearance are dependent on the browser and operating system. However, you can also use [our datepicker component]([[docsref:/forms/datepicker]]) to create a more consistent experience across browsers with JavaScript.
 
 <Example class="vstack gap-3" code={`<input type="datetime-local" class="form-control" aria-label="Date and time picker" value="2026-02-24T13:00">
 <input type="datetime-local" class="form-control" aria-label="Date and time picker with seconds" value="2026-02-24T13:00:30" step="1">
@@ -287,19 +287,6 @@ You can also combine with the `.form-control-caret` class to add a caret to inpu
     <option value="Los Angeles">
     <option value="Chicago">
   </datalist>`} />
-
-### Date & time
-
-No additional classes are needed for date and time inputs.
-
-<Example code={`<label for="exampleDateTimeInput" class="form-label">Date and time picker</label>
-<input type="datetime-local" class="form-control" id="exampleDateTimeInput" value="2026-02-24T13:00">`} />
-
-<Example code={`<label for="exampleDateInput" class="form-label">Date picker</label>
-<input type="date" class="form-control" id="exampleDateInput" value="2026-02-24">`} />
-
-<Example code={`<label for="exampleTimeInput" class="form-label">Time picker</label>
-<input type="time" class="form-control" id="exampleTimeInput" value="13:00">`} />
 
 ### File
 
