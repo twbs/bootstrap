@@ -143,6 +143,13 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const shouldSwap = currentDialog && currentDialog !== target
 
   if (shouldSwap) {
+    // Ignore the trigger while the outgoing dialog is still transitioning in
+    // (marked by .dialog-swap-in). Otherwise a fast double-click opens the
+    // next dialog before the current one can hide, showing both at once.
+    if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) {
+      return
+    }
+
     // Swap strategy (seamless backdrop, no flash):
     //   1. Mark the incoming dialog with .dialog-swap-in so its ::backdrop
     //      skips the @starting-style fade-in and appears fully opaque on
