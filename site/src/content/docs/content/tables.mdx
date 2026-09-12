@@ -243,6 +243,147 @@ Add `.table-borderless` for a table without borders.
 
 <Table class="table table-borderless" theme="dark" />
 
+## Card-like tables
+
+Need a bordered, rounded table without nesting it in a [card]([[docsref:/components/card]])? Wrap the table and clip the corners.
+
+### With utilities
+
+Compose [border]([[docsref:/utilities/border]]), [border radius]([[docsref:/utilities/border-radius]]), and [overflow]([[docsref:/utilities/overflow]]) utilities. Drop the table’s bottom margin with `.mb-0`.
+
+<Example code={`<div class="border rounded overflow-hidden">
+  <table class="table table-striped mb-0">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>John</td>
+        <td>Doe</td>
+        <td>@social</td>
+      </tr>
+    </tbody>
+  </table>
+</div>`} customMarkup={`<div class="border rounded overflow-hidden">
+    <table class="table table-striped mb-0">
+      ...
+    </table>
+  </div>`} />
+
+### With `.table-card`
+
+Use `.table-card` for the same look. It rounds corners like a card, clips cell backgrounds, and removes the last row’s bottom border so it does not stack on the wrapper.
+
+<Example code={`<div class="table-card">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>John</td>
+        <td>Doe</td>
+        <td>@social</td>
+      </tr>
+    </tbody>
+  </table>
+</div>`} customMarkup={`<div class="table-card">
+    <table class="table table-hover">
+      ...
+    </table>
+  </div>`} />
+
+Combine it with a responsive wrapper when the table can overflow:
+
+<ResizableExample code={`<div class="table-responsive table-card">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>`} />
+
 ## Small tables
 
 Add `.table-sm` to make any `.table` more compact by cutting all cell `padding` in half.
