@@ -143,6 +143,17 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   const shouldSwap = currentDialog && currentDialog !== target
 
   if (shouldSwap) {
+    // Ignore the trigger while a swap is still in flight. The outgoing dialog
+    // keeps .dialog-swap-in until its entry transition ends, so its presence
+    // means the previous swap has not settled. This happens on a rapid
+    // double-click: the second click lands on the just-opened dialog's own
+    // swap trigger. Swapping now would open the next dialog, but the
+    // still-transitioning one would refuse to hide (hide() bails while
+    // _isTransitioning) — leaving both dialogs open with a doubled backdrop.
+    if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) {
+      return
+    }
+
     // Swap strategy (seamless backdrop, no flash):
     //   1. Mark the incoming dialog with .dialog-swap-in so its ::backdrop
     //      skips the @starting-style fade-in and appears fully opaque on

@@ -954,6 +954,42 @@ describe('Dialog', () => {
         firstTrigger.click()
       })
     })
+
+    it('should not open both dialogs when a swap trigger is clicked mid-swap', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button data-bs-toggle="dialog" data-bs-target="#dialog1">Open first</button>',
+          '<dialog id="dialog1" class="dialog">',
+          '  <button data-bs-toggle="dialog" data-bs-target="#dialog2">Go to second</button>',
+          '</dialog>',
+          '<dialog id="dialog2" class="dialog">',
+          '  <button data-bs-toggle="dialog" data-bs-target="#dialog1">Back to first</button>',
+          '</dialog>'
+        ].join('')
+
+        const dialog1El = fixtureEl.querySelector('#dialog1')
+        const dialog2El = fixtureEl.querySelector('#dialog2')
+        const firstTrigger = fixtureEl.querySelector('button[data-bs-target="#dialog1"]')
+        const swapTrigger = dialog1El.querySelector('[data-bs-target="#dialog2"]')
+        const backTrigger = dialog2El.querySelector('[data-bs-target="#dialog1"]')
+
+        dialog1El.addEventListener('shown.bs.dialog', () => {
+          // First swap: dialog1 -> dialog2. dialog2 now transitions in.
+          swapTrigger.click()
+
+          // Second click of a double-click lands on dialog2's own swap trigger
+          // before dialog2 finishes its entry transition. This must be ignored.
+          backTrigger.click()
+
+          // Exactly one dialog stays open — never both.
+          expect(dialog1El.open).toBeFalse()
+          expect(dialog2El.open).toBeTrue()
+          resolve()
+        })
+
+        firstTrigger.click()
+      })
+    })
   })
 
   describe('getInstance', () => {
