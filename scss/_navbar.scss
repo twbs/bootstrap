@@ -51,13 +51,13 @@ $navbar-tokens: defaults(
 // stylelint-disable-next-line scss/dollar-variable-default
 $navbar-dark-tokens: defaults(
   (
-    --navbar-color: color-mix(in oklch, var(--white) .55, transparent),
-    --navbar-hover-color: color-mix(in oklch, var(--white) .75, transparent),
-    --navbar-disabled-color: color-mix(in oklch, var(--white) .25, transparent),
+    --navbar-color: color-mix(in oklch, var(--white) 55%, transparent),
+    --navbar-hover-color: color-mix(in oklch, var(--white) 75%, transparent),
+    --navbar-disabled-color: color-mix(in oklch, var(--white) 25%, transparent),
     --navbar-active-color: var(--white),
     --navbar-brand-color: var(--white),
     --navbar-brand-hover-color: var(--white),
-    --navbar-toggler-border-color: color-mix(in oklch, var(--white) .1, transparent),
+    --navbar-toggler-border-color: color-mix(in oklch, var(--white) 10%, transparent),
   ),
   $navbar-dark-tokens
 );
