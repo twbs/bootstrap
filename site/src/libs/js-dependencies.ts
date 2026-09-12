@@ -24,6 +24,7 @@ const FILE_DESCRIPTIONS: Record<string, string> = {
   'util/component-functions': 'Shared component helpers',
   'util/config': 'Configuration base class',
   'util/floating-ui': 'Responsive placement utilities',
+  'util/hash-target': 'URL hash target helpers',
   'util/index': 'Core utility functions',
   'util/sanitizer': 'HTML content sanitizer',
   'util/swipe': 'Swipe gesture utilities',

@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import { enableHashTarget } from './util/hash-target.js'
 import {
   getNextActiveElement, getTransitionDurationFromElement, isDisabled, setAriaAttribute
 } from './util/index.js'
@@ -299,6 +300,52 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_TOGGLE_ACTIVE)) {
     Tab.getOrCreateInstance(element)
+  }
+})
+
+/**
+ * Find the tab trigger that targets a pane.
+ */
+const getTabTriggerFromPane = (pane: HTMLElement): HTMLElement | null => {
+  const labelledBy = pane.getAttribute('aria-labelledby')
+  if (labelledBy) {
+    const byLabel = document.getElementById(labelledBy)
+    if (byLabel?.matches(SELECTOR_DATA_TOGGLE)) {
+      return byLabel
+    }
+  }
+
+  const { id } = pane
+  if (!id) {
+    return null
+  }
+
+  const escapedId = CSS.escape(id)
+  return SelectorEngine.findOne(
+    `${SELECTOR_DATA_TOGGLE}[data-bs-target="#${escapedId}"], ${SELECTOR_DATA_TOGGLE}[href="#${escapedId}"]`
+  )
+}
+
+/**
+ * Open opted-in tab panes when the URL fragment matches their id.
+ * Put `data-bs-hash` on the tab pane.
+ */
+enableHashTarget(`${EVENT_KEY}.data-api`, {
+  matches: element => Boolean(getTabTriggerFromPane(element)),
+  getAnchor: getTabTriggerFromPane,
+  open(element, done) {
+    const trigger = getTabTriggerFromPane(element)
+    if (!trigger) {
+      return
+    }
+
+    if (trigger.classList.contains(CLASS_NAME_ACTIVE)) {
+      done()
+      return
+    }
+
+    EventHandler.one(trigger, EVENT_SHOWN, done)
+    Tab.getOrCreateInstance(trigger).show()
   }
 })
 
