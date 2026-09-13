@@ -61,7 +61,7 @@ $root-tokens: defaults(
     --transition-timing-overlay: cubic-bezier(.22, 1, .36, 1),
     // scss-docs-end root-transition-variables
 
-    --spacer: 1rem,
+    --spacer: #{$spacer},
 
     // scss-docs-start root-focus-variables
     --focus-ring-width: 3px,
