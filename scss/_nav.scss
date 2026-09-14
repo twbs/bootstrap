@@ -43,7 +43,7 @@ $nav-tabs-tokens: defaults(
     --nav-tabs-border-color: var(--border-color),
     --nav-tabs-border-radius: var(--radius-5),
     --nav-tabs-link-hover-border-color: var(--border-subtle),
-    --nav-tabs-link-active-color: var(--fg-color),
+    --nav-tabs-link-active-color: var(--fg-body),
     --nav-tabs-link-active-bg: var(--bg-body),
     --nav-tabs-link-active-border-color: var(--border-color) var(--border-color) var(--bg-body),
   ),
@@ -77,7 +77,7 @@ $nav-underline-tokens: defaults(
     --nav-gap: 1rem,
     --nav-link-active-bg: transparent,
     --nav-underline-border-width: .125rem,
-    --nav-underline-link-active-color: var(--fg-color),
+    --nav-underline-link-active-color: var(--fg-body),
   ),
   $nav-underline-tokens
 );
