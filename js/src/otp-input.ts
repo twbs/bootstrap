@@ -85,6 +85,7 @@ class OtpInput extends BaseComponent {
   protected declare _onInput: () => void
   protected declare _onBeforeInput: (event: BootstrapEvent) => void
   protected declare _onFocus: () => void
+  protected declare _onPaste: (event: BootstrapEvent) => void
   protected declare _onPointerDown: (event: BootstrapEvent) => void
   protected declare _onSync: () => void
   protected declare _onSelectionChange: () => void
@@ -155,6 +156,7 @@ class OtpInput extends BaseComponent {
     EventHandler.off(this._input, 'input', this._onInput)
     EventHandler.off(this._input, 'beforeinput', this._onBeforeInput)
     EventHandler.off(this._input, 'focus', this._onFocus)
+    EventHandler.off(this._input, 'paste', this._onPaste)
     EventHandler.off(this._input, 'pointerdown', this._onPointerDown)
     EventHandler.off(document, 'selectionchange', this._onSelectionChange)
     for (const type of SYNC_EVENTS) {
@@ -236,10 +238,11 @@ class OtpInput extends BaseComponent {
 
   protected _addEventListeners(): void {
     // Listeners are attached with bare event names (not namespaced) because
-    // `input`, `beforeinput`, and `selectionchange` are not in EventHandler's
-    // native-events list; we keep references so they can be removed on dispose.
+    // `input`, `beforeinput`, `paste`, and `selectionchange` are not in
+    // EventHandler's native-events list. Keep references to remove on dispose.
     this._onInput = () => this._handleInput()
     this._onBeforeInput = event => this._handleBeforeInput(event)
+    this._onPaste = event => this._handlePaste(event)
     this._onPointerDown = event => this._handlePointerDown(event)
     this._onFocus = () => {
       if (this._pointerActive) {
@@ -267,6 +270,7 @@ class OtpInput extends BaseComponent {
     EventHandler.on(this._input, 'input', this._onInput)
     EventHandler.on(this._input, 'beforeinput', this._onBeforeInput)
     EventHandler.on(this._input, 'focus', this._onFocus)
+    EventHandler.on(this._input, 'paste', this._onPaste)
     EventHandler.on(this._input, 'pointerdown', this._onPointerDown)
     EventHandler.on(document, 'selectionchange', this._onSelectionChange)
 
@@ -276,8 +280,8 @@ class OtpInput extends BaseComponent {
     }
   }
 
-  // Bulk path: paste, SMS autofill, or a programmatic value change land here as
-  // a single multi-character `input` event. Single keystrokes are handled by
+  // Bulk path: SMS autofill or a programmatic value change lands here as a
+  // single multi-character `input` event. Single keystrokes are handled by
   // `_handleBeforeInput` (overwrite semantics) and never reach this method.
   protected _handleInput(): void {
     const sanitized = this._sanitize(this._input.value)
@@ -293,9 +297,24 @@ class OtpInput extends BaseComponent {
     this._afterValueChange()
   }
 
+  protected _handlePaste(event: BootstrapEvent): void {
+    const pastedValue = event.clipboardData?.getData('text')
+    if (typeof pastedValue !== 'string') {
+      return
+    }
+
+    // Sanitize before applying the length limit. The browser applies maxlength
+    // to raw clipboard text before the input event, which can discard valid
+    // characters that follow separators or whitespace.
+    event.preventDefault()
+    this._input.value = this._sanitize(pastedValue)
+    this._selectSlot(this._firstEmptyIndex())
+    this._afterValueChange()
+  }
+
   // Intercept single-character typing and backspace so each slot is overwritten
-  // in place rather than inserting and shifting the rest of the value. Anything
-  // else (paste, autofill, IME composition) falls through to `_handleInput`.
+  // in place rather than inserting and shifting the rest of the value. Autofill
+  // and IME composition fall through to `_handleInput`.
   protected _handleBeforeInput(event: BootstrapEvent): void {
     const { inputType, data } = event
 
