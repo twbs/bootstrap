@@ -128,7 +128,7 @@ const tooltip = new bootstrap.Tooltip(exampleEl, options)
 ```
 
 <Callout type="warning">
-Tooltips automatically attempt to change positions when a parent container has `overflow: auto` or `overflow: scroll`, but still keeps the original placement’s positioning. Set the [`boundary` option](https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/flip.md/#boundary) (for the flip modifier using the `popperConfig` option) to any HTMLElement to override the default value, `'clippingParents'`, such as `document.body`:
+Tooltips automatically attempt to change positions when a parent container has `overflow: auto` or `overflow: scroll`, but still keep the original placement’s positioning. Set the [`boundary` option](https://github.com/floating-ui/popper-docs/blob/main/docs/v2/modifiers/flip.md/#boundary) (for the flip modifier using the `popperConfig` option) to any HTMLElement to override the default value, `'clippingParents'`, such as `document.body`:
 
 ```js
 const tooltip = new bootstrap.Tooltip('#example', {
