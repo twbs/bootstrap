@@ -147,17 +147,17 @@ All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `
 
 For simpler styling, clear hierarchy, and better spacing, description lists have updated `margin`s. `<dd>`s reset `margin-left` to `0` and add `margin-bottom: .5rem`. `<dt>`s are **bolded**.
 
-<div class="bd-example">
-  <dl>
-    <dt>Description lists</dt>
-    <dd>A description list is perfect for defining terms.</dd>
-    <dt>Term</dt>
-    <dd>Definition for the term.</dd>
-    <dd>A second definition for the same term.</dd>
-    <dt>Another term</dt>
-    <dd>Definition for this other term.</dd>
-  </dl>
-</div>
+<Example showMarkup={false} code={`
+<dl>
+  <dt>Description lists</dt>
+  <dd>A description list is perfect for defining terms.</dd>
+  <dt>Term</dt>
+  <dd>Definition for the term.</dd>
+  <dd>A second definition for the same term.</dd>
+  <dt>Another term</dt>
+  <dd>Definition for this other term.</dd>
+</dl>
+`} />
 
 ## Inline code
 
@@ -408,25 +408,25 @@ The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem
 
 The `<abbr>` element receives basic styling to make it stand out amongst paragraph text.
 
-<div class="bd-example">
-  The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
-</div>
+<Example showMarkup={false} code={`
+The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
+`} />
 
 ### Summary
 
 The default `cursor` on summary is `text`, so we reset that to `pointer` to convey that the element can be interacted with by clicking on it.
 
-<div class="bd-example">
-  <details>
-    <summary>Some details</summary>
-    <p>More info about the details.</p>
-  </details>
+<Example showMarkup={false} code={`
+<details>
+  <summary>Some details</summary>
+  <p>More info about the details.</p>
+</details>
 
-  <details open>
-    <summary>Even more details</summary>
-    <p>Here are even more details about the details.</p>
-  </details>
-</div>
+<details open>
+  <summary>Even more details</summary>
+  <p>Here are even more details about the details.</p>
+</details>
+`} />
 
 ## HTML5 `[hidden]` attribute
 

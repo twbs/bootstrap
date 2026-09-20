@@ -40,7 +40,7 @@ try {
 
   content = matches[1]
 
-  // Fix the identation by removing extra spaces at the beginning of each line
+  // Fix the indentation by removing extra spaces at the beginning of each line
   const lines = content.split('\n')
   const spaceCounts = lines.filter((line) => line.trim().length > 0).map((line) => line.match(/^ */)[0].length)
   const minSpaces = spaceCounts.length ? Math.min(...spaceCounts) : 0

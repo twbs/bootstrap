@@ -14,7 +14,7 @@ Get started by including Bootstrap’s production-ready CSS and JavaScript via C
 
 <br/>
 
-1. **Create a new `index.html` file in your project root.** Include the `<meta name="viewport">` tag as well for [proper responsive behavior](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag) in mobile devices.
+1. **Create a new `index.html` file in your project root.** Include the `<meta name="viewport">` tag as well for [proper responsive behavior](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/name/viewport) in mobile devices.
 
    ```html
    <!doctype html>
@@ -48,7 +48,7 @@ Get started by including Bootstrap’s production-ready CSS and JavaScript via C
    </html>
    ```
 
-   You can also include [Popper](https://popper.js.org/docs/v2/) and our JS separately. If you don’t plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper.
+   You can also include [Popper](https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md) and our JS separately. If you don’t plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper.
 
    ```html
    <script src="[[config:cdn.popper]]" integrity="[[config:cdn.popper_hash]]" crossorigin="anonymous"></script>
@@ -70,6 +70,10 @@ As reference, here are our primary CDN links.
 
 You can also use the CDN to fetch any of our [additional builds listed in the Contents page]([[docsref:/getting-started/contents]]).
 
+When using CDN links, be sure to use the `integrity` attribute to verify the correct files and versions. These hashes are unique to each file and version of Bootstrap, so when you update to a new version, be sure the `integrity` attribute is also updated.
+
+We also include a `crossorigin="anonymous"` attribute to prevent [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) errors.
+
 ## Next steps
 
 - Read a bit more about some [important global environment settings](#important-globals) that Bootstrap utilizes.
@@ -86,14 +90,14 @@ Curious which components explicitly require our JavaScript and Popper? If you’
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
 - Collapse for toggling visibility of content
-- Dropdowns for displaying and positioning (also requires [Popper](https://popper.js.org/docs/v2/))
+- Dropdowns for displaying and positioning (also requires [Popper](https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md))
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse and Offcanvas plugins to implement responsive behaviors
 - Navs with the Tab plugin for toggling content panes
 - Offcanvases for displaying, positioning, and scroll behavior
 - Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
-- Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/docs/v2/))
+- Tooltips and popovers for displaying and positioning (also requires [Popper](https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md))
 
 ## Important globals
 

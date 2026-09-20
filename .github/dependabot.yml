@@ -7,6 +7,12 @@ updates:
       day: tuesday
       time: "12:00"
       timezone: Europe/Athens
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns:
+          - "*"
   - package-ecosystem: npm
     directory: "/"
     labels:
@@ -17,8 +23,78 @@ updates:
       day: tuesday
       time: "12:00"
       timezone: Europe/Athens
+    cooldown:
+      default-days: 7
     versioning-strategy: increase
     rebase-strategy: disabled
+    ignore:
+      - dependency-name: "@astrojs/mdx"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/cli"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/core"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/preset-env"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@docsearch/js"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "astro"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "astro-auto-import"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "eslint"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "eslint-config-xo"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "eslint-plugin-unicorn"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "hammer-simulator"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "jasmine"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "jquery"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "karma-browserstack-launcher"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "karma-rollup-preprocessor"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "sass"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "stylelint"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "vnu-jar"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
     groups:
       production-dependencies:
         dependency-type: "production"

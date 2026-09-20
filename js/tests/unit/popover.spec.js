@@ -1,6 +1,8 @@
 import EventHandler from '../../src/dom/event-handler.js'
 import Popover from '../../src/popover.js'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
+import {
+  clearFixture, getFixture, jQueryMock, createEvent
+} from '../helpers/fixture.js'
 
 describe('Popover', () => {
   let fixtureEl
@@ -311,6 +313,28 @@ describe('Popover', () => {
         })
 
         popover.show()
+      })
+    })
+
+    it('should keep popover open when mouse leaves after click trigger', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://x.com/getbootstrap" data-bs-trigger="hover click">BS X</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        new Popover(popoverEl) // eslint-disable-line no-new
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          popoverEl.dispatchEvent(createEvent('mouseout'))
+
+          popoverEl.addEventListener('hide.bs.popover', () => {
+            throw new Error('Popover should not hide when mouse leaves after click')
+          })
+
+          expect(document.querySelector('.popover')).not.toBeNull()
+          resolve()
+        })
+
+        popoverEl.click()
       })
     })
   })

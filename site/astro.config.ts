@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config'
-
+import astroBrokenLinksChecker from 'astro-broken-links-checker'
 import { bootstrap } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
 import { algoliaPlugin } from './src/plugins/algolia-plugin'
@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const site = isDev
   ? // In development mode, use the local dev server.
-    'http://localhost:4321'
+    'http://localhost:9001'
   : process.env.DEPLOY_PRIME_URL !== undefined
     ? // If deploying on Netlify, use the `DEPLOY_PRIME_URL` environment variable.
       process.env.DEPLOY_PRIME_URL
@@ -21,7 +21,15 @@ export default defineConfig({
   build: {
     assets: `docs/${getConfig().docs_version}/assets`
   },
-  integrations: [bootstrap()],
+  integrations: [
+    bootstrap(),
+    astroBrokenLinksChecker({
+      checkExternalLinks: false,
+      cacheExternalLinks: false,
+      throwError: true,
+      linkCheckerDir: '.link-checker'
+    })
+  ],
   markdown: {
     smartypants: false,
     syntaxHighlight: 'prism'

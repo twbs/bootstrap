@@ -3,11 +3,6 @@
   description: Bootstrap 5 繁體中文手冊
   url: https://bootstrap5.hexschool.com/
 
-- name: Simplified Chinese
-  code: zh-CN
-  description: Bootstrap 5 中文文档
-  url: https://v5.bootcss.com/
-
 - name: Japanese
   code: ja
   description: Bootstrap 5 日本語リファレンス

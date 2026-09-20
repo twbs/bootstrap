@@ -23,14 +23,16 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Run cspell
-        uses: streetsidesoftware/cspell-action@v6
+        uses: streetsidesoftware/cspell-action@6f3c77c1406bc930f944ba97e9801a22e42caf58 # v9.1.0
         with:
           config: ".cspell.json"
-          files: "**/*.{md,mdx}"
+          files: |
+            .gitignore
+            **/*.{md,mdx,yml,yaml,json,js,cjs,mjs,ts}
           inline: error
           incremental_files_only: false

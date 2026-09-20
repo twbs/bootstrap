@@ -1,0 +1,188 @@
+@import "../../functions";
+@import "../../variables";
+@import "../../mixins";
+
+// Store original value
+$original-enable-shadows: $enable-shadows;
+
+// Enable shadows for all tests
+$enable-shadows: true !global;
+
+@include describe("box-shadow mixin") {
+  @include it("handles single none value") {
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow(none);
+        }
+      }
+
+      @include expect() {
+        .test {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  @include it("handles multiple none values by consolidating them") {
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow(none, none, none);
+        }
+      }
+
+      @include expect() {
+        .test {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  @include it("handles other single-value keywords (initial, inherit, unset)") {
+    @include assert() {
+      @include output() {
+        .test-initial {
+          @include box-shadow(initial);
+        }
+        .test-inherit {
+          @include box-shadow(inherit);
+        }
+        .test-unset {
+          @include box-shadow(unset);
+        }
+      }
+
+      @include expect() {
+        .test-initial {
+          box-shadow: initial;
+        }
+        .test-inherit {
+          box-shadow: inherit;
+        }
+        .test-unset {
+          box-shadow: unset;
+        }
+      }
+    }
+  }
+
+  @include it("handles multiple single-value keywords by using the last one") {
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow(initial, inherit, unset);
+        }
+      }
+
+      @include expect() {
+        .test {
+          box-shadow: unset;
+        }
+      }
+    }
+  }
+
+  @include it("handles regular box-shadow values") {
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow(0 0 10px rgba(0, 0, 0, .5));
+        }
+      }
+
+      @include expect() {
+        .test {
+          box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        }
+      }
+    }
+  }
+
+  @include it("handles multiple regular box-shadow values") {
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow(0 0 10px rgba(0, 0, 0, .5), 0 0 20px rgba(0, 0, 0, .3));
+        }
+      }
+
+      @include expect() {
+        .test {
+          box-shadow: 0 0 10px rgba(0, 0, 0, .5), 0 0 20px rgba(0, 0, 0, .3);
+        }
+      }
+    }
+  }
+
+  @include it("handles null values by ignoring them") {
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow(null, 0 0 10px rgba(0, 0, 0, .5), null);
+        }
+      }
+
+      @include expect() {
+        .test {
+          box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        }
+      }
+    }
+  }
+
+  @include it("handles mixed values with keywords and regular shadows") {
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow(none, 0 0 10px rgba(0, 0, 0, .5));
+        }
+      }
+
+      @include expect() {
+        .test {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  @include it("handles empty input") {
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow();
+        }
+      }
+
+      @include expect() {
+        .test { // stylelint-disable-line block-no-empty
+        }
+      }
+    }
+  }
+
+  @include it("respects $enable-shadows variable") {
+    $enable-shadows: false !global;
+
+    @include assert() {
+      @include output() {
+        .test {
+          @include box-shadow(0 0 10px rgba(0, 0, 0, .5));
+        }
+      }
+
+      @include expect() {
+        .test { // stylelint-disable-line block-no-empty
+        }
+      }
+    }
+
+    $enable-shadows: true !global;
+  }
+}
+
+// Restore original value
+$enable-shadows: $original-enable-shadows !global;
