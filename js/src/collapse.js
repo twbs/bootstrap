@@ -39,7 +39,7 @@ const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 const WIDTH = 'width'
 const HEIGHT = 'height'
 
-const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
+const SELECTOR_ACTIVES = '.collapse.show, .collapsing'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 const Default = {
@@ -61,6 +61,7 @@ class Collapse extends BaseComponent {
     super(element, config)
 
     this._isTransitioning = false
+    this._isExpanding = false
     this._triggerArray = []
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
@@ -120,9 +121,10 @@ class Collapse extends BaseComponent {
       activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES)
         .filter(element => element !== this._element)
         .map(element => Collapse.getOrCreateInstance(element, { toggle: false }))
+        .filter(activeInstance => !this._triggerArray.some(trigger => activeInstance._triggerArray.includes(trigger)))
     }
 
-    if (activeChildren.length && activeChildren[0]._isTransitioning) {
+    if (activeChildren.some(activeChild => activeChild._isTransitioning && activeChild._isExpanding)) {
       return
     }
 
@@ -144,9 +146,11 @@ class Collapse extends BaseComponent {
 
     this._addAriaAndCollapsedClass(this._triggerArray, true)
     this._isTransitioning = true
+    this._isExpanding = true
 
     const complete = () => {
       this._isTransitioning = false
+      this._isExpanding = false
 
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
