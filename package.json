@@ -179,7 +179,7 @@
     "postcss-cli": "^12.0.0",
     "postcss-prefix-custom-properties": "^0.1.0",
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^1.0.1",
+    "prettier-plugin-astro": "0.14.1",
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",

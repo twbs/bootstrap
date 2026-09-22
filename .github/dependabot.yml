@@ -28,6 +28,9 @@ updates:
     versioning-strategy: increase
     rebase-strategy: disabled
     ignore:
+      - dependency-name: "prettier-plugin-astro"
+        update-types:
+          - "version-update:semver-major"
       # Rolldown is pinned exactly on purpose while it is still release-candidate
       # software. Review each bump by hand.
       - dependency-name: "rolldown"
