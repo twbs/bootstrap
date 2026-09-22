@@ -443,6 +443,65 @@ describe('Tooltip', () => {
       tooltip2.dispose()
       expect(tooltipWithoutTitleEl.getAttribute('title')).toBeNull()
     })
+
+    it('should not run a callback queued by hide() when disposed mid-transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+        const hiddenSpy = jasmine.createSpy('hidden')
+        const errorSpy = jasmine.createSpy('error')
+
+        tooltipEl.addEventListener('hidden.bs.tooltip', hiddenSpy)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          window.addEventListener('error', errorSpy)
+
+          // `hide()` queues its completion callback on the fade transition,
+          // `dispose()` then nulls every property before that callback runs
+          tooltip.hide()
+          tooltip.dispose()
+
+          setTimeout(() => {
+            window.removeEventListener('error', errorSpy)
+
+            expect(errorSpy).not.toHaveBeenCalled()
+            expect(hiddenSpy).not.toHaveBeenCalled()
+            resolve()
+          }, 50)
+        })
+
+        tooltip.show()
+      })
+    })
+
+    it('should not run a callback queued by show() when disposed mid-transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+        const shownSpy = jasmine.createSpy('shown')
+        const errorSpy = jasmine.createSpy('error')
+
+        tooltipEl.addEventListener('shown.bs.tooltip', shownSpy)
+        window.addEventListener('error', errorSpy)
+
+        tooltip.show()
+        tooltip.dispose()
+
+        setTimeout(() => {
+          window.removeEventListener('error', errorSpy)
+
+          expect(errorSpy).not.toHaveBeenCalled()
+          expect(shownSpy).not.toHaveBeenCalled()
+          // the queued callback must not write back onto the disposed instance
+          expect(tooltip._isHovered).toBeNull()
+          resolve()
+        }, 50)
+      })
+    })
   })
 
   describe('show', () => {

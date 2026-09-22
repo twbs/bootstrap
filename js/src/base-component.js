@@ -47,7 +47,16 @@ class BaseComponent extends Config {
 
   // Private
   _queueCallback(callback, element, isAnimated = true) {
-    executeAfterTransition(callback, element, isAnimated)
+    executeAfterTransition(() => {
+      // `dispose()` nulls every property of the instance, but it cannot cancel a
+      // callback already queued on a transition. Skip it rather than let it run
+      // against a disposed instance and throw
+      if (!this._element) {
+        return
+      }
+
+      callback()
+    }, element, isAnimated)
   }
 
   _getConfig(config) {
