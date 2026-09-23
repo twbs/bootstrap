@@ -164,6 +164,7 @@
 
   @include media-breakpoint-down($breakpoint) {
     .table-responsive#{$infix} {
+      position: relative;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
