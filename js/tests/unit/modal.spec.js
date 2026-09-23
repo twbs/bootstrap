@@ -861,6 +861,27 @@ describe('Modal', () => {
       expect(spyOff).toHaveBeenCalledTimes(3)
       expect(spyDeactivate).toHaveBeenCalled()
     })
+
+    it('should reset scrollbars when disposing a shown modal', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div id="exampleModal" class="modal"><div class="modal-dialog"></div></div>'
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const modal = new Modal(modalEl)
+        const spyReset = spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          modal.dispose()
+
+          expect(spyReset).toHaveBeenCalled()
+          expect(document.body).not.toHaveClass('modal-open')
+          expect(document.body.style.overflow).toEqual('')
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
   })
 
   describe('handleUpdate', () => {
