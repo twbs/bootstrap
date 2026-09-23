@@ -343,7 +343,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
           <div class="mb-3">
             <label for="exampleSelect" class="form-label">قائمة اختيار</label>
             <select class="form-select" id="exampleSelect">
-              <option selected>افتح قائمة الاختيار هذه</option>
+              <option selected aria-hidden="true">افتح قائمة الاختيار هذه</option>
               <option value="1">واحد</option>
               <option value="2">اثنان</option>
               <option value="3">ثلاثة</option>
@@ -451,7 +451,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
         </div>
         <div class="mb-3">
           <select class="form-select form-select-lg" aria-label=".form-select-lg مثال">
-            <option selected>افتح قائمة الاختيار هذه</option>
+            <option selected aria-hidden="true">افتح قائمة الاختيار هذه</option>
             <option value="1">واحد</option>
             <option value="2">اثنان</option>
             <option value="3">ثلاثة</option>
@@ -468,7 +468,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
         </div>
         <div class="mb-3">
           <select class="form-select form-select-sm" aria-label=".form-select-sm مثال">
-            <option selected>افتح قائمة الاختيار هذه</option>
+            <option selected aria-hidden="true">افتح قائمة الاختيار هذه</option>
             <option value="1">واحد</option>
             <option value="2">اثنان</option>
             <option value="3">ثلاثة</option>
@@ -577,7 +577,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
           <div class="col-md-3">
             <label for="validationServer04" class="form-label">حالة</label>
             <select class="form-select is-invalid" id="validationServer04" required>
-              <option selected disabled value="">اختر...</option>
+              <option selected disabled value="" aria-hidden="true">اختر...</option>
               <option>...</option>
             </select>
             <div class="invalid-feedback">
