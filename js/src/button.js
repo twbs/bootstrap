@@ -27,6 +27,16 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
  */
 
 class Button extends BaseComponent {
+  constructor(element) {
+    super(element)
+
+    if (!this._element || this._element.hasAttribute('aria-pressed')) {
+      return
+    }
+
+    this._element.setAttribute('aria-pressed', this._element.classList.contains(CLASS_NAME_ACTIVE))
+  }
+
   // Getters
   static get NAME() {
     return NAME
