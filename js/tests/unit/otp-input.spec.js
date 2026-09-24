@@ -606,6 +606,23 @@ describe('OtpInput', () => {
       expect(fixtureEl.querySelector('.otp').classList.contains('otp-rendered')).toBeFalse()
     })
 
+    it('should stop intercepting paste after dispose', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+
+      otp.dispose()
+
+      const event = new Event('paste', { bubbles: true, cancelable: true })
+      event.clipboardData = { getData: () => '123-456' }
+      input.dispatchEvent(event)
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('')
+    })
+
     it('should stop intercepting beforeinput after dispose', () => {
       fixtureEl.innerHTML = getOtpHtml()
 
