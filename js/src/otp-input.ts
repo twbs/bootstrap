@@ -25,9 +25,6 @@ const EVENT_DOMCONTENT_LOADED = `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`
 const SELECTOR_DATA_OTP = '[data-bs-otp]'
 const SELECTOR_INPUT = 'input'
 
-// Events that should refresh the active-slot highlight as the caret moves
-const SYNC_EVENTS = ['blur', 'keyup', 'select']
-
 const CLASS_NAME_INPUT = 'otp-input'
 const CLASS_NAME_RENDERED = 'otp-rendered'
 const CLASS_NAME_SLOTS = 'otp-slots'
@@ -82,12 +79,7 @@ class OtpInput extends BaseComponent {
   protected declare _pointerActive: boolean
   protected declare _pointerIndex: number
   protected declare _slotsContainer: HTMLElement
-  protected declare _onInput: () => void
-  protected declare _onBeforeInput: (event: BootstrapEvent) => void
-  protected declare _onFocus: () => void
-  protected declare _onPaste: (event: BootstrapEvent) => void
-  protected declare _onPointerDown: (event: BootstrapEvent) => void
-  protected declare _onSync: () => void
+  protected declare _inputListeners: Record<string, (event: BootstrapEvent) => void>
   protected declare _onSelectionChange: () => void
 
   constructor(element?: string | Element | null, config?: Partial<OtpInputConfig> | null) {
@@ -153,15 +145,11 @@ class OtpInput extends BaseComponent {
   }
 
   override dispose(): void {
-    EventHandler.off(this._input, 'input', this._onInput)
-    EventHandler.off(this._input, 'beforeinput', this._onBeforeInput)
-    EventHandler.off(this._input, 'focus', this._onFocus)
-    EventHandler.off(this._input, 'paste', this._onPaste)
-    EventHandler.off(this._input, 'pointerdown', this._onPointerDown)
-    EventHandler.off(document, 'selectionchange', this._onSelectionChange)
-    for (const type of SYNC_EVENTS) {
-      EventHandler.off(this._input, type, this._onSync)
+    for (const [type, listener] of Object.entries(this._inputListeners ?? {})) {
+      EventHandler.off(this._input, type, listener)
     }
+
+    EventHandler.off(document, 'selectionchange', this._onSelectionChange)
 
     this._slotsContainer?.remove()
     this._element.classList.remove(CLASS_NAME_RENDERED)
@@ -240,11 +228,13 @@ class OtpInput extends BaseComponent {
     // Listeners are attached with bare event names (not namespaced) because
     // `input`, `beforeinput`, `paste`, and `selectionchange` are not in
     // EventHandler's native-events list. Keep references to remove on dispose.
-    this._onInput = () => this._handleInput()
-    this._onBeforeInput = event => this._handleBeforeInput(event)
-    this._onPaste = event => this._handlePaste(event)
-    this._onPointerDown = event => this._handlePointerDown(event)
-    this._onFocus = () => {
+    this._inputListeners = {
+      input: () => this._handleInput(),
+      beforeinput: event => this._handleBeforeInput(event),
+      paste: event => this._handlePaste(event),
+      pointerdown: event => this._handlePointerDown(event)
+    }
+    this._inputListeners.focus = () => {
       if (this._pointerActive) {
         // A tap focused the input natively; position the caret on the clicked
         // slot now that focus has settled (doing this before native focus would
@@ -260,24 +250,22 @@ class OtpInput extends BaseComponent {
       this._render()
     }
 
-    this._onSync = () => this._render()
+    const onSync = () => this._render()
     this._onSelectionChange = () => {
       if (document.activeElement === this._input) {
         this._render()
       }
     }
 
-    EventHandler.on(this._input, 'input', this._onInput)
-    EventHandler.on(this._input, 'beforeinput', this._onBeforeInput)
-    EventHandler.on(this._input, 'focus', this._onFocus)
-    EventHandler.on(this._input, 'paste', this._onPaste)
-    EventHandler.on(this._input, 'pointerdown', this._onPointerDown)
-    EventHandler.on(document, 'selectionchange', this._onSelectionChange)
-
-    // Keep the active-slot highlight in sync with the caret
-    for (const type of SYNC_EVENTS) {
-      EventHandler.on(this._input, type, this._onSync)
+    for (const type of ['blur', 'keyup', 'select']) {
+      this._inputListeners[type] = onSync
     }
+
+    for (const [type, listener] of Object.entries(this._inputListeners)) {
+      EventHandler.on(this._input, type, listener)
+    }
+
+    EventHandler.on(document, 'selectionchange', this._onSelectionChange)
   }
 
   // Bulk path: SMS autofill or a programmatic value change lands here as a
