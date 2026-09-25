@@ -13,7 +13,8 @@
       }
     }
   } @else {
-    [data-bs-theme="#{$mode}"] {
+    $parent-selector: &;
+    @at-root [data-bs-theme="#{$mode}"] #{$parent-selector} {
       @content;
     }
   }
