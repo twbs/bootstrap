@@ -1,4 +1,4 @@
-import { months, motion, time } from 'vanilla-calendar-pro'
+import { months, motion } from 'vanilla-calendar-pro'
 import EventHandler from '../../src/dom/event-handler.js'
 import Datepicker from '../../src/datepicker.js'
 import {
@@ -1156,7 +1156,7 @@ describe('Datepicker', () => {
   })
 
   describe('extensions', () => {
-    it('should register only the months extension by default', () => {
+    it('should register only the months extension', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
 
       const inputEl = fixtureEl.querySelector('input')
@@ -1165,7 +1165,7 @@ describe('Datepicker', () => {
       expect(datepicker._buildCalendarOptions().extensions).toEqual([months])
     })
 
-    it('should merge vcpOptions.extensions with the default extensions without duplicates', () => {
+    it('should ignore vcpOptions.extensions', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
 
       const inputEl = fixtureEl.querySelector('input')
@@ -1175,34 +1175,7 @@ describe('Datepicker', () => {
         }
       })
 
-      expect(datepicker._buildCalendarOptions().extensions).toEqual([months, motion])
-    })
-
-    it('should throw when an option needs an extension that is not registered', () => {
-      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
-
-      const inputEl = fixtureEl.querySelector('input')
-
-      expect(() => new Datepicker(inputEl, {
-        vcpOptions: {
-          animation: true
-        }
-      })).toThrowError(/requires motion/)
-    })
-
-    it('should add extensions registered with registerExtensions to every new instance', () => {
-      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
-
-      Datepicker.registerExtensions(time)
-
-      const inputEl = fixtureEl.querySelector('input')
-      const datepicker = new Datepicker(inputEl, {
-        vcpOptions: {
-          selectionTimeMode: 24
-        }
-      })
-
-      expect(datepicker._buildCalendarOptions().extensions).toEqual([months, time])
+      expect(datepicker._buildCalendarOptions().extensions).toEqual([months])
     })
   })
 

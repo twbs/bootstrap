@@ -14,7 +14,6 @@
  * checks the same surface against the source.
  */
 
-import { motion, time } from 'vanilla-calendar-pro'
 import {
   Alert,
   Button,
@@ -89,13 +88,6 @@ const datepicker: Datepicker = new Datepicker(element, {
   placement: 'center',
   dateMin: '2026-01-01'
 })
-
-// Vanilla Calendar Pro extensions register globally or per instance
-Datepicker.registerExtensions(motion, time)
-new Datepicker(element, { vcpOptions: { selectionTimeMode: 24, extensions: [time] } })
-
-// @ts-expect-error — `registerExtensions` takes Vanilla Calendar Pro extensions only
-Datepicker.registerExtensions('time')
 
 // @ts-expect-error — `firstWeekday` is a WeekDayID, so 0-6 only
 new Datepicker(element, { firstWeekday: 7 })
