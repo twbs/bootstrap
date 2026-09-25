@@ -59,10 +59,10 @@ $nav-pills-tokens: defaults(
   (
     --nav-pills-bg: var(--bg-1),
     --nav-pills-padding: .25rem,
-    --nav-pills-border-radius: var(--radius-9),
+    --nav-pills-border-radius: 3rem,
     --nav-pills-link-active-color: var(--primary-contrast),
     --nav-pills-link-active-bg: var(--primary-bg),
-    --nav-pills-link-border-radius: var(--radius-9),
+    --nav-pills-link-border-radius: 3rem,
   ),
   $nav-pills-tokens
 );
