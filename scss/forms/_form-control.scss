@@ -108,6 +108,11 @@ $form-control-sizes: defaults(
       padding: 0;
     }
 
+    // Soften `/` and `:` separators between date/time fields (WebKit/Blink only).
+    &::-webkit-datetime-edit-text {
+      color: var(--control-placeholder-color);
+    }
+
     // File inputs
     &[type="file"] {
       overflow: hidden; // prevent pseudo element button overlap
