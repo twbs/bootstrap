@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "colors" as colors;
 @use "config" as *;
 
 @function theme-color-values($key) {
@@ -44,6 +45,41 @@
   }
 
   @return $result;
+}
+
+// Theme pairing helper
+//
+// Return one stop, or a `light-dark()` pairing of two stops, derived from
+// `$color` (usually `var(--{name}-base)`). Ex: theme-pair($ref, 600, 400).
+@function theme-pair($color, $light-stop, $dark-stop: null) {
+  @if $dark-stop == null {
+    @return colors.color-stop($color, $light-stop);
+  }
+
+  @return light-dark(#{colors.color-stop($color, $light-stop)}, #{colors.color-stop($color, $dark-stop)});
+}
+
+// Build a theme color map
+//
+// Return the nine-key token map for a theme color. Every pairing derives from
+// `var(--#{$name}-base)`, so one `:root` base override re-mints the whole set.
+// `$overrides` merges on top for the few keys that break from the recipe.
+@function theme-color($name, $base, $overrides: ()) {
+  $ref: var(--#{$name}-base);
+
+  $defaults: (
+    "base": $base,
+    "fg": theme-pair($ref, 600, 400),
+    "fg-emphasis": theme-pair($ref, 800, 300),
+    "bg": $ref,
+    "bg-subtle": theme-pair($ref, 100, 900),
+    "bg-muted": theme-pair($ref, 200, 800),
+    "border": theme-pair($ref, 300, 600),
+    "focus-ring": light-dark(#{color-mix(in oklch, #{$ref} 50%, var(--bg-body))}, #{color-mix(in oklch, #{$ref} 75%, var(--bg-body))}),
+    "contrast": var(--white),
+  );
+
+  @return map.merge($defaults, $overrides);
 }
 
 // Generate opacity values using color-mix()
@@ -110,72 +146,20 @@ $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $theme-colors: defaults(
   (
-    "primary": (
-      "base": var(--blue-500),
-      "fg": light-dark(var(--blue-600), var(--blue-400)),
-      "fg-emphasis": light-dark(var(--blue-800), var(--blue-200)),
-      "bg": var(--blue-500),
-      "bg-subtle": light-dark(var(--blue-100), var(--blue-900)),
-      "bg-muted": light-dark(var(--blue-200), var(--blue-800)),
-      "border": light-dark(var(--blue-300), var(--blue-600)),
-      "focus-ring": light-dark(color-mix(in oklch, var(--blue-500) 50%, var(--bg-body)), color-mix(in oklch, var(--blue-500) 75%, var(--bg-body))),
-      "contrast": var(--white)
+    "primary": theme-color("primary", var(--blue-500), ("fg-emphasis": theme-pair(var(--primary-base), 800, 200))),
+    "accent": theme-color("accent", var(--indigo-500), ("fg": light-dark(#{colors.color-stop(var(--accent-base), 600)}, #{colors.theme-blend(var(--accent-base), 400, 300)}))),
+    "success": theme-color("success", var(--green-500)),
+    "danger": theme-color("danger", var(--red-500)),
+    "warning": theme-color(
+      "warning",
+      var(--yellow-500),
+      (
+        "fg": theme-pair(var(--warning-base), 700, 400),
+        "focus-ring": light-dark(#{color-mix(in oklch, var(--warning-base) 50%, var(--bg-body))}, #{color-mix(in oklch, #{colors.color-stop(var(--warning-base), 400)} 85%, var(--bg-body))}),
+        "contrast": var(--gray-900)
+      )
     ),
-    "accent": (
-      "base": var(--indigo-500),
-      "fg": light-dark(var(--indigo-600), color-mix(in oklch, var(--indigo-400), var(--indigo-300))),
-      "fg-emphasis": light-dark(var(--indigo-800), var(--indigo-300)),
-      "bg": var(--indigo-500),
-      "bg-subtle": light-dark(var(--indigo-100), var(--indigo-900)),
-      "bg-muted": light-dark(var(--indigo-200), var(--indigo-800)),
-      "border": light-dark(var(--indigo-300), var(--indigo-600)),
-      "focus-ring": light-dark(color-mix(in oklch, var(--indigo-500) 50%, var(--bg-body)), color-mix(in oklch, var(--indigo-500) 75%, var(--bg-body))),
-      "contrast": var(--white)
-    ),
-    "success": (
-      "base": var(--green-500),
-      "fg": light-dark(var(--green-600), var(--green-400)),
-      "fg-emphasis": light-dark(var(--green-800), var(--green-300)),
-      "bg": var(--green-500),
-      "bg-subtle": light-dark(var(--green-100), var(--green-900)),
-      "bg-muted": light-dark(var(--green-200), var(--green-800)),
-      "border": light-dark(var(--green-300), var(--green-600)),
-      "focus-ring": light-dark(color-mix(in oklch, var(--green-500) 50%, var(--bg-body)), color-mix(in oklch, var(--green-500) 75%, var(--bg-body))),
-      "contrast": var(--white)
-    ),
-    "danger": (
-      "base": var(--red-500),
-      "fg": light-dark(var(--red-600), var(--red-400)),
-      "fg-emphasis": light-dark(var(--red-800), var(--red-300)),
-      "bg": var(--red-500),
-      "bg-subtle": light-dark(var(--red-100), var(--red-900)),
-      "bg-muted": light-dark(var(--red-200), var(--red-800)),
-      "border": light-dark(var(--red-300), var(--red-600)),
-      "focus-ring": light-dark(color-mix(in oklch, var(--red-500) 50%, var(--bg-body)), color-mix(in oklch, var(--red-500) 75%, var(--bg-body))),
-      "contrast": var(--white)
-    ),
-    "warning": (
-      "base": var(--yellow-500),
-      "fg": light-dark(var(--yellow-700), var(--yellow-400)),
-      "fg-emphasis": light-dark(var(--yellow-800), var(--yellow-300)),
-      "bg": var(--yellow-500),
-      "bg-subtle": light-dark(var(--yellow-100), var(--yellow-900)),
-      "bg-muted": light-dark(var(--yellow-200), var(--yellow-800)),
-      "border": light-dark(var(--yellow-300), var(--yellow-600)),
-      "focus-ring": light-dark(color-mix(in oklch, var(--yellow-500) 50%, var(--bg-body)), color-mix(in oklch, var(--yellow-400) 85%, var(--bg-body))),
-      "contrast": var(--gray-900)
-    ),
-    "info": (
-      "base": var(--cyan-500),
-      "fg": light-dark(var(--cyan-600), var(--cyan-400)),
-      "fg-emphasis": light-dark(var(--cyan-800), var(--cyan-300)),
-      "bg": var(--cyan-500),
-      "bg-subtle": light-dark(var(--cyan-100), var(--cyan-900)),
-      "bg-muted": light-dark(var(--cyan-200), var(--cyan-800)),
-      "border": light-dark(var(--cyan-300), var(--cyan-600)),
-      "focus-ring": light-dark(color-mix(in oklch, var(--cyan-500) 50%, var(--bg-body)), color-mix(in oklch, var(--cyan-500) 75%, var(--bg-body))),
-      "contrast": var(--gray-900)
-    ),
+    "info": theme-color("info", var(--cyan-500), ("contrast": var(--gray-900))),
     "inverse": (
       "base": var(--gray-900),
       "fg": light-dark(var(--gray-900), var(--gray-200)),

@@ -91,13 +91,13 @@ const css = `.token-demo {
 
       <div class="vstack gap-1 align-items-start" data-control="color" data-value={defaultColor}>
         <span class="form-label fw-semibold mb-0">Primary</span>
-        <div class="d-flex flex-wrap gap-2 align-items-center">
+        <div class="d-flex flex-wrap gap-2 align-items-center ">
           {
             palette.map((color) => (
               <button
                 type="button"
                 class:list={['bd-token-swatch', { selected: color.name === defaultColor }]}
-                style={`background-color: var(--bs-${color.name}-500)`}
+                style={`min-height: 2rem; background-color: var(--bs-${color.name}-500)`}
                 data-value={color.name}
                 aria-label={color.label}
                 aria-pressed={color.name === defaultColor}
@@ -131,6 +131,10 @@ const css = `.token-demo {
           <label class="btn-check btn-outline theme-primary">
             <input type="radio" name="bd-token-scope" value="all" checked />
             All
+          </label>
+          <label class="btn-check btn-outline theme-primary">
+            <input type="radio" name="bd-token-scope" value="root" />
+            Root
           </label>
         </div>
       </div>
@@ -168,6 +172,7 @@ const css = `.token-demo {
 
   if (playground) {
     const target = playground.querySelector<HTMLElement>('[data-token-target]')
+    const root = document.documentElement
     const radiusControl = playground.querySelector<HTMLElement>('[data-control="radius"]')
     const spacerControl = playground.querySelector<HTMLElement>('[data-control="spacer"]')
     const colorControl = playground.querySelector<HTMLElement>('[data-control="color"]')
@@ -186,6 +191,31 @@ const css = `.token-demo {
 
     function leafSpans(line: HTMLElement) {
       return [...line.querySelectorAll<HTMLElement>('span')].filter((span) => span.childElementCount === 0)
+    }
+
+    // Rewrite the selector on the snippet’s opening line (`.token-demo` ⇄ `:root`).
+    function setSelector(selector: string) {
+      const line = [...(code?.querySelectorAll<HTMLElement>('.line') ?? [])].find((candidate) =>
+        (candidate.textContent ?? '').includes('{')
+      )
+
+      if (!line) {
+        return
+      }
+
+      const leaves = leafSpans(line)
+      const brace = leaves.findIndex((span) => (span.textContent ?? '').includes('{'))
+      const selectorLeaves = brace === -1 ? leaves : leaves.slice(0, brace)
+
+      if (selectorLeaves.length === 0) {
+        return
+      }
+
+      selectorLeaves[0].textContent = `${selector} `
+
+      for (const extra of selectorLeaves.slice(1)) {
+        extra.textContent = ''
+      }
     }
 
     // Shiki splits values across spans, so collapse the value tokens on that
@@ -299,43 +329,64 @@ const css = `.token-demo {
         '--bs-primary-contrast': primary.contrast
       }
 
+      const isRoot = scope === 'root'
+
+      // Radius and spacer always stay on the preview wrapper.
       target?.style.setProperty('--bs-radius-5', `${radius}rem`)
       target?.style.setProperty('--bs-radius-7', `${radius * 1.5}rem`)
       target?.style.setProperty('--bs-spacer', `${spacer}rem`)
       target?.style.setProperty('--bs-spacer-6', `${spacer * 1.25}rem`)
-      target?.style.setProperty('--bs-primary-base', primary.base)
-      target?.style.setProperty('--bs-primary-bg', primary.bg)
 
-      for (const [property, value] of Object.entries(derived)) {
-        if (scope === 'all') {
-          target?.style.setProperty(property, value)
-        } else {
+      if (isRoot) {
+        // One knob on `:root` re-mints every primary token, because the refactored
+        // `_theme.scss` derives each pairing from `--bs-primary-base`. Drop the
+        // wrapper overrides so the preview inherits the page-wide remint.
+        for (const property of ['--bs-primary-base', '--bs-primary-bg', ...Object.keys(derived)]) {
           target?.style.removeProperty(property)
         }
+
+        root.style.setProperty('--bs-primary-base', primary.base)
+      } else {
+        // Leaving root scope: drop the page-wide override.
+        root.style.removeProperty('--bs-primary-base')
+
+        target?.style.setProperty('--bs-primary-base', primary.base)
+        target?.style.setProperty('--bs-primary-bg', primary.bg)
+
+        for (const [property, value] of Object.entries(derived)) {
+          if (scope === 'all') {
+            target?.style.setProperty(property, value)
+          } else {
+            target?.style.removeProperty(property)
+          }
+        }
+      }
+
+      // Snippet: `:root { --bs-primary-base }` in root scope, else `.token-demo { … }`.
+      setSelector(isRoot ? ':root' : '.token-demo')
+
+      const snippetLines: Record<string, boolean> = {
+        '--bs-radius-5': !isRoot,
+        '--bs-spacer': !isRoot,
+        '--bs-primary-base': true,
+        '--bs-primary-bg': !isRoot,
+        '--bs-primary-bg-subtle': scope === 'all',
+        '--bs-primary-fg': scope === 'all',
+        '--bs-primary-border': scope === 'all'
+      }
+
+      for (const [property, visible] of Object.entries(snippetLines)) {
+        lineFor(property)?.classList.toggle('d-none', !visible)
       }
 
       setLineValue('--bs-radius-5', `${radius}rem`)
       setLineValue('--bs-spacer', `${spacer}rem`)
       setLineValue('--bs-primary-base', primary.base)
 
-      // The derived lines in the snippet only appear in `all` scope.
-      const snippetDerived: Record<string, string> = {
-        '--bs-primary-bg-subtle': primary.bgSubtle,
-        '--bs-primary-fg': primary.fg,
-        '--bs-primary-border': primary.border
-      }
-
-      for (const [property, value] of Object.entries(snippetDerived)) {
-        const line = lineFor(property)
-        if (!line) {
-          continue
-        }
-
-        line.classList.toggle('d-none', scope !== 'all')
-
-        if (scope === 'all') {
-          setLineValue(property, value)
-        }
+      if (scope === 'all') {
+        setLineValue('--bs-primary-bg-subtle', primary.bgSubtle)
+        setLineValue('--bs-primary-fg', primary.fg)
+        setLineValue('--bs-primary-border', primary.border)
       }
     }
 

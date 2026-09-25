@@ -89,6 +89,34 @@ $color-shades: defaults(
 );
 // scss-docs-end color-mix-options
 
+// Replay a palette stop against any color, including a custom property.
+// This lets theme pairings derive from `var(--{name}-base)` so a single
+// base override re-mints the whole set.
+// Ex: color-stop(var(--blue-500), 600) => color-mix(in oklch, var(--black) 16%, var(--blue-500))
+// scss-docs-start color-stop
+@function color-stop($color, $stop) {
+  $stop: "#{$stop}";
+
+  @if $stop == "500" {
+    @return $color;
+  } @else if map.has-key($color-tints, $stop) {
+    @return color-mix(in #{$color-mix-space}, #{$tint-color} #{map.get($color-tints, $stop)}, #{$color});
+  } @else if map.has-key($color-shades, $stop) {
+    @return color-mix(in #{$color-mix-space}, #{$shade-color} #{map.get($color-shades, $stop)}, #{$color});
+  }
+
+  @error "Unknown color stop `#{$stop}`. Use 500, a tint (#{map.keys($color-tints)}), or a shade (#{map.keys($color-shades)}).";
+}
+// scss-docs-end color-stop
+
+// Blend two stops of the same color. Keeps the value tied to `$color`, so it
+// re-mints with the base. Ex: theme-blend(var(--indigo-500), 400, 300).
+// scss-docs-start theme-blend
+@function theme-blend($color, $stop-1, $stop-2, $weight: 50%) {
+  @return color-mix(in #{$color-mix-space}, #{color-stop($color, $stop-1)} #{$weight}, #{color-stop($color, $stop-2)});
+}
+// scss-docs-end theme-blend
+
 // scss-docs-start color-tokens
 $color-tokens: () !default;
 

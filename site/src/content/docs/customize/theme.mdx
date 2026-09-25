@@ -59,7 +59,55 @@ Every component reads the same theme and layout tokens, so one change reaches th
 
 <TokenPlayground />
 
-The **Remint** control shows how the theme works today. Set it to **All** and each color restates every derived token—`bg-subtle`, `fg`, `border`, and the rest—so the whole preview follows. Set it to **Base** and only `--bs-primary-base` and `--bs-primary-bg` change. The solid button recolors, but the alert keeps the compiled blue pairing, because its `bg-subtle`, `fg`, and `border` tokens still point at the blue palette on `:root`.
+The **Remint** control shows the three ways to recolor. Set it to **All** and each color restates every derived token—`bg-subtle`, `fg`, `border`, and the rest—on the preview wrapper, so the whole group follows. Set it to **Base** and only `--bs-primary-base` and `--bs-primary-bg` change on the wrapper. The solid button recolors, but the alert keeps the compiled blue pairing, because a wrapper inherits the already-computed derived tokens from `:root`. Set it to **Root** and only `--bs-primary-base` changes, this time on `:root` itself. Each pairing derives from `--bs-primary-base`, so every derived token re-mints and every primary element on the page follows—one variable, not nine.
+
+## Reminting theme colors
+
+Each theme color builds its tokens from one base value. In `_theme.scss`, the `theme-color()` helper generates the nine tokens from `var(--{name}-base)` with the same tint and shade recipe as our [color palette]([[docsref:/customize/color/]]). So `--bs-primary-fg` is not a fixed palette stop—it is a `light-dark()` of two `color-mix()` values, each mixed against `var(--bs-primary-base)`.
+
+Because every derived token points back at the base, one override re-mints the whole set. Set the base on `:root` and the button, alert, border, and focus ring all follow:
+
+```css
+:root {
+  --bs-primary-base: var(--bs-orange-500);
+}
+```
+
+### Scope and the cascade
+
+CSS custom properties resolve where they are declared. Bootstrap declares the derived tokens on `:root`, so each `var(--bs-primary-base)` is substituted there. A descendant that resets `--bs-primary-base` inherits the already-resolved values, so the derived tokens do not re-mint:
+
+```css
+.brand-region {
+  /* The solid button recolors, because it reads `--bs-primary-bg`. */
+  /* The alert stays on the compiled pairing, because */
+  /* `--bs-primary-bg-subtle` was already resolved on `:root`. */
+  --bs-primary-base: var(--bs-orange-500);
+}
+```
+
+To recolor a subtree, set the base on `:root`, or restate the tokens you need so they re-mint against the new base:
+
+```css
+.brand-region {
+  --bs-primary-base: var(--bs-orange-500);
+  --bs-primary-bg-subtle: light-dark(var(--bs-orange-100), var(--bs-orange-900));
+  --bs-primary-fg: light-dark(var(--bs-orange-600), var(--bs-orange-400));
+  --bs-primary-border: light-dark(var(--bs-orange-300), var(--bs-orange-600));
+}
+```
+
+The **Remint** control in the playground shows this split. **Root** sets the base on `:root`, so every token follows. **Base** sets it on the wrapper, so only the solid surfaces move.
+
+### Override a single token
+
+You do not have to re-mint everything. Override any single token, on `:root` or a subtree, to step outside the recipe:
+
+```css
+:root {
+  --bs-primary-focus-ring: var(--bs-primary-border);
+}
+```
 
 ## Theme colors
 
@@ -235,13 +283,22 @@ Here’s the same set of components rendered in both light and dark modes side b
     </div>
   </div>`} />
 
-Under the hood, token values like `--bs-primary-fg` resolve differently depending on the active color mode. For example, in our `_theme.scss`, the primary text color is defined as:
+Under the hood, token values like `--bs-primary-fg` resolve differently depending on the active color mode. For example, in our `_theme.scss`, the primary text color derives from the base with `theme-pair()`:
 
 ```scss
-"fg": light-dark(var(--blue-600), var(--blue-400)),
+"fg": theme-pair(var(--primary-base), 600, 400),
 ```
 
-When `data-bs-theme="light"` is active (or the user’s system preference is light), this resolves to `var(--blue-600)`. In dark mode, it resolves to `var(--blue-400)`—a lighter shade that maintains readability against dark backgrounds. The same pattern applies to backgrounds, borders, and all other adaptive tokens.
+That expands to a `light-dark()` of two `color-mix()` values, one per mode, each mixed against `var(--primary-base)`:
+
+```scss
+"fg": light-dark(
+  color-mix(in oklch, var(--black) 16%, var(--primary-base)), // ≈ blue-600, light mode
+  color-mix(in oklch, var(--white) 20%, var(--primary-base))  // ≈ blue-400, dark mode
+),
+```
+
+When `data-bs-theme="light"` is active (or the user’s system preference is light), the light value applies. In dark mode, the lighter value maintains readability against dark backgrounds. The same pattern applies to backgrounds, borders, and all other adaptive tokens.
 
 For more details on toggling color modes globally, building custom modes, and JavaScript toggler examples, see the [color modes documentation]([[docsref:/customize/color-modes/]]).
 
@@ -319,7 +376,7 @@ The class sets each `--theme-*` custom property to `initial`. That makes the pro
 
 ## Theme Sass map
 
-We use a large, nested Sass map to generate our theme color values.
+We use a large, nested Sass map to generate our theme color values. Each built-in color runs through the `theme-color()` helper, which derives its pairing tokens from that color’s `base`.
 
 <ScssDocs name="theme-colors" file="scss/_theme.scss" />
 
@@ -343,6 +400,8 @@ Configure `$theme-colors` through the main entrypoint with `@use ... with ()`. O
 ```
 
 Each theme color is a nested map, so the merge is one level deep. To change one sub-key of a built-in theme, pass the whole sub-map for that theme. For more detail, see the [Sass customization docs]([[docsref:/customize/sass#theme-color-map]]).
+
+To recolor a built-in theme, you usually do not need Sass. Set `--bs-{name}-base` on `:root` and the pairings re-mint at runtime—see [Reminting theme colors](#reminting-theme-colors). Use the Sass map when you add or remove colors, or change the recipe. Colors you add through the map are used as authored, because the `theme-color()` derivation applies to the built-ins. Give a custom color the token keys its components need, or build the set yourself.
 
 ## CSS variables
 
