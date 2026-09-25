@@ -209,7 +209,7 @@ Use `data-bs-datepicker-theme` to set the datepicker popup’s theme independent
 
 The calendar renders inside a shadow root, which is useful for encapsulated web components. Two things differ from normal use:
 
-- Initialize the datepicker with JavaScript. Delegated events change their target at the shadow boundary, so `data-bs-toggle="datepicker"` does not reach elements inside a shadow root.
+- Initialize the datepicker with JavaScript. Delegated events re-target at the shadow boundary, so `data-bs-toggle="datepicker"` does not reach elements inside a shadow root.
 - Adopt Bootstrap’s stylesheet into the shadow root. Document styles do not cross the boundary, so the calendar renders unstyled without it.
 
 ```js
@@ -226,10 +226,6 @@ new bootstrap.Datepicker(root.getElementById('shadowDatepicker'))
 ## CSS
 
 ### Variables
-
-The calendar grid and the popup surface use separate token maps. Style an inline calendar with the `--calendar-*` tokens. The `--datepicker-*` tokens only apply to the popup that the datepicker adds.
-
-<ScssDocs name="calendar-tokens" file="scss/_calendar.scss" />
 
 <ScssDocs name="datepicker-tokens" file="scss/_datepicker.scss" />
 
@@ -297,13 +293,14 @@ const datepicker = new bootstrap.Datepicker(element, {
     disableDatesPast: true,                     // Disable past dates
     disableWeekdays: [0, 6],                    // Disable weekends
     disableDates: ['2026-12-25', '2026-12-26'], // Disable specific dates
-    selectedHolidays: ['2026-01-01'],           // Highlight holidays
-    selectionTimeMode: 24                       // Enable 24-hour time selection
+    selectedHolidays: ['2026-01-01']            // Highlight holidays
   }
 })
 ```
 
 See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options.
+
+Vanilla Calendar Pro ships its optional features as extensions. Bootstrap uses only the `months` extension, which `displayMonthsCount` needs. Options from other extensions are not supported, and Vanilla Calendar Pro throws an error when you set them. These include `animation`, `enableSwipe`, `selectionTimeMode`, `popups`, and the week view options.
 
 ### Methods
 
