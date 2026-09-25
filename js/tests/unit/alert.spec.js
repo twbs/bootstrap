@@ -18,9 +18,9 @@ describe('Alert', () => {
 
     const alertEl = fixtureEl.querySelector('.alert')
     const alertBySelector = new Alert('.alert')
-    const alertByElement = new Alert(alertEl)
-
     expect(alertBySelector._element).toEqual(alertEl)
+
+    const alertByElement = new Alert(alertEl)
     expect(alertByElement._element).toEqual(alertEl)
   })
 
