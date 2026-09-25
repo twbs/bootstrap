@@ -27,6 +27,7 @@ const CLASS_NAME_OVERFLOW = 'nav-overflow'
 const CLASS_NAME_OVERFLOW_MENU = 'nav-overflow-menu'
 const CLASS_NAME_HIDDEN = 'd-none'
 const CLASS_NAME_KEEP = 'nav-overflow-keep'
+const CLASS_NAME_INITIALIZED = 'nav-overflow-initialized'
 const CLASS_NAME_SUBMENU = 'submenu'
 const CLASS_NAME_SHOW = 'show'
 
@@ -43,6 +44,7 @@ type NavOverflowConfig = {
   collapseBelow: number | string
   iconPlacement: string
   menuPlacement: string
+  menuStrategy: string
   moreText: string | false
   moreIcon: string
   threshold: number
@@ -55,6 +57,7 @@ const Default: NavOverflowConfig = {
   collapseBelow: 0,
   iconPlacement: 'start',
   menuPlacement: 'bottom-end',
+  menuStrategy: 'absolute',
   moreText: DEFAULT_TEXT,
   moreIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>',
   threshold: 0 // Minimum items to keep visible before showing overflow
@@ -64,6 +67,7 @@ const DefaultType = {
   collapseBelow: '(number|string)',
   iconPlacement: 'string',
   menuPlacement: 'string',
+  menuStrategy: 'string',
   moreText: '(string|boolean)',
   moreIcon: 'string',
   threshold: 'number'
@@ -179,6 +183,7 @@ class NavOverflow extends BaseComponent {
 
     // Initial calculation
     this._calculateOverflow()
+    this._element.classList.add(CLASS_NAME_INITIALIZED)
   }
 
   protected _createOverflowMenu(): void {
@@ -203,6 +208,7 @@ class NavOverflow extends BaseComponent {
     button.className = 'nav-link nav-overflow-toggle'
     button.setAttribute('data-bs-toggle', 'menu')
     button.setAttribute('data-bs-placement', this._config.menuPlacement)
+    button.setAttribute('data-bs-strategy', this._config.menuStrategy)
     button.setAttribute('aria-expanded', 'false')
 
     // An icon-only toggle still needs a name. Fall back to the default text,

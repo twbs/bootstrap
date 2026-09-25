@@ -13,6 +13,16 @@
     container-type: inline-size;
     flex: 1 1 0; // Fill the free space when the wrapper is itself a flex item
     min-width: 0; // Let the wrapper shrink below its content width
+
+    // Prevent the expanded nav from flashing or creating a scrollbar before
+    // JavaScript completes the first overflow calculation.
+    &:not(.nav-overflow-initialized) {
+      overflow: clip;
+
+      > .nav {
+        visibility: hidden;
+      }
+    }
   }
 
   // The nav fills the wrapper and stops wrapping, so items run past the edge in
@@ -32,6 +42,11 @@
   // Container item for overflow
   .nav-overflow-item {
     margin-inline-start: auto;
+  }
+
+  // Remove the inline line box so an icon-only toggle centers its icon.
+  .nav-overflow-icon {
+    display: flex;
   }
 
   // Hide items that have been moved to overflow

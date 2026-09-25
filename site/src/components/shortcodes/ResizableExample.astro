@@ -57,11 +57,17 @@ markup = replacePlaceholdersInHtml(markup)
 // The resizable container needs `overflow: hidden` for the CSS `resize` handle
 // to work, which clips popovers like menus/dropdowns when they open. Render them
 // with a fixed positioning strategy in the live preview only so they can spill
-// outside the container. The displayed markup below is left untouched.
-const previewMarkup = markup.replace(
-  /data-bs-toggle="(menu|dropdown)"(?![^>]*\bdata-bs-strategy=)/g,
-  'data-bs-toggle="$1" data-bs-strategy="fixed"'
-)
+// outside the container. NavOverflow passes its strategy to the toggle that it
+// generates. The displayed markup below is left untouched.
+const previewMarkup = markup
+  .replace(
+    /data-bs-toggle="(menu|dropdown)"(?![^>]*\bdata-bs-strategy=)/g,
+    'data-bs-toggle="$1" data-bs-strategy="fixed"'
+  )
+  .replace(
+    /data-bs-toggle="nav-overflow"(?![^>]*\bdata-bs-menu-strategy=)/g,
+    'data-bs-toggle="nav-overflow" data-bs-menu-strategy="fixed"'
+  )
 
 const simplifiedMarkup = markup.replace(
   /<svg.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>/g,

@@ -28,6 +28,7 @@ describe('NavOverflow', () => {
     it('should return plugin default config', () => {
       expect(NavOverflow.Default).toEqual(jasmine.any(Object))
       expect(NavOverflow.Default.moreText).toEqual('More')
+      expect(NavOverflow.Default.menuStrategy).toEqual('absolute')
       expect(NavOverflow.Default.threshold).toEqual(0)
     })
   })
@@ -98,6 +99,7 @@ describe('NavOverflow', () => {
       const navOverflow = new NavOverflow(wrapperEl)
 
       expect(wrapperEl).toHaveClass('nav-overflow')
+      expect(wrapperEl).toHaveClass('nav-overflow-initialized')
       expect(wrapperEl.querySelector('.nav')).not.toHaveClass('nav-overflow')
 
       navOverflow.dispose()
@@ -653,6 +655,7 @@ describe('NavOverflow', () => {
         collapseBelow: '(number|string)',
         iconPlacement: 'string',
         menuPlacement: 'string',
+        menuStrategy: 'string',
         moreText: '(string|boolean)',
         moreIcon: 'string',
         threshold: 'number'
@@ -738,6 +741,25 @@ describe('NavOverflow', () => {
 
       const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
       expect(toggle.getAttribute('data-bs-placement')).toEqual('bottom-start')
+
+      navOverflow.dispose()
+    })
+
+    it('should pass menuStrategy to the generated menu toggle', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
+        menuStrategy: 'fixed'
+      })
+
+      expect(wrapperEl.querySelector('.nav-overflow-toggle').getAttribute('data-bs-strategy')).toEqual('fixed')
 
       navOverflow.dispose()
     })
