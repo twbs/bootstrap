@@ -300,6 +300,8 @@ const datepicker = new bootstrap.Datepicker(element, {
 
 See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options. Some options need an [extension](#extensions).
 
+`vcpOptions.type` sets the calendar view (for example `'week'`, which needs the `weeks` extension). `displayMonthsCount` takes priority: set it above `1` and the datepicker forces the `'multiple'` type, overriding `vcpOptions.type`.
+
 ### Extensions
 
 Vanilla Calendar Pro ships its optional features as extensions. Bootstrap registers only the `months` extension, which `displayMonthsCount` needs. This keeps the other features out of your bundle.
@@ -309,7 +311,7 @@ Register an extension before you use an option that needs it. Otherwise, Vanilla
 <BsTable>
 | Extension | Adds | Options that need it |
 | --- | --- | --- |
-| `weeks` | Collapse to the selected week, and week numbers | `enableCollapse`, `enableWeekNumbers`, `onClickWeekDay` |
+| `weeks` | Week view, collapse to the selected week, and week numbers | `type: 'week'`, `enableCollapse`, `enableWeekNumbers`, `onClickWeekDay` |
 | `motion` | Animated paging that respects `prefers-reduced-motion`, and swipe navigation with a mouse, touch, or pen | `animation`, `enableSwipe` |
 | `time` | Time selection | `selectionTimeMode` |
 | `annotations` | Date popups and range tooltips | `popups`, `onCreateDateRangeTooltip` |
