@@ -1,3 +1,4 @@
+import { months, time, weeks } from 'vanilla-calendar-pro'
 import EventHandler from '../../src/dom/event-handler.js'
 import Datepicker from '../../src/datepicker.js'
 import {
@@ -1131,6 +1132,57 @@ describe('Datepicker', () => {
       })
 
       expect(datepicker._config.vcpOptions.jumpMonths).toEqual(2)
+    })
+  })
+
+  describe('extensions', () => {
+    it('should register only the months extension by default', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker._buildCalendarOptions().extensions).toEqual([months])
+    })
+
+    it('should merge vcpOptions.extensions with the default extensions without duplicates', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        vcpOptions: {
+          extensions: [months, weeks]
+        }
+      })
+
+      expect(datepicker._buildCalendarOptions().extensions).toEqual([months, weeks])
+    })
+
+    it('should throw when an option needs an extension that is not registered', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+
+      expect(() => new Datepicker(inputEl, {
+        vcpOptions: {
+          enableWeekNumbers: true
+        }
+      })).toThrowError(/requires weeks/)
+    })
+
+    it('should add extensions registered with registerExtensions to every new instance', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      Datepicker.registerExtensions(time)
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        vcpOptions: {
+          selectionTimeMode: 24
+        }
+      })
+
+      expect(datepicker._buildCalendarOptions().extensions).toEqual([months, time])
     })
   })
 

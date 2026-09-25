@@ -7,6 +7,8 @@
 
 import {
   Calendar,
+  months,
+  type CalendarExtension,
   type DateAny,
   type DateMode,
   type DatesArr,
@@ -41,6 +43,12 @@ const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY}${DATA_API_KEY}`
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="datepicker"]'
 
 const HIDE_DELAY = 100 // ms delay before hiding after selection
+
+// Vanilla Calendar Pro v3.4+ ships optional features as extensions. Bootstrap
+// registers only `months`, which `displayMonthsCount` needs. Other features
+// (time, weeks, motion, annotations) stay out of the bundle until a page
+// registers them with `Datepicker.registerExtensions()` or `vcpOptions.extensions`.
+const registeredExtensions = new Set<CalendarExtension>([months])
 
 // The date, weekday, month-count and placement options are handed straight to
 // Vanilla Calendar Pro, so they use its own literal unions rather than the wider
@@ -134,6 +142,13 @@ class Datepicker extends BaseComponent {
 
   static override get NAME(): string {
     return NAME
+  }
+
+  // Static
+  static registerExtensions(...extensions: CalendarExtension[]): void {
+    for (const extension of extensions) {
+      registeredExtensions.add(extension)
+    }
   }
 
   // Public
@@ -384,6 +399,7 @@ class Datepicker extends BaseComponent {
 
     const calendarOptions: Options = {
       ...this._config.vcpOptions,
+      extensions: [...new Set([...registeredExtensions, ...(this._config.vcpOptions.extensions ?? [])])],
       inputMode: !this._isInline,
       positionToInput: this._config.placement,
       firstWeekday: this._config.firstWeekday,

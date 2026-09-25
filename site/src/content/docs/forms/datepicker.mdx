@@ -297,13 +297,60 @@ const datepicker = new bootstrap.Datepicker(element, {
     disableDatesPast: true,                     // Disable past dates
     disableWeekdays: [0, 6],                    // Disable weekends
     disableDates: ['2026-12-25', '2026-12-26'], // Disable specific dates
-    selectedHolidays: ['2026-01-01'],           // Highlight holidays
-    selectionTimeMode: 24                       // Enable 24-hour time selection
+    selectedHolidays: ['2026-01-01']            // Highlight holidays
   }
 })
 ```
 
-See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options.
+See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options. Some options need an [extension](#extensions).
+
+### Extensions
+
+Vanilla Calendar Pro ships its optional features as extensions. Bootstrap registers only the `months` extension, which `displayMonthsCount` needs. This keeps the other features out of your bundle.
+
+Register an extension before you use an option that needs it. Otherwise, Vanilla Calendar Pro throws an error that names the missing extension.
+
+<BsTable>
+| Extension | Adds | Options that need it |
+| --- | --- | --- |
+| `weeks` | Collapse to the selected week, and week numbers | `enableCollapse`, `enableWeekNumbers`, `onClickWeekDay` |
+| `motion` | Animated paging that respects `prefers-reduced-motion`, and swipe navigation with a mouse, touch, or pen | `animation`, `enableSwipe` |
+| `time` | Time selection | `selectionTimeMode` |
+| `annotations` | Date popups and range tooltips | `popups`, `onCreateDateRangeTooltip` |
+</BsTable>
+
+Use `Datepicker.registerExtensions()` to add extensions to every datepicker, including those that the data API creates. Call it before the page finishes loading, so that it runs before the inline datepickers initialize:
+
+```js
+import { Datepicker } from 'bootstrap'
+import { motion, weeks } from 'vanilla-calendar-pro'
+
+Datepicker.registerExtensions(motion, weeks)
+```
+
+After you register them, the options work through data attributes too:
+
+```html
+<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options='{"animation": true, "enableWeekNumbers": true}'></div>
+```
+
+To add extensions to one datepicker only, pass them in `vcpOptions.extensions`. Bootstrap merges them with the registered extensions.
+
+```js
+import { Datepicker } from 'bootstrap'
+import { time } from 'vanilla-calendar-pro'
+
+const datepicker = new Datepicker(element, {
+  vcpOptions: {
+    extensions: [time],
+    selectionTimeMode: 24 // Enable 24-hour time selection
+  }
+})
+```
+
+<Callout type="warning">
+Import the extensions from the same copy of `vanilla-calendar-pro` that Bootstrap uses. `bootstrap.bundle.js` includes its own copy with only the `months` extension. To use other extensions, use `bootstrap.js` with a bundler or an import map.
+</Callout>
 
 ### Methods
 
@@ -318,6 +365,7 @@ See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/r
 | `dispose()` | Destroys the datepicker instance |
 | `getInstance(element)` | Static method to get the datepicker instance from a DOM element |
 | `getOrCreateInstance(element)` | Static method to get or create a datepicker instance |
+| `registerExtensions(...extensions)` | Static method to register [Vanilla Calendar Pro extensions](#extensions) for all new datepicker instances |
 </BsTable>
 
 ### Events
