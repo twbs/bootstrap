@@ -2,6 +2,7 @@
 @use "../config" as *;
 @use "../functions" as *;
 @use "../layout/breakpoints" as *;
+@use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
@@ -174,6 +175,34 @@ $table-striped-columns-order: even !default;
       --table-color-state: var(--theme-fg, var(--table-hover-color));
       --table-bg-state: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-hover-bg-factor), transparent);
     }
+  }
+
+  // Card-like tables
+  //
+  // Round and clip a table without nesting it in a `.card`. Apply to a wrapper
+  // around `.table`, or combine with `.table-responsive` on the same element.
+  // Same look as `.border.rounded.overflow-hidden` + `.mb-0` on the table.
+
+  .table-card {
+    margin-bottom: var(--spacer);
+    overflow: hidden;
+    border: var(--border-width) solid var(--border-color-translucent);
+    @include border-radius(var(--radius-7));
+
+    > .table,
+    > [class*="table-responsive"] > .table {
+      margin-bottom: 0;
+    }
+
+    // Drop the last row border so it does not stack on the wrapper border.
+    // Same universal cell targeting as `.table`; wrapper + optional responsive
+    // nest pushes compound/combinator counts over the defaults.
+    // stylelint-disable selector-max-compound-selectors, selector-max-universal, selector-max-combinators
+    > .table > :not(caption):last-child > *:last-child > *,
+    > [class*="table-responsive"] > .table > :not(caption):last-child > *:last-child > * {
+      border-block-end-width: 0;
+    }
+    // stylelint-enable selector-max-compound-selectors, selector-max-universal, selector-max-combinators
   }
 
   // Responsive tables
