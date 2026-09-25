@@ -9,6 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import type { ComponentConfig } from './util/config.js'
+import { enableHashTarget } from './util/hash-target.js'
 import {
   getElement,
   getTransitionDurationFromElement,
@@ -242,6 +243,37 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 
   for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) {
     Collapse.getOrCreateInstance(element).toggle()
+  }
+})
+
+/**
+ * Find a trigger that targets this collapse.
+ */
+const getCollapseTrigger = (collapseEl: HTMLElement): HTMLElement | null => {
+  for (const trigger of SelectorEngine.find(SELECTOR_DATA_TOGGLE)) {
+    if (SelectorEngine.getMultipleElementsFromSelector(trigger).includes(collapseEl)) {
+      return trigger
+    }
+  }
+
+  return null
+}
+
+/**
+ * Open opted-in collapses when the URL fragment matches their id.
+ * Put `data-bs-hash` on the collapsible target.
+ */
+enableHashTarget(`${EVENT_KEY}${DATA_API_KEY}`, {
+  matches: element => element.classList.contains(CLASS_NAME_COLLAPSE),
+  getAnchor: getCollapseTrigger,
+  open(element, done) {
+    if (element.classList.contains(CLASS_NAME_SHOW)) {
+      done()
+      return
+    }
+
+    EventHandler.one(element, EVENT_SHOWN, done)
+    Collapse.getOrCreateInstance(element).show()
   }
 })
 
