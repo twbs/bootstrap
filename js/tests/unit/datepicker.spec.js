@@ -943,6 +943,10 @@ describe('Datepicker', () => {
       element.dispatchEvent(new FocusEvent('focusin', { bubbles: true }))
     }
 
+    const pointerDownOn = element => {
+      element.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))
+    }
+
     it('should hide when focus moves to an element outside the calendar', () => {
       return showDatepicker().then(({ datepicker }) => {
         expect(datepicker._isShown).toBeTrue()
@@ -998,19 +1002,123 @@ describe('Datepicker', () => {
       const divEl = fixtureEl.querySelector('div')
       const datepicker = new Datepicker(divEl)
 
-      expect(datepicker._onFocusIn).toBeUndefined()
+      expect(datepicker._onOutside).toBeUndefined()
       expect(datepicker._isInline).toBeTrue()
     })
 
-    it('should remove the document listener on dispose', () => {
+    it('should hide when a pointer press lands outside the calendar', () => {
       return showDatepicker().then(({ datepicker }) => {
-        const handler = datepicker._onFocusIn
+        expect(datepicker._isShown).toBeTrue()
+
+        pointerDownOn(fixtureEl.querySelector('#outside'))
+
+        expect(datepicker._isShown).toBeFalse()
+      })
+    })
+
+    it('should hide when a pointer press lands on a non-focusable element', () => {
+      return showDatepicker('<input type="text" data-bs-toggle="datepicker"><p id="text">Plain text</p>').then(({ datepicker }) => {
+        expect(datepicker._isShown).toBeTrue()
+
+        pointerDownOn(fixtureEl.querySelector('#text'))
+
+        expect(datepicker._isShown).toBeFalse()
+      })
+    })
+
+    it('should not hide when a pointer press lands inside the calendar', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        const dateBtn = datepicker._calendar.context.mainElement.querySelector('[data-vc-date-btn]')
+
+        pointerDownOn(dateBtn)
+
+        expect(datepicker._isShown).toBeTrue()
+      })
+    })
+
+    it('should not hide on an outside pointer press when the popup is not shown', async () => {
+      const { datepicker } = await showDatepicker()
+      await datepicker.hide()
+
+      const hideSpy = spyOn(datepicker, 'hide')
+
+      pointerDownOn(fixtureEl.querySelector('#outside'))
+
+      expect(hideSpy).not.toHaveBeenCalled()
+    })
+
+    it('should remove the document listeners on dispose', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        const outsideHandler = datepicker._onOutside
         const offSpy = spyOn(EventHandler, 'off').and.callThrough()
 
         datepicker.dispose()
 
-        expect(offSpy).toHaveBeenCalledWith(document, 'focusin.bs.datepicker', handler)
+        expect(offSpy).toHaveBeenCalledWith(document, 'focusin.bs.datepicker', outsideHandler)
+        expect(offSpy).toHaveBeenCalledWith(document, 'pointerdown.bs.datepicker', outsideHandler)
       })
+    })
+  })
+
+  describe('trigger clicks', () => {
+    // VCP defers its own show with `setTimeout`, so wait past it.
+    const settle = () => new Promise(resolve => {
+      setTimeout(resolve, 20)
+    })
+
+    const setupButton = () => {
+      fixtureEl.innerHTML = '<button type="button" data-bs-toggle="datepicker"><span id="label">Select date</span></button>'
+      return fixtureEl.querySelector('button')
+    }
+
+    it('should close a button trigger on the next click', async () => {
+      const buttonEl = setupButton()
+
+      buttonEl.click()
+      await settle()
+      const datepicker = Datepicker.getInstance(buttonEl)
+      expect(datepicker._isShown).toBeTrue()
+
+      buttonEl.click()
+      await settle()
+      expect(datepicker._isShown).toBeFalse()
+
+      buttonEl.click()
+      await settle()
+      expect(datepicker._isShown).toBeTrue()
+    })
+
+    it('should close a button trigger on the next click on a child element', async () => {
+      const buttonEl = setupButton()
+      const labelEl = fixtureEl.querySelector('#label')
+
+      labelEl.click()
+      await settle()
+      const datepicker = Datepicker.getInstance(buttonEl)
+      expect(datepicker._isShown).toBeTrue()
+
+      labelEl.click()
+      await settle()
+      expect(datepicker._isShown).toBeFalse()
+    })
+
+    it('should not register a trigger listener for input triggers', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const datepicker = new Datepicker(fixtureEl.querySelector('input'))
+
+      expect(datepicker._onTriggerClick).toBeUndefined()
+    })
+
+    it('should remove the trigger listener on dispose', () => {
+      const buttonEl = setupButton()
+      const datepicker = new Datepicker(buttonEl)
+      const triggerHandler = datepicker._onTriggerClick
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+
+      datepicker.dispose()
+
+      expect(offSpy).toHaveBeenCalledWith(buttonEl, 'click.bs.datepicker', triggerHandler)
     })
   })
 
