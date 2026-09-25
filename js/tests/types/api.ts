@@ -7,7 +7,7 @@
  * type-checked (`npm run js-typecheck`); it is never executed or bundled.
  */
 
-import { motion, weeks } from 'vanilla-calendar-pro'
+import { motion, time } from 'vanilla-calendar-pro'
 import {
   Alert,
   Button,
@@ -84,11 +84,11 @@ const datepicker: Datepicker = new Datepicker(element, {
 })
 
 // Vanilla Calendar Pro extensions register globally or per instance
-Datepicker.registerExtensions(motion, weeks)
-new Datepicker(element, { vcpOptions: { enableWeekNumbers: true, extensions: [weeks] } })
+Datepicker.registerExtensions(motion, time)
+new Datepicker(element, { vcpOptions: { selectionTimeMode: 24, extensions: [time] } })
 
 // @ts-expect-error — `registerExtensions` takes Vanilla Calendar Pro extensions only
-Datepicker.registerExtensions('weeks')
+Datepicker.registerExtensions('time')
 
 // Static helpers resolve to the concrete component type
 const maybeAlert: Alert | null = Alert.getInstance('#alert')

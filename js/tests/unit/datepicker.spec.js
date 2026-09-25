@@ -1,4 +1,4 @@
-import { months, time, weeks } from 'vanilla-calendar-pro'
+import { months, motion, time } from 'vanilla-calendar-pro'
 import EventHandler from '../../src/dom/event-handler.js'
 import Datepicker from '../../src/datepicker.js'
 import {
@@ -1143,29 +1143,12 @@ describe('Datepicker', () => {
       expect(datepicker._buildCalendarOptions().type).toEqual('default')
     })
 
-    it('should let vcpOptions.type override the default calendar type', () => {
+    it('should use the multiple calendar type when displayMonthsCount is greater than 1', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
 
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl, {
-        vcpOptions: {
-          type: 'week',
-          extensions: [weeks]
-        }
-      })
-
-      expect(datepicker._buildCalendarOptions().type).toEqual('week')
-    })
-
-    it('should force the multiple calendar type when displayMonthsCount is greater than 1, ignoring vcpOptions.type', () => {
-      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
-
-      const inputEl = fixtureEl.querySelector('input')
-      const datepicker = new Datepicker(inputEl, {
-        displayMonthsCount: 2,
-        vcpOptions: {
-          type: 'week'
-        }
+        displayMonthsCount: 2
       })
 
       expect(datepicker._buildCalendarOptions().type).toEqual('multiple')
@@ -1188,11 +1171,11 @@ describe('Datepicker', () => {
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl, {
         vcpOptions: {
-          extensions: [months, weeks]
+          extensions: [months, motion]
         }
       })
 
-      expect(datepicker._buildCalendarOptions().extensions).toEqual([months, weeks])
+      expect(datepicker._buildCalendarOptions().extensions).toEqual([months, motion])
     })
 
     it('should throw when an option needs an extension that is not registered', () => {
@@ -1202,9 +1185,9 @@ describe('Datepicker', () => {
 
       expect(() => new Datepicker(inputEl, {
         vcpOptions: {
-          enableWeekNumbers: true
+          animation: true
         }
-      })).toThrowError(/requires weeks/)
+      })).toThrowError(/requires motion/)
     })
 
     it('should add extensions registered with registerExtensions to every new instance', () => {

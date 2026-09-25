@@ -46,7 +46,7 @@ const HIDE_DELAY = 100 // ms delay before hiding after selection
 
 // Vanilla Calendar Pro v3.4+ ships optional features as extensions. Bootstrap
 // registers only `months`, which `displayMonthsCount` needs. Other features
-// (time, weeks, motion, annotations) stay out of the bundle until a page
+// (time, motion, annotations) stay out of the bundle until a page
 // registers them with `Datepicker.registerExtensions()` or `vcpOptions.extensions`.
 const registeredExtensions = new Set<CalendarExtension>([months])
 
@@ -415,9 +415,7 @@ class Datepicker extends BaseComponent {
       selectionDatesMode: this._config.selectionMode,
       selectedDates: this._config.selectedDates,
       displayMonthsCount: this._config.displayMonthsCount,
-      // Multiple months require VCP's 'multiple' type; otherwise let vcpOptions.type
-      // through (e.g. 'week') instead of always forcing the single-month default.
-      type: this._config.displayMonthsCount > 1 ? 'multiple' : (this._config.vcpOptions.type ?? 'default'),
+      type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
       selectedTheme: vcpTheme,
       themeAttrDetect: '[data-bs-theme]',
       onClickDate: (self, event) => this._handleDateClick(self, event),

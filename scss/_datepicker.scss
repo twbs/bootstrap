@@ -178,12 +178,6 @@ $datepicker-tokens: defaults(
     pointer-events: none;
   }
 
-  [data-vc-collapsing] {
-    flex-shrink: 0;
-    align-content: start;
-    overflow: clip;
-  }
-
   //
   // Header
   //
