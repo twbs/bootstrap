@@ -21,6 +21,7 @@ const FILE_DESCRIPTIONS: Record<string, string> = {
   'dom/event-handler': 'Event handling utilities',
   'dom/manipulator': 'Data attribute manipulation',
   'dom/selector-engine': 'DOM selector utilities',
+  'util/color': 'Color parsing and conversion utilities',
   'util/component-functions': 'Shared component helpers',
   'util/config': 'Configuration base class',
   'util/floating-ui': 'Responsive placement utilities',
