@@ -9,6 +9,7 @@ type NavOverflowConfig = {
     collapseBelow: number | string;
     iconPlacement: string;
     menuPlacement: string;
+    menuStrategy: string;
     moreText: string | false;
     moreIcon: string;
     threshold: number;
@@ -26,6 +27,12 @@ declare class NavOverflow extends BaseComponent {
     protected _resizeObserver: ResizeObserver | null;
     protected _resizeHandler: (() => void) | null;
     protected _collapseBelow: number;
+    protected _itemMenus: Map<HTMLElement, HTMLElement>;
+    protected _relocatedMenus: Map<HTMLElement, {
+        menu: HTMLElement;
+        parent: ParentNode;
+        nextSibling: ChildNode | null;
+    }>;
     constructor(element?: string | Element | null, config?: Partial<NavOverflowConfig> | null);
     static get Default(): NavOverflowConfig;
     static get DefaultType(): Record<string, string>;
@@ -42,6 +49,11 @@ declare class NavOverflow extends BaseComponent {
     protected _calculateOverflow(): void;
     protected _applyOverflow(items: HTMLElement[], overflowItem: HTMLElement | null): void;
     protected _moveToOverflow(items: HTMLElement[]): void;
+    protected _relocateAsSubmenu(item: HTMLElement, link: HTMLElement, menu: HTMLElement): HTMLElement;
+    protected _cloneAsMenuItem(link: HTMLElement, submenu?: boolean): HTMLElement;
+    protected _findItemMenu(item: HTMLElement, link: HTMLElement): HTMLElement | null;
+    protected _resetMenu(toggle: HTMLElement, menu: HTMLElement): void;
+    protected _restoreRelocatedMenus(): void;
     protected _restoreItems(): void;
 }
 export default NavOverflow;

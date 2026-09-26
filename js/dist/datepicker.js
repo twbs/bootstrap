@@ -3,7 +3,7 @@
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
-import { Calendar } from "vanilla-calendar-pro";
+import { Calendar, months } from "vanilla-calendar-pro";
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import { isDisabled } from "./util/index.js";
@@ -26,6 +26,8 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
+const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY}`;
+const EVENT_CLICK = `click${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY}${DATA_API_KEY}`;
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"datepicker\"]";
@@ -106,7 +108,11 @@ var Datepicker = class extends BaseComponent {
 			this._themeObserver.disconnect();
 			this._themeObserver = null;
 		}
-		if (this._onFocusIn) EventHandler.off(document, EVENT_FOCUSIN, this._onFocusIn);
+		if (this._onOutside) {
+			EventHandler.off(document, EVENT_FOCUSIN, this._onOutside);
+			EventHandler.off(document, EVENT_POINTERDOWN, this._onOutside);
+		}
+		if (this._onTriggerClick) EventHandler.off(this._positionElement, EVENT_CLICK, this._onTriggerClick);
 		if (this._calendar) this._calendar.destroy();
 		this._calendar = null;
 		super.dispose();
@@ -128,7 +134,7 @@ var Datepicker = class extends BaseComponent {
 		this._calendar = new Calendar(this._positionElement, calendarOptions);
 		this._calendar.init();
 		this._setupThemeObserver();
-		this._setupDismissOnFocus();
+		this._setupDismiss();
 		if (this._isInput && this._element.value) this._parseInputValue();
 		this._updateDisplayWithSelectedDates();
 	}
@@ -156,7 +162,8 @@ var Datepicker = class extends BaseComponent {
 		return displayElement;
 	}
 	_getThemeAncestor() {
-		return this._element.closest("[data-bs-theme]");
+		if (this._themeAncestor === void 0) this._themeAncestor = this._element.closest("[data-bs-theme]");
+		return this._themeAncestor;
 	}
 	_getEffectiveTheme() {
 		const { datepickerTheme } = this._config;
@@ -180,22 +187,28 @@ var Datepicker = class extends BaseComponent {
 			attributeFilter: ["data-bs-theme"]
 		});
 	}
-	_setupDismissOnFocus() {
+	_setupDismiss() {
 		if (this._isInline) return;
-		this._onFocusIn = (event) => {
-			if (!this._isShown) return;
-			const { target } = event;
+		if (!this._isInput) {
+			this._onTriggerClick = () => {
+				if (!this._isShown) this._calendar?.hide();
+			};
+			EventHandler.on(this._positionElement, EVENT_CLICK, this._onTriggerClick);
+		}
+		this._onOutside = ({ target }) => {
 			const mainElement = this._calendar?.context?.mainElement;
-			if (target instanceof Node && (this._element.contains(target) || mainElement?.contains(target))) return;
-			this.hide();
+			const isOutside = !(target instanceof Node) || !this._element.contains(target) && !mainElement?.contains(target);
+			if (this._isShown && isOutside) this.hide();
 		};
-		EventHandler.on(document, EVENT_FOCUSIN, this._onFocusIn);
+		EventHandler.on(document, EVENT_FOCUSIN, this._onOutside);
+		EventHandler.on(document, EVENT_POINTERDOWN, this._onOutside);
 	}
 	_buildCalendarOptions() {
 		const theme = this._getEffectiveTheme();
 		const vcpTheme = !theme || theme === "auto" ? "system" : theme;
 		const calendarOptions = {
 			...this._config.vcpOptions,
+			extensions: [months],
 			inputMode: !this._isInline,
 			positionToInput: this._config.placement,
 			firstWeekday: this._config.firstWeekday,

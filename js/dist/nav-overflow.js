@@ -6,6 +6,7 @@
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
+import Menu from "./menu.js";
 import { DefaultIconAllowlist, sanitizeHtml } from "./util/sanitizer.js";
 //#region js/src/nav-overflow.ts
 /**
@@ -26,17 +27,23 @@ const CLASS_NAME_OVERFLOW = "nav-overflow";
 const CLASS_NAME_OVERFLOW_MENU = "nav-overflow-menu";
 const CLASS_NAME_HIDDEN = "d-none";
 const CLASS_NAME_KEEP = "nav-overflow-keep";
+const CLASS_NAME_INITIALIZED = "nav-overflow-initialized";
+const CLASS_NAME_SUBMENU = "submenu";
+const CLASS_NAME_SHOW = "show";
 const SELECTOR_NAV = ".nav";
 const SELECTOR_NAV_ITEM = ".nav-item";
 const SELECTOR_NAV_LINK = ".nav-link";
 const SELECTOR_OVERFLOW_TOGGLE = ".nav-overflow-toggle";
 const SELECTOR_OVERFLOW_MENU = ".nav-overflow-menu";
 const SELECTOR_CUSTOM_ICON = "[data-bs-overflow-icon]";
+const SELECTOR_MENU = ".menu";
+const SELECTOR_MENU_TOGGLE = "[data-bs-toggle=\"menu\"]";
 const DEFAULT_TEXT = "More";
 const Default = {
 	collapseBelow: 0,
 	iconPlacement: "start",
 	menuPlacement: "bottom-end",
+	menuStrategy: "absolute",
 	moreText: DEFAULT_TEXT,
 	moreIcon: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" viewBox=\"0 0 16 16\"><path d=\"M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3\"/></svg>",
 	threshold: 0
@@ -45,6 +52,7 @@ const DefaultType = {
 	collapseBelow: "(number|string)",
 	iconPlacement: "string",
 	menuPlacement: "string",
+	menuStrategy: "string",
 	moreText: "(string|boolean)",
 	moreIcon: "string",
 	threshold: "number"
@@ -65,6 +73,8 @@ var NavOverflow = class extends BaseComponent {
 		this._resizeObserver = null;
 		this._resizeHandler = null;
 		this._collapseBelow = 0;
+		this._itemMenus = /* @__PURE__ */ new Map();
+		this._relocatedMenus = /* @__PURE__ */ new Map();
 		this._init();
 	}
 	static get Default() {
@@ -90,11 +100,16 @@ var NavOverflow = class extends BaseComponent {
 	_init() {
 		this._element.classList.add(CLASS_NAME_OVERFLOW);
 		this._items = SelectorEngine.find(SELECTOR_NAV_ITEM, this._nav).filter((item) => !item.querySelector(SELECTOR_OVERFLOW_TOGGLE));
-		for (const [index, item] of this._items.entries()) item.dataset.bsNavOrder = index;
+		for (const [index, item] of this._items.entries()) {
+			item.dataset.bsNavOrder = index;
+			const link = SelectorEngine.findOne(SELECTOR_NAV_LINK, item);
+			if (link?.matches(SELECTOR_MENU_TOGGLE)) this._findItemMenu(item, link);
+		}
 		this._collapseBelow = this._resolveCollapseBelow();
 		this._createOverflowMenu();
 		this._setupResizeObserver();
 		this._calculateOverflow();
+		this._element.classList.add(CLASS_NAME_INITIALIZED);
 	}
 	_createOverflowMenu() {
 		this._overflowToggle = SelectorEngine.findOne(SELECTOR_OVERFLOW_TOGGLE, this._element);
@@ -111,6 +126,7 @@ var NavOverflow = class extends BaseComponent {
 		button.className = "nav-link nav-overflow-toggle";
 		button.setAttribute("data-bs-toggle", "menu");
 		button.setAttribute("data-bs-placement", this._config.menuPlacement);
+		button.setAttribute("data-bs-strategy", this._config.menuStrategy);
 		button.setAttribute("aria-expanded", "false");
 		if (label === "") button.setAttribute("aria-label", DEFAULT_TEXT);
 		const iconSpan = document.createElement("span");
@@ -200,28 +216,90 @@ var NavOverflow = class extends BaseComponent {
 	}
 	_moveToOverflow(items) {
 		if (!this._overflowMenu) return;
-		this._overflowMenu.innerHTML = "";
+		this._overflowMenu.replaceChildren();
 		this._overflowItems = [];
 		for (const item of items) {
 			const link = SelectorEngine.findOne(SELECTOR_NAV_LINK, item);
 			if (!link) continue;
-			const clonedLink = link.cloneNode(true);
-			clonedLink.className = "menu-item";
-			if (link.classList.contains("active")) clonedLink.classList.add("active");
-			if (link.classList.contains("disabled") || link.hasAttribute("disabled")) clonedLink.classList.add("disabled");
-			this._overflowMenu.append(clonedLink);
+			const menu = this._findItemMenu(item, link);
+			if (menu && link.matches(SELECTOR_MENU_TOGGLE)) this._overflowMenu.append(this._relocateAsSubmenu(item, link, menu));
+			else this._overflowMenu.append(this._cloneAsMenuItem(link));
 			item.classList.add(CLASS_NAME_HIDDEN);
 			item.dataset.bsNavOverflow = "true";
 			this._overflowItems.push(item);
 		}
 	}
+	_relocateAsSubmenu(item, link, menu) {
+		this._resetMenu(link, menu);
+		item.classList.remove(CLASS_NAME_SHOW);
+		this._relocatedMenus.set(item, {
+			menu,
+			parent: menu.parentNode,
+			nextSibling: menu.nextSibling
+		});
+		const submenu = document.createElement("div");
+		submenu.className = CLASS_NAME_SUBMENU;
+		submenu.append(this._cloneAsMenuItem(link, true), menu);
+		return submenu;
+	}
+	_cloneAsMenuItem(link, submenu = false) {
+		const clonedLink = link.cloneNode(true);
+		clonedLink.className = "menu-item";
+		clonedLink.removeAttribute("id");
+		if (link.classList.contains("active")) clonedLink.classList.add("active");
+		if (link.classList.contains("disabled") || link.hasAttribute("disabled")) clonedLink.classList.add("disabled");
+		if (submenu) {
+			for (const name of clonedLink.getAttributeNames()) if (name.startsWith("data-bs-") && name !== "data-bs-theme") clonedLink.removeAttribute(name);
+			clonedLink.removeAttribute("href");
+			clonedLink.setAttribute("aria-haspopup", "true");
+			clonedLink.setAttribute("aria-expanded", "false");
+			if (clonedLink.tagName === "A") {
+				clonedLink.setAttribute("role", "button");
+				if (!clonedLink.hasAttribute("tabindex")) clonedLink.setAttribute("tabindex", "0");
+			}
+		}
+		return clonedLink;
+	}
+	_findItemMenu(item, link) {
+		const sibling = SelectorEngine.next(link, SELECTOR_MENU)[0];
+		if (sibling && !sibling.classList.contains(CLASS_NAME_OVERFLOW_MENU)) {
+			this._itemMenus.set(item, sibling);
+			return sibling;
+		}
+		const nested = SelectorEngine.findOne(SELECTOR_MENU, item);
+		if (nested && !nested.classList.contains(CLASS_NAME_OVERFLOW_MENU)) {
+			this._itemMenus.set(item, nested);
+			return nested;
+		}
+		const cached = this._itemMenus.get(item);
+		if (cached?.isConnected) return cached;
+		this._itemMenus.delete(item);
+		return null;
+	}
+	_resetMenu(toggle, menu) {
+		Menu.getInstance(toggle)?.dispose();
+		toggle.classList.remove(CLASS_NAME_SHOW);
+		toggle.setAttribute("aria-expanded", "false");
+		toggle.parentElement?.classList.remove(CLASS_NAME_SHOW);
+		menu.classList.remove(CLASS_NAME_SHOW);
+	}
+	_restoreRelocatedMenus() {
+		for (const { menu, parent, nextSibling } of this._relocatedMenus.values()) if (nextSibling) nextSibling.before(menu);
+		else parent.append(menu);
+		this._relocatedMenus.clear();
+	}
 	_restoreItems() {
+		if (this._overflowToggle && this._overflowMenu) {
+			this._resetMenu(this._overflowToggle, this._overflowMenu);
+			this._overflowToggle.closest(SELECTOR_NAV_ITEM)?.classList.remove(CLASS_NAME_SHOW);
+		}
+		this._restoreRelocatedMenus();
 		for (const item of this._items) {
 			item.classList.remove(CLASS_NAME_HIDDEN);
 			delete item.dataset.bsNavOverflow;
 		}
 		this._overflowToggle?.closest(SELECTOR_NAV_ITEM)?.classList.remove(CLASS_NAME_HIDDEN);
-		if (this._overflowMenu) this._overflowMenu.innerHTML = "";
+		this._overflowMenu?.replaceChildren();
 		this._overflowItems = [];
 	}
 };

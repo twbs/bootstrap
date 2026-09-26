@@ -262,6 +262,7 @@
   --bs-btn-input-padding-y: 0.375rem;
   --bs-btn-input-padding-x: 0.75rem;
   --bs-btn-input-font-size: var(--bs-body-font-size);
+  --bs-btn-input-font-weight: var(--bs-font-weight-normal);
   --bs-btn-input-line-height: var(--bs-body-line-height);
   --bs-btn-input-border-radius: var(--bs-radius-5);
   --bs-btn-input-xs-gap: var(--bs-spacer-1);

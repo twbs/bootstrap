@@ -91,6 +91,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function(e
 	const config = Manipulator.getDataAttributes(this);
 	const currentDialog = this.closest("dialog[open]");
 	if (currentDialog && currentDialog !== target) {
+		if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) return;
 		const newDialog = Dialog.getOrCreateInstance(target, config);
 		target.classList.add(CLASS_NAME_SWAP_IN);
 		newDialog.show(this);
