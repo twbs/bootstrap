@@ -295,9 +295,13 @@ class OtpInput extends BaseComponent {
     // Sanitize before applying the length limit. The browser applies maxlength
     // to raw clipboard text before the input event, which can discard valid
     // characters that follow separators or whitespace.
-    const fullCode = sanitized.length === this._length
-    const start = fullCode ? 0 : (this._input.selectionStart ?? this._input.value.length)
-    const end = fullCode ? this._input.value.length : (this._input.selectionEnd ?? start)
+    let start = this._input.selectionStart ?? this._input.value.length
+    let end = this._input.selectionEnd ?? start
+    if (sanitized.length === this._length) {
+      start = 0
+      end = this._input.value.length
+    }
+
     const inserted = sanitized.slice(0, this._length - this._input.value.length + end - start)
 
     event.preventDefault()
