@@ -472,7 +472,7 @@ const openSearchDialog = () => {
 
   const dialog = Dialog.getOrCreateInstance(dialogEl)
   dialog.show()
-  // Focus the input on the next frame so the dialog is in the top layer.
+  // Keyboard shortcuts can focus as soon as the dialog enters the top layer.
   requestAnimationFrame(() => {
     dialogEl.querySelector('bd-search-input')?.focus()
   })
@@ -510,9 +510,11 @@ const setupDialogResetOnClose = () => {
     instance.triggerSearch('')
   })
 
-  // Re-render empty state on open so a freshly-saved visit shows up in the
-  // "Recently visited" list without waiting for the user to type and clear.
+  // Focus after the entry transition so pointer-triggered opens cannot return
+  // focus to the trigger. Re-render empty state so new visits appear at once.
   dialogEl.addEventListener('shown.bs.dialog', () => {
+    dialogEl.querySelector('bd-search-input')?.focus()
+
     if (!instance.searchTerm) {
       dialogEl.querySelector('bd-search-results')?._renderEmpty?.()
     }
