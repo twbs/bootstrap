@@ -287,16 +287,25 @@ class OtpInput extends BaseComponent {
 
   protected _handlePaste(event: BootstrapEvent): void {
     const pastedValue = event.clipboardData?.getData('text')
-    if (typeof pastedValue !== 'string') {
+    if (!pastedValue || this._input.readOnly) {
       return
     }
 
+    const sanitized = this._sanitize(pastedValue)
     // Sanitize before applying the length limit. The browser applies maxlength
     // to raw clipboard text before the input event, which can discard valid
     // characters that follow separators or whitespace.
+    const fullCode = sanitized.length === this._length
+    const start = fullCode ? 0 : (this._input.selectionStart ?? this._input.value.length)
+    const end = fullCode ? this._input.value.length : (this._input.selectionEnd ?? start)
+    const inserted = sanitized.slice(0, this._length - this._input.value.length + end - start)
+
     event.preventDefault()
-    this._input.value = this._sanitize(pastedValue)
-    this._selectSlot(this._firstEmptyIndex())
+    if (!inserted) {
+      return
+    }
+
+    this._input.setRangeText(inserted, start, end, 'end')
     this._afterValueChange()
   }
 

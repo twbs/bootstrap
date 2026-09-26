@@ -50,10 +50,15 @@ describe('OtpInput', () => {
 
     // Emulate the browser's default action. It applies maxlength before the
     // input event lets the component sanitize the value.
-    if (!event.defaultPrevented) {
-      input.value = value.slice(0, input.maxLength)
+    if (!event.defaultPrevented && !input.readOnly && !input.disabled && value) {
+      const start = input.selectionStart ?? input.value.length
+      const end = input.selectionEnd ?? start
+      const available = Math.max(0, input.maxLength - (input.value.length - (end - start)))
+      input.setRangeText(value.slice(0, available), start, end, 'end')
       input.dispatchEvent(createEvent('input'))
     }
+
+    return event
   }
 
   describe('VERSION', () => {
@@ -251,6 +256,63 @@ describe('OtpInput', () => {
 
       pasteInto(input, '123-456')
 
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should replace the selected range with a partial pasted value', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.setSelectionRange(2, 4)
+
+      pasteInto(input, '99')
+
+      expect(input.value).toEqual('129956')
+      expect(input.selectionStart).toEqual(4)
+    })
+
+    it('should replace the existing value when pasting a full code', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('12')
+
+      pasteInto(input, '654-321')
+
+      expect(input.value).toEqual('654321')
+    })
+
+    it('should not paste into a readonly input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.readOnly = true
+
+      const event = pasteInto(input, '654321')
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should not clear the value when pasting empty text', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      const event = pasteInto(input, '')
+
+      expect(event.defaultPrevented).toBeFalse()
       expect(input.value).toEqual('123456')
     })
 
