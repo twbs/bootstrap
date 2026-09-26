@@ -200,6 +200,8 @@ const eslintConfig = [
       '**/*.astro',
       // Meteor metadata file (uses unsupported eslint-env comment)
       'package.js',
+      // Cursor workspace metadata (gitignored)
+      '.cursor/**',
       // Conductor workspace scratch space (gitignored)
       '.context/**',
       // Claude worktrees
@@ -319,6 +321,7 @@ const eslintConfig = [
       }
     },
     rules: {
+      'max-nested-callbacks': 'off',
       'no-console': 'off',
       'unicorn/consistent-function-scoping': 'off',
       'unicorn/no-useless-undefined': 'off',

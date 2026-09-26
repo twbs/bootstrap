@@ -17,6 +17,7 @@
 ._*
 .cache
 .claude
+.cursor
 .DS_Store
 .idea
 .project
