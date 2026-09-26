@@ -128,6 +128,10 @@ New button variants: `.btn-solid`, `.btn-outline`, `.btn-subtle`, `.btn-text`, `
 
 Use `.theme-reset` on a nested subtree to drop inherited `--theme-*` tokens and return to component defaults.
 
+### Placeholder animations
+
+Use `.placeholder-wave` for the standard loading animation. Replace `.placeholder-glow` with `.placeholder-pulse` when you want the old opacity animation. `.placeholder-glow` remains as a compatibility alias.
+
 ### Utility class renames
 
 | v5 | v6 |

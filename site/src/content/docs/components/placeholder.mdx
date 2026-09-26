@@ -29,10 +29,10 @@ In the example below, we take a typical card component and recreate it with plac
   <div class="card" aria-hidden="true">
     <Placeholder width="100%" height="180" class="card-img-top" text={false} />
     <div class="card-body">
-      <div class="h5 card-title placeholder-glow">
+      <div class="h5 card-title placeholder-wave">
         <span class="placeholder col-6"></span>
       </div>
-      <p class="card-text placeholder-glow">
+      <p class="card-text placeholder-wave">
         <span class="placeholder col-7"></span>
         <span class="placeholder col-4"></span>
         <span class="placeholder col-4"></span>
@@ -57,10 +57,10 @@ In the example below, we take a typical card component and recreate it with plac
 <div class="card" aria-hidden="true">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title placeholder-glow">
+    <h5 class="card-title placeholder-wave">
       <span class="placeholder col-6"></span>
     </h5>
-    <p class="card-text placeholder-glow">
+    <p class="card-text placeholder-wave">
       <span class="placeholder col-7"></span>
       <span class="placeholder col-4"></span>
       <span class="placeholder col-4"></span>
@@ -117,19 +117,19 @@ The size of `.placeholder`s are based on the typographic style of the parent ele
 
 ## Animation
 
-Animate placeholders with `.placeholder-glow` or `.placeholder-wave` to better convey the perception of something being *actively* loaded.
+Use `.placeholder-wave` for the default loading animation. Use `.placeholder-pulse` for an opacity pulse. The old `.placeholder-glow` class remains as a compatibility alias for `.placeholder-pulse`.
 
-<Example code={`<p class="placeholder-glow">
+<Example code={`<p class="placeholder-wave">
     <span class="placeholder col-12"></span>
   </p>
 
-  <p class="placeholder-wave">
+  <p class="placeholder-pulse">
     <span class="placeholder col-12"></span>
   </p>`} />
 
 ### Text
 
-Add `placeholder-wave` to an inline element with text to apply the placeholder animations to the text.
+Add `.placeholder-wave` to an inline element to apply the loading animation to text.
 
 <Example code={`<span class="placeholder-wave fg-3">Working on it…</span>`} />
 

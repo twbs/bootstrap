@@ -19,8 +19,8 @@ $placeholder-tokens: defaults(
 // stylelint-disable-next-line scss/dollar-variable-default
 $placeholder-wave-tokens: defaults(
   (
-    --placeholder-opacity-max: .5,
-    --placeholder-opacity-min: .25,
+    --placeholder-wave-opacity-max: 1,
+    --placeholder-wave-opacity-min: .4,
   ),
   $placeholder-wave-tokens
 );
@@ -58,9 +58,10 @@ $placeholder-wave-tokens: defaults(
   }
 
   // Animation
+  .placeholder-pulse,
   .placeholder-glow {
     .placeholder {
-      animation: placeholder-glow 2s ease-in-out infinite;
+      animation: placeholder-pulse 2s ease-in-out infinite;
 
       @if $enable-reduced-motion {
         @media (prefers-reduced-motion: reduce) {
@@ -70,7 +71,7 @@ $placeholder-wave-tokens: defaults(
     }
   }
 
-  @keyframes placeholder-glow {
+  @keyframes placeholder-pulse {
     50% {
       opacity: var(--placeholder-opacity-min);
     }
@@ -79,12 +80,15 @@ $placeholder-wave-tokens: defaults(
   .placeholder-wave {
     @include tokens($placeholder-wave-tokens);
 
-    mask-image: linear-gradient(110deg, var(--black) 40%, rgb(0 0 0 / calc(1 - var(--placeholder-opacity-max))) 50%, var(--black) 60%);
-    mask-size: 200% 100%;
-    animation: placeholder-wave 2s linear infinite;
+    mask-image: linear-gradient(110deg, rgb(0 0 0 / var(--placeholder-wave-opacity-min)) 35%, rgb(0 0 0 / var(--placeholder-wave-opacity-max)) 50%, rgb(0 0 0 / var(--placeholder-wave-opacity-min)) 65%);
+    mask-repeat: no-repeat;
+    mask-position: 100% 0%;
+    mask-size: 250% 100%;
+    animation: placeholder-wave 1.6s linear infinite;
 
     @if $enable-reduced-motion {
       @media (prefers-reduced-motion: reduce) {
+        mask-image: none;
         animation: none;
       }
     }
@@ -92,7 +96,7 @@ $placeholder-wave-tokens: defaults(
 
   @keyframes placeholder-wave {
     100% {
-      mask-position: -200% 0%;
+      mask-position: 0% 0%;
     }
   }
 }

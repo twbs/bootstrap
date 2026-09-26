@@ -320,7 +320,7 @@ class BdSearchResults extends HTMLElement {
 
   _paintLoading() {
     this.innerHTML = `
-      <div class="bd-search-loading placeholder-glow" role="status" aria-live="polite">
+      <div class="bd-search-loading placeholder-wave" role="status" aria-live="polite">
         <span class="visually-hidden">${escapeHtml(instance.translate('searching') || 'Searching…')}</span>
         ${Array.from({ length: 3 }, () => `
           <div class="bd-search-skeleton">
