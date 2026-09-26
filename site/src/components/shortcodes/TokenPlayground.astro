@@ -1,0 +1,358 @@
+---
+import Code from '@components/shortcodes/Code.astro'
+
+// Both menus move two steps of their scale rather than one, which is what
+// changing the Sass base value does: `--radius-7` is `$radius * 1.5` and
+// `--spacer-6` is `$spacer * 1.25` in scss/_config.scss. The components below
+// read `--radius-5` and `--spacer` (button, input, alert) or `--radius-7` and
+// `--spacer-6` (card), so driving both makes the whole group move together.
+const defaultRadius = '0.5'
+const defaultSpacer = '1'
+const defaultColor = 'blue'
+
+const radiusOptions = ['0', '0.25', '0.5', '0.75', '1', '1.25', '1.5']
+const spacerOptions = ['0.75', '1', '1.25', '1.5']
+
+const menus = [
+  { control: 'radius', label: 'Radius', value: defaultRadius, options: radiusOptions },
+  { control: 'spacer', label: 'Spacer', value: defaultSpacer, options: spacerOptions }
+]
+
+const palette = [
+  { name: 'blue', label: 'Blue' },
+  { name: 'purple', label: 'Purple' },
+  { name: 'pink', label: 'Pink' },
+  { name: 'orange', label: 'Orange' },
+  { name: 'green', label: 'Green' }
+]
+
+// Today’s model: reminting `--bs-primary-base` alone recolors solid surfaces
+// (button, badge) but leaves alerts, borders, and focus rings on the compiled
+// blue pairing. To move the whole theme you must restate every derived token,
+// which is what this snippet and the script below do.
+const css = `.token-demo {
+  --bs-radius-5: ${defaultRadius}rem;
+  --bs-spacer: ${defaultSpacer}rem;
+  --bs-primary-base: var(--bs-${defaultColor}-500);
+  --bs-primary-bg: var(--bs-primary-base);
+  --bs-primary-bg-subtle: light-dark(var(--bs-${defaultColor}-100), var(--bs-${defaultColor}-900));
+  --bs-primary-fg: light-dark(var(--bs-${defaultColor}-600), var(--bs-${defaultColor}-400));
+  --bs-primary-border: light-dark(var(--bs-${defaultColor}-300), var(--bs-${defaultColor}-600));
+}`
+---
+
+<div class="bd-playground not-prose" data-token-playground>
+  <div class="bd-playground-controls bg-1 px-7 py-5 fs-sm">
+    <div class="d-flex flex-wrap gap-4 align-items-end">
+      {
+        menus.map((menu) => (
+          <div class="vstack gap-1 align-items-start" data-control={menu.control} data-value={menu.value}>
+            <span class="form-label fw-semibold mb-0" id={`bd-token-${menu.control}-label`}>
+              {menu.label}
+            </span>
+            <button
+              type="button"
+              class="btn-solid theme-secondary btn-sm"
+              id={`bd-token-${menu.control}`}
+              data-bs-toggle="menu"
+              data-bs-placement="bottom-start"
+              aria-expanded="false"
+              aria-labelledby={`bd-token-${menu.control}-label bd-token-${menu.control}`}
+            >
+              <span data-value-label>{menu.value}rem</span>
+              <svg
+                viewBox="0 0 16 16"
+                width="12"
+                height="12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m2 5 6 6 6-6" />
+              </svg>
+            </button>
+            <div class="menu" style="--bs-menu-min-width: 7rem;" aria-labelledby={`bd-token-${menu.control}`}>
+              {menu.options.map((option) => (
+                <button
+                  type="button"
+                  class:list={['menu-item', { selected: option === menu.value }]}
+                  data-value={option}
+                >
+                  {option}rem
+                </button>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <div class="vstack gap-1 align-items-start" data-control="color" data-value={defaultColor}>
+        <span class="form-label fw-semibold mb-0">Primary</span>
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+          {
+            palette.map((color) => (
+              <button
+                type="button"
+                class:list={['bd-token-swatch', { selected: color.name === defaultColor }]}
+                style={`background-color: var(--bs-${color.name}-500)`}
+                data-value={color.name}
+                aria-label={color.label}
+                aria-pressed={color.name === defaultColor}
+              >
+                <svg
+                  viewBox="0 0 16 16"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m3.5 8 3 3 6-6" />
+                </svg>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="vstack gap-1 align-items-start" data-control="scope" data-value="all">
+        <span class="form-label fw-semibold mb-0" id="bd-token-scope-label">Remint</span>
+        <div class="btn-group btn-group-divider btn-group-sm" role="group" aria-labelledby="bd-token-scope-label">
+          <label class="btn-check btn-outline theme-primary">
+            <input type="radio" name="bd-token-scope" value="base" />
+            Base
+          </label>
+          <label class="btn-check btn-outline theme-primary">
+            <input type="radio" name="bd-token-scope" value="all" checked />
+            All
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bd-example-snippet bd-code-snippet">
+    <div class="bd-example">
+      <div class="token-demo vstack gap-5" data-token-target>
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+          <button type="button" class="btn-solid theme-primary">Button</button>
+          <input type="text" class="form-control w-auto" value="Input" aria-label="Example input" />
+        </div>
+
+        <div class="alert theme-primary mb-0">A token change reaches every component at once.</div>
+
+        <div class="card card-subtle theme-primary">
+          <div class="card-header">Card header</div>
+          <div class="card-body">
+            <h3 class="card-title fs-md mb-1">Card</h3>
+            <p class="card-text mb-0 fs-sm">Padding follows the spacer, corners follow the radius.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <Code code={css} lang="css" nestedInExample={true} />
+  </div>
+</div>
+
+<script>
+  import { Menu } from '@bootstrap'
+
+  const playground = document.querySelector<HTMLElement>('[data-token-playground]')
+
+  if (playground) {
+    const target = playground.querySelector<HTMLElement>('[data-token-target]')
+    const radiusControl = playground.querySelector<HTMLElement>('[data-control="radius"]')
+    const spacerControl = playground.querySelector<HTMLElement>('[data-control="spacer"]')
+    const colorControl = playground.querySelector<HTMLElement>('[data-control="color"]')
+    const scopeControl = playground.querySelector<HTMLElement>('[data-control="scope"]')
+    const code = playground.querySelector<HTMLElement>('.astro-code')
+
+    playground.querySelectorAll<HTMLElement>('[data-bs-toggle="menu"]').forEach((toggle) => {
+      Menu.getOrCreateInstance(toggle)
+    })
+
+    function lineFor(property: string) {
+      return [...(code?.querySelectorAll<HTMLElement>('.line') ?? [])].find((candidate) =>
+        candidate.textContent?.includes(`${property}:`)
+      )
+    }
+
+    function leafSpans(line: HTMLElement) {
+      return [...line.querySelectorAll<HTMLElement>('span')].filter((span) => span.childElementCount === 0)
+    }
+
+    // Shiki splits values across spans, so collapse the value tokens on that
+    // property’s line into a single rewrite.
+    function setLineValue(property: string, value: string) {
+      const line = lineFor(property)
+      if (!line) {
+        return
+      }
+
+      const leaves = leafSpans(line)
+      const colon = leaves.findIndex((span) => (span.textContent ?? '').includes(':'))
+
+      if (colon === -1) {
+        return
+      }
+
+      const after = leaves.slice(colon + 1)
+      const end = after.findIndex((span) => (span.textContent ?? '').includes(';'))
+      const valueLeaves = end === -1 ? after : after.slice(0, end)
+
+      if (valueLeaves.length === 0) {
+        return
+      }
+
+      valueLeaves[0].textContent = ` ${value}`
+
+      for (const extra of valueLeaves.slice(1)) {
+        extra.textContent = ''
+      }
+
+      if (end !== -1) {
+        after[end].textContent = ';'
+      }
+    }
+
+    function controlValue(control: HTMLElement | null, fallback: string) {
+      return control?.dataset.value ?? fallback
+    }
+
+    function selectValue(control: HTMLElement, value: string) {
+      control.dataset.value = value
+
+      const label = control.querySelector<HTMLElement>('[data-value-label]')
+
+      if (label) {
+        label.textContent = `${value}rem`
+      }
+
+      control.querySelectorAll<HTMLElement>('[data-value]').forEach((option) => {
+        const selected = option.dataset.value === value
+
+        option.classList.toggle('selected', selected)
+
+        if (option.hasAttribute('aria-pressed')) {
+          option.setAttribute('aria-pressed', String(selected))
+        }
+      })
+    }
+
+    function bindControl(control: HTMLElement | null) {
+      if (!control) {
+        return
+      }
+
+      control.addEventListener('click', (event) => {
+        const item = (event.target as HTMLElement).closest<HTMLElement>('[data-value]')
+
+        if (!item || !control.contains(item) || item === control) {
+          return
+        }
+
+        selectValue(control, item.dataset.value ?? '')
+        update()
+      })
+    }
+
+    // Buttons read `--primary-bg`. Alerts read `--primary-bg-subtle`,
+    // `--primary-fg`, and `--primary-border`. Reminting only `base`/`bg`
+    // leaves the alert on the compiled blue pairing, so restate all nine.
+    function primaryTokens(color: string) {
+      return {
+        base: `var(--bs-${color}-500)`,
+        bg: `var(--bs-${color}-500)`,
+        fg: `light-dark(var(--bs-${color}-600), var(--bs-${color}-400))`,
+        fgEmphasis: `light-dark(var(--bs-${color}-800), var(--bs-${color}-200))`,
+        bgSubtle: `light-dark(var(--bs-${color}-100), var(--bs-${color}-900))`,
+        bgMuted: `light-dark(var(--bs-${color}-200), var(--bs-${color}-800))`,
+        border: `light-dark(var(--bs-${color}-300), var(--bs-${color}-600))`,
+        focusRing: `light-dark(color-mix(in oklch, var(--bs-${color}-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-${color}-500) 75%, var(--bs-bg-body)))`,
+        contrast: 'var(--bs-white)'
+      }
+    }
+
+    function update() {
+      const radius = Number(controlValue(radiusControl, '0.5'))
+      const spacer = Number(controlValue(spacerControl, '1'))
+      const color = controlValue(colorControl, 'blue')
+      const scope = controlValue(scopeControl, 'all')
+      const primary = primaryTokens(color)
+
+      // Tokens beyond `base`/`bg`. In `base` scope we drop these so the
+      // components fall back to the compiled blue pairing on `:root`.
+      const derived: Record<string, string> = {
+        '--bs-primary-fg': primary.fg,
+        '--bs-primary-fg-emphasis': primary.fgEmphasis,
+        '--bs-primary-bg-subtle': primary.bgSubtle,
+        '--bs-primary-bg-muted': primary.bgMuted,
+        '--bs-primary-border': primary.border,
+        '--bs-primary-focus-ring': primary.focusRing,
+        '--bs-primary-contrast': primary.contrast
+      }
+
+      target?.style.setProperty('--bs-radius-5', `${radius}rem`)
+      target?.style.setProperty('--bs-radius-7', `${radius * 1.5}rem`)
+      target?.style.setProperty('--bs-spacer', `${spacer}rem`)
+      target?.style.setProperty('--bs-spacer-6', `${spacer * 1.25}rem`)
+      target?.style.setProperty('--bs-primary-base', primary.base)
+      target?.style.setProperty('--bs-primary-bg', primary.bg)
+
+      for (const [property, value] of Object.entries(derived)) {
+        if (scope === 'all') {
+          target?.style.setProperty(property, value)
+        } else {
+          target?.style.removeProperty(property)
+        }
+      }
+
+      setLineValue('--bs-radius-5', `${radius}rem`)
+      setLineValue('--bs-spacer', `${spacer}rem`)
+      setLineValue('--bs-primary-base', primary.base)
+
+      // The derived lines in the snippet only appear in `all` scope.
+      const snippetDerived: Record<string, string> = {
+        '--bs-primary-bg-subtle': primary.bgSubtle,
+        '--bs-primary-fg': primary.fg,
+        '--bs-primary-border': primary.border
+      }
+
+      for (const [property, value] of Object.entries(snippetDerived)) {
+        const line = lineFor(property)
+        if (!line) {
+          continue
+        }
+
+        line.classList.toggle('d-none', scope !== 'all')
+
+        if (scope === 'all') {
+          setLineValue(property, value)
+        }
+      }
+    }
+
+    bindControl(radiusControl)
+    bindControl(spacerControl)
+    bindControl(colorControl)
+
+    playground.querySelectorAll<HTMLInputElement>('input[name="bd-token-scope"]').forEach((input) => {
+      input.addEventListener('change', () => {
+        if (scopeControl) {
+          scopeControl.dataset.value = input.value
+        }
+
+        update()
+      })
+    })
+
+    update()
+  }
+</script>
