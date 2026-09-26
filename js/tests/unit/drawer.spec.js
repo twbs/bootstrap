@@ -254,6 +254,55 @@ describe('Drawer', () => {
         drawer.show()
       })
     })
+
+    it('should hide a plain drawer when its navbar expands without a window resize', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<nav class="navbar" style="width: 100px">',
+          '  <dialog class="drawer drawer-end drawer-instant" style="position: fixed"></dialog>',
+          '</nav>'
+        ].join('')
+
+        const navbarEl = fixtureEl.querySelector('.navbar')
+        const drawerEl = fixtureEl.querySelector('dialog')
+        const drawer = new Drawer(drawerEl)
+
+        const spy = spyOn(drawer, 'hide').and.callThrough()
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawerEl.style.position = 'static'
+          navbarEl.style.width = '200px'
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should disconnect the navbar resize observer on dispose', () => {
+      fixtureEl.innerHTML = [
+        '<nav class="navbar">',
+        '  <dialog class="drawer"></dialog>',
+        '</nav>'
+      ].join('')
+
+      const navbarEl = fixtureEl.querySelector('.navbar')
+      const drawerEl = fixtureEl.querySelector('dialog')
+      const observeSpy = spyOn(ResizeObserver.prototype, 'observe').and.callThrough()
+      const drawer = new Drawer(drawerEl)
+      const observer = drawer._resizeObserver
+      const disconnectSpy = spyOn(observer, 'disconnect').and.callThrough()
+
+      expect(observeSpy).toHaveBeenCalledWith(navbarEl)
+
+      drawer.dispose()
+
+      expect(disconnectSpy).toHaveBeenCalled()
+    })
   })
 
   describe('config', () => {
@@ -1170,6 +1219,18 @@ describe('Drawer', () => {
 
         drawer.show()
       })
+    })
+
+    it('should not hide a non-drawer dialog whose class contains "drawer"', () => {
+      fixtureEl.innerHTML = '<dialog class="my-drawer"></dialog>'
+
+      const dialogEl = fixtureEl.querySelector('dialog')
+      dialogEl.show()
+
+      const resizeEvent = createEvent('resize')
+      window.dispatchEvent(resizeEvent)
+
+      expect(dialogEl.open).toBeTrue()
     })
   })
 
