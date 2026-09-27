@@ -253,7 +253,10 @@ class Chips extends BaseComponent {
       const end = Math.max(anchorIndex, chipIndex)
 
       if (!addToSelection) {
+        // clearSelection() resets the anchor, keep it for the next range selection
+        const anchorChip = this._anchorChip
         this.clearSelection()
+        this._anchorChip = anchorChip
       }
 
       for (let i = start; i <= end; i++) {

@@ -308,6 +308,20 @@ describe('Chips', () => {
       expect(chips.getSelectedValues()).toEqual(['a', 'b', 'c'])
     })
 
+    it('should keep the anchor chip across range selections', () => {
+      const { chips } = makeChips()
+      const first = chips.add('a')
+      const second = chips.add('b')
+      chips.add('c')
+      const fourth = chips.add('d')
+
+      chips.selectChip(first)
+      chips.selectChip(second, { rangeSelect: true })
+      chips.selectChip(fourth, { rangeSelect: true })
+
+      expect(chips.getSelectedValues()).toEqual(['a', 'b', 'c', 'd'])
+    })
+
     it('should ignore selection requests for foreign elements', () => {
       const { chips } = makeChips()
       chips.add('a')
