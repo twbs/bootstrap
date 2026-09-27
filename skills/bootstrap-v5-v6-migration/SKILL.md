@@ -491,6 +491,7 @@ The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem
 
 - `$nested-kbd-font-weight`
 - `$enable-validation-icons`
+- `$enable-caret`, `$caret-width`, `$caret-vertical-align`, `$caret-spacing`
 - `$accordion-button-focus-border-color`, `$tooltip-arrow-color`
 - `$popover-arrow-color`, `$popover-arrow-outer-color`
 - `$alert-bg-scale`, `$alert-border-scale`, `$alert-color-scale`
@@ -500,6 +501,7 @@ The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem
 - All `*-focus-box-shadow` variables — use `focus-ring()` mixin with `--focus-ring-*` CSS custom properties
 - RFS mixins — use `clamp()` for responsive sizing
 - `create-css-vars()` mixin
+- Caret mixins (`caret()`, `caret-down()`, `caret-up()`, `caret-end()`, `caret-start()`) — add an icon to the toggle markup instead
 - `muted`, `black-50`, `white-50` from text color utilities map
 
 ### Utility API
