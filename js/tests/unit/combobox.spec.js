@@ -529,6 +529,28 @@ describe('Combobox', () => {
       expect(fixtureEl.querySelector('input[type="hidden"]')).toBeNull()
       expect(Combobox.getInstance(toggleEl)).toBeNull()
     })
+
+    it('should remove component listeners and keep consumer listeners', () => {
+      const { combobox, toggleEl, menuEl, items } = makeCombobox({}, markup({
+        search: SEARCH_HTML
+      }))
+      const searchInput = menuEl.querySelector('.combobox-search-input')
+      const toggleSpy = jasmine.createSpy('toggle')
+      const menuSpy = jasmine.createSpy('menu')
+      const searchSpy = jasmine.createSpy('search')
+
+      toggleEl.addEventListener('keydown', toggleSpy)
+      menuEl.addEventListener('click', menuSpy)
+      searchInput.addEventListener('input', searchSpy)
+      combobox.dispose()
+
+      expect(() => keydown(toggleEl, 'ArrowDown')).not.toThrow()
+      expect(() => items[0].click()).not.toThrow()
+      expect(() => searchInput.dispatchEvent(new Event('input'))).not.toThrow()
+      expect(toggleSpy).toHaveBeenCalled()
+      expect(menuSpy).toHaveBeenCalled()
+      expect(searchSpy).toHaveBeenCalled()
+    })
   })
 
   describe('data api', () => {

@@ -472,6 +472,22 @@ describe('Strength', () => {
 
       expect(Strength.getInstance(strengthEl)).toBeNull()
     })
+
+    it('should remove component listeners and keep consumer listeners', () => {
+      fixtureEl.innerHTML = getStrengthHtml()
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const strength = new Strength(strengthEl)
+      const inputSpy = jasmine.createSpy('input')
+
+      passwordInput.addEventListener('input', inputSpy)
+      strength.dispose()
+
+      passwordInput.value = 'Password1!'
+      expect(() => passwordInput.dispatchEvent(createEvent('input'))).not.toThrow()
+      expect(inputSpy).toHaveBeenCalled()
+    })
   })
 
   describe('getInstance', () => {
