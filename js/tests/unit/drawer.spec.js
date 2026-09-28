@@ -433,6 +433,33 @@ describe('Drawer', () => {
         drawer.show()
       })
     })
+
+    it('should not respond to backdrop clicks for modal drawers without a backdrop', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl, {
+          scroll: false,
+          backdrop: false
+        })
+        const hideSpy = spyOn(drawer, 'hide')
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          const clickEvent = createEvent('click')
+          Object.defineProperty(clickEvent, 'target', { value: drawerEl })
+          drawerEl.dispatchEvent(clickEvent)
+
+          setTimeout(() => {
+            expect(drawer._openedAsModal).toBeTrue()
+            expect(hideSpy).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        })
+
+        drawer.show()
+      })
+    })
   })
 
   describe('toggle', () => {
