@@ -25,7 +25,8 @@
 
 // Load docs components
 // @use "variables";
-@use "navbar";
+@use "@twbs/docs-ui/scss/icons";
+@use "@twbs/docs-ui/scss/navbar";
 @use "masthead";
 @use "ads";
 @use "content";

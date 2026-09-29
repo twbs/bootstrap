@@ -1,89 +1,68 @@
 ---
-import BootstrapWhiteFillIcon from '@components/icons/BootstrapWhiteFillIcon.astro'
+import SharedFooter from '@twbs/docs-ui/components/Footer'
+import type { FooterColumn } from '@twbs/docs-ui'
 import { getConfig } from '@libs/config'
 import { getVersionedDocsPath } from '@libs/path'
+
+const site = getConfig()
+const columns: FooterColumn[] = [
+  {
+    title: 'Links',
+    links: [
+      { label: 'Home', href: '/' },
+      { label: 'Docs', href: getVersionedDocsPath('/') },
+      { label: 'Examples', href: getVersionedDocsPath('examples') },
+      { label: 'Icons', href: site.icons },
+      { label: 'Blog', href: site.blog },
+      { label: 'Swag Store', href: site.swag, external: true }
+    ]
+  },
+  {
+    title: 'Guides',
+    links: [
+      { label: 'Getting started', href: getVersionedDocsPath('getting-started') },
+      { label: 'Starter template', href: getVersionedDocsPath('examples/starter-template') },
+      { label: 'Webpack', href: getVersionedDocsPath('guides/webpack') },
+      { label: 'Parcel', href: getVersionedDocsPath('guides/parcel') },
+      { label: 'Vite', href: getVersionedDocsPath('guides/vite') }
+    ]
+  },
+  {
+    title: 'Projects',
+    links: [
+      { label: 'Bootstrap 6', href: `${site.github_org}/bootstrap`, external: true },
+      { label: 'Bootstrap 5', href: `${site.github_org}/bootstrap/tree/v5-dev`, external: true },
+      { label: 'Icons', href: `${site.github_org}/icons`, external: true },
+      { label: 'Examples repo', href: `${site.github_org}/examples`, external: true }
+    ]
+  },
+  {
+    title: 'Community',
+    links: [
+      { label: 'Issues', href: `${site.github_org}/bootstrap/issues`, external: true },
+      { label: 'Discussions', href: `${site.github_org}/bootstrap/discussions`, external: true },
+      { label: 'Corporate sponsors', href: 'https://github.com/sponsors/twbs', external: true },
+      { label: 'Open Collective', href: site.opencollective, external: true },
+      { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/bootstrap-5', external: true }
+    ]
+  }
+]
 ---
 
-<footer class="bd-footer py-4 md:py-5 mt-5 fg-2">
-  <div class="container bd-gutter">
-    <div class="row">
-      <div class="lg:col-3 mb-3">
-        <a class="d-inline-flex align-items-center mb-2 fg-body text-decoration-none" href="/" aria-label="Bootstrap">
-          <BootstrapWhiteFillIcon class="d-block me-2" height={32} width={40} />
-          <span class="fw-medium">Bootstrap</span>
-        </a>
-        <ul class="list-unstyled small">
-          <li class="mb-2">
-            Designed and built with all the love in the world by the Bootstrap team with the help of <a
-              href={`${getConfig().repo}/graphs/contributors`}>our contributors</a
-            >.
-          </li>
-          <li class="mb-2">
-            Code licensed <a href={`${getConfig().repo}/blob/main/LICENSE`} target="_blank" rel="license noopener"
-              >MIT</a
-            >, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener"
-              >CC BY 3.0</a
-            >.
-          </li>
-          <li class="mb-2">Currently v{getConfig().current_version}.</li>
-        </ul>
-      </div>
-      <div class="col-6 lg:col-2 lg:offset-1 mb-3">
-        <h5>Links</h5>
-        <ul class="list-unstyled vstack gap-2">
-          <li><a href="/">Home</a></li>
-          <li><a href={getVersionedDocsPath('/')}>Docs</a></li>
-          <li><a href={getVersionedDocsPath('examples')}>Examples</a></li>
-          <li><a href={getConfig().icons}>Icons</a></li>
-          <li><a href={getConfig().blog}>Blog</a></li>
-          <li><a href={getConfig().swag} target="_blank" rel="noopener">Swag Store</a></li>
-        </ul>
-      </div>
-      <div class="col-6 lg:col-2 mb-3">
-        <h5>Guides</h5>
-        <ul class="list-unstyled vstack gap-2">
-          <li><a href={getVersionedDocsPath('getting-started')}>Getting started</a></li>
-          <li><a href={getVersionedDocsPath('examples/starter-template')}>Starter template</a></li>
-          <li><a href={getVersionedDocsPath('guides/webpack')}>Webpack</a></li>
-          <li><a href={getVersionedDocsPath('guides/parcel')}>Parcel</a></li>
-          <li><a href={getVersionedDocsPath('guides/vite')}>Vite</a></li>
-        </ul>
-      </div>
-      <div class="col-6 lg:col-2 mb-3">
-        <h5>Projects</h5>
-        <ul class="list-unstyled vstack gap-2">
-          <li>
-            <a href={`${getConfig().github_org}/bootstrap`} target="_blank" rel="noopener">Bootstrap 6</a>
-          </li>
-          <li>
-            <a href={`${getConfig().github_org}/bootstrap/tree/v5-dev`} target="_blank" rel="noopener">Bootstrap 5</a>
-          </li>
-          <li><a href={`${getConfig().github_org}/icons`} target="_blank" rel="noopener">Icons</a></li>
-          <li>
-            <a href={`${getConfig().github_org}/examples`} target="_blank" rel="noopener">Examples repo</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-6 lg:col-2 mb-3">
-        <h5>Community</h5>
-        <ul class="list-unstyled vstack gap-2">
-          <li>
-            <a href={`${getConfig().github_org}/bootstrap/issues`} target="_blank" rel="noopener">Issues</a>
-          </li>
-          <li>
-            <a href={`${getConfig().github_org}/bootstrap/discussions`} target="_blank" rel="noopener">Discussions</a>
-          </li>
-          <li>
-            <a href="https://github.com/sponsors/twbs" target="_blank" rel="noopener">Corporate sponsors</a>
-          </li>
-          <li><a href={getConfig().opencollective} target="_blank" rel="noopener">Open Collective</a></li>
-          <li>
-            <a href="https://stackoverflow.com/questions/tagged/bootstrap-5" target="_blank" rel="noopener"
-              >Stack Overflow</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+<SharedFooter brand="Bootstrap" columns={columns}>
+  <ul class="list-unstyled small">
+    <li class="mb-2">
+      Designed and built with all the love in the world by the Bootstrap team with the help of <a
+        href={`${site.repo}/graphs/contributors`}>our contributors</a
+      >.
+    </li>
+    <li class="mb-2">
+      Code licensed <a href={`${site.repo}/blob/main/LICENSE`} target="_blank" rel="license noopener">MIT</a>, docs <a
+        href="https://creativecommons.org/licenses/by/3.0/"
+        target="_blank"
+        rel="license noopener">CC BY 3.0</a
+      >.
+    </li>
+    <li class="mb-2">Currently v{site.current_version}.</li>
+  </ul>
+</SharedFooter>

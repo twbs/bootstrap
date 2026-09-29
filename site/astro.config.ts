@@ -103,10 +103,14 @@ export default defineConfig({
   site,
   vite: {
     plugins: [stackblitzPlugin()],
+    optimizeDeps: {
+      exclude: ['@twbs/docs-ui']
+    },
     resolve: {
-      alias: {
-        '@bootstrap': bootstrapBundlePath
-      }
+      alias: [
+        { find: '@bootstrap', replacement: bootstrapBundlePath },
+        { find: /^bootstrap$/, replacement: bootstrapBundlePath }
+      ]
     }
   }
 })

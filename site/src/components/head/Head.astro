@@ -1,6 +1,5 @@
 ---
 import { getConfig } from '@libs/config'
-import { getVersionedDocsPath } from '@libs/path'
 import type { Layout } from '@libs/layout'
 import HeadMeta from '@twbs/docs-ui/components/Head'
 import Stylesheet from '@components/head/Stylesheet.astro'
@@ -36,34 +35,32 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
   author={getConfig().authors}
   canonical={canonicalUrl}
   robots={robots}
-  colorModeScript={getVersionedDocsPath('assets/js/color-modes.js')}
 >
-
-{
-  import.meta.env.PROD && ScssProd && (
-    <>
-      <Stylesheet />
-      <ScssProd.default />
-    </>
-  )
-}
-
-{!import.meta.env.PROD && Scss && <Scss.default />}
-
-<Favicons />
-<Social description={description} layout={layout} thumbnail={thumbnail} title={title} />
-{/* Chromium Speculation Rules: prerender likely next docs pages on hover/intent. */}
-<script is:inline type="speculationrules">
   {
-    "prerender": [
-      {
-        "where": {
-          "href_matches": "/*"
-        },
-        "eagerness": "moderate"
-      }
-    ]
+    import.meta.env.PROD && ScssProd && (
+      <>
+        <Stylesheet />
+        <ScssProd.default />
+      </>
+    )
   }
-</script>
-<Analytics />
+
+  {!import.meta.env.PROD && Scss && <Scss.default />}
+
+  <Favicons />
+  <Social description={description} layout={layout} thumbnail={thumbnail} title={title} />
+  {/* Chromium Speculation Rules: prerender likely next docs pages on hover/intent. */}
+  <script is:inline type="speculationrules">
+    {
+      "prerender": [
+        {
+          "where": {
+            "href_matches": "/*"
+          },
+          "eagerness": "moderate"
+        }
+      ]
+    }
+  </script>
+  <Analytics />
 </HeadMeta>
