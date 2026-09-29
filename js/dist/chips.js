@@ -145,7 +145,11 @@ var Chips = class extends BaseComponent {
 			const chipIndex = chipElements.indexOf(chip);
 			const start = Math.min(anchorIndex, chipIndex);
 			const end = Math.max(anchorIndex, chipIndex);
-			if (!addToSelection) this.clearSelection();
+			if (!addToSelection) {
+				const anchorChip = this._anchorChip;
+				this.clearSelection();
+				this._anchorChip = anchorChip;
+			}
 			for (let i = start; i <= end; i++) {
 				this._selectedChips.add(chipElements[i]);
 				chipElements[i].classList.add(CLASS_NAME_ACTIVE);

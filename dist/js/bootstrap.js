@@ -722,7 +722,7 @@ const EVENT_SLID = `slid${EVENT_KEY$16}`;
 const EVENT_KEYDOWN$2 = `keydown${EVENT_KEY$16}`;
 const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$16}`;
 const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$16}`;
-const EVENT_POINTERDOWN$2 = `pointerdown${EVENT_KEY$16}`;
+const EVENT_POINTERDOWN$3 = `pointerdown${EVENT_KEY$16}`;
 const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$16}${DATA_API_KEY$11}`;
 const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$16}${DATA_API_KEY$11}`;
 const CLASS_NAME_CAROUSEL = "carousel";
@@ -876,7 +876,7 @@ var Carousel = class extends BaseComponent {
 			EventHandler.on(this._element, EVENT_MOUSEENTER$2, () => this.pause());
 			EventHandler.on(this._element, EVENT_MOUSELEAVE$1, () => this._maybeEnableCycle());
 		}
-		EventHandler.on(this._viewport, EVENT_POINTERDOWN$2, () => this._pauseFromInteraction());
+		EventHandler.on(this._viewport, EVENT_POINTERDOWN$3, () => this._pauseFromInteraction());
 	}
 	_keydown(event) {
 		if (/input|textarea/i.test(event.target.tagName)) return;
@@ -2429,7 +2429,7 @@ const EVENT_SHOWN$3 = `shown${EVENT_KEY$12}`;
 const EVENT_HIDE$3 = `hide${EVENT_KEY$12}`;
 const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$12}`;
 const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$12}`;
-const EVENT_POINTERDOWN$1 = `pointerdown${EVENT_KEY$12}`;
+const EVENT_POINTERDOWN$2 = `pointerdown${EVENT_KEY$12}`;
 const EVENT_CLICK$4 = `click${EVENT_KEY$12}`;
 const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$12}${DATA_API_KEY$7}`;
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$12}${DATA_API_KEY$7}`;
@@ -2513,7 +2513,7 @@ var Datepicker = class extends BaseComponent {
 		}
 		if (this._onOutside) {
 			EventHandler.off(document, EVENT_FOCUSIN$3, this._onOutside);
-			EventHandler.off(document, EVENT_POINTERDOWN$1, this._onOutside);
+			EventHandler.off(document, EVENT_POINTERDOWN$2, this._onOutside);
 		}
 		if (this._onTriggerClick) EventHandler.off(this._positionElement, EVENT_CLICK$4, this._onTriggerClick);
 		if (this._calendar) this._calendar.destroy();
@@ -2610,7 +2610,7 @@ var Datepicker = class extends BaseComponent {
 			if (this._isShown && isOutside) this.hide();
 		};
 		EventHandler.on(document, EVENT_FOCUSIN$3, this._onOutside);
-		EventHandler.on(document, EVENT_POINTERDOWN$1, this._onOutside);
+		EventHandler.on(document, EVENT_POINTERDOWN$2, this._onOutside);
 	}
 	_buildCalendarOptions() {
 		const theme = this._getEffectiveTheme();
@@ -3493,8 +3493,8 @@ const EVENT_KEY$9 = ".bs.swipe";
 const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$9}`;
 const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$9}`;
 const EVENT_TOUCHEND = `touchend${EVENT_KEY$9}`;
-const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$9}`;
-const EVENT_POINTERUP = `pointerup${EVENT_KEY$9}`;
+const EVENT_POINTERDOWN$1 = `pointerdown${EVENT_KEY$9}`;
+const EVENT_POINTERUP$1 = `pointerup${EVENT_KEY$9}`;
 const POINTER_TYPE_TOUCH = "touch";
 const POINTER_TYPE_PEN = "pen";
 const CLASS_NAME_POINTER_EVENT = "pointer-event";
@@ -3590,8 +3590,8 @@ var Swipe = class Swipe extends Config {
 	}
 	_initEvents() {
 		if (this._supportPointerEvents) {
-			EventHandler.on(this._element, EVENT_POINTERDOWN, (event) => this._start(event));
-			EventHandler.on(this._element, EVENT_POINTERUP, (event) => this._end(event));
+			EventHandler.on(this._element, EVENT_POINTERDOWN$1, (event) => this._start(event));
+			EventHandler.on(this._element, EVENT_POINTERUP$1, (event) => this._end(event));
 			this._element.classList.add(CLASS_NAME_POINTER_EVENT);
 		} else {
 			EventHandler.on(this._element, EVENT_TOUCHSTART, (event) => this._start(event));
@@ -4316,7 +4316,11 @@ var Chips = class extends BaseComponent {
 			const chipIndex = chipElements.indexOf(chip);
 			const start = Math.min(anchorIndex, chipIndex);
 			const end = Math.max(anchorIndex, chipIndex);
-			if (!addToSelection) this.clearSelection();
+			if (!addToSelection) {
+				const anchorChip = this._anchorChip;
+				this.clearSelection();
+				this._anchorChip = anchorChip;
+			}
 			for (let i = start; i <= end; i++) {
 				this._selectedChips.add(chipElements[i]);
 				chipElements[i].classList.add(CLASS_NAME_ACTIVE$2);
@@ -4746,6 +4750,8 @@ const EVENT_FOCUSIN$2 = "focusin";
 const EVENT_FOCUSOUT$1 = "focusout";
 const EVENT_MOUSEENTER$1 = "mouseenter";
 const EVENT_MOUSELEAVE = "mouseleave";
+const EVENT_POINTERDOWN = "pointerdown";
+const EVENT_POINTERUP = "pointerup";
 const EVENT_KEYDOWN$1 = "keydown";
 const AttachmentMap = {
 	AUTO: "auto",
@@ -4812,6 +4818,9 @@ var Tooltip = class extends BaseComponent {
 		this._floatingCleanup = null;
 		this._keydownHandler = null;
 		this._tipEventOut = null;
+		this._outsidePointerHandler = null;
+		this._tipPointerUpHandler = null;
+		this._tipPointerDown = false;
 		this._templateFactory = null;
 		this._newContent = null;
 		this._mediaQueryListeners = [];
@@ -4846,6 +4855,7 @@ var Tooltip = class extends BaseComponent {
 	dispose() {
 		this._clearTimeout();
 		this._removeEscapeListener();
+		this._removeFocusOutsideListener();
 		EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
 		if (this._element.getAttribute("data-bs-original-title")) this._element.setAttribute("title", this._element.getAttribute("data-bs-original-title"));
 		this._disposeFloating();
@@ -4875,6 +4885,7 @@ var Tooltip = class extends BaseComponent {
 		await this._createFloating(tip);
 		tip.classList.add(CLASS_NAME_SHOW$2);
 		this._setEscapeListener();
+		this._setFocusOutsideListener();
 		if ("ontouchstart" in document.documentElement) for (const element of document.body.children) EventHandler.on(element, "mouseover", noop);
 		const complete = () => {
 			EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN$2));
@@ -4887,6 +4898,7 @@ var Tooltip = class extends BaseComponent {
 		if (!this._isShown()) return;
 		if (EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDE$2)).defaultPrevented) return;
 		this._removeEscapeListener();
+		this._removeFocusOutsideListener();
 		this._getTipElement().classList.remove(CLASS_NAME_SHOW$2);
 		if ("ontouchstart" in document.documentElement) for (const element of document.body.children) EventHandler.off(element, "mouseover", noop);
 		this._activeTrigger[TRIGGER_CLICK] = false;
@@ -4921,6 +4933,7 @@ var Tooltip = class extends BaseComponent {
 		const tipId = getUID(this.constructor.NAME).toString();
 		tip.setAttribute("id", tipId);
 		if (!this._config.animation) tip.classList.add(this._getInstantClassName());
+		this._setFocusTipListeners(tip);
 		return tip;
 	}
 	setContent(content) {
@@ -5069,7 +5082,8 @@ var Tooltip = class extends BaseComponent {
 			});
 			EventHandler.on(this._element, eventOut, this._config.selector, (event) => {
 				const context = this._initializeOnDelegatedTarget(event);
-				context._activeTrigger[event.type === "focusout" ? TRIGGER_FOCUS : TRIGGER_HOVER] = context._isInside(event.relatedTarget);
+				if (event.type === "focusout") context._activeTrigger[TRIGGER_FOCUS] = context._isInside(event.relatedTarget) || context._tipPointerDown;
+				else context._activeTrigger[TRIGGER_HOVER] = context._isInside(event.relatedTarget);
 				context._leave();
 			});
 		}
@@ -5099,8 +5113,8 @@ var Tooltip = class extends BaseComponent {
 		}
 		this._tipEventOut = null;
 	}
-	_isInside(element) {
-		return this._element.contains(element) || Boolean(this.tip?.contains(element));
+	_isInside(target) {
+		return target instanceof Node && (this._element.contains(target) || Boolean(this.tip?.contains(target)));
 	}
 	_getTrigger() {
 		return this._config._trigger;
@@ -5110,6 +5124,45 @@ var Tooltip = class extends BaseComponent {
 			[TRIGGER_HOVER]: [this.constructor.eventName(EVENT_MOUSEENTER$1), this.constructor.eventName(EVENT_MOUSELEAVE)],
 			[TRIGGER_FOCUS]: [this.constructor.eventName(EVENT_FOCUSIN$2), this.constructor.eventName(EVENT_FOCUSOUT$1)]
 		}[trigger];
+	}
+	_hasFocusTrigger() {
+		return this._getTrigger().split(" ").includes(TRIGGER_FOCUS);
+	}
+	_setFocusTipListeners(tip) {
+		if (!this._hasFocusTrigger()) return;
+		EventHandler.on(tip, this.constructor.eventName(EVENT_POINTERDOWN), () => {
+			this._tipPointerDown = true;
+			this._activeTrigger[TRIGGER_FOCUS] = true;
+		});
+		EventHandler.on(tip, this.constructor.eventName(EVENT_FOCUSIN$2), () => {
+			this._activeTrigger[TRIGGER_FOCUS] = true;
+		});
+		EventHandler.on(tip, this.constructor.eventName(EVENT_FOCUSOUT$1), (event) => {
+			this._activeTrigger[TRIGGER_FOCUS] = this._isInside(event.relatedTarget) || this._tipPointerDown;
+			this._leave();
+		});
+	}
+	_setFocusOutsideListener() {
+		if (this._outsidePointerHandler || !this._hasFocusTrigger()) return;
+		this._tipPointerUpHandler = () => {
+			this._tipPointerDown = false;
+		};
+		this._outsidePointerHandler = (event) => {
+			if (!this._isShown() || this._isInside(event.target)) return;
+			this._activeTrigger[TRIGGER_FOCUS] = false;
+			this.hide();
+		};
+		const doc = this._element.ownerDocument;
+		doc.addEventListener(EVENT_POINTERUP, this._tipPointerUpHandler, true);
+		doc.addEventListener(EVENT_POINTERDOWN, this._outsidePointerHandler, true);
+	}
+	_removeFocusOutsideListener() {
+		const doc = this._element?.ownerDocument;
+		if (this._tipPointerUpHandler && doc) doc.removeEventListener(EVENT_POINTERUP, this._tipPointerUpHandler, true);
+		if (this._outsidePointerHandler && doc) doc.removeEventListener(EVENT_POINTERDOWN, this._outsidePointerHandler, true);
+		this._tipPointerUpHandler = null;
+		this._outsidePointerHandler = null;
+		this._tipPointerDown = false;
 	}
 	_setEscapeListener() {
 		if (this._keydownHandler) return;
@@ -5203,6 +5256,7 @@ var Tooltip = class extends BaseComponent {
 		}
 		if (this.tip) {
 			this._removeTipListeners(this.tip);
+			EventHandler.off(this.tip, this.constructor.EVENT_KEY);
 			this.tip.remove();
 			this.tip = null;
 		}
