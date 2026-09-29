@@ -1,0 +1,62 @@
+# Configuration for GitHub's automatically generated release notes.
+# Use the "Generate release notes" button in the release UI.
+# https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes
+
+changelog:
+  exclude:
+    labels:
+      - 'skip-changelog'
+  categories:
+    - title: '❗ Breaking Changes'
+      labels:
+        - 'breaking-change'
+    - title: '🚀 Highlights'
+      labels:
+        - 'release-highlight'
+    - title: '🚀 Features'
+      labels:
+        - 'new-feature'
+        - 'feature'
+        - 'enhancement'
+    - title: '🐛 Bug fixes'
+      labels:
+        - 'fix'
+        - 'bugfix'
+        - 'bug'
+    - title: '⚡ Performance improvements'
+      labels:
+        - 'performance'
+    - title: '🎨 CSS'
+      labels:
+        - 'css'
+    - title: '☕️ JavaScript'
+      labels:
+        - 'js'
+    - title: '📖 Docs'
+      labels:
+        - 'docs'
+    - title: '🛠 Examples'
+      labels:
+        - 'examples'
+    - title: '🌎 Accessibility'
+      labels:
+        - 'accessibility'
+    - title: '🔧 Utility API'
+      labels:
+        - 'utility API'
+        - 'utilities'
+    - title: '🏭 Tests'
+      labels:
+        - 'tests'
+    - title: '🧰 Misc'
+      labels:
+        - 'build'
+        - 'meta'
+        - 'chore'
+        - 'CI'
+    - title: '📦 Dependencies'
+      labels:
+        - 'dependencies'
+    - title: '🗒 Other changes'
+      labels:
+        - '*'

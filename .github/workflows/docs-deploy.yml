@@ -1,0 +1,74 @@
+name: Docs deploy
+
+# Manual only. Dispatch this workflow from the branch you want to publish
+# (for example `v6-dev`). It builds the docs and pushes them to `gh-pages`.
+
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 2
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.repository == 'twbs/bootstrap'
+    permissions:
+      # allow the job to push the built site to the `gh-pages` branch
+      contents: write
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build dist
+        run: npm run dist
+
+      - name: Build docs
+        run: npm run docs-build
+
+      # Checked out after the build so the docs build never sees this directory.
+      # Keeps its credentials, because the push at the end needs them.
+      - name: Check out gh-pages
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: gh-pages
+          path: .gh-pages
+
+      # `rsync` runs without `--delete`, so the deploy adds the current version
+      # and overwrites the root files, but keeps every older `docs/<version>`
+      # directory. Each build holds one version only.
+      - name: Copy the built site over gh-pages
+        run: |
+          rsync --archive --exclude .git _site/ .gh-pages/
+          touch .gh-pages/.nojekyll
+
+      - name: Commit and push
+        working-directory: .gh-pages
+        env:
+          SOURCE_REF: ${{ github.ref_name }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add --all
+          if git diff --staged --quiet; then
+            echo "The built site matches gh-pages. Nothing to publish."
+            exit 0
+          fi
+          git commit -m "Deploy docs from ${SOURCE_REF}@${SOURCE_SHA}"
+          git push origin gh-pages
