@@ -53,6 +53,14 @@ And within each semantic theme color, you’ll find the following keys, most of 
 | `contrast` | Text color that needs to be readable on the `base` and `bg` colors |
 </BsTable>
 
+## Token playground
+
+Every component reads the same theme and layout tokens, so one change reaches the whole group. Change the radius, the spacer, or the primary color below and watch the button, input, alert, and card update together.
+
+<TokenPlayground />
+
+The **Remint** control shows how the theme works today. Set it to **All** and each color restates every derived token—`bg-subtle`, `fg`, `border`, and the rest—so the whole preview follows. Set it to **Base** and only `--bs-primary-base` and `--bs-primary-bg` change. The solid button recolors, but the alert keeps the compiled blue pairing, because its `bg-subtle`, `fg`, and `border` tokens still point at the blue palette on `:root`.
+
 ## Theme colors
 
 Every token is available as a CSS variable, and most are then consumed by our utilities and components. So for the `primary` color, you have the following colors:

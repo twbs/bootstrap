@@ -426,4 +426,52 @@
       grid-template-columns: repeat(9, 1fr);
     }
   }
+
+  //
+  // Token playground
+  //
+
+  .bd-playground {
+    --bd-example-border-color: var(--bs-border-subtle);
+
+    border: 1px solid var(--bd-example-border-color);
+    @include border-radius(var(--radius-5));
+
+    .bd-playground-controls {
+      border-bottom: 1px solid var(--bd-example-border-color);
+      @include border-top-radius(calc(var(--radius-5) - 1px));
+    }
+
+    .bd-code-snippet {
+      border: 0;
+      @include border-radius(0 0 calc(var(--radius-5) - 1px) calc(var(--radius-5) - 1px));
+    }
+
+    .menu-item.selected {
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+
+  .bd-token-swatch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    color: var(--bs-white);
+    cursor: pointer;
+    border: 1px solid color-mix(in srgb, var(--bs-fg-body) 15%, transparent);
+    @include border-radius(var(--radius-4));
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      opacity: 0;
+    }
+
+    &.selected svg {
+      opacity: 1;
+    }
+  }
 }
