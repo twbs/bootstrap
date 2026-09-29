@@ -138,6 +138,7 @@
     "@pagefind/component-ui": "^1.5.2",
     "@shikijs/transformers": "^4.4.3",
     "@stackblitz/sdk": "^1.11.1",
+    "@twbs/docs-ui": "file:../docs",
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@vitest/browser": "^4.1.11",

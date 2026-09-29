@@ -1,5 +1,6 @@
 ---
 import type { Layout } from '@libs/layout'
+import ThemeToggle from '@twbs/docs-ui/components/ThemeToggle'
 
 interface Props {
   layout: Layout
@@ -8,39 +9,4 @@ interface Props {
 const { layout } = Astro.props
 ---
 
-<button
-  class:list={['btn', layout === 'examples' ? 'btn-solid btn-icon theme-accent' : 'btn-link nav-link px-1 gap-1']}
-  id="bd-theme"
-  type="button"
-  aria-expanded="false"
-  data-bs-toggle="menu"
-  data-bs-placement={layout === 'examples' ? 'top-end' : 'bottom-end'}
-  aria-label="Toggle theme (auto)"
->
-  <svg class="bi theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
-  <span class="visually-hidden">Toggle theme</span>
-  {
-    layout !== 'examples' && (
-      <svg class="bi bi-sm" aria-hidden="true">
-        <use href="#chevron-expand" />
-      </svg>
-    )
-  }
-</button>
-<div class="menu border-keyline" id="bd-theme-menu" aria-labelledby="bd-theme" style="--bs-menu-min-width: 8rem;">
-  <button type="button" class="menu-item" data-bs-theme-value="light" aria-pressed="false">
-    <svg class="bi opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
-    Light
-    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
-  </button>
-  <button type="button" class="menu-item" data-bs-theme-value="dark" aria-pressed="false">
-    <svg class="bi opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
-    Dark
-    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
-  </button>
-  <button type="button" class="menu-item active" data-bs-theme-value="auto" aria-pressed="true">
-    <svg class="bi opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
-    Auto
-    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
-  </button>
-</div>
+<ThemeToggle compact={layout === 'examples'} placement={layout === 'examples' ? 'top-end' : 'bottom-end'} />
