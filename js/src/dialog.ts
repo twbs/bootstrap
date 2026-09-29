@@ -73,6 +73,72 @@ class Dialog extends DialogBase {
     return NAME
   }
 
+  static {
+    EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+      Dialog._handleDataApiClick(this, event)
+    })
+  }
+
+  protected static _handleDataApiClick(trigger: HTMLElement, event: Event): void {
+    const target = SelectorEngine.getElementFromSelector(trigger)
+    if (!target) {
+      return
+    }
+
+    if (['A', 'AREA'].includes(trigger.tagName)) {
+      event.preventDefault()
+    }
+
+    const config = Manipulator.getDataAttributes(trigger)
+    const currentDialog = trigger.closest<HTMLDialogElement>('dialog[open]')
+    const shouldSwap = currentDialog && currentDialog !== target
+
+    if (!shouldSwap) {
+      EventHandler.one(target, EVENT_SHOW, showEvent => {
+        if (!showEvent.defaultPrevented) {
+          Dialog._registerFocusRestoration(target, trigger)
+        }
+      })
+
+      Dialog.getOrCreateInstance(target, config).toggle(trigger)
+      return
+    }
+
+    if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) {
+      return
+    }
+
+    const newDialog = Dialog.getOrCreateInstance(target, config)
+    const currentInstance = Dialog.getOrCreateInstance(currentDialog)
+
+    // Check both cancelable events before changing either dialog. This keeps
+    // the current dialog open when either side rejects the swap.
+    if (!newDialog._canShow(trigger) || !currentInstance._canHide()) {
+      return
+    }
+
+    Dialog._registerFocusRestoration(target, trigger)
+    target.classList.add(CLASS_NAME_SWAP_IN)
+    EventHandler.one(target, `shown${EVENT_KEY}`, () => {
+      target.classList.remove(CLASS_NAME_SWAP_IN)
+    })
+    newDialog._show(trigger)
+
+    currentDialog.classList.add(CLASS_NAME_INSTANT)
+    EventHandler.one(currentDialog, EVENT_HIDDEN, () => {
+      currentDialog.classList.remove(CLASS_NAME_INSTANT)
+    })
+    currentInstance._hide()
+  }
+
+  protected static _registerFocusRestoration(target: HTMLElement, trigger: HTMLElement): void {
+    EventHandler.one(target, EVENT_HIDDEN, () => {
+      if (isVisible(trigger)) {
+        trigger.focus({ preventScroll: true })
+      }
+    })
+  }
+
   // Public
   handleUpdate(): void {
     // Provided for API consistency with Modal.
@@ -115,81 +181,6 @@ class Dialog extends DialogBase {
 /**
  * Data API implementation
  */
-
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  const target = SelectorEngine.getElementFromSelector(this)
-
-  if (['A', 'AREA'].includes(this.tagName)) {
-    event.preventDefault()
-  }
-
-  EventHandler.one(target, EVENT_SHOW, showEvent => {
-    if (showEvent.defaultPrevented) {
-      return
-    }
-
-    EventHandler.one(target, EVENT_HIDDEN, () => {
-      if (isVisible(this)) {
-        this.focus({ preventScroll: true })
-      }
-    })
-  })
-
-  // Get config from trigger's data attributes
-  const config = Manipulator.getDataAttributes(this)
-
-  // Check if trigger is inside an open dialog (dialog swapping)
-  const currentDialog = this.closest('dialog[open]')
-  const shouldSwap = currentDialog && currentDialog !== target
-
-  if (shouldSwap) {
-    // Ignore the trigger while the outgoing dialog is still transitioning in
-    // (marked by .dialog-swap-in). Otherwise a fast double-click opens the
-    // next dialog before the current one can hide, showing both at once.
-    if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) {
-      return
-    }
-
-    // Swap strategy (seamless backdrop, no flash):
-    //   1. Mark the incoming dialog with .dialog-swap-in so its ::backdrop
-    //      skips the @starting-style fade-in and appears fully opaque on
-    //      its very first frame in the top layer.
-    //   2. Open the incoming dialog (showModal).
-    //   3. Close the outgoing dialog synchronously — no exit transition, no
-    //      .hiding — so its ::backdrop is removed in the same frame the
-    //      incoming dialog's backdrop appears. Since both backdrops render
-    //      the same color, the user sees one continuous backdrop. Two
-    //      simultaneously-visible backdrops would composite to ~75% darker,
-    //      and a fading-out + fading-in pair would dip to ~75% opacity —
-    //      either would look like a flash.
-    //   4. Clean up the .dialog-swap-in flag once the incoming dialog
-    //      finishes its entry transition.
-    const newDialog = Dialog.getOrCreateInstance(target, config)
-    target!.classList.add(CLASS_NAME_SWAP_IN)
-    newDialog.show(this)
-    EventHandler.one(target, `shown${EVENT_KEY}`, () => {
-      target!.classList.remove(CLASS_NAME_SWAP_IN)
-    })
-
-    const currentInstance = Dialog.getInstance(currentDialog)
-    if (currentInstance) {
-      // Force synchronous close: .dialog-instant makes _isAnimated() false,
-      // which makes _shouldDeferClose() false, so hide() calls close()
-      // immediately (no deferred .hiding path). The class is removed after
-      // the (now-synchronous) hidden event fires.
-      currentDialog.classList.add(CLASS_NAME_INSTANT)
-      EventHandler.one(currentDialog, EVENT_HIDDEN, () => {
-        currentDialog.classList.remove(CLASS_NAME_INSTANT)
-      })
-      currentInstance.hide()
-    }
-
-    return
-  }
-
-  const data = Dialog.getOrCreateInstance(target, config)
-  data.toggle(this)
-})
 
 enableDismissTrigger(Dialog)
 

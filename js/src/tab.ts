@@ -49,6 +49,8 @@ const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`
 
 const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"]`
 
+const activationIds = new WeakMap<Element, number>()
+
 /**
  * Class definition
  */
@@ -96,12 +98,15 @@ class Tab extends BaseComponent {
       return
     }
 
+    const activationId = (activationIds.get(this._parent!) || 0) + 1
+    activationIds.set(this._parent!, activationId)
+
     this._deactivate(active, innerElem)
-    await this._activate(innerElem, active)
+    await this._activate(innerElem, active, activationId)
   }
 
   // Private
-  protected async _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null): Promise<void> {
+  protected async _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null, activationId?: number): Promise<void> {
     if (!element) {
       return
     }
@@ -119,6 +124,10 @@ class Tab extends BaseComponent {
     this._activate(pane) // Search and activate/show the proper section
 
     const complete = () => {
+      if (activationId !== activationIds.get(this._parent!) || !this._elemIsActive(element)) {
+        return
+      }
+
       element.removeAttribute('tabindex')
       setAriaAttribute(element, 'aria-selected', true)
       this._toggleMenu(element, true)

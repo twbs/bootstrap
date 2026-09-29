@@ -658,4 +658,24 @@ describe('Chips', () => {
       expect(chips.getSelectedValues()).toEqual(['b'])
     })
   })
+
+  describe('dispose', () => {
+    it('should remove component listeners and keep consumer listeners', () => {
+      const { chips, chipsEl } = makeChips()
+      const inputEl = chipsEl.querySelector('.form-ghost')
+      const chipEl = chips.add('alpha')
+      const inputSpy = jasmine.createSpy('input')
+      const clickSpy = jasmine.createSpy('click')
+
+      inputEl.addEventListener('input', inputSpy)
+      chipsEl.addEventListener('click', clickSpy)
+      chips.dispose()
+
+      inputEl.value = 'beta,'
+      expect(() => inputEl.dispatchEvent(createEvent('input'))).not.toThrow()
+      expect(() => chipEl.click()).not.toThrow()
+      expect(inputSpy).toHaveBeenCalled()
+      expect(clickSpy).toHaveBeenCalled()
+    })
+  })
 })

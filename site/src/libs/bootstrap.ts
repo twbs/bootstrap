@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'astro/types'
-import { getConfig } from '@libs/config'
 import { getVersionedDocsPath } from '@libs/path'
 
 export function getVersionedBsCssProps() {
@@ -14,10 +13,6 @@ export function getVersionedBsCssProps() {
   const bsCssLinkProps: HTMLAttributes<'link'> = {
     href: getVersionedDocsPath(bsCssLinkHref),
     rel: 'stylesheet'
-  }
-
-  if (import.meta.env.PROD) {
-    bsCssLinkProps.integrity = getConfig().cdn.css_hash
   }
 
   return bsCssLinkProps
@@ -35,10 +30,6 @@ export function getVersionedBsJsProps() {
   const bsJsLinkProps: HTMLAttributes<'script'> = {
     type: 'module',
     src: getVersionedDocsPath(bsJsScriptSrc)
-  }
-
-  if (import.meta.env.PROD) {
-    bsJsLinkProps.integrity = getConfig().cdn.js_bundle_hash
   }
 
   return bsJsLinkProps
