@@ -69,6 +69,8 @@ const nativeEvents = /* @__PURE__ */ new Set([
 	"keydown",
 	"keypress",
 	"keyup",
+	"input",
+	"paste",
 	"orientationchange",
 	"touchstart",
 	"touchmove",
@@ -3348,6 +3350,7 @@ var Combobox = class extends BaseComponent {
 		}
 		EventHandler.off(this._menu, EVENT_KEY$13);
 		EventHandler.off(this._toggle, EVENT_KEY$13);
+		EventHandler.off(this._searchInput, EVENT_KEY$13);
 		super.dispose();
 	}
 	_isShown() {
@@ -3378,24 +3381,24 @@ var Combobox = class extends BaseComponent {
 		} else this._showPlaceholder();
 	}
 	_addEventListeners() {
-		EventHandler.on(this._menu, "click", SELECTOR_MENU_ITEM, (event) => {
+		EventHandler.on(this._menu, `click${EVENT_KEY$13}`, SELECTOR_MENU_ITEM, (event) => {
 			const item = event.target.closest(SELECTOR_MENU_ITEM);
 			if (!item || isDisabled(item)) return;
 			event.preventDefault();
 			event.stopPropagation();
 			this._selectItem(item);
 		});
-		EventHandler.on(this._toggle, "keydown", (event) => {
+		EventHandler.on(this._toggle, `keydown${EVENT_KEY$13}`, (event) => {
 			this._handleToggleKeydown(event);
 		});
-		EventHandler.on(this._menu, "keydown", (event) => {
+		EventHandler.on(this._menu, `keydown${EVENT_KEY$13}`, (event) => {
 			this._handleMenuKeydown(event);
 		});
 		if (this._searchInput) {
-			EventHandler.on(this._searchInput, "input", () => {
+			EventHandler.on(this._searchInput, `input${EVENT_KEY$13}`, () => {
 				this._filterItems(this._searchInput.value);
 			});
-			EventHandler.on(this._searchInput, "keydown", (event) => {
+			EventHandler.on(this._searchInput, `keydown${EVENT_KEY$13}`, (event) => {
 				if (event.key === ARROW_DOWN_KEY$1) {
 					event.preventDefault();
 					const items = this._getVisibleItems();
@@ -5078,7 +5081,10 @@ var Datepicker = class extends BaseComponent {
 		return dates ? [...dates] : [];
 	}
 	setSelectedDates(dates) {
-		if (this._calendar) this._calendar.set({ selectedDates: dates });
+		if (this._calendar) {
+			this._calendar.set({ selectedDates: dates });
+			this._syncSelectedDates([...this._calendar.context.selectedDates]);
+		}
 	}
 	_initCalendar() {
 		this._isInput = this._element.tagName === "INPUT";
@@ -5095,8 +5101,11 @@ var Datepicker = class extends BaseComponent {
 		this._updateDisplayWithSelectedDates();
 	}
 	_updateDisplayWithSelectedDates() {
-		const { selectedDates } = this._config;
-		if (!selectedDates || selectedDates.length === 0) return;
+		const calendarDates = [...this._calendar?.context.selectedDates || []];
+		const selectedDates = calendarDates.length > 0 ? calendarDates : this._config.selectedDates;
+		if (selectedDates.length > 0) this._syncSelectedDates(selectedDates);
+	}
+	_syncSelectedDates(selectedDates) {
 		const formattedDate = this._formatDateForInput(selectedDates);
 		if (this._isInput) this._element.value = formattedDate;
 		if (this._boundInput) this._boundInput.value = selectedDates.join(",");
@@ -5199,12 +5208,7 @@ var Datepicker = class extends BaseComponent {
 	}
 	_handleDateClick(self, event) {
 		const selectedDates = [...self.context.selectedDates];
-		if (selectedDates.length > 0) {
-			const formattedDate = this._formatDateForInput(selectedDates);
-			if (this._isInput) this._element.value = formattedDate;
-			if (this._boundInput) this._boundInput.value = selectedDates.join(",");
-			if (this._displayElement) this._displayElement.textContent = formattedDate;
-		}
+		this._syncSelectedDates(selectedDates);
 		EventHandler.trigger(this._element, EVENT_CHANGE$2, {
 			dates: selectedDates,
 			event
@@ -5236,7 +5240,8 @@ var Datepicker = class extends BaseComponent {
 	_parseInputValue() {
 		const value = this._element.value.trim();
 		if (!value) return;
-		const date = new Date(value);
+		const dateOnlyMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+		const date = dateOnlyMatch ? new Date(Number(dateOnlyMatch[1]), Number(dateOnlyMatch[2]) - 1, Number(dateOnlyMatch[3])) : new Date(value);
 		if (!Number.isNaN(date.getTime())) {
 			const formatted = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 			this._calendar.set({ selectedDates: [formatted] });
@@ -5299,8 +5304,18 @@ var DialogBase = class extends BaseComponent {
 		return this._element.open ? this.hide() : this.show(relatedTarget);
 	}
 	async show(relatedTarget) {
-		if (this._element.open || this._isTransitioning) return;
-		if (EventHandler.trigger(this._element, this.constructor.eventName("show"), { relatedTarget }).defaultPrevented) return;
+		if (!this._canShow(relatedTarget)) return;
+		await this._show(relatedTarget);
+	}
+	async hide() {
+		if (!this._canHide()) return;
+		await this._hide();
+	}
+	_canShow(relatedTarget) {
+		if (this._element.open || this._isTransitioning) return false;
+		return !EventHandler.trigger(this._element, this.constructor.eventName("show"), { relatedTarget }).defaultPrevented;
+	}
+	async _show(relatedTarget) {
 		this._isTransitioning = true;
 		this._onBeforeShow();
 		const { modal, preventBodyScroll } = this._getShowOptions();
@@ -5313,9 +5328,11 @@ var DialogBase = class extends BaseComponent {
 			EventHandler.trigger(this._element, this.constructor.eventName("shown"), { relatedTarget });
 		}, this._element, this._isAnimated());
 	}
-	async hide() {
-		if (!this._element.open || this._isTransitioning) return;
-		if (EventHandler.trigger(this._element, this.constructor.eventName("hide")).defaultPrevented) return;
+	_canHide() {
+		if (!this._element.open || this._isTransitioning) return false;
+		return !EventHandler.trigger(this._element, this.constructor.eventName("hide")).defaultPrevented;
+	}
+	async _hide() {
 		this._isTransitioning = true;
 		this._hideElement();
 		await this._queueCallback(() => {
@@ -5407,6 +5424,7 @@ var DialogBase = class extends BaseComponent {
 		});
 		EventHandler.on(this._element, `click${eventKey}`, (event) => {
 			if (event.target !== this._element || !this._openedAsModal) return;
+			if (this._config.backdrop === false) return;
 			if (this._config.backdrop === "static") {
 				this._triggerBackdropTransition();
 				return;
@@ -5450,7 +5468,7 @@ const DefaultType$13 = {
 /**
 * Class definition
 */
-var Dialog = class extends DialogBase {
+var Dialog = class Dialog extends DialogBase {
 	constructor(element, config) {
 		super(element, config);
 	}
@@ -5462,6 +5480,45 @@ var Dialog = class extends DialogBase {
 	}
 	static get NAME() {
 		return NAME$14;
+	}
+	static {
+		EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, function(event) {
+			Dialog._handleDataApiClick(this, event);
+		});
+	}
+	static _handleDataApiClick(trigger, event) {
+		const target = SelectorEngine.getElementFromSelector(trigger);
+		if (!target) return;
+		if (["A", "AREA"].includes(trigger.tagName)) event.preventDefault();
+		const config = Manipulator.getDataAttributes(trigger);
+		const currentDialog = trigger.closest("dialog[open]");
+		if (!(currentDialog && currentDialog !== target)) {
+			EventHandler.one(target, EVENT_SHOW$3, (showEvent) => {
+				if (!showEvent.defaultPrevented) Dialog._registerFocusRestoration(target, trigger);
+			});
+			Dialog.getOrCreateInstance(target, config).toggle(trigger);
+			return;
+		}
+		if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) return;
+		const newDialog = Dialog.getOrCreateInstance(target, config);
+		const currentInstance = Dialog.getOrCreateInstance(currentDialog);
+		if (!newDialog._canShow(trigger) || !currentInstance._canHide()) return;
+		Dialog._registerFocusRestoration(target, trigger);
+		target.classList.add(CLASS_NAME_SWAP_IN);
+		EventHandler.one(target, `shown${EVENT_KEY$11}`, () => {
+			target.classList.remove(CLASS_NAME_SWAP_IN);
+		});
+		newDialog._show(trigger);
+		currentDialog.classList.add(CLASS_NAME_INSTANT$1);
+		EventHandler.one(currentDialog, EVENT_HIDDEN$4, () => {
+			currentDialog.classList.remove(CLASS_NAME_INSTANT$1);
+		});
+		currentInstance._hide();
+	}
+	static _registerFocusRestoration(target, trigger) {
+		EventHandler.one(target, EVENT_HIDDEN$4, () => {
+			if (isVisible(trigger)) trigger.focus({ preventScroll: true });
+		});
 	}
 	handleUpdate() {}
 	_getShowOptions() {
@@ -5486,37 +5543,6 @@ var Dialog = class extends DialogBase {
 /**
 * Data API implementation
 */
-EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, function(event) {
-	const target = SelectorEngine.getElementFromSelector(this);
-	if (["A", "AREA"].includes(this.tagName)) event.preventDefault();
-	EventHandler.one(target, EVENT_SHOW$3, (showEvent) => {
-		if (showEvent.defaultPrevented) return;
-		EventHandler.one(target, EVENT_HIDDEN$4, () => {
-			if (isVisible(this)) this.focus({ preventScroll: true });
-		});
-	});
-	const config = Manipulator.getDataAttributes(this);
-	const currentDialog = this.closest("dialog[open]");
-	if (currentDialog && currentDialog !== target) {
-		if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) return;
-		const newDialog = Dialog.getOrCreateInstance(target, config);
-		target.classList.add(CLASS_NAME_SWAP_IN);
-		newDialog.show(this);
-		EventHandler.one(target, `shown${EVENT_KEY$11}`, () => {
-			target.classList.remove(CLASS_NAME_SWAP_IN);
-		});
-		const currentInstance = Dialog.getInstance(currentDialog);
-		if (currentInstance) {
-			currentDialog.classList.add(CLASS_NAME_INSTANT$1);
-			EventHandler.one(currentDialog, EVENT_HIDDEN$4, () => {
-				currentDialog.classList.remove(CLASS_NAME_INSTANT$1);
-			});
-			currentInstance.hide();
-		}
-		return;
-	}
-	Dialog.getOrCreateInstance(target, config).toggle(this);
-});
 enableDismissTrigger(Dialog);
 //#endregion
 //#region js/src/util/sanitizer.ts
@@ -6155,6 +6181,7 @@ const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$8}`;
 const EVENT_RESIZE$1 = `resize${EVENT_KEY$8}`;
 const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$8}${DATA_API_KEY$5}`;
 const SELECTOR_DATA_TOGGLE$4 = "[data-bs-toggle=\"drawer\"]";
+const SELECTOR_OPEN = "dialog.drawer[open], dialog[open][class*=\"\\:drawer\"]";
 const Default$10 = {
 	backdrop: true,
 	keyboard: true,
@@ -6172,6 +6199,9 @@ var Drawer = class extends DialogBase {
 	constructor(element, config) {
 		super(element, config);
 		this._swipeHelper = null;
+		this._resizeObserver = null;
+		this._resizeFrame = null;
+		this._initResizeObserver();
 	}
 	static get Default() {
 		return Default$10;
@@ -6184,6 +6214,8 @@ var Drawer = class extends DialogBase {
 	}
 	dispose() {
 		if (this._swipeHelper) this._swipeHelper.dispose();
+		if (this._resizeObserver) this._resizeObserver.disconnect();
+		if (this._resizeFrame !== null) cancelAnimationFrame(this._resizeFrame);
 		super.dispose();
 	}
 	_getShowOptions() {
@@ -6200,6 +6232,18 @@ var Drawer = class extends DialogBase {
 	}
 	_getStaticClassName() {
 		return "drawer-static";
+	}
+	_initResizeObserver() {
+		const navbar = this._element.closest(".navbar");
+		if (!navbar || typeof ResizeObserver === "undefined") return;
+		this._resizeObserver = new ResizeObserver(() => {
+			if (this._resizeFrame !== null) cancelAnimationFrame(this._resizeFrame);
+			this._resizeFrame = requestAnimationFrame(() => {
+				this._resizeFrame = null;
+				if (this._element.open && getComputedStyle(this._element).position !== "fixed") this.hide();
+			});
+		});
+		this._resizeObserver.observe(navbar);
 	}
 	_initSwipe() {
 		if (this._swipeHelper || !Swipe.isSupported()) return;
@@ -6232,7 +6276,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$2, () => {
 	for (const selector of SelectorEngine.find("dialog.drawer[open]")) Drawer.getOrCreateInstance(selector).show();
 });
 EventHandler.on(window, EVENT_RESIZE$1, () => {
-	for (const element of SelectorEngine.find("dialog[open][class*=\"\\:drawer\"]")) if (getComputedStyle(element).position !== "fixed") Drawer.getOrCreateInstance(element).hide();
+	for (const element of SelectorEngine.find(SELECTOR_OPEN)) if (getComputedStyle(element).position !== "fixed") Drawer.getOrCreateInstance(element).hide();
 });
 enableDismissTrigger(Drawer);
 //#endregion
@@ -6321,14 +6365,18 @@ var Strength = class extends BaseComponent {
 	evaluate() {
 		this._evaluate();
 	}
+	dispose() {
+		EventHandler.off(this._input, EVENT_KEY$7);
+		super.dispose();
+	}
 	_getInput() {
 		if (this._config.input) return typeof this._config.input === "string" ? SelectorEngine.findOne(this._config.input) : this._config.input;
 		const parent = this._element.parentElement;
 		return SelectorEngine.findOne("input[type=\"password\"]", parent);
 	}
 	_addEventListeners() {
-		EventHandler.on(this._input, "input", () => this._evaluate());
-		EventHandler.on(this._input, "change", () => this._evaluate());
+		EventHandler.on(this._input, `input${EVENT_KEY$7}`, () => this._evaluate());
+		EventHandler.on(this._input, `change${EVENT_KEY$7}`, () => this._evaluate());
 	}
 	_evaluate() {
 		const password = this._input.value;
@@ -6413,11 +6461,6 @@ const EVENT_INPUT$1 = `input${EVENT_KEY$6}`;
 const EVENT_DOMCONTENT_LOADED = `DOMContentLoaded${EVENT_KEY$6}${DATA_API_KEY$3}`;
 const SELECTOR_DATA_OTP = "[data-bs-otp]";
 const SELECTOR_INPUT$1 = "input";
-const SYNC_EVENTS = [
-	"blur",
-	"keyup",
-	"select"
-];
 const CLASS_NAME_INPUT = "otp-input";
 const CLASS_NAME_RENDERED = "otp-rendered";
 const CLASS_NAME_SLOTS = "otp-slots";
@@ -6504,12 +6547,8 @@ var OtpInput = class extends BaseComponent {
 		this._render();
 	}
 	dispose() {
-		EventHandler.off(this._input, "input", this._onInput);
-		EventHandler.off(this._input, "beforeinput", this._onBeforeInput);
-		EventHandler.off(this._input, "focus", this._onFocus);
-		EventHandler.off(this._input, "pointerdown", this._onPointerDown);
+		for (const [type, listener] of Object.entries(this._inputListeners ?? {})) EventHandler.off(this._input, type, listener);
 		EventHandler.off(document, "selectionchange", this._onSelectionChange);
-		for (const type of SYNC_EVENTS) EventHandler.off(this._input, type, this._onSync);
 		this._slotsContainer?.remove();
 		this._element.classList.remove(CLASS_NAME_RENDERED);
 		super.dispose();
@@ -6558,10 +6597,13 @@ var OtpInput = class extends BaseComponent {
 		this._element.classList.add(CLASS_NAME_RENDERED);
 	}
 	_addEventListeners() {
-		this._onInput = () => this._handleInput();
-		this._onBeforeInput = (event) => this._handleBeforeInput(event);
-		this._onPointerDown = (event) => this._handlePointerDown(event);
-		this._onFocus = () => {
+		this._inputListeners = {
+			input: () => this._handleInput(),
+			beforeinput: (event) => this._handleBeforeInput(event),
+			paste: (event) => this._handlePaste(event),
+			pointerdown: (event) => this._handlePointerDown(event)
+		};
+		this._inputListeners.focus = () => {
 			if (this._pointerActive) {
 				this._pointerActive = false;
 				this._selectSlot(this._pointerIndex);
@@ -6571,21 +6613,38 @@ var OtpInput = class extends BaseComponent {
 			this._selectSlot(this._firstEmptyIndex());
 			this._render();
 		};
-		this._onSync = () => this._render();
+		const onSync = () => this._render();
 		this._onSelectionChange = () => {
 			if (document.activeElement === this._input) this._render();
 		};
-		EventHandler.on(this._input, "input", this._onInput);
-		EventHandler.on(this._input, "beforeinput", this._onBeforeInput);
-		EventHandler.on(this._input, "focus", this._onFocus);
-		EventHandler.on(this._input, "pointerdown", this._onPointerDown);
+		for (const type of [
+			"blur",
+			"keyup",
+			"select"
+		]) this._inputListeners[type] = onSync;
+		for (const [type, listener] of Object.entries(this._inputListeners)) EventHandler.on(this._input, type, listener);
 		EventHandler.on(document, "selectionchange", this._onSelectionChange);
-		for (const type of SYNC_EVENTS) EventHandler.on(this._input, type, this._onSync);
 	}
 	_handleInput() {
 		const sanitized = this._sanitize(this._input.value);
 		if (sanitized !== this._input.value) this._input.value = sanitized;
 		if (document.activeElement === this._input) this._selectSlot(this._firstEmptyIndex());
+		this._afterValueChange();
+	}
+	_handlePaste(event) {
+		const pastedValue = event.clipboardData?.getData("text");
+		if (!pastedValue || this._input.readOnly) return;
+		const sanitized = this._sanitize(pastedValue);
+		let start = this._input.selectionStart ?? this._input.value.length;
+		let end = this._input.selectionEnd ?? start;
+		if (sanitized.length === this._length) {
+			start = 0;
+			end = this._input.value.length;
+		}
+		const inserted = sanitized.slice(0, this._length - this._input.value.length + end - start);
+		event.preventDefault();
+		if (!inserted) return;
+		this._input.setRangeText(inserted, start, end, "end");
 		this._afterValueChange();
 	}
 	_handleBeforeInput(event) {
@@ -6837,6 +6896,10 @@ var Chips = class extends BaseComponent {
 	focus() {
 		this._input?.focus();
 	}
+	dispose() {
+		EventHandler.off(this._input, EVENT_KEY$5);
+		super.dispose();
+	}
 	_getChipElements() {
 		return SelectorEngine.find(SELECTOR_CHIP, this._element);
 	}
@@ -6890,14 +6953,14 @@ var Chips = class extends BaseComponent {
 		return clone.textContent?.trim() || "";
 	}
 	_addEventListeners() {
-		EventHandler.on(this._input, "keydown", (event) => this._handleInputKeydown(event));
-		EventHandler.on(this._input, "input", (event) => this._handleInput(event));
-		EventHandler.on(this._input, "paste", (event) => this._handlePaste(event));
-		EventHandler.on(this._input, "focus", () => this.clearSelection());
-		if (this._config.createOnBlur) EventHandler.on(this._input, "blur", (event) => {
+		EventHandler.on(this._input, `keydown${EVENT_KEY$5}`, (event) => this._handleInputKeydown(event));
+		EventHandler.on(this._input, `input${EVENT_KEY$5}`, (event) => this._handleInput(event));
+		EventHandler.on(this._input, `paste${EVENT_KEY$5}`, (event) => this._handlePaste(event));
+		EventHandler.on(this._input, `focus${EVENT_KEY$5}`, () => this.clearSelection());
+		if (this._config.createOnBlur) EventHandler.on(this._input, `blur${EVENT_KEY$5}`, (event) => {
 			if (!event.relatedTarget?.closest(SELECTOR_CHIP)) this._createChipFromInput();
 		});
-		EventHandler.on(this._element, "click", SELECTOR_CHIP, (event) => {
+		EventHandler.on(this._element, `click${EVENT_KEY$5}`, SELECTOR_CHIP, (event) => {
 			if (event.target.closest(SELECTOR_CHIP_DISMISS)) return;
 			const chip = event.target.closest(SELECTOR_CHIP);
 			if (chip) {
@@ -6909,7 +6972,7 @@ var Chips = class extends BaseComponent {
 				chip.focus();
 			}
 		});
-		EventHandler.on(this._element, "click", SELECTOR_CHIP_DISMISS, (event) => {
+		EventHandler.on(this._element, `click${EVENT_KEY$5}`, SELECTOR_CHIP_DISMISS, (event) => {
 			event.stopPropagation();
 			const chip = event.target.closest(SELECTOR_CHIP);
 			if (chip) {
@@ -6917,10 +6980,10 @@ var Chips = class extends BaseComponent {
 				this._input?.focus();
 			}
 		});
-		EventHandler.on(this._element, "keydown", SELECTOR_CHIP, (event) => {
+		EventHandler.on(this._element, `keydown${EVENT_KEY$5}`, SELECTOR_CHIP, (event) => {
 			this._handleChipKeydown(event);
 		});
-		EventHandler.on(this._element, "click", (event) => {
+		EventHandler.on(this._element, `click${EVENT_KEY$5}`, (event) => {
 			if (event.target === this._element) {
 				this.clearSelection();
 				this._input?.focus();
@@ -8305,6 +8368,7 @@ const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_MENU_TOGGLE}, .list-group-item${
 const SELECTOR_DATA_TOGGLE$1 = "[data-bs-toggle=\"tab\"]";
 const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE$1}`;
 const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"]`;
+const activationIds = /* @__PURE__ */ new WeakMap();
 /**
 * Class definition
 */
@@ -8325,10 +8389,12 @@ var Tab = class Tab extends BaseComponent {
 		const active = this._getActiveElem();
 		const hideEvent = active ? EventHandler.trigger(active, EVENT_HIDE$1, { relatedTarget: innerElem }) : null;
 		if (EventHandler.trigger(innerElem, EVENT_SHOW$1, { relatedTarget: active }).defaultPrevented || hideEvent && hideEvent.defaultPrevented) return;
+		const activationId = (activationIds.get(this._parent) || 0) + 1;
+		activationIds.set(this._parent, activationId);
 		this._deactivate(active, innerElem);
-		await this._activate(innerElem, active);
+		await this._activate(innerElem, active, activationId);
 	}
-	async _activate(element, relatedElem) {
+	async _activate(element, relatedElem, activationId) {
 		if (!element) return;
 		element.classList.add(CLASS_NAME_ACTIVE);
 		if (element.getAttribute("role") !== "tab") {
@@ -8338,6 +8404,7 @@ var Tab = class Tab extends BaseComponent {
 		const pane = SelectorEngine.getElementFromSelector(element);
 		this._activate(pane);
 		const complete = () => {
+			if (activationId !== activationIds.get(this._parent) || !this._elemIsActive(element)) return;
 			element.removeAttribute("tabindex");
 			setAriaAttribute(element, "aria-selected", true);
 			this._toggleMenu(element, true);

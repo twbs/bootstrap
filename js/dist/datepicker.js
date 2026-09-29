@@ -122,7 +122,10 @@ var Datepicker = class extends BaseComponent {
 		return dates ? [...dates] : [];
 	}
 	setSelectedDates(dates) {
-		if (this._calendar) this._calendar.set({ selectedDates: dates });
+		if (this._calendar) {
+			this._calendar.set({ selectedDates: dates });
+			this._syncSelectedDates([...this._calendar.context.selectedDates]);
+		}
 	}
 	_initCalendar() {
 		this._isInput = this._element.tagName === "INPUT";
@@ -139,8 +142,11 @@ var Datepicker = class extends BaseComponent {
 		this._updateDisplayWithSelectedDates();
 	}
 	_updateDisplayWithSelectedDates() {
-		const { selectedDates } = this._config;
-		if (!selectedDates || selectedDates.length === 0) return;
+		const calendarDates = [...this._calendar?.context.selectedDates || []];
+		const selectedDates = calendarDates.length > 0 ? calendarDates : this._config.selectedDates;
+		if (selectedDates.length > 0) this._syncSelectedDates(selectedDates);
+	}
+	_syncSelectedDates(selectedDates) {
 		const formattedDate = this._formatDateForInput(selectedDates);
 		if (this._isInput) this._element.value = formattedDate;
 		if (this._boundInput) this._boundInput.value = selectedDates.join(",");
@@ -243,12 +249,7 @@ var Datepicker = class extends BaseComponent {
 	}
 	_handleDateClick(self, event) {
 		const selectedDates = [...self.context.selectedDates];
-		if (selectedDates.length > 0) {
-			const formattedDate = this._formatDateForInput(selectedDates);
-			if (this._isInput) this._element.value = formattedDate;
-			if (this._boundInput) this._boundInput.value = selectedDates.join(",");
-			if (this._displayElement) this._displayElement.textContent = formattedDate;
-		}
+		this._syncSelectedDates(selectedDates);
 		EventHandler.trigger(this._element, EVENT_CHANGE, {
 			dates: selectedDates,
 			event
@@ -280,7 +281,8 @@ var Datepicker = class extends BaseComponent {
 	_parseInputValue() {
 		const value = this._element.value.trim();
 		if (!value) return;
-		const date = new Date(value);
+		const dateOnlyMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+		const date = dateOnlyMatch ? new Date(Number(dateOnlyMatch[1]), Number(dateOnlyMatch[2]) - 1, Number(dateOnlyMatch[3])) : new Date(value);
 		if (!Number.isNaN(date.getTime())) {
 			const formatted = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 			this._calendar.set({ selectedDates: [formatted] });

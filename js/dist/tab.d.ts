@@ -14,7 +14,7 @@ declare class Tab extends BaseComponent {
     constructor(element?: string | Element | null);
     static get NAME(): string;
     show(): Promise<void>;
-    protected _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null): Promise<void>;
+    protected _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null, activationId?: number): Promise<void>;
     protected _deactivate(element: HTMLElement | null, relatedElem?: HTMLElement | null): Promise<void>;
     protected _keydown(event: BootstrapEvent): void;
     protected _getChildren(): HTMLElement[];

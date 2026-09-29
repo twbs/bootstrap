@@ -32,6 +32,8 @@ const nativeEvents = /* @__PURE__ */ new Set([
 	"keydown",
 	"keypress",
 	"keyup",
+	"input",
+	"paste",
 	"orientationchange",
 	"touchstart",
 	"touchmove",

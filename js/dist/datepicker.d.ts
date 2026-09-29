@@ -53,6 +53,7 @@ declare class Datepicker extends BaseComponent {
     setSelectedDates(dates: DatesArr): void;
     protected _initCalendar(): void;
     protected _updateDisplayWithSelectedDates(): void;
+    protected _syncSelectedDates(selectedDates: string[]): void;
     protected _resolvePositionElement(): HTMLElement;
     protected _resolveDisplayElement(): HTMLElement | false | null;
     protected _getThemeAncestor(): Element | null;

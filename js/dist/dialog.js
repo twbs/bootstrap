@@ -43,7 +43,7 @@ const DefaultType = {
 /**
 * Class definition
 */
-var Dialog = class extends DialogBase {
+var Dialog = class Dialog extends DialogBase {
 	constructor(element, config) {
 		super(element, config);
 	}
@@ -55,6 +55,45 @@ var Dialog = class extends DialogBase {
 	}
 	static get NAME() {
 		return NAME;
+	}
+	static {
+		EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function(event) {
+			Dialog._handleDataApiClick(this, event);
+		});
+	}
+	static _handleDataApiClick(trigger, event) {
+		const target = SelectorEngine.getElementFromSelector(trigger);
+		if (!target) return;
+		if (["A", "AREA"].includes(trigger.tagName)) event.preventDefault();
+		const config = Manipulator.getDataAttributes(trigger);
+		const currentDialog = trigger.closest("dialog[open]");
+		if (!(currentDialog && currentDialog !== target)) {
+			EventHandler.one(target, EVENT_SHOW, (showEvent) => {
+				if (!showEvent.defaultPrevented) Dialog._registerFocusRestoration(target, trigger);
+			});
+			Dialog.getOrCreateInstance(target, config).toggle(trigger);
+			return;
+		}
+		if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) return;
+		const newDialog = Dialog.getOrCreateInstance(target, config);
+		const currentInstance = Dialog.getOrCreateInstance(currentDialog);
+		if (!newDialog._canShow(trigger) || !currentInstance._canHide()) return;
+		Dialog._registerFocusRestoration(target, trigger);
+		target.classList.add(CLASS_NAME_SWAP_IN);
+		EventHandler.one(target, `shown${EVENT_KEY}`, () => {
+			target.classList.remove(CLASS_NAME_SWAP_IN);
+		});
+		newDialog._show(trigger);
+		currentDialog.classList.add(CLASS_NAME_INSTANT);
+		EventHandler.one(currentDialog, EVENT_HIDDEN, () => {
+			currentDialog.classList.remove(CLASS_NAME_INSTANT);
+		});
+		currentInstance._hide();
+	}
+	static _registerFocusRestoration(target, trigger) {
+		EventHandler.one(target, EVENT_HIDDEN, () => {
+			if (isVisible(trigger)) trigger.focus({ preventScroll: true });
+		});
 	}
 	handleUpdate() {}
 	_getShowOptions() {
@@ -79,37 +118,6 @@ var Dialog = class extends DialogBase {
 /**
 * Data API implementation
 */
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function(event) {
-	const target = SelectorEngine.getElementFromSelector(this);
-	if (["A", "AREA"].includes(this.tagName)) event.preventDefault();
-	EventHandler.one(target, EVENT_SHOW, (showEvent) => {
-		if (showEvent.defaultPrevented) return;
-		EventHandler.one(target, EVENT_HIDDEN, () => {
-			if (isVisible(this)) this.focus({ preventScroll: true });
-		});
-	});
-	const config = Manipulator.getDataAttributes(this);
-	const currentDialog = this.closest("dialog[open]");
-	if (currentDialog && currentDialog !== target) {
-		if (currentDialog.classList.contains(CLASS_NAME_SWAP_IN)) return;
-		const newDialog = Dialog.getOrCreateInstance(target, config);
-		target.classList.add(CLASS_NAME_SWAP_IN);
-		newDialog.show(this);
-		EventHandler.one(target, `shown${EVENT_KEY}`, () => {
-			target.classList.remove(CLASS_NAME_SWAP_IN);
-		});
-		const currentInstance = Dialog.getInstance(currentDialog);
-		if (currentInstance) {
-			currentDialog.classList.add(CLASS_NAME_INSTANT);
-			EventHandler.one(currentDialog, EVENT_HIDDEN, () => {
-				currentDialog.classList.remove(CLASS_NAME_INSTANT);
-			});
-			currentInstance.hide();
-		}
-		return;
-	}
-	Dialog.getOrCreateInstance(target, config).toggle(this);
-});
 enableDismissTrigger(Dialog);
 //#endregion
 export { Dialog as default };

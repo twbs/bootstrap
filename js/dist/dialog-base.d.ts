@@ -35,6 +35,10 @@ declare class DialogBase extends BaseComponent {
     toggle(relatedTarget?: HTMLElement): Promise<void>;
     show(relatedTarget?: HTMLElement): Promise<void>;
     hide(): Promise<void>;
+    protected _canShow(relatedTarget?: HTMLElement): boolean;
+    protected _show(relatedTarget?: HTMLElement): Promise<void>;
+    protected _canHide(): boolean;
+    protected _hide(): Promise<void>;
     dispose(): void;
     protected _getShowOptions(): {
         modal: boolean;

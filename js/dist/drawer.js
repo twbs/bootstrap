@@ -27,6 +27,7 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_RESIZE = `resize${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"drawer\"]";
+const SELECTOR_OPEN = "dialog.drawer[open], dialog[open][class*=\"\\:drawer\"]";
 const Default = {
 	backdrop: true,
 	keyboard: true,
@@ -44,6 +45,9 @@ var Drawer = class extends DialogBase {
 	constructor(element, config) {
 		super(element, config);
 		this._swipeHelper = null;
+		this._resizeObserver = null;
+		this._resizeFrame = null;
+		this._initResizeObserver();
 	}
 	static get Default() {
 		return Default;
@@ -56,6 +60,8 @@ var Drawer = class extends DialogBase {
 	}
 	dispose() {
 		if (this._swipeHelper) this._swipeHelper.dispose();
+		if (this._resizeObserver) this._resizeObserver.disconnect();
+		if (this._resizeFrame !== null) cancelAnimationFrame(this._resizeFrame);
 		super.dispose();
 	}
 	_getShowOptions() {
@@ -72,6 +78,18 @@ var Drawer = class extends DialogBase {
 	}
 	_getStaticClassName() {
 		return "drawer-static";
+	}
+	_initResizeObserver() {
+		const navbar = this._element.closest(".navbar");
+		if (!navbar || typeof ResizeObserver === "undefined") return;
+		this._resizeObserver = new ResizeObserver(() => {
+			if (this._resizeFrame !== null) cancelAnimationFrame(this._resizeFrame);
+			this._resizeFrame = requestAnimationFrame(() => {
+				this._resizeFrame = null;
+				if (this._element.open && getComputedStyle(this._element).position !== "fixed") this.hide();
+			});
+		});
+		this._resizeObserver.observe(navbar);
 	}
 	_initSwipe() {
 		if (this._swipeHelper || !Swipe.isSupported()) return;
@@ -104,7 +122,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 	for (const selector of SelectorEngine.find("dialog.drawer[open]")) Drawer.getOrCreateInstance(selector).show();
 });
 EventHandler.on(window, EVENT_RESIZE, () => {
-	for (const element of SelectorEngine.find("dialog[open][class*=\"\\:drawer\"]")) if (getComputedStyle(element).position !== "fixed") Drawer.getOrCreateInstance(element).hide();
+	for (const element of SelectorEngine.find(SELECTOR_OPEN)) if (getComputedStyle(element).position !== "fixed") Drawer.getOrCreateInstance(element).hide();
 });
 enableDismissTrigger(Drawer);
 //#endregion
