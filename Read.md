@@ -1,2 +1,2 @@
 Hello 
-Updating document
+Updating /document/
