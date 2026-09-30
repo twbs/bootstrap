@@ -35,16 +35,16 @@
 @use "layout";
 @use "toc";
 @use "footer";
-@use "component-examples";
+@use "@twbs/docs-ui/scss/component-examples";
 @use "badge";
 @use "callouts";
 @use "details";
 @use "brand";
-@use "clipboard-js";
+@use "@twbs/docs-ui/scss/clipboard-js";
 @use "placeholder-img";
 @use "scrolling";
 @use "patterns";
 
 // Load docs dependencies
-@use "syntax";
+@use "@twbs/docs-ui/scss/syntax";
 @use "anchor";

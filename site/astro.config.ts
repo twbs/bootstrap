@@ -4,11 +4,9 @@ import { defineConfig } from 'astro/config'
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import { unified } from '@astrojs/markdown-remark'
 import astroBrokenLinksChecker from 'astro-broken-links-checker'
-import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
-import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
 import type { Element, Text } from 'hast'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
+import { bootstrapShikiConfig } from '@twbs/docs-ui/shiki'
 
 import { bootstrap } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
@@ -73,26 +71,7 @@ export default defineConfig({
       remarkPlugins: [remarkBsConfig, remarkBsDocsref]
     }),
     syntaxHighlight: 'shiki',
-    shikiConfig: {
-      themes: {
-        light: { ...bootstrapLight, name: '', type: 'light' },
-        dark: { ...bootstrapDark, name: '', type: 'dark' }
-      },
-      defaultColor: 'light-dark()',
-      transformers: [
-        transformerNotationDiff(),
-        transformerNotationHighlight(),
-        {
-          name: 'add-language-attribute',
-          pre(node) {
-            const lang = this.options.lang
-            if (lang) {
-              node.properties['dataLanguage'] = lang
-            }
-          }
-        }
-      ]
-    }
+    shikiConfig: bootstrapShikiConfig
   },
   devToolbar: {
     enabled: false
