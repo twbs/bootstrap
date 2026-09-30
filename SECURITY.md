@@ -7,3 +7,4 @@ To report a security issue, email [security@getbootstrap.com](mailto:security@ge
 We'll endeavor to respond quickly, and will keep you updated throughout the process. We aim to acknowledge vulnerability reports within 3 business days and will coordinate disclosure timelines with reporters before publishing any details.
 
 For details on how we handle incidents, see our [Incident Response Plan](.github/INCIDENT_RESPONSE.md).
+Adding security point
