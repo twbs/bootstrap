@@ -1,0 +1,92 @@
+name: NuGet
+
+on:
+  push:
+    branches:
+      - main
+      - v6-dev
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package-nuget:
+    runs-on: windows-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up NuGet
+        uses: nuget/setup-nuget@fd55a6f3b34392fa83fde1454582407d8c714123 # v4.0
+        with:
+          nuget-version: "5.x"
+
+      - name: Pack NuGet packages
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path artifacts
+          nuget pack "nuget\bootstrap.nuspec" -Verbosity detailed -NonInteractive -BasePath . -Version 0.0.0-ci -OutputDirectory artifacts
+          nuget pack "nuget\bootstrap.sass.nuspec" -Verbosity detailed -NonInteractive -BasePath . -Version 0.0.0-ci -OutputDirectory artifacts
+
+      - name: Validate package contents
+        shell: pwsh
+        run: |
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+          function Get-PackageEntries($path) {
+            $archive = [System.IO.Compression.ZipFile]::OpenRead($path)
+
+            try {
+              return @($archive.Entries | ForEach-Object { $_.FullName })
+            } finally {
+              $archive.Dispose()
+            }
+          }
+
+          $cssEntries = Get-PackageEntries "artifacts\bootstrap.0.0.0-ci.nupkg"
+          $sassEntries = Get-PackageEntries "artifacts\bootstrap.sass.0.0.0-ci.nupkg"
+
+          if (-not $cssEntries.Contains("README.md")) {
+            throw "The bootstrap package does not contain README.md."
+          }
+
+          if (-not $sassEntries.Contains("README.md")) {
+            throw "The bootstrap.sass package does not contain README.md."
+          }
+
+          if (-not $cssEntries.Contains("contentFiles/any/any/wwwroot/css/bootstrap.min.css")) {
+            throw "The bootstrap package does not contain the minified CSS file."
+          }
+
+          if (-not $sassEntries.Contains("contentFiles/any/any/Styles/bootstrap.scss")) {
+            throw "The bootstrap.sass package does not contain the Sass entry point."
+          }
+
+          if ($sassEntries -match '^contentFiles/any/any/(wwwroot/)?scss/') {
+            throw "The bootstrap.sass package contains the old scss path."
+          }
+
+          if (-not $sassEntries.Contains("contentFiles/any/any/wwwroot/js/bootstrap.bundle.min.js")) {
+            throw "The bootstrap.sass package does not contain the JavaScript bundle."
+          }
+
+      - name: Test an SDK-style project
+        shell: pwsh
+        run: |
+          $packageSource = (Resolve-Path "artifacts").Path
+          dotnet new web -o validation-app --no-restore
+          dotnet add validation-app package bootstrap.sass --version 0.0.0-ci --source $packageSource
+          dotnet publish validation-app --no-restore --output validation-publish
+
+          if (Get-ChildItem "validation-publish\wwwroot" -Filter "*.scss" -Recurse) {
+            throw "The published application exposes Sass below wwwroot."
+          }
+
+          if (-not (Test-Path "validation-publish\wwwroot\js\bootstrap.bundle.min.js")) {
+            throw "The published application does not contain the JavaScript bundle."
+          }
