@@ -18,15 +18,15 @@ $range-tokens: defaults(
     --range-track-cursor: pointer,
     --range-track-bg: var(--bg-3),
     --range-track-border-radius: 1rem,
-    --range-track-fill-bg: var(--primary-base),
+    --range-track-fill-bg: var(--theme-bg, var(--primary-base)),
     --range-track-disabled-bg: color-mix(in oklch, var(--bg-4), var(--fg-3)),
     --range-thumb-width: 1rem,
     --range-thumb-height: var(--range-thumb-width),
-    --range-thumb-bg: var(--primary-base),
+    --range-thumb-bg: var(--theme-bg, var(--primary-base)),
     --range-thumb-border: var(--range-thumb-bg) solid var(--border-color),
     --range-thumb-border-radius: 1rem,
     --range-thumb-box-shadow: "0 1px 2px rgb(0 0 0 / 7.5%), 0 2px 4px rgb(0 0 0 / 7.5%)",
-    --range-thumb-active-bg: color-mix(in oklch, var(--primary-base) 70%, var(--bg-body)),
+    --range-thumb-active-bg: color-mix(in oklch, var(--theme-bg, var(--primary-base)) 70%, var(--bg-body)),
     --range-thumb-disabled-bg: var(--fg-3),
     --range-thumb-transition-property: "background-color, border-color, box-shadow",
     --range-thumb-transition-duration: .15s,
@@ -98,10 +98,10 @@ $range-tokens: defaults(
 
     &:hover {
       &::-webkit-slider-thumb {
-        @include focus-ring(false, color-mix(in oklch, var(--primary-focus-ring), transparent));
+        @include focus-ring(false, color-mix(in oklch, var(--theme-focus-ring, var(--primary-focus-ring)), transparent));
       }
       &::-moz-range-thumb     {
-        @include focus-ring(false, color-mix(in oklch, var(--primary-focus-ring), transparent));
+        @include focus-ring(false, color-mix(in oklch, var(--theme-focus-ring, var(--primary-focus-ring)), transparent));
       }
     }
 
