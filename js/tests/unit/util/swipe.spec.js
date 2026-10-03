@@ -35,6 +35,11 @@ describe('Swipe', () => {
     Simulator.gestures.swipe(element, _options)
   }
 
+  const triggerTouchEvent = (element, type, clientX) => {
+    const touches = [{ x: clientX, y: 10, target: element }]
+    Simulator.events.touch.trigger(touches, element, type)
+  }
+
   beforeEach(() => {
     fixtureEl = getFixture()
     const cssStyle = [
@@ -156,7 +161,43 @@ describe('Swipe', () => {
     })
   })
 
-  describe('Functionality on PointerEvents', () => {
+  describe('Functionality', () => {
+    it('should not interpret a tap as a swipe with touch events', () => {
+      clearPointerEvents()
+      defineDocumentElementOntouchstart()
+
+      const leftCallback = jasmine.createSpy('leftCallback')
+      const rightCallback = jasmine.createSpy('rightCallback')
+      // eslint-disable-next-line no-new
+      new Swipe(swipeEl, { leftCallback, rightCallback })
+
+      triggerTouchEvent(swipeEl, 'start', 200)
+      triggerTouchEvent(swipeEl, 'end', 200)
+
+      expect(leftCallback).not.toHaveBeenCalled()
+      expect(rightCallback).not.toHaveBeenCalled()
+      restorePointerEvents()
+    })
+
+    it('should preserve the swipe direction across touchmove events', () => {
+      clearPointerEvents()
+      defineDocumentElementOntouchstart()
+
+      const leftCallback = jasmine.createSpy('leftCallback')
+      const rightCallback = jasmine.createSpy('rightCallback')
+      // eslint-disable-next-line no-new
+      new Swipe(swipeEl, { leftCallback, rightCallback })
+
+      triggerTouchEvent(swipeEl, 'start', 300)
+      triggerTouchEvent(swipeEl, 'move', 250)
+      triggerTouchEvent(swipeEl, 'move', 200)
+      triggerTouchEvent(swipeEl, 'end', 200)
+
+      expect(leftCallback).toHaveBeenCalledTimes(1)
+      expect(rightCallback).not.toHaveBeenCalled()
+      restorePointerEvents()
+    })
+
     it('should not allow pinch with touch events', () => {
       Simulator.setType('touch')
       clearPointerEvents()
