@@ -621,6 +621,26 @@ describe('Offcanvas', () => {
       expect(offCanvas._focustrap).toBeNull()
       expect(Offcanvas.getInstance(offCanvasEl)).toBeNull()
     })
+
+    it('should reset scrollbars when disposing a shown offcanvas with disabled scroll', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        const spyReset = spyOn(ScrollBarHelper.prototype, 'reset').and.callThrough()
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          offCanvas.dispose()
+
+          expect(spyReset).toHaveBeenCalled()
+          expect(document.body.style.overflow).toEqual('')
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
   })
 
   describe('data-api', () => {
