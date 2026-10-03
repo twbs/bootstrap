@@ -194,6 +194,34 @@ describe('ScrollSpy', () => {
       expect(scrollSpy._targetLinks.size).toBe(1)
     })
 
+    it('should take account of escaped IDs', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navigation" class="navbar">',
+        '  <ul class="navbar-nav">',
+        '    <li class="nav-item"><a class="nav-link active" id="one-link" href="#div-2.1">One</a></li>',
+        '    <li class="nav-item"><a class="nav-link" id="two-link" href="#!@#$_^&*()">Two</a></li>',
+        '    <li class="nav-item"><a class="nav-link" id="three-link" href="#id.div.Element@data-custom=true">Three</a></li>',
+        '    <li class="nav-item"><a class="nav-link" id="four-link" href="#https://domain.to/#%2F%40user%3Aname.test">Four</a></li>',
+        '    <li class="nav-item"><a class="nav-link" id="five-link" href="#https://domain.to/#/@user:name.test">Five</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div id="content" style="height: 200px; overflow-y: auto;">',
+        '  <div id="div-2.1" style="height: 300px;">test</div>',
+        '  <div id="!@#$_^&*()" style="height: 300px;">test</div>',
+        '  <div id="id.div.Element@data-custom=true" style="height: 300px;">test</div>',
+        '  <div id="https://domain.to/#%2F%40user%3Aname.test" style="height: 300px;">test</div>',
+        '  <div id="https://domain.to/#/@user:name.test">test</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy(fixtureEl.querySelector('#content'), {
+        target: '#navigation'
+      })
+
+      expect(scrollSpy._observableSections.size).toBe(5)
+      expect(scrollSpy._targetLinks.size).toBe(5)
+    })
+
     it('should not process element without target', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
