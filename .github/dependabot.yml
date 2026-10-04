@@ -31,6 +31,15 @@ updates:
       - dependency-name: "@astrojs/mdx"
         update-types:
           - "version-update:semver-major"
+      - dependency-name: "@babel/cli"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/core"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/preset-env"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "@docsearch/js"
         update-types:
           - "version-update:semver-major"
@@ -38,6 +47,10 @@ updates:
       - dependency-name: "astro"
         update-types:
           - "version-update:semver-major"
+      - dependency-name: "astro-auto-import"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
       - dependency-name: "eslint"
         update-types:
           - "version-update:semver-major"
@@ -54,6 +67,9 @@ updates:
         update-types:
           - "version-update:semver-major"
           - "version-update:semver-minor"
+      - dependency-name: "jasmine"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "jquery"
         update-types:
           - "version-update:semver-major"
@@ -66,6 +82,9 @@ updates:
         update-types:
           - "version-update:semver-major"
           - "version-update:semver-minor"
+      - dependency-name: "prettier-plugin-astro"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "sass"
         update-types:
           - "version-update:semver-major"
