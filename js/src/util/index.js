@@ -260,7 +260,7 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
 /**
  * Return the previous/next element of a list.
  *
- * @param {array} list           the list of elements to traverse
+ * @param {Element[]} list the list of elements to traverse
  * @param {Element} activeElement the currently active element
  * @param {boolean} shouldGetNext whether to return the next element (`true`) or the previous one (`false`)
  * @param {boolean} isCycleAllowed whether to cycle back to the opposite end of the list when reaching the boundary
