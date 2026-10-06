@@ -1,5 +1,8 @@
 ---
+import type { ComponentProps } from 'astro/types'
 import SharedResizableExample from '@twbs/bui/components/ResizableExample'
+
+type Props = ComponentProps<typeof SharedResizableExample>
 ---
 
 <SharedResizableExample {...Astro.props} />

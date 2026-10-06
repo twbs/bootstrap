@@ -1,6 +1,9 @@
 ---
+import type { ComponentProps } from 'astro/types'
 import SharedExample from '@twbs/bui/components/Example'
 import { getConfig } from '@libs/config'
+
+type Props = ComponentProps<typeof SharedExample>
 
 const config = getConfig()
 ---
