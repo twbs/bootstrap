@@ -21,8 +21,21 @@ const highlightedCode = await highlightCode(code, lang)
 <script>
   import { initCopyButtons } from '@twbs/bui/browser/clipboard'
 
-  initCopyButtons('.code-copy [data-bd-clipboard]', (trigger) => {
-    return trigger.closest('.code-copy')?.querySelector('.astro-code')?.textContent?.trim() || ''
+  const copyButtonSelector = '.code-copy [data-bd-clipboard]'
+
+  initCopyButtons(
+    copyButtonSelector,
+    (trigger) => {
+      return trigger.closest('.code-copy')?.querySelector('.astro-code')?.textContent?.trim() || ''
+    },
+    {
+      successClass: 'fg-success',
+      successLabel: 'Install command copied'
+    }
+  )
+
+  document.querySelectorAll<HTMLElement>(copyButtonSelector).forEach((button) => {
+    button.addEventListener('pointerup', () => button.blur())
   })
 </script>
 
