@@ -1,13 +1,13 @@
 ---
 name: bootstrap-release
-description: Cuts a Bootstrap release from version preparation through npm, GitHub, NuGet, and documentation deployment. Use when a maintainer asks to release, publish, or ship Bootstrap, including prereleases such as v6.0.0-alpha1.
+description: Cuts a Bootstrap release from version preparation through npm, GitHub, NuGet, and documentation deployment. Use when a maintainer asks to release, publish, or ship Bootstrap, including prereleases such as v6.0.0-alpha.1.
 disable-model-invocation: true
 ---
 
 # Release Bootstrap
 
 Use this workflow for maintainer releases from this repository.
-The examples target `v6.0.0-alpha1` from `v6-dev`.
+The examples target `v6.0.0-alpha.1` from `v6-dev`.
 Replace the version and branch for later releases.
 
 ## Safety rules
@@ -73,18 +73,18 @@ node -p "require('./package.json').version"
 ```
 
 Skip the version change when it already equals the release version.
-The first Bootstrap 6 alpha already uses `6.0.0-alpha1`.
+The first Bootstrap 6 alpha already uses `6.0.0-alpha.1`.
 
 For a later release, preview the version change first:
 
 ```sh
-npm run release-version 6.0.0-alpha1 6.0.0-alpha2 -- --dry-run --verbose
+npm run release-version 6.0.0-alpha.1 6.0.0-alpha.2 -- --dry-run --verbose
 ```
 
 Then apply it:
 
 ```sh
-npm run release-version 6.0.0-alpha1 6.0.0-alpha2 -- --verbose
+npm run release-version 6.0.0-alpha.1 6.0.0-alpha.2 -- --verbose
 ```
 
 The script updates:
@@ -98,12 +98,12 @@ The script updates:
 - `scss/_banner.scss`
 - `site/data/docs-versions.yml`
 
-It also updates RubyGem version strings from forms such as `6.0.0.alpha1`.
+It also updates RubyGem version strings from forms such as `6.0.0.alpha.1`.
 Review every changed file.
 Search for stale version strings outside generated output.
 
 ```sh
-git grep -n "6\.0\.0-alpha1" -- \
+git grep -n "6\.0\.0-alpha\.1" -- \
   . \
   ':!dist' \
   ':!js/dist' \
@@ -145,11 +145,11 @@ This command performs these tasks:
 4. It creates the distribution ZIP file.
 5. It creates the examples ZIP file.
 
-For `6.0.0-alpha1`, confirm these files exist:
+For `6.0.0-alpha.1`, confirm these files exist:
 
 ```text
-bootstrap-6.0.0-alpha1-dist.zip
-bootstrap-6.0.0-alpha1-examples.zip
+bootstrap-6.0.0-alpha.1-dist.zip
+bootstrap-6.0.0-alpha.1-examples.zip
 ```
 
 Review the complete diff.
@@ -163,10 +163,10 @@ Create a release branch from the release branch.
 Commit all intended version and generated release changes.
 
 ```sh
-git switch -c release-v6.0.0-alpha1
+git switch -c release-v6.0.0-alpha.1
 git add -A
-git commit -m "Release v6.0.0-alpha1"
-git push -u origin release-v6.0.0-alpha1
+git commit -m "Release v6.0.0-alpha.1"
+git push -u origin release-v6.0.0-alpha.1
 gh pr create --base v6-dev
 ```
 
@@ -193,8 +193,8 @@ The two ZIP files must exist.
 After explicit approval, create and push a signed tag:
 
 ```sh
-git tag -s v6.0.0-alpha1 -m "v6.0.0-alpha1"
-git push origin v6.0.0-alpha1
+git tag -s v6.0.0-alpha.1 -m "v6.0.0-alpha.1"
+git push origin v6.0.0-alpha.1
 ```
 
 Use the version without `v` in package files.
@@ -221,7 +221,7 @@ Then verify the distribution tags:
 npm dist-tag ls bootstrap
 ```
 
-`next` must point to `6.0.0-alpha1`.
+`next` must point to `6.0.0-alpha.1`.
 `latest` must remain on the newest stable release.
 
 Use the default `latest` tag only for a stable release.
@@ -235,12 +235,12 @@ Mark the release as a prerelease.
 After explicit approval, run:
 
 ```sh
-gh release create v6.0.0-alpha1 \
-  --title "v6.0.0-alpha1" \
+gh release create v6.0.0-alpha.1 \
+  --title "v6.0.0-alpha.1" \
   --generate-notes \
   --prerelease \
-  bootstrap-6.0.0-alpha1-dist.zip \
-  bootstrap-6.0.0-alpha1-examples.zip
+  bootstrap-6.0.0-alpha.1-dist.zip \
+  bootstrap-6.0.0-alpha.1-examples.zip
 ```
 
 Publishing the GitHub release starts `.github/workflows/publish-nuget.yml`.
@@ -289,7 +289,7 @@ Calculate a published file hash with:
 
 ```sh
 curl -sL \
-  https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/css/bootstrap.min.css \
+  https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css \
   | openssl dgst -sha384 -binary \
   | openssl base64 -A
 ```
@@ -315,7 +315,7 @@ npm dist-tag add bootstrap@<good-version> next
 To remove a bad GitHub release and tag:
 
 ```sh
-gh release delete v6.0.0-alpha1 --cleanup-tag
+gh release delete v6.0.0-alpha.1 --cleanup-tag
 ```
 
 Get explicit approval before either recovery action.
