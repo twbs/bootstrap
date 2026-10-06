@@ -28,9 +28,14 @@
       background-color: transparent;
     }
 
-    #carbonads { // stylelint-disable-line selector-max-id
+    .bd-masthead-ad {
+      width: 100%;
       max-width: 400px;
       margin-block-start: 3rem;
+
+      @include media-breakpoint-up(md) {
+        min-height: 160px;
+      }
     }
 
     @include media-breakpoint-up(md) {
