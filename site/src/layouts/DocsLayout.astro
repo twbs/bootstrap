@@ -108,7 +108,7 @@ if (currentPageIndex < allPages.length - 1) {
     </aside>
 
     <main class="bd-main order-1">
-      <div class="bd-intro pt-2 lg:ps-2">
+      <div class="bd-intro pt-5 md:pt-2 lg:ps-2">
         <h1 class="bd-title mb-0" id="content">{frontmatter.title}</h1>
         <div class="bd-subtitle">
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
@@ -120,7 +120,7 @@ if (currentPageIndex < allPages.length - 1) {
 
       <div class="lg:d-none d-flex justify-content-center bd-toc-toggle">
         <button
-          class="btn-solid theme-inverse rounded-pill px-5"
+          class="btn-solid theme-inverse rounded-pill px-5 fs-sm"
           type="button"
           data-bs-toggle="drawer"
           data-bs-target="#bdTocSidebar"
