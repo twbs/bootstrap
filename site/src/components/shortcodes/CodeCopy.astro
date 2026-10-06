@@ -1,5 +1,5 @@
 ---
-import { highlightCode } from '@twbs/docs-ui/shiki'
+import { highlightCode } from '@twbs/bui/shiki'
 
 interface Props {
   /**
@@ -19,7 +19,7 @@ const highlightedCode = await highlightCode(code, lang)
 ---
 
 <script>
-  import { initCopyButtons } from '@twbs/docs-ui/browser/clipboard'
+  import { initCopyButtons } from '@twbs/bui/browser/clipboard'
 
   initCopyButtons('.code-copy [data-bd-clipboard]', (trigger) => {
     return trigger.closest('.code-copy')?.querySelector('.astro-code')?.textContent?.trim() || ''

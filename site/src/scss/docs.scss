@@ -25,8 +25,8 @@
 
 // Load docs components
 // @use "variables";
-@use "@twbs/docs-ui/scss/icons";
-@use "@twbs/docs-ui/scss/navbar";
+@use "@twbs/bui/scss/icons";
+@use "@twbs/bui/scss/navbar";
 @use "masthead";
 @use "ads";
 @use "content";
@@ -35,16 +35,16 @@
 @use "layout";
 @use "toc";
 @use "footer";
-@use "@twbs/docs-ui/scss/component-examples";
+@use "@twbs/bui/scss/component-examples";
 @use "badge";
 @use "callouts";
 @use "details";
 @use "brand";
-@use "@twbs/docs-ui/scss/clipboard-js";
+@use "@twbs/bui/scss/clipboard-js";
 @use "placeholder-img";
 @use "scrolling";
 @use "patterns";
 
 // Load docs dependencies
-@use "@twbs/docs-ui/scss/syntax";
+@use "@twbs/bui/scss/syntax";
 @use "anchor";

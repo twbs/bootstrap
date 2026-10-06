@@ -1,52 +1,19 @@
 ---
-import SharedFooter from '@twbs/docs-ui/components/Footer'
-import type { FooterColumn } from '@twbs/docs-ui'
+import SharedFooter from '@twbs/bui/components/Footer'
+import { getFooterColumns } from '@twbs/bui'
 import { getConfig } from '@libs/config'
 import { getVersionedDocsPath } from '@libs/path'
 
 const site = getConfig()
-const columns: FooterColumn[] = [
-  {
-    title: 'Links',
-    links: [
-      { label: 'Home', href: '/' },
-      { label: 'Docs', href: getVersionedDocsPath('/') },
-      { label: 'Examples', href: getVersionedDocsPath('examples') },
-      { label: 'Icons', href: site.icons },
-      { label: 'Blog', href: site.blog },
-      { label: 'Swag Store', href: site.swag, external: true }
-    ]
-  },
-  {
-    title: 'Guides',
-    links: [
-      { label: 'Getting started', href: getVersionedDocsPath('getting-started') },
-      { label: 'Starter template', href: getVersionedDocsPath('examples/starter-template') },
-      { label: 'Webpack', href: getVersionedDocsPath('guides/webpack') },
-      { label: 'Parcel', href: getVersionedDocsPath('guides/parcel') },
-      { label: 'Vite', href: getVersionedDocsPath('guides/vite') }
-    ]
-  },
-  {
-    title: 'Projects',
-    links: [
-      { label: 'Bootstrap 6', href: `${site.github_org}/bootstrap`, external: true },
-      { label: 'Bootstrap 5', href: `${site.github_org}/bootstrap/tree/v5-dev`, external: true },
-      { label: 'Icons', href: `${site.github_org}/icons`, external: true },
-      { label: 'Examples repo', href: `${site.github_org}/examples`, external: true }
-    ]
-  },
-  {
-    title: 'Community',
-    links: [
-      { label: 'Issues', href: `${site.github_org}/bootstrap/issues`, external: true },
-      { label: 'Discussions', href: `${site.github_org}/bootstrap/discussions`, external: true },
-      { label: 'Corporate sponsors', href: 'https://github.com/sponsors/twbs', external: true },
-      { label: 'Open Collective', href: site.opencollective, external: true },
-      { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/bootstrap-5', external: true }
-    ]
-  }
-]
+const columns = getFooterColumns({
+  homeHref: '/',
+  getDocsHref: getVersionedDocsPath,
+  iconsHref: site.icons,
+  blogHref: site.blog,
+  swagHref: site.swag,
+  githubOrgHref: site.github_org,
+  openCollectiveHref: site.opencollective
+})
 ---
 
 <SharedFooter brand="Bootstrap" columns={columns}>

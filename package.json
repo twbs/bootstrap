@@ -137,7 +137,7 @@
     "@floating-ui/dom": "^1.7.6",
     "@pagefind/component-ui": "^1.5.2",
     "@stackblitz/sdk": "^1.11.1",
-    "@twbs/docs-ui": "file:../docs",
+    "@twbs/bui": "^0.1.0",
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@vitest/browser": "^4.1.11",
@@ -192,6 +192,7 @@
     "typescript": "6.0.3",
     "typescript-eslint": "^8.68.0",
     "unist-util-visit": "^5.1.0",
+    "vanilla-calendar-pro": "^3.4.0",
     "vitest": "^4.1.11",
     "yaml": "^2.9.0",
     "zod": "^4.6.5"
