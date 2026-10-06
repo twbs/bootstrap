@@ -41,14 +41,14 @@ Add Bootstrap's CSS in `<head>` and the JS bundle before the closing `</body>`. 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-<hash>" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-<hash>" crossorigin="anonymous">
   </head>
   <body>
     <div class="container py-4 px-3 mx-auto">
       <h1>Hello, Bootstrap!</h1>
       <button class="btn-solid theme-primary">Primary button</button>
     </div>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-<hash>" crossorigin="anonymous"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-<hash>" crossorigin="anonymous"></script>
   </body>
 </html>
 ```
@@ -66,7 +66,7 @@ To load Floating UI and Vanilla Calendar Pro separately (smaller payload), use t
   }
 }
 </script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-<hash>" crossorigin="anonymous"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.min.js" integrity="sha384-<hash>" crossorigin="anonymous"></script>
 ```
 
 For a CDN setup you're done — skip to **Step 5: Verify**.
