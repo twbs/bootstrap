@@ -122,7 +122,7 @@
     "watch-js-docs": "nodemon --watch site/src/assets/ --ext js --exec \"npm run js-lint\"",
     "astro-clean": "rm -rf site/.astro site/node_modules/.astro",
     "astro-dev": "astro dev --root site --port ${PORT:-9001}",
-    "astro-build": "astro build --root site && rm -rf _site && cp -r site/dist _site && pagefind --site _site",
+    "astro-build": "astro build --root site && node build/copy-site.mjs && pagefind --site _site",
     "astro-preview": "astro preview --root site --port 9001",
     "spellcheck": "cspell --config .cspell.json \".gitignore\" \"**/*.{md,mdx,yml,yaml,json,js,cjs,mjs,ts}\""
   },
