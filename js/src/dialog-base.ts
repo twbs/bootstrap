@@ -272,7 +272,7 @@ class DialogBase extends BaseComponent {
     const selector = '[data-bs-toggle="tooltip"], [data-bs-toggle="popover"]'
 
     for (const el of SelectorEngine.find(selector, this._element)) {
-      const instance = Data.getAny(el)
+      const instance = Data.get(el, `bs.${el.getAttribute('data-bs-toggle')}`)
       if (instance && typeof instance.hide === 'function') {
         instance.hide()
       }
@@ -280,7 +280,7 @@ class DialogBase extends BaseComponent {
 
     // Hide any visible toasts
     for (const el of SelectorEngine.find('.toast.show', this._element)) {
-      const instance = Data.getAny(el)
+      const instance = Data.get(el, 'bs.toast')
       if (instance && typeof instance.hide === 'function') {
         instance.hide()
       }
