@@ -9,18 +9,29 @@
 import { execFile } from 'node:child_process'
 import fs from 'node:fs/promises'
 import process from 'node:process'
+import { promisify } from 'node:util'
 
 const VERBOSE = process.argv.includes('--verbose')
 const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-run')
+const execFileAsync = promisify(execFile)
 
 // These are the files we only care about replacing the version
 const FILES = [
+  '.cursor/skills/bootstrap-release/SKILL.md',
+  '.github/workflows/linkinator.yml',
+  'AGENTS.md',
   'README.md',
   'config.yml',
   'js/src/base-component.ts',
   'package.js',
   'scss/_banner.scss',
-  'site/data/docs-versions.yml'
+  'site/data/docs-versions.yml',
+  'skills/bootstrap-npm/SKILL.md',
+  'skills/bootstrap-parcel/SKILL.md',
+  'skills/bootstrap-v5-v6-migration/SKILL.md',
+  'skills/bootstrap-v6-install/SKILL.md',
+  'skills/bootstrap-vite/SKILL.md',
+  'skills/bootstrap-webpack/SKILL.md'
 ]
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
@@ -62,17 +73,12 @@ async function replaceRecursively(file, oldVersion, newVersion) {
   await fs.writeFile(file, newString, 'utf8')
 }
 
-function bumpNpmVersion(newVersion) {
+async function bumpNpmVersion(newVersion) {
   if (DRY_RUN) {
     return
   }
 
-  execFile('npm', ['version', newVersion, '--no-git-tag'], { shell: true }, error => {
-    if (error) {
-      console.error(error)
-      process.exit(1)
-    }
-  })
+  await execFileAsync('npm', ['version', newVersion, '--no-git-tag-version'])
 }
 
 function showUsage(args) {
@@ -98,9 +104,8 @@ async function main(args) {
     showUsage(args)
   }
 
-  bumpNpmVersion(newVersion)
-
   try {
+    await bumpNpmVersion(newVersion)
     await Promise.all(
       FILES.map(file => replaceRecursively(file, oldVersion, newVersion))
     )

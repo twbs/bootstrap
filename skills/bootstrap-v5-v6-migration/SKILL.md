@@ -21,7 +21,7 @@ Work through each step in order. After each step, search the codebase for remain
 
 ## Step 1: Dependencies & Build
 
-1. Update `package.json`: `"bootstrap": "^6.0.0"`
+1. Update `package.json`: `"bootstrap": "6.0.0-alpha.1"`
 2. Replace `@popperjs/core` with `@floating-ui/dom`
 3. If using Datepicker, add peer dep `vanilla-calendar-pro`
 4. Sass: replace all `@import` with `@use` (Node Sass is no longer supported)
