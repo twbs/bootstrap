@@ -184,7 +184,7 @@
     "rolldown": "1.2.0",
     "sass": "^1.103.1",
     "sass-true": "^10.1.0",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.5",
     "shelljs": "^0.10.0",
     "stylelint": "16.26.1",
     "stylelint-config-twbs-bootstrap": "^16.1.0",
