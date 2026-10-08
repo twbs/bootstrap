@@ -1,0 +1,1 @@
+import{t as e}from"./clipboard.DBO7Z-UH.js";var t=`.code-copy [data-bd-clipboard]`;e(t,e=>e.closest(`.code-copy`)?.querySelector(`.astro-code`)?.textContent?.trim()||``,{successClass:`fg-success`,successLabel:`Install command copied`}),document.querySelectorAll(t).forEach(e=>{e.addEventListener(`pointerup`,()=>e.blur())});

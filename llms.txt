@@ -1,0 +1,172 @@
+# Bootstrap
+
+> Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.
+
+The full text of the documentation is available at [https://getbootstrap.com/llms-full.txt](https://getbootstrap.com/llms-full.txt).
+
+## Getting started
+
+- [Install Bootstrap](https://getbootstrap.com/docs/6.0/getting-started/install): Add Bootstrap to your project with CDN, package manager, or source files.
+- [Using Bootstrap with AI](https://getbootstrap.com/docs/6.0/getting-started/ai): Learn about Bootstrap’s machine-readable docs and skills files for working with LLMs and agentic developer tools.
+- [Approach](https://getbootstrap.com/docs/6.0/getting-started/approach): Learn about the guiding principles, strategies, and techniques used to build and maintain Bootstrap so you can more easily customize and extend it yourself.
+- [CSS variables](https://getbootstrap.com/docs/6.0/getting-started/css-variables): Use Bootstrap’s CSS custom properties for fast and forward-looking design and development.
+- [JavaScript](https://getbootstrap.com/docs/6.0/getting-started/javascript): Bring Bootstrap to life with our optional JavaScript plugins. Learn about each plugin, our data and programmatic API options, and more.
+- [Browsers & devices](https://getbootstrap.com/docs/6.0/getting-started/browsers-devices): Learn about the browsers and devices, from modern to old, that are supported by Bootstrap, and the modern platform features the framework is built on.
+- [Accessibility](https://getbootstrap.com/docs/6.0/getting-started/accessibility): A brief overview of Bootstrap’s features and limitations for the creation of accessible content.
+
+## Guides
+
+- [CDN Quickstart](https://getbootstrap.com/docs/6.0/guides/quickstart): The official guide for how to include Bootstrap’s CSS and JavaScript in your project using a CDN.
+- [Bootstrap and npm](https://getbootstrap.com/docs/6.0/guides/npm): The official guide for how to build a starter project with Bootstrap’s CSS and JavaScript in your project using just npm.
+- [Bootstrap and Webpack](https://getbootstrap.com/docs/6.0/guides/webpack): The official guide for how to include and bundle Bootstrap’s CSS and JavaScript in your project using Webpack.
+- [Bootstrap and Parcel](https://getbootstrap.com/docs/6.0/guides/parcel): The official guide for how to include and bundle Bootstrap’s CSS and JavaScript in your project using Parcel.
+- [Bootstrap and Vite](https://getbootstrap.com/docs/6.0/guides/vite): The official guide for how to include and bundle Bootstrap’s CSS and JavaScript in your project using Vite.
+- [Contribute](https://getbootstrap.com/docs/6.0/guides/contribute): Help develop Bootstrap with our documentation build scripts and tests.
+- [Migration](https://getbootstrap.com/docs/6.0/guides/migration): Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v5 to v6.
+
+## Customize
+
+- [Customize](https://getbootstrap.com/docs/6.0/customize/overview): Learn how Bootstrap's colors power our design system theme. Customize and extend Bootstrap with Sass, a boatload of global options, and plenty of global and component-specific CSS variables.
+- [Sass](https://getbootstrap.com/docs/6.0/customize/sass): Utilize our source Sass files to take advantage of variables, maps, mixins, and functions to help you build faster and customize your project.
+- [Options](https://getbootstrap.com/docs/6.0/customize/options): Quickly customize Bootstrap with built-in variables to easily toggle global CSS preferences for controlling style and behavior.
+- [Color](https://getbootstrap.com/docs/6.0/customize/color): Bootstrap is supported by an extensive color system that powers our revamped theme, components, and color modes. This enables more comprehensive customization and extension for any project.
+- [Theme](https://getbootstrap.com/docs/6.0/customize/theme): The Bootstrap theme is a set of semantically named tokens that are used to style our components, utilities, and more. The theme is configurable, responds to color modes, and can be consumed via Sass or CSS.
+- [Color modes](https://getbootstrap.com/docs/6.0/customize/color-modes): Bootstrap supports light and dark color modes. The page follows the visitor’s system preference by default, and you can force a mode globally or per-component with the `data-bs-theme` attribute.
+- [Components](https://getbootstrap.com/docs/6.0/customize/components): Learn how and why we build nearly all our components responsively and with base and modifier classes.
+- [Transitions](https://getbootstrap.com/docs/6.0/customize/transitions): Learn how Bootstrap components animate, which state classes drive them, and how to retune or remove the motion.
+- [RTL](https://getbootstrap.com/docs/6.0/customize/rtl): Learn how to enable support for right-to-left text in Bootstrap across our layout, components, and utilities.
+- [Optimize](https://getbootstrap.com/docs/6.0/customize/optimize): Keep your projects lean, responsive, and maintainable so you can deliver the best experience and focus on more important jobs.
+
+## Layout
+
+- [Breakpoints](https://getbootstrap.com/docs/6.0/layout/breakpoints): Breakpoints are customizable widths that determine how your responsive layout behaves across device or viewport sizes in Bootstrap.
+- [Containers](https://getbootstrap.com/docs/6.0/layout/containers): Containers are a fundamental building block of Bootstrap that contain, pad, and align your content within a given device or viewport.
+- [Grid system](https://getbootstrap.com/docs/6.0/layout/grid): Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined classes.
+- [Columns](https://getbootstrap.com/docs/6.0/layout/columns): Learn how to modify columns with a handful of options for alignment, ordering, and offsetting thanks to our flexbox grid system. Plus, see how to use column classes to manage widths of non-grid elements.
+- [Gutters](https://getbootstrap.com/docs/6.0/layout/gutters): Gutters are the padding between your columns, used to responsively space and align content in the Bootstrap grid system.
+- [Utilities for layout](https://getbootstrap.com/docs/6.0/layout/utilities): For faster mobile-friendly and responsive development, Bootstrap includes dozens of utility classes for showing, hiding, aligning, and spacing content.
+- [Z-index](https://getbootstrap.com/docs/6.0/layout/z-index): While not a part of Bootstrap’s grid system, z-indexes play an important part in how our components overlay and interact with one another.
+- [CSS Grid](https://getbootstrap.com/docs/6.0/layout/css-grid): Learn how to enable, use, and customize our alternate layout system built on CSS Grid with examples and code snippets.
+
+## Content
+
+- [Reboot](https://getbootstrap.com/docs/6.0/content/reboot): Reboot, a collection of element-specific CSS changes in a single file, kickstart Bootstrap to provide an elegant, consistent, and simple baseline to build upon.
+- [Typography](https://getbootstrap.com/docs/6.0/content/typography): Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.
+- [Images](https://getbootstrap.com/docs/6.0/content/images): Documentation and examples for opting images into responsive behavior (so they never become wider than their parent) and add lightweight styles to them—all via classes.
+- [Tables](https://getbootstrap.com/docs/6.0/content/tables): Documentation and examples for opt-in styling of tables (given their prevalent use in JavaScript plugins) with Bootstrap.
+- [Prose](https://getbootstrap.com/docs/6.0/content/prose): Use the `.prose` wrapper class to make long form content more easily without the need for specifying Bootstrap classes on every element. Especially useful for converting Markdown or MDX to HTML, or simply for making content heavy pages more readable.
+
+## Forms
+
+- [Forms](https://getbootstrap.com/docs/6.0/forms/overview): Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.
+- [Field](https://getbootstrap.com/docs/6.0/forms/field): A universal layout wrapper for form controls that handles label, description, and validation feedback placement with CSS grid.
+- [Form controls](https://getbootstrap.com/docs/6.0/forms/form-control): Give textual `<input>`, `<textarea>`, and `<select>` elements an upgrade with custom styles, sizing, focus states, and more.
+- [Checkbox](https://getbootstrap.com/docs/6.0/forms/checkbox): Highly customizable, native checkbox `<input>` elements for presenting toggleable options.
+- [Radio](https://getbootstrap.com/docs/6.0/forms/radio): Highly customizable, native radio `<input>` elements for choosing one option from many.
+- [Switch](https://getbootstrap.com/docs/6.0/forms/switch): Custom toggle component built on top of native `<input>` checkbox elements.
+- [Range](https://getbootstrap.com/docs/6.0/forms/range): Use our custom range inputs for consistent cross-browser styling with a filled track, value bubble, and tick marks.
+- [Input group](https://getbootstrap.com/docs/6.0/forms/input-group): Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.
+- [Floating labels](https://getbootstrap.com/docs/6.0/forms/floating-labels): Create beautifully simple form labels that float over your input fields.
+- [Form adorn](https://getbootstrap.com/docs/6.0/forms/form-adorn): Decorate inputs with icons, text, and more using a custom wrapper that easily handles styling and positioning.
+- [Chips](https://getbootstrap.com/docs/6.0/forms/chips): Small interactive elements representing entities like people, places, tags, or values. Combine with inputs for multi-value fields like skills, categories, or email recipients using themed chips.
+- [Combobox](https://getbootstrap.com/docs/6.0/forms/combobox): A customizable select-like component built with markup-first HTML, powered by the Menu component for positioning and keyboard navigation.
+- [Datepicker](https://getbootstrap.com/docs/6.0/forms/datepicker): A flexible calendar and date picker popover with support for input or button toggles, range selection, multiple months, and more.
+- [OTP input](https://getbootstrap.com/docs/6.0/forms/otp-input): Collect one-time passwords, PIN codes, and verification codes with a single accessible input rendered as separate digit slots.
+- [Password strength](https://getbootstrap.com/docs/6.0/forms/password-strength): Provide visual feedback on password strength with segmented meters or progress bars that update as users type.
+- [Layout](https://getbootstrap.com/docs/6.0/forms/layout): Give your forms some structure—from inline to horizontal to custom grid implementations—with our form layout options.
+- [Validation](https://getbootstrap.com/docs/6.0/forms/validation): Provide valuable, actionable feedback to your users with HTML5 form validation, via browser default behaviors or custom styles and JavaScript.
+
+## Components
+
+- [Accordion](https://getbootstrap.com/docs/6.0/components/accordion): Build vertically collapsing accordions with native HTML `<details>` and `<summary>` elements.
+- [Alert](https://getbootstrap.com/docs/6.0/components/alert): Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
+- [Avatar](https://getbootstrap.com/docs/6.0/components/avatar): Documentation and examples for avatars, including image avatars, initials, status indicators, and avatar stacks.
+- [Badges](https://getbootstrap.com/docs/6.0/components/badge): Small components for indicating status and counts, or labelling items.
+- [Breadcrumb](https://getbootstrap.com/docs/6.0/components/breadcrumb): Indicate the current page's location within a navigational hierarchy using explicit divider elements.
+- [Button](https://getbootstrap.com/docs/6.0/components/button): Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.
+- [Button group](https://getbootstrap.com/docs/6.0/components/button-group): Group a series of buttons together on a single line or stack them in a vertical column.
+- [Cards](https://getbootstrap.com/docs/6.0/components/card): Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
+- [Carousel](https://getbootstrap.com/docs/6.0/components/carousel): A slider or slideshow component for cycling through series of content, ranging from products to images and more, one at a time.
+- [Close button](https://getbootstrap.com/docs/6.0/components/close-button): A generic close button for dismissing content like modals and alerts.
+- [Collapse](https://getbootstrap.com/docs/6.0/components/collapse): Toggle the visibility of content across your project with a few classes and our JavaScript plugins.
+- [Dialog](https://getbootstrap.com/docs/6.0/components/dialog): A modern component built on the native `<dialog>` element with built-in accessibility and backdrop support that replaces the old Modal component.
+- [Drawer](https://getbootstrap.com/docs/6.0/components/drawer): Build hidden sidebars or drawers into your project for navigation, shopping carts, and more with a few classes and our JavaScript plugin. Replaces the old Offcanvas component.
+- [List group](https://getbootstrap.com/docs/6.0/components/list-group): List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.
+- [Menu](https://getbootstrap.com/docs/6.0/components/menu): Toggle contextual menus and custom overlays for lists of buttons, links, forms, and other custom content.
+- [Nav](https://getbootstrap.com/docs/6.0/components/nav): Add lists of links to your pages with various navigation components—tabs, pills, underline—and plenty of options to customize.
+- [Nav overflow](https://getbootstrap.com/docs/6.0/components/nav-overflow): Automatically collapse navigation items into a "More" menu when space is limited using the Priority+ pattern.
+- [Navbar](https://getbootstrap.com/docs/6.0/components/navbar): Create flexible, responsive navigation bars. Includes support for branding, navigation, and a built-in drawer for mobile.
+- [Pagination](https://getbootstrap.com/docs/6.0/components/pagination): Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages.
+- [Placeholder](https://getbootstrap.com/docs/6.0/components/placeholder): Use loading placeholders (skeleton loaders) for your components or pages to indicate something may still be loading.
+- [Popover](https://getbootstrap.com/docs/6.0/components/popover): Small, contextual overlays for displaying custom content and information via JavaScript.
+- [Progress](https://getbootstrap.com/docs/6.0/components/progress): Documentation and examples for using Bootstrap custom progress bars featuring support for stacked bars, animated backgrounds, and text labels.
+- [Scrollspy](https://getbootstrap.com/docs/6.0/components/scrollspy): Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
+- [Spinners](https://getbootstrap.com/docs/6.0/components/spinner): Indicate the loading state of a component or page with Bootstrap spinners, built entirely with HTML, CSS, and no JavaScript.
+- [Stepper](https://getbootstrap.com/docs/6.0/components/stepper): Create timelines, wizards, or step-by-step progress bars. Ideal for shopping carts, sign-up forms, and more.
+- [Tab](https://getbootstrap.com/docs/6.0/components/tab): Create toggleable content panes using any of our navigation or list group components with this JavaScript plugin.
+- [Toasts](https://getbootstrap.com/docs/6.0/components/toasts): Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.
+- [Toggler](https://getbootstrap.com/docs/6.0/components/toggler): Toggle attributes or classes on click using only data attributes and our JavaScript plugin. Works with any attribute except `id`.
+- [Tooltips](https://getbootstrap.com/docs/6.0/components/tooltip): Custom replacement for browser tooltips—themed with CSS variables and powered by [Floating UI](https://floating-ui.com/).
+
+## Helpers
+
+- [Focus ring](https://getbootstrap.com/docs/6.0/helpers/focus-ring): Utility classes that allows you to add and modify custom focus ring styles to elements and components.
+- [Hover lift](https://getbootstrap.com/docs/6.0/helpers/hover-lift): Raise an element with a subtle transform and shadow on hover and keyboard focus.
+- [Icon link](https://getbootstrap.com/docs/6.0/helpers/icon-link): Quickly create stylized hyperlinks with Bootstrap Icons or other icons.
+- [Position](https://getbootstrap.com/docs/6.0/helpers/position): Use these helpers for quickly configuring the position of an element.
+- [Stacks](https://getbootstrap.com/docs/6.0/helpers/stacks): Shorthand helpers that build on top of our flexbox utilities to make component layout faster and easier than ever.
+- [Stretched link](https://getbootstrap.com/docs/6.0/helpers/stretched-link): Make any HTML element or Bootstrap component clickable by “stretching” a nested link via CSS.
+- [Text truncation](https://getbootstrap.com/docs/6.0/helpers/text-truncation): Truncate long strings of text with an ellipsis.
+- [Vertical rule](https://getbootstrap.com/docs/6.0/helpers/vertical-rule): Use the custom vertical rule helper to create vertical dividers like the `<hr>` element.
+- [Visually hidden](https://getbootstrap.com/docs/6.0/helpers/visually-hidden): Use these helpers to visually hide elements but keep them accessible to assistive technologies.
+
+## Utilities
+
+- [Utility API](https://getbootstrap.com/docs/6.0/utilities/api): The utility API is a Sass-based tool to generate utility classes.
+- [Colors](https://getbootstrap.com/docs/6.0/utilities/colors): Convey meaning through `color` with a handful of color utility classes, including built-in color mode adaptivity and support for translucency.
+- [Background](https://getbootstrap.com/docs/6.0/utilities/background): Convey meaning through `background-color` and add decoration with gradients.
+- [Color scheme](https://getbootstrap.com/docs/6.0/utilities/color-scheme): Set the color scheme of a single element to control how the browser paints form controls, scrollbars, and embedded documents.
+- [Theme](https://getbootstrap.com/docs/6.0/utilities/theme): Combine one of three theme utilities with our theme color classes to set `color` and `background-color` pairings on any element, just like component variants.
+- [Aspect ratio](https://getbootstrap.com/docs/6.0/utilities/aspect-ratio): Make elements maintain specific aspect ratios. Perfect for handling videos, slideshow embeds, and more based on the width of the parent.
+- [Container queries](https://getbootstrap.com/docs/6.0/utilities/container-queries): Turn an element into a query container with container-type utilities so descendants can respond to its size.
+- [Display property](https://getbootstrap.com/docs/6.0/utilities/display): Quickly and responsively toggle the display value of components and more with our display utilities.
+- [Float](https://getbootstrap.com/docs/6.0/utilities/float): Toggle floats on any element, across any breakpoint, using our responsive float utilities.
+- [Object fit](https://getbootstrap.com/docs/6.0/utilities/object-fit): Use the object fit utilities to modify how the content of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener noreferrer">replaced element</a>, such as an `<img>` or `<video>`, should be resized to fit its container.
+- [Overflow](https://getbootstrap.com/docs/6.0/utilities/overflow): Use these shorthand utilities for quickly configuring how content overflows an element.
+- [Position](https://getbootstrap.com/docs/6.0/utilities/position): Use these shorthand utilities for quickly configuring the position of an element.
+- [Visibility](https://getbootstrap.com/docs/6.0/utilities/visibility): Control the visibility of elements, without modifying their display, with visibility utilities.
+- [Z-index](https://getbootstrap.com/docs/6.0/utilities/z-index): Use our low-level `z-index` utilities to quickly change the stack level of an element or component.
+- [Align content](https://getbootstrap.com/docs/6.0/utilities/align-content): Use align-content utilities to align flex items together on the cross axis.
+- [Align items](https://getbootstrap.com/docs/6.0/utilities/align-items): Use align-items utilities to change the alignment of flex items on the cross axis.
+- [Align self](https://getbootstrap.com/docs/6.0/utilities/align-self): Use align-self utilities to individually change the alignment of flex items on the cross axis.
+- [Flex](https://getbootstrap.com/docs/6.0/utilities/flex): Quickly manage the layout, alignment, and sizing of grid columns, navigation, components, and more with a full suite of responsive flexbox utilities. For more complex implementations, custom CSS may be necessary.
+- [Gap](https://getbootstrap.com/docs/6.0/utilities/gap): Use gap utilities to control the space between elements in flexbox or grid layouts. Includes support for individual row and column gaps.
+- [Grid](https://getbootstrap.com/docs/6.0/utilities/grid): Utilities for controlling CSS Grid layout behavior including column counts, column behavior, and auto-placement options.
+- [Justify content](https://getbootstrap.com/docs/6.0/utilities/justify-content): Use justify-content utilities to change the alignment of flex items on the main axis.
+- [Justify items](https://getbootstrap.com/docs/6.0/utilities/justify-items): Use justify-items utilities to control the alignment of grid items along the inline axis (horizontally, in most writing modes).
+- [Place items](https://getbootstrap.com/docs/6.0/utilities/place-items): Use place-items utilities to control the alignment of grid items within their grid areas on both the block and inline axes simultaneously.
+- [Width](https://getbootstrap.com/docs/6.0/utilities/width): Use width utilities to control the width of elements with responsive width classes.
+- [Height](https://getbootstrap.com/docs/6.0/utilities/height): Use height utilities to control the height of elements with responsive height classes.
+- [Margin](https://getbootstrap.com/docs/6.0/utilities/margin): Use margin utilities to responsively control the space around elements.
+- [Padding](https://getbootstrap.com/docs/6.0/utilities/padding): Use padding utilities to responsively control the inner spacing of elements.
+- [Space](https://getbootstrap.com/docs/6.0/utilities/space): Control the margin between direct children of an element in non-flex and non-grid layouts.
+- [Font family](https://getbootstrap.com/docs/6.0/utilities/font-family): Utilities for controlling font family including monospace font stack.
+- [Font size](https://getbootstrap.com/docs/6.0/utilities/font-size): Utilities for controlling text size, or `font-size` and `line-height` together, with responsive font sizing using `clamp()`.
+- [Font style](https://getbootstrap.com/docs/6.0/utilities/font-style): Utilities for controlling font style including italic and normal styles.
+- [Font weight](https://getbootstrap.com/docs/6.0/utilities/font-weight): Utilities for controlling font weight including bold, semibold, medium, normal, and light weights.
+- [Line height](https://getbootstrap.com/docs/6.0/utilities/line-height): Utilities for controlling line height including tight, normal, and loose spacing.
+- [Link](https://getbootstrap.com/docs/6.0/utilities/link): Link utilities are used to stylize your anchors to adjust their color and opacity.
+- [Text alignment](https://getbootstrap.com/docs/6.0/utilities/text-alignment): Easily realign text with text alignment utilities for start, end, and center alignment.
+- [Text decoration](https://getbootstrap.com/docs/6.0/utilities/text-decoration): Utilities for controlling text decoration, text transform, and text color reset.
+- [Text transform](https://getbootstrap.com/docs/6.0/utilities/text-transform): Transform text in components with text capitalization utilities.
+- [Text wrapping](https://getbootstrap.com/docs/6.0/utilities/text-wrapping): Utilities for controlling text wrapping, overflow, and word breaking behavior.
+- [Vertical alignment](https://getbootstrap.com/docs/6.0/utilities/vertical-align): Easily change the vertical alignment of inline, inline-block, inline-table, and table cell elements.
+- [Border](https://getbootstrap.com/docs/6.0/utilities/border): Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.
+- [Border color](https://getbootstrap.com/docs/6.0/utilities/border-color): Utilities for controlling border color and opacity.
+- [Border radius](https://getbootstrap.com/docs/6.0/utilities/border-radius): Use border radius…
+- [Divide](https://getbootstrap.com/docs/6.0/utilities/divide): Divide content with borders between direct children of an element. Supports horizontal and vertical dividers with responsive variants.
+- [Pointer events](https://getbootstrap.com/docs/6.0/utilities/pointer-events): Control how elements respond to mouse and touch interactions with pointer-events utilities.
+- [User select](https://getbootstrap.com/docs/6.0/utilities/user-select): Control how users can select text content with user-select utilities.
+- [Motion](https://getbootstrap.com/docs/6.0/utilities/motion): Disable or apply CSS transitions and animations on individual elements with motion utilities.
+- [Opacity](https://getbootstrap.com/docs/6.0/utilities/opacity): Control the opacity of elements.
+- [Shadows](https://getbootstrap.com/docs/6.0/utilities/shadows): Add or remove shadows to elements with box-shadow utilities.
