@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
-  * Bootstrap  v6.0.0-alpha1 (https://getbootstrap.com/)
+  * Bootstrap  v6.0.0-alpha.1 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -3759,15 +3759,15 @@
     --bs-range-track-cursor: pointer;
     --bs-range-track-bg: var(--bs-bg-3);
     --bs-range-track-border-radius: 1rem;
-    --bs-range-track-fill-bg: var(--bs-primary-base);
+    --bs-range-track-fill-bg: var(--bs-theme-bg, var(--bs-primary-base));
     --bs-range-track-disabled-bg: color-mix(in oklch, var(--bs-bg-4), var(--bs-fg-3));
     --bs-range-thumb-width: 1rem;
     --bs-range-thumb-height: var(--bs-range-thumb-width);
-    --bs-range-thumb-bg: var(--bs-primary-base);
+    --bs-range-thumb-bg: var(--bs-theme-bg, var(--bs-primary-base));
     --bs-range-thumb-border: var(--bs-range-thumb-bg) solid var(--bs-border-color);
     --bs-range-thumb-border-radius: 1rem;
     --bs-range-thumb-box-shadow: 0 1px 2px rgb(0 0 0 / 7.5%), 0 2px 4px rgb(0 0 0 / 7.5%);
-    --bs-range-thumb-active-bg: color-mix(in oklch, var(--bs-primary-base) 70%, var(--bs-bg-body));
+    --bs-range-thumb-active-bg: color-mix(in oklch, var(--bs-theme-bg, var(--bs-primary-base)) 70%, var(--bs-bg-body));
     --bs-range-thumb-disabled-bg: var(--bs-fg-3);
     --bs-range-thumb-transition-property: background-color, border-color, box-shadow;
     --bs-range-thumb-transition-duration: 0.15s;
@@ -3788,10 +3788,10 @@
     background-color: transparent;
   }
   .form-range-input:hover::-webkit-slider-thumb {
-    outline: var(--bs-focus-ring-width) solid color-mix(in oklch, var(--bs-primary-focus-ring), transparent);
+    outline: var(--bs-focus-ring-width) solid color-mix(in oklch, var(--bs-theme-focus-ring, var(--bs-primary-focus-ring)), transparent);
   }
   .form-range-input:hover::-moz-range-thumb {
-    outline: var(--bs-focus-ring-width) solid color-mix(in oklch, var(--bs-primary-focus-ring), transparent);
+    outline: var(--bs-focus-ring-width) solid color-mix(in oklch, var(--bs-theme-focus-ring, var(--bs-primary-focus-ring)), transparent);
   }
   .form-range-input:focus-visible {
     outline: 0;
@@ -5432,9 +5432,9 @@
     opacity: 0.25;
   }
   .btn-group:where(.btn-group-divider) > [class*=btn-] + [class*=btn-]::before {
+    inset-inline-start: calc(var(--bs-btn-border-width) * -1);
     top: 25%;
     bottom: 25%;
-    left: calc(var(--bs-btn-border-width) * -1);
     width: var(--bs-btn-border-width);
   }
   .btn-group-vertical:where(.btn-group-divider) > [class*=btn-] + [class*=btn-]::before {
