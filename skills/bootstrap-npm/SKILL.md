@@ -30,7 +30,7 @@ Set up a Bootstrap 6 project that compiles Sass to CSS using npm command-line to
 2. Install Bootstrap and its optional peer dependencies (omit `@floating-ui/dom` if not using menus/popovers/tooltips; omit `vanilla-calendar-pro` if not using the datepicker):
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
+   npm i --save bootstrap@6.0.0-alpha.1 @floating-ui/dom vanilla-calendar-pro
    ```
 
 3. Install the tools to compile and post-process CSS:

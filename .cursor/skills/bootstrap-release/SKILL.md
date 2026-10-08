@@ -7,8 +7,13 @@ disable-model-invocation: true
 # Release Bootstrap
 
 Use this workflow for maintainer releases from this repository.
-The examples target `v6.0.0-alpha.1` from `v6-dev`.
-Replace the version and branch for later releases.
+Set the release branch and version once before you start:
+
+```sh
+export RELEASE_BRANCH=main
+export RELEASE_VERSION=6.0.0-alpha.1
+export RELEASE_TAG="v${RELEASE_VERSION}"
+```
 
 ## Safety rules
 
@@ -51,8 +56,8 @@ Track these steps:
 8. Confirm GitHub access.
 
 ```sh
-git switch v6-dev
-git pull --ff-only origin v6-dev
+git switch "$RELEASE_BRANCH"
+git pull --ff-only origin "$RELEASE_BRANCH"
 git status --short
 nvm use
 npm ci
@@ -66,25 +71,24 @@ Confirm that `.github/workflows/docs-deploy.yml` exists before documentation dep
 
 ## 2. Prepare the version
 
-Read the current version:
+Read and save the current version:
 
 ```sh
-node -p "require('./package.json').version"
+export CURRENT_VERSION=$(node -p "require('./package.json').version")
+printf '%s\n' "$CURRENT_VERSION"
 ```
 
 Skip the version change when it already equals the release version.
-The first Bootstrap 6 alpha already uses `6.0.0-alpha.1`.
-
-For a later release, preview the version change first:
+Otherwise, preview the version change first:
 
 ```sh
-npm run release-version 6.0.0-alpha.1 6.0.0-alpha.2 -- --dry-run --verbose
+npm run release-version -- "$CURRENT_VERSION" "$RELEASE_VERSION" --dry-run --verbose
 ```
 
 Then apply it:
 
 ```sh
-npm run release-version 6.0.0-alpha.1 6.0.0-alpha.2 -- --verbose
+npm run release-version -- "$CURRENT_VERSION" "$RELEASE_VERSION" --verbose
 ```
 
 The script updates:
@@ -103,7 +107,7 @@ Review every changed file.
 Search for stale version strings outside generated output.
 
 ```sh
-git grep -n "6\.0\.0-alpha\.1" -- \
+git grep -Fn "$CURRENT_VERSION" -- \
   . \
   ':!dist' \
   ':!js/dist' \
@@ -145,11 +149,11 @@ This command performs these tasks:
 4. It creates the distribution ZIP file.
 5. It creates the examples ZIP file.
 
-For `6.0.0-alpha.1`, confirm these files exist:
+Confirm these files exist:
 
 ```text
-bootstrap-6.0.0-alpha.1-dist.zip
-bootstrap-6.0.0-alpha.1-examples.zip
+bootstrap-${RELEASE_VERSION}-dist.zip
+bootstrap-${RELEASE_VERSION}-examples.zip
 ```
 
 Review the complete diff.
@@ -163,11 +167,11 @@ Create a release branch from the release branch.
 Commit all intended version and generated release changes.
 
 ```sh
-git switch -c release-v6.0.0-alpha.1
+git switch -c "release-${RELEASE_TAG}"
 git add -A
-git commit -m "Release v6.0.0-alpha.1"
-git push -u origin release-v6.0.0-alpha.1
-gh pr create --base v6-dev
+git commit -m "Release ${RELEASE_TAG}"
+git push -u origin "release-${RELEASE_TAG}"
+gh pr create --base "$RELEASE_BRANCH"
 ```
 
 Review the staged file list before the commit.
@@ -180,8 +184,8 @@ Merge the PR before tagging.
 Return to the release branch and update it:
 
 ```sh
-git switch v6-dev
-git pull --ff-only origin v6-dev
+git switch "$RELEASE_BRANCH"
+git pull --ff-only origin "$RELEASE_BRANCH"
 npm ci
 npm run release
 git status --short
@@ -193,8 +197,8 @@ The two ZIP files must exist.
 After explicit approval, create and push a signed tag:
 
 ```sh
-git tag -s v6.0.0-alpha.1 -m "v6.0.0-alpha.1"
-git push origin v6.0.0-alpha.1
+git tag -s "$RELEASE_TAG" -m "$RELEASE_TAG"
+git push origin "$RELEASE_TAG"
 ```
 
 Use the version without `v` in package files.
@@ -221,7 +225,7 @@ Then verify the distribution tags:
 npm dist-tag ls bootstrap
 ```
 
-`next` must point to `6.0.0-alpha.1`.
+`next` must point to `$RELEASE_VERSION`.
 `latest` must remain on the newest stable release.
 
 Use the default `latest` tag only for a stable release.
@@ -235,12 +239,12 @@ Mark the release as a prerelease.
 After explicit approval, run:
 
 ```sh
-gh release create v6.0.0-alpha.1 \
-  --title "v6.0.0-alpha.1" \
+gh release create "$RELEASE_TAG" \
+  --title "$RELEASE_TAG" \
   --generate-notes \
   --prerelease \
-  bootstrap-6.0.0-alpha.1-dist.zip \
-  bootstrap-6.0.0-alpha.1-examples.zip
+  "bootstrap-${RELEASE_VERSION}-dist.zip" \
+  "bootstrap-${RELEASE_VERSION}-examples.zip"
 ```
 
 Publishing the GitHub release starts `.github/workflows/publish-nuget.yml`.
@@ -254,7 +258,7 @@ It copies the current site over `gh-pages` without deleting older version direct
 After explicit approval, dispatch it from the released branch:
 
 ```sh
-gh workflow run docs-deploy.yml --ref v6-dev
+gh workflow run docs-deploy.yml --ref "$RELEASE_BRANCH"
 ```
 
 Find and watch the new run:
@@ -289,7 +293,7 @@ Calculate a published file hash with:
 
 ```sh
 curl -sL \
-  https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css \
+  "https://cdn.jsdelivr.net/npm/bootstrap@${RELEASE_VERSION}/dist/css/bootstrap.min.css" \
   | openssl dgst -sha384 -binary \
   | openssl base64 -A
 ```
@@ -315,7 +319,7 @@ npm dist-tag add bootstrap@<good-version> next
 To remove a bad GitHub release and tag:
 
 ```sh
-gh release delete v6.0.0-alpha.1 --cleanup-tag
+gh release delete "$RELEASE_TAG" --cleanup-tag
 ```
 
 Get explicit approval before either recovery action.

@@ -1,7 +1,7 @@
 name: Docs deploy
 
-# Manual only. Dispatch this workflow from the branch you want to publish
-# (for example `v6-dev`). It builds the docs and pushes them to `gh-pages`.
+# Manual only. Dispatch this workflow from the branch you want to publish.
+# It builds the docs and pushes them to `gh-pages`.
 
 on:
   workflow_dispatch:

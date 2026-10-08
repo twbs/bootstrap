@@ -17,7 +17,7 @@ x:                      "getbootstrap"
 opencollective:         "https://opencollective.com/bootstrap"
 blog:                   "https://blog.getbootstrap.com/"
 icons:                  "https://icons.getbootstrap.com/"
-examples:               "https://github.com/twbs/examples/tree/v6-dev"
+examples:               "https://github.com/twbs/examples/tree/main"
 swag:                   "https://cottonbureau.com/people/bootstrap"
 
 analytics:
