@@ -39,6 +39,8 @@ describe('Combobox', () => {
     }
   }
 
+  const hiddenInputs = () => [...fixtureEl.querySelectorAll('input[type="hidden"]')].map(input => [input.name, input.value])
+
   const keydown = (target, key) => {
     target.dispatchEvent(new KeyboardEvent('keydown', {
       key,
@@ -98,6 +100,23 @@ describe('Combobox', () => {
       expect(valueEl.textContent).toEqual('Canada')
       expect(valueEl).not.toHaveClass('combobox-placeholder')
       expect(fixtureEl.querySelector('input[type="hidden"]').value).toEqual('ca')
+    })
+
+    it('should not create hidden inputs for multiple selection without a selection', () => {
+      makeCombobox({ multiple: true, name: 'countries' })
+
+      expect(hiddenInputs()).toEqual([])
+    })
+
+    it('should create one hidden input per item pre-selected in the markup', () => {
+      const preSelected = [
+        '<button class="menu-item selected" type="button" data-bs-value="us">United States</button>',
+        '<button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>',
+        '<button class="menu-item selected" type="button" data-bs-value="ca">Canada</button>'
+      ].join('')
+      makeCombobox({ multiple: true, name: 'countries' }, markup({ items: preSelected }))
+
+      expect(hiddenInputs()).toEqual([['countries', 'us'], ['countries', 'ca']])
     })
   })
 
@@ -308,7 +327,80 @@ describe('Combobox', () => {
 
       items[1].click()
       expect(valueEl.textContent).toEqual('2 selected')
-      expect(fixtureEl.querySelector('input[type="hidden"]').value).toEqual('us,uk')
+    })
+
+    it('should create one hidden input per selected value, like a native select[multiple]', () => {
+      const { toggleEl, items } = makeCombobox({ multiple: true, name: 'countries' })
+
+      items[0].click()
+      items[1].click()
+
+      expect(hiddenInputs()).toEqual([['countries', 'us'], ['countries', 'uk']])
+      expect(toggleEl.previousElementSibling).toEqual([...fixtureEl.querySelectorAll('input[type="hidden"]')].at(-1))
+    })
+
+    it('should remove the hidden input of a deselected item and keep menu order', () => {
+      const { items } = makeCombobox({ multiple: true, name: 'countries' })
+
+      items[2].click()
+      items[0].click()
+      items[1].click()
+      expect(hiddenInputs()).toEqual([['countries', 'us'], ['countries', 'uk'], ['countries', 'ca']])
+
+      items[0].click()
+      expect(hiddenInputs()).toEqual([['countries', 'uk'], ['countries', 'ca']])
+
+      items[1].click()
+      items[2].click()
+      expect(hiddenInputs()).toEqual([])
+    })
+
+    it('should reuse existing hidden inputs when the selection changes', () => {
+      const { items } = makeCombobox({ multiple: true, name: 'countries' })
+
+      items[0].click()
+      items[1].click()
+      const [first, second] = fixtureEl.querySelectorAll('input[type="hidden"]')
+
+      items[0].click()
+      const [remaining] = fixtureEl.querySelectorAll('input[type="hidden"]')
+
+      expect(remaining).toBe(first)
+      expect(remaining.value).toEqual('uk')
+      expect(second.isConnected).toBeFalse()
+    })
+
+    it('should keep a bracket suffix in the name', () => {
+      const { items } = makeCombobox({ multiple: true, name: 'countries[]' })
+
+      items[0].click()
+      items[2].click()
+
+      expect(hiddenInputs()).toEqual([['countries[]', 'us'], ['countries[]', 'ca']])
+    })
+
+    it('should keep commas inside values', () => {
+      const items = [
+        '<button class="menu-item" type="button" data-bs-value="a,b">A and B</button>',
+        '<button class="menu-item" type="button" data-bs-value="c">C</button>'
+      ].join('')
+      const { items: itemEls } = makeCombobox({ multiple: true, name: 'tags' }, markup({ items }))
+
+      itemEls[0].click()
+      itemEls[1].click()
+
+      expect(hiddenInputs()).toEqual([['tags', 'a,b'], ['tags', 'c']])
+    })
+
+    it('should serialize like a native select[multiple] in a form', () => {
+      const { items } = makeCombobox({ multiple: true, name: 'countries' }, `<form>${markup()}</form>`)
+
+      items[0].click()
+      items[1].click()
+
+      const formData = new FormData(fixtureEl.querySelector('form'))
+      expect(formData.getAll('countries')).toEqual(['us', 'uk'])
+      expect(new URLSearchParams(formData).toString()).toEqual('countries=us&countries=uk')
     })
 
     it('should fire change with every selected value', () => {
@@ -528,6 +620,18 @@ describe('Combobox', () => {
 
       expect(fixtureEl.querySelector('input[type="hidden"]')).toBeNull()
       expect(Combobox.getInstance(toggleEl)).toBeNull()
+    })
+
+    it('should remove every hidden input of a multiple selection', () => {
+      const { combobox, items } = makeCombobox({ multiple: true, name: 'countries' })
+
+      items[0].click()
+      items[1].click()
+      expect(hiddenInputs().length).toEqual(2)
+
+      combobox.dispose()
+
+      expect(hiddenInputs()).toEqual([])
     })
 
     it('should remove component listeners and keep consumer listeners', () => {
