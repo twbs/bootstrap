@@ -1,0 +1,282 @@
+@use "../functions" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/tokens" as *;
+@use "../mixins/transition" as *;
+
+// stylelint-disable custom-property-no-missing-var-function
+$color-picker-tokens: () !default;
+
+// Multi-layer values are quoted so their top-level commas don't split the Sass map,
+// the same way `--range-thumb-box-shadow` and `--control-transition-property` do it.
+// scss-docs-start color-picker-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$color-picker-tokens: defaults(
+  (
+    // Inline chip, painted as a background layer on a bare input
+    --color-picker-chip-size: 1rem,
+    --color-picker-chip-inset: var(--control-padding-x),
+    --color-picker-chip-position: left var(--color-picker-chip-inset) center,
+    --color-picker-chip-empty-bg: var(--bg-3),
+    --color-picker-chip-bg: "radial-gradient(circle closest-side, var(--color-picker-value, transparent) 100%, transparent 100%), radial-gradient(circle closest-side, var(--color-picker-chip-empty-bg) 100%, transparent 100%)",
+    // Panel
+    --color-picker-panel-width: 17.5rem,
+    --color-picker-gap: .5rem,
+    --color-picker-padding: .5rem,
+    // Chroma/lightness plane
+    --color-picker-area-height: 8rem,
+    --color-picker-area-radius: var(--radius-5),
+    --color-picker-area-box-shadow: inset 0 0 0 1px var(--border-color-translucent),
+    --color-picker-max-chroma: .37,
+    --color-picker-area-bg: "linear-gradient(to bottom, oklch(100% 0 var(--color-picker-hue, 0deg)) 0%, oklch(100% 0 var(--color-picker-hue, 0deg) / 0%) 50%, oklch(0% 0 var(--color-picker-hue, 0deg) / 0%) 50%, oklch(0% 0 var(--color-picker-hue, 0deg)) 100%), linear-gradient(to right in oklch, oklch(65% 0 var(--color-picker-hue, 0deg)), oklch(65% var(--color-picker-max-chroma) var(--color-picker-hue, 0deg)))",
+    --color-picker-thumb-size: .875rem,
+    --color-picker-thumb-border: 2px solid var(--white),
+    --color-picker-thumb-box-shadow: 0 0 0 1px var(--border-color-translucent),
+    // Hue ramp. Explicit stops rather than `in oklch longer hue`, which Firefox
+    // only gained in 128 — below the 120 floor in `.browserslistrc`.
+    --color-picker-hue-bg: "linear-gradient(to right, oklch(70% .18 0deg), oklch(70% .18 60deg), oklch(70% .18 120deg), oklch(70% .18 180deg), oklch(70% .18 240deg), oklch(70% .18 300deg), oklch(70% .18 360deg))",
+    // Preset swatches
+    --color-picker-swatch-size: 1.25rem,
+    --color-picker-swatch-columns: 8,
+    --color-picker-swatch-gap: .25rem,
+    --color-picker-swatch-radius: var(--radius-4),
+    --color-picker-swatch-border-color: var(--border-color-translucent),
+    --color-picker-swatch-selected-color: var(--fg-body),
+    --color-picker-swatch-selected-width: 2px,
+    --color-picker-swatch-selected-offset: 1px,
+    // Shared transparency backdrop
+    --color-picker-checkerboard-size: .5rem .5rem,
+    --color-picker-checkerboard-bg: conic-gradient(var(--bg-3) 0deg 90deg, transparent 90deg 180deg, var(--bg-3) 180deg 270deg, transparent 270deg 360deg),
+    // Optional wrapper
+    --color-picker-preview-size: 1.25rem,
+    --color-picker-preview-radius: var(--radius-4),
+    --color-picker-preview-bg: "linear-gradient(var(--color-picker-value, transparent), var(--color-picker-value, transparent)), var(--color-picker-checkerboard-bg)",
+  ),
+  $color-picker-tokens
+);
+// scss-docs-end color-picker-tokens
+// stylelint-enable custom-property-no-missing-var-function
+
+@layer forms {
+  // The panel is repositioned into `container` (the body by default), so it can't
+  // inherit these from the field. Each host declares the full set, for the same
+  // reason `.form-control-plaintext` re-includes the control tokens.
+  .color-picker,
+  .color-picker-menu,
+  [data-bs-color-picker] {
+    @include tokens($color-picker-tokens);
+  }
+
+  // Bare input
+  //
+  // `::before` and `::after` don't render on form controls, so the chip is a
+  // background layer instead — the same technique `.form-control` uses for the
+  // select caret. Two stacked circles: the value over an opaque well, so a
+  // translucent color still reads as translucent without a repeating
+  // checkerboard, which can't be clipped to a circle.
+  [data-bs-color-picker] {
+    padding-inline-start: calc(var(--color-picker-chip-inset) + var(--color-picker-chip-size) + var(--control-padding-x));
+    background-image: var(--color-picker-chip-bg);
+    background-repeat: no-repeat;
+    background-position: var(--color-picker-chip-position);
+    background-size: var(--color-picker-chip-size) var(--color-picker-chip-size);
+
+    &:not(:disabled, [readonly]) {
+      cursor: pointer;
+    }
+  }
+
+  [dir="rtl"] [data-bs-color-picker] {
+    --color-picker-chip-position: right var(--color-picker-chip-inset) center;
+  }
+
+  // Optional wrapper
+  //
+  // Mirrors `.chip-input`: the wrapper carries the control chrome and a real
+  // `.form-ghost` input fills it, which buys a focusable preview button and
+  // input-group composition at the cost of extra markup.
+  .color-picker {
+    display: flex;
+    gap: var(--color-picker-gap);
+    align-items: center;
+    padding: var(--control-padding-y) var(--control-padding-x);
+    color: var(--control-fg);
+    background-color: var(--control-bg);
+    border: var(--control-border-width) solid var(--control-border-color);
+    @include border-radius(var(--control-border-radius), 0);
+    @include transition(var(--control-transition));
+
+    &:focus-within {
+      --focus-ring-offset: -1px;
+      border-color: var(--focus-ring-color);
+      @include focus-ring(true);
+    }
+
+    // The wrapper owns the swatch, so the input's background chip would double up
+    > [data-bs-color-picker] {
+      padding-inline-start: 0;
+      background-image: none;
+    }
+
+    > .form-ghost {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    &.disabled,
+    &:has(.form-ghost:disabled) {
+      cursor: not-allowed;
+      background-color: var(--bg-2);
+      opacity: 1;
+
+      &:focus-within {
+        border-color: var(--control-border-color);
+        outline: 0;
+      }
+    }
+  }
+
+  .color-picker-preview {
+    flex-shrink: 0;
+    width: var(--color-picker-preview-size);
+    height: var(--color-picker-preview-size);
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    // The value sits on a checkerboard so alpha is legible. It has to be a gradient
+    // layer rather than `background-color`, which would paint beneath the backdrop.
+    background-image: var(--color-picker-preview-bg);
+    background-size: auto, var(--color-picker-checkerboard-size);
+    border: var(--border-width) solid var(--color-picker-swatch-border-color);
+    @include border-radius(var(--color-picker-preview-radius));
+
+    &:focus-visible {
+      @include focus-ring(true);
+    }
+  }
+
+  // Chroma on the horizontal axis, lightness on the vertical, at the current hue.
+  // The plane is a two-layer approximation — an exact rendering would need a
+  // per-pixel gamut walk — but the pointer maps to real OKLCH coordinates, so the
+  // committed value is exact even where the gradient drifts.
+  .color-picker-area {
+    position: relative;
+    height: var(--color-picker-area-height);
+    // Without this the browser scrolls instead of tracking the drag on touch
+    touch-action: none;
+    cursor: crosshair;
+    background-image: var(--color-picker-area-bg);
+    @include border-radius(var(--color-picker-area-radius));
+    box-shadow: var(--color-picker-area-box-shadow);
+  }
+
+  .color-picker-area-thumb {
+    position: absolute;
+    // Physical properties on purpose: a color plane isn't reading order, so it
+    // shouldn't mirror under `[dir="rtl"]`
+    top: calc(var(--color-picker-area-y, 0) * 100%);
+    left: calc(var(--color-picker-area-x, 0) * 100%);
+    width: var(--color-picker-thumb-size);
+    height: var(--color-picker-thumb-size);
+    background-color: var(--color-picker-value, transparent);
+    border: var(--color-picker-thumb-border);
+    @include border-radius(50%);
+    @include box-shadow(var(--color-picker-thumb-box-shadow));
+    transform: translate(-50%, -50%);
+
+    &:focus-visible {
+      @include focus-ring(true);
+    }
+  }
+
+  .color-picker-sliders {
+    display: grid;
+    gap: var(--color-picker-gap);
+  }
+
+  // Both sliders reuse `.form-range`, so the thumb, track and keyboard behavior
+  // come from `_form-range.scss`; only the track ramp changes.
+  .color-picker-hue,
+  .color-picker-alpha {
+    --range-thumb-bg: var(--white);
+    --range-thumb-border: var(--border-width) solid var(--border-color);
+    --range-track-height: .625rem;
+  }
+
+  .color-picker-hue {
+    --range-track-bg-image: var(--color-picker-hue-bg);
+  }
+
+  // The track's own background color shows through the transparent end, so this
+  // needs no checkerboard layer and no per-layer background sizing
+  .color-picker-alpha {
+    --range-track-bg-image: linear-gradient(to right, transparent, var(--color-picker-value, currentcolor));
+  }
+
+  .color-picker-actions {
+    display: flex;
+    gap: var(--color-picker-gap);
+    align-items: center;
+  }
+
+  .color-picker-format {
+    flex: 1 1 auto;
+    width: auto;
+  }
+
+  // Chrome, sizing and square footprint all come from `.btn-outline`, `.btn-sm`
+  // and `.btn-icon`, which share the `--btn-input-sm-*` scale with the adjacent
+  // `.form-control-sm` select, so the two line up without further sizing here.
+  .color-picker-eyedropper {
+    flex-shrink: 0;
+  }
+
+  .color-picker-swatches {
+    display: grid;
+    grid-template-columns: repeat(var(--color-picker-swatch-columns), minmax(0, 1fr));
+    gap: var(--color-picker-swatch-gap);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .color-picker-swatch {
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    // Composed here rather than as a token: `var()` inside a custom property is
+    // substituted on the element that declares it, and JS sets
+    // `--color-picker-swatch-value` per swatch. Declared on an ancestor it would
+    // resolve to `transparent` once and inherit down already flattened.
+    background-image: linear-gradient(var(--color-picker-swatch-value, transparent), var(--color-picker-swatch-value, transparent)), var(--color-picker-checkerboard-bg);
+    background-size: auto, var(--color-picker-checkerboard-size);
+    border: var(--border-width) solid var(--color-picker-swatch-border-color);
+    @include border-radius(var(--color-picker-swatch-radius));
+
+    &:focus-visible {
+      z-index: 1;
+      @include focus-ring(true);
+    }
+
+    &.selected {
+      outline: var(--color-picker-swatch-selected-width) solid var(--color-picker-swatch-selected-color);
+      outline-offset: var(--color-picker-swatch-selected-offset);
+    }
+  }
+}
+
+// The panel is a `.menu`, which declares its own `--menu-*` tokens. Those land in
+// the `components` layer, which outranks `forms`, and this file is emitted before
+// `_menu.scss` within that layer — so reshaping the panel needs both the same layer
+// and a specificity bump over the bare `.menu`.
+@layer components {
+  .menu.color-picker-menu {
+    --menu-min-width: var(--color-picker-panel-width);
+    --menu-gap: var(--color-picker-gap);
+    --menu-padding-x: var(--color-picker-padding);
+    --menu-padding-y: var(--color-picker-padding);
+  }
+}
