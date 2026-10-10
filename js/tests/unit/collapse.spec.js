@@ -202,6 +202,36 @@ describe('Collapse', () => {
       expect(spy).not.toHaveBeenCalled()
     })
 
+    it('should do nothing if any active sibling is transitioning', () => {
+      fixtureEl.innerHTML = [
+        '<div id="accordion">',
+        '  <div id="collapse1" class="collapse show" data-bs-parent="#accordion"></div>',
+        '  <div id="collapse2" class="collapse collapsing" data-bs-parent="#accordion"></div>',
+        '  <div id="collapse3" class="collapse" data-bs-parent="#accordion"></div>',
+        '</div>'
+      ].join('')
+
+      const collapseEl1 = fixtureEl.querySelector('#collapse1')
+      const collapseEl2 = fixtureEl.querySelector('#collapse2')
+      const collapseEl3 = fixtureEl.querySelector('#collapse3')
+
+      const collapse1 = new Collapse(collapseEl1, { toggle: false })
+      const collapse2 = new Collapse(collapseEl2, { toggle: false })
+      const collapse3 = new Collapse(collapseEl3, { toggle: false })
+
+      collapse1._isTransitioning = false
+      collapse2._isTransitioning = true
+      collapse2._isExpanding = true
+
+      const spy = spyOn(EventHandler, 'trigger').and.callThrough()
+
+      collapse3.show()
+
+      expect(spy).not.toHaveBeenCalled()
+      expect(collapse3._isTransitioning).toBeFalse()
+      expect(collapseEl3).not.toHaveClass('show')
+    })
+
     it('should show a collapsed element', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div class="collapse" style="height: 0px;"></div>'
@@ -939,6 +969,49 @@ describe('Collapse', () => {
 
         target2.addEventListener('shown.bs.collapse', target2Shown)
         trigger3.click()
+      })
+    })
+
+    it('should not allow multiple items to open when triggers are clicked rapidly in succession', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="accordion">',
+          '  <div class="accordion-item">',
+          '    <button id="btn1" data-bs-toggle="collapse" data-bs-target="#collapse1"></button>',
+          '    <div id="collapse1" class="collapse show" data-bs-parent="#accordion"></div>',
+          '  </div>',
+          '  <div class="accordion-item">',
+          '    <button id="btn2" data-bs-toggle="collapse" data-bs-target="#collapse2"></button>',
+          '    <div id="collapse2" class="collapse" data-bs-parent="#accordion"></div>',
+          '  </div>',
+          '  <div class="accordion-item">',
+          '    <button id="btn3" data-bs-toggle="collapse" data-bs-target="#collapse3"></button>',
+          '    <div id="collapse3" class="collapse" data-bs-parent="#accordion"></div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btn1 = fixtureEl.querySelector('#btn1')
+        const btn2 = fixtureEl.querySelector('#btn2')
+        const btn3 = fixtureEl.querySelector('#btn3')
+        const collapse1 = fixtureEl.querySelector('#collapse1')
+        const collapse2 = fixtureEl.querySelector('#collapse2')
+        const collapse3 = fixtureEl.querySelector('#collapse3')
+
+        collapse3.addEventListener('shown.bs.collapse', () => {
+          setTimeout(() => {
+            const shownCollapses = fixtureEl.querySelectorAll('.collapse.show')
+            expect(shownCollapses.length).toEqual(1)
+            expect(collapse3).toHaveClass('show')
+            expect(collapse1).not.toHaveClass('show')
+            expect(collapse2).not.toHaveClass('show')
+            resolve()
+          }, 10)
+        })
+
+        btn3.click()
+        btn2.click()
+        btn1.click()
       })
     })
   })
