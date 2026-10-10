@@ -25,13 +25,11 @@ import CodeCopy from '@components/shortcodes/CodeCopy.astro'
           Bootstrap 6 has been rebuilt for today's web as a framework-agnostic design toolkit that anyone—human or AI,
           novice or pro—can use to build anything. New standards, new components, an updated visual design, CSS-first
           theming, and more powerful JavaScript plugins.
-          <br /><a href="https://blog.getbootstrap.com/2026/07/15/bootstrap-6/" class="underline-30"
-            >Read the v6 announcement post.</a
-          >
+          <br /><a href="https://blog.getbootstrap.com/" class="underline-30">Learn more on the blog.</a>
         </p>
       </div>
       <div class="d-flex flex-column md:flex-row md:align-items-stretch md:my-2 gap-4">
-        <CodeCopy code={`npm i bootstrap@${getConfig().current_version}`} />
+        <CodeCopy code={`npm i bootstrap@${getConfig().current_version}`} lang="text" />
         <ForAgents />
         <div class="d-flex flex-stretch shadow shadow-accent rounded-7">
           <a
@@ -52,7 +50,9 @@ import CodeCopy from '@components/shortcodes/CodeCopy.astro'
         <span class="d-none md:d-inline">&middot;</span>
         <a href="/docs/versions/" class="theme-secondary underline-50 underline-secondary text-nowrap">All releases</a>
       </div>
-      <Ads />
+      <div class="bd-masthead-ad">
+        <Ads />
+      </div>
     </div>
   </div>
 </div>

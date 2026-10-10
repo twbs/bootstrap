@@ -1,6 +1,7 @@
 ---
 import type { MarkdownHeading } from 'astro'
 import { generateToc, type TocEntry } from '@libs/toc'
+import SharedTableOfContents from '@twbs/bui/components/TableOfContents'
 
 interface Props {
   headings?: MarkdownHeading[]
@@ -12,17 +13,4 @@ const { entries, headings } = Astro.props
 const toc = entries ? entries : generateToc(headings ?? [])
 ---
 
-<ul class="nav flex-column">
-  {
-    toc.map(({ children, slug, text }) => {
-      return (
-        <li>
-          <a class="nav-link" href={`#${slug}`}>
-            {text}
-          </a>
-          {children.length > 0 && <Astro.self entries={children} />}
-        </li>
-      )
-    })
-  }
-</ul>
+<SharedTableOfContents entries={toc as TocEntry[]} />

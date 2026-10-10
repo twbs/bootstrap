@@ -2,6 +2,10 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    labels:
+      - dependencies
+      - github-actions
+      - v6
     schedule:
       interval: weekly
       day: tuesday
@@ -29,6 +33,11 @@ updates:
     rebase-strategy: disabled
     ignore:
       - dependency-name: "prettier-plugin-astro"
+        update-types:
+          - "version-update:semver-major"
+      # TypeScript 7 (native compiler) is not supported yet by @astrojs/check
+      # and typescript-eslint. Remove this entry once both accept it.
+      - dependency-name: "typescript"
         update-types:
           - "version-update:semver-major"
       # Rolldown is pinned exactly on purpose while it is still release-candidate

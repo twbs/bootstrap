@@ -21,10 +21,12 @@ Work through each step in order. After each step, search the codebase for remain
 
 ## Step 1: Dependencies & Build
 
-1. Update `package.json`: `"bootstrap": "^6.0.0"`
+1. Update `package.json`: `"bootstrap": "6.0.0-alpha.1"`
 2. Replace `@popperjs/core` with `@floating-ui/dom`
 3. If using Datepicker, add peer dep `vanilla-calendar-pro`
 4. Sass: replace all `@import` with `@use` (Node Sass is no longer supported)
+
+`bootstrap.bundle.js` includes Floating UI and Vanilla Calendar Pro. Standalone `bootstrap.js` leaves both peer dependencies external. Direct browser loading of the standalone build needs an import map.
 
 ```scss
 // v5
@@ -72,6 +74,8 @@ v6 moves breakpoints and pseudo-states from infix/suffix to prefix with colon. A
 | `.d-print-none` | `.print:d-none` |
 | `.opacity-50-hover` | `.hover:opacity-50` |
 
+The prefix does not identify the query type. Utilities, grid columns, containers, drawers, and responsive tables use viewport queries. Stacks, CSS Grid columns, navbar expansion, horizontal list groups, card groups, and stacked tables use container queries. Add the query container that each component’s documentation requires.
+
 ### Component renames
 
 Three components have been fully renamed. Find-and-replace these prefixes across classes, data attributes, events, JS imports, and CSS variables.
@@ -115,18 +119,20 @@ Also remove: `.dropdown-toggle` (no longer needed), `.dropdown` wrapper, `.dropd
 
 ### Button & badge variants -> theme tokens
 
-Per-color classes are replaced by variant + `.theme-*` composition. Apply to all colors (`primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`).
+Per-color classes are replaced by variant + `.theme-*` composition. Built-in theme keys are `primary`, `accent`, `success`, `danger`, `warning`, `info`, `inverse`, and `secondary`. Apply both classes to the same element.
 
 | v5 | v6 |
 | --- | --- |
-| `.btn-primary` | `.btn-solid .theme-primary` |
-| `.btn-outline-primary` | `.btn-outline .theme-primary` |
-| `.alert-primary` | `.alert .theme-primary` |
-| `.badge.bg-primary` | `.badge-subtle .theme-primary` |
+| `.btn-primary` | `class="btn-solid theme-primary"` |
+| `.btn-outline-primary` | `class="btn-outline theme-primary"` |
+| `.alert-primary` | `class="alert theme-primary"` |
+| `.badge.bg-primary` | `class="badge theme-primary"` |
 
 New button variants: `.btn-solid`, `.btn-outline`, `.btn-subtle`, `.btn-text`, `.btn-styled`, `.btn-link`.
 
 Use `.theme-reset` on a nested subtree to drop inherited `--theme-*` tokens and return to component defaults.
+
+There are no `.theme-light` or `.theme-dark` classes. Review v5 light and dark variants manually. Use neutral surface utilities, color modes, or `.theme-inverse` as appropriate.
 
 ### Placeholder animations
 
@@ -143,6 +149,11 @@ Use `.placeholder-wave` for the standard loading animation. Replace `.placeholde
 | `.form-select` | `.form-control` (on `<select>`) |
 | `.clearfix` | `.d-flow-root` |
 | `.has-validation` | Remove (no longer needed) |
+| `.lh-base` | `.lh-md` |
+| `.text-bg-primary` | `class="bg-primary fg-contrast-primary"` |
+| `.link-offset-*`, `.link-underline-*` | `.underline-offset-*`, `.underline-*` |
+
+Remove `.display-1` through `.display-6` and `.lead`. Compose their styles with `.fs-*` and `.fw-*` utilities. Review `.bg-light`, `.bg-dark`, and `.bg-body-*`; use the v6 neutral surfaces and color modes described in the migration guide.
 
 ### Font size classes
 
@@ -219,6 +230,20 @@ Remove the `.modal-dialog` and `.modal-content` wrappers. Use a single `<dialog>
   </div>
 </dialog>
 ```
+
+### Drawer (was Offcanvas)
+
+Use a native `<dialog>` element. A renamed `<div class="drawer">` does not work.
+
+```html
+<!-- v5 -->
+<div class="offcanvas offcanvas-start" id="menu">...</div>
+
+<!-- v6 -->
+<dialog class="drawer drawer-start" id="menu">...</dialog>
+```
+
+For responsive navbars, change `data-bs-toggle="collapse"` to `data-bs-toggle="drawer"`. Replace `.collapse.navbar-collapse` with a `<dialog class="drawer">` that contains `.drawer-header` and `.drawer-body`. Rename `.navbar-expand-md` to `.md:navbar-expand`, and remove `.navbar-light` or `.navbar-dark`.
 
 ### Accordion
 
@@ -350,6 +375,20 @@ Input is now nested inside the label. `.btn-check` goes on the label. No `id`/`f
 </label>
 ```
 
+### Range
+
+`.form-range` is now a wrapper and a JavaScript hook. Move the class from the input to a wrapper and add `.form-range-input` to the input.
+
+```html
+<!-- v5 -->
+<input type="range" class="form-range">
+
+<!-- v6 -->
+<div class="form-range">
+  <input type="range" class="form-range-input">
+</div>
+```
+
 ### Breadcrumbs
 
 Add `.breadcrumb-link` on `<a>` elements. Add empty `.breadcrumb-divider` separators between items (replaces `::before` pseudo-elements). An empty divider renders a default chevron via a CSS mask. The default bottom margin is gone (v5 used `$spacer`).
@@ -399,7 +438,9 @@ import { Tooltip } from './bootstrap.bundle.min.js'
 const tooltip = Tooltip.getOrCreateInstance(el)
 ```
 
-Data attribute APIs (`data-bs-toggle`, etc.) are unchanged — just add `type="module"` to the script tag. Bundler imports (`import { X } from 'bootstrap'`) work as before.
+Data API initialization still runs automatically after you add `type="module"`. Apply the component and data attribute renames in this skill. Bundler imports (`import { X } from 'bootstrap'`) work as before.
+
+The bundled build includes Floating UI and Vanilla Calendar Pro. The standalone build requires installed peers or a browser import map.
 
 ### Renamed JS exports
 
@@ -419,7 +460,11 @@ Replace `@popperjs/core` with `@floating-ui/dom`. Rename the `popperConfig` opti
 
 Hover and focus tooltips stay open while the pointer or focus is on the tip itself (WCAG 1.4.13). Press Escape or leave both the trigger and the tip to hide it.
 
-Popup datepickers close when focus leaves the input and the calendar.
+Popup datepickers close on outside interaction, on <kbd>Escape</kbd>, or when focus leaves the input and calendar.
+
+### TypeScript declarations
+
+Bootstrap’s source is now TypeScript. The package includes type declarations, so remove `@types/bootstrap`. Deep `.js` imports resolve to compiled `js/dist` files.
 
 ### Removed
 
@@ -490,16 +535,19 @@ The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem
 ### Removed (no replacement)
 
 - `$nested-kbd-font-weight`
+- `$enable-dark-mode` — dark mode is always compiled
 - `$enable-validation-icons`
+- `$enable-caret`, `$caret-width`, `$caret-vertical-align`, `$caret-spacing`
 - `$accordion-button-focus-border-color`, `$tooltip-arrow-color`
 - `$popover-arrow-color`, `$popover-arrow-outer-color`
 - `$alert-bg-scale`, `$alert-border-scale`, `$alert-color-scale`
 - `$list-group-item-bg-scale`, `$list-group-item-color-scale`
-- `$carousel-dark-indicator-active-bg`, `$carousel-dark-caption-color`, `$carousel-dark-control-icon-filter`
+- `$carousel-dark-indicator-active-bg`, `$carousel-dark-control-icon-filter`
 - `$dropdown-header-padding`
 - All `*-focus-box-shadow` variables — use `focus-ring()` mixin with `--focus-ring-*` CSS custom properties
 - RFS mixins — use `clamp()` for responsive sizing
 - `create-css-vars()` mixin
+- Caret mixins (`caret()`, `caret-down()`, `caret-up()`, `caret-end()`, `caret-start()`) — add an icon to the toggle markup instead
 - `muted`, `black-50`, `white-50` from text color utilities map
 
 ### Utility API
@@ -537,6 +585,12 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 - With **`smoothScroll`**, clicking a link now restores the URL hash (`history.replaceState`) and moves focus to the target once the scroll settles (better keyboard/AT nav).
 - Target `id`s are resolved with `getElementById`, so ids with dots, colons, slashes, or percent-encoding work without manual escaping.
 
+### Collapse — simplified state and transitions
+
+- Remove selectors and tests that depend on `.collapsing`. Collapse now toggles `.show` and uses native size interpolation.
+- Replace trigger `.collapsed` selectors with `[aria-expanded="false"]`.
+- Remove the `toggle` constructor option. Call `show()` or `hide()` when initialization must change state.
+
 ### New components (didn't exist in v5)
 
 | Component | Trigger / hook | Purpose |
@@ -544,7 +598,6 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 | Combobox | `data-bs-toggle="combobox"` | Filterable/autocomplete select built on Menu |
 | Chip / Chip input | `.chip`, `.chip-input` (`data-bs-chips`) | Tags / tokens + interactive entry |
 | Datepicker | `data-bs-toggle="datepicker"` | Date picker (peer dep `vanilla-calendar-pro`) |
-| Calendar | Datepicker `inline: true` | CSS-only date grid (no `Calendar` JS class) |
 | Range | `.form-range` (+ `data-bs-bubble`, ticks) | Enhanced range slider with a value bubble |
 | Strength | `data-bs-strength` | Password-strength meter |
 | OTP input | `data-bs-otp` | One-time-code input |
@@ -559,7 +612,7 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 ### Removed / changed internals
 
 - **`util/backdrop.js`, `util/focustrap.js`, and `util/scrollbar.js` removed.** Dialog and Drawer use the native `<dialog>` element, which provides the backdrop (`::backdrop`), the focus trap, and an inert top layer; the body scroll-lock is now CSS (`:root.dialog-open`). If you imported `bootstrap/js/src/util/backdrop`, `.../focustrap`, or `.../scrollbar` directly, they're gone.
-- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Author CSS outside any layer now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
+- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Author CSS outside any layer now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
 - **`--bs-*-rgb` variables removed.** The `$*-rgb` Sass vars and `--bs-*-rgb` custom properties are gone. Replace `rgba(var(--bs-primary-rgb), .5)` with `color-mix(in oklab, var(--bs-primary), transparent 50%)` (or use the color directly).
 
 ---
@@ -583,6 +636,7 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
    - `$border-radius` Sass vars (removed — use `$radius` / `$radii` / `--radius-*`)
    - child `<svg>` inside `.btn-close` (should be empty — icon is a CSS mask)
    - `.btn-close-white` (removed — set text `color` instead)
+   - `<div class="drawer">` (must be a native `<dialog class="drawer">`)
    - `data-bs-ride` (renamed to `data-bs-autoplay`); `wrap:` carousel option (now `ends:`)
    - `.carousel-control-prev/next`, `.carousel-caption`, `.carousel-dark`, `.carousel-stacked` (all removed)
    - `.fs-1`–`.fs-6` (should be `.fs-4xl` … `.fs-md`)
@@ -590,4 +644,6 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
    - ScrollSpy `offset` / `method` options (removed — use `topMargin`)
    - inline SVG inside `.check` (icon is a CSS mask on the input)
    - `$theme-colors` full-map replacements (v6 merges via `defaults()`)
+   - `.collapsing`, `.collapsed` trigger selectors, and the Collapse `toggle` option
+   - responsive stacks, CSS Grid, navbars, list groups, card groups, and stacked tables without a query container
 3. Test in browser — v6 requires support for `oklch()` and `color-mix()`.

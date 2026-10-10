@@ -1,7 +1,7 @@
 ---
 import { getConfig } from '@libs/config'
-import { getVersionedDocsPath } from '@libs/path'
 import type { Layout } from '@libs/layout'
+import HeadMeta from '@twbs/bui/components/Head'
 import Stylesheet from '@components/head/Stylesheet.astro'
 import Favicons from '@components/head/Favicons.astro'
 import Social from '@components/head/Social.astro'
@@ -29,58 +29,38 @@ const Scss = import.meta.env.PROD ? undefined : await import('@components/head/S
 const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.astro') : undefined
 ---
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<meta name="description" content={description} />
-
-<meta name="author" content={getConfig().authors} />
-
-<meta name="generator" content={Astro.generator} />
-
-<link rel="canonical" href={canonicalUrl} />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
-  rel="stylesheet"
-/>
-
-<title>{pageTitle}</title>
-
-{robots && <meta name="robots" content={robots} />}
-
-{/* Loaded as `is:inline` (not via Vite) so the theme is applied before paint. */}
-{/* The script lives in `site/static/docs/[version]/assets/js/` so it can */}
-{/* render-block at this exact spot in the head without going through the */}
-{/* bundler (which would defer it and cause a flash of the wrong theme). */}
-<script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
-
-{
-  import.meta.env.PROD && ScssProd && (
-    <>
-      <Stylesheet />
-      <ScssProd.default />
-    </>
-  )
-}
-
-{!import.meta.env.PROD && Scss && <Scss.default />}
-
-<Favicons />
-<Social description={description} layout={layout} thumbnail={thumbnail} title={title} />
-{/* Chromium Speculation Rules: prerender likely next docs pages on hover/intent. */}
-<script is:inline type="speculationrules">
+<HeadMeta
+  title={pageTitle}
+  description={description}
+  author={getConfig().authors}
+  canonical={canonicalUrl}
+  robots={robots}
+>
   {
-    "prerender": [
-      {
-        "where": {
-          "href_matches": "/*"
-        },
-        "eagerness": "moderate"
-      }
-    ]
+    import.meta.env.PROD && ScssProd && (
+      <>
+        <Stylesheet />
+        <ScssProd.default />
+      </>
+    )
   }
-</script>
-<Analytics />
+
+  {!import.meta.env.PROD && Scss && <Scss.default />}
+
+  <Favicons />
+  <Social description={description} layout={layout} thumbnail={thumbnail} title={title} />
+  {/* Chromium Speculation Rules: prerender likely next docs pages on hover/intent. */}
+  <script is:inline type="speculationrules">
+    {
+      "prerender": [
+        {
+          "where": {
+            "href_matches": "/*"
+          },
+          "eagerness": "moderate"
+        }
+      ]
+    }
+  </script>
+  <Analytics />
+</HeadMeta>

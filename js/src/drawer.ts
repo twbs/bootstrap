@@ -31,6 +31,7 @@ const EVENT_RESIZE = `resize${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="drawer"]'
+const SELECTOR_OPEN = 'dialog.drawer[open], dialog[open][class*="\\:drawer"]'
 
 type DrawerConfig = DialogBaseConfig & {
   scroll: boolean
@@ -55,10 +56,15 @@ const DefaultType = {
 class Drawer extends DialogBase {
   protected declare _config: DrawerConfig
   protected declare _swipeHelper: Swipe | null
+  protected declare _resizeObserver: ResizeObserver | null
+  protected declare _resizeFrame: number | null
 
   constructor(element?: string | Element | null, config?: Partial<DrawerConfig> | null) {
     super(element, config)
     this._swipeHelper = null
+    this._resizeObserver = null
+    this._resizeFrame = null
+    this._initResizeObserver()
   }
 
   // Getters
@@ -78,6 +84,14 @@ class Drawer extends DialogBase {
   override dispose(): void {
     if (this._swipeHelper) {
       this._swipeHelper.dispose()
+    }
+
+    if (this._resizeObserver) {
+      this._resizeObserver.disconnect()
+    }
+
+    if (this._resizeFrame !== null) {
+      cancelAnimationFrame(this._resizeFrame)
     }
 
     super.dispose()
@@ -106,6 +120,29 @@ class Drawer extends DialogBase {
   }
 
   // Private
+
+  protected _initResizeObserver(): void {
+    const navbar = this._element.closest('.navbar')
+
+    if (!navbar || typeof ResizeObserver === 'undefined') {
+      return
+    }
+
+    this._resizeObserver = new ResizeObserver(() => {
+      if (this._resizeFrame !== null) {
+        cancelAnimationFrame(this._resizeFrame)
+      }
+
+      this._resizeFrame = requestAnimationFrame(() => {
+        this._resizeFrame = null
+
+        if (this._element.open && getComputedStyle(this._element).position !== 'fixed') {
+          this.hide()
+        }
+      })
+    })
+    this._resizeObserver.observe(navbar)
+  }
 
   protected _initSwipe(): void {
     if (this._swipeHelper || !Swipe.isSupported()) {
@@ -177,7 +214,7 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 })
 
 EventHandler.on(window, EVENT_RESIZE, () => {
-  for (const element of SelectorEngine.find('dialog[open][class*="\\:drawer"]')) {
+  for (const element of SelectorEngine.find(SELECTOR_OPEN)) {
     if (getComputedStyle(element).position !== 'fixed') {
       Drawer.getOrCreateInstance(element).hide()
     }

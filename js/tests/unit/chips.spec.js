@@ -308,6 +308,20 @@ describe('Chips', () => {
       expect(chips.getSelectedValues()).toEqual(['a', 'b', 'c'])
     })
 
+    it('should keep the anchor chip across range selections', () => {
+      const { chips } = makeChips()
+      const first = chips.add('a')
+      const second = chips.add('b')
+      chips.add('c')
+      const fourth = chips.add('d')
+
+      chips.selectChip(first)
+      chips.selectChip(second, { rangeSelect: true })
+      chips.selectChip(fourth, { rangeSelect: true })
+
+      expect(chips.getSelectedValues()).toEqual(['a', 'b', 'c', 'd'])
+    })
+
     it('should ignore selection requests for foreign elements', () => {
       const { chips } = makeChips()
       chips.add('a')
@@ -656,6 +670,26 @@ describe('Chips', () => {
       keydown(chipsEl.querySelectorAll('.chip')[1], 'a')
 
       expect(chips.getSelectedValues()).toEqual(['b'])
+    })
+  })
+
+  describe('dispose', () => {
+    it('should remove component listeners and keep consumer listeners', () => {
+      const { chips, chipsEl } = makeChips()
+      const inputEl = chipsEl.querySelector('.form-ghost')
+      const chipEl = chips.add('alpha')
+      const inputSpy = jasmine.createSpy('input')
+      const clickSpy = jasmine.createSpy('click')
+
+      inputEl.addEventListener('input', inputSpy)
+      chipsEl.addEventListener('click', clickSpy)
+      chips.dispose()
+
+      inputEl.value = 'beta,'
+      expect(() => inputEl.dispatchEvent(createEvent('input'))).not.toThrow()
+      expect(() => chipEl.click()).not.toThrow()
+      expect(inputSpy).toHaveBeenCalled()
+      expect(clickSpy).toHaveBeenCalled()
     })
   })
 })

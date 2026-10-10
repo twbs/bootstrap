@@ -41,7 +41,7 @@ try {
 
   // Fix the indentation by removing extra spaces at the beginning of each line
   const lines = content.split('\n')
-  const spaceCounts = lines.filter((line) => line.trim().length > 0).map((line) => line.match(/^ */)[0].length)
+  const spaceCounts = lines.filter((line) => line.trim().length > 0).map((line) => line.search(/\S|$/))
   const minSpaces = spaceCounts.length ? Math.min(...spaceCounts) : 0
   content = lines.map((line) => line.slice(minSpaces)).join('\n')
 } catch (error) {

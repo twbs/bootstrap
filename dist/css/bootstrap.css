@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
-  * Bootstrap  v6.0.0-alpha1 (https://getbootstrap.com/)
+  * Bootstrap  v6.0.0-alpha.1 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -978,6 +978,20 @@
   .table-hover > tbody > tr:hover > * {
     --bs-table-color-state: var(--bs-theme-fg, var(--bs-table-hover-color));
     --bs-table-bg-state: color-mix(in srgb, var(--bs-theme-fg, var(--bs-table-color)) var(--bs-table-hover-bg-factor), transparent);
+  }
+  .table-card {
+    margin-bottom: var(--bs-spacer);
+    overflow: hidden;
+    border: var(--bs-border-width) solid var(--bs-border-color-translucent);
+    border-radius: var(--bs-radius-7);
+  }
+  .table-card > .table,
+  .table-card > [class*=table-responsive] > .table {
+    margin-bottom: 0;
+  }
+  .table-card > .table > :not(caption):last-child > *:last-child > *,
+  .table-card > [class*=table-responsive] > .table > :not(caption):last-child > *:last-child > * {
+    border-block-end-width: 0;
   }
   .table-responsive {
     container-type: inline-size;
@@ -3326,6 +3340,9 @@
     display: block;
     padding: 0;
   }
+  .form-control::-webkit-datetime-edit-text {
+    color: var(--bs-control-placeholder-color);
+  }
   .form-control[type=file] {
     overflow: hidden;
   }
@@ -3742,15 +3759,15 @@
     --bs-range-track-cursor: pointer;
     --bs-range-track-bg: var(--bs-bg-3);
     --bs-range-track-border-radius: 1rem;
-    --bs-range-track-fill-bg: var(--bs-primary-base);
+    --bs-range-track-fill-bg: var(--bs-theme-bg, var(--bs-primary-base));
     --bs-range-track-disabled-bg: color-mix(in oklch, var(--bs-bg-4), var(--bs-fg-3));
     --bs-range-thumb-width: 1rem;
     --bs-range-thumb-height: var(--bs-range-thumb-width);
-    --bs-range-thumb-bg: var(--bs-primary-base);
+    --bs-range-thumb-bg: var(--bs-theme-bg, var(--bs-primary-base));
     --bs-range-thumb-border: var(--bs-range-thumb-bg) solid var(--bs-border-color);
     --bs-range-thumb-border-radius: 1rem;
     --bs-range-thumb-box-shadow: 0 1px 2px rgb(0 0 0 / 7.5%), 0 2px 4px rgb(0 0 0 / 7.5%);
-    --bs-range-thumb-active-bg: color-mix(in oklch, var(--bs-primary-base) 70%, var(--bs-bg-body));
+    --bs-range-thumb-active-bg: color-mix(in oklch, var(--bs-theme-bg, var(--bs-primary-base)) 70%, var(--bs-bg-body));
     --bs-range-thumb-disabled-bg: var(--bs-fg-3);
     --bs-range-thumb-transition-property: background-color, border-color, box-shadow;
     --bs-range-thumb-transition-duration: 0.15s;
@@ -3771,10 +3788,10 @@
     background-color: transparent;
   }
   .form-range-input:hover::-webkit-slider-thumb {
-    outline: var(--bs-focus-ring-width) solid color-mix(in oklch, var(--bs-primary-focus-ring), transparent);
+    outline: var(--bs-focus-ring-width) solid color-mix(in oklch, var(--bs-theme-focus-ring, var(--bs-primary-focus-ring)), transparent);
   }
   .form-range-input:hover::-moz-range-thumb {
-    outline: var(--bs-focus-ring-width) solid color-mix(in oklch, var(--bs-primary-focus-ring), transparent);
+    outline: var(--bs-focus-ring-width) solid color-mix(in oklch, var(--bs-theme-focus-ring, var(--bs-primary-focus-ring)), transparent);
   }
   .form-range-input:focus-visible {
     outline: 0;
@@ -3979,6 +3996,10 @@
   .form-floating > .form-control-plaintext::placeholder {
     color: transparent;
   }
+  .form-floating > .form-control:focus::placeholder,
+  .form-floating > .form-control-plaintext:focus::placeholder {
+    color: var(--bs-control-placeholder-color);
+  }
   .form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown),
   .form-floating > .form-control-plaintext:focus,
   .form-floating > .form-control-plaintext:not(:placeholder-shown) {
@@ -3990,9 +4011,24 @@
     padding-top: var(--bs-form-floating-input-padding-t);
     padding-bottom: var(--bs-form-floating-input-padding-b);
   }
+  .form-floating > .form-control[type=date],
+  .form-floating > .form-control[type=month],
+  .form-floating > .form-control[type=week],
+  .form-floating > .form-control[type=time],
+  .form-floating > .form-control[type=datetime-local],
+  .form-floating > .form-control:is(select) {
+    padding-top: var(--bs-form-floating-input-padding-t);
+    padding-bottom: var(--bs-form-floating-input-padding-b);
+  }
   .form-floating > label:has(~ .form-control:focus),
   .form-floating > label:has(~ .form-control:not(:placeholder-shown)),
-  .form-floating > label:has(~ .form-control-plaintext) {
+  .form-floating > label:has(~ .form-control-plaintext),
+  .form-floating > label:has(~ .form-control[type=date]),
+  .form-floating > label:has(~ .form-control[type=month]),
+  .form-floating > label:has(~ .form-control[type=week]),
+  .form-floating > label:has(~ .form-control[type=time]),
+  .form-floating > label:has(~ .form-control[type=datetime-local]),
+  .form-floating > label:has(~ .form-control:is(select)) {
     transform: var(--bs-form-floating-label-transform);
   }
   .form-floating > label:has(~ .form-control:-webkit-autofill) {
@@ -4017,6 +4053,34 @@
   .form-floating > label:has(~ :disabled),
   .form-floating > label:has(~ .form-control:disabled) {
     color: var(--bs-form-floating-label-disabled-color);
+  }
+  .form-floating-always.form-floating > .form-control,
+  .form-floating-always .form-floating > .form-control {
+    padding-top: var(--bs-form-floating-input-padding-t);
+    padding-bottom: var(--bs-form-floating-input-padding-b);
+  }
+  .form-floating-always.form-floating > .form-control::placeholder, .form-floating-always.form-floating > .form-control:focus::placeholder,
+  .form-floating-always .form-floating > .form-control::placeholder,
+  .form-floating-always .form-floating > .form-control:focus::placeholder {
+    color: var(--bs-control-placeholder-color);
+  }
+  .form-floating-always.form-floating > label,
+  .form-floating-always .form-floating > label {
+    transform: var(--bs-form-floating-label-transform);
+  }
+  .form-floating-always.form-floating > label:has(~ textarea)::after,
+  .form-floating-always .form-floating > label:has(~ textarea)::after {
+    position: absolute;
+    inset: var(--bs-form-floating-padding-y) calc(var(--bs-form-floating-padding-x) * 0.5);
+    z-index: -1;
+    height: var(--bs-form-floating-label-height);
+    content: "";
+    background-color: var(--bs-form-floating-label-bg);
+    border-radius: var(--bs-btn-input-border-radius);
+  }
+  .form-floating-always.form-floating > label:has(~ textarea:disabled)::after,
+  .form-floating-always .form-floating > label:has(~ textarea:disabled)::after {
+    background-color: var(--bs-form-floating-label-disabled-bg);
   }
 }
 @layer components {
@@ -5368,9 +5432,9 @@
     opacity: 0.25;
   }
   .btn-group:where(.btn-group-divider) > [class*=btn-] + [class*=btn-]::before {
+    inset-inline-start: calc(var(--bs-btn-border-width) * -1);
     top: 25%;
     bottom: 25%;
-    left: calc(var(--bs-btn-border-width) * -1);
     width: var(--bs-btn-border-width);
   }
   .btn-group-vertical:where(.btn-group-divider) > [class*=btn-] + [class*=btn-]::before {

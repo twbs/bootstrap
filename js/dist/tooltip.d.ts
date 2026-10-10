@@ -47,6 +47,9 @@ declare class Tooltip extends BaseComponent {
     protected _floatingCleanup: (() => void) | null;
     protected _keydownHandler: ((event: KeyboardEvent) => void) | null;
     protected _tipEventOut: ((event: BootstrapEvent) => void) | null;
+    protected _outsidePointerHandler: ((event: PointerEvent) => void) | null;
+    protected _tipPointerUpHandler: (() => void) | null;
+    protected _tipPointerDown: boolean;
     protected _templateFactory: TemplateFactory | null;
     protected _newContent: Record<string, TemplateContentEntry> | null;
     protected _mediaQueryListeners: BreakpointListener[];
@@ -90,9 +93,13 @@ declare class Tooltip extends BaseComponent {
     protected _setListeners(): void;
     protected _setTipListeners(tip: HTMLElement): void;
     protected _removeTipListeners(tip: HTMLElement): void;
-    protected _isInside(element: Node | null): boolean;
+    protected _isInside(target: EventTarget | null): boolean;
     protected _getTrigger(): string;
     protected _getTriggerEvents(trigger: string): [string, string];
+    protected _hasFocusTrigger(): boolean;
+    protected _setFocusTipListeners(tip: HTMLElement): void;
+    protected _setFocusOutsideListener(): void;
+    protected _removeFocusOutsideListener(): void;
     protected _setEscapeListener(): void;
     protected _removeEscapeListener(): void;
     protected _fixTitle(): void;

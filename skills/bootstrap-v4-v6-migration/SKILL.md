@@ -6,7 +6,7 @@ guide: /guides/migration
 
 # Bootstrap v4 to v6 Migration
 
-There is no direct v4 to v6 path. Migrate in two stages — v4 to v5 first (this skill), then v5 to v6 (the `bootstrap-v5-v6-migration` skill). Skipping the middle stage doesn't work, because many v4 names were renamed in v5 and renamed *again* in v6: `.text-primary` becomes `.fg-primary` only after passing through v5, and `.badge-primary` becomes `.badge-subtle .theme-primary` by way of `.badge.bg-primary`.
+There is no direct v4 to v6 path. Migrate in two stages — v4 to v5 first (this skill), then v5 to v6 (the `bootstrap-v5-v6-migration` skill). Skipping the middle stage doesn't work, because many v4 names were renamed in v5 and renamed *again* in v6: `.text-primary` becomes `.fg-primary` only after passing through v5, and `.badge-primary` becomes `.badge.theme-primary` by way of `.badge.bg-primary`.
 
 ## Workflow
 
@@ -26,7 +26,7 @@ Work through each step in order. After each step, search the codebase for remain
 1. Get the project onto Bootstrap 5 and **working** — build passing, pages rendering, tests green — before touching v6. Landing the v5 stage as its own commit (or PR) keeps the two rename waves separable when something breaks.
 2. Inventory what you're dealing with first. The v4 features that cost the most time are custom forms, `.input-group-append` / `.input-group-prepend`, jumbotrons, `.media` objects, `.card-deck` / `.card-columns`, and any jQuery that calls Bootstrap plugins.
 3. Decide about jQuery separately. Bootstrap 5 dropped it, but your app may use it for other things; removing Bootstrap's dependency on it does not require removing jQuery itself.
-4. Note the browser floor. Bootstrap 5 drops IE, and Bootstrap 6 requires `oklch()` and `color-mix()` support.
+4. Note the browser floor. Bootstrap 5 drops IE. Bootstrap 6 requires Chrome and Edge 130, Firefox 132, and Safari 18 on macOS and iOS.
 
 ---
 
@@ -198,11 +198,12 @@ Once the project builds and renders on Bootstrap 5, switch to the **`bootstrap-v
 That stage covers, among other things:
 
 - `@import` to `@use`, and the move from Sass scalars to CSS token maps (`defaults()` merges theme maps again in v6)
-- Popper to Floating UI
+- Popper to Floating UI, plus Vanilla Calendar Pro for Datepicker. The bundled build includes both peers; the standalone build leaves them external.
 - The `md:` responsive prefix syntax replacing `-md-` infixes
-- Modal to Dialog, Offcanvas to Drawer, Dropdown to Menu
+- Modal to Dialog, Offcanvas to Drawer, Dropdown to Menu. Dialog and Drawer use native `<dialog>` elements.
 - `.btn-primary` to `.btn-solid .theme-primary`, and `.text-*` to `.fg-*`
 - ESM-only JavaScript with no `window.bootstrap` global
+- Container-query contexts for responsive stacks, CSS Grid, navbars, list groups, card groups, and stacked tables
 
 Two v4-era details worth flagging before you start it: the `.close` → `.btn-close` element you produced in Step 4 keeps that name in v6 (but must stay empty, with no child SVG), and the `.form-check` markup you just wrote gets rebuilt again into v6's `.check` / `.radio` / `.switch` structure.
 

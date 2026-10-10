@@ -1,5 +1,5 @@
 /*!
-* Bootstrap chips.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Bootstrap chips.js v6.0.0-alpha.1 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -145,7 +145,11 @@ var Chips = class extends BaseComponent {
 			const chipIndex = chipElements.indexOf(chip);
 			const start = Math.min(anchorIndex, chipIndex);
 			const end = Math.max(anchorIndex, chipIndex);
-			if (!addToSelection) this.clearSelection();
+			if (!addToSelection) {
+				const anchorChip = this._anchorChip;
+				this.clearSelection();
+				this._anchorChip = anchorChip;
+			}
 			for (let i = start; i <= end; i++) {
 				this._selectedChips.add(chipElements[i]);
 				chipElements[i].classList.add(CLASS_NAME_ACTIVE);
@@ -168,6 +172,10 @@ var Chips = class extends BaseComponent {
 	}
 	focus() {
 		this._input?.focus();
+	}
+	dispose() {
+		EventHandler.off(this._input, EVENT_KEY);
+		super.dispose();
 	}
 	_getChipElements() {
 		return SelectorEngine.find(SELECTOR_CHIP, this._element);
@@ -222,14 +230,14 @@ var Chips = class extends BaseComponent {
 		return clone.textContent?.trim() || "";
 	}
 	_addEventListeners() {
-		EventHandler.on(this._input, "keydown", (event) => this._handleInputKeydown(event));
-		EventHandler.on(this._input, "input", (event) => this._handleInput(event));
-		EventHandler.on(this._input, "paste", (event) => this._handlePaste(event));
-		EventHandler.on(this._input, "focus", () => this.clearSelection());
-		if (this._config.createOnBlur) EventHandler.on(this._input, "blur", (event) => {
+		EventHandler.on(this._input, `keydown${EVENT_KEY}`, (event) => this._handleInputKeydown(event));
+		EventHandler.on(this._input, `input${EVENT_KEY}`, (event) => this._handleInput(event));
+		EventHandler.on(this._input, `paste${EVENT_KEY}`, (event) => this._handlePaste(event));
+		EventHandler.on(this._input, `focus${EVENT_KEY}`, () => this.clearSelection());
+		if (this._config.createOnBlur) EventHandler.on(this._input, `blur${EVENT_KEY}`, (event) => {
 			if (!event.relatedTarget?.closest(SELECTOR_CHIP)) this._createChipFromInput();
 		});
-		EventHandler.on(this._element, "click", SELECTOR_CHIP, (event) => {
+		EventHandler.on(this._element, `click${EVENT_KEY}`, SELECTOR_CHIP, (event) => {
 			if (event.target.closest(SELECTOR_CHIP_DISMISS)) return;
 			const chip = event.target.closest(SELECTOR_CHIP);
 			if (chip) {
@@ -241,7 +249,7 @@ var Chips = class extends BaseComponent {
 				chip.focus();
 			}
 		});
-		EventHandler.on(this._element, "click", SELECTOR_CHIP_DISMISS, (event) => {
+		EventHandler.on(this._element, `click${EVENT_KEY}`, SELECTOR_CHIP_DISMISS, (event) => {
 			event.stopPropagation();
 			const chip = event.target.closest(SELECTOR_CHIP);
 			if (chip) {
@@ -249,10 +257,10 @@ var Chips = class extends BaseComponent {
 				this._input?.focus();
 			}
 		});
-		EventHandler.on(this._element, "keydown", SELECTOR_CHIP, (event) => {
+		EventHandler.on(this._element, `keydown${EVENT_KEY}`, SELECTOR_CHIP, (event) => {
 			this._handleChipKeydown(event);
 		});
-		EventHandler.on(this._element, "click", (event) => {
+		EventHandler.on(this._element, `click${EVENT_KEY}`, (event) => {
 			if (event.target === this._element) {
 				this.clearSelection();
 				this._input?.focus();

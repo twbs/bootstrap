@@ -63,8 +63,26 @@ class DialogBase extends BaseComponent {
   }
 
   async show(relatedTarget?: HTMLElement): Promise<void> {
-    if (this._element.open || this._isTransitioning) {
+    if (!this._canShow(relatedTarget)) {
       return
+    }
+
+    await this._show(relatedTarget)
+  }
+
+  async hide(): Promise<void> {
+    if (!this._canHide()) {
+      return
+    }
+
+    await this._hide()
+  }
+
+  // Protected — lifecycle stages
+
+  protected _canShow(relatedTarget?: HTMLElement): boolean {
+    if (this._element.open || this._isTransitioning) {
+      return false
     }
 
     const showEvent = EventHandler.trigger(
@@ -73,10 +91,10 @@ class DialogBase extends BaseComponent {
       { relatedTarget }
     )
 
-    if (showEvent.defaultPrevented) {
-      return
-    }
+    return !showEvent.defaultPrevented
+  }
 
+  protected async _show(relatedTarget?: HTMLElement): Promise<void> {
     this._isTransitioning = true
     this._onBeforeShow()
 
@@ -93,9 +111,9 @@ class DialogBase extends BaseComponent {
     }, this._element, this._isAnimated())
   }
 
-  async hide(): Promise<void> {
+  protected _canHide(): boolean {
     if (!this._element.open || this._isTransitioning) {
-      return
+      return false
     }
 
     const hideEvent = EventHandler.trigger(
@@ -103,10 +121,10 @@ class DialogBase extends BaseComponent {
       this.constructor.eventName('hide')
     )
 
-    if (hideEvent.defaultPrevented) {
-      return
-    }
+    return !hideEvent.defaultPrevented
+  }
 
+  protected async _hide(): Promise<void> {
     this._isTransitioning = true
     this._hideElement()
 
@@ -311,6 +329,10 @@ class DialogBase extends BaseComponent {
     // Handle backdrop clicks — only applies to modal dialogs
     EventHandler.on(this._element, `click${eventKey}`, event => {
       if (event.target !== this._element || !this._openedAsModal) {
+        return
+      }
+
+      if (this._config.backdrop === false) {
         return
       }
 

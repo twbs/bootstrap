@@ -1,5 +1,5 @@
 /*!
-* Bootstrap tab.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Bootstrap tab.js v6.0.0-alpha.1 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -43,6 +43,7 @@ const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_MENU_TOGGLE}, .list-group-item${
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"tab\"]";
 const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`;
 const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"]`;
+const activationIds = /* @__PURE__ */ new WeakMap();
 /**
 * Class definition
 */
@@ -63,10 +64,12 @@ var Tab = class Tab extends BaseComponent {
 		const active = this._getActiveElem();
 		const hideEvent = active ? EventHandler.trigger(active, EVENT_HIDE, { relatedTarget: innerElem }) : null;
 		if (EventHandler.trigger(innerElem, EVENT_SHOW, { relatedTarget: active }).defaultPrevented || hideEvent && hideEvent.defaultPrevented) return;
+		const activationId = (activationIds.get(this._parent) || 0) + 1;
+		activationIds.set(this._parent, activationId);
 		this._deactivate(active, innerElem);
-		await this._activate(innerElem, active);
+		await this._activate(innerElem, active, activationId);
 	}
-	async _activate(element, relatedElem) {
+	async _activate(element, relatedElem, activationId) {
 		if (!element) return;
 		element.classList.add(CLASS_NAME_ACTIVE);
 		if (element.getAttribute("role") !== "tab") {
@@ -76,6 +79,7 @@ var Tab = class Tab extends BaseComponent {
 		const pane = SelectorEngine.getElementFromSelector(element);
 		this._activate(pane);
 		const complete = () => {
+			if (activationId !== activationIds.get(this._parent) || !this._elemIsActive(element)) return;
 			element.removeAttribute("tabindex");
 			setAriaAttribute(element, "aria-selected", true);
 			this._toggleMenu(element, true);

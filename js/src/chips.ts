@@ -253,7 +253,10 @@ class Chips extends BaseComponent {
       const end = Math.max(anchorIndex, chipIndex)
 
       if (!addToSelection) {
+        // clearSelection() resets the anchor, keep it for the next range selection
+        const anchorChip = this._anchorChip
         this.clearSelection()
+        this._anchorChip = anchorChip
       }
 
       for (let i = start; i <= end; i++) {
@@ -285,6 +288,11 @@ class Chips extends BaseComponent {
 
   focus(): void {
     this._input?.focus()
+  }
+
+  override dispose(): void {
+    EventHandler.off(this._input, EVENT_KEY)
+    super.dispose()
   }
 
   // Private
@@ -372,13 +380,13 @@ class Chips extends BaseComponent {
 
   protected _addEventListeners(): void {
     // Input events
-    EventHandler.on(this._input, 'keydown', event => this._handleInputKeydown(event))
-    EventHandler.on(this._input, 'input', event => this._handleInput(event))
-    EventHandler.on(this._input, 'paste', event => this._handlePaste(event))
-    EventHandler.on(this._input, 'focus', () => this.clearSelection())
+    EventHandler.on(this._input, `keydown${EVENT_KEY}`, event => this._handleInputKeydown(event))
+    EventHandler.on(this._input, `input${EVENT_KEY}`, event => this._handleInput(event))
+    EventHandler.on(this._input, `paste${EVENT_KEY}`, event => this._handlePaste(event))
+    EventHandler.on(this._input, `focus${EVENT_KEY}`, () => this.clearSelection())
 
     if (this._config.createOnBlur) {
-      EventHandler.on(this._input, 'blur', event => {
+      EventHandler.on(this._input, `blur${EVENT_KEY}`, event => {
         // Don't create chip if clicking on a chip
         if (!event.relatedTarget?.closest(SELECTOR_CHIP)) {
           this._createChipFromInput()
@@ -387,7 +395,7 @@ class Chips extends BaseComponent {
     }
 
     // Chip click events (delegated)
-    EventHandler.on(this._element, 'click', SELECTOR_CHIP, event => {
+    EventHandler.on(this._element, `click${EVENT_KEY}`, SELECTOR_CHIP, event => {
       // Ignore clicks on dismiss button
       if ((event.target as Element).closest(SELECTOR_CHIP_DISMISS)) {
         return
@@ -405,7 +413,7 @@ class Chips extends BaseComponent {
     })
 
     // Dismiss button clicks (delegated)
-    EventHandler.on(this._element, 'click', SELECTOR_CHIP_DISMISS, event => {
+    EventHandler.on(this._element, `click${EVENT_KEY}`, SELECTOR_CHIP_DISMISS, event => {
       event.stopPropagation()
       const chip = (event.target as Element).closest<HTMLElement>(SELECTOR_CHIP)
       if (chip) {
@@ -415,12 +423,12 @@ class Chips extends BaseComponent {
     })
 
     // Chip keyboard events (delegated)
-    EventHandler.on(this._element, 'keydown', SELECTOR_CHIP, event => {
+    EventHandler.on(this._element, `keydown${EVENT_KEY}`, SELECTOR_CHIP, event => {
       this._handleChipKeydown(event)
     })
 
     // Focus input when clicking container background
-    EventHandler.on(this._element, 'click', event => {
+    EventHandler.on(this._element, `click${EVENT_KEY}`, event => {
       if (event.target === this._element) {
         this.clearSelection()
         this._input?.focus()

@@ -394,7 +394,7 @@ Customize cards by using our theme color utilities. By default, cards use `bg` f
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Card text…</p>
     </div>
-  </div>`)} customMarkup={getData('theme-colors').map((themeColor) => `<div class="card card-${themeColor.name}">…</div>`)} />
+  </div>`)} customMarkup={getData('theme-colors').map((themeColor) => `<div class="card theme-${themeColor.name}">…</div>`)} />
 
 <Example class="d-grid grid grid-cols-1 md:grid-cols-2 gap-4" code={getData('theme-colors').map((themeColor) => `<div class="card card-subtle theme-${themeColor.name}">
     <div class="card-header">${themeColor.title}</div>

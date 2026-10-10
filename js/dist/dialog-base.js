@@ -1,5 +1,5 @@
 /*!
-* Bootstrap dialog-base.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Bootstrap dialog-base.js v6.0.0-alpha.1 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -46,8 +46,18 @@ var DialogBase = class extends BaseComponent {
 		return this._element.open ? this.hide() : this.show(relatedTarget);
 	}
 	async show(relatedTarget) {
-		if (this._element.open || this._isTransitioning) return;
-		if (EventHandler.trigger(this._element, this.constructor.eventName("show"), { relatedTarget }).defaultPrevented) return;
+		if (!this._canShow(relatedTarget)) return;
+		await this._show(relatedTarget);
+	}
+	async hide() {
+		if (!this._canHide()) return;
+		await this._hide();
+	}
+	_canShow(relatedTarget) {
+		if (this._element.open || this._isTransitioning) return false;
+		return !EventHandler.trigger(this._element, this.constructor.eventName("show"), { relatedTarget }).defaultPrevented;
+	}
+	async _show(relatedTarget) {
 		this._isTransitioning = true;
 		this._onBeforeShow();
 		const { modal, preventBodyScroll } = this._getShowOptions();
@@ -60,9 +70,11 @@ var DialogBase = class extends BaseComponent {
 			EventHandler.trigger(this._element, this.constructor.eventName("shown"), { relatedTarget });
 		}, this._element, this._isAnimated());
 	}
-	async hide() {
-		if (!this._element.open || this._isTransitioning) return;
-		if (EventHandler.trigger(this._element, this.constructor.eventName("hide")).defaultPrevented) return;
+	_canHide() {
+		if (!this._element.open || this._isTransitioning) return false;
+		return !EventHandler.trigger(this._element, this.constructor.eventName("hide")).defaultPrevented;
+	}
+	async _hide() {
 		this._isTransitioning = true;
 		this._hideElement();
 		await this._queueCallback(() => {
@@ -154,6 +166,7 @@ var DialogBase = class extends BaseComponent {
 		});
 		EventHandler.on(this._element, `click${eventKey}`, (event) => {
 			if (event.target !== this._element || !this._openedAsModal) return;
+			if (this._config.backdrop === false) return;
 			if (this._config.backdrop === "static") {
 				this._triggerBackdropTransition();
 				return;

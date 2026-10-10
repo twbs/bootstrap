@@ -449,6 +449,57 @@ describe('Tab', () => {
         tab.show()
       })
     })
+
+    it('should ignore stale completion after rapid activation', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav" role="tablist">',
+        '  <button id="tab1" class="nav-link active" data-bs-target="#pane1" role="tab">One</button>',
+        '  <button id="tab2" class="nav-link" data-bs-target="#pane2" role="tab">Two</button>',
+        '  <button id="tab3" class="nav-link" data-bs-target="#pane3" role="tab">Three</button>',
+        '</div>',
+        '<div id="pane1" class="active show" role="tabpanel"></div>',
+        '<div id="pane2" style="transition: opacity 0.1s" role="tabpanel"></div>',
+        '<div id="pane3" style="transition: opacity 0.1s" role="tabpanel"></div>'
+      ].join('')
+
+      const tab2El = fixtureEl.querySelector('#tab2')
+      const tab3El = fixtureEl.querySelector('#tab3')
+      const tab2 = new Tab(tab2El)
+      const tab3 = new Tab(tab3El)
+      const shown2 = jasmine.createSpy('shown2')
+      const shown3 = jasmine.createSpy('shown3')
+      const pending = []
+
+      tab2El.addEventListener('shown.bs.tab', shown2)
+      tab3El.addEventListener('shown.bs.tab', shown3)
+      spyOn(Tab.prototype, '_queueCallback').and.callFake((callback, element, isAnimated = true) => {
+        if (!isAnimated) {
+          callback()
+          return Promise.resolve()
+        }
+
+        return new Promise(resolve => {
+          pending.push(() => {
+            callback()
+            resolve()
+          })
+        })
+      })
+
+      const tab2Shown = tab2.show()
+      const tab3Shown = tab3.show()
+
+      pending[0]()
+      pending[1]()
+      await Promise.all([tab2Shown, tab3Shown])
+
+      expect(tab2El.getAttribute('aria-selected')).toEqual('false')
+      expect(tab2El.getAttribute('tabindex')).toEqual('-1')
+      expect(tab3El.getAttribute('aria-selected')).toEqual('true')
+      expect(tab3El.hasAttribute('tabindex')).toBeFalse()
+      expect(shown2).not.toHaveBeenCalled()
+      expect(shown3).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('dispose', () => {

@@ -1,5 +1,5 @@
 /*!
-* Bootstrap index.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Bootstrap index.js v6.0.0-alpha.1 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -14,7 +14,11 @@ const MAX_UID = 1e6;
 const MILLISECONDS_MULTIPLIER = 1e3;
 const TRANSITION_END = "transitionend";
 /**
-* Properly escape IDs selectors to handle weird IDs
+* Properly escapes ID selectors to handle special characters in IDs
+* (e.g. forward slashes, periods) so that they work with `document.querySelector`.
+*
+* @param selector - The selector to escape
+* @returns The escaped selector
 */
 const parseSelector = (selector) => {
 	if (selector && window.CSS && window.CSS.escape) selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`);
@@ -87,7 +91,9 @@ const findShadowRoot = (element) => {
 };
 const noop = () => {};
 /**
-* Trick to restart an element's animation
+* Trick to restart an element's animation by forcing a reflow.
+*
+* @param element - The element whose animation should be restarted
 *
 * @see https://www.harrytheo.com/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
 */
@@ -128,11 +134,11 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
 /**
 * Return the previous/next element of a list.
 *
-* @param list            The list of elements
-* @param activeElement   The active element
-* @param shouldGetNext   Choose to get next or previous element
-* @param isCycleAllowed
-* @return The proper element
+* @param list - The list of elements to traverse
+* @param activeElement - The currently active element
+* @param shouldGetNext - Whether to return the next element (`true`) or the previous one (`false`)
+* @param isCycleAllowed - Whether to cycle back to the opposite end of the list when reaching the boundary
+* @returns The appropriate previous/next element from the list
 */
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
 	const listLength = list.length;

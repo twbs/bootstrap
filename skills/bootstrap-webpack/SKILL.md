@@ -37,7 +37,7 @@ Set up a Bootstrap 6 project bundled with Webpack, including the loaders needed 
 3. Install Bootstrap and its optional peer dependencies (omit `@floating-ui/dom` if not using menus/popovers/tooltips; omit `vanilla-calendar-pro` if not using the datepicker):
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
+   npm i --save bootstrap@6.0.0-alpha.1 @floating-ui/dom vanilla-calendar-pro
    ```
 
 4. Install the loaders and Sass/Autoprefixer needed to bundle Bootstrap's CSS:

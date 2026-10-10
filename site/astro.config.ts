@@ -4,11 +4,9 @@ import { defineConfig } from 'astro/config'
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import { unified } from '@astrojs/markdown-remark'
 import astroBrokenLinksChecker from 'astro-broken-links-checker'
-import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
-import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
 import type { Element, Text } from 'hast'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
+import { bootstrapShikiConfig } from '@twbs/bui/shiki'
 
 import { bootstrap } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
@@ -20,6 +18,7 @@ import { stackblitzPlugin } from './src/plugins/stackblitz-plugin'
 // every docs script imports from a single module instance (no duplicated
 // component registries). Mirrors the `@bootstrap` alias in `tsconfig.json`.
 const bootstrapBundlePath = fileURLToPath(new URL('../dist/js/bootstrap.bundle.js', import.meta.url))
+const bootstrapScssPath = fileURLToPath(new URL('../scss', import.meta.url))
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -73,26 +72,7 @@ export default defineConfig({
       remarkPlugins: [remarkBsConfig, remarkBsDocsref]
     }),
     syntaxHighlight: 'shiki',
-    shikiConfig: {
-      themes: {
-        light: { ...bootstrapLight, name: '', type: 'light' },
-        dark: { ...bootstrapDark, name: '', type: 'dark' }
-      },
-      defaultColor: 'light-dark()',
-      transformers: [
-        transformerNotationDiff(),
-        transformerNotationHighlight(),
-        {
-          name: 'add-language-attribute',
-          pre(node) {
-            const lang = this.options.lang
-            if (lang) {
-              node.properties['dataLanguage'] = lang
-            }
-          }
-        }
-      ]
-    }
+    shikiConfig: bootstrapShikiConfig
   },
   devToolbar: {
     enabled: false
@@ -103,10 +83,15 @@ export default defineConfig({
   site,
   vite: {
     plugins: [stackblitzPlugin()],
+    optimizeDeps: {
+      exclude: ['@twbs/bui']
+    },
     resolve: {
-      alias: {
-        '@bootstrap': bootstrapBundlePath
-      }
+      alias: [
+        { find: /^bootstrap\/scss/, replacement: bootstrapScssPath },
+        { find: '@bootstrap', replacement: bootstrapBundlePath },
+        { find: /^bootstrap$/, replacement: bootstrapBundlePath }
+      ]
     }
   }
 })

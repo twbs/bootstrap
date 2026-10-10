@@ -113,6 +113,11 @@ class Strength extends BaseComponent {
     this._evaluate()
   }
 
+  override dispose(): void {
+    EventHandler.off(this._input, EVENT_KEY)
+    super.dispose()
+  }
+
   // Private
   protected _getInput(): HTMLInputElement | null {
     if (this._config.input) {
@@ -127,8 +132,8 @@ class Strength extends BaseComponent {
   }
 
   protected _addEventListeners(): void {
-    EventHandler.on(this._input, 'input', () => this._evaluate())
-    EventHandler.on(this._input, 'change', () => this._evaluate())
+    EventHandler.on(this._input, `input${EVENT_KEY}`, () => this._evaluate())
+    EventHandler.on(this._input, `change${EVENT_KEY}`, () => this._evaluate())
   }
 
   protected _evaluate(): void {

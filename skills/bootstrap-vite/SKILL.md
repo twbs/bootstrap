@@ -36,7 +36,7 @@ Set up a Bootstrap 6 project bundled with Vite. Requires Node.js and terminal fa
 3. Install Bootstrap and its optional peer dependencies (omit `@floating-ui/dom` if not using menus/popovers/tooltips; omit `vanilla-calendar-pro` if not using the datepicker):
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
+   npm i --save bootstrap@6.0.0-alpha.1 @floating-ui/dom vanilla-calendar-pro
    ```
 
 4. Install Sass to compile Bootstrap's source:

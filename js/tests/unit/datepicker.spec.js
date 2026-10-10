@@ -423,6 +423,35 @@ describe('Datepicker', () => {
       datepicker.setSelectedDates(dates)
 
       expect(datepicker.getSelectedDates()).toEqual(dates)
+      expect(inputEl.value).not.toEqual('')
+
+      datepicker.setSelectedDates([])
+      expect(datepicker.getSelectedDates()).toEqual([])
+      expect(inputEl.value).toEqual('')
+    })
+
+    it('should synchronize and clear bound values and display', () => {
+      fixtureEl.innerHTML = [
+        '<div data-bs-toggle="datepicker" data-bs-inline="true">',
+        '  <input type="hidden" name="date">',
+        '</div>',
+        '<span id="date-display">Select date</span>'
+      ].join('')
+
+      const datepickerEl = fixtureEl.querySelector('[data-bs-toggle="datepicker"]')
+      const hiddenInput = fixtureEl.querySelector('input')
+      const displayEl = fixtureEl.querySelector('#date-display')
+      const datepicker = new Datepicker(datepickerEl, {
+        displayElement: displayEl
+      })
+
+      datepicker.setSelectedDates(['2026-01-15'])
+      expect(hiddenInput.value).toEqual('2026-01-15')
+      expect(displayEl.textContent).not.toEqual('')
+
+      datepicker.setSelectedDates([])
+      expect(hiddenInput.value).toEqual('')
+      expect(displayEl.textContent).toEqual('')
     })
 
     it('should return copy of dates array, not reference', () => {
@@ -1203,10 +1232,7 @@ describe('Datepicker', () => {
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl)
 
-      // Should have one date selected (exact date may vary due to timezone)
-      const dates = datepicker.getSelectedDates()
-      expect(dates.length).toEqual(1)
-      expect(dates[0]).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+      expect(datepicker.getSelectedDates()).toEqual(['2026-01-15'])
     })
 
     it('should handle invalid input value gracefully', () => {
@@ -1437,22 +1463,27 @@ describe('Datepicker', () => {
       })
     })
 
-    it('should handle empty date selection', () => {
-      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+    it('should clear bound values and display on empty date selection', () => {
+      fixtureEl.innerHTML = [
+        '<div data-bs-toggle="datepicker" data-bs-inline="true">',
+        '  <input type="hidden" name="date" value="2026-01-15">',
+        '</div>',
+        '<span id="date-display">January 15, 2026</span>'
+      ].join('')
 
-      const inputEl = fixtureEl.querySelector('input')
-      inputEl.value = 'previous value'
-      const datepicker = new Datepicker(inputEl)
+      const datepickerEl = fixtureEl.querySelector('[data-bs-toggle="datepicker"]')
+      const hiddenInput = fixtureEl.querySelector('input')
+      const displayEl = fixtureEl.querySelector('#date-display')
+      const datepicker = new Datepicker(datepickerEl, {
+        displayElement: displayEl
+      })
 
-      // Should not throw
-      expect(() => {
-        datepicker._handleDateClick({
-          context: { selectedDates: [] }
-        }, new Event('click'))
-      }).not.toThrow()
+      datepicker._handleDateClick({
+        context: { selectedDates: [] }
+      }, new Event('click'))
 
-      // Value should not be updated when no dates
-      expect(inputEl.value).toEqual('previous value')
+      expect(hiddenInput.value).toEqual('')
+      expect(displayEl.textContent).toEqual('')
     })
   })
 
