@@ -138,12 +138,16 @@
 // Placed here since it has to come after the potential zebra striping
 
 .table-hover {
-  > tbody > tr:hover > * {
-    --#{$prefix}table-color-state: var(--#{$prefix}table-hover-color);
-    --#{$prefix}table-bg-state: var(--#{$prefix}table-hover-bg);
+  > tbody {
+    > tr:hover,
+    > tr:focus-within {
+      > * {
+          --#{$prefix}table-color-state: var(--#{$prefix}table-hover-color);
+          --#{$prefix}table-bg-state: var(--#{$prefix}table-hover-bg);
+        }
+    }
   }
 }
-
 
 // Table variants
 //
