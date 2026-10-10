@@ -710,6 +710,12 @@ class Carousel extends BaseComponent {
         // `preventScroll` so moving focus doesn't yank the page/viewport to the
         // newly-focused control mid-navigation.
         fallback.focus({ preventScroll: true })
+
+        // The viewport isn't focusable without a `tabindex`: don't leave focus
+        // on a control we're disabling, browsers differ on when they drop it.
+        if (document.activeElement === control) {
+          control.blur()
+        }
       }
 
       control.disabled = disabled
