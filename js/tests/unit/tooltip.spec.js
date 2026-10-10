@@ -62,9 +62,9 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('#tooltipEl')
       const tooltipBySelector = new Tooltip('#tooltipEl')
-      const tooltipByElement = new Tooltip(tooltipEl)
-
       expect(tooltipBySelector._element).toEqual(tooltipEl)
+
+      const tooltipByElement = new Tooltip(tooltipEl)
       expect(tooltipByElement._element).toEqual(tooltipEl)
     })
 
