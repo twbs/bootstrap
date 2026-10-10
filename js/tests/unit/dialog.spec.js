@@ -1154,7 +1154,7 @@ describe('Dialog', () => {
   })
 
   describe('child component cleanup', () => {
-    it('should hide tooltip instances inside dialog when dialog closes', () => {
+    it('should hide tooltip instances inside dialog when another component is registered first', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<dialog class="dialog">',
@@ -1167,6 +1167,7 @@ describe('Dialog', () => {
         const dialog = new Dialog(dialogEl)
 
         const fakeTooltip = { hide: jasmine.createSpy('tooltipHide') }
+        Data.set(tooltipTrigger, 'bs.button', {})
         Data.set(tooltipTrigger, 'bs.tooltip', fakeTooltip)
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
@@ -1175,6 +1176,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('hidden.bs.dialog', () => {
           expect(fakeTooltip.hide).toHaveBeenCalled()
+          Data.remove(tooltipTrigger, 'bs.button')
           Data.remove(tooltipTrigger, 'bs.tooltip')
           resolve()
         })
@@ -1183,7 +1185,7 @@ describe('Dialog', () => {
       })
     })
 
-    it('should hide popover instances inside dialog when dialog closes', () => {
+    it('should hide popover instances inside dialog when another component is registered first', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<dialog class="dialog">',
@@ -1196,6 +1198,7 @@ describe('Dialog', () => {
         const dialog = new Dialog(dialogEl)
 
         const fakePopover = { hide: jasmine.createSpy('popoverHide') }
+        Data.set(popoverTrigger, 'bs.button', {})
         Data.set(popoverTrigger, 'bs.popover', fakePopover)
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
@@ -1204,6 +1207,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('hidden.bs.dialog', () => {
           expect(fakePopover.hide).toHaveBeenCalled()
+          Data.remove(popoverTrigger, 'bs.button')
           Data.remove(popoverTrigger, 'bs.popover')
           resolve()
         })
@@ -1212,7 +1216,7 @@ describe('Dialog', () => {
       })
     })
 
-    it('should hide toast instances inside dialog when dialog closes', () => {
+    it('should hide toast instances inside dialog when another component is registered first', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<dialog class="dialog">',
@@ -1225,6 +1229,7 @@ describe('Dialog', () => {
         const dialog = new Dialog(dialogEl)
 
         const fakeToast = { hide: jasmine.createSpy('toastHide') }
+        Data.set(toastEl, 'bs.button', {})
         Data.set(toastEl, 'bs.toast', fakeToast)
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
@@ -1233,6 +1238,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('hidden.bs.dialog', () => {
           expect(fakeToast.hide).toHaveBeenCalled()
+          Data.remove(toastEl, 'bs.button')
           Data.remove(toastEl, 'bs.toast')
           resolve()
         })
