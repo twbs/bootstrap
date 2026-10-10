@@ -70,6 +70,38 @@ describe('EventHandler', () => {
       })
     })
 
+    it('should find the correct target element via event delegation', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="component">',
+          '<!-- Comment -->',
+          '<section>',
+          '<b>',
+          'Just text content',
+          '<svg>',
+          '<i>',
+          '<p>',
+          '<span>Click me</span>',
+          '</p>',
+          '</i>',
+          '</svg>',
+          '</b>',
+          '</section>',
+          '</div>'
+        ].join('')
+
+        EventHandler.on(document, 'click', '.component', () => {
+          expect(component).toHaveClass('component')
+          resolve()
+        })
+
+        const component = document.querySelector('.component')
+        const span = fixtureEl.querySelector('span')
+
+        EventHandler.trigger(span, 'click')
+      })
+    })
+
     it('should handle event delegation', () => {
       return new Promise(resolve => {
         EventHandler.on(document, 'click', '.test', () => {
