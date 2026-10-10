@@ -551,6 +551,26 @@ describe('Offcanvas', () => {
       })
     })
 
+    it('should hide a shown element and not remove role="dialog" if already present', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas" role="dialog"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        const spy = spyOn(offCanvas._backdrop, 'hide').and.callThrough()
+        offCanvas.show()
+
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          expect(offCanvasEl).not.toHaveClass('show')
+          expect(offCanvasEl.getAttribute('role')).toEqual('dialog')
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.hide()
+      })
+    })
+
     it('should not fire hidden when hide is prevented', () => {
       return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = '<div class="offcanvas"></div>'
