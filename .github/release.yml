@@ -43,7 +43,7 @@ changelog:
         - 'accessibility'
     - title: '🔧 Utility API'
       labels:
-        - 'utility API'
+        - 'utility-api'
         - 'utilities'
     - title: '🏭 Tests'
       labels:
@@ -53,7 +53,7 @@ changelog:
         - 'build'
         - 'meta'
         - 'chore'
-        - 'CI'
+        - 'ci'
     - title: '📦 Dependencies'
       labels:
         - 'dependencies'
