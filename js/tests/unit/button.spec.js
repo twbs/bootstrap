@@ -22,6 +22,20 @@ describe('Button', () => {
     expect(buttonByElement._element).toEqual(buttonEl)
   })
 
+  it('should initialize aria-pressed when missing', () => {
+    fixtureEl.innerHTML = [
+      '<button class="btn" data-bs-toggle="button"></button>',
+      '<button class="btn active" data-bs-toggle="button"></button>'
+    ].join('')
+
+    const buttons = fixtureEl.querySelectorAll('[data-bs-toggle="button"]')
+    const buttonInstances = [...buttons].map(button => new Button(button))
+
+    expect(buttonInstances).toHaveSize(2)
+    expect(buttons[0].getAttribute('aria-pressed')).toEqual('false')
+    expect(buttons[1].getAttribute('aria-pressed')).toEqual('true')
+  })
+
   describe('VERSION', () => {
     it('should return plugin version', () => {
       expect(Button.VERSION).toEqual(jasmine.any(String))
