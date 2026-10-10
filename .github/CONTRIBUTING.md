@@ -37,20 +37,47 @@ Please keep in mind that the core team is small, has limited resources and that 
 
 ## Issues and labels
 
-Our bug tracker utilizes several labels to help organize and identify issues. Here’s what they represent and how we use them:
+Our bug tracker utilizes several labels to help organize and identify issues and pull requests. Label names are lowercase, with words separated by hyphens. Here’s what the main ones represent and how we use them:
 
-- `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
-- `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
+**Version**
+
+- `v6` - Applies to Bootstrap 6, developed on the `main` branch.
+- `v5` - Applies to Bootstrap 5, maintained on the `v5-dev` branch.
+
+**Type**
+
+- `bug` - Something that does not work as documented. Bug reports get this label when they’re opened.
+- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
+- `regression` - A bug that did not happen in an earlier release.
+- `breaking-change` - A change that breaks existing markup, Sass, or JavaScript. These are listed first in the release notes.
+
+**Area**
+
 - `css` - Issues stemming from our compiled CSS or source Sass files.
+- `js` - Issues stemming from our compiled or source JavaScript files.
+- `html` - Issues about the markup of our components and examples: which elements, attributes, and structure they use or require.
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
-- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
-- `build` - Issues with our build system, which is used to run all our tests, concatenate and compile source files, and more.
-- `help wanted` - Issues we need or would love help from the community to resolve.
-- `js` - Issues stemming from our compiled or source JavaScript files.
+- `accessibility`, `rtl`, `color-mode`, `utility-api` - Issues about accessibility, right-to-left support, color modes, or our utilities and utility API.
+- `build`, `ci`, `tests` - Issues with our build system, our GitHub workflows, or our tests.
 - `meta` - Issues with the project itself or our GitHub repository.
 
-For a complete look at our labels, see the [project labels page](https://github.com/twbs/bootstrap/labels).
+**Status**
+
+- `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
+- `needs-example` - We need a live demo to look into it. Adding this label posts a comment asking for a reduced test case.
+- `awaiting-reply` - We’re waiting on the author. Issues with this label are closed after 14 days without a reply.
+- `has-pr` - An open pull request addresses the issue.
+- `has-conflicts` - The pull request conflicts with its base branch and needs a rebase.
+- `needs-decision` - A maintainer has to decide first, for example on scope, design, or a breaking change.
+- `help-wanted` - Issues we need or would love help from the community to resolve.
+
+**Resolution**
+
+- `browser-bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
+- `duplicate`, `invalid`, `wont-fix`, `question` - Closed as a duplicate, as not a Bootstrap issue, as out of scope, or as a usage question best asked in [GitHub Discussions](https://github.com/twbs/bootstrap/discussions).
+
+Each label has a short description on the [project labels page](https://github.com/twbs/bootstrap/labels), which lists them all.
 
 
 ## Bug reports
