@@ -35,6 +35,11 @@ updates:
       - dependency-name: "prettier-plugin-astro"
         update-types:
           - "version-update:semver-major"
+      # TypeScript 7 (native compiler) is not supported yet by @astrojs/check
+      # and typescript-eslint. Remove this entry once both accept it.
+      - dependency-name: "typescript"
+        update-types:
+          - "version-update:semver-major"
       # Rolldown is pinned exactly on purpose while it is still release-candidate
       # software. Review each bump by hand.
       - dependency-name: "rolldown"
