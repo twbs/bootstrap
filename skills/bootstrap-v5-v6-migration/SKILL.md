@@ -182,6 +182,8 @@ Keys 2-5 have changed values. To preserve v5 spacing: `.p-2` (0.5rem) -> `.p-3`,
 | 5 | `3rem` | `1rem` |
 | 6-12 | — | `1.25rem` through `3rem`, in `0.25rem` steps |
 
+Negative margins are limited to `.ms--1`, `.ms--2`, `.me--1`, `.me--2` (`-0.25rem`, `-0.5rem`). v5's `.m*-n*` classes (e.g. `.mt-n1`, `.ms-n3`) are gone: use one of these or a custom style.
+
 ### Form validation
 
 | v5 | v6 |
@@ -515,6 +517,7 @@ document.querySelectorAll('form[data-bs-validate]')
 | `$zindex-offcanvas` | `$zindex-drawer` |
 | `$form-validation-states` | `$validation-states` |
 | `$btn-close-white-filter` | Removed — icon uses `currentcolor` |
+| `$enable-negative-margins` | Removed — negative margins are always generated; customize `$negative-spacers` |
 | `add()` / `subtract()` | `calc()` |
 | `breakpoint-infix()` | `breakpoint-prefix()` (returns `"md\:"` not `"-md"`) |
 | `$infix` (in loop mixins) | `$prefix` |
