@@ -325,7 +325,7 @@ class Tooltip extends BaseComponent {
         this._leave()
       }
 
-      this._isHovered = false
+      this._isHovered = null
     }
 
     await this._queueCallback(complete, this.tip!, this._isAnimated())

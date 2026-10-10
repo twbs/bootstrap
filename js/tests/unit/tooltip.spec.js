@@ -1423,6 +1423,22 @@ describe('Tooltip', () => {
       })
     })
 
+    it('should keep a manually shown tip open after setContent', async () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, { trigger: 'manual' })
+
+      await tooltip.show()
+      tooltip.setContent({ '.tooltip-inner': 'foo' })
+      await new Promise(resolve => {
+        setTimeout(resolve, 20)
+      })
+
+      expect(tooltip._getTipElement()).toHaveClass('show')
+      expect(tooltip._getTipElement().querySelector('.tooltip-inner').textContent).toEqual('foo')
+    })
+
     it('should keep tip hidden, if it was already hidden before', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="Another tooltip"></a>'
 
