@@ -5,7 +5,6 @@ import sitemap from '@astrojs/sitemap'
 import type { AstroIntegration } from 'astro'
 import { getConfig } from './config'
 import {
-  docsDirectory,
   getDocsFsPath,
   getDocsPublicFsPath,
   getDocsStaticFsPath,
