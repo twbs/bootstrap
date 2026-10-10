@@ -85,6 +85,22 @@ Conversely, multiple `<button>` or `<a>` elements can show and hide the same ele
     </div>
   </div>`} />
 
+## Hash links
+
+Add `data-bs-hash` to a collapsible target to open it when the URL fragment matches its `id`. Use a normal in-page link (without `data-bs-toggle`) to try it. You may need to use `scroll-margin-block-start` for some viewport offsetting if using a stickied or fixed navbar.
+
+<Example code={`<p class="d-inline-flex gap-1">
+    <a class="btn-outline theme-primary" href="#collapseHashExample">Open via hash link</a>
+    <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHashExample" aria-expanded="false" aria-controls="collapseHashExample">
+      Toggle
+    </button>
+  </p>
+  <div class="collapse" id="collapseHashExample" data-bs-hash>
+    <div class="card card-body">
+      <p>Some placeholder content for a hash-linked collapse. Visiting <code>#collapseHashExample</code> opens this panel and scrolls it into view.</p>
+    </div>
+  </div>`} />
+
 ## Accessibility
 
 Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you’ve set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element’s HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
@@ -128,6 +144,7 @@ To add accordion-like group management to a collapsible area, add the data attri
 | `data-bs-toggle="collapse"` | Initializes the collapse plugin on the trigger element. |
 | `data-bs-target` | CSS selector for the element(s) to expand and collapse. |
 | `data-bs-parent` | When set on the collapsible element, closes sibling collapses under the same parent (accordion behavior). |
+| `data-bs-hash` | When set on the collapsible target, opens that collapse when the URL fragment matches its `id` (on load and `hashchange`). See [Hash links](#hash-links). |
 </BsTable>
 
 ### Via JavaScript
