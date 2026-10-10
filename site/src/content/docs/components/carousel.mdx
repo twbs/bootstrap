@@ -349,6 +349,21 @@ Call carousel manually with:
 const carousel = new bootstrap.Carousel('#myCarousel')
 ```
 
+<Callout type="warning">
+`Carousel.getInstance` will return `null` unless the carousel has already been initialized (either explicitly via the constructor, or automatically via `data-bs-ride`). If your carousel contains images or other asynchronous content, auto-initialization may not have completed by the time your script runs. To avoid a `null` reference, either initialize the carousel explicitly with the constructor, use `getOrCreateInstance`, or defer your code until the `window` `load` event:
+
+```js
+// Option 1 – use getOrCreateInstance (recommended)
+const carousel = bootstrap.Carousel.getOrCreateInstance('#myCarousel')
+
+// Option 2 – wait for the window load event
+window.addEventListener('load', () => {
+  const carousel = bootstrap.Carousel.getInstance('#myCarousel')
+  // carousel is now guaranteed to be initialized
+})
+```
+</Callout>
+
 ### Options
 
 <JsDataAttributes />
@@ -410,6 +425,19 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
 | `slid.bs.carousel` | Fired when the carousel has completed its slide transition. |
 | `slide.bs.carousel` | Fires immediately when the `slide` instance method is invoked. |
 </BsTable>
+
+<Callout type="warning">
+Calling `pause` inside a `slide.bs.carousel` handler has no effect because the slide transition is already in progress. To programmatically pause the carousel after a slide change, use the `slid.bs.carousel` event instead:
+
+```js
+const myCarousel = document.getElementById('myCarousel')
+
+myCarousel.addEventListener('slid.bs.carousel', event => {
+  const carousel = bootstrap.Carousel.getInstance(myCarousel)
+  carousel.pause()
+})
+```
+</Callout>
 
 ```js
 const myCarousel = document.getElementById('myCarousel')
