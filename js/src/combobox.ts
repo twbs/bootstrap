@@ -95,7 +95,7 @@ class Combobox extends BaseComponent {
   protected declare _valueDisplay: HTMLElement
   protected declare _searchInput: HTMLInputElement | null
   protected declare _noResults: HTMLElement | null
-  protected declare _hiddenInput: HTMLInputElement | null
+  protected declare _hiddenInputs: HTMLInputElement[]
   protected declare _menuInstance: Menu | null
 
   constructor(element?: string | Element | null, config?: Partial<ComboboxConfig> | null) {
@@ -106,10 +106,9 @@ class Combobox extends BaseComponent {
     this._valueDisplay = SelectorEngine.findOne(SELECTOR_VALUE, this._toggle)!
     this._searchInput = SelectorEngine.findOne<HTMLInputElement>(SELECTOR_SEARCH_INPUT, this._menu)
     this._noResults = SelectorEngine.findOne(SELECTOR_NO_RESULTS, this._menu)
-    this._hiddenInput = null
+    this._hiddenInputs = []
     this._menuInstance = null
 
-    this._createHiddenInput()
     this._createMenuInstance()
     this._syncInitialSelection()
     this._addEventListeners()
@@ -174,10 +173,7 @@ class Combobox extends BaseComponent {
       this._menuInstance = null
     }
 
-    if (this._hiddenInput) {
-      this._hiddenInput.remove()
-      this._hiddenInput = null
-    }
+    this._removeHiddenInputs()
 
     EventHandler.off(this._menu, EVENT_KEY)
     EventHandler.off(this._toggle, EVENT_KEY)
@@ -191,17 +187,21 @@ class Combobox extends BaseComponent {
     return this._menu.classList.contains(CLASS_NAME_SHOW)
   }
 
-  protected _createHiddenInput(): void {
-    const { name } = this._config
-    if (!name) {
-      return
+  protected _insertHiddenInput(): HTMLInputElement {
+    const input = document.createElement('input')
+    input.type = 'hidden'
+    input.name = this._config.name!
+    this._toggle.parentNode!.insertBefore(input, this._toggle)
+    this._hiddenInputs.push(input)
+    return input
+  }
+
+  protected _removeHiddenInputs(): void {
+    for (const input of this._hiddenInputs) {
+      input.remove()
     }
 
-    this._hiddenInput = document.createElement('input')
-    this._hiddenInput.type = 'hidden'
-    this._hiddenInput.name = name
-    this._hiddenInput.value = ''
-    this._toggle.parentNode!.insertBefore(this._hiddenInput, this._toggle)
+    this._hiddenInputs = []
   }
 
   protected _createMenuInstance(): void {
@@ -215,13 +215,13 @@ class Combobox extends BaseComponent {
   }
 
   protected _syncInitialSelection(): void {
-    const selectedItems = this._getSelectedItems()
-    if (selectedItems.length > 0) {
+    if (this._getSelectedItems().length > 0) {
       this._updateToggleText()
-      this._updateHiddenInput()
     } else {
       this._showPlaceholder()
     }
+
+    this._updateHiddenInputs()
   }
 
   protected _addEventListeners(): void {
@@ -282,7 +282,7 @@ class Combobox extends BaseComponent {
     }
 
     this._updateToggleText()
-    this._updateHiddenInput()
+    this._updateHiddenInputs()
 
     const value = this._config.multiple ?
       this._getSelectedItems().map(el => el.dataset.bsValue) :
@@ -326,14 +326,25 @@ class Combobox extends BaseComponent {
     }
   }
 
-  protected _updateHiddenInput(): void {
-    if (!this._hiddenInput) {
+  protected _updateHiddenInputs(): void {
+    if (!this._config.name) {
       return
     }
 
-    const selectedItems = this._getSelectedItems()
-    const values = selectedItems.map(el => el.dataset.bsValue)
-    this._hiddenInput.value = this._config.multiple ? values.join(',') : (values[0] || '')
+    // Single mode always submits one field. The value is empty when nothing is selected.
+    // Multiple mode submits one field per selected value, like a native `<select multiple>`.
+    const selectedValues = this._getSelectedItems().map(el => el.dataset.bsValue ?? '')
+    const values = this._config.multiple ? selectedValues : [selectedValues[0] ?? '']
+
+    // Reuse the existing inputs, in menu order. Add or remove only the difference.
+    for (const [index, value] of values.entries()) {
+      const input = this._hiddenInputs[index] ?? this._insertHiddenInput()
+      input.value = value
+    }
+
+    for (const input of this._hiddenInputs.splice(values.length)) {
+      input.remove()
+    }
   }
 
   protected _getSelectedItems(): HTMLElement[] {
