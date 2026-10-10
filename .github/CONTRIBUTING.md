@@ -55,6 +55,7 @@ Our bug tracker utilizes several labels to help organize and identify issues and
 
 - `css` - Issues stemming from our compiled CSS or source Sass files.
 - `js` - Issues stemming from our compiled or source JavaScript files.
+- `html` - Issues about the markup of our components and examples: which elements, attributes, and structure they use or require.
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
 - `accessibility`, `rtl`, `color-mode`, `utility-api` - Issues about accessibility, right-to-left support, color modes, or our utilities and utility API.
