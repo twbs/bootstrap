@@ -14,6 +14,7 @@
     <projectUrl>https://getbootstrap.com/</projectUrl>
     <repository type="git" url="https://github.com/twbs/bootstrap.git" branch="main" />
     <icon>bootstrap.png</icon>
+    <readme>README.md</readme>
     <license type="expression">MIT</license>
     <copyright>Copyright 2011-2026</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -24,12 +25,13 @@
   </metadata>
   <files>
     <file src="nuget\bootstrap.png" target="" />
+    <file src="nuget\bootstrap.sass\README.md" target="" />
 
     <file src="scss\**\*.scss" target="content\Content\bootstrap" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
     <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
 
-    <file src="scss\**\*.scss" target="contentFiles\any\any\wwwroot\scss" />
+    <file src="scss\**\*.scss" target="contentFiles\any\any\Styles" />
     <file src="dist\js\bootstrap*.js" target="contentFiles\any\any\wwwroot\js" />
     <file src="dist\js\bootstrap*.js.map" target="contentFiles\any\any\wwwroot\js" />
   </files>
