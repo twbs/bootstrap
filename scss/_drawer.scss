@@ -168,15 +168,23 @@ $drawer-backdrop-tokens: defaults(
             transform: translateY(calc(100% + var(--drawer-inset)));
           }
 
-          // Open state: slide in with transition
-          &[open] {
+          // Open state: slide in with transition.
+          // The :not(.hiding) qualifier lets the exit transition fall back to
+          // the off-screen placement transform while [open] is still present
+          // (the JS keeps the drawer in the top layer during the exit so the
+          // ::backdrop remains rendered).
+          &[open]:not(.hiding) {
             visibility: visible;
             transform: none;
           }
         }
 
-        // Open state base (always applies, regardless of animation mode)
-        &[open] {
+        // Open state base (always applies, regardless of animation mode).
+        // Excluded while .hiding is present so the animated exit (above) can
+        // fall through to the base "exit" state — for instant drawers, .hiding
+        // is added and removed within the same task, so this still applies
+        // normally.
+        &[open]:not(.hiding) {
           visibility: visible;
           transform: none;
         }
@@ -235,6 +243,14 @@ $drawer-backdrop-tokens: defaults(
       background-color: var(--drawer-backdrop-bg);
       backdrop-filter: blur(var(--drawer-backdrop-blur));
       @include backdrop-transitions(var(--drawer-transition-duration), var(--drawer-transition-timing));
+    }
+
+    // Exit: fade the native backdrop out alongside the drawer. The drawer is
+    // kept in the top layer (and thus the ::backdrop is still rendered) for
+    // the duration of the exit transition.
+    .#{$prefix}drawer.hiding::backdrop {
+      background-color: transparent;
+      backdrop-filter: blur(0);
     }
   }
 

@@ -610,6 +610,60 @@ describe('Drawer', () => {
       })
     })
 
+    it('should keep the dialog open during the exit transition', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+
+          // The dialog has to stay in the top layer until the exit transition
+          // ends, otherwise the native ::backdrop is dropped synchronously and
+          // the backdrop can't animate out.
+          try {
+            expect(drawerEl.classList.contains('hiding')).toBeTrue()
+            expect(drawerEl.open).toBeTrue()
+          } catch (error) {
+            reject(error)
+          }
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(drawerEl.open).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should close the dialog immediately when animations are disabled', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-instant"></dialog>'
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+
+          try {
+            expect(drawerEl.open).toBeFalse()
+          } catch (error) {
+            reject(error)
+          }
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(drawerEl.open).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
     it('should do nothing if not open', () => {
       fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
 
@@ -1039,6 +1093,29 @@ describe('Drawer', () => {
         })
 
         drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(drawerEl.classList.contains('hiding')).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should remove hiding class when disposed during the transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+          expect(drawerEl.classList.contains('hiding')).toBeTrue()
+
+          // _queueCallback drops its completion callback once the instance is
+          // disposed, so dispose() clears the exit state itself — a stranded
+          // .hiding would hide the drawer of the next instance on this element.
+          drawer.dispose()
           expect(drawerEl.classList.contains('hiding')).toBeFalse()
           resolve()
         })
