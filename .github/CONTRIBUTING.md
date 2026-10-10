@@ -65,7 +65,7 @@ Our bug tracker utilizes several labels to help organize and identify issues and
 **Status**
 
 - `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
-- `needs-example` - We need a live demo to look into it. Adding this label posts a comment asking for a reduced test case.
+- `needs-example` - We need a live demo to look into it. Adding this label posts a comment asking for a reduced test case and adds `awaiting-reply`.
 - `awaiting-reply` - We’re waiting on the author. Issues with this label are closed after 14 days without a reply.
 - `has-pr` - An open pull request addresses the issue.
 - `has-conflicts` - The pull request conflicts with its base branch and needs a rebase.
