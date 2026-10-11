@@ -2,6 +2,10 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    labels:
+      - dependencies
+      - github-actions
+      - v5
     schedule:
       interval: weekly
       day: tuesday
