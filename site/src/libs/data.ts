@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import yaml from 'js-yaml'
+import { load as yamlLoad } from 'js-yaml'
 import { z } from 'zod'
 import {
   zHexColor,
@@ -33,7 +33,7 @@ const dataDefinitions = {
   'docs-versions': z
     .object({
       group: z.string(),
-      baseurl: z.string().url(),
+      baseurl: z.url(),
       description: z.string(),
       versions: z.union([zVersionSemver, zVersionMajorMinor]).array()
     })
@@ -58,13 +58,13 @@ const dataDefinitions = {
     preferred: z
       .object({
         name: z.string(),
-        website: z.string().url()
+        website: z.url()
       })
       .array(),
     more: z
       .object({
         name: z.string(),
-        website: z.string().url()
+        website: z.url()
       })
       .array()
   }),
@@ -104,7 +104,7 @@ const dataDefinitions = {
       name: z.string(),
       code: zLanguageCode,
       description: z.string(),
-      url: z.string().url()
+      url: z.url()
     })
     .array()
 } satisfies Record<string, DataSchema>
@@ -124,7 +124,7 @@ export function getData<TType extends DataType>(type: TType): z.infer<(typeof da
 
   try {
     // Load the data from the yml  file.
-    const rawData = yaml.load(fs.readFileSync(dataPath, 'utf8'))
+    const rawData = yamlLoad(fs.readFileSync(dataPath, 'utf8'))
 
     // Parse the data using the data schema to validate its content and get back a fully typed data object.
     const parsedData = dataDefinitions[type].parse(rawData)

@@ -11,7 +11,7 @@ export const title = 'Bottom navbar example'
     <a class="btn btn-lg btn-primary" href={getVersionedDocsPath('/components/navbar')} role="button">View navbar docs &raquo;</a>
   </div>
 </main>
-<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar fixed-bottom navbar-expand-sm bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Bottom navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@ export const title = 'Bottom navbar example'
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
         <li class="nav-item dropup">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropup</a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropup</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
