@@ -74,15 +74,20 @@ $check-tokens: defaults(
       );
     }
 
-    &:checked,
-    &:indeterminate {
+    &:checked {
       background-color: var(--theme-bg, var(--check-checked-bg));
       border-color: var(--theme-bg, var(--check-checked-border-color));
+    }
 
-      &::before {
-        opacity: 1;
-        transform: scale(1);
-      }
+    &:indeterminate {
+      background-color: var(--theme-bg, var(--check-indeterminate-bg));
+      border-color: var(--theme-bg, var(--check-indeterminate-border-color));
+    }
+
+    &:checked::before,
+    &:indeterminate::before {
+      opacity: 1;
+      transform: scale(1);
     }
 
     &:indeterminate::before { mask-image: var(--check-icon-indeterminate); }
