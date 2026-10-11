@@ -179,8 +179,10 @@ $root-tokens: defaults(
 @each $key, $value in $radii {
   $root-tokens: map.set($root-tokens, --radius-#{$key}, $value);
 }
-// stylelint-disable-next-line scss/dollar-variable-default
-$root-tokens: map.set($root-tokens, --radius-pill, 50rem);
+// There is no `$radii` step for the pill, so keep a value passed through `$root-tokens`.
+@if not map.has-key($root-tokens, --radius-pill) {
+  $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
+}
 // scss-docs-end root-radius-loop
 
 // Generate box-shadow tokens
