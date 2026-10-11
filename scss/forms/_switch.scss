@@ -91,6 +91,7 @@ $switch-tokens: defaults(
     }
 
     &:has(input:checked) {
+      --switch-indicator-bg: var(--switch-checked-indicator-bg);
       background-color: var(--theme-bg, var(--switch-checked-bg));
       border-color: var(--theme-bg, var(--switch-checked-border-color));
 
