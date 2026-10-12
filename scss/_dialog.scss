@@ -27,6 +27,7 @@ $dialog-tokens: defaults(
     --dialog-border-color: var(--border-color-translucent),
     --dialog-border-width: var(--border-width),
     --dialog-border-radius: var(--radius-7),
+    --dialog-inner-border-radius: calc(var(--dialog-border-radius) - var(--dialog-border-width)),
     --dialog-box-shadow: var(--box-shadow-xl),
     --dialog-transition-property: "opacity, transform, visibility",
     --dialog-transition-duration: .3s,
@@ -262,6 +263,9 @@ $dialog-sizes: defaults(
   .dialog-header {
     @include dialog-header(var(--dialog-header-padding));
     border-block-end: var(--dialog-header-border-width) solid var(--dialog-header-border-color);
+    // `.dialog` keeps `overflow: visible` for menus, so round the header to
+    // match the dialog corners when it has a background.
+    @include border-top-radius(var(--dialog-inner-border-radius));
 
     .btn-close {
       margin-inline-start: auto;
@@ -283,5 +287,6 @@ $dialog-sizes: defaults(
   // Dialog footer
   .dialog-footer {
     @include dialog-footer(var(--dialog-footer-padding), var(--dialog-footer-gap), var(--dialog-footer-border-width), var(--dialog-footer-border-color));
+    @include border-bottom-radius(var(--dialog-inner-border-radius));
   }
 }
