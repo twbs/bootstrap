@@ -664,6 +664,28 @@ describe('Drawer', () => {
       })
     })
 
+    it('should remove dialog-open when the dialog is closed during the exit transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+          // Something else closes the dialog before the exit transition ends
+          drawerEl.close()
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
     it('should do nothing if not open', () => {
       fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
 
