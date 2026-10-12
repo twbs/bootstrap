@@ -269,6 +269,8 @@ $tab-pane-tokens: defaults(
   //
 
   .nav-fill {
+    display: flex;
+
     > .nav-link,
     .nav-item {
       flex: 1 1 auto;
@@ -277,6 +279,8 @@ $tab-pane-tokens: defaults(
   }
 
   .nav-justified {
+    display: flex;
+
     > .nav-link,
     .nav-item {
       flex-grow: 1;
