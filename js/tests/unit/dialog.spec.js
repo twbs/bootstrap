@@ -391,6 +391,28 @@ describe('Dialog', () => {
         dialog.show()
       })
     })
+
+    it('should remove dialog-open when the dialog is closed during the exit transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialog.hide()
+          // Something else closes the dialog before the exit transition ends
+          dialogEl.close()
+        })
+
+        dialogEl.addEventListener('hidden.bs.dialog', () => {
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
   })
 
   describe('backdrop static', () => {

@@ -131,10 +131,12 @@ class DialogBase extends BaseComponent {
     await this._queueCallback(() => {
       // For subclasses that defer close() until the exit transition ends
       // (so the dialog stays in the top layer with its ::backdrop), close()
-      // happens here instead of in _hideElement().
-      if (this._element.open) {
-        this._closeAndCleanup()
-      }
+      // happens here instead of in _hideElement(). It runs unconditionally:
+      // _closeAndCleanup() is a no-op on an already-closed dialog, and skipping
+      // it when something else closed the dialog during the exit (app code,
+      // a <form method="dialog"> submit) would leave scroll prevention
+      // (dialog-open) stuck on the root element.
+      this._closeAndCleanup()
 
       this._element.classList.remove('hiding')
       this._onAfterHide()
@@ -153,6 +155,12 @@ class DialogBase extends BaseComponent {
     if (this._element.open) {
       this._closeAndCleanup()
     }
+
+    // `_queueCallback` skips its completion callback once the instance is
+    // disposed, so nothing else would clear the exit state. A stranded
+    // `.hiding` suppresses the `[open]:not(.hiding)` open state, which would
+    // leave a later instance on the same element showing an invisible dialog.
+    this._element.classList.remove('hiding')
 
     // The `cancel` listener is unnamespaced, so super.dispose()'s EVENT_KEY
     // teardown misses it — remove this instance's own handler here.
@@ -243,7 +251,8 @@ class DialogBase extends BaseComponent {
 
   // Hook: return true to keep the dialog in the top layer (i.e., delay
   // calling close()) until the exit transition completes. The base class
-  // closes synchronously; Dialog overrides this for animated modal cases.
+  // closes synchronously; Dialog and Drawer override this for their
+  // animated cases.
   protected _shouldDeferClose(): boolean {
     return false
   }

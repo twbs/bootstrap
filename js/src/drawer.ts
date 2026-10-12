@@ -119,6 +119,14 @@ class Drawer extends DialogBase {
     return 'drawer-static'
   }
 
+  // Keep the drawer in the top layer until the exit transition ends, like
+  // Dialog does. close() removes the dialog from the top layer, which drops
+  // the native ::backdrop synchronously — the backdrop would disappear before
+  // it could transition out.
+  protected override _shouldDeferClose(): boolean {
+    return this._isAnimated()
+  }
+
   // Private
 
   protected _initResizeObserver(): void {
