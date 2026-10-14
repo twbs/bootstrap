@@ -96,6 +96,7 @@ describe('FocusTrap', () => {
         const last = document.getElementById('last')
         const outside = document.getElementById('outside')
 
+        document.closest = () => undefined
         spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
         const spy = spyOn(first, 'focus').and.callThrough()
 
@@ -135,6 +136,7 @@ describe('FocusTrap', () => {
         const last = document.getElementById('last')
         const outside = document.getElementById('outside')
 
+        document.closest = () => undefined
         spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
         const spy = spyOn(last, 'focus').and.callThrough()
 
