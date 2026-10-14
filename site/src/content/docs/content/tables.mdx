@@ -14,6 +14,53 @@ Using the most basic table markup, here’s how `.table`-based tables look in Bo
 
 <Table class="table" simplified={false} />
 
+### Tables in rounded containers
+
+Table cell backgrounds are opaque by default. When a table is placed inside a parent with rounded corners, the cell backgrounds can cover the parent’s border radius. Add the [`.overflow-auto` utility]([[docsref:/utilities/overflow]]) to the parent so its rounded corners clip the table. This also allows the table to scroll if it becomes wider than its container.
+
+<Example code={`<div class="border rounded-3 overflow-auto">
+  <table class="table table-striped mb-0">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>John</td>
+        <td>Doe</td>
+        <td>@social</td>
+      </tr>
+    </tbody>
+  </table>
+</div>`} />
+
+For a plain table, you can instead use `--bs-table-bg: transparent` to let the parent’s background show through. Accented tables, such as striped or hoverable tables, still need an overflow utility because their accent backgrounds can cover the rounded corners.
+
+```html
+<div class="border rounded-3 bg-body">
+  <table class="table mb-0" style="--bs-table-bg: transparent;">
+    <!-- ... -->
+  </table>
+</div>
+```
+
 ## Variants
 
 Use contextual classes to color tables, table rows or individual cells.
