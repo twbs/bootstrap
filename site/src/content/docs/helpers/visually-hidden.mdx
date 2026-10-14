@@ -4,11 +4,33 @@ description: Use these helpers to visually hide elements but keep them accessibl
 aliases: "/docs/[[config:docs_version]]/helpers/screen-readers/"
 ---
 
-Visually hide an element while still allowing it to be exposed to assistive technologies (such as screen readers) with `.visually-hidden`. Use `.visually-hidden-focusable` to visually hide an element by default, but to display it when it’s focused (e.g. by a keyboard-only user). `.visually-hidden-focusable` can also be applied to a container–thanks to `:focus-within`, the container will be displayed when any child element of the container receives focus.
+Visually hide an element while still allowing it to be exposed to assistive technologies (such as screen readers) with `.visually-hidden` or one of the `.visually-hidden-{sm,md,lg,xl,xxl}` classes for any responsive screen variation.
+
+<BsTable>
+| Screen size | Class |
+| --- | --- |
+| Visually hidden on all | `.visually-hidden` |
+| Visually hidden on xs and down | `.visually-hidden-xs` |
+| Visually hidden on sm and down | `.visually-hidden-sm` |
+| Visually hidden on md and down | `.visually-hidden-md` |
+| Visually hidden on lg and down | `.visually-hidden-lg` |
+| Visually hidden on xl and down | `.visually-hidden-xl` |
+| Visually hidden on xxl and down | `.visually-hidden-xxl` |
+</BsTable>
+
+<Example code={`<div class="visually-hidden-lg">visually hidden on lg and smaller screens</div>`} />
+
+## Focusable
+
+Use `.visually-hidden-focusable` to visually hide an element by default, but to display it when it’s focused (e.g. by a keyboard-only user). `.visually-hidden-focusable` can also be applied to a container–thanks to `:focus-within`, the container will be displayed when any child element of the container receives focus.
 
 <Example code={`<h2 class="visually-hidden">Title for screen readers</h2>
   <a class="visually-hidden-focusable" href="#content">Skip to main content</a>
   <div class="visually-hidden-focusable">A container with a <a href="#">focusable element</a>.</div>`} />
+
+## CSS
+
+### Sass mixins
 
 Both `visually-hidden` and `visually-hidden-focusable` can also be used as mixins.
 
@@ -23,3 +45,4 @@ Both `visually-hidden` and `visually-hidden-focusable` can also be used as mixin
   @include visually-hidden-focusable;
 }
 ```
+
