@@ -29,6 +29,11 @@ class BaseComponent extends Config {
       return
     }
 
+    const instance = Data.get(element, this.constructor.DATA_KEY)
+    if (instance instanceof this.constructor) {
+      instance.dispose()
+    }
+
     this._element = element
     this._config = this._getConfig(config)
 
