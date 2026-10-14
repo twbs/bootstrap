@@ -3,7 +3,7 @@ name: Release notes
 on:
   push:
     branches:
-      - v5-dev
+      - main
   workflow_dispatch:
 
 permissions:
