@@ -12,7 +12,9 @@ import { getData } from '@libs/data'
 
 Similar to checkboxes, radios are styled with the `.radio` class. However, there’s no custom SVG as we use pure CSS to style the input and its checked state.
 
-<Example code={`<input type="radio" id="radio" class="radio" />`} />
+A radio without a visible label still needs an accessible name for assistive technologies, for instance with `aria-label`. The name should say what the option is, like `aria-label="Red"` in a color picker, and replaces the `...` placeholder in the example below. See the [forms overview accessibility]([[docsref:/forms/overview/#accessibility]]) section for details.
+
+<Example code={`<input type="radio" id="radio" class="radio" aria-label="..." />`} />
 
 ## With form field
 
