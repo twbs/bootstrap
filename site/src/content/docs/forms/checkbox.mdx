@@ -17,15 +17,15 @@ All checkbox styling is applied with the `.check` class directly on the `<input>
 
 For folks looking to replace our provided icons, override the `--bs-check-icon-checked` and `--bs-check-icon-indeterminate` CSS variables (or the `--check-icon-*` Sass tokens) with your own `mask-image` URLs.
 
-Labels and layout are handled with additional HTML and CSS.
+Labels and layout are handled with additional HTML and CSS. A checkbox without a visible label still needs an accessible name for assistive technologies, for instance with `aria-label`. The name should say what the checkbox does, like `aria-label="Select all rows"`, and replaces the `...` placeholder in the examples below. See the [forms overview accessibility]([[docsref:/forms/overview/#accessibility]]) section for details.
 
-<Example code={`<input type="checkbox" id="check" class="check" checked />`} />
+<Example code={`<input type="checkbox" id="check" class="check" checked aria-label="..." />`} />
 
 ## Indeterminate
 
 Checkboxes can utilize the indeterminate pseudo class when manually set via JavaScript. There is no available HTML attribute for specifying it.
 
-<Example addStackblitzJs class="bd-example-indeterminate" code={`<input type="checkbox" id="checkIndeterminate" class="check" />`} />
+<Example addStackblitzJs class="bd-example-indeterminate" code={`<input type="checkbox" id="checkIndeterminate" class="check" aria-label="..." />`} />
 
 ## With form field
 
