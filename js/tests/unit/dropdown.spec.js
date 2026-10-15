@@ -1819,6 +1819,36 @@ describe('Dropdown', () => {
       })
     })
 
+    it('should not handle arrow keys when the target is a contenteditable element', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <div id="editable" contenteditable="true">Editable content</div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const editable = fixtureEl.querySelector('#editable')
+
+        triggerDropdown.addEventListener('shown.bs.dropdown', () => {
+          editable.focus()
+
+          const keydown = createEvent('keydown')
+          keydown.key = 'ArrowDown'
+          editable.dispatchEvent(keydown)
+
+          expect(keydown.defaultPrevented).toBeFalse()
+          expect(document.activeElement).toEqual(editable, 'contenteditable keeps focus')
+          resolve()
+        })
+
+        triggerDropdown.click()
+      })
+    })
+
     it('should not close the dropdown if the user clicks on a text field within dropdown-menu', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
