@@ -394,8 +394,11 @@ class Dropdown extends BaseComponent {
   static dataApiKeydownHandler(event) {
     // If not an UP | DOWN | ESCAPE key => not a dropdown command
     // If input/textarea && if key is other than ESCAPE => not a dropdown command
+    // If the target is a contenteditable element, let the default up/down
+    // behavior (moving between lines of editable content) happen
 
     const isInput = /input|textarea/i.test(event.target.tagName)
+    const isContentEditable = event.target.isContentEditable
     const isEscapeEvent = event.key === ESCAPE_KEY
     const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
 
@@ -403,7 +406,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    if (isInput && !isEscapeEvent) {
+    if ((isInput || isContentEditable) && !isEscapeEvent) {
       return
     }
 
