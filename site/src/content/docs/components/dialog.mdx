@@ -270,7 +270,7 @@ Create a scrollable dialog that scrolls the dialog body while keeping the header
 
 ## Swapping dialogs
 
-When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash. The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog.
+When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash. The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog. A toggle trigger that targets its own open dialog does nothing. Use `data-bs-dismiss="dialog"` to close it.
 
 <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">
     Open first dialog
