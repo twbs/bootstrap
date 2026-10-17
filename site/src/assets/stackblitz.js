@@ -14,7 +14,7 @@ import snippetsContent from './partials/snippets.js?raw'
 // These values will be replaced by Astro's Vite plugin
 const CONFIG = {
   cssCdn: '__CSS_CDN__',
-  jsBundleCdn: '__JS_BUNDLE_CDN__',
+  currentVersion: '__CURRENT_VERSION__',
   docsVersion: '__DOCS_VERSION__'
 }
 
@@ -45,8 +45,6 @@ const openBootstrapSnippet = (htmlSnippet, classes) => {
     <link href="${CONFIG.cssCdn}" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/${CONFIG.docsVersion}/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <script type="module" src="${CONFIG.jsBundleCdn}"></script>
-    <script type="module" src="index.js"></script>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
     <!-- Example Code Start-->
@@ -55,10 +53,12 @@ ${htmlSnippet.trimStart().replace(/^/gm, '    ').replace(/^ {4}$/gm, '').trimEnd
   </body>
 </html>`
 
-  // Import from the CDN bundle instead of the `@bootstrap` alias, which only
-  // exists in the docs build, and run the snippets
+  // StackBlitz runs `index.js` once the page is rendered, but its loader can't
+  // run Bootstrap's ES modules from a CDN URL, so the snippets import the bundle
+  // from the npm package instead of the `@bootstrap` alias, which only exists
+  // in the docs build. Importing it also sets up the data API.
   const snippetsModule = `${snippetsContent
-    .replace(/from '@bootstrap'/, `from '${CONFIG.jsBundleCdn}'`)
+    .replace(/from '@bootstrap'/, 'from \'bootstrap/dist/js/bootstrap.bundle.js\'')
     .replace('export default () => {', 'const snippets = () => {')
     .trimEnd()}
 
@@ -72,7 +72,8 @@ snippets()
     },
     title: 'Bootstrap Example',
     description: `Official example from ${window.location.href}`,
-    template: 'html',
+    template: 'javascript',
+    dependencies: { bootstrap: CONFIG.currentVersion },
     tags: ['bootstrap']
   }
 
