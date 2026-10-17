@@ -57,11 +57,12 @@ ${htmlSnippet.trimStart().replace(/^/gm, '    ').replace(/^ {4}$/gm, '').trimEnd
   let modifiedSnippetsContent = ''
 
   if (jsSnippet) {
-    // Replace export default with a variable assignment
-    modifiedSnippetsContent = snippetsContent.replace(
-      'export default () => {',
-      'const snippets_default = () => {'
-    )
+    // Replace the `@bootstrap` import (an alias that only exists in the docs
+    // build) with the `bootstrap` global the CDN bundle defines, and export
+    // default with a variable assignment
+    modifiedSnippetsContent = snippetsContent
+      .replace(/import\s*(\{[^}]*\})\s*from\s*'@bootstrap'/, 'const $1 = window.bootstrap')
+      .replace('export default () => {', 'const snippets_default = () => {')
 
     // Add IIFE wrapper and execution
     modifiedSnippetsContent = `(() => {
