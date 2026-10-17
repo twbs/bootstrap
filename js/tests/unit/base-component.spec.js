@@ -15,6 +15,12 @@ class DummyClass extends BaseComponent {
   }
 }
 
+class OtherDummyClass extends BaseComponent {
+  static get NAME() {
+    return 'other-dummy'
+  }
+}
+
 describe('Base Component', () => {
   let fixtureEl
   const name = 'dummy'
@@ -105,6 +111,22 @@ describe('Base Component', () => {
         expect(disposeSpy).toHaveBeenCalled()
         expect(DummyClass.getInstance(el)).toEqual(secondInstance)
         expect(DummyClass.getInstance(el)).not.toEqual(firstInstance)
+      })
+
+      it('should keep differently keyed component instances on the same element', () => {
+        fixtureEl.innerHTML = '<div id="foo"></div>'
+
+        const el = fixtureEl.querySelector('#foo')
+        const dummy = new DummyClass(el)
+        const otherDummy = new OtherDummyClass(el)
+
+        expect(DummyClass.getInstance(el)).toBe(dummy)
+        expect(OtherDummyClass.getInstance(el)).toBe(otherDummy)
+
+        dummy.dispose()
+
+        expect(DummyClass.getInstance(el)).toBeNull()
+        expect(OtherDummyClass.getInstance(el)).toBe(otherDummy)
       })
     })
 

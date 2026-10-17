@@ -1,5 +1,6 @@
 import Combobox from '../../src/combobox.js'
 import EventHandler from '../../src/dom/event-handler.js'
+import Menu from '../../src/menu.js'
 import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 describe('Combobox', () => {
@@ -65,6 +66,13 @@ describe('Combobox', () => {
   })
 
   describe('constructor', () => {
+    it('should register both the combobox and its menu on the toggle', () => {
+      const { combobox, toggleEl } = makeCombobox()
+
+      expect(Combobox.getInstance(toggleEl)).toBe(combobox)
+      expect(Menu.getInstance(toggleEl)).toBe(combobox._menuInstance)
+    })
+
     it('should show the placeholder when nothing is selected', () => {
       const { valueEl } = makeCombobox({ placeholder: 'Pick one…' })
 
@@ -486,6 +494,17 @@ describe('Combobox', () => {
       expect(document.activeElement).toEqual(items[0])
     })
 
+    it('should reuse its menu instance across repeated arrow key presses', () => {
+      const { combobox, toggleEl, items } = makeCombobox()
+      const menu = Menu.getInstance(toggleEl)
+      combobox.show()
+
+      keydown(items[0], 'ArrowDown')
+      keydown(items[1], 'ArrowDown')
+
+      expect(Menu.getInstance(toggleEl)).toBe(menu)
+    })
+
     it('should jump to the first item on Home and the last on End', () => {
       const { combobox, items } = makeCombobox()
       combobox.show()
@@ -528,6 +547,7 @@ describe('Combobox', () => {
 
       expect(fixtureEl.querySelector('input[type="hidden"]')).toBeNull()
       expect(Combobox.getInstance(toggleEl)).toBeNull()
+      expect(Menu.getInstance(toggleEl)).toBeNull()
     })
 
     it('should remove component listeners and keep consumer listeners', () => {
