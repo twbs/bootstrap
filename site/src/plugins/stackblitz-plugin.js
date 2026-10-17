@@ -12,7 +12,7 @@ export function stackblitzPlugin() {
       if (id.includes('stackblitz.js')) {
         return code
           .replace(/__CSS_CDN__/g, config.cdn.css)
-          .replace(/__JS_BUNDLE_CDN__/g, config.cdn.js_bundle)
+          .replace(/__CURRENT_VERSION__/g, config.current_version)
           .replace(/__DOCS_VERSION__/g, config.docs_version)
       }
 
