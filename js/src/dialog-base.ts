@@ -301,10 +301,11 @@ class DialogBase extends BaseComponent {
   protected _addDialogListeners(): void {
     const eventKey = this.constructor.EVENT_KEY
 
-    // Handle native cancel event (Escape key) — only fires for modal dialogs.
+    // Handle the native `cancel` event. It fires for a modal dialog.
     // Bound unnamespaced because `cancel` is a real native event, not one of
     // our namespaced custom events. Keep a per-instance handler so dispose()
     // removes only this listener, not a consumer's own `cancel` listener.
+    // This is the fallback for a close request that does not come from keydown.
     this._cancelHandler = event => {
       event.preventDefault()
 
@@ -319,18 +320,30 @@ class DialogBase extends BaseComponent {
 
     EventHandler.on(this._element, 'cancel', this._cancelHandler)
 
-    // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
+    // `cancel` is not always cancelable. The browser ignores preventDefault()
+    // on it when the user has no fresh activation. The dialog then closes.
+    // Cancel the Escape keydown instead. That stops the close request.
+    // A modal dialog with keyboard true still uses the native `cancel` path.
     EventHandler.on(this._element, `keydown${eventKey}`, event => {
-      if (event.key !== 'Escape' || this._openedAsModal) {
+      if (event.key !== 'Escape') {
+        return
+      }
+
+      if (!this._config.keyboard) {
+        event.preventDefault()
+
+        if (this._openedAsModal) {
+          this._triggerBackdropTransition()
+        }
+
+        return
+      }
+
+      if (this._openedAsModal) {
         return
       }
 
       event.preventDefault()
-
-      if (!this._config.keyboard) {
-        return
-      }
-
       this._onCancel()
       this.hide()
     })
