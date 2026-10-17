@@ -203,7 +203,8 @@
     "js/{src,dist}/**/*.{js,map,ts}",
     "scss/**/*.scss",
     "!scss/tests/**",
-    ".browserslistrc"
+    ".browserslistrc",
+    "skills/"
   ],
   "overrides": {
     "axios": "^1.16.0"
