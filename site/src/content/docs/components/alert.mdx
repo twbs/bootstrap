@@ -60,6 +60,17 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
     </div>
   </div>`} />
 
+## Text alignment
+
+Alerts are flex containers, so text inside them is laid out as a flex item. Use [text alignment utilities]([[docsref:/utilities/text-alignment]]) like `.text-center` on the alert to align its text, whether it’s wrapped in a `<p>` or not.
+
+<Example class="vstack gap-3" code={`<div class="alert theme-warning text-center" role="alert">
+    <p>A centered alert—check it out!</p>
+  </div>
+  <div class="alert theme-warning text-center" role="alert">
+    A centered alert without a paragraph.
+  </div>`} />
+
 ## With icons
 
 Similarly, you can use [flexbox utilities]([[docsref:/utilities/flex]]) and [Bootstrap Icons]([[config:icons]]) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
