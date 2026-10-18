@@ -90,11 +90,11 @@ $datepicker-tokens: defaults(
     box-shadow: none;
   }
 
-  [data-vc-position="bottom"] {
+  [data-vc="calendar"][data-vc-position="bottom"] {
     margin-block-start: .25rem;
   }
 
-  [data-vc-position="top"] {
+  [data-vc="calendar"][data-vc-position="top"] {
     margin-block-end: -.25rem;
   }
 
