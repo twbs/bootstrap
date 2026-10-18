@@ -31,6 +31,8 @@ const HOME_KEY = 'Home'
 const END_KEY = 'End'
 const ENTER_KEY = 'Enter'
 const SPACE_KEY = ' '
+const BACKSPACE_KEY = 'Backspace'
+const DELETE_KEY = 'Delete'
 
 const EVENT_CHANGE = `change${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
@@ -42,6 +44,9 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_SELECTED = 'selected'
 const CLASS_NAME_PLACEHOLDER = 'combobox-placeholder'
+const CLASS_NAME_CHIPS = 'combobox-chips'
+const CLASS_NAME_CHIP = 'chip'
+const CLASS_NAME_CHIP_DISMISS = 'chip-dismiss'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="combobox"]'
 const SELECTOR_MENU = '.menu'
@@ -50,6 +55,9 @@ const SELECTOR_VISIBLE_ITEMS = '.menu-item[data-bs-value]:not(.disabled):not(:di
 const SELECTOR_VALUE = '.combobox-value'
 const SELECTOR_SEARCH_INPUT = '.combobox-search-input'
 const SELECTOR_NO_RESULTS = '.combobox-no-results'
+const SELECTOR_CHIP_DISMISS = '.chip-dismiss'
+
+const DEFAULT_DISMISS_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>'
 
 type ComboboxConfig = {
   boundary: string | Element
@@ -60,6 +68,7 @@ type ComboboxConfig = {
   placement: string
   search: boolean
   searchNormalize: boolean
+  showChips: boolean
 }
 
 const Default: ComboboxConfig = {
@@ -70,7 +79,8 @@ const Default: ComboboxConfig = {
   placeholder: '',
   placement: 'bottom-start',
   search: false,
-  searchNormalize: false
+  searchNormalize: false,
+  showChips: false
 }
 
 const DefaultType = {
@@ -81,7 +91,8 @@ const DefaultType = {
   placeholder: 'string',
   placement: 'string',
   search: 'boolean',
-  searchNormalize: 'boolean'
+  searchNormalize: 'boolean',
+  showChips: 'boolean'
 }
 
 /**
@@ -225,6 +236,20 @@ class Combobox extends BaseComponent {
   }
 
   protected _addEventListeners(): void {
+    if (this._hasChips()) {
+      // Stopping propagation here keeps Menu from treating the click as an
+      // outside click. The data API handler below skips it on its own.
+      EventHandler.on(this._toggle, `click${EVENT_KEY}`, SELECTOR_CHIP_DISMISS, event => {
+        event.preventDefault()
+        event.stopPropagation()
+        const chip = (event.target as Element).closest<HTMLElement>(`.${CLASS_NAME_CHIP}`)
+        const item = chip && this._findSelectedItem(chip.dataset.bsValue)
+        if (item) {
+          this._selectItem(item)
+        }
+      })
+    }
+
     EventHandler.on(this._menu, `click${EVENT_KEY}`, SELECTOR_MENU_ITEM, event => {
       const item = (event.target as Element).closest<HTMLElement>(SELECTOR_MENU_ITEM)
       if (!item || isDisabled(item)) {
@@ -309,21 +334,61 @@ class Combobox extends BaseComponent {
 
     this._valueDisplay.classList.remove(CLASS_NAME_PLACEHOLDER)
 
+    if (this._hasChips()) {
+      this._valueDisplay.classList.add(CLASS_NAME_CHIPS)
+      this._valueDisplay.replaceChildren(...selectedItems.map(item => this._createChip(item)))
+      return
+    }
+
     if (this._config.multiple && selectedItems.length > 1) {
       this._valueDisplay.textContent = `${selectedItems.length} selected`
     } else {
-      const item = selectedItems[0]
-      const label = SelectorEngine.findOne('.menu-item-content > span:first-child', item)
-      this._valueDisplay.textContent = label ? label.textContent : item.textContent!.trim()
+      this._valueDisplay.textContent = this._getItemLabel(selectedItems[0])
     }
   }
 
   protected _showPlaceholder(): void {
+    this._valueDisplay.classList.remove(CLASS_NAME_CHIPS)
+
     const { placeholder } = this._config
     if (placeholder) {
       this._valueDisplay.textContent = placeholder
       this._valueDisplay.classList.add(CLASS_NAME_PLACEHOLDER)
+    } else if (this._hasChips()) {
+      this._valueDisplay.textContent = ''
     }
+  }
+
+  protected _hasChips(): boolean {
+    return this._config.multiple && this._config.showChips
+  }
+
+  protected _getItemLabel(item: HTMLElement): string {
+    const label = SelectorEngine.findOne('.menu-item-content > span:first-child', item)
+    return label ? label.textContent! : item.textContent!.trim()
+  }
+
+  protected _createChip(item: HTMLElement): HTMLElement {
+    const label = this._getItemLabel(item)
+    const chip = document.createElement('span')
+    chip.className = CLASS_NAME_CHIP
+    chip.dataset.bsValue = item.dataset.bsValue
+    chip.append(document.createTextNode(label))
+
+    // The toggle is a <button>, which can't hold another interactive element,
+    // so the dismiss is a presentational span. Keyboard users remove the last
+    // chip with Backspace or Delete, or deselect items in the menu.
+    const dismiss = document.createElement('span')
+    dismiss.className = CLASS_NAME_CHIP_DISMISS
+    dismiss.setAttribute('aria-hidden', 'true')
+    dismiss.innerHTML = DEFAULT_DISMISS_ICON
+    chip.append(dismiss)
+
+    return chip
+  }
+
+  protected _findSelectedItem(value: string | undefined): HTMLElement | undefined {
+    return this._getSelectedItems().find(item => item.dataset.bsValue === value)
   }
 
   protected _updateHiddenInput(): void {
@@ -374,6 +439,16 @@ class Combobox extends BaseComponent {
 
   protected _handleToggleKeydown(event: BootstrapEvent): void {
     const { key } = event
+
+    if ((key === BACKSPACE_KEY || key === DELETE_KEY) && this._hasChips()) {
+      const lastSelected = this._getSelectedItems().at(-1)
+      if (lastSelected) {
+        event.preventDefault()
+        this._selectItem(lastSelected)
+      }
+
+      return
+    }
 
     if (key === ARROW_DOWN_KEY || key === ARROW_UP_KEY) {
       event.preventDefault()
@@ -451,6 +526,12 @@ class Combobox extends BaseComponent {
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
+
+  // Removing a chip shouldn't open or close the menu
+  if ((event.target as Element).closest(SELECTOR_CHIP_DISMISS)) {
+    return
+  }
+
   Combobox.getOrCreateInstance(this).toggle()
 })
 

@@ -333,6 +333,73 @@ describe('Combobox', () => {
     })
   })
 
+  describe('chips', () => {
+    it('should render each selected item as a chip', () => {
+      const { valueEl, items } = makeCombobox({ multiple: true, showChips: true, name: 'countries' })
+
+      items[0].click()
+      items[2].click()
+
+      const chips = [...valueEl.querySelectorAll('.chip')]
+      expect(valueEl).toHaveClass('combobox-chips')
+      expect(chips.map(chip => chip.textContent)).toEqual(['United States', 'Canada'])
+      expect(chips.map(chip => chip.dataset.bsValue)).toEqual(['us', 'ca'])
+      expect(chips[0].querySelector('.chip-dismiss').getAttribute('aria-hidden')).toEqual('true')
+      expect(fixtureEl.querySelector('input[type="hidden"]').value).toEqual('us,ca')
+    })
+
+    it('should render chips for a pre-selected item', () => {
+      const items = ITEMS.replace('class="menu-item" type="button" data-bs-value="uk"', 'class="menu-item selected" type="button" data-bs-value="uk"')
+      const { valueEl } = makeCombobox({ multiple: true, showChips: true }, markup({ items }))
+
+      expect(valueEl.querySelectorAll('.chip').length).toEqual(1)
+      expect(valueEl.querySelector('.chip').textContent).toEqual('United Kingdom')
+    })
+
+    it('should ignore chips without multiple', () => {
+      const { valueEl, items } = makeCombobox({ showChips: true })
+
+      items[0].click()
+
+      expect(valueEl.querySelector('.chip')).toBeNull()
+      expect(valueEl.textContent).toEqual('United States')
+    })
+
+    it('should deselect an item from its chip without opening the menu', () => {
+      const { toggleEl, menuEl, valueEl, items } = makeCombobox({ multiple: true, showChips: true })
+      const changeSpy = jasmine.createSpy('change')
+      toggleEl.addEventListener('change.bs.combobox', changeSpy)
+
+      items[0].click()
+      items[1].click()
+      valueEl.querySelector('.chip[data-bs-value="us"] .chip-dismiss').click()
+
+      expect(items[0]).not.toHaveClass('selected')
+      expect(items[0].getAttribute('aria-selected')).toEqual('false')
+      expect([...valueEl.querySelectorAll('.chip')].map(chip => chip.dataset.bsValue)).toEqual(['uk'])
+      expect(changeSpy.calls.mostRecent().args[0].value).toEqual(['uk'])
+      expect(menuEl).not.toHaveClass('show')
+    })
+
+    it('should deselect the last item with Backspace on the toggle', () => {
+      const { toggleEl, valueEl, items } = makeCombobox({ multiple: true, showChips: true, placeholder: 'Pick some…' })
+
+      items[0].click()
+      items[1].click()
+      keydown(toggleEl, 'Backspace')
+
+      expect(items[1]).not.toHaveClass('selected')
+      expect(valueEl.querySelectorAll('.chip').length).toEqual(1)
+
+      keydown(toggleEl, 'Delete')
+
+      expect(valueEl.querySelector('.chip')).toBeNull()
+      expect(valueEl).not.toHaveClass('combobox-chips')
+      expect(valueEl.textContent).toEqual('Pick some…')
+      expect(valueEl).toHaveClass('combobox-placeholder')
+    })
+  })
+
   describe('search', () => {
     const searchMarkup = () => markup({ search: SEARCH_HTML, noResults: NO_RESULTS_HTML })
 
