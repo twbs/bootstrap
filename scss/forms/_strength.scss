@@ -31,6 +31,15 @@ $strength-tokens: defaults(
 $strength-levels: weak, fair, good, strong !default;
 // scss-docs-end strength-levels
 
+// The text sits next to `.strength`, not inside it, so it can't read the meter's
+// `--strength-color`. The `-fg-emphasis` tokens keep enough contrast as text.
+$strength-text-colors: (
+  weak: var(--danger-fg-emphasis),
+  fair: var(--warning-fg-emphasis),
+  good: var(--info-fg-emphasis),
+  strong: var(--success-fg-emphasis)
+) !default;
+
 $strength-transition: background-color .2s ease-in-out, width .3s ease-in-out !default;
 
 @layer forms {
@@ -68,8 +77,14 @@ $strength-transition: background-color .2s ease-in-out, width .3s ease-in-out !d
     display: block;
     margin-top: var(--strength-margin-top);
     font-size: var(--font-size-xs);
-    color: var(--strength-color, var(--fg-3));
+    color: var(--fg-3);
     @include transition(color .2s ease-in-out);
+
+    @each $level, $color in $strength-text-colors {
+      &[data-bs-strength="#{$level}"] {
+        color: $color;
+      }
+    }
 
     // Hide when empty
     &:empty {
