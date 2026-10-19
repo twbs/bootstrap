@@ -382,6 +382,21 @@ describe('Strength', () => {
       expect(textEl.textContent).toEqual('Weak')
     })
 
+    it('should flag the text element with the level and leave its color to the CSS', () => {
+      fixtureEl.innerHTML = getStrengthHtml({ withText: true })
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const textEl = fixtureEl.querySelector('.strength-text')
+      new Strength(strengthEl) // eslint-disable-line no-new
+
+      passwordInput.value = 'password'
+      passwordInput.dispatchEvent(createEvent('input'))
+
+      expect(textEl.dataset.bsStrength).toEqual('weak')
+      expect(textEl.getAttribute('style')).toBeNull()
+    })
+
     it('should use custom messages', () => {
       fixtureEl.innerHTML = getStrengthHtml({ withText: true })
 

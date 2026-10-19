@@ -251,15 +251,6 @@ class Strength extends BaseComponent {
       if (strength && this._config.messages[strength]) {
         this._textElement.textContent = this._config.messages[strength]
         this._textElement.dataset.bsStrength = strength
-
-        // Also set the color via inheriting from parent or using CSS variable
-        const colorMap: Record<string, string> = {
-          weak: 'danger',
-          fair: 'warning',
-          good: 'info',
-          strong: 'success'
-        }
-        this._textElement.style.setProperty('--strength-color', `var(--${colorMap[strength]}-text)`)
       } else {
         this._textElement.textContent = ''
         delete this._textElement.dataset.bsStrength
