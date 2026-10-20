@@ -164,7 +164,7 @@
     "html-validate": "^11.16.2",
     "image-size": "^2.0.4",
     "jasmine": "^7.0.0",
-    "js-yaml": "^5.4.2",
+    "js-yaml": "^5.5.0",
     "lightningcss": "^1.33.0",
     "lockfile-lint": "^5.1.0",
     "markdownlint-cli": "^0.49.1",
