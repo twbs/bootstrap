@@ -47,20 +47,17 @@
     }
   }
 
-  .bd-universe-panel {
-    @include media-breakpoint-between(xs, lg) {
-      column-count: 2;
-      column-gap: 1.5rem;
-
-      .bd-links-group {
-        break-inside: avoid;
-      }
-    }
-  }
-
   // Universes: the first level of the docs navigation
   .bd-universes {
+    display: flex;
+    flex-direction: column;
     gap: 2px;
+
+    // A compact grid in the small screens drawer, so the pages keep most of its height
+    @include media-breakpoint-down(lg) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    }
   }
 
   .bd-universe {
@@ -95,43 +92,29 @@
     }
   }
 
-  // Universes and filter stay in view while the entries scroll: all of it on large screens,
-  // only the filter in the small screens drawer
+  // Universes and filter stay in view while the pages scroll
   .bd-links-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     background-color: var(--bs-bg-body);
+    // Covers the pages scrolling through the scroll container's top padding
+    box-shadow: 0 -1.5rem 0 var(--bs-bg-body);
 
-    @include media-breakpoint-up(lg) {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-
-      // Fades the entries scrolling under the header
-      &::after {
-        position: absolute;
-        inset-inline: 0;
-        top: 100%;
-        height: .75rem;
-        pointer-events: none;
-        content: "";
-        background: linear-gradient(var(--bs-bg-body), transparent);
-      }
-    }
-
-    // Lets the filter stick to the whole drawer body, not to this header
-    @include media-breakpoint-down(lg) {
-      display: contents;
+    // Fades the pages scrolling under the header
+    &::after {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      height: .75rem;
+      pointer-events: none;
+      content: "";
+      background: linear-gradient(var(--bs-bg-body), transparent);
     }
   }
 
   .bd-links-filter {
     padding-block: 1rem .5rem;
-    background-color: var(--bs-bg-body);
-
-    @include media-breakpoint-down(lg) {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
 
     .form-control {
       width: 100%;
