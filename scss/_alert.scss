@@ -15,7 +15,6 @@ $alert-tokens: defaults(
     --alert-padding-x: var(--spacer),
     --alert-padding-y: var(--spacer),
     --alert-color: inherit,
-    --alert-border-width: var(--border-width),
     --alert-border-color: var(--border-color),
     --alert-border-radius: var(--radius-7),
     --alert-link-color: inherit,
@@ -38,7 +37,7 @@ $alert-tokens: defaults(
     padding: var(--alert-padding-y) var(--alert-padding-x);
     color: var(--theme-fg, var(--alert-color));
     background-color: var(--theme-bg-subtle, var(--alert-bg));
-    border: var(--alert-border-width) solid var(--theme-border, var(--alert-border-color));
+    border: var(--border-width) solid var(--theme-border, var(--alert-border-color));
     @include border-radius(var(--alert-border-radius));
 
     // scss-docs-start alert-transition
