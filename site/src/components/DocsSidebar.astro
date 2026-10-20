@@ -1,132 +1,219 @@
 ---
-import { getData, type SidebarItem, type SidebarSubItem } from '@libs/data'
+import { getData, type SidebarGroup, type SidebarItem, type SidebarSubItem } from '@libs/data'
 import { getConfig } from '@libs/config'
 import { docsPages, getDocsPageSlug } from '@libs/content'
 import { getSlug } from '@libs/utils'
 import NewBadge from '@components/NewBadge.astro'
 
+interface Universe {
+  title: string
+  slug: string
+  icon?: string
+  iconColor?: string
+  groups: SidebarGroup[]
+}
+
 const sidebar = getData('sidebar')
+const defaultUniverse = 'Getting started'
+
+// Gather the sidebar groups into "universes" using their `section` field, in the order of `sidebar.yml`.
+const universes: Universe[] = []
+
+for (const group of sidebar) {
+  const title = group.section ?? group.title
+  let universe = universes.find((u) => u.title === title)
+
+  if (!universe) {
+    universe = { title, slug: getSlug(title), icon: group.icon, iconColor: group.icon_color, groups: [] }
+    universes.push(universe)
+  }
+
+  universe.groups.push(group)
+}
+
+function getPageLink(groupTitle: string, pageTitle: string) {
+  const unversionedPageSlug = `${getSlug(groupTitle)}/${getSlug(pageTitle)}`
+  const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
+
+  // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
+  if (!docsPages.some((page) => getDocsPageSlug(page.id) === unversionedPageSlug)) {
+    throw new Error(`The page '${pageTitle}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`)
+  }
+
+  return { url, active: Astro.params.slug === unversionedPageSlug }
+}
+
+function hasActivePage(universe: Universe) {
+  return universe.groups.some((group) => {
+    if (!group.pages) {
+      return Astro.params.slug === getSlug(group.title)
+    }
+
+    return group.pages.some((item) => {
+      const titles = item.group && item.pages ? item.pages.map((page) => page.title) : item.title ? [item.title] : []
+      return titles.some((title) => Astro.params.slug === `${getSlug(group.title)}/${getSlug(title)}`)
+    })
+  })
+}
+
+// The universe of the current page is open, "Getting started" otherwise.
+const activeUniverse =
+  universes.find((universe) => hasActivePage(universe)) ??
+  universes.find((universe) => universe.title === defaultUniverse) ??
+  universes[0]
+
+const iconStyle = (color?: string) => color && `color: light-dark(var(--bs-${color}-500), var(--bs-${color}-400));`
 ---
 
-<nav class="nav vstack bd-links w-100 pb-3 md:pb-2 lg:pe-2" id="bd-docs-nav" aria-label="Docs navigation">
-  {
-    sidebar.map((group) => {
-      const groupSlug = getSlug(group.title)
+<nav class="bd-links w-100 pb-3 md:pb-2 lg:pe-2" id="bd-docs-nav" aria-label="Docs navigation">
+  <div class="bd-links-header">
+    <div class="bd-universes vstack" role="tablist" aria-orientation="vertical" aria-label="Documentation sections">
+      {
+        universes.map((universe) => {
+          const selected = universe === activeUniverse
 
-      if (group.pages) {
-        return (
-          <div class="vstack bd-links-group py-2">
-            <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-              {group.icon && (
-                <svg
-                  class="bi me-1"
-                  style={
-                    group.icon_color &&
-                    `color: light-dark(var(--bs-${group.icon_color}-500), var(--bs-${group.icon_color}-400));`
-                  }
-                  aria-hidden="true"
-                >
-                  <use href={`#${group.icon}`} />
+          return (
+            <button
+              type="button"
+              class:list={['bd-universe d-flex align-items-center w-100 text-start', { active: selected }]}
+              role="tab"
+              id={`bd-universe-${universe.slug}`}
+              aria-selected={selected ? 'true' : 'false'}
+              aria-controls={`bd-universe-panel-${universe.slug}`}
+              tabindex={selected ? undefined : '-1'}
+              data-bd-universe={universe.slug}
+            >
+              {universe.icon && (
+                <svg class="bi" style={iconStyle(universe.iconColor)} aria-hidden="true">
+                  <use href={`#${universe.icon}`} />
                 </svg>
               )}
-              {group.title}
-            </strong>
-            <ul class="nav flex-column bd-links-nav">
-              {group.pages?.map((item: SidebarItem) => {
-                // Handle sub-groups
-                if (item.group && item.pages) {
-                  return (
-                    <>
-                      <li class="bd-links-subgroup fw-semibold mt-3">{item.group}</li>
-                      {item.pages.map((page: SidebarSubItem) => {
-                        const docSlug = getSlug(page.title)
-                        const unversionedPageSlug = `${groupSlug}/${docSlug}`
-
-                        const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
-                        const active = Astro.params.slug === unversionedPageSlug
-
-                        const generatedPage = docsPages.find((page) => getDocsPageSlug(page.id) === unversionedPageSlug)
-
-                        // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
-                        if (!generatedPage) {
-                          throw new Error(
-                            `The page '${page.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`
-                          )
-                        }
-
-                        const addedMeta = page.meta?.find((m) => m.added)
-
-                        return (
-                          <li>
-                            <a
-                              href={url}
-                              class:list={['nav-link bd-links-link border-0', { active }]}
-                              aria-current={active ? 'page' : undefined}
-                            >
-                              {page.title}
-                              {addedMeta && <NewBadge version={addedMeta.added} />}
-                            </a>
-                          </li>
-                        )
-                      })}
-                    </>
-                  )
-                }
-
-                // Handle regular pages
-                if (!item.title) {
-                  return null
-                }
-
-                const docSlug = getSlug(item.title)
-                const unversionedPageSlug = `${groupSlug}/${docSlug}`
-
-                const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
-                const active = Astro.params.slug === unversionedPageSlug
-
-                const generatedPage = docsPages.find((page) => getDocsPageSlug(page.id) === unversionedPageSlug)
-
-                // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
-                if (!generatedPage) {
-                  throw new Error(
-                    `The page '${item.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`
-                  )
-                }
-
-                const itemAddedMeta = item.meta?.find((m) => m.added)
-
-                return (
-                  <li>
-                    <a
-                      href={url}
-                      class:list={['nav-link bd-links-link border-0', { active }]}
-                      aria-current={active ? 'page' : undefined}
-                    >
-                      {item.title}
-                      {itemAddedMeta && <NewBadge version={itemAddedMeta.added} />}
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        )
-      } else {
-        const active = Astro.params.slug === groupSlug
-
-        return (
-          <>
-            <div class="bd-links-span-all mt-1 mb-3 mx-4 border-top" />
-            <a
-              href={`/docs/${getConfig().docs_version}/${groupSlug}/`}
-              class:list={['bd-links-link bd-links-span-all', { active }]}
-              aria-current={active ? 'page' : undefined}
-            >
-              {group.title}
-            </a>
-          </>
-        )
+              {universe.title}
+            </button>
+          )
+        })
       }
-    })
+    </div>
+
+    <div class="bd-links-filter">
+      <label class="form-control form-control-sm form-adorn" for="bd-links-filter-input">
+        <span class="form-adorn-icon">
+          <svg class="bi" width="14" height="14" aria-hidden="true"><use href="#search"></use></svg>
+        </span>
+        <span class="visually-hidden">Filter the pages of this section</span>
+        <input
+          type="search"
+          class="form-ghost"
+          id="bd-links-filter-input"
+          placeholder="Filter pages…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </label>
+    </div>
+  </div>
+
+  {
+    universes.map((universe) => (
+      <div
+        class="bd-universe-panel"
+        role="tabpanel"
+        id={`bd-universe-panel-${universe.slug}`}
+        aria-labelledby={`bd-universe-${universe.slug}`}
+        data-bd-universe-panel={universe.slug}
+        hidden={universe !== activeUniverse}
+      >
+        {universe.groups.map((group) => {
+          if (!group.pages) {
+            const active = Astro.params.slug === getSlug(group.title)
+
+            return (
+              <ul class="nav flex-column bd-links-nav bd-links-group py-2" data-bd-filter-group>
+                <li data-bd-filter-item>
+                  <a
+                    href={`/docs/${getConfig().docs_version}/${getSlug(group.title)}/`}
+                    class:list={['nav-link bd-links-link border-0', { active }]}
+                    aria-current={active ? 'page' : undefined}
+                  >
+                    {group.title}
+                  </a>
+                </li>
+              </ul>
+            )
+          }
+
+          return (
+            <div class="vstack bd-links-group py-2" data-bd-filter-group>
+              {universe.groups.length > 1 && (
+                <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+                  {group.icon && (
+                    <svg class="bi me-1" style={iconStyle(group.icon_color)} aria-hidden="true">
+                      <use href={`#${group.icon}`} />
+                    </svg>
+                  )}
+                  {group.title}
+                </strong>
+              )}
+              <ul class="nav flex-column bd-links-nav">
+                {group.pages.map((item: SidebarItem) => {
+                  // Handle sub-groups
+                  if (item.group && item.pages) {
+                    return (
+                      <li class="vstack" data-bd-filter-subgroup>
+                        <span class="bd-links-subgroup fw-semibold mt-3">{item.group}</span>
+                        <ul class="nav flex-column">
+                          {item.pages.map((page: SidebarSubItem) => {
+                            const { url, active } = getPageLink(group.title, page.title)
+                            const addedMeta = page.meta?.find((m) => m.added)
+
+                            return (
+                              <li data-bd-filter-item>
+                                <a
+                                  href={url}
+                                  class:list={['nav-link bd-links-link border-0', { active }]}
+                                  aria-current={active ? 'page' : undefined}
+                                >
+                                  {page.title}
+                                  {addedMeta && <NewBadge version={addedMeta.added} />}
+                                </a>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </li>
+                    )
+                  }
+
+                  // Handle regular pages
+                  if (!item.title) {
+                    return null
+                  }
+
+                  const { url, active } = getPageLink(group.title, item.title)
+                  const addedMeta = item.meta?.find((m) => m.added)
+
+                  return (
+                    <li data-bd-filter-item>
+                      <a
+                        href={url}
+                        class:list={['nav-link bd-links-link border-0', { active }]}
+                        aria-current={active ? 'page' : undefined}
+                      >
+                        {item.title}
+                        {addedMeta && <NewBadge version={addedMeta.added} />}
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        })}
+        <p class="bd-links-empty fg-3 px-3 py-2 mb-0" hidden>
+          No page matches “<span data-bd-filter-query />
+          ”.
+        </p>
+      </div>
+    ))
   }
 </nav>
