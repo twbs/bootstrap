@@ -81,7 +81,7 @@ class Range extends BaseComponent {
     }
 
     // Keep the JS options, so `update()` can merge them again over the data attributes
-    this._jsConfig = typeof config === 'object' && config !== null ? config : {}
+    this._jsConfig = typeof config === 'object' && config !== null ? { ...config } : {}
     this._bubble = null
     this._bubbleText = null
     this._ticks = null

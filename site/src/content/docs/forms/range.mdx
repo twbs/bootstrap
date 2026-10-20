@@ -64,6 +64,13 @@ Add `data-bs-bubble` to the wrapper to show a value bubble that follows the thum
     <input type="range" class="form-range-input" min="0" max="100" value="60" id="rangeBubble">
   </div>`} />
 
+To show or hide the bubble after initialization, change `data-bs-bubble` and call [`update()`](#methods). A `bubble` option passed in JavaScript still takes priority over the attribute.
+
+```js
+element.dataset.bsBubble = 'true'
+bootstrap.Range.getInstance(element).update()
+```
+
 ## Tick marks
 
 Link a `<datalist>` to the input with the `list` attribute and the plugin renders a tick mark for each `<option>`, positioned at its value (even when the values are unevenly spaced). An `<option>`’s `label` is shown beneath its tick.
@@ -139,7 +146,7 @@ const range = new bootstrap.Range(element, {
 <BsTable>
 | Method | Description |
 | --- | --- |
-| `update()` | Recompute the fill from the input’s current value. Useful after setting the value programmatically. Also reads `data-bs-bubble` again, so it shows or hides the bubble after you change that attribute. |
+| `update()` | Recompute the fill from the input’s current value. Useful after setting the value programmatically. Also reads `data-bs-bubble` again, so it shows or hides the bubble after you change that attribute. A `bubble` option passed in JavaScript still takes priority over the attribute. |
 | `dispose()` | Destroys the instance and removes the bubble and tick marks it created. |
 | `getInstance()` | Static method to get the instance associated with a `.form-range` element. |
 | `getOrCreateInstance()` | Static method to get the instance, or create one if it doesn’t exist. |
