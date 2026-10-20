@@ -50,7 +50,7 @@ $breadcrumb-tokens: defaults(
   }
 
   .breadcrumb-divider {
-    margin-inline: var(--breadcrumb-divider-margin-inline);
+    margin-inline: var(--breadcrumb-divider-margin-x);
     color: var(--breadcrumb-divider-color);
 
     // Render a default chevron, painted with `currentcolor` via a mask, when the
