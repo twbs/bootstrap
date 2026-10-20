@@ -159,6 +159,66 @@ describe('Range', () => {
 
       expect(fixtureEl.querySelector('.tooltip-inner').textContent).toEqual('50%')
     })
+
+    it('should add the bubble on update() when data-bs-bubble changes to true', () => {
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble="false"')
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const range = new Range(rangeEl)
+
+      expect(fixtureEl.querySelector('.form-range-bubble')).toBeNull()
+
+      rangeEl.dataset.bsBubble = 'true'
+      range.update()
+
+      const bubble = fixtureEl.querySelector('.form-range-bubble')
+      expect(bubble).not.toBeNull()
+      expect(bubble.querySelector('.tooltip-inner').textContent).toEqual('50')
+    })
+
+    it('should remove the bubble on update() when data-bs-bubble changes to false', () => {
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble')
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const inputEl = fixtureEl.querySelector('.form-range-input')
+      const range = new Range(rangeEl)
+
+      expect(fixtureEl.querySelector('.form-range-bubble')).not.toBeNull()
+
+      rangeEl.dataset.bsBubble = 'false'
+      range.update()
+
+      expect(fixtureEl.querySelector('.form-range-bubble')).toBeNull()
+
+      // The fill must still update after the bubble is removed
+      inputEl.value = '20'
+      inputEl.dispatchEvent(createEvent('input'))
+      expect(rangeEl.style.getPropertyValue('--bs-range-fill')).toEqual('0.2')
+    })
+
+    it('should not create a second bubble on update() when the bubble is already shown', () => {
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble')
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const range = new Range(rangeEl)
+
+      range.update()
+      range.update()
+
+      expect(fixtureEl.querySelectorAll('.form-range-bubble').length).toEqual(1)
+    })
+
+    it('should keep the JS options over the data attributes on update()', () => {
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble="false"')
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const range = new Range(rangeEl, { bubble: true, formatter: value => `${value}%` })
+
+      range.update()
+
+      expect(fixtureEl.querySelector('.form-range-bubble')).not.toBeNull()
+      expect(fixtureEl.querySelector('.tooltip-inner').textContent).toEqual('50%')
+    })
   })
 
   describe('ticks', () => {
