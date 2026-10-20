@@ -84,7 +84,9 @@ export default defineConfig({
   vite: {
     plugins: [stackblitzPlugin()],
     optimizeDeps: {
-      exclude: ['@twbs/bui']
+      exclude: ['@twbs/bui'],
+      // `@twbs/bui` is excluded, so its CommonJS dependencies must be pre-bundled explicitly for the dev server
+      include: ['@twbs/bui > clipboard']
     },
     resolve: {
       alias: [
