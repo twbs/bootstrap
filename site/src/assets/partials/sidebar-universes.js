@@ -58,62 +58,17 @@ const filterPanel = (panel, query) => {
 }
 
 export default () => {
-  const nav = document.querySelector('#bd-docs-nav')
+  const panel = document.querySelector('#bd-universe-panel')
+  const input = document.querySelector('#bd-links-filter-input')
 
-  if (!nav) {
+  if (!panel || !input) {
     return
   }
 
-  const tabs = [...nav.querySelectorAll('[data-bd-universe]')]
-  const panels = [...nav.querySelectorAll('[data-bd-universe-panel]')]
-  const input = nav.querySelector('#bd-links-filter-input')
-  const activePanel = () => panels.find(panel => !panel.hidden)
-
-  const selectUniverse = (tab, { focus = false } = {}) => {
-    for (const other of tabs) {
-      const selected = other === tab
-      other.classList.toggle('active', selected)
-      other.setAttribute('aria-selected', selected ? 'true' : 'false')
-      other.tabIndex = selected ? 0 : -1
-    }
-
-    for (const panel of panels) {
-      panel.hidden = panel.dataset.bdUniversePanel !== tab.dataset.bdUniverse
-    }
-
-    // Each universe starts unfiltered
-    input.value = ''
-    filterPanel(activePanel(), '')
-
-    if (focus) {
-      tab.focus()
-    }
-  }
-
-  for (const tab of tabs) {
-    tab.addEventListener('click', () => selectUniverse(tab))
-
-    // Vertical tablist: arrow keys, Home and End move between universes
-    tab.addEventListener('keydown', event => {
-      const index = tabs.indexOf(tab)
-      const next = {
-        ArrowDown: tabs[(index + 1) % tabs.length],
-        ArrowUp: tabs[(index - 1 + tabs.length) % tabs.length],
-        Home: tabs[0],
-        End: tabs.at(-1)
-      }[event.key]
-
-      if (next) {
-        event.preventDefault()
-        selectUniverse(next, { focus: true })
-      }
-    })
-  }
-
-  input.addEventListener('input', () => filterPanel(activePanel(), input.value))
+  input.addEventListener('input', () => filterPanel(panel, input.value))
 
   input.addEventListener('keydown', event => {
-    const firstLink = activePanel().querySelector('[data-bd-filter-item]:not([hidden]) a')
+    const firstLink = panel.querySelector('[data-bd-filter-item]:not([hidden]) a')
 
     if (event.key === 'Enter' && firstLink && input.value.trim() !== '') {
       event.preventDefault()
@@ -125,7 +80,7 @@ export default () => {
       event.preventDefault()
       event.stopPropagation()
       input.value = ''
-      filterPanel(activePanel(), '')
+      filterPanel(panel, '')
     }
   })
 }

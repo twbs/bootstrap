@@ -7,7 +7,6 @@ import NewBadge from '@components/NewBadge.astro'
 
 interface Universe {
   title: string
-  slug: string
   icon?: string
   iconColor?: string
   groups: SidebarGroup[]
@@ -24,7 +23,7 @@ for (const group of sidebar) {
   let universe = universes.find((u) => u.title === title)
 
   if (!universe) {
-    universe = { title, slug: getSlug(title), icon: group.icon, iconColor: group.icon_color, groups: [] }
+    universe = { title, icon: group.icon, iconColor: group.icon_color, groups: [] }
     universes.push(universe)
   }
 
@@ -56,6 +55,19 @@ function hasActivePage(universe: Universe) {
   })
 }
 
+// A universe links to its first page
+function getFirstUrl(universe: Universe) {
+  const group = universe.groups[0]
+  const item = group.pages?.[0]
+
+  if (!item) {
+    return `/docs/${getConfig().docs_version}/${getSlug(group.title)}/`
+  }
+
+  const title = item.group && item.pages ? item.pages[0].title : item.title
+  return getPageLink(group.title, title ?? '').url
+}
+
 // The universe of the current page is open, "Getting started" otherwise.
 const activeUniverse =
   universes.find((universe) => hasActivePage(universe)) ??
@@ -67,40 +79,37 @@ const iconStyle = (color?: string) => color && `color: light-dark(var(--bs-${col
 
 <nav class="bd-links w-100 pb-3 md:pb-2 lg:pe-2" id="bd-docs-nav" aria-label="Docs navigation">
   <div class="bd-links-header">
-    <div class="bd-universes vstack" role="tablist" aria-orientation="vertical" aria-label="Documentation sections">
+    <ul class="bd-universes list-unstyled vstack mb-0" aria-label="Documentation sections">
       {
         universes.map((universe) => {
           const selected = universe === activeUniverse
 
           return (
-            <button
-              type="button"
-              class:list={['bd-universe d-flex align-items-center w-100 text-start', { active: selected }]}
-              role="tab"
-              id={`bd-universe-${universe.slug}`}
-              aria-selected={selected ? 'true' : 'false'}
-              aria-controls={`bd-universe-panel-${universe.slug}`}
-              tabindex={selected ? undefined : '-1'}
-              data-bd-universe={universe.slug}
-            >
-              {universe.icon && (
-                <svg class="bi" style={iconStyle(universe.iconColor)} aria-hidden="true">
-                  <use href={`#${universe.icon}`} />
-                </svg>
-              )}
-              {universe.title}
-            </button>
+            <li>
+              <a
+                href={getFirstUrl(universe)}
+                class:list={['bd-universe d-flex align-items-center text-decoration-none', { active: selected }]}
+                aria-current={selected ? 'true' : undefined}
+              >
+                {universe.icon && (
+                  <svg class="bi" style={iconStyle(universe.iconColor)} aria-hidden="true">
+                    <use href={`#${universe.icon}`} />
+                  </svg>
+                )}
+                {universe.title}
+              </a>
+            </li>
           )
         })
       }
-    </div>
+    </ul>
 
     <div class="bd-links-filter">
       <label class="form-control form-control-sm form-adorn" for="bd-links-filter-input">
         <span class="form-adorn-icon">
           <svg class="bi" width="14" height="14" aria-hidden="true"><use href="#search"></use></svg>
         </span>
-        <span class="visually-hidden">Filter the pages of this section</span>
+        <span class="visually-hidden">Filter the pages of {activeUniverse.title}</span>
         <input
           type="search"
           class="form-ghost"
@@ -114,15 +123,8 @@ const iconStyle = (color?: string) => color && `color: light-dark(var(--bs-${col
   </div>
 
   {
-    universes.map((universe) => (
-      <div
-        class="bd-universe-panel"
-        role="tabpanel"
-        id={`bd-universe-panel-${universe.slug}`}
-        aria-labelledby={`bd-universe-${universe.slug}`}
-        data-bd-universe-panel={universe.slug}
-        hidden={universe !== activeUniverse}
-      >
+    [activeUniverse].map((universe) => (
+      <div class="bd-universe-panel" id="bd-universe-panel">
         {universe.groups.map((group) => {
           if (!group.pages) {
             const active = Astro.params.slug === getSlug(group.title)
