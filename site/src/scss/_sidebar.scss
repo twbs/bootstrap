@@ -61,9 +61,6 @@
   // Universes: the first level of the docs navigation
   .bd-universes {
     gap: 2px;
-    padding-bottom: .75rem;
-    margin-bottom: .75rem;
-    border-bottom: 1px solid var(--bs-border-color);
   }
 
   .bd-universe {
@@ -107,6 +104,17 @@
       position: sticky;
       top: 0;
       z-index: 1;
+
+      // Fades the entries scrolling under the header
+      &::after {
+        position: absolute;
+        inset-inline: 0;
+        top: 100%;
+        height: .75rem;
+        pointer-events: none;
+        content: "";
+        background: linear-gradient(var(--bs-bg-body), transparent);
+      }
     }
 
     // Lets the filter stick to the whole drawer body, not to this header
@@ -116,7 +124,7 @@
   }
 
   .bd-links-filter {
-    padding-block: .25rem .5rem;
+    padding-block: 1rem .5rem;
     background-color: var(--bs-bg-body);
 
     @include media-breakpoint-down(lg) {
