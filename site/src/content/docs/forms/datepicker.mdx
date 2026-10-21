@@ -54,6 +54,16 @@ Use the [form adorn component]([[docsref:/forms/form-adorn]]) to add a calendar 
       <input type="text" class="form-ghost" id="datepickerIconStart" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">
   </div>`} />
 
+Add `.form-adorn-end` to the `.form-adorn` wrapper to move the icon to the end of the input. The markup stays the same, with the icon before the input: the class only changes the visual order.
+
+<Example code={`<label for="datepickerIconEnd" class="form-label">Select date</label>
+  <div class="form-control form-adorn form-adorn-end w-12">
+    <div class="form-adorn-icon">
+      <svg class="bi" width="16" height="16"><use href="#calendar-week" /></svg>
+    </div>
+    <input type="text" class="form-ghost" id="datepickerIconEnd" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">
+  </div>`} />
+
 ### Min & Max dates
 
 Restrict the selectable date range using `data-bs-date-min` and `data-bs-date-max`.
