@@ -108,14 +108,14 @@ $prose-tokens: defaults(
       }
     }
 
-    :where(img):not(:where(.not-prose, .not-prose *)) {
-      max-width: 100%;
-    }
-
     :where(blockquote):not(:where(.not-prose, .not-prose *)) {
       padding-inline-start: calc(var(--content-gap) / 2);
       margin: 0;
       border-inline-start: 4px solid var(--border-color);
+    }
+
+    :where(blockquote, details):not(:where(.not-prose, .not-prose *)) > :not(:first-child) {
+      margin-block-start: calc(var(--content-gap) / 2);
     }
 
     :where(table):not(:where(.not-prose, .not-prose *)) {
@@ -139,6 +139,11 @@ $prose-tokens: defaults(
 
     :where(video, img):not(:where(.not-prose, .not-prose *)) {
       max-width: 100%;
+      height: auto; // Keep the aspect ratio reserved by `width` and `height` attributes
+    }
+
+    > :where(video, img):not(:where(.not-prose)) {
+      align-self: flex-start; // Do not stretch across the flex column
     }
   }
 }
