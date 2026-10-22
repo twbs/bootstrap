@@ -67,9 +67,9 @@ updates:
       - v5
     schedule:
       interval: weekly
-      day: tuesday
-      time: "12:00"
-      timezone: Europe/Athens
+      day: monday
+      time: "05:00"
+      timezone: Europe/Paris
     cooldown:
       default-days: 7
     groups:
@@ -84,9 +84,9 @@ updates:
       - v5
     schedule:
       interval: weekly
-      day: tuesday
-      time: "12:00"
-      timezone: Europe/Athens
+      day: monday
+      time: "05:00"
+      timezone: Europe/Paris
     cooldown:
       default-days: 7
     versioning-strategy: increase
