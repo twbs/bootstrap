@@ -40,10 +40,10 @@ const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
 const Default = {
   offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
-  rootMargin: '0px 0px -25%',
+  rootMargin: '0px',
   smoothScroll: false,
   target: null,
-  threshold: [0.1, 0.5, 1]
+  threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 }
 
 const DefaultType = {
@@ -65,13 +65,13 @@ class ScrollSpy extends BaseComponent {
     // this._element is the observablesContainer and config.target the menu links wrapper
     this._targetLinks = new Map()
     this._observableSections = new Map()
+    this._intersectionRatio = new Map()
     this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
     this._activeTarget = null
     this._observer = null
-    this._previousScrollData = {
-      visibleEntryTop: 0,
-      parentScrollTop: 0
-    }
+    // Sometimes scrolling to the section isn't enough to trigger a observation callback.
+    // Scroll to up to 2px to make sure it triggers.
+    this._scrollOffset = 2
     this.refresh() // initialize
   }
 
@@ -115,7 +115,7 @@ class ScrollSpy extends BaseComponent {
     config.target = getElement(config.target) || document.body
 
     // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
-    config.rootMargin = config.offset ? `${config.offset}px 0px -30%` : config.rootMargin
+    config.rootMargin = config.offset ? `${config.offset}px 0px 0px` : config.rootMargin
 
     if (typeof config.threshold === 'string') {
       config.threshold = config.threshold.split(',').map(value => Number.parseFloat(value))
@@ -125,9 +125,7 @@ class ScrollSpy extends BaseComponent {
   }
 
   _maybeEnableSmoothScroll() {
-    if (!this._config.smoothScroll) {
-      return
-    }
+    const scrollBehavior = this._config.smoothScroll ? 'smooth' : 'auto'
 
     // unregister any previous listeners
     EventHandler.off(this._config.target, EVENT_CLICK)
@@ -137,9 +135,10 @@ class ScrollSpy extends BaseComponent {
       if (observableSection) {
         event.preventDefault()
         const root = this._rootElement || window
-        const height = observableSection.offsetTop - this._element.offsetTop
+
+        const height = observableSection.offsetTop - this._element.offsetTop - this._scrollOffset
         if (root.scrollTo) {
-          root.scrollTo({ top: height, behavior: 'smooth' })
+          root.scrollTo({ top: height, behavior: scrollBehavior })
           return
         }
 
@@ -161,40 +160,21 @@ class ScrollSpy extends BaseComponent {
 
   // The logic of selection
   _observerCallback(entries) {
-    const targetElement = entry => this._targetLinks.get(`#${entry.target.id}`)
-    const activate = entry => {
-      this._previousScrollData.visibleEntryTop = entry.target.offsetTop
-      this._process(targetElement(entry))
+    for (const entry of entries) {
+      this._intersectionRatio.set(`#${entry.target.id}`, entry.intersectionRatio)
     }
 
-    const parentScrollTop = (this._rootElement || document.documentElement).scrollTop
-    const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
-    this._previousScrollData.parentScrollTop = parentScrollTop
-
-    for (const entry of entries) {
-      if (!entry.isIntersecting) {
-        this._activeTarget = null
-        this._clearActiveClass(targetElement(entry))
-
-        continue
+    let maxIntersectionRatio = 0
+    let element = null
+    for (const [key, val] of this._intersectionRatio.entries()) {
+      if (val > maxIntersectionRatio) {
+        element = this._targetLinks.get(key)
+        maxIntersectionRatio = val
       }
+    }
 
-      const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop
-      // if we are scrolling down, pick the bigger offsetTop
-      if (userScrollsDown && entryIsLowerThanPrevious) {
-        activate(entry)
-        // if parent isn't scrolled, let's keep the first visible item, breaking the iteration
-        if (!parentScrollTop) {
-          return
-        }
-
-        continue
-      }
-
-      // if we are scrolling up, pick the smallest offsetTop
-      if (!userScrollsDown && !entryIsLowerThanPrevious) {
-        activate(entry)
-      }
+    if (element !== null) {
+      this._process(element)
     }
   }
 
@@ -216,6 +196,7 @@ class ScrollSpy extends BaseComponent {
       if (isVisible(observableSection)) {
         this._targetLinks.set(decodeURI(anchor.hash), anchor)
         this._observableSections.set(anchor.hash, observableSection)
+        this._intersectionRatio.set(anchor.hash, 0)
       }
     }
   }
