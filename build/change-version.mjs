@@ -8,7 +8,9 @@
 
 import { execFile } from 'node:child_process'
 import fs from 'node:fs/promises'
+import path from 'node:path'
 import process from 'node:process'
+import { pathToFileURL } from 'node:url'
 
 const VERBOSE = process.argv.includes('--verbose')
 const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-run')
@@ -23,6 +25,21 @@ const FILES = [
   'site/data/docs-versions.yml'
 ]
 
+const DOCS_LINK_FILES = [
+  'README.md'
+]
+
+const DOCS_LINK_DIRECTORIES = [
+  'site/src'
+]
+
+const DOCS_LINK_EXTENSIONS = new Set([
+  '.astro',
+  '.html',
+  '.md',
+  '.mdx'
+])
+
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
   return string.replace(/[$()*+-.?[\\\]^{|}]/g, '\\$&')
@@ -32,19 +49,27 @@ function regExpQuoteReplacement(string) {
   return string.replace(/\$/g, '$$')
 }
 
-async function replaceRecursively(file, oldVersion, newVersion) {
+export function shortVersion(version) {
+  return version.replace(/^v/, '').split('.').slice(0, 2).join('.')
+}
+
+export function replaceDocsShortVersionLinks(string, oldVersion, newVersion) {
+  const oldShortVersion = shortVersion(oldVersion)
+  const newShortVersion = shortVersion(newVersion)
+
+  if (oldShortVersion === newShortVersion) {
+    return string
+  }
+
+  return string.replace(
+    new RegExp(`/docs/${regExpQuote(oldShortVersion)}(?=/)`, 'g'),
+    `/docs/${regExpQuoteReplacement(newShortVersion)}`
+  )
+}
+
+async function replaceInFile(file, transform) {
   const originalString = await fs.readFile(file, 'utf8')
-  const newString = originalString
-    .replace(
-      new RegExp(regExpQuote(oldVersion), 'g'),
-      regExpQuoteReplacement(newVersion)
-    )
-    // Also replace the version used by the rubygem,
-    // which is using periods (`.`) instead of hyphens (`-`)
-    .replace(
-      new RegExp(regExpQuote(oldVersion.replace(/-/g, '.')), 'g'),
-      regExpQuoteReplacement(newVersion.replace(/-/g, '.'))
-    )
+  const newString = transform(originalString)
 
   // No need to move any further if the strings are identical
   if (originalString === newString) {
@@ -52,7 +77,7 @@ async function replaceRecursively(file, oldVersion, newVersion) {
   }
 
   if (VERBOSE) {
-    console.log(`Found ${oldVersion} in ${file}`)
+    console.log(`Updating ${file}`)
   }
 
   if (DRY_RUN) {
@@ -60,6 +85,60 @@ async function replaceRecursively(file, oldVersion, newVersion) {
   }
 
   await fs.writeFile(file, newString, 'utf8')
+}
+
+async function replaceRecursively(file, oldVersion, newVersion) {
+  await replaceInFile(file, originalString => {
+    return originalString
+      .replace(
+        new RegExp(regExpQuote(oldVersion), 'g'),
+        regExpQuoteReplacement(newVersion)
+      )
+      // Also replace the version used by the rubygem,
+      // which is using periods (`.`) instead of hyphens (`-`)
+      .replace(
+        new RegExp(regExpQuote(oldVersion.replace(/-/g, '.')), 'g'),
+        regExpQuoteReplacement(newVersion.replace(/-/g, '.'))
+      )
+  })
+}
+
+async function findDocsLinkFiles(directory) {
+  const entries = await fs.readdir(directory, { withFileTypes: true })
+  const files = []
+
+  for (const entry of entries) {
+    const entryPath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) {
+      const nestedFiles = await findDocsLinkFiles(entryPath)
+      files.push(...nestedFiles)
+      continue
+    }
+
+    if (entry.isFile() && DOCS_LINK_EXTENSIONS.has(path.extname(entry.name))) {
+      files.push(entryPath)
+    }
+  }
+
+  return files
+}
+
+async function replaceDocsLinks(oldVersion, newVersion) {
+  const files = [
+    ...DOCS_LINK_FILES,
+    ...(
+      await Promise.all(
+        DOCS_LINK_DIRECTORIES.map(directory => findDocsLinkFiles(directory))
+      )
+    ).flat()
+  ]
+
+  await Promise.all(
+    files.map(file => replaceInFile(file, originalString => {
+      return replaceDocsShortVersionLinks(originalString, oldVersion, newVersion)
+    }))
+  )
 }
 
 function bumpNpmVersion(newVersion) {
@@ -104,10 +183,13 @@ async function main(args) {
     await Promise.all(
       FILES.map(file => replaceRecursively(file, oldVersion, newVersion))
     )
+    await replaceDocsLinks(oldVersion, newVersion)
   } catch (error) {
     console.error(error)
     process.exit(1)
   }
 }
 
-main(process.argv.slice(2))
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main(process.argv.slice(2))
+}
