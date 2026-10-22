@@ -108,6 +108,10 @@ class Range extends BaseComponent {
 
   // Public
   update(): void {
+    // Rebuild the ticks too, so datalist or min/max changes show up
+    this._ticks?.remove()
+    this._ticks = null
+    this._createTicks()
     this._update()
   }
 
