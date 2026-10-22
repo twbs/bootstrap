@@ -579,8 +579,13 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function
 // Auto-initialize datepickers that need to render on load:
 // - inline datepickers (always visible)
 // - datepickers with preselected dates (so the value populates without focus)
+// - inputs with a prefilled value (so it shows formatted, not as the raw `YYYY-MM-DD`)
 EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
-  const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"], ${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates]`
+  const selector = [
+    `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"]`,
+    `${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates]`,
+    `input${SELECTOR_DATA_TOGGLE}[value]:not([value=""])`
+  ].join(', ')
   for (const element of document.querySelectorAll(selector)) {
     Datepicker.getOrCreateInstance(element)
   }

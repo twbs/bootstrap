@@ -23,6 +23,7 @@ Note that we’re using a width utility of `.w-12` to ensure the input is wide e
 - Add `data-bs-toggle="datepicker"` to any `<input>` element to enable the datepicker
 - Use `type="text"` to avoid conflicts with native browser date pickers
 - When focused, the calendar popup appears below the input
+- Inputs with a prefilled `value` in `YYYY-MM-DD` format, like inputs with `data-bs-selected-dates`, are initialized on page load so the date shows formatted right away
 - Selecting a date updates the input value and closes the picker
 - The picker also closes on a click outside it, on <kbd>Escape</kbd>, or when focus moves to an element outside it
 - The picker respects Bootstrap’s color modes (`data-bs-theme`)
