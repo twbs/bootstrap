@@ -575,6 +575,11 @@ $reboot-mark-tokens: defaults(
     padding: 0;
   }
 
+  // iOS WebKit centres date/time values; keep them under the floating label
+  ::-webkit-date-and-time-value {
+    text-align: start;
+  }
+
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
     height: auto;
