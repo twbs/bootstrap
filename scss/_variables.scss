@@ -480,6 +480,8 @@ $paragraph-margin-bottom:   1rem !default;
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
+$grid-breakpoint-max-offset:     .02 !default;
+
 // scss-docs-start grid-breakpoints
 $grid-breakpoints: (
   xs: 0,
