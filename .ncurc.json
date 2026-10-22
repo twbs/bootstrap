@@ -15,6 +15,7 @@
     "jquery",
     "karma-browserstack-launcher",
     "karma-rollup-preprocessor",
+    "prettier-plugin-astro",
     "sass",
     "stylelint",
     "vnu-jar"

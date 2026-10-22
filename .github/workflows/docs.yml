@@ -3,7 +3,7 @@ name: Docs
 on:
   push:
     branches:
-      - main
+      - v5-dev
   pull_request:
   workflow_dispatch:
 
