@@ -26,8 +26,8 @@ $nav-tokens: defaults(
     --nav-link-disabled-color: var(--fg-4),
     --nav-link-border-width: var(--border-width),
     --nav-link-transition-property: "color, background-color, border-color",
-    --nav-link-transition-timing: .15s ease-in-out,
-    --nav-link-transition: var(--nav-link-transition-property) var(--nav-link-transition-timing),
+    --nav-link-transition-duration: .15s,
+    --nav-link-transition-timing: ease-in-out,
   ),
   $nav-tokens
 );
@@ -43,7 +43,7 @@ $nav-tabs-tokens: defaults(
     --nav-tabs-border-color: var(--border-color),
     --nav-tabs-border-radius: var(--radius-5),
     --nav-tabs-link-hover-border-color: var(--border-subtle),
-    --nav-tabs-link-active-color: var(--fg-color),
+    --nav-tabs-link-active-color: var(--fg-body),
     --nav-tabs-link-active-bg: var(--bg-body),
     --nav-tabs-link-active-border-color: var(--border-color) var(--border-color) var(--bg-body),
   ),
@@ -59,10 +59,10 @@ $nav-pills-tokens: defaults(
   (
     --nav-pills-bg: var(--bg-1),
     --nav-pills-padding: .25rem,
-    --nav-pills-border-radius: var(--radius-9),
+    --nav-pills-border-radius: 3rem,
     --nav-pills-link-active-color: var(--primary-contrast),
     --nav-pills-link-active-bg: var(--primary-bg),
-    --nav-pills-link-border-radius: var(--radius-9),
+    --nav-pills-link-border-radius: 3rem,
   ),
   $nav-pills-tokens
 );
@@ -77,11 +77,25 @@ $nav-underline-tokens: defaults(
     --nav-gap: 1rem,
     --nav-link-active-bg: transparent,
     --nav-underline-border-width: .125rem,
-    --nav-underline-link-active-color: var(--fg-color),
+    --nav-underline-link-active-color: var(--fg-body),
   ),
   $nav-underline-tokens
 );
 // scss-docs-end nav-underline-tokens
+
+$tab-pane-tokens: () !default;
+
+// scss-docs-start tab-pane-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$tab-pane-tokens: defaults(
+  (
+    --tab-pane-transition-property: "opacity",
+    --tab-pane-transition-duration: .15s,
+    --tab-pane-transition-timing: linear,
+  ),
+  $tab-pane-tokens
+);
+// scss-docs-end tab-pane-tokens
 
 // Base class
 //
@@ -117,7 +131,11 @@ $nav-underline-tokens: defaults(
     background: none;
     border: var(--nav-link-border-width) solid transparent;
     @include border-radius(var(--radius-5));
-    @include transition(var(--nav-link-transition));
+    @include transition-props(
+      var(--nav-link-transition-property),
+      var(--nav-link-transition-duration),
+      var(--nav-link-transition-timing)
+    );
 
     &:hover,
     &:focus {
@@ -202,8 +220,8 @@ $nav-underline-tokens: defaults(
 
     .nav-link.active,
     .show > .nav-link {
-      color: var(--nav-pills-link-active-color);
-      @include gradient-bg(var(--nav-pills-link-active-bg));
+      color: var(--theme-contrast, var(--nav-pills-link-active-color));
+      @include gradient-bg(var(--theme-bg, var(--nav-pills-link-active-bg)));
     }
   }
 
@@ -251,6 +269,8 @@ $nav-underline-tokens: defaults(
   //
 
   .nav-fill {
+    display: flex;
+
     > .nav-link,
     .nav-item {
       flex: 1 1 auto;
@@ -259,6 +279,8 @@ $nav-underline-tokens: defaults(
   }
 
   .nav-justified {
+    display: flex;
+
     > .nav-link,
     .nav-item {
       flex-grow: 1;
@@ -280,10 +302,31 @@ $nav-underline-tokens: defaults(
 
   .tab-content {
     > .tab-pane {
+      @include tokens($tab-pane-tokens);
+
       display: none;
+
+      // The pane fades in on its own, from the starting state below. Only the
+      // entry animates: two in-flow panes cannot cross-fade without stacking,
+      // so the outgoing pane leaves at once. Add .tab-pane-instant to skip it.
+      &:not(.tab-pane-instant) {
+        @include transition-props(
+          var(--tab-pane-transition-property),
+          var(--tab-pane-transition-duration),
+          var(--tab-pane-transition-timing)
+        );
+      }
     }
     > .active {
       display: block;
+    }
+  }
+
+  // The pane is not rendered before .active lands, so the fade-in needs an
+  // explicit starting state.
+  @starting-style {
+    .tab-content > .tab-pane:not(.tab-pane-instant).active {
+      opacity: 0;
     }
   }
 }

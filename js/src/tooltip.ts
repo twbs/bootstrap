@@ -21,7 +21,7 @@ import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import type { ComponentConfig } from './util/config.js'
 import {
-  execute, findShadowRoot, getElement, getUID, isRTL, noop
+  execute, findShadowRoot, getElement, getTransitionDurationFromElement, getUID, isRTL, noop
 } from './util/index.js'
 import { DefaultAllowlist, type SanitizerAllowList } from './util/sanitizer.js'
 import TemplateFactory, { type TemplateContentEntry } from './util/template-factory.js'
@@ -46,7 +46,6 @@ const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
 const ESCAPE_KEY = 'Escape'
 
-const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_MODAL = 'modal'
 const CLASS_NAME_SHOW = 'show'
 
@@ -71,6 +70,8 @@ const EVENT_FOCUSIN = 'focusin'
 const EVENT_FOCUSOUT = 'focusout'
 const EVENT_MOUSEENTER = 'mouseenter'
 const EVENT_MOUSELEAVE = 'mouseleave'
+const EVENT_POINTERDOWN = 'pointerdown'
+const EVENT_POINTERUP = 'pointerup'
 const EVENT_KEYDOWN = 'keydown'
 
 const AttachmentMap: Record<string, string> = {
@@ -100,6 +101,10 @@ type TooltipConfig = {
   title: string | Element | ((...args: any[]) => string | Element)
   trigger: string
 }
+
+// Delegated tooltips are created on the fly with their `trigger` forced to
+// `manual`, so the real trigger is stored here for later reference.
+type TooltipInternalConfig = TooltipConfig & { _trigger: string }
 
 const Default: TooltipConfig = {
   allowList: DefaultAllowlist,
@@ -153,10 +158,15 @@ class Tooltip extends BaseComponent {
   protected declare _config: TooltipConfig
   protected declare _isEnabled: boolean
   protected declare _timeout: number
+  protected declare _resolveTimeout: (() => void) | null
   protected declare _isHovered: boolean | null
   protected declare _activeTrigger: Record<string, boolean>
   protected declare _floatingCleanup: (() => void) | null
   protected declare _keydownHandler: ((event: KeyboardEvent) => void) | null
+  protected declare _tipEventOut: ((event: BootstrapEvent) => void) | null
+  protected declare _outsidePointerHandler: ((event: PointerEvent) => void) | null
+  protected declare _tipPointerUpHandler: (() => void) | null
+  protected declare _tipPointerDown: boolean
   protected declare _templateFactory: TemplateFactory | null
   protected declare _newContent: Record<string, TemplateContentEntry> | null
   protected declare _mediaQueryListeners: BreakpointListener[]
@@ -174,10 +184,15 @@ class Tooltip extends BaseComponent {
     // Private
     this._isEnabled = true
     this._timeout = 0
+    this._resolveTimeout = null
     this._isHovered = null
     this._activeTrigger = {}
     this._floatingCleanup = null
     this._keydownHandler = null
+    this._tipEventOut = null
+    this._outsidePointerHandler = null
+    this._tipPointerUpHandler = null
+    this._tipPointerDown = false
     this._templateFactory = null
     this._newContent = null
     this._mediaQueryListeners = []
@@ -220,23 +235,19 @@ class Tooltip extends BaseComponent {
     this._isEnabled = !this._isEnabled
   }
 
-  toggle(): void {
+  toggle(): Promise<void> {
     if (!this._isEnabled) {
-      return
+      return Promise.resolve()
     }
 
-    if (this._isShown()) {
-      this._leave()
-      return
-    }
-
-    this._enter()
+    return this._isShown() ? this._leave() : this._enter()
   }
 
   override dispose(): void {
-    clearTimeout(this._timeout)
+    this._clearTimeout()
 
     this._removeEscapeListener()
+    this._removeFocusOutsideListener()
 
     EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
@@ -286,6 +297,7 @@ class Tooltip extends BaseComponent {
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip)
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
+      this._setTipListeners(tip)
     }
 
     await this._createFloating(tip)
@@ -294,6 +306,7 @@ class Tooltip extends BaseComponent {
 
     // Allow dismissing the tooltip with the Escape key (WCAG 1.4.13)
     this._setEscapeListener()
+    this._setFocusOutsideListener()
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
@@ -315,10 +328,10 @@ class Tooltip extends BaseComponent {
       this._isHovered = false
     }
 
-    this._queueCallback(complete, this.tip!, this._isAnimated()!)
+    await this._queueCallback(complete, this.tip!, this._isAnimated())
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (!this._isShown()) {
       return
     }
@@ -329,6 +342,7 @@ class Tooltip extends BaseComponent {
     }
 
     this._removeEscapeListener()
+    this._removeFocusOutsideListener()
 
     const tip = this._getTipElement()
     tip.classList.remove(CLASS_NAME_SHOW)
@@ -359,7 +373,7 @@ class Tooltip extends BaseComponent {
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN))
     }
 
-    this._queueCallback(complete, this.tip!, this._isAnimated()!)
+    await this._queueCallback(complete, this.tip!, this._isAnimated())
   }
 
   update(): void {
@@ -392,16 +406,20 @@ class Tooltip extends BaseComponent {
   protected _createTipElement(content: Record<string, TemplateContentEntry>): HTMLElement {
     const tip = this._getTemplateFactory(content).toHtml()
 
-    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
+    tip.classList.remove(CLASS_NAME_SHOW)
     tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
     const tipId = getUID(this.constructor.NAME).toString()
 
     tip.setAttribute('id', tipId)
 
-    if (this._isAnimated()) {
-      tip.classList.add(CLASS_NAME_FADE)
+    // The tip fades in CSS, from a @starting-style rule. `animation: false`
+    // opts out through the same class an author can add.
+    if (!this._config.animation) {
+      tip.classList.add(this._getInstantClassName())
     }
+
+    this._setFocusTipListeners(tip)
 
     return tip
   }
@@ -445,8 +463,14 @@ class Tooltip extends BaseComponent {
     return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig())
   }
 
-  protected _isAnimated(): boolean | null {
-    return this._config.animation || (this.tip && this.tip.classList.contains(CLASS_NAME_FADE))
+  protected _getInstantClassName(): string {
+    return `${this.constructor.NAME}-instant`
+  }
+
+  // The tip declares its transition in CSS, so a zero computed duration (an
+  // instant tip, reduced motion, or transitions disabled) means no wait.
+  protected _isAnimated(): boolean {
+    return getTransitionDurationFromElement(this.tip) > 0
   }
 
   protected _isShown(): boolean | null {
@@ -637,12 +661,7 @@ class Tooltip extends BaseComponent {
           context.toggle()
         })
       } else if (trigger !== TRIGGER_MANUAL) {
-        const eventIn = trigger === TRIGGER_HOVER ?
-          this.constructor.eventName(EVENT_MOUSEENTER) :
-          this.constructor.eventName(EVENT_FOCUSIN)
-        const eventOut = trigger === TRIGGER_HOVER ?
-          this.constructor.eventName(EVENT_MOUSELEAVE) :
-          this.constructor.eventName(EVENT_FOCUSOUT)
+        const [eventIn, eventOut] = this._getTriggerEvents(trigger)
 
         EventHandler.on(this._element, eventIn, this._config.selector as string, event => {
           const context = this._initializeOnDelegatedTarget(event)
@@ -651,8 +670,13 @@ class Tooltip extends BaseComponent {
         })
         EventHandler.on(this._element, eventOut, this._config.selector as string, event => {
           const context = this._initializeOnDelegatedTarget(event)
-          context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] =
-            context._element.contains(event.relatedTarget)
+
+          if (event.type === 'focusout') {
+            context._activeTrigger[TRIGGER_FOCUS] =
+              context._isInside(event.relatedTarget) || context._tipPointerDown
+          } else {
+            context._activeTrigger[TRIGGER_HOVER] = context._isInside(event.relatedTarget)
+          }
 
           context._leave()
         })
@@ -666,6 +690,134 @@ class Tooltip extends BaseComponent {
     }
 
     EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
+  }
+
+  // Keep the tooltip open while the pointer or focus moves onto the tip
+  // itself, so users can reach interactive content inside it (WCAG 1.4.13).
+  // Hover/focus tips get matching leave listeners on the tip element.
+  protected _setTipListeners(tip: HTMLElement): void {
+    const trigger = this._getTrigger()
+
+    if (trigger === TRIGGER_MANUAL || trigger.includes(TRIGGER_CLICK)) {
+      return
+    }
+
+    this._tipEventOut = event => {
+      this._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = this._isInside(event.relatedTarget)
+      this._leave()
+    }
+
+    for (const name of trigger.split(' ')) {
+      if (name === TRIGGER_HOVER || name === TRIGGER_FOCUS) {
+        const [, eventOut] = this._getTriggerEvents(name)
+        EventHandler.on(tip, eventOut, this._tipEventOut)
+      }
+    }
+  }
+
+  protected _removeTipListeners(tip: HTMLElement): void {
+    if (!this._tipEventOut) {
+      return
+    }
+
+    const trigger = this._getTrigger()
+
+    for (const name of trigger.split(' ')) {
+      if (name === TRIGGER_HOVER || name === TRIGGER_FOCUS) {
+        const [, eventOut] = this._getTriggerEvents(name)
+        EventHandler.off(tip, eventOut, this._tipEventOut)
+      }
+    }
+
+    this._tipEventOut = null
+  }
+
+  protected _isInside(target: EventTarget | null): boolean {
+    return target instanceof Node &&
+      (this._element.contains(target) || Boolean(this.tip?.contains(target)))
+  }
+
+  protected _getTrigger(): string {
+    return (this._config as TooltipInternalConfig)._trigger
+  }
+
+  protected _getTriggerEvents(trigger: string): [string, string] {
+    const events: Record<string, [string, string]> = {
+      [TRIGGER_HOVER]: [
+        this.constructor.eventName(EVENT_MOUSEENTER),
+        this.constructor.eventName(EVENT_MOUSELEAVE)
+      ],
+      [TRIGGER_FOCUS]: [
+        this.constructor.eventName(EVENT_FOCUSIN),
+        this.constructor.eventName(EVENT_FOCUSOUT)
+      ]
+    }
+
+    return events[trigger]
+  }
+
+  protected _hasFocusTrigger(): boolean {
+    return this._getTrigger().split(' ').includes(TRIGGER_FOCUS)
+  }
+
+  protected _setFocusTipListeners(tip: HTMLElement): void {
+    if (!this._hasFocusTrigger()) {
+      return
+    }
+
+    EventHandler.on(tip, this.constructor.eventName(EVENT_POINTERDOWN), () => {
+      this._tipPointerDown = true
+      this._activeTrigger[TRIGGER_FOCUS] = true
+    })
+
+    EventHandler.on(tip, this.constructor.eventName(EVENT_FOCUSIN), () => {
+      this._activeTrigger[TRIGGER_FOCUS] = true
+    })
+
+    EventHandler.on(tip, this.constructor.eventName(EVENT_FOCUSOUT), (event: BootstrapEvent) => {
+      this._activeTrigger[TRIGGER_FOCUS] =
+        this._isInside(event.relatedTarget) || this._tipPointerDown
+      this._leave()
+    })
+  }
+
+  protected _setFocusOutsideListener(): void {
+    if (this._outsidePointerHandler || !this._hasFocusTrigger()) {
+      return
+    }
+
+    this._tipPointerUpHandler = () => {
+      this._tipPointerDown = false
+    }
+
+    this._outsidePointerHandler = event => {
+      if (!this._isShown() || this._isInside(event.target)) {
+        return
+      }
+
+      this._activeTrigger[TRIGGER_FOCUS] = false
+      this.hide()
+    }
+
+    const doc = this._element.ownerDocument
+    doc.addEventListener(EVENT_POINTERUP, this._tipPointerUpHandler, true)
+    doc.addEventListener(EVENT_POINTERDOWN, this._outsidePointerHandler, true)
+  }
+
+  protected _removeFocusOutsideListener(): void {
+    const doc = this._element?.ownerDocument
+
+    if (this._tipPointerUpHandler && doc) {
+      doc.removeEventListener(EVENT_POINTERUP, this._tipPointerUpHandler, true)
+    }
+
+    if (this._outsidePointerHandler && doc) {
+      doc.removeEventListener(EVENT_POINTERDOWN, this._outsidePointerHandler, true)
+    }
+
+    this._tipPointerUpHandler = null
+    this._outsidePointerHandler = null
+    this._tipPointerDown = false
   }
 
   protected _setEscapeListener(): void {
@@ -718,38 +870,54 @@ class Tooltip extends BaseComponent {
     this._element.removeAttribute('title')
   }
 
-  protected _enter(): void {
+  protected _enter(): Promise<void> {
     if (this._isShown() || this._isHovered) {
       this._isHovered = true
-      return
+      return Promise.resolve()
     }
 
     this._isHovered = true
 
-    this._setTimeout(() => {
-      if (this._isHovered) {
-        this.show()
-      }
-    }, (this._config.delay as { show: number, hide: number }).show)
+    return this._setTimeout(
+      () => this._isHovered ? this.show() : undefined,
+      (this._config.delay as { show: number, hide: number }).show
+    )
   }
 
-  protected _leave(): void {
+  protected _leave(): Promise<void> {
     if (this._isWithActiveTrigger()) {
-      return
+      return Promise.resolve()
     }
 
     this._isHovered = false
 
-    this._setTimeout(() => {
-      if (!this._isHovered) {
-        this.hide()
-      }
-    }, (this._config.delay as { show: number, hide: number }).hide)
+    return this._setTimeout(
+      () => this._isHovered ? undefined : this.hide(),
+      (this._config.delay as { show: number, hide: number }).hide
+    )
   }
 
-  protected _setTimeout(handler: () => void, timeout: number): void {
+  protected _setTimeout(handler: () => void | Promise<void>, timeout: number): Promise<void> {
+    this._clearTimeout()
+
+    return new Promise(resolve => {
+      this._resolveTimeout = resolve
+      this._timeout = setTimeout(() => {
+        this._resolveTimeout = null
+        resolve(handler())
+      }, timeout)
+    })
+  }
+
+  // Cancels the pending hover delay. The superseded promise resolves right away, so a
+  // caller awaiting `toggle()` resumes instead of waiting on a timer that never fires.
+  protected _clearTimeout(): void {
     clearTimeout(this._timeout)
-    this._timeout = setTimeout(handler, timeout)
+
+    if (this._resolveTimeout) {
+      this._resolveTimeout()
+      this._resolveTimeout = null
+    }
   }
 
   protected _isWithActiveTrigger(): boolean {
@@ -777,6 +945,11 @@ class Tooltip extends BaseComponent {
 
   protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
     config.container = config.container === false ? document.body : getElement(config.container)
+
+    // Delegated tooltips are created on the fly with `trigger` set to `manual`,
+    // which makes the real trigger hard to check later. Preserve it here so the
+    // tip listeners know whether the tooltip is hover- or focus-driven.
+    config._trigger = config._trigger || config.trigger
 
     if (typeof config.delay === 'number') {
       config.delay = {
@@ -824,6 +997,8 @@ class Tooltip extends BaseComponent {
     }
 
     if (this.tip) {
+      this._removeTipListeners(this.tip)
+      EventHandler.off(this.tip, this.constructor.EVENT_KEY)
       this.tip.remove()
       this.tip = null
     }

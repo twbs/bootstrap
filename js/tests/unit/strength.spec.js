@@ -382,6 +382,21 @@ describe('Strength', () => {
       expect(textEl.textContent).toEqual('Weak')
     })
 
+    it('should flag the text element with the level and leave its color to the CSS', () => {
+      fixtureEl.innerHTML = getStrengthHtml({ withText: true })
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const textEl = fixtureEl.querySelector('.strength-text')
+      new Strength(strengthEl) // eslint-disable-line no-new
+
+      passwordInput.value = 'password'
+      passwordInput.dispatchEvent(createEvent('input'))
+
+      expect(textEl.dataset.bsStrength).toEqual('weak')
+      expect(textEl.getAttribute('style')).toBeNull()
+    })
+
     it('should use custom messages', () => {
       fixtureEl.innerHTML = getStrengthHtml({ withText: true })
 
@@ -471,6 +486,22 @@ describe('Strength', () => {
       strength.dispose()
 
       expect(Strength.getInstance(strengthEl)).toBeNull()
+    })
+
+    it('should remove component listeners and keep consumer listeners', () => {
+      fixtureEl.innerHTML = getStrengthHtml()
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const strength = new Strength(strengthEl)
+      const inputSpy = jasmine.createSpy('input')
+
+      passwordInput.addEventListener('input', inputSpy)
+      strength.dispose()
+
+      passwordInput.value = 'Password1!'
+      expect(() => passwordInput.dispatchEvent(createEvent('input'))).not.toThrow()
+      expect(inputSpy).toHaveBeenCalled()
     })
   })
 

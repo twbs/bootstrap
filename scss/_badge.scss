@@ -25,18 +25,22 @@ $badge-tokens: defaults(
 // scss-docs-end badge-tokens
 
 // scss-docs-start badge-variants
-$badge-variants: (
-  "subtle": (
-    "color": "fg",
-    "bg": "bg-subtle",
-    "border-color": "transparent"
+$badge-variants: () !default;
+$badge-variants: defaults(
+  (
+    "subtle": (
+      "color": "fg",
+      "bg": "bg-subtle",
+      "border-color": "transparent"
+    ),
+    "outline": (
+      "color": "fg",
+      "bg": "transparent",
+      "border-color": "border"
+    )
   ),
-  "outline": (
-    "color": "fg",
-    "bg": "transparent",
-    "border-color": "border"
-  )
-) !default;
+  $badge-variants
+);
 // scss-docs-end badge-variants
 
 // stylelint-enable custom-property-no-missing-var-function, scss/dollar-variable-default

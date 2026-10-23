@@ -9,49 +9,57 @@ css_layer: forms
 
 Apply both `.form-control` and `.form-adorn` to a wrapper element. `.form-control` provides the border, background, padding, and focus states; `.form-adorn` uses flexbox to position adornments alongside a "ghost input," a form control that has virtually no visual styling. The `.form-ghost` input inside is transparent and inherits styles from the wrapper.
 
+Use a `<label>` for the wrapper. The wrapper looks like an input, so people click the icon, the text, or the padding around them and expect the field to take focus. A `<label>` gives you that for free, because clicking a label focuses the control it labels. No JavaScript is involved.
+
+Mark the adornments with `aria-hidden="true"`. A wrapping `<label>` labels the input, so without it an adornment such as `$` joins the accessible name and a screen reader announces "Amount $" instead of "Amount". An adornment is decorative, so keep it out of the accessibility tree and put anything meaningful in the visible label or in a `.form-text` description.
+
+<Callout>
+An element can have more than one label, so the wrapping `<label>` and a separate `<label for="…">` work together. Do not put a button or another interactive control inside the wrapper — a `<label>` must not contain interactive content.
+</Callout>
+
 See the [form control]([[docsref:/forms/form-control]]) documentation for more information on the `.form-control` and `.form-ghost` classes.
 
 ## Example
 
-Wrap an icon and a `.form-ghost` input inside a `<div>` with `.form-control` and `.form-adorn`. Place the adornment before the input in the DOM for start position (left in LTR).
+Wrap an icon and a `.form-ghost` input inside a `<label>` with `.form-control` and `.form-adorn`. Place the adornment before the input in the DOM for start position (left in LTR).
 
-<Example code={`<div class="form-control form-adorn">
-    <div class="form-adorn-icon">
+<Example code={`<label class="form-control form-adorn">
+    <div class="form-adorn-icon" aria-hidden="true">
       <svg class="bi" width="16" height="16"><use href="#search" /></svg>
     </div>
     <input type="search" class="form-ghost" placeholder="Search...">
-  </div>`} />
+  </label>`} />
 
 Use `.form-adorn-end` to position the adornment on the trailing side (keeps DOM order, uses CSS to flip visually):
 
-<Example code={`<div class="form-control form-adorn form-adorn-end">
-    <div class="form-adorn-icon">
+<Example code={`<label class="form-control form-adorn form-adorn-end">
+    <div class="form-adorn-icon" aria-hidden="true">
       <svg class="bi" width="16" height="16"><use href="#envelope" /></svg>
     </div>
     <input type="email" class="form-ghost" placeholder="you@example.com">
-  </div>`} />
+  </label>`} />
 
 ## With labels
 
-Add a label outside the `.form-adorn` wrapper for proper form semantics:
+Add a second label outside the `.form-adorn` wrapper to name the field. Point it at the input with `for`, so the input keeps its name even if you change the wrapper:
 
 <Example class="vstack gap-3" code={`<div>
     <label for="searchInput" class="form-label">Search</label>
-    <div class="form-control form-adorn">
-      <div class="form-adorn-icon">
+    <label class="form-control form-adorn">
+      <div class="form-adorn-icon" aria-hidden="true">
         <svg class="bi" width="16" height="16"><use href="#search" /></svg>
       </div>
       <input type="search" class="form-ghost" id="searchInput" placeholder="Search...">
-    </div>
+    </label>
   </div>
   <div>
     <label for="emailInput" class="form-label">Email address</label>
-    <div class="form-control form-adorn form-adorn-end">
-      <div class="form-adorn-icon">
+    <label class="form-control form-adorn form-adorn-end">
+      <div class="form-adorn-icon" aria-hidden="true">
         <svg class="bi" width="16" height="16"><use href="#envelope" /></svg>
       </div>
       <input type="email" class="form-ghost" id="emailInput" placeholder="you@example.com">
-    </div>
+    </label>
   </div>`} />
 
 ## With form field
@@ -60,12 +68,12 @@ Wrap a `.form-adorn` in a `.form-field` to pair it with a label and description 
 
 <Example code={`<div class="form-field">
     <label for="adornField" class="form-label">Search</label>
-    <div class="form-control form-adorn">
-      <div class="form-adorn-icon">
+    <label class="form-control form-adorn">
+      <div class="form-adorn-icon" aria-hidden="true">
         <svg class="bi" width="16" height="16"><use href="#search" /></svg>
       </div>
       <input type="search" class="form-ghost" id="adornField" placeholder="Search...">
-    </div>
+    </label>
     <small class="form-text">Search across all pages and posts.</small>
   </div>`} />
 
@@ -73,45 +81,45 @@ Wrap a `.form-adorn` in a `.form-field` to pair it with a label and description 
 
 Use `.form-adorn-text` for currency symbols, units, domain suffixes, and other text-based adornments. Text adornments auto-size to their content.
 
-<Example class="vstack gap-3" code={`<div class="form-control form-adorn">
-    <span class="form-adorn-text">$</span>
+<Example class="vstack gap-3" code={`<label class="form-control form-adorn">
+    <span class="form-adorn-text" aria-hidden="true">$</span>
     <input type="text" class="form-ghost" placeholder="0.00">
-  </div>
-  <div class="form-control form-adorn form-adorn-end">
-    <span class="form-adorn-text">USD</span>
+  </label>
+  <label class="form-control form-adorn form-adorn-end">
+    <span class="form-adorn-text" aria-hidden="true">USD</span>
     <input type="text" class="form-ghost" placeholder="Amount">
-  </div>
-  <div class="form-control form-adorn">
-    <span class="form-adorn-text">https://</span>
+  </label>
+  <label class="form-control form-adorn">
+    <span class="form-adorn-text" aria-hidden="true">https://</span>
     <input type="text" class="form-ghost" placeholder="example.com">
-  </div>
-  <div class="form-control form-adorn form-adorn-end">
-    <span class="form-adorn-text">@example.com</span>
+  </label>
+  <label class="form-control form-adorn form-adorn-end">
+    <span class="form-adorn-text" aria-hidden="true">@example.com</span>
     <input type="text" class="form-ghost" placeholder="username">
-  </div>`} />
+  </label>`} />
 
 ## Sizing
 
 Use `.form-adorn-sm` or `.form-adorn-lg` on the wrapper to adjust sizing.
 
-<Example class="vstack gap-3" code={`<div class="form-control form-control-sm form-adorn">
-    <div class="form-adorn-icon">
+<Example class="vstack gap-3" code={`<label class="form-control form-control-sm form-adorn">
+    <div class="form-adorn-icon" aria-hidden="true">
       <svg class="bi" width="16" height="16"><use href="#search" /></svg>
     </div>
     <input type="text" class="form-ghost" placeholder="Small input">
-  </div>
-  <div class="form-control form-adorn">
-    <div class="form-adorn-icon">
+  </label>
+  <label class="form-control form-adorn">
+    <div class="form-adorn-icon" aria-hidden="true">
       <svg class="bi" width="16" height="16"><use href="#search" /></svg>
     </div>
     <input type="text" class="form-ghost" placeholder="Default input">
-  </div>
-  <div class="form-control form-control-lg form-adorn">
-    <div class="form-adorn-icon">
+  </label>
+  <label class="form-control form-control-lg form-adorn">
+    <div class="form-adorn-icon" aria-hidden="true">
       <svg class="bi" width="16" height="16"><use href="#search" /></svg>
     </div>
     <input type="text" class="form-ghost" placeholder="Large input">
-  </div>`} />
+  </label>`} />
 
 ## CSS
 

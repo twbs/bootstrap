@@ -339,6 +339,30 @@ describe('Dialog', () => {
       })
     })
 
+    it('should not close dialog when backdrop is false', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl, { backdrop: false })
+        const hideSpy = spyOn(dialog, 'hide')
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          const clickEvent = createEvent('click')
+          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
+          dialogEl.dispatchEvent(clickEvent)
+
+          setTimeout(() => {
+            expect(dialogEl.open).toBeTrue()
+            expect(hideSpy).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        })
+
+        dialog.show()
+      })
+    })
+
     it('should not close dialog when clicking inside dialog content', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -362,6 +386,28 @@ describe('Dialog', () => {
             expect(spy).not.toHaveBeenCalled()
             resolve()
           }, 10)
+        })
+
+        dialog.show()
+      })
+    })
+
+    it('should remove dialog-open when the dialog is closed during the exit transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialog.hide()
+          // Something else closes the dialog before the exit transition ends
+          dialogEl.close()
+        })
+
+        dialogEl.addEventListener('hidden.bs.dialog', () => {
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+          resolve()
         })
 
         dialog.show()
@@ -950,6 +996,106 @@ describe('Dialog', () => {
           expect(dialog2El.open).toBeTrue()
           resolve()
         })
+
+        firstTrigger.click()
+      })
+    })
+
+    it('should not open both dialogs when a swap trigger is clicked mid-swap', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button data-bs-toggle="dialog" data-bs-target="#dialog1">Open first</button>',
+          '<dialog id="dialog1" class="dialog">',
+          '  <button data-bs-toggle="dialog" data-bs-target="#dialog2">Go to second</button>',
+          '</dialog>',
+          '<dialog id="dialog2" class="dialog">',
+          '  <button data-bs-toggle="dialog" data-bs-target="#dialog1">Back to first</button>',
+          '</dialog>'
+        ].join('')
+
+        const dialog1El = fixtureEl.querySelector('#dialog1')
+        const dialog2El = fixtureEl.querySelector('#dialog2')
+        const firstTrigger = fixtureEl.querySelector('button[data-bs-target="#dialog1"]')
+        const swapTrigger = dialog1El.querySelector('[data-bs-target="#dialog2"]')
+        const backTrigger = dialog2El.querySelector('[data-bs-target="#dialog1"]')
+
+        dialog1El.addEventListener('shown.bs.dialog', () => {
+          // Swap to dialog2, then click its swap trigger before it settles.
+          swapTrigger.click()
+          backTrigger.click()
+
+          expect(dialog1El.open).toBeFalse()
+          expect(dialog2El.open).toBeTrue()
+          resolve()
+        })
+
+        firstTrigger.click()
+      })
+    })
+
+    it('should keep the source open when destination show is prevented', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button data-bs-toggle="dialog" data-bs-target="#dialog1">Open first</button>',
+          '<dialog id="dialog1" class="dialog">',
+          '  <button data-bs-toggle="dialog" data-bs-target="#dialog2">Go to second</button>',
+          '</dialog>',
+          '<dialog id="dialog2" class="dialog"></dialog>'
+        ].join('')
+
+        const dialog1El = fixtureEl.querySelector('#dialog1')
+        const dialog2El = fixtureEl.querySelector('#dialog2')
+        const firstTrigger = fixtureEl.querySelector('[data-bs-target="#dialog1"]')
+        const swapTrigger = dialog1El.querySelector('[data-bs-target="#dialog2"]')
+
+        dialog2El.addEventListener('show.bs.dialog', event => event.preventDefault())
+        dialog1El.addEventListener('shown.bs.dialog', () => {
+          swapTrigger.click()
+
+          setTimeout(() => {
+            expect(dialog1El.open).toBeTrue()
+            expect(dialog2El.open).toBeFalse()
+            resolve()
+          }, 10)
+        }, { once: true })
+
+        firstTrigger.click()
+      })
+    })
+
+    it('should not retain focus restoration when source hide is prevented', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button data-bs-toggle="dialog" data-bs-target="#dialog1">Open first</button>',
+          '<dialog id="dialog1" class="dialog">',
+          '  <button data-bs-toggle="dialog" data-bs-target="#dialog2">Go to second</button>',
+          '</dialog>',
+          '<dialog id="dialog2" class="dialog"></dialog>'
+        ].join('')
+
+        const dialog1El = fixtureEl.querySelector('#dialog1')
+        const dialog2El = fixtureEl.querySelector('#dialog2')
+        const firstTrigger = fixtureEl.querySelector('[data-bs-target="#dialog1"]')
+        const swapTrigger = dialog1El.querySelector('[data-bs-target="#dialog2"]')
+        const focusSpy = spyOn(swapTrigger, 'focus')
+
+        dialog1El.addEventListener('hide.bs.dialog', event => event.preventDefault(), { once: true })
+        dialog1El.addEventListener('shown.bs.dialog', () => {
+          swapTrigger.click()
+
+          setTimeout(() => {
+            expect(dialog1El.open).toBeTrue()
+            expect(dialog2El.open).toBeFalse()
+
+            const dialog2 = Dialog.getInstance(dialog2El)
+            dialog2El.addEventListener('shown.bs.dialog', () => dialog2.hide(), { once: true })
+            dialog2El.addEventListener('hidden.bs.dialog', () => {
+              expect(focusSpy).not.toHaveBeenCalled()
+              resolve()
+            }, { once: true })
+            dialog2.show()
+          }, 10)
+        }, { once: true })
 
         firstTrigger.click()
       })

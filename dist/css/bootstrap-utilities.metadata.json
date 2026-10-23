@@ -389,6 +389,20 @@
         "min-vw-100"
       ]
     },
+    "dynamic-viewport-width": {
+      "class": "dvw",
+      "property": "width",
+      "classes": [
+        "dvw-100"
+      ]
+    },
+    "min-dynamic-viewport-width": {
+      "class": "min-dvw",
+      "property": "min-width",
+      "classes": [
+        "min-dvw-100"
+      ]
+    },
     "height": {
       "class": "h",
       "property": "height",
@@ -430,6 +444,20 @@
       "property": "min-height",
       "classes": [
         "min-vh-100"
+      ]
+    },
+    "dynamic-viewport-height": {
+      "class": "dvh",
+      "property": "height",
+      "classes": [
+        "dvh-100"
+      ]
+    },
+    "min-dynamic-viewport-height": {
+      "class": "min-dvh",
+      "property": "min-height",
+      "classes": [
+        "min-dvh-100"
       ]
     },
     "flex": {
@@ -606,6 +634,9 @@
         "m-7",
         "m-8",
         "m-9",
+        "m-10",
+        "m-11",
+        "m-12",
         "m-auto"
       ]
     },
@@ -623,6 +654,9 @@
         "mx-7",
         "mx-8",
         "mx-9",
+        "mx-10",
+        "mx-11",
+        "mx-12",
         "mx-auto"
       ]
     },
@@ -640,6 +674,9 @@
         "my-7",
         "my-8",
         "my-9",
+        "my-10",
+        "my-11",
+        "my-12",
         "my-auto"
       ]
     },
@@ -657,6 +694,9 @@
         "mt-7",
         "mt-8",
         "mt-9",
+        "mt-10",
+        "mt-11",
+        "mt-12",
         "mt-auto"
       ]
     },
@@ -674,6 +714,9 @@
         "me-7",
         "me-8",
         "me-9",
+        "me-10",
+        "me-11",
+        "me-12",
         "me--1",
         "me--2",
         "me-auto"
@@ -693,6 +736,9 @@
         "mb-7",
         "mb-8",
         "mb-9",
+        "mb-10",
+        "mb-11",
+        "mb-12",
         "mb-auto"
       ]
     },
@@ -710,6 +756,9 @@
         "ms-7",
         "ms-8",
         "ms-9",
+        "ms-10",
+        "ms-11",
+        "ms-12",
         "ms--1",
         "ms--2",
         "ms-auto"
@@ -728,7 +777,10 @@
         "p-6",
         "p-7",
         "p-8",
-        "p-9"
+        "p-9",
+        "p-10",
+        "p-11",
+        "p-12"
       ]
     },
     "padding-x": {
@@ -744,7 +796,10 @@
         "px-6",
         "px-7",
         "px-8",
-        "px-9"
+        "px-9",
+        "px-10",
+        "px-11",
+        "px-12"
       ]
     },
     "padding-y": {
@@ -760,7 +815,10 @@
         "py-6",
         "py-7",
         "py-8",
-        "py-9"
+        "py-9",
+        "py-10",
+        "py-11",
+        "py-12"
       ]
     },
     "padding-top": {
@@ -776,7 +834,10 @@
         "pt-6",
         "pt-7",
         "pt-8",
-        "pt-9"
+        "pt-9",
+        "pt-10",
+        "pt-11",
+        "pt-12"
       ]
     },
     "padding-end": {
@@ -792,7 +853,10 @@
         "pe-6",
         "pe-7",
         "pe-8",
-        "pe-9"
+        "pe-9",
+        "pe-10",
+        "pe-11",
+        "pe-12"
       ]
     },
     "padding-bottom": {
@@ -808,7 +872,10 @@
         "pb-6",
         "pb-7",
         "pb-8",
-        "pb-9"
+        "pb-9",
+        "pb-10",
+        "pb-11",
+        "pb-12"
       ]
     },
     "padding-start": {
@@ -824,7 +891,10 @@
         "ps-6",
         "ps-7",
         "ps-8",
-        "ps-9"
+        "ps-9",
+        "ps-10",
+        "ps-11",
+        "ps-12"
       ]
     },
     "gap": {
@@ -840,7 +910,10 @@
         "gap-6",
         "gap-7",
         "gap-8",
-        "gap-9"
+        "gap-9",
+        "gap-10",
+        "gap-11",
+        "gap-12"
       ]
     },
     "row-gap": {
@@ -856,7 +929,10 @@
         "row-gap-6",
         "row-gap-7",
         "row-gap-8",
-        "row-gap-9"
+        "row-gap-9",
+        "row-gap-10",
+        "row-gap-11",
+        "row-gap-12"
       ]
     },
     "column-gap": {
@@ -872,7 +948,10 @@
         "column-gap-6",
         "column-gap-7",
         "column-gap-8",
-        "column-gap-9"
+        "column-gap-9",
+        "column-gap-10",
+        "column-gap-11",
+        "column-gap-12"
       ]
     },
     "space-x": {
@@ -888,7 +967,10 @@
         "space-x-6",
         "space-x-7",
         "space-x-8",
-        "space-x-9"
+        "space-x-9",
+        "space-x-10",
+        "space-x-11",
+        "space-x-12"
       ]
     },
     "space-y": {
@@ -904,7 +986,10 @@
         "space-y-6",
         "space-y-7",
         "space-y-8",
-        "space-y-9"
+        "space-y-9",
+        "space-y-10",
+        "space-y-11",
+        "space-y-12"
       ]
     },
     "divide-x": {
@@ -1262,6 +1347,15 @@
         "bg-gradient"
       ]
     },
+    "color-scheme": {
+      "class": "color-scheme",
+      "property": "color-scheme",
+      "classes": [
+        "color-scheme-light",
+        "color-scheme-dark",
+        "color-scheme-auto"
+      ]
+    },
     "user-select": {
       "class": "user-select",
       "property": "user-select",
@@ -1418,6 +1512,22 @@
         "z-popover",
         "z-tooltip",
         "z-toast"
+      ]
+    },
+    "transition": {
+      "class": "transition",
+      "property": "transition",
+      "classes": [
+        "transition-none"
+      ]
+    },
+    "animation": {
+      "class": "animation",
+      "property": "animation",
+      "classes": [
+        "animation-none",
+        "animation-shake",
+        "animation-pop"
       ]
     }
   }

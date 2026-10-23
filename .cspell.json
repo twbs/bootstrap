@@ -49,6 +49,7 @@
     "currentcolor",
     "Datalists",
     "Datepicker",
+    "datepickers",
     "Deque",
     "describedby",
     "desync",
@@ -112,6 +113,7 @@
     "llms",
     "llmstxt",
     "longdesc",
+    "longhands",
     "Lowercased",
     "markdownify",
     "maxlength",
@@ -130,6 +132,7 @@
     "Neue",
     "nextjs",
     "noindex",
+    "nojekyll",
     "nonmodal",
     "nvmrc",
     "oklab",
@@ -151,6 +154,7 @@
     "recents",
     "rects",
     "relref",
+    "remint",
     "rgba",
     "roboto",
     "robotstxt",
@@ -195,6 +199,7 @@
     "urlize",
     "urlquery",
     "vbtn",
+    "viewbox",
     "viewports",
     "Vite",
     "vstack",
@@ -208,7 +213,8 @@
   ],
   "language": "en-US",
   "ignoreRegExpList": [
-    "\\\\u001[Bb]\\[[0-9;]*m"
+    "\\\\u001[Bb]\\[[0-9;]*m",
+    "%[0-9A-Fa-f]{2}"
   ],
   "ignorePaths": [
     ".cspell.json",

@@ -39,6 +39,9 @@
     - title: Theme
     - title: Color modes
     - title: Components
+    - title: Transitions
+      meta:
+        - added: 6.0.0
     - title: RTL
     - title: Optimize
 
@@ -126,6 +129,8 @@
     - title: Button group
     - title: Card
     - title: Carousel
+      meta:
+        - added: 6.0.0
     - title: Close button
     - title: Collapse
     - title: Dialog
@@ -145,12 +150,13 @@
     - title: Navbar
       meta:
         - added: 6.0.0
-
     - title: Pagination
     - title: Placeholder
     - title: Popover
     - title: Progress
     - title: Scrollspy
+      meta:
+        - added: 6.0.0
     - title: Spinner
     - title: Stepper
       meta:
@@ -168,6 +174,9 @@
   icon_color: orange
   pages:
     - title: Focus ring
+    - title: Hover lift
+      meta:
+        - added: 6.0.0
     - title: Icon link
     - title: Position
     - title: Stacks
@@ -186,6 +195,9 @@
       pages:
         - title: Colors
         - title: Background
+        - title: Color scheme
+          meta:
+            - added: 6.0.0
         - title: Theme
           meta:
             - added: 6.0.0
@@ -247,5 +259,8 @@
         - title: User select
     - group: Effects
       pages:
+        - title: Motion
+          meta:
+            - added: 6.0.0
         - title: Opacity
         - title: Shadows

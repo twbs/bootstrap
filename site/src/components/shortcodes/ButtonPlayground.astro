@@ -156,7 +156,7 @@ const rounded = ['default', 'pill', 'square']
 
 <script>
   import { Menu } from '@bootstrap'
-  import { highlightCode } from '@libs/highlight'
+  import { highlightCode } from '@twbs/bui/shiki'
 
   const colorMenuButton = document.querySelector('#btn-color-menu') as HTMLButtonElement
   const colorMenuItems = document.querySelectorAll('#btn-color-menu + .menu .menu-item')
@@ -188,7 +188,7 @@ const rounded = ['default', 'pill', 'square']
     html += '>'
 
     if (buttonType === 'text') {
-      html += 'Click me'
+      html += '\n  Click me'
     } else if (buttonType === 'left-icon') {
       html +=
         '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-left" />\n  </svg>\n  With left icon'

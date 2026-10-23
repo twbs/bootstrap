@@ -53,7 +53,7 @@ declare const element: HTMLElement
 const tooltipFromSelector: Tooltip = new Tooltip('#tip', { animation: false })
 const tooltipFromElement: Tooltip = new Tooltip(element)
 const toast: Toast = new Toast(element, { autohide: false, delay: 5000 })
-const collapse: Collapse = new Collapse(element, { toggle: false })
+const collapse: Collapse = new Collapse(element, { parent: '#accordion' })
 const carousel: Carousel = new Carousel(element, { interval: 2000 })
 const dialog: Dialog = new Dialog(element, { modal: true, keyboard: false })
 const drawer: Drawer = new Drawer(element, { scroll: true })
@@ -62,6 +62,7 @@ const range: Range = new Range(element, { formatter: value => `${value} %` })
 const chips: Chips = new Chips(element, { separator: ';', maxChips: 5, allowDuplicates: true })
 const combobox: Combobox = new Combobox(element, { multiple: true, placeholder: 'Pick one' })
 const navOverflow: NavOverflow = new NavOverflow(element, { moreText: 'More', collapseBelow: 768 })
+const navOverflowIconOnly: NavOverflow = new NavOverflow(element, { moreText: false })
 const otpInput: OtpInput = new OtpInput(element, { length: 6, type: 'alphanumeric', mask: true })
 const scrollSpy: ScrollSpy = new ScrollSpy(element, { smoothScroll: true })
 const strength: Strength = new Strength(element, { minLength: 12 })
@@ -118,6 +119,30 @@ tooltipFromSelector.show()
 tooltipFromElement.dispose()
 toast.dispose()
 
+// Show, hide, toggle, and close return a promise that settles once the component
+// finishes, so callers can await them instead of listening for `shown.bs.*`
+const closing: Promise<void> = createdAlert.close()
+const collapseShowing: Promise<void> = collapse.show()
+const collapseHiding: Promise<void> = collapse.hide()
+const collapseToggling: Promise<void> = collapse.toggle()
+const dialogShowing: Promise<void> = dialog.show()
+const drawerHiding: Promise<void> = drawer.hide()
+const toastShowing: Promise<void> = toast.show()
+const tabShowing: Promise<void> = tab.show()
+const tooltipToggling: Promise<void> = tooltipFromElement.toggle()
+const popoverShowing: Promise<void> = popover.show()
+const comboboxToggling: Promise<void> = combobox.toggle()
+const datepickerShowing: Promise<void> = datepicker.show()
+
+// Awaiting a lifecycle method yields no value
+const awaitLifecycle = async (): Promise<void> => {
+  const resolved: void = await collapse.show()
+  return resolved
+}
+
+// @ts-expect-error — the promise resolves to void, not a component
+const wrongResolution: Promise<Collapse> = collapse.show()
+
 // EventHandler.trigger is non-null for a non-null element…
 const triggered: Event = EventHandler.trigger(element, 'shown.bs.tooltip')
 // …and nullable when the element may be null
@@ -132,7 +157,7 @@ const inputs: HTMLInputElement[] = SelectorEngine.find<HTMLInputElement>('input'
 new Toast(element, { autohype: true })
 
 // @ts-expect-error — config value types are enforced
-new Collapse(element, { toggle: 'yes' })
+new Collapse(element, { parent: 42 })
 
 // The Vanilla Calendar Pro unions reject out-of-range values, which a plain
 // `number` or `string` would have accepted silently

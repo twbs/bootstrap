@@ -157,6 +157,42 @@ describe('Chips', () => {
 
       expect(chipsEl.querySelector('.chip-dismiss')).toBeNull()
     })
+
+    it('should keep the default dismiss SVG after sanitization', () => {
+      const { chips, chipsEl } = makeChips()
+      chips.add('alpha')
+
+      const dismiss = chipsEl.querySelector('.chip-dismiss')
+      expect(dismiss.querySelector('svg')).not.toBeNull()
+      expect(dismiss.querySelector('line')).not.toBeNull()
+    })
+
+    it('should sanitize dismissIcon HTML before inserting it', () => {
+      const { chips, chipsEl } = makeChips({
+        dismissIcon: '<img src="x" onerror="window.__chipsXss=1"><svg class="safe-icon" viewBox="0 0 16 16"><circle cx="8" cy="8" r="4"/></svg>'
+      })
+      chips.add('alpha')
+
+      const dismiss = chipsEl.querySelector('.chip-dismiss')
+      expect(dismiss.querySelector('img')).toBeNull()
+      expect(dismiss.innerHTML).not.toMatch(/onerror/i)
+      expect(dismiss.querySelector('svg.safe-icon')).not.toBeNull()
+      expect(window.__chipsXss).toBeUndefined()
+    })
+
+    it('should sanitize dismissIcon supplied via data attributes', () => {
+      const { chips, chipsEl } = makeChips(
+        null,
+        '<div class="chips" data-bs-dismiss-icon=\'<img src=x onerror="window.__chipsDataXss=1"><span class="icon-ok">x</span>\'></div>'
+      )
+      chips.add('alpha')
+
+      const dismiss = chipsEl.querySelector('.chip-dismiss')
+      expect(dismiss.querySelector('img')).toBeNull()
+      expect(dismiss.innerHTML).not.toMatch(/onerror/i)
+      expect(dismiss.querySelector('.icon-ok')).not.toBeNull()
+      expect(window.__chipsDataXss).toBeUndefined()
+    })
   })
 
   describe('remove', () => {
@@ -270,6 +306,20 @@ describe('Chips', () => {
       chips.selectChip(third, { rangeSelect: true })
 
       expect(chips.getSelectedValues()).toEqual(['a', 'b', 'c'])
+    })
+
+    it('should keep the anchor chip across range selections', () => {
+      const { chips } = makeChips()
+      const first = chips.add('a')
+      const second = chips.add('b')
+      chips.add('c')
+      const fourth = chips.add('d')
+
+      chips.selectChip(first)
+      chips.selectChip(second, { rangeSelect: true })
+      chips.selectChip(fourth, { rangeSelect: true })
+
+      expect(chips.getSelectedValues()).toEqual(['a', 'b', 'c', 'd'])
     })
 
     it('should ignore selection requests for foreign elements', () => {
@@ -620,6 +670,26 @@ describe('Chips', () => {
       keydown(chipsEl.querySelectorAll('.chip')[1], 'a')
 
       expect(chips.getSelectedValues()).toEqual(['b'])
+    })
+  })
+
+  describe('dispose', () => {
+    it('should remove component listeners and keep consumer listeners', () => {
+      const { chips, chipsEl } = makeChips()
+      const inputEl = chipsEl.querySelector('.form-ghost')
+      const chipEl = chips.add('alpha')
+      const inputSpy = jasmine.createSpy('input')
+      const clickSpy = jasmine.createSpy('click')
+
+      inputEl.addEventListener('input', inputSpy)
+      chipsEl.addEventListener('click', clickSpy)
+      chips.dispose()
+
+      inputEl.value = 'beta,'
+      expect(() => inputEl.dispatchEvent(createEvent('input'))).not.toThrow()
+      expect(() => chipEl.click()).not.toThrow()
+      expect(inputSpy).toHaveBeenCalled()
+      expect(clickSpy).toHaveBeenCalled()
     })
   })
 })

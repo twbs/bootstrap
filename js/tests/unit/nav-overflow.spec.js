@@ -1,9 +1,14 @@
 import EventHandler from '../../src/dom/event-handler.js'
+import Menu from '../../src/menu.js'
 import NavOverflow from '../../src/nav-overflow.js'
 import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 describe('NavOverflow', () => {
   let fixtureEl
+
+  const wait = (delay = 100) => new Promise(resolve => {
+    setTimeout(resolve, delay)
+  })
 
   beforeAll(() => {
     fixtureEl = getFixture()
@@ -23,6 +28,7 @@ describe('NavOverflow', () => {
     it('should return plugin default config', () => {
       expect(NavOverflow.Default).toEqual(jasmine.any(Object))
       expect(NavOverflow.Default.moreText).toEqual('More')
+      expect(NavOverflow.Default.menuStrategy).toEqual('absolute')
       expect(NavOverflow.Default.threshold).toEqual(0)
     })
   })
@@ -36,46 +42,81 @@ describe('NavOverflow', () => {
   describe('constructor', () => {
     it('should take care of element either passed as a CSS selector or DOM element', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
       const navBySelector = new NavOverflow('[data-bs-toggle="nav-overflow"]')
-      expect(navBySelector._element).toEqual(navEl)
+      expect(navBySelector._element).toEqual(wrapperEl)
 
-      const navByElement = new NavOverflow(navEl)
-      expect(navByElement._element).toEqual(navEl)
+      const navByElement = new NavOverflow(wrapperEl)
+      expect(navByElement._element).toEqual(wrapperEl)
 
       navByElement.dispose()
     })
 
-    it('should add nav-overflow class to element', () => {
+    it('should throw when the wrapper has no child nav', () => {
+      fixtureEl.innerHTML = '<div class="nav-overflow" data-bs-toggle="nav-overflow"></div>'
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+
+      expect(() => new NavOverflow(wrapperEl)).toThrowError(TypeError)
+    })
+
+    it('should keep a reference to the child nav', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navEl = wrapperEl.querySelector('.nav')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      expect(navEl).toHaveClass('nav-overflow')
+      expect(navOverflow._nav).toEqual(navEl)
 
       navOverflow.dispose()
     })
 
-    it('should create overflow menu toggle and menu', () => {
+    it('should add nav-overflow class to the wrapper', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      expect(wrapperEl).toHaveClass('nav-overflow')
+      expect(wrapperEl).toHaveClass('nav-overflow-initialized')
+      expect(wrapperEl.querySelector('.nav')).not.toHaveClass('nav-overflow')
+
+      navOverflow.dispose()
+    })
+
+    it('should create overflow menu toggle and menu inside the nav', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navEl = wrapperEl.querySelector('.nav')
+      const navOverflow = new NavOverflow(wrapperEl)
 
       const toggle = navEl.querySelector('.nav-overflow-toggle')
       const menu = navEl.querySelector('.nav-overflow-menu')
@@ -84,22 +125,25 @@ describe('NavOverflow', () => {
       expect(menu).not.toBeNull()
       expect(toggle.getAttribute('data-bs-toggle')).toEqual('menu')
       expect(menu).toHaveClass('menu')
+      expect(toggle.closest('.nav')).toEqual(navEl)
 
       navOverflow.dispose()
     })
 
     it('should store order data on nav items', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
-      const items = navEl.querySelectorAll('.nav-item:not(.nav-overflow-item)')
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const items = wrapperEl.querySelectorAll('.nav-item:not(.nav-overflow-item)')
 
       expect(items[0].dataset.bsNavOrder).toEqual('0')
       expect(items[1].dataset.bsNavOrder).toEqual('1')
@@ -110,17 +154,19 @@ describe('NavOverflow', () => {
 
     it('should respect custom moreText option', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         moreText: 'See all'
       })
 
-      const toggleText = navEl.querySelector('.nav-overflow-text')
+      const toggleText = wrapperEl.querySelector('.nav-overflow-text')
       expect(toggleText.textContent).toEqual('See all')
 
       navOverflow.dispose()
@@ -128,18 +174,20 @@ describe('NavOverflow', () => {
   })
 
   describe('update', () => {
-    it('should trigger update event', () => {
+    it('should trigger update event on the wrapper', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
-          '<ul class="nav" data-bs-toggle="nav-overflow">',
-          '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-          '</ul>'
+          '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+          '  <ul class="nav">',
+          '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+          '  </ul>',
+          '</div>'
         ].join('')
 
-        const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-        const navOverflow = new NavOverflow(navEl)
+        const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+        const navOverflow = new NavOverflow(wrapperEl)
 
-        navEl.addEventListener('update.bs.navoverflow', () => {
+        wrapperEl.addEventListener('update.bs.navoverflow', () => {
           navOverflow.dispose()
           resolve()
         })
@@ -152,59 +200,65 @@ describe('NavOverflow', () => {
   describe('getInstance', () => {
     it('should return nav overflow instance', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      expect(NavOverflow.getInstance(navEl)).toEqual(navOverflow)
-      expect(NavOverflow.getInstance(navEl)).toBeInstanceOf(NavOverflow)
+      expect(NavOverflow.getInstance(wrapperEl)).toEqual(navOverflow)
+      expect(NavOverflow.getInstance(wrapperEl)).toBeInstanceOf(NavOverflow)
 
       navOverflow.dispose()
     })
 
     it('should return null when there is no instance', () => {
-      fixtureEl.innerHTML = '<ul class="nav"></ul>'
+      fixtureEl.innerHTML = '<div class="nav-overflow"><ul class="nav"></ul></div>'
 
-      const navEl = fixtureEl.querySelector('.nav')
+      const wrapperEl = fixtureEl.querySelector('.nav-overflow')
 
-      expect(NavOverflow.getInstance(navEl)).toBeNull()
+      expect(NavOverflow.getInstance(wrapperEl)).toBeNull()
     })
   })
 
   describe('getOrCreateInstance', () => {
     it('should return nav overflow instance', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      expect(NavOverflow.getOrCreateInstance(navEl)).toEqual(navOverflow)
-      expect(NavOverflow.getInstance(navEl)).toEqual(NavOverflow.getOrCreateInstance(navEl, {}))
-      expect(NavOverflow.getOrCreateInstance(navEl)).toBeInstanceOf(NavOverflow)
+      expect(NavOverflow.getOrCreateInstance(wrapperEl)).toEqual(navOverflow)
+      expect(NavOverflow.getInstance(wrapperEl)).toEqual(NavOverflow.getOrCreateInstance(wrapperEl, {}))
+      expect(NavOverflow.getOrCreateInstance(wrapperEl)).toBeInstanceOf(NavOverflow)
 
       navOverflow.dispose()
     })
 
     it('should return new instance when there is no instance', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('.nav')
+      const wrapperEl = fixtureEl.querySelector('.nav-overflow')
 
-      expect(NavOverflow.getInstance(navEl)).toBeNull()
+      expect(NavOverflow.getInstance(wrapperEl)).toBeNull()
 
-      const instance = NavOverflow.getOrCreateInstance(navEl)
+      const instance = NavOverflow.getOrCreateInstance(wrapperEl)
       expect(instance).toBeInstanceOf(NavOverflow)
 
       instance.dispose()
@@ -214,15 +268,17 @@ describe('NavOverflow', () => {
   describe('overflow behavior', () => {
     it('should use placement option for overflow menu', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const toggle = navEl.querySelector('.nav-overflow-toggle')
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
       expect(toggle.getAttribute('data-bs-toggle')).toEqual('menu')
       expect(toggle.getAttribute('data-bs-placement')).toEqual('bottom-end')
 
@@ -231,36 +287,40 @@ describe('NavOverflow', () => {
 
     it('should preserve nav-overflow-keep items', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="width: 100px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item nav-overflow-keep"><a class="nav-link" href="#">Keep</a></li>',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 100px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item nav-overflow-keep"><a class="nav-link" href="#">Keep</a></li>',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
-      const keepItem = navEl.querySelector('.nav-overflow-keep')
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const keepItem = wrapperEl.querySelector('.nav-overflow-keep')
 
       expect(keepItem).not.toHaveClass('d-none')
 
       navOverflow.dispose()
     })
 
-    it('should hide items that overflow the nav width', () => {
+    it('should hide items that overflow the wrapper width', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 5</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 5</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const hiddenItems = navEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
+      const hiddenItems = wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
       expect(hiddenItems.length).toBeGreaterThan(0)
 
       for (const item of hiddenItems) {
@@ -270,20 +330,75 @@ describe('NavOverflow', () => {
       navOverflow.dispose()
     })
 
-    it('should show overflow toggle when items overflow', () => {
+    it('should measure the wrapper, not the nav, when the nav sizes to its content', () => {
+      // An inline-flex nav is as wide as its items, so measuring the nav would
+      // never report an overflow. The wrapper is the only honest measurement.
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: inline-flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 5</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navEl = wrapperEl.querySelector('.nav')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const overflowItem = navEl.querySelector('.nav-overflow-item')
+      expect(navEl.offsetWidth).toBeGreaterThan(wrapperEl.clientWidth)
+      expect(wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]').length).toBeGreaterThan(0)
+
+      navOverflow.dispose()
+    })
+
+    it('should observe the wrapper so its own collapsing cannot retrigger it', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: inline-flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const observeSpy = spyOn(ResizeObserver.prototype, 'observe').and.callThrough()
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      expect(observeSpy).toHaveBeenCalledWith(wrapperEl)
+
+      // Let the observer deliver its initial notification, then watch for more
+      await wait()
+      const recalculateSpy = spyOn(navOverflow, '_calculateOverflow').and.callThrough()
+      await wait(300)
+
+      expect(recalculateSpy).not.toHaveBeenCalled()
+
+      navOverflow.dispose()
+    })
+
+    it('should show overflow toggle when items overflow', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      const overflowItem = wrapperEl.querySelector('.nav-overflow-item')
       expect(overflowItem).not.toHaveClass('d-none')
 
       navOverflow.dispose()
@@ -291,16 +406,18 @@ describe('NavOverflow', () => {
 
     it('should hide overflow toggle when no items overflow', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 5000px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 5000px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const overflowItem = navEl.querySelector('.nav-overflow-item')
+      const overflowItem = wrapperEl.querySelector('.nav-overflow-item')
       expect(overflowItem).toHaveClass('d-none')
 
       navOverflow.dispose()
@@ -308,18 +425,20 @@ describe('NavOverflow', () => {
 
     it('should clone overflowed items into the menu', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const menu = navEl.querySelector('.nav-overflow-menu')
+      const menu = wrapperEl.querySelector('.nav-overflow-menu')
       const menuItems = menu.querySelectorAll('.menu-item')
       expect(menuItems.length).toBeGreaterThan(0)
 
@@ -328,19 +447,21 @@ describe('NavOverflow', () => {
 
     it('should preserve active state on cloned menu items', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 150px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link active" href="#">Active</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link active" href="#">Active</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const menu = navEl.querySelector('.nav-overflow-menu')
+      const menu = wrapperEl.querySelector('.nav-overflow-menu')
       const activeMenuItems = menu.querySelectorAll('.menu-item.active')
-      const originalActiveHidden = navEl.querySelector('.nav-item[data-bs-nav-overflow="true"] .nav-link.active')
+      const originalActiveHidden = wrapperEl.querySelector('.nav-item[data-bs-nav-overflow="true"] .nav-link.active')
 
       if (originalActiveHidden) {
         expect(activeMenuItems.length).toBeGreaterThan(0)
@@ -351,19 +472,21 @@ describe('NavOverflow', () => {
 
     it('should preserve disabled state on cloned menu items', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 150px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link disabled" href="#">Disabled</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link disabled" href="#">Disabled</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const menu = navEl.querySelector('.nav-overflow-menu')
+      const menu = wrapperEl.querySelector('.nav-overflow-menu')
       const disabledMenuItems = menu.querySelectorAll('.menu-item.disabled')
-      const originalDisabledHidden = navEl.querySelector('.nav-item[data-bs-nav-overflow="true"] .nav-link.disabled')
+      const originalDisabledHidden = wrapperEl.querySelector('.nav-item[data-bs-nav-overflow="true"] .nav-link.disabled')
 
       if (originalDisabledHidden) {
         expect(disabledMenuItems.length).toBeGreaterThan(0)
@@ -374,44 +497,48 @@ describe('NavOverflow', () => {
 
     it('should skip items without a nav-link when moving to overflow', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 150px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><span>No link</span></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><span>No link</span></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
 
       expect(() => {
-        const navOverflow = new NavOverflow(navEl)
+        const navOverflow = new NavOverflow(wrapperEl)
         navOverflow.dispose()
       }).not.toThrow()
     })
 
-    it('should fire overflow event with overflowCount and visibleCount', () => {
+    it('should fire overflow event on the wrapper with overflowCount and visibleCount', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 5</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 5</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
       let eventFired = false
       let receivedOverflowCount = 0
       let receivedVisibleCount = 0
 
-      navEl.addEventListener('overflow.bs.navoverflow', event => {
+      wrapperEl.addEventListener('overflow.bs.navoverflow', event => {
         eventFired = true
         receivedOverflowCount = event.overflowCount
         receivedVisibleCount = event.visibleCount
       })
 
-      const navOverflow = new NavOverflow(navEl)
+      const navOverflow = new NavOverflow(wrapperEl)
 
       expect(eventFired).toBeTrue()
       expect(receivedOverflowCount).toBeGreaterThan(0)
@@ -422,25 +549,27 @@ describe('NavOverflow', () => {
 
     it('should restore items when update causes no overflow', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const hiddenBefore = navEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
+      const hiddenBefore = wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
       expect(hiddenBefore.length).toBeGreaterThan(0)
 
-      // Widen the nav to remove overflow
-      navEl.style.width = '5000px'
+      // Widen the wrapper to remove overflow
+      wrapperEl.style.width = '5000px'
       navOverflow.update()
 
-      const hiddenAfter = navEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
+      const hiddenAfter = wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
       expect(hiddenAfter.length).toEqual(0)
 
       navOverflow.dispose()
@@ -448,23 +577,28 @@ describe('NavOverflow', () => {
 
     it('should reuse existing overflow toggle and menu from markup', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item">',
-        '    <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu">More</button>',
-        '    <div class="nav-overflow-menu menu"></div>',
-        '  </li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item nav-overflow-item">',
+        '      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu">More</button>',
+        '      <div class="nav-overflow-menu menu"></div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const existingToggle = navEl.querySelector('.nav-overflow-toggle')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const existingToggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      const navOverflow = new NavOverflow(wrapperEl)
 
       // Should reuse the existing toggle, not create a new one
-      const toggles = navEl.querySelectorAll('.nav-overflow-toggle')
+      const toggles = wrapperEl.querySelectorAll('.nav-overflow-toggle')
       expect(toggles.length).toEqual(1)
       expect(toggles[0]).toBe(existingToggle)
+
+      // The toggle's own item is never a collapsible item
+      expect(navOverflow._items.length).toEqual(1)
 
       navOverflow.dispose()
     })
@@ -473,18 +607,20 @@ describe('NavOverflow', () => {
   describe('config', () => {
     it('should respect custom moreIcon option', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
       const customIcon = '<span class="custom-icon">...</span>'
-      const navOverflow = new NavOverflow(navEl, {
+      const navOverflow = new NavOverflow(wrapperEl, {
         moreIcon: customIcon
       })
 
-      const iconContainer = navEl.querySelector('.nav-overflow-icon')
+      const iconContainer = wrapperEl.querySelector('.nav-overflow-icon')
       expect(iconContainer.innerHTML).toContain('custom-icon')
 
       navOverflow.dispose()
@@ -492,21 +628,23 @@ describe('NavOverflow', () => {
 
     it('should respect threshold option', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 150px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 5</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 5</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         threshold: 2
       })
 
-      const visibleItems = navEl.querySelectorAll('.nav-item:not(.nav-overflow-item):not(.d-none)')
+      const visibleItems = wrapperEl.querySelectorAll('.nav-item:not(.nav-overflow-item):not(.d-none)')
       expect(visibleItems.length).toBeGreaterThanOrEqual(2)
 
       navOverflow.dispose()
@@ -517,67 +655,156 @@ describe('NavOverflow', () => {
         collapseBelow: '(number|string)',
         iconPlacement: 'string',
         menuPlacement: 'string',
-        moreText: 'string',
+        menuStrategy: 'string',
+        moreText: '(string|boolean)',
         moreIcon: 'string',
         threshold: 'number'
       }))
     })
 
-    it('should respect custom menuPlacement option', () => {
+    it('should drop the text element when moreText is false', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
+        moreText: false
+      })
+
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      expect(wrapperEl.querySelector('.nav-overflow-text')).toBeNull()
+      expect(wrapperEl.querySelector('.nav-overflow-icon')).not.toBeNull()
+
+      // The icon alone cannot name the button, so fall back to the default text
+      expect(toggle.getAttribute('aria-label')).toEqual('More')
+
+      navOverflow.dispose()
+    })
+
+    it('should treat an empty moreText like false', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
+        moreText: ''
+      })
+
+      expect(wrapperEl.querySelector('.nav-overflow-text')).toBeNull()
+      expect(wrapperEl.querySelector('.nav-overflow-toggle').getAttribute('aria-label')).toEqual('More')
+
+      navOverflow.dispose()
+    })
+
+    it('should not set aria-label when the toggle shows text', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      expect(toggle.hasAttribute('aria-label')).toBeFalse()
+      expect(wrapperEl.querySelector('.nav-overflow-text').textContent).toEqual('More')
+
+      navOverflow.dispose()
+    })
+
+    it('should respect custom menuPlacement option', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         menuPlacement: 'bottom-start'
       })
 
-      const toggle = navEl.querySelector('.nav-overflow-toggle')
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
       expect(toggle.getAttribute('data-bs-placement')).toEqual('bottom-start')
+
+      navOverflow.dispose()
+    })
+
+    it('should pass menuStrategy to the generated menu toggle', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
+        menuStrategy: 'fixed'
+      })
+
+      expect(wrapperEl.querySelector('.nav-overflow-toggle').getAttribute('data-bs-strategy')).toEqual('fixed')
 
       navOverflow.dispose()
     })
 
     it('should use a child element with [data-bs-overflow-icon] as the icon', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
         '  <svg data-bs-overflow-icon class="bi-chevron" width="16" height="16"><circle cx="8" cy="8" r="8"/></svg>',
-        '</ul>'
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const iconContainer = navEl.querySelector('.nav-overflow-icon')
+      const iconContainer = wrapperEl.querySelector('.nav-overflow-icon')
       const svg = iconContainer.querySelector('svg')
       expect(svg).not.toBeNull()
       expect(svg).toHaveClass('bi-chevron')
       expect(svg.hasAttribute('data-bs-overflow-icon')).toBeFalse()
 
-      // Original element should be removed from the nav
-      expect(navEl.querySelector('[data-bs-overflow-icon]')).toBeNull()
+      // Original element should be removed from the wrapper
+      expect(wrapperEl.querySelector('[data-bs-overflow-icon]')).toBeNull()
 
       navOverflow.dispose()
     })
 
     it('should prefer child [data-bs-overflow-icon] over moreIcon config', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
         '  <svg data-bs-overflow-icon class="from-markup" width="16" height="16"><circle cx="8" cy="8" r="8"/></svg>',
-        '</ul>'
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         moreIcon: '<span class="from-config">X</span>'
       })
 
-      const iconContainer = navEl.querySelector('.nav-overflow-icon')
+      const iconContainer = wrapperEl.querySelector('.nav-overflow-icon')
       expect(iconContainer.querySelector('.from-markup')).not.toBeNull()
       expect(iconContainer.querySelector('.from-config')).toBeNull()
 
@@ -586,17 +813,19 @@ describe('NavOverflow', () => {
 
     it('should place icon after text when iconPlacement is "end"', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         iconPlacement: 'end'
       })
 
-      const toggle = navEl.querySelector('.nav-overflow-toggle')
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
       const children = [...toggle.children]
       const textIndex = children.findIndex(el => el.classList.contains('nav-overflow-text'))
       const iconIndex = children.findIndex(el => el.classList.contains('nav-overflow-icon'))
@@ -608,15 +837,17 @@ describe('NavOverflow', () => {
 
     it('should place icon before text by default (iconPlacement "start")', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      const toggle = navEl.querySelector('.nav-overflow-toggle')
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
       const children = [...toggle.children]
       const textIndex = children.findIndex(el => el.classList.contains('nav-overflow-text'))
       const iconIndex = children.findIndex(el => el.classList.contains('nav-overflow-icon'))
@@ -625,44 +856,138 @@ describe('NavOverflow', () => {
 
       navOverflow.dispose()
     })
+
+    it('should treat moreText as plain text, not HTML', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
+        moreText: '<img src=x onerror="window.__navTextXss=1">More'
+      })
+
+      const toggleText = wrapperEl.querySelector('.nav-overflow-text')
+      expect(toggleText.querySelector('img')).toBeNull()
+      expect(toggleText.textContent).toEqual('<img src=x onerror="window.__navTextXss=1">More')
+      expect(window.__navTextXss).toBeUndefined()
+
+      navOverflow.dispose()
+    })
+
+    it('should sanitize moreIcon HTML before inserting it', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
+        moreIcon: '<img src=x onerror="window.__navIconXss=1"><span class="safe-icon">…</span>'
+      })
+
+      const iconContainer = wrapperEl.querySelector('.nav-overflow-icon')
+      expect(iconContainer.querySelector('img')).toBeNull()
+      expect(iconContainer.innerHTML).not.toMatch(/onerror/i)
+      expect(iconContainer.querySelector('.safe-icon')).not.toBeNull()
+      expect(window.__navIconXss).toBeUndefined()
+
+      navOverflow.dispose()
+    })
+
+    it('should not let menuPlacement break out of its attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const maliciousPlacement = 'bottom-end"><img class="broken-out" src=x onerror="window.__navPlacementXss=1">'
+      const navOverflow = new NavOverflow(wrapperEl, {
+        menuPlacement: maliciousPlacement
+      })
+
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      expect(toggle.getAttribute('data-bs-placement')).toEqual(maliciousPlacement)
+      expect(wrapperEl.querySelector('img.broken-out')).toBeNull()
+      expect(window.__navPlacementXss).toBeUndefined()
+
+      navOverflow.dispose()
+    })
+
+    it('should sanitize markup from [data-bs-overflow-icon]', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '  <span data-bs-overflow-icon class="from-markup"><img src=x onerror="window.__navCustomIconXss=1"><i class="bi-ok"></i></span>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      const iconContainer = wrapperEl.querySelector('.nav-overflow-icon')
+      expect(iconContainer.querySelector('img')).toBeNull()
+      expect(iconContainer.innerHTML).not.toMatch(/onerror/i)
+      expect(iconContainer.querySelector('i.bi-ok')).not.toBeNull()
+      expect(window.__navCustomIconXss).toBeUndefined()
+
+      navOverflow.dispose()
+    })
   })
 
   describe('collapseBelow', () => {
-    it('should collapse all items when nav width is below collapseBelow (number)', () => {
+    it('should collapse all items when the wrapper width is below collapseBelow (number)', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 400px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 400px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         collapseBelow: 500
       })
 
-      const hiddenItems = navEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
+      const hiddenItems = wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
       expect(hiddenItems.length).toEqual(3)
 
       navOverflow.dispose()
     })
 
-    it('should not collapse items when nav width is above collapseBelow (number)', () => {
+    it('should not collapse items when the wrapper width is above collapseBelow (number)', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 5000px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 5000px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         collapseBelow: 500
       })
 
-      const hiddenItems = navEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
+      const hiddenItems = wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
       expect(hiddenItems.length).toEqual(0)
 
       navOverflow.dispose()
@@ -672,18 +997,20 @@ describe('NavOverflow', () => {
       document.documentElement.style.setProperty('--bs-breakpoint-md', '768px')
 
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 400px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 400px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         collapseBelow: 'md'
       })
 
-      const hiddenItems = navEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
+      const hiddenItems = wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
       expect(hiddenItems.length).toEqual(2)
 
       navOverflow.dispose()
@@ -692,22 +1019,24 @@ describe('NavOverflow', () => {
 
     it('should respect nav-overflow-keep items when collapsing all', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 400px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item nav-overflow-keep" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Keep</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 400px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item nav-overflow-keep" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Keep</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl, {
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl, {
         collapseBelow: 500
       })
 
-      const keepItem = navEl.querySelector('.nav-overflow-keep')
+      const keepItem = wrapperEl.querySelector('.nav-overflow-keep')
       expect(keepItem).not.toHaveClass('d-none')
 
-      const hiddenItems = navEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
+      const hiddenItems = wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
       expect(hiddenItems.length).toEqual(2)
 
       navOverflow.dispose()
@@ -715,18 +1044,20 @@ describe('NavOverflow', () => {
 
     it('should be disabled by default (collapseBelow: 0)', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 5000px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 5000px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
       expect(navOverflow._collapseBelow).toEqual(0)
 
-      const overflowItem = navEl.querySelector('.nav-overflow-item')
+      const overflowItem = wrapperEl.querySelector('.nav-overflow-item')
       expect(overflowItem).toHaveClass('d-none')
 
       navOverflow.dispose()
@@ -736,32 +1067,36 @@ describe('NavOverflow', () => {
   describe('dispose', () => {
     it('should dispose nav overflow and remove overflow menu', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
-      expect(NavOverflow.getInstance(navEl)).not.toBeNull()
-      expect(navEl.querySelector('.nav-overflow-toggle')).not.toBeNull()
+      expect(NavOverflow.getInstance(wrapperEl)).not.toBeNull()
+      expect(wrapperEl.querySelector('.nav-overflow-toggle')).not.toBeNull()
 
       navOverflow.dispose()
 
-      expect(NavOverflow.getInstance(navEl)).toBeNull()
-      expect(navEl.querySelector('.nav-overflow-toggle')).toBeNull()
+      expect(NavOverflow.getInstance(wrapperEl)).toBeNull()
+      expect(wrapperEl.querySelector('.nav-overflow-toggle')).toBeNull()
     })
 
     it('should disconnect ResizeObserver on dispose', () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
       const observer = navOverflow._resizeObserver
       if (observer) {
@@ -781,12 +1116,16 @@ describe('NavOverflow', () => {
 
       try {
         fixtureEl.innerHTML = [
-          '<ul class="nav" id="navA" data-bs-toggle="nav-overflow">',
-          '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-          '</ul>',
-          '<ul class="nav" id="navB" data-bs-toggle="nav-overflow">',
-          '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-          '</ul>'
+          '<div class="nav-overflow" id="navA" data-bs-toggle="nav-overflow">',
+          '  <ul class="nav">',
+          '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+          '  </ul>',
+          '</div>',
+          '<div class="nav-overflow" id="navB" data-bs-toggle="nav-overflow">',
+          '  <ul class="nav">',
+          '    <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
+          '  </ul>',
+          '</div>'
         ].join('')
 
         const navA = new NavOverflow(fixtureEl.querySelector('#navA'))
@@ -811,27 +1150,230 @@ describe('NavOverflow', () => {
       }
     })
 
-    it('should restore hidden items on dispose', () => {
+    it('should wrap an overflowing menu host as a working submenu', async () => {
       fixtureEl.innerHTML = [
-        '<ul class="nav" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
-        '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
-        '</ul>'
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
+        '    <li class="nav-item" id="products-item" style="flex: 0 0 100px; width: 100px;">',
+        '      <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">Products</button>',
+        '      <div class="menu" id="products-menu">',
+        '        <a class="menu-item" href="#">Laptops</a>',
+        '        <div class="submenu">',
+        '          <button class="menu-item" type="button">Phones</button>',
+        '          <div class="menu">',
+        '            <a class="menu-item" href="#">iPhone</a>',
+        '          </div>',
+        '        </div>',
+        '      </div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
       ].join('')
 
-      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
-      const navOverflow = new NavOverflow(navEl)
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const productsMenu = wrapperEl.querySelector('#products-menu')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const overflowMenu = wrapperEl.querySelector('.nav-overflow-menu')
+      const overflowToggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      const submenu = overflowMenu.querySelector(':scope > .submenu')
+      const trigger = submenu?.querySelector(':scope > .menu-item')
+
+      expect(wrapperEl.querySelector('#products-item')).toHaveClass('d-none')
+      expect(submenu).not.toBeNull()
+      expect(trigger.textContent).toEqual('Products')
+      expect(trigger.getAttribute('data-bs-toggle')).toBeNull()
+      expect(trigger.getAttribute('aria-haspopup')).toEqual('true')
+      expect(submenu.querySelector(':scope > .menu')).toEqual(productsMenu)
+      expect(productsMenu.querySelector('.submenu > .menu-item').textContent).toEqual('Phones')
+
+      await Menu.getOrCreateInstance(overflowToggle).show()
+      trigger.click()
+
+      expect(submenu).toHaveClass('show')
+      expect(productsMenu).toHaveClass('show')
+
+      productsMenu.querySelector('.submenu > .menu-item').click()
+
+      expect(productsMenu.querySelector('.submenu')).toHaveClass('show')
+      expect(productsMenu.querySelector('.submenu > .menu')).toHaveClass('show')
+
+      navOverflow.dispose()
+    })
+
+    it('should move a relocated menu back onto its nav item on restore', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
+        '    <li class="nav-item" id="products-item" style="flex: 0 0 100px; width: 100px;">',
+        '      <button class="nav-link" type="button" data-bs-toggle="menu">Products</button>',
+        '      <div class="menu" id="products-menu">',
+        '        <a class="menu-item" href="#">Laptops</a>',
+        '      </div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const productsItem = wrapperEl.querySelector('#products-item')
+      const productsMenu = wrapperEl.querySelector('#products-menu')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      expect(productsMenu.parentElement).toHaveClass('submenu')
+
+      navOverflow.dispose()
+
+      expect(productsMenu.parentElement).toEqual(productsItem)
+      expect(productsItem).not.toHaveClass('d-none')
+    })
+
+    it('should reset an open menu when relocating it', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 5000px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
+        '    <li class="nav-item" id="products-item" style="flex: 0 0 100px; width: 100px;">',
+        '      <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">Products</button>',
+        '      <div class="menu" id="products-menu">',
+        '        <a class="menu-item" href="#">Laptops</a>',
+        '      </div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const productsItem = wrapperEl.querySelector('#products-item')
+      const productsToggle = productsItem.querySelector('.nav-link')
+      const productsMenu = productsItem.querySelector('.menu')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const menu = new Menu(productsToggle)
+
+      await menu.show()
+      wrapperEl.style.width = '150px'
+      navOverflow.update()
+
+      expect(productsMenu.parentElement).toHaveClass('submenu')
+      expect(productsItem).not.toHaveClass('show')
+      expect(productsToggle).not.toHaveClass('show')
+      expect(productsToggle.getAttribute('aria-expanded')).toEqual('false')
+      expect(Menu.getInstance(productsToggle)).toBeNull()
+
+      navOverflow.dispose()
+    })
+
+    it('should relocate a menu that uses a container', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 5000px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
+        '    <li class="nav-item" id="products-item" style="flex: 0 0 100px; width: 100px;">',
+        '      <button class="nav-link" type="button" data-bs-toggle="menu" data-bs-container="body">Products</button>',
+        '      <div class="menu" id="products-menu">',
+        '        <a class="menu-item" href="#">Laptops</a>',
+        '      </div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const productsToggle = wrapperEl.querySelector('#products-item .nav-link')
+      const productsMenu = wrapperEl.querySelector('#products-menu')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const menu = new Menu(productsToggle)
+
+      await menu.show()
+      expect(productsMenu.parentElement).toEqual(document.body)
+
+      wrapperEl.style.width = '150px'
+      navOverflow.update()
+
+      expect(productsMenu.parentElement).toHaveClass('submenu')
+      expect(productsMenu.closest('.nav-overflow-menu')).not.toBeNull()
+
+      navOverflow.dispose()
+    })
+
+    it('should make a relocated anchor trigger keyboard focusable', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;">',
+        '      <a class="nav-link" href="#products-menu" data-bs-toggle="menu">Products</a>',
+        '      <div class="menu" id="products-menu">',
+        '        <a class="menu-item" href="#">Laptops</a>',
+        '      </div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const submenuTrigger = wrapperEl.querySelector('.nav-overflow-menu > .submenu > .menu-item')
+
+      expect(submenuTrigger.tagName).toEqual('A')
+      expect(submenuTrigger.getAttribute('href')).toBeNull()
+      expect(submenuTrigger.getAttribute('role')).toEqual('button')
+      expect(submenuTrigger.getAttribute('tabindex')).toEqual('0')
+
+      navOverflow.dispose()
+    })
+
+    it('should reset an open overflow menu before rebuilding it', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 150px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Products</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const overflowToggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      const overflowMenu = wrapperEl.querySelector('.nav-overflow-menu')
+      const menu = new Menu(overflowToggle)
+
+      await menu.show()
+      navOverflow.update()
+
+      expect(overflowToggle).not.toHaveClass('show')
+      expect(overflowToggle.getAttribute('aria-expanded')).toEqual('false')
+      expect(overflowMenu).not.toHaveClass('show')
+      expect(Menu.getInstance(overflowToggle)).toBeNull()
+
+      navOverflow.dispose()
+    })
+
+    it('should restore hidden items on dispose', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
 
       // Verify some items are hidden
-      const hiddenBefore = navEl.querySelectorAll('.nav-item.d-none:not(.nav-overflow-item)')
+      const hiddenBefore = wrapperEl.querySelectorAll('.nav-item.d-none:not(.nav-overflow-item)')
       expect(hiddenBefore.length).toBeGreaterThan(0)
 
       navOverflow.dispose()
 
       // After dispose, original items should be visible
-      const originalItems = navEl.querySelectorAll('.nav-item:not(.nav-overflow-item)')
+      const originalItems = wrapperEl.querySelectorAll('.nav-item:not(.nav-overflow-item)')
       for (const item of originalItems) {
         expect(item).not.toHaveClass('d-none')
       }

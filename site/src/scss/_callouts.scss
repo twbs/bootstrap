@@ -9,7 +9,7 @@
   .bd-callout {
     --link-color: var(--bd-callout-color);
     --link-hover-color: var(--bd-callout-color);
-    --code-color: var(--bd-callout-code-color);
+    --code-color: var(--bd-callout-color);
 
     position: relative;
     container-type: inline-size;
@@ -35,7 +35,11 @@
       margin-bottom: .25rem;
     }
 
-    a { font-weight: 500; }
+    a,
+    code {
+      font-weight: 500;
+      color: color-mix(in oklch, var(--bd-callout-color), var(--bs-fg-body) 50%);
+    }
 
     > :last-child {
       margin-bottom: 0;

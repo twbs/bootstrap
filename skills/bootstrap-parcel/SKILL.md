@@ -36,7 +36,7 @@ Set up a Bootstrap 6 project bundled with Parcel. Parcel is zero-config and auto
 3. Install Bootstrap and its optional peer dependencies (omit `@floating-ui/dom` if not using menus/popovers/tooltips; omit `vanilla-calendar-pro` if not using the datepicker):
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
+   npm i --save bootstrap@6.0.0-alpha.1 @floating-ui/dom vanilla-calendar-pro
    ```
 
 Parcel will auto-install the [Sass plugin](https://parceljs.org/languages/sass/) when it detects `.scss`. To install it manually: `npm i --save-dev @parcel/transformer-sass`.

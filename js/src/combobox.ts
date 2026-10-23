@@ -129,11 +129,11 @@ class Combobox extends BaseComponent {
   }
 
   // Public
-  toggle(): void {
+  toggle(): Promise<void> {
     return this._isShown() ? this.hide() : this.show()
   }
 
-  show(): void {
+  async show(): Promise<void> {
     if (isDisabled(this._toggle) || this._isShown()) {
       return
     }
@@ -154,7 +154,7 @@ class Combobox extends BaseComponent {
     EventHandler.trigger(this._toggle, EVENT_SHOWN)
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (!this._isShown()) {
       return
     }
@@ -181,6 +181,7 @@ class Combobox extends BaseComponent {
 
     EventHandler.off(this._menu, EVENT_KEY)
     EventHandler.off(this._toggle, EVENT_KEY)
+    EventHandler.off(this._searchInput, EVENT_KEY)
 
     super.dispose()
   }
@@ -224,7 +225,7 @@ class Combobox extends BaseComponent {
   }
 
   protected _addEventListeners(): void {
-    EventHandler.on(this._menu, 'click', SELECTOR_MENU_ITEM, event => {
+    EventHandler.on(this._menu, `click${EVENT_KEY}`, SELECTOR_MENU_ITEM, event => {
       const item = (event.target as Element).closest<HTMLElement>(SELECTOR_MENU_ITEM)
       if (!item || isDisabled(item)) {
         return
@@ -235,20 +236,20 @@ class Combobox extends BaseComponent {
       this._selectItem(item)
     })
 
-    EventHandler.on(this._toggle, 'keydown', event => {
+    EventHandler.on(this._toggle, `keydown${EVENT_KEY}`, event => {
       this._handleToggleKeydown(event)
     })
 
-    EventHandler.on(this._menu, 'keydown', event => {
+    EventHandler.on(this._menu, `keydown${EVENT_KEY}`, event => {
       this._handleMenuKeydown(event)
     })
 
     if (this._searchInput) {
-      EventHandler.on(this._searchInput, 'input', () => {
+      EventHandler.on(this._searchInput, `input${EVENT_KEY}`, () => {
         this._filterItems(this._searchInput!.value)
       })
 
-      EventHandler.on(this._searchInput, 'keydown', event => {
+      EventHandler.on(this._searchInput, `keydown${EVENT_KEY}`, event => {
         if (event.key === ARROW_DOWN_KEY) {
           event.preventDefault()
           const items = this._getVisibleItems()

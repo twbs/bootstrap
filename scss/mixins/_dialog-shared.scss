@@ -31,7 +31,7 @@
 }
 
 // Title: reset margin, set line-height
-@mixin dialog-title($line-height: 1.5) {
+@mixin dialog-title($line-height: 1.25) {
   margin-bottom: 0;
   line-height: $line-height;
 }

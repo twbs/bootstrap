@@ -66,6 +66,24 @@ describe('Drawer', () => {
       expect(spy).toHaveBeenCalled()
     })
 
+    it('should call hide on a responsive drawer without an explicit data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<dialog class="lg:drawer drawer-end">',
+        '  <button type="button" data-bs-dismiss="drawer">Close</button>',
+        '</dialog>'
+      ].join('')
+
+      const drawerEl = fixtureEl.querySelector('dialog')
+      const closeEl = fixtureEl.querySelector('button')
+      const drawer = new Drawer(drawerEl)
+
+      const spy = spyOn(drawer, 'hide')
+
+      closeEl.click()
+
+      expect(spy).toHaveBeenCalled()
+    })
+
     it('should hide if esc is pressed (non-modal via keydown)', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
@@ -214,6 +232,77 @@ describe('Drawer', () => {
         drawer.show()
       })
     })
+
+    it('should call `hide` on resize for plain `.drawer` when position is not fixed', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-end"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('dialog')
+        const drawer = new Drawer(drawerEl)
+
+        const spy = spyOn(drawer, 'hide').and.callThrough()
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawerEl.style.position = 'static'
+
+          const resizeEvent = createEvent('resize')
+          window.dispatchEvent(resizeEvent)
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should hide a plain drawer when its navbar expands without a window resize', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<nav class="navbar" style="width: 100px">',
+          '  <dialog class="drawer drawer-end drawer-instant" style="position: fixed"></dialog>',
+          '</nav>'
+        ].join('')
+
+        const navbarEl = fixtureEl.querySelector('.navbar')
+        const drawerEl = fixtureEl.querySelector('dialog')
+        const drawer = new Drawer(drawerEl)
+
+        const spy = spyOn(drawer, 'hide').and.callThrough()
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawerEl.style.position = 'static'
+          navbarEl.style.width = '200px'
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should disconnect the navbar resize observer on dispose', () => {
+      fixtureEl.innerHTML = [
+        '<nav class="navbar">',
+        '  <dialog class="drawer"></dialog>',
+        '</nav>'
+      ].join('')
+
+      const navbarEl = fixtureEl.querySelector('.navbar')
+      const drawerEl = fixtureEl.querySelector('dialog')
+      const observeSpy = spyOn(ResizeObserver.prototype, 'observe').and.callThrough()
+      const drawer = new Drawer(drawerEl)
+      const observer = drawer._resizeObserver
+      const disconnectSpy = spyOn(observer, 'disconnect').and.callThrough()
+
+      expect(observeSpy).toHaveBeenCalledWith(navbarEl)
+
+      drawer.dispose()
+
+      expect(disconnectSpy).toHaveBeenCalled()
+    })
   })
 
   describe('config', () => {
@@ -337,6 +426,33 @@ describe('Drawer', () => {
 
           setTimeout(() => {
             expect(spy).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should not respond to backdrop clicks for modal drawers without a backdrop', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl, {
+          scroll: false,
+          backdrop: false
+        })
+        const hideSpy = spyOn(drawer, 'hide')
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          const clickEvent = createEvent('click')
+          Object.defineProperty(clickEvent, 'target', { value: drawerEl })
+          drawerEl.dispatchEvent(clickEvent)
+
+          setTimeout(() => {
+            expect(drawer._openedAsModal).toBeTrue()
+            expect(hideSpy).not.toHaveBeenCalled()
             resolve()
           }, 10)
         })
@@ -488,6 +604,82 @@ describe('Drawer', () => {
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
           drawer.hide()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should keep the dialog open during the exit transition', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+
+          // The dialog has to stay in the top layer until the exit transition
+          // ends, otherwise the native ::backdrop is dropped synchronously and
+          // the backdrop can't animate out.
+          try {
+            expect(drawerEl.classList.contains('hiding')).toBeTrue()
+            expect(drawerEl.open).toBeTrue()
+          } catch (error) {
+            reject(error)
+          }
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(drawerEl.open).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should close the dialog immediately when animations are disabled', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-instant"></dialog>'
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+
+          try {
+            expect(drawerEl.open).toBeFalse()
+          } catch (error) {
+            reject(error)
+          }
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(drawerEl.open).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should remove dialog-open when the dialog is closed during the exit transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+          // Something else closes the dialog before the exit transition ends
+          drawerEl.close()
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+          resolve()
         })
 
         drawer.show()
@@ -930,6 +1122,29 @@ describe('Drawer', () => {
         drawer.show()
       })
     })
+
+    it('should remove hiding class when disposed during the transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+          expect(drawerEl.classList.contains('hiding')).toBeTrue()
+
+          // _queueCallback drops its completion callback once the instance is
+          // disposed, so dispose() clears the exit state itself — a stranded
+          // .hiding would hide the drawer of the next instance on this element.
+          drawer.dispose()
+          expect(drawerEl.classList.contains('hiding')).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
   })
 
   describe('swipe', () => {
@@ -1130,6 +1345,18 @@ describe('Drawer', () => {
 
         drawer.show()
       })
+    })
+
+    it('should not hide a non-drawer dialog whose class contains "drawer"', () => {
+      fixtureEl.innerHTML = '<dialog class="my-drawer"></dialog>'
+
+      const dialogEl = fixtureEl.querySelector('dialog')
+      dialogEl.show()
+
+      const resizeEvent = createEvent('resize')
+      window.dispatchEvent(resizeEvent)
+
+      expect(dialogEl.open).toBeTrue()
     })
   })
 

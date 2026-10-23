@@ -16,7 +16,7 @@ Check out [our Sass maps and loops docs]([[docsref:/customize/sass#maps-and-loop
 
 Themeable components support **theme variants**—a single family of composable `.theme-*` classes that recolor a component without hard-coded, per-component color classes. This replaces the previous pattern of baking color into each component (`.btn-primary`, `.alert-success`, `.bg-warning`, and so on) with one consistent API.
 
-Themeable components read a shared set of generic `--bs-theme-*` tokens for their background, foreground, border, and focus styles—each with a fallback to the component’s own default token. When no theme class is present, the fallback applies. Add a `.theme-*` class to the component (or to an ancestor) and it picks up that theme’s colors instead.
+Themeable components read a shared set of generic `--bs-theme-*` tokens for their background, foreground, border, and focus styles—each with a fallback to the component’s own default token. When no theme class is present, the fallback applies. Add a `.theme-*` class to the component (or to an ancestor) and it picks up that theme’s colors instead. Add `.theme-reset` to a nested subtree to return to those component defaults.
 
 <BsTable class="table">
 | Token | Description |

@@ -100,9 +100,7 @@ describe('Collapse', () => {
       fixtureEl.innerHTML = '<div class="show"></div>'
 
       const collapseEl = fixtureEl.querySelector('.show')
-      const collapse = new Collapse(collapseEl, {
-        toggle: false
-      })
+      const collapse = new Collapse(collapseEl)
 
       const spy = spyOn(collapse, 'hide')
 
@@ -132,8 +130,7 @@ describe('Collapse', () => {
 
         const collapseList = [...fixtureEl.querySelectorAll('.collapse')]
           .map(el => new Collapse(el, {
-            parent,
-            toggle: false
+            parent
           }))
 
         collapseEl2.addEventListener('shown.bs.collapse', () => {
@@ -154,9 +151,7 @@ describe('Collapse', () => {
       const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
-      const collapse = new Collapse(collapseEl, {
-        toggle: false
-      })
+      const collapse = new Collapse(collapseEl)
 
       collapse._isTransitioning = true
       collapse.show()
@@ -170,9 +165,7 @@ describe('Collapse', () => {
       const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
-      const collapse = new Collapse(collapseEl, {
-        toggle: false
-      })
+      const collapse = new Collapse(collapseEl)
 
       collapse.show()
 
@@ -181,15 +174,14 @@ describe('Collapse', () => {
 
     it('should show a collapsed element', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<div class="collapse" style="height: 0px;"></div>'
+        fixtureEl.innerHTML = '<div class="collapse"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
-        const collapse = new Collapse(collapseEl, {
-          toggle: false
-        })
+        const collapse = new Collapse(collapseEl)
 
+        // The CSS animates the size, so the element keeps its own styles
         collapseEl.addEventListener('show.bs.collapse', () => {
-          expect(collapseEl.style.height).toEqual('0px')
+          expect(collapseEl.style.height).toEqual('')
         })
         collapseEl.addEventListener('shown.bs.collapse', () => {
           expect(collapseEl).toHaveClass('show')
@@ -203,15 +195,13 @@ describe('Collapse', () => {
 
     it('should show a collapsed element on width', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<div class="collapse collapse-horizontal" style="width: 0px;"></div>'
+        fixtureEl.innerHTML = '<div class="collapse collapse-horizontal"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
-        const collapse = new Collapse(collapseEl, {
-          toggle: false
-        })
+        const collapse = new Collapse(collapseEl)
 
         collapseEl.addEventListener('show.bs.collapse', () => {
-          expect(collapseEl.style.width).toEqual('0px')
+          expect(collapseEl.style.width).toEqual('')
         })
         collapseEl.addEventListener('shown.bs.collapse', () => {
           expect(collapseEl).toHaveClass('show')
@@ -236,9 +226,7 @@ describe('Collapse', () => {
 
         const el1 = fixtureEl.querySelector('#collapse1')
         const el2 = fixtureEl.querySelector('#collapse2')
-        const collapse = new Collapse(el1, {
-          toggle: false
-        })
+        const collapse = new Collapse(el1)
 
         el1.addEventListener('shown.bs.collapse', () => {
           expect(el1).toHaveClass('show')
@@ -357,7 +345,8 @@ describe('Collapse', () => {
           collapse.hide()
         })
 
-        collapse.show()
+        // The element starts shown, so close it to begin the hide/show cycle
+        collapse.hide()
       })
     })
 
@@ -366,9 +355,7 @@ describe('Collapse', () => {
         fixtureEl.innerHTML = '<div class="collapse"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
-        const collapse = new Collapse(collapseEl, {
-          toggle: false
-        })
+        const collapse = new Collapse(collapseEl)
 
         const expectEnd = () => {
           setTimeout(() => {
@@ -398,9 +385,7 @@ describe('Collapse', () => {
       const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
-      const collapse = new Collapse(collapseEl, {
-        toggle: false
-      })
+      const collapse = new Collapse(collapseEl)
 
       collapse._isTransitioning = true
       collapse.hide()
@@ -414,9 +399,7 @@ describe('Collapse', () => {
       const spy = spyOn(EventHandler, 'trigger')
 
       const collapseEl = fixtureEl.querySelector('div')
-      const collapse = new Collapse(collapseEl, {
-        toggle: false
-      })
+      const collapse = new Collapse(collapseEl)
 
       collapse.hide()
 
@@ -428,9 +411,7 @@ describe('Collapse', () => {
         fixtureEl.innerHTML = '<div class="collapse show"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
-        const collapse = new Collapse(collapseEl, {
-          toggle: false
-        })
+        const collapse = new Collapse(collapseEl)
 
         collapseEl.addEventListener('hidden.bs.collapse', () => {
           expect(collapseEl).not.toHaveClass('show')
@@ -447,9 +428,7 @@ describe('Collapse', () => {
         fixtureEl.innerHTML = '<div class="collapse show"></div>'
 
         const collapseEl = fixtureEl.querySelector('div')
-        const collapse = new Collapse(collapseEl, {
-          toggle: false
-        })
+        const collapse = new Collapse(collapseEl)
 
         const expectEnd = () => {
           setTimeout(() => {
@@ -477,9 +456,7 @@ describe('Collapse', () => {
       fixtureEl.innerHTML = '<div class="collapse show"></div>'
 
       const collapseEl = fixtureEl.querySelector('div')
-      const collapse = new Collapse(collapseEl, {
-        toggle: false
-      })
+      const collapse = new Collapse(collapseEl)
 
       expect(Collapse.getInstance(collapseEl)).toEqual(collapse)
 
@@ -819,17 +796,22 @@ describe('Collapse', () => {
         const collapseTwo = fixtureEl.querySelector('#collapseTwo')
         const nestedCollapseOne = fixtureEl.querySelector('#nestedCollapseOne')
 
+        // `shown.bs.collapse` bubbles, so each handler stops listening before it
+        // opens the next collapse
         function handlerCollapseOne() {
+          collapseOne.removeEventListener('shown.bs.collapse', handlerCollapseOne)
+
           expect(collapseOne).toHaveClass('show')
           expect(collapseTwo).not.toHaveClass('show')
           expect(nestedCollapseOne).not.toHaveClass('show')
 
           nestedCollapseOne.addEventListener('shown.bs.collapse', handlerNestedCollapseOne)
           nestedTrigger.click()
-          collapseOne.removeEventListener('shown.bs.collapse', handlerCollapseOne)
         }
 
         function handlerNestedCollapseOne() {
+          nestedCollapseOne.removeEventListener('shown.bs.collapse', handlerNestedCollapseOne)
+
           expect(collapseOne).toHaveClass('show')
           expect(collapseTwo).not.toHaveClass('show')
           expect(nestedCollapseOne).toHaveClass('show')
@@ -842,7 +824,6 @@ describe('Collapse', () => {
           })
 
           triggerTwo.click()
-          nestedCollapseOne.removeEventListener('shown.bs.collapse', handlerNestedCollapseOne)
         }
 
         collapseOne.addEventListener('shown.bs.collapse', handlerCollapseOne)
@@ -949,11 +930,11 @@ describe('Collapse', () => {
 
       expect(Collapse.getInstance(div)).toBeNull()
       const collapse = Collapse.getOrCreateInstance(div, {
-        toggle: false
+        parent: fixtureEl
       })
       expect(collapse).toBeInstanceOf(Collapse)
 
-      expect(collapse._config.toggle).toBeFalse()
+      expect(collapse._config.parent).toEqual(fixtureEl)
     })
 
     it('should return the instance when exists without given configuration', () => {
@@ -961,17 +942,17 @@ describe('Collapse', () => {
 
       const div = fixtureEl.querySelector('div')
       const collapse = new Collapse(div, {
-        toggle: false
+        parent: fixtureEl
       })
       expect(Collapse.getInstance(div)).toEqual(collapse)
 
       const collapse2 = Collapse.getOrCreateInstance(div, {
-        toggle: true
+        parent: null
       })
       expect(collapse).toBeInstanceOf(Collapse)
       expect(collapse2).toEqual(collapse)
 
-      expect(collapse2._config.toggle).toBeFalse()
+      expect(collapse2._config.parent).toEqual(fixtureEl)
     })
   })
 })

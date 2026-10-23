@@ -1,0 +1,27 @@
+@use "../../theme" as *;
+
+$true-terminal-output: false;
+
+@include describe("generate-theme-reset") {
+  @include it("sets each theme token to initial") {
+    @include assert() {
+      @include output() {
+        @include generate-theme-reset();
+      }
+
+      @include expect() {
+        .theme-reset {
+          --theme-base: initial;
+          --theme-fg: initial;
+          --theme-fg-emphasis: initial;
+          --theme-bg: initial;
+          --theme-bg-subtle: initial;
+          --theme-bg-muted: initial;
+          --theme-border: initial;
+          --theme-focus-ring: initial;
+          --theme-contrast: initial;
+        }
+      }
+    }
+  }
+}

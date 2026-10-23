@@ -45,6 +45,31 @@ Toggle a dialog by clicking the button below. The dialog uses the native `showMo
     </div>
   </dialog>`} />
 
+## Without JavaScript
+
+Supported browsers can open and close a dialog with the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)—no Bootstrap JavaScript required. Set `commandfor` to the dialog’s `id`, use `command="show-modal"` to open, and `command="close"` to dismiss.
+
+<Callout type="warning">
+The Invoker Commands API is not supported in all browsers. For guaranteed support, use the `data-bs-toggle` examples above when you need our plugin options, events, or animated close.
+</Callout>
+
+<Example code={`<button type="button" class="btn-solid theme-primary" commandfor="invokerDialog" command="show-modal">
+    Open dialog
+  </button>
+
+  <dialog class="dialog" id="invokerDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Invoker Commands</h1>
+      <button type="button" class="btn-close" commandfor="invokerDialog" command="close" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>This dialog opens with <code>command="show-modal"</code> and closes with <code>command="close"</code>. No Bootstrap JavaScript is involved.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" commandfor="invokerDialog" command="close">Close</button>
+    </div>
+  </dialog>`} />
+
 ## Dark dialog
 
 To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
@@ -503,6 +528,8 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
+<Callout name="info-promise-methods" />
+
 #### Passing options
 
 Activates your content as a dialog. Accepts an optional options object.
@@ -515,9 +542,9 @@ const myDialog = new bootstrap.Dialog('#myDialog', {
 <BsTable>
 | Method | Description |
 | --- | --- |
-| `show` | Opens the dialog. **Returns to the caller before the dialog has actually been shown** (i.e. before the `shown.bs.dialog` event occurs). |
-| `hide` | Hides the dialog. **Returns to the caller before the dialog has actually been hidden** (i.e. before the `hidden.bs.dialog` event occurs). |
-| `toggle` | Toggles the dialog. **Returns to the caller before the dialog has actually been shown or hidden** (i.e. before the `shown.bs.dialog` or `hidden.bs.dialog` event occurs). |
+| `show` | Opens the dialog. **Returns a promise that resolves once the dialog is shown** (i.e. after the `shown.bs.dialog` event fires). |
+| `hide` | Hides the dialog. **Returns a promise that resolves once the dialog is hidden** (i.e. after the `hidden.bs.dialog` event fires). |
+| `toggle` | Toggles the dialog. **Returns a promise that resolves once the dialog is shown or hidden** (i.e. after the `shown.bs.dialog` or `hidden.bs.dialog` event fires). |
 | `handleUpdate` | Provided for API consistency with Modal. Native dialogs handle their own positioning. |
 | `dispose` | Destroys an element’s dialog. |
 | `getInstance` | Static method which allows you to get the dialog instance associated with a DOM element. |

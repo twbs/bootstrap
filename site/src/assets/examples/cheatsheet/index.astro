@@ -647,7 +647,7 @@ export const body_class = 'bg-1'
 
       <div>
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <div class="alert theme-${themeColor.name} fade show mb-3" role="alert">
+        <div class="alert theme-${themeColor.name} mb-3" role="alert">
           <p>A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</p>
           <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -655,12 +655,12 @@ export const body_class = 'bg-1'
 
         <Example showMarkup={false} code={`
         <div class="alert theme-success" role="alert">
-          <vstack>
+          <div class="vstack">
             <h4 class="alert-heading">Well done!</h4>
             <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-            <hr>
+            <hr class="mt-0">
             <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-          </vstack>
+          </div>
         </div>
         `} />
       </div>
@@ -812,7 +812,7 @@ export const body_class = 'bg-1'
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <ul class="list-group list-group-flush card-list">
+                <ul class="list-group list-group-flush">
                   <li class="list-group-item">An item</li>
                   <li class="list-group-item">A second item</li>
                   <li class="list-group-item">A third item</li>
@@ -1144,13 +1144,13 @@ export const body_class = 'bg-1'
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="tab-pane show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <p>This is some placeholder content the <strong>Home tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
           </div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <p>This is some placeholder content the <strong>Profile tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
           </div>
-          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+          <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
             <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
           </div>
         </div>
@@ -1272,8 +1272,8 @@ export const body_class = 'bg-1'
         <nav aria-label="Pagination example">
           <ul class="pagination pagination-sm">
             <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">2</a>
+            <li class="page-item active">
+              <a class="page-link" href="#" aria-current="page">2</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
           </ul>
@@ -1307,8 +1307,8 @@ export const body_class = 'bg-1'
               <a class="page-link">Previous</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">2</a>
+            <li class="page-item active">
+              <a class="page-link" href="#" aria-current="page">2</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item">

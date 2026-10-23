@@ -10,15 +10,15 @@
 import sidebarScroll from './partials/sidebar.js'
 import snippets from './partials/snippets.js'
 import stickyNav from './partials/sticky.js'
-import theme from './partials/theme.js'
 import tocDrawer from './partials/toc.js'
 import tocHeight from './partials/toc-height.js'
+import tocScroll from './partials/toc-scroll.js'
 
 export default () => {
   sidebarScroll()
   snippets()
   stickyNav()
-  theme()
   tocDrawer()
   tocHeight()
+  tocScroll()
 }

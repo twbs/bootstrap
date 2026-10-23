@@ -14,7 +14,7 @@ deps:
 
 ## Overview
 
-Click the button below to trigger a popover:
+Click the button below to show and close a popover.
 
 <Example addStackblitzJs code={`<button type="button" class="btn-solid theme-primary"
           data-bs-toggle="popover"
@@ -134,7 +134,7 @@ const popover = new bootstrap.Popover('.example-popover', {
 
 You can customize the appearance of popovers using [CSS variables](#variables). We set a custom class with `data-bs-custom-class="custom-popover"` to scope our custom appearance and use it to override some of the local CSS variables.
 
-<ScssDocs name="custom-popovers" file="site/src/scss/_component-examples.scss" />
+<ScssDocs name="custom-popovers" file="node_modules/@twbs/bui/src/scss/_component-examples.scss" />
 
 <Example addStackblitzJs class="custom-popover-demo" code={`<button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="popover" data-bs-placement="right"
@@ -147,6 +147,7 @@ You can customize the appearance of popovers using [CSS variables](#variables). 
 ### Dismiss on next click
 
 Use the `focus` trigger to dismiss popovers on the user’s next click of an element other than the toggle element.
+**Clicks and focus inside the popover itself do not dismiss it**, so users can select text or use controls in the content.
 
 <Callout type="danger">
 **Dismissing on next click requires specific HTML for proper cross-browser and cross-platform behavior.** You can only use `<a>` elements, not `<button>`s, and you must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex).
@@ -236,7 +237,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` opt
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `allowList` | object | [Default value]([[docsref:/getting-started/javascript#sanitizer]]) | An object containing allowed tags and attributes. Those not explicitly allowed will be removed by [the content sanitizer]([[docsref:/getting-started/javascript#sanitizer]]). <Callout type="warning">**Exercise caution when adding to this list.** Refer to [OWASP’s Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information.</Callout> |
-| `animation` | boolean | `true` | Apply a CSS fade transition to the popover. |
+| `animation` | boolean | `true` | Apply a CSS fade transition to the popover. Set it to `false` to add `.popover-instant` to the popover, which switches the fade off. |
 | `boundary` | string, element | `'clippingParents'` | Overflow constraint boundary of the popover (applies only to Floating UI’s shift middleware). By default, it’s `'clippingParents'` and can accept an HTMLElement reference (via JavaScript only). For more information refer to Floating UI’s [shift docs](https://floating-ui.com/docs/shift#boundary). |
 | `container` | string, element, false | `false` | Appends the popover to a specific element. Example: `container: 'body'`. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element -&nbsp;which will prevent the popover from floating away from the triggering element during a window resize. |
 | `content` | string, element, function | `''` | The popover’s text content. If a function is given, it will be called with the element it is attached to as its first argument, and with its `this` reference set to that same element. |
@@ -275,7 +276,7 @@ const popover = new bootstrap.Popover(element, {
 
 ### Methods
 
-<Callout name="danger-async-methods" type="danger" />
+<Callout name="info-promise-methods" />
 
 <BsTable>
 | Method | Description |
@@ -285,10 +286,10 @@ const popover = new bootstrap.Popover(element, {
 | `enable` | Gives an element’s popover the ability to be shown. **Popovers are enabled by default.** |
 | `getInstance` | _Static_ method which allows you to get the popover instance associated with a DOM element. |
 | `getOrCreateInstance` | _Static_ method which allows you to get the popover instance associated with a DOM element, or create a new one in case it wasn’t initialized. |
-| `hide` | Hides an element’s popover. **Returns to the caller before the popover has actually been hidden** (i.e. before the `hidden.bs.popover` event occurs). This is considered a “manual” triggering of the popover. |
+| `hide` | Hides an element’s popover. **Returns a promise that resolves once the popover is hidden** (i.e. after the `hidden.bs.popover` event fires). This is considered a “manual” triggering of the popover. |
 | `setContent` | Gives a way to change the popover’s content after its initialization. |
-| `show` | Reveals an element’s popover. **Returns to the caller before the popover has actually been shown** (i.e. before the `shown.bs.popover` event occurs). This is considered a “manual” triggering of the popover. Popovers whose title and content are both zero-length are never displayed. |
-| `toggle` | Toggles an element’s popover. **Returns to the caller before the popover has actually been shown or hidden** (i.e. before the `shown.bs.popover` or `hidden.bs.popover` event occurs). This is considered a “manual” triggering of the popover. |
+| `show` | Reveals an element’s popover. **Returns a promise that resolves once the popover is shown** (i.e. after the `shown.bs.popover` event fires). This is considered a “manual” triggering of the popover. Popovers whose title and content are both zero-length are never displayed. |
+| `toggle` | Toggles an element’s popover. **Returns a promise that resolves once the popover is shown or hidden** (i.e. after the `shown.bs.popover` or `hidden.bs.popover` event fires). This is considered a “manual” triggering of the popover. |
 | `toggleEnabled` | Toggles the ability for an element’s popover to be shown or hidden. |
 | `update` | Updates the position of an element’s popover. |
 </BsTable>

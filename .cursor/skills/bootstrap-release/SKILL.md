@@ -1,0 +1,325 @@
+---
+name: bootstrap-release
+description: Cuts a Bootstrap release from version preparation through npm, GitHub, NuGet, and documentation deployment. Use when a maintainer asks to release, publish, or ship Bootstrap, including prereleases such as v6.0.0-alpha.1.
+disable-model-invocation: true
+---
+
+# Release Bootstrap
+
+Use this workflow for maintainer releases from this repository.
+Set the release branch and version once before you start:
+
+```sh
+export RELEASE_BRANCH=main
+export RELEASE_VERSION=6.0.0-alpha.1
+export RELEASE_TAG="v${RELEASE_VERSION}"
+```
+
+## Safety rules
+
+- Keep the working tree clean before release work.
+- Use `next` for alpha, beta, and release-candidate npm releases.
+- Never point npm’s `latest` tag at a prerelease.
+- Mark each GitHub prerelease as a prerelease.
+- Use a signed git tag.
+- Never edit generated SRI hashes.
+- Pause before each external write.
+- Get explicit approval before you push a tag, publish to npm, publish a GitHub release, or deploy documentation.
+- Stop after any failed check.
+
+## Progress
+
+Track these steps:
+
+```text
+- [ ] 1. Check release prerequisites
+- [ ] 2. Prepare the version
+- [ ] 3. Run tests
+- [ ] 4. Build release files
+- [ ] 5. Commit and merge the release PR
+- [ ] 6. Verify and tag the merge commit
+- [ ] 7. Publish to npm
+- [ ] 8. Publish the GitHub release
+- [ ] 9. Deploy documentation
+- [ ] 10. Verify the release
+```
+
+## 1. Check release prerequisites
+
+1. Confirm the release branch and target version.
+2. Confirm all target milestone work is complete.
+3. Confirm the working tree is clean.
+4. Update the release branch.
+5. Use the Node.js version from `.nvmrc`.
+6. Install exact dependencies.
+7. Confirm npm access.
+8. Confirm GitHub access.
+
+```sh
+git switch "$RELEASE_BRANCH"
+git pull --ff-only origin "$RELEASE_BRANCH"
+git status --short
+nvm use
+npm ci
+npm whoami
+gh auth status
+```
+
+Confirm that the npm account can publish the `bootstrap` package.
+Confirm that `.github/workflows/publish-nuget.yml` exists.
+Confirm that `.github/workflows/docs-deploy.yml` exists before documentation deployment.
+
+## 2. Prepare the version
+
+Read and save the current version:
+
+```sh
+export CURRENT_VERSION=$(node -p "require('./package.json').version")
+printf '%s\n' "$CURRENT_VERSION"
+```
+
+Skip the version change when it already equals the release version.
+Otherwise, preview the version change first:
+
+```sh
+npm run release-version -- "$CURRENT_VERSION" "$RELEASE_VERSION" --dry-run --verbose
+```
+
+Then apply it:
+
+```sh
+npm run release-version -- "$CURRENT_VERSION" "$RELEASE_VERSION" --verbose
+```
+
+The script updates:
+
+- `README.md`
+- `config.yml`
+- `js/src/base-component.ts`
+- `package.js`
+- `package.json`
+- `package-lock.json`
+- `scss/_banner.scss`
+- `site/data/docs-versions.yml`
+
+It also updates RubyGem version strings from forms such as `6.0.0.alpha.1`.
+Review every changed file.
+Search for stale version strings outside generated output.
+
+```sh
+git grep -Fn "$CURRENT_VERSION" -- \
+  . \
+  ':!dist' \
+  ':!js/dist' \
+  ':!_site' \
+  ':!package-lock.json'
+```
+
+## 3. Run tests
+
+Run the full test suite before the final release build:
+
+```sh
+npm test
+npm run bundlewatch
+```
+
+The browser tests need Chromium.
+Install it only when the test output reports that it is missing:
+
+```sh
+npx playwright install --with-deps chromium
+```
+
+Fix all failures before continuing.
+
+## 4. Build release files
+
+Run the release build:
+
+```sh
+npm run release
+```
+
+This command performs these tasks:
+
+1. It builds CSS, JavaScript, and TypeScript declarations.
+2. It writes SRI hashes to `config.yml`.
+3. It builds the documentation site.
+4. It creates the distribution ZIP file.
+5. It creates the examples ZIP file.
+
+Confirm these files exist:
+
+```text
+bootstrap-${RELEASE_VERSION}-dist.zip
+bootstrap-${RELEASE_VERSION}-examples.zip
+```
+
+Review the complete diff.
+Confirm that `config.yml` contains updated `css_hash`, `js_hash`, and `js_bundle_hash` values.
+Do not rebuild `dist/` after this check.
+If another build changes `dist/`, run `npm run release-sri` again.
+
+## 5. Commit and merge the release PR
+
+Create a release branch from the release branch.
+Commit all intended version and generated release changes.
+
+```sh
+git switch -c "release-${RELEASE_TAG}"
+git add -A
+git commit -m "Release ${RELEASE_TAG}"
+git push -u origin "release-${RELEASE_TAG}"
+gh pr create --base "$RELEASE_BRANCH"
+```
+
+Review the staged file list before the commit.
+Do not include unrelated changes.
+Wait for all required checks.
+Merge the PR before tagging.
+
+## 6. Verify and tag the merge commit
+
+Return to the release branch and update it:
+
+```sh
+git switch "$RELEASE_BRANCH"
+git pull --ff-only origin "$RELEASE_BRANCH"
+npm ci
+npm run release
+git status --short
+```
+
+The tracked working tree must stay clean after the repeat build.
+The two ZIP files must exist.
+
+After explicit approval, create and push a signed tag:
+
+```sh
+git tag -s "$RELEASE_TAG" -m "$RELEASE_TAG"
+git push origin "$RELEASE_TAG"
+```
+
+Use the version without `v` in package files.
+Use the version with `v` for the git tag and GitHub release.
+
+## 7. Publish to npm
+
+Inspect the package contents:
+
+```sh
+npm pack --dry-run
+```
+
+After explicit approval, publish the prerelease:
+
+```sh
+npm publish --tag next
+```
+
+Complete npm’s authentication prompt.
+Then verify the distribution tags:
+
+```sh
+npm dist-tag ls bootstrap
+```
+
+`next` must point to `$RELEASE_VERSION`.
+`latest` must remain on the newest stable release.
+
+Use the default `latest` tag only for a stable release.
+
+## 8. Publish the GitHub release
+
+Use GitHub’s generated release notes.
+Attach both ZIP files.
+Mark the release as a prerelease.
+
+After explicit approval, run:
+
+```sh
+gh release create "$RELEASE_TAG" \
+  --title "$RELEASE_TAG" \
+  --generate-notes \
+  --prerelease \
+  "bootstrap-${RELEASE_VERSION}-dist.zip" \
+  "bootstrap-${RELEASE_VERSION}-examples.zip"
+```
+
+Publishing the GitHub release starts `.github/workflows/publish-nuget.yml`.
+Watch the workflow and confirm that both NuGet packages publish.
+
+## 9. Deploy documentation
+
+The manual documentation workflow builds `_site/`.
+It copies the current site over `gh-pages` without deleting older version directories.
+
+After explicit approval, dispatch it from the released branch:
+
+```sh
+gh workflow run docs-deploy.yml --ref "$RELEASE_BRANCH"
+```
+
+Find and watch the new run:
+
+```sh
+gh run list --workflow docs-deploy.yml --limit 1
+gh run watch
+```
+
+Confirm that the repository Pages source remains the `gh-pages` branch:
+
+```sh
+gh api repos/twbs/bootstrap/pages --jq '.build_type, .source'
+```
+
+## 10. Verify the release
+
+Verify all release surfaces:
+
+1. Confirm the npm version and distribution tags.
+2. Confirm the GitHub release has both ZIP files.
+3. Confirm the NuGet workflow passed.
+4. Confirm the Bootstrap homepage shows the new version.
+5. Confirm the new documentation version loads.
+6. Confirm an older documentation version still loads.
+7. Confirm the jsDelivr CSS and JavaScript files load.
+8. Confirm their SRI hashes match `config.yml`.
+
+jsDelivr can take a few minutes to load a new npm version.
+
+Calculate a published file hash with:
+
+```sh
+curl -sL \
+  "https://cdn.jsdelivr.net/npm/bootstrap@${RELEASE_VERSION}/dist/css/bootstrap.min.css" \
+  | openssl dgst -sha384 -binary \
+  | openssl base64 -A
+```
+
+Repeat the check for:
+
+- `dist/js/bootstrap.min.js`
+- `dist/js/bootstrap.bundle.min.js`
+
+Compare each result with the base64 part of the related `sha384-` value in `config.yml`.
+
+## Recovery
+
+Do not unpublish a bad npm release.
+Publish a corrected version.
+
+To move the prerelease distribution tag:
+
+```sh
+npm dist-tag add bootstrap@<good-version> next
+```
+
+To remove a bad GitHub release and tag:
+
+```sh
+gh release delete "$RELEASE_TAG" --cleanup-tag
+```
+
+Get explicit approval before either recovery action.

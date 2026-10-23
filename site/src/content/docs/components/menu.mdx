@@ -363,8 +363,8 @@ Put a form within a menu, or make it into a menu, and use [margin]([[docsref:/ut
       </div>
       <div class="vstack gap-2">
         <button type="submit" class="btn-solid theme-primary">Sign in</button>
-        <a class="btn-ghost theme-secondary" href="#">New around here? Sign up</a>
-        <a class="btn-ghost theme-secondary" href="#">Forgot password?</a>
+        <a class="theme-secondary" href="#">New around here? Sign up</a>
+        <a class="theme-secondary" href="#">Forgot password?</a>
       </div>
     </form>
   </div>`} />
@@ -536,6 +536,8 @@ The [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessib
 
 Bootstrap’s menus, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create menus that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the `role` and `aria-` attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.
 
+Submenu triggers are an exception. Bootstrap adds `aria-haspopup="true"` to each `.submenu > .menu-item` that wraps a nested `.menu`, and keeps `aria-expanded` on it in sync as the submenu opens and closes. Set `aria-expanded` yourself only if a submenu must start open.
+
 ### Keyboard navigation
 
 Menus include built-in keyboard support for navigating menu items.
@@ -634,6 +636,7 @@ menu.toggle()
 | `display` | string | `'dynamic'` | By default, we use Floating UI for dynamic positioning. Disable this with `static`. |
 | `offset` | array, string, function | `[0, 2]` | Offset of the menu relative to its target. You can pass a string in data attributes with comma separated values like: `data-bs-offset="10,20"`. When a function is used to determine the offset, it is called with an object containing the placement, the reference, and floating rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: [skidding, distance]. For more information refer to Floating UI’s [offset docs](https://floating-ui.com/docs/offset). |
 | `floatingConfig` | null, object, function | `null` | To change Bootstrap’s default Floating UI config, see [Floating UI’s configuration](https://floating-ui.com/docs/computePosition). When a function is used to create the Floating UI configuration, it’s called with an object that contains the Bootstrap’s default Floating UI configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Floating UI. |
+| `menu` | null, element | `null` | The menu element to use. By default, we look for `.menu` after or before the toggle, then inside its wrapper. Set `menu` when that search finds the wrong element, or when the menu sits outside the wrapper. |
 | `placement` | string | `'bottom-start'` | Placement of the menu. Physical placements: `'top'`, `'bottom'`, `'left'`, `'right'`. Logical placements (RTL-aware): `'start'`, `'end'`. All support alignment modifiers: `-start`, `-end`. Supports responsive prefixes like `'bottom-start md:end'`. |
 | `reference` | string, element, object | `'toggle'` | Reference element of the menu. Accepts the values of `'toggle'`, `'parent'`, an HTMLElement reference or an object providing `getBoundingClientRect`. For more information refer to Floating UI’s [virtual elements docs](https://floating-ui.com/docs/virtual-elements). |
 | `strategy` | string | `'absolute'` | Positioning strategy for the menu. Use `'absolute'` for default positioning, or `'fixed'` to escape containers with `overflow: hidden`. For more information refer to Floating UI’s [strategy docs](https://floating-ui.com/docs/computePosition#strategy). |

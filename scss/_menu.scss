@@ -44,8 +44,9 @@ $menu-tokens: defaults(
     --menu-header-color: var(--fg-3),
     --menu-header-padding-x: .75rem,
     --menu-header-padding-y: .25rem,
+    --menu-transition-property: "opacity, transform, display",
     --menu-transition-duration: .15s,
-    --menu-transition-timing: cubic-bezier(.22, 1, .36, 1),
+    --menu-transition-timing: var(--transition-timing-overlay),
   ),
   $menu-tokens
 );
@@ -79,28 +80,40 @@ $menu-tokens: defaults(
     @include box-shadow(var(--menu-box-shadow));
     opacity: 0;
     transform: scale(.95);
-    transform-origin: top start;
+    transform-origin: top left;
 
     &[data-bs-placement^="top"] {
-      transform-origin: bottom start;
+      transform-origin: bottom left;
+    }
+
+    &[data-bs-placement="bottom"] {
+      transform-origin: top center;
+    }
+
+    &[data-bs-placement="top"] {
+      transform-origin: bottom center;
     }
 
     &[data-bs-placement="bottom-end"] {
-      transform-origin: top end;
+      transform-origin: top right;
     }
 
     &[data-bs-placement="top-end"] {
-      transform-origin: bottom end;
+      transform-origin: bottom right;
     }
 
     &[data-bs-placement^="left"] {
-      transform-origin: top end;
+      transform-origin: top right;
     }
 
-    @include transition(
-      opacity var(--menu-transition-duration) var(--menu-transition-timing),
-      transform var(--menu-transition-duration) var(--menu-transition-timing),
-      display var(--menu-transition-duration) allow-discrete
+    // `display` transitions discretely so the menu stays laid out until the
+    // fade-out finishes. Keep it in --menu-transition-property when you
+    // override the list.
+    @include transition-props(
+      var(--menu-transition-property),
+      var(--menu-transition-duration),
+      var(--menu-transition-timing),
+      allow-discrete
     );
 
     &.show {

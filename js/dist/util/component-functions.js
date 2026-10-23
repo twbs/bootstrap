@@ -1,5 +1,5 @@
 /*!
-* Bootstrap component-functions.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Bootstrap component-functions.js v6.0.0-alpha.1 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -13,7 +13,7 @@ const enableDismissTrigger = (component, method = "hide") => {
 	EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function(event) {
 		if (["A", "AREA"].includes(this.tagName)) event.preventDefault();
 		if (isDisabled(this)) return;
-		const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}`);
+		const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}, [class*=":${name}"]`);
 		component.getOrCreateInstance(target)[method]();
 	});
 };

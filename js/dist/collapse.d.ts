@@ -8,7 +8,6 @@ import BaseComponent from './base-component.js';
 import type { ComponentConfig } from './util/config.js';
 type CollapseConfig = {
     parent: string | Element | null;
-    toggle: boolean;
 };
 /**
  * Class definition
@@ -21,15 +20,16 @@ declare class Collapse extends BaseComponent {
     static get Default(): CollapseConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
-    toggle(): void;
-    show(): void;
-    hide(): void;
+    toggle(): Promise<void>;
+    show(): Promise<void>;
+    hide(): Promise<void>;
     protected _isShown(element?: HTMLElement): boolean;
+    protected _isAnimated(): boolean;
+    protected _sharesTrigger(element: HTMLElement): boolean;
     protected _configAfterMerge(config: ComponentConfig): ComponentConfig;
-    protected _getDimension(): 'width' | 'height';
     protected _initializeChildren(): void;
     protected _getFirstLevelChildren(selector: string): HTMLElement[];
-    protected _addAriaAndCollapsedClass(triggerArray: HTMLElement[], isOpen: boolean): void;
+    protected _setAriaExpanded(triggerArray: HTMLElement[], isOpen: boolean): void;
 }
 export default Collapse;
 export type { CollapseConfig };

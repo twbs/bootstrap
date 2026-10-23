@@ -8,7 +8,9 @@
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-import { getNextActiveElement, isDisabled, setAriaAttribute } from './util/index.js'
+import {
+  getNextActiveElement, getTransitionDurationFromElement, isDisabled, setAriaAttribute
+} from './util/index.js'
 
 /**
  * Constants
@@ -34,7 +36,6 @@ const HOME_KEY = 'Home'
 const END_KEY = 'End'
 
 const CLASS_NAME_ACTIVE = 'active'
-const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 const SELECTOR_MENU_TOGGLE = '[data-bs-toggle="menu"]'
 const SELECTOR_MENU = '.menu'
@@ -47,6 +48,8 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"]'
 const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`
 
 const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"]`
+
+const activationIds = new WeakMap<Element, number>()
 
 /**
  * Class definition
@@ -75,7 +78,8 @@ class Tab extends BaseComponent {
   }
 
   // Public
-  show(): void { // Shows this elem and deactivate the active sibling if exists
+  // Shows this elem and deactivate the active sibling if exists
+  async show(): Promise<void> {
     const innerElem = this._element
     if (this._elemIsActive(innerElem)) {
       return
@@ -94,23 +98,33 @@ class Tab extends BaseComponent {
       return
     }
 
+    const activationId = (activationIds.get(this._parent!) || 0) + 1
+    activationIds.set(this._parent!, activationId)
+
     this._deactivate(active, innerElem)
-    this._activate(innerElem, active)
+    await this._activate(innerElem, active, activationId)
   }
 
   // Private
-  protected _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void {
+  protected async _activate(element: HTMLElement | null, relatedElem?: HTMLElement | null, activationId?: number): Promise<void> {
     if (!element) {
       return
     }
 
     element.classList.add(CLASS_NAME_ACTIVE)
 
-    this._activate(SelectorEngine.getElementFromSelector(element)) // Search and activate/show the proper section
+    // A pane animates itself in CSS, from .active. Both classes land in the same
+    // frame so nothing here sequences the fade.
+    if (element.getAttribute('role') !== 'tab') {
+      element.classList.add(CLASS_NAME_SHOW)
+      return
+    }
+
+    const pane = SelectorEngine.getElementFromSelector(element)
+    this._activate(pane) // Search and activate/show the proper section
 
     const complete = () => {
-      if (element.getAttribute('role') !== 'tab') {
-        element.classList.add(CLASS_NAME_SHOW)
+      if (activationId !== activationIds.get(this._parent!) || !this._elemIsActive(element)) {
         return
       }
 
@@ -122,10 +136,12 @@ class Tab extends BaseComponent {
       })
     }
 
-    this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE))
+    // `shown` waits for the pane, the element that animates. The tab itself only
+    // transitions its colors.
+    await this._queueCallback(complete, pane ?? element, getTransitionDurationFromElement(pane) > 0)
   }
 
-  protected _deactivate(element: HTMLElement | null, relatedElem?: HTMLElement | null): void {
+  protected async _deactivate(element: HTMLElement | null, relatedElem?: HTMLElement | null): Promise<void> {
     if (!element) {
       return
     }
@@ -133,21 +149,23 @@ class Tab extends BaseComponent {
     element.classList.remove(CLASS_NAME_ACTIVE)
     element.blur()
 
+    // A pane leaves at once: two in-flow panes cannot cross-fade without one
+    // stacking under the other.
+    if (element.getAttribute('role') !== 'tab') {
+      element.classList.remove(CLASS_NAME_SHOW)
+      return
+    }
+
     this._deactivate(SelectorEngine.getElementFromSelector(element)) // Search and deactivate the shown section too
 
     const complete = () => {
-      if (element.getAttribute('role') !== 'tab') {
-        element.classList.remove(CLASS_NAME_SHOW)
-        return
-      }
-
       setAriaAttribute(element, 'aria-selected', false)
       element.setAttribute('tabindex', '-1')
       this._toggleMenu(element, false)
       EventHandler.trigger(element, EVENT_HIDDEN, { relatedTarget: relatedElem })
     }
 
-    this._queueCallback(complete, element, element.classList.contains(CLASS_NAME_FADE))
+    await this._queueCallback(complete, element, false)
   }
 
   protected _keydown(event: BootstrapEvent): void {

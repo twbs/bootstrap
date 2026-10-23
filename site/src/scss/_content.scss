@@ -135,19 +135,6 @@
     }
   }
 
-  :where(.bi) {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    // vertical-align: -.125em;
-    fill: currentcolor;
-  }
-
-  :where(.bi-sm) {
-    width: .75rem;
-    height: .75rem;
-  }
-
   .border-lg-start {
     @include media-breakpoint-up(lg) {
       border-inline-start: var(--bs-border-width) solid var(--bs-border-color);

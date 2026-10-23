@@ -28,19 +28,26 @@
       background-color: transparent;
     }
 
-    .btn-styled {
-      box-shadow: var(--bs-box-shadow), var(--bs-btn-shadow);
-    }
-
-    #carbonads { // stylelint-disable-line selector-max-id
+    .bd-masthead-ad {
+      width: 100%;
       max-width: 400px;
       margin-block-start: 3rem;
+
+      @include media-breakpoint-up(md) {
+        min-height: 160px;
+      }
     }
 
     @include media-breakpoint-up(md) {
       display: grid;
       place-items: center;
       height: calc(100vh - var(--bd-navbar-offset));
+    }
+
+    .md\:fs-lg {
+      @include media-breakpoint-up(md) {
+        font-size: var(--bs-font-size-lg);
+      }
     }
   }
 }

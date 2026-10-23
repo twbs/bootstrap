@@ -58,6 +58,17 @@ describe('Toggler', () => {
       expect(togglerEl.hasAttribute('hidden')).toBeFalse()
     })
 
+    it('should not throw and should be a no-op when no value is provided', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="toggler" data-bs-attribute="class"></div>'
+
+      const togglerEl = fixtureEl.querySelector('[data-bs-toggle="toggler"]')
+      const toggler = new Toggler(togglerEl)
+      const classNameBefore = togglerEl.className
+
+      expect(() => toggler.toggle()).not.toThrow()
+      expect(togglerEl.className).toEqual(classNameBefore)
+    })
+
     it('should not toggle id attribute', () => {
       fixtureEl.innerHTML = '<div data-bs-toggle="toggler" data-bs-value="new-id" data-bs-attribute="id"></div>'
 

@@ -51,10 +51,10 @@ While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScri
 
 A better alternative for those using this type of frameworks is to use a framework-specific package **instead of** the Bootstrap JavaScript. Here are some of the most popular options:
 
-- React: [React Bootstrap](https://react-bootstrap.github.io/)
-- Vue: [BootstrapVue](https://bootstrap-vue.org/) (Bootstrap 4)
+- React: [React Bootstrap](https://react-bootstrap.github.io/) (Bootstrap 5)
+- Vue 2: [BootstrapVue](https://bootstrap-vue.org/) (Bootstrap 4)
 - Vue 3: [BootstrapVueNext](https://bootstrap-vue-next.github.io/bootstrap-vue-next/) (Bootstrap 5)
-- Angular: [ng-bootstrap](https://ng-bootstrap.github.io/) or [ngx-bootstrap](https://valor-software.com/ngx-bootstrap)
+- Angular: [ng-bootstrap](https://ng-bootstrap.github.io/) (Bootstrap 5) or [ngx-bootstrap](https://valor-software.com/ngx-bootstrap) (Bootstrap 5)
 
 ## Using Bootstrap as a module
 
@@ -140,9 +140,9 @@ Bootstrap provides custom events for most plugins' unique actions. Generally, th
 All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
 ```js
-const myDialog = document.querySelector('#myDialog')
+const myDialogEl = document.querySelector('#myDialog')
 
-myDialog.addEventListener('show.bs.dialog', event => {
+myDialogEl.addEventListener('show.bs.dialog', event => {
   return event.preventDefault() // stops dialog from being shown
 })
 ```
@@ -186,19 +186,59 @@ const drawer = bootstrap.Drawer.getInstance('#myDrawer')
 const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
 ```
 
-### Asynchronous functions and transitions
+### Promises and transitions
 
-All programmatic API methods are **asynchronous** and return to the caller once the transition is started, but **before it ends**. In order to execute an action once the transition is complete, you can listen to the corresponding event.
+All programmatic API methods are **asynchronous** and return to the caller once the transition is started, but **before it ends**.
+
+Methods that show or hide a component return a **promise**. The promise resolves when the transition ends, so you can `await` the method instead of listening for an event.
 
 ```js
-const myCollapseEl = document.querySelector('#myCollapse')
+const collapse = bootstrap.Collapse.getOrCreateInstance('#myCollapse')
 
-myCollapseEl.addEventListener('shown.bs.collapse', event => {
-  // Action to execute once the collapsible area is expanded
+await collapse.show()
+// The collapsible area is now expanded
+```
+
+These methods return a promise:
+
+<BsTable class="table">
+| Method | Components |
+| --- | --- |
+| `show`, `hide`, `toggle` | Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, Popover, Tooltip |
+| `show`, `hide` | Toast |
+| `show` | Tab |
+| `close` | Alert |
+</BsTable>
+
+The promise resolves with no value. It resolves at the same moment the matching `shown.bs.*`, `hidden.bs.*`, or `closed.bs.*` event fires, so both styles run your code at the same time. Use the event when you must react to every change, including ones your own code did not start.
+
+```js
+const myDrawerEl = document.querySelector('#myDrawer')
+const drawer = bootstrap.Drawer.getOrCreateInstance(myDrawerEl)
+
+// Await the method you called…
+await drawer.hide()
+saveState()
+
+// …or listen for every hide, whoever started it
+myDrawerEl.addEventListener('hidden.bs.drawer', () => {
+  saveState()
 })
 ```
 
-In addition, a method call on a **transitioning component will be ignored**.
+Because each method returns a promise, you can run steps in order without nesting listeners.
+
+```js
+const dialog = bootstrap.Dialog.getOrCreateInstance('#myDialog')
+const toast = bootstrap.Toast.getOrCreateInstance('#myToast')
+
+await dialog.hide()
+await toast.show()
+```
+
+The promise also resolves when the call does nothing — for example when the component is already open, when a listener calls `preventDefault()` on the `show.bs.*` event, or when you dispose the component mid-transition. `await` therefore never hangs, but it also does not tell you whether the state changed. Check the state yourself when that matters.
+
+In addition, a method call on a **transitioning component will be ignored**. For the promise-returning methods above, such a call resolves immediately. It does not wait for the running transition to end.
 
 ```js
 const myCarouselEl = document.querySelector('#myCarousel')
@@ -214,16 +254,26 @@ carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not 
 
 #### `dispose` method
 
-While it may seem correct to use the `dispose` method immediately after `hide()`, it will lead to incorrect results. Here’s an example of the problem use:
+Do not call `dispose` immediately after `hide()`. The hide transition is still running at that point, so the component tears down mid-transition. Await the promise first:
 
 ```js
-const myToast = document.querySelector('#myToast')
-const toast = bootstrap.Toast.getInstance(myToast)
-toast.hide() // it is asynchronous
+const toast = bootstrap.Toast.getInstance('#myToast')
 
-myToast.addEventListener('hidden.bs.toast', event => {
+await toast.hide()
+toast.dispose()
+```
+
+The event-based equivalent also works:
+
+```js
+const myToastEl = document.querySelector('#myToast')
+const toast = bootstrap.Toast.getInstance(myToastEl)
+
+myToastEl.addEventListener('hidden.bs.toast', () => {
   toast.dispose()
 })
+
+toast.hide()
 ```
 
 ### Default settings
@@ -256,12 +306,18 @@ Every Bootstrap plugin exposes the following methods and static properties.
 
 ## Sanitizer
 
-Our tooltip and popover components are able to render arbitrary HTML to the page if configured to do so.
-To prevent cross-site scripting (XSS) attacks, these components use our built-in content sanitizer to sanitize any options which accept HTML before they are rendered to the page. Content sanitization is enabled by default.
+Some JavaScript components can render or accept arbitrary HTML in their configuration. To prevent cross-site scripting (XSS) attacks, these components use our built-in content sanitizer to sanitize any options which accept HTML before they are rendered to the page. Content sanitization is enabled by default. In particular:
 
-The tags and attributes allowed by default are as follows. Any tags or attributes not explicitly allowed will be removed during sanitization:
+- Popovers and Tooltips can render arbitrary HTML to the page if configured to do so.
+- Chips and Nav overflow can accept HTML for their icon options (`dismissIcon`, `moreIcon`, and `[data-bs-overflow-icon]`).
+
+The tags and attributes allowed by default for tooltip and popover content are as follows. Any tags or attributes not explicitly allowed will be removed during sanitization:
 
 <JsDocs name="allow-list" file="js/src/util/sanitizer.ts" removeIndentation={false} />
+
+Icon options use a separate, tighter allowlist that covers the default SVG icons and common inline-icon markup:
+
+<JsDocs name="icon-allow-list" file="js/src/util/sanitizer.ts" removeIndentation={false} />
 
 <Callout type="warning">
 **Exercise caution when using these advanced options.** Refer to [OWASP’s Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information. Vulnerabilities caused solely by disabling or modifying content sanitization are not considered within scope for Bootstrap’s security model.
@@ -287,8 +343,8 @@ myDefaultAllowList['*'].push(myCustomRegex)
 You can also replace our sanitizer with a dedicated library, for example [DOMPurify](https://www.npmjs.com/package/dompurify):
 
 ```js
-const yourTooltipEl = document.querySelector('#yourTooltip')
-const tooltip = new bootstrap.Tooltip(yourTooltipEl, {
+const myTooltipEl = document.querySelector('#myTooltip')
+const tooltip = new bootstrap.Tooltip(myTooltipEl, {
   sanitizeFn(content) {
     return DOMPurify.sanitize(content)
   }

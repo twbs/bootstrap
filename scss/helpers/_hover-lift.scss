@@ -1,0 +1,35 @@
+@use "../functions" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/tokens" as *;
+@use "../mixins/transition" as *;
+
+$hover-lift-tokens: () !default;
+
+// scss-docs-start hover-lift-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$hover-lift-tokens: defaults(
+  (
+    --hover-lift-transition-duration: .2s,
+    --hover-lift-transition-timing: ease,
+    --hover-lift-transform: translateY(-.25rem),
+    --hover-lift-box-shadow: var(--box-shadow-lg),
+  ),
+  $hover-lift-tokens
+);
+// scss-docs-end hover-lift-tokens
+
+@layer helpers {
+  .hover-lift {
+    @include tokens($hover-lift-tokens);
+    @include transition(
+      transform var(--hover-lift-transition-duration) var(--hover-lift-transition-timing),
+      box-shadow var(--hover-lift-transition-duration) var(--hover-lift-transition-timing)
+    );
+
+    &:hover,
+    &:focus-visible {
+      transform: var(--hover-lift-transform);
+      @include box-shadow(var(--hover-lift-box-shadow));
+    }
+  }
+}

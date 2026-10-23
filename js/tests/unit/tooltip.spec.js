@@ -672,6 +672,7 @@ describe('Tooltip', () => {
           const tip = document.querySelector('.tooltip')
 
           expect(tip).not.toBeNull()
+          expect(tip).toHaveClass('tooltip-instant')
           expect(tip).not.toHaveClass('fade')
           resolve()
         })
@@ -853,6 +854,60 @@ describe('Tooltip', () => {
 
         tooltipEl.addEventListener('mouseout', () => {
           expect(spy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        tooltipEl.dispatchEvent(createEvent('mouseover'))
+      })
+    })
+
+    it('should not hide a tooltip if the cursor moves from the trigger onto the tip', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">trigger</a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        const spy = spyOn(tooltip, 'hide').and.callThrough()
+
+        tooltipEl.addEventListener('mouseover', () => {
+          const moveMouseToTipEvent = createEvent('mouseout')
+          Object.defineProperty(moveMouseToTipEvent, 'relatedTarget', {
+            value: tooltip._getTipElement()
+          })
+
+          tooltipEl.dispatchEvent(moveMouseToTipEvent)
+        })
+
+        tooltipEl.addEventListener('mouseout', () => {
+          expect(spy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        tooltipEl.dispatchEvent(createEvent('mouseover'))
+      })
+    })
+
+    it('should hide a tooltip when the cursor leaves the tip element', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">trigger</a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        const spy = spyOn(tooltip, 'hide').and.callThrough()
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          const leaveTipEvent = createEvent('mouseout')
+          Object.defineProperty(leaveTipEvent, 'relatedTarget', {
+            value: document.body
+          })
+
+          tooltip._getTipElement().dispatchEvent(leaveTipEvent)
+        })
+
+        tooltipEl.addEventListener('hidden.bs.tooltip', () => {
+          expect(spy).toHaveBeenCalled()
           resolve()
         })
 
@@ -1337,7 +1392,7 @@ describe('Tooltip', () => {
       tooltip.setContent(tip)
 
       expect(tip).not.toHaveClass('show')
-      expect(tip).not.toHaveClass('fade')
+      expect(tip).toHaveClass('tooltip-instant')
       expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Another tooltip')
     })
 

@@ -14,7 +14,7 @@ declare class BaseComponent extends Config {
     protected _config: ComponentConfig;
     constructor(element?: string | Element | null, config?: ComponentConfig | null);
     dispose(): void;
-    protected _queueCallback(callback: () => void, element: Element, isAnimated?: boolean): void;
+    protected _queueCallback(callback: () => void, element: Element, isAnimated?: boolean): Promise<void>;
     protected _getConfig(config?: ComponentConfig | null): ComponentConfig;
     static getInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null): InstanceType<T> | null;
     static getOrCreateInstance<T extends typeof BaseComponent>(this: T, element?: string | Element | null, config?: NonNullable<ConstructorParameters<T>[1]> | null): InstanceType<T>;

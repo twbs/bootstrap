@@ -51,18 +51,19 @@ declare class Menu extends BaseComponent {
     static get Default(): MenuConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
-    toggle(): void;
-    show(): void;
-    hide(): void;
+    toggle(): Promise<void>;
+    show(): Promise<void>;
+    hide(): Promise<void>;
     dispose(): void;
     update(): void;
     protected _findMenu(): Element | null;
     protected _findWrapper(menu: HTMLElement): HTMLElement;
-    protected _completeHide(relatedTarget: Record<string, unknown>): void;
+    protected _completeHide(relatedTarget: Record<string, unknown>): Promise<void>;
     protected _getConfig(config?: ComponentConfig | null): ComponentConfig;
     protected _createFloating(): void;
     protected _updateFloatingPosition(referenceElement?: ReferenceElement | null): Promise<void>;
     protected _isShown(): boolean;
+    protected _isAnimated(): boolean;
     protected _getPlacement(): string;
     protected _parseResponsivePlacements(): void;
     protected _setupMediaQueryListeners(): void;
@@ -80,6 +81,7 @@ declare class Menu extends BaseComponent {
     protected _onSubmenuTriggerEnter(event: BootstrapEvent): void;
     protected _onSubmenuLeave(event: BootstrapEvent): void;
     protected _onSubmenuTriggerClick(event: BootstrapEvent): void;
+    protected _initSubmenuTriggers(): void;
     protected _openSubmenu(trigger: HTMLElement, submenu: HTMLElement, submenuWrapper: Element): void;
     protected _closeSubmenu(submenu: HTMLElement, submenuWrapper: Element): void;
     protected _closeAllSubmenus(): void;
@@ -91,9 +93,12 @@ declare class Menu extends BaseComponent {
     protected _trackMousePosition(event: BootstrapEvent): void;
     protected _isMovingTowardSubmenu(event: BootstrapEvent, submenu: HTMLElement): boolean;
     protected _pointInTriangle(point: Point, v1: Point, v2: Point, v3: Point): boolean;
+    protected _getItemsInMenu(menu: Element): HTMLElement[];
     protected _selectMenuItem({ key, target }: BootstrapEvent): void;
+    protected _closeUnrelatedSubmenus(currentMenu: Element, focusedElement: HTMLElement): void;
     protected _handleSubmenuKeydown(event: BootstrapEvent): boolean;
     static clearMenus(event: BootstrapEvent): void;
+    protected static _getToggleFromKeydownContext(element: HTMLElement, event: BootstrapEvent): HTMLElement | null;
     static dataApiKeydownHandler(this: HTMLElement, event: BootstrapEvent): void;
 }
 export default Menu;

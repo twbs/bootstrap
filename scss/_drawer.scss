@@ -27,8 +27,9 @@ $drawer-tokens: defaults(
     --drawer-border-color: var(--border-color-translucent),
     --drawer-border-radius: var(--radius-7),
     --drawer-box-shadow: var(--box-shadow-xl),
+    --drawer-transition-property: "transform, visibility",
     --drawer-transition-duration: .3s,
-    --drawer-transition-timing: cubic-bezier(.22, 1, .36, 1),
+    --drawer-transition-timing: var(--transition-timing-overlay),
     --drawer-title-line-height: 1.5,
     --drawer-backdrop-bg: color-mix(in oklch, var(--bg-body) 25%, transparent),
     --drawer-backdrop-blur: 8px,
@@ -126,7 +127,17 @@ $drawer-backdrop-tokens: defaults(
         // Animated variant (default) — transitions + off-screen transforms.
         // Adding .drawer-instant skips all animations.
         &:not(.drawer-instant) {
-          @include transition(transform var(--drawer-transition-duration) var(--drawer-transition-timing), visibility 0s var(--drawer-transition-duration));
+          // One transition covers both directions. `visibility` animates with
+          // the transform because it interpolates as a step that stays
+          // `visible` while either end is visible: it flips visible at once on
+          // entry, and only after the slide on exit. Keep it in
+          // --drawer-transition-property when you override the list, or the
+          // exit becomes invisible.
+          @include transition-props(
+            var(--drawer-transition-property),
+            var(--drawer-transition-duration),
+            var(--drawer-transition-timing)
+          );
 
           // Off-screen transforms per placement
           &:where(.drawer-start) {
@@ -157,16 +168,23 @@ $drawer-backdrop-tokens: defaults(
             transform: translateY(calc(100% + var(--drawer-inset)));
           }
 
-          // Open state: slide in with transition
-          &[open] {
+          // Open state: slide in with transition.
+          // The :not(.hiding) qualifier lets the exit transition fall back to
+          // the off-screen placement transform while [open] is still present
+          // (the JS keeps the drawer in the top layer during the exit so the
+          // ::backdrop remains rendered).
+          &[open]:not(.hiding) {
             visibility: visible;
-            @include transition(transform var(--drawer-transition-duration) var(--drawer-transition-timing), visibility 0s);
             transform: none;
           }
         }
 
-        // Open state base (always applies, regardless of animation mode)
-        &[open] {
+        // Open state base (always applies, regardless of animation mode).
+        // Excluded while .hiding is present so the animated exit (above) can
+        // fall through to the base "exit" state — for instant drawers, .hiding
+        // is added and removed within the same task, so this still applies
+        // normally.
+        &[open]:not(.hiding) {
           visibility: visible;
           transform: none;
         }
@@ -225,6 +243,14 @@ $drawer-backdrop-tokens: defaults(
       background-color: var(--drawer-backdrop-bg);
       backdrop-filter: blur(var(--drawer-backdrop-blur));
       @include backdrop-transitions(var(--drawer-transition-duration), var(--drawer-transition-timing));
+    }
+
+    // Exit: fade the native backdrop out alongside the drawer. The drawer is
+    // kept in the top layer (and thus the ::backdrop is still rendered) for
+    // the duration of the exit transition.
+    .#{$prefix}drawer.hiding::backdrop {
+      background-color: transparent;
+      backdrop-filter: blur(0);
     }
   }
 

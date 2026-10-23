@@ -43,6 +43,24 @@ describe('OtpInput', () => {
   const beforeInput = (input, options) =>
     input.dispatchEvent(new InputEvent('beforeinput', { bubbles: true, cancelable: true, ...options }))
 
+  const pasteInto = (input, value) => {
+    const event = new Event('paste', { bubbles: true, cancelable: true })
+    event.clipboardData = { getData: () => value }
+    input.dispatchEvent(event)
+
+    // Emulate the browser's default action. It applies maxlength before the
+    // input event lets the component sanitize the value.
+    if (!event.defaultPrevented && !input.readOnly && !input.disabled && value) {
+      const start = input.selectionStart ?? input.value.length
+      const end = input.selectionEnd ?? start
+      const available = Math.max(0, input.maxLength - (input.value.length - (end - start)))
+      input.setRangeText(value.slice(0, available), start, end, 'end')
+      input.dispatchEvent(createEvent('input'))
+    }
+
+    return event
+  }
+
   describe('VERSION', () => {
     it('should return plugin version', () => {
       expect(OtpInput.VERSION).toEqual(jasmine.any(String))
@@ -227,6 +245,75 @@ describe('OtpInput', () => {
       expect(input.value).toEqual('123456')
       const slots = otpEl.querySelectorAll('.otp-slot')
       expect([...slots].map(slot => slot.textContent).join('')).toEqual('123456')
+    })
+
+    it('should preserve all digits when pasted text contains a separator', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+      const input = otpEl.querySelector('input')
+
+      pasteInto(input, '123-456')
+
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should replace the selected range with a partial pasted value', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.setSelectionRange(2, 4)
+
+      pasteInto(input, '99')
+
+      expect(input.value).toEqual('129956')
+      expect(input.selectionStart).toEqual(4)
+    })
+
+    it('should replace the existing value when pasting a full code', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('12')
+
+      pasteInto(input, '654-321')
+
+      expect(input.value).toEqual('654321')
+    })
+
+    it('should not paste into a readonly input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.readOnly = true
+
+      const event = pasteInto(input, '654321')
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should not clear the value when pasting empty text', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      const event = pasteInto(input, '')
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('123456')
     })
 
     it('should keep letters for the alphanumeric type', () => {
@@ -579,6 +666,23 @@ describe('OtpInput', () => {
       expect(OtpInput.getInstance(otpEl)).toBeNull()
       expect(fixtureEl.querySelector('.otp-slots')).toBeNull()
       expect(fixtureEl.querySelector('.otp').classList.contains('otp-rendered')).toBeFalse()
+    })
+
+    it('should stop intercepting paste after dispose', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+
+      otp.dispose()
+
+      const event = new Event('paste', { bubbles: true, cancelable: true })
+      event.clipboardData = { getData: () => '123-456' }
+      input.dispatchEvent(event)
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('')
     })
 
     it('should stop intercepting beforeinput after dispose', () => {

@@ -65,7 +65,7 @@ describe('Toast', () => {
     it('should close toast when close element with data-bs-dismiss attribute is set', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
-          '<div class="toast" data-bs-delay="1" data-bs-autohide="false" data-bs-animation="false">',
+          '<div class="toast toast-instant" data-bs-delay="1" data-bs-autohide="false">',
           '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
           '</div>'
         ].join('')
@@ -98,7 +98,7 @@ describe('Toast', () => {
       Toast.Default.delay = defaultDelay
 
       fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-autohide="false" data-bs-animation="false">',
+        '<div class="toast toast-instant" data-bs-autohide="false">',
         '  <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>',
         '</div>'
       ].join('')
@@ -139,32 +139,31 @@ describe('Toast', () => {
       })
     })
 
-    it('should not add fade class', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = [
-          '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
-          '  <div class="toast-body">',
-          '    a simple toast',
-          '  </div>',
-          '</div>'
-        ].join('')
+    it('should trigger shown synchronously when the toast is instant', () => {
+      fixtureEl.innerHTML = [
+        '<div class="toast toast-instant" data-bs-autohide="false">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
 
-        const toastEl = fixtureEl.querySelector('.toast')
-        const toast = new Toast(toastEl)
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+      const spy = jasmine.createSpy('shown')
 
-        toastEl.addEventListener('shown.bs.toast', () => {
-          expect(toastEl).not.toHaveClass('fade')
-          resolve()
-        })
+      toastEl.addEventListener('shown.bs.toast', spy)
 
-        toast.show()
-      })
+      toast.show()
+
+      expect(spy).toHaveBeenCalled()
+      expect(toastEl).toHaveClass('show')
     })
 
     it('should not trigger shown if show is prevented', () => {
       return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
-          '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
+          '<div class="toast toast-instant" data-bs-delay="1">',
           '  <div class="toast-body">',
           '    a simple toast',
           '  </div>',
@@ -437,6 +436,27 @@ describe('Toast', () => {
       })
     })
 
+    it('should trigger hidden synchronously when the toast is instant', () => {
+      fixtureEl.innerHTML = [
+        '<div class="toast toast-instant show" data-bs-autohide="false">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+      const spy = jasmine.createSpy('hidden')
+
+      toastEl.addEventListener('hidden.bs.toast', spy)
+
+      toast.hide()
+
+      expect(spy).toHaveBeenCalled()
+      expect(toastEl).not.toHaveClass('show')
+    })
+
     it('should do nothing when we call hide on a non shown toast', () => {
       fixtureEl.innerHTML = '<div></div>'
 
@@ -453,7 +473,7 @@ describe('Toast', () => {
     it('should not trigger hidden if hide is prevented', () => {
       return new Promise((resolve, reject) => {
         fixtureEl.innerHTML = [
-          '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
+          '<div class="toast toast-instant" data-bs-delay="1">',
           '  <div class="toast-body">',
           '    a simple toast',
           '  </div>',

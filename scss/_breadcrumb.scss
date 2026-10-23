@@ -10,10 +10,10 @@ $breadcrumb-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $breadcrumb-tokens: defaults(
   (
-    --breadcrumb-margin-bottom: 1rem,
     --breadcrumb-font-size: inherit,
     --breadcrumb-bg: transparent,
     --breadcrumb-border-radius: var(--radius-5),
+    --breadcrumb-divider-margin-x: calc(var(--breadcrumb-link-padding-x) / 4),
     --breadcrumb-divider-color: var(--fg-4),
     --breadcrumb-divider-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 16'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M2 2l4 6-4 6'/></svg>"))},
     --breadcrumb-divider-width: .375rem,
@@ -38,6 +38,7 @@ $breadcrumb-tokens: defaults(
     flex-wrap: wrap;
     align-items: center;
     padding: var(--breadcrumb-padding-y, 0) var(--breadcrumb-padding-x, 0);
+    margin-bottom: 0;
     font-size: var(--breadcrumb-font-size);
     list-style-type: "";
     background-color: var(--breadcrumb-bg);
@@ -49,7 +50,7 @@ $breadcrumb-tokens: defaults(
   }
 
   .breadcrumb-divider {
-    margin-inline: calc(var(--breadcrumb-link-padding-x) / 4);
+    margin-inline: var(--breadcrumb-divider-margin-x);
     color: var(--breadcrumb-divider-color);
 
     // Render a default chevron, painted with `currentcolor` via a mask, when the

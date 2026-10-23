@@ -210,12 +210,21 @@ $datepicker-tokens: defaults(
   }
 
   // Month/Year grids
+  //
+  // VCP wraps each set of months and years in role="row" and role="gridcell"
+  // elements, so the column grid goes on the row and not on the container.
   [data-vc="months"],
   [data-vc="years"] {
-    display: grid;
+    display: flex;
     flex-grow: 1;
-    grid-template-columns: repeat(var(--vc-columns, 4), minmax(0, 1fr));
+    flex-direction: column;
     row-gap: 1rem;
+  }
+
+  [data-vc-months="row"],
+  [data-vc-years="row"] {
+    display: grid;
+    grid-template-columns: repeat(var(--vc-columns, 4), minmax(0, 1fr));
     column-gap: .25rem;
     align-items: center;
   }
@@ -224,11 +233,17 @@ $datepicker-tokens: defaults(
     --vc-columns: 5;
   }
 
+  [data-vc-months="cell"],
+  [data-vc-years="cell"] {
+    display: flex;
+  }
+
   [data-vc-months-month],
   [data-vc-years-year] {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     height: 2.5rem;
     padding: .25rem;
     font-size: .75rem;

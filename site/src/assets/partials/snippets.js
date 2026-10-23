@@ -79,6 +79,18 @@ export default () => {
   }
   // js-docs-end live-toast
 
+  // Replay the sliding toast on the Transitions page
+  const slideToastTrigger = document.getElementById('slideToastBtn')
+  const slideToastEl = document.getElementById('slideToast')
+
+  if (slideToastTrigger) {
+    const slideToast = Toast.getOrCreateInstance(slideToastEl, { autohide: false })
+    slideToastTrigger.addEventListener('click', async () => {
+      await slideToast.hide()
+      slideToast.show()
+    })
+  }
+
   const dialogToastTrigger = document.getElementById('dialogToastBtn')
   const dialogToastEl = document.getElementById('dialogToast')
 
@@ -115,6 +127,36 @@ export default () => {
     })
   }
   // js-docs-end live-alert
+
+  // -------------------------------
+  // Accordion expand / collapse all
+  // -------------------------------
+  // js-docs-start accordion-expand-collapse
+  const accordion = document.getElementById('accordionExpandCollapse')
+  const toggleBtn = document.getElementById('btnAccordionToggleAll')
+
+  if (accordion && toggleBtn) {
+    const items = accordion.querySelectorAll('.accordion-item')
+    const groupName = 'accordionExpandCollapse'
+
+    toggleBtn.addEventListener('click', () => {
+      const expand = toggleBtn.getAttribute('aria-expanded') !== 'true'
+
+      for (const item of items) {
+        if (expand) {
+          item.removeAttribute('name')
+          item.open = true
+        } else {
+          item.open = false
+          item.setAttribute('name', groupName)
+        }
+      }
+
+      toggleBtn.setAttribute('aria-expanded', String(expand))
+      toggleBtn.textContent = expand ? 'Collapse all' : 'Expand all'
+    })
+  }
+  // js-docs-end accordion-expand-collapse
 
   // --------
   // Carousels
@@ -159,4 +201,29 @@ export default () => {
       }, false)
     })
   }
+
+  // -------------------------------
+  // Motion utilities
+  // -------------------------------
+  // Replay the one-shot animation utilities (.animation-shake, .animation-pop)
+  // in docs demos by removing and re-adding the class after a reflow. The
+  // trigger typically lives in the Example toolbar via its `actions` slot.
+  document.querySelectorAll('[data-bd-replay]')
+    .forEach(trigger => {
+      const target = document.querySelector(trigger.getAttribute('data-bd-replay'))
+      if (!target) {
+        return
+      }
+
+      const animationClass = [...target.classList].find(name => name.startsWith('animation-'))
+      if (!animationClass) {
+        return
+      }
+
+      trigger.addEventListener('click', () => {
+        target.classList.remove(animationClass)
+        target.offsetHeight // eslint-disable-line no-unused-expressions
+        target.classList.add(animationClass)
+      })
+    })
 }

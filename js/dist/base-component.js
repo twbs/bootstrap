@@ -1,5 +1,5 @@
 /*!
-* Bootstrap base-component.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Bootstrap base-component.js v6.0.0-alpha.1 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -17,7 +17,7 @@ import { executeAfterTransition, getElement } from "./util/index.js";
 /**
 * Constants
 */
-const VERSION = "6.0.0-alpha1";
+const VERSION = "6.0.0-alpha.1";
 /**
 * Class definition
 */
@@ -38,10 +38,12 @@ var BaseComponent = class extends Config {
 		for (const propertyName of Object.getOwnPropertyNames(this)) this[propertyName] = null;
 	}
 	_queueCallback(callback, element, isAnimated = true) {
-		executeAfterTransition(() => {
-			if (!this._element) return;
-			callback();
-		}, element, isAnimated);
+		return new Promise((resolve) => {
+			executeAfterTransition(() => {
+				if (this._element) callback();
+				resolve();
+			}, element, isAnimated);
+		});
 	}
 	_getConfig(config) {
 		config = this._mergeConfigObj(config, this._element);

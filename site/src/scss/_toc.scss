@@ -60,6 +60,10 @@
     }
 
     .nav-link {
+      align-items: flex-start;
+      line-height: 1.35;
+      text-wrap: pretty;
+      white-space: normal;
       border-inline-start: .125rem solid transparent;
       @include border-radius(0);
 
@@ -70,6 +74,7 @@
 
       code {
         font: inherit;
+        overflow-wrap: anywhere;
       }
     }
   }
@@ -81,6 +86,14 @@
       min-height: 0;
       margin-bottom: auto;
       overflow-y: auto;
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent 0,
+          #000 var(--bd-toc-fade-top, 0),
+          #000 calc(100% - var(--bd-toc-fade-bottom, 0)),
+          transparent 100%
+        );
     }
 
     @include media-breakpoint-down(lg) {

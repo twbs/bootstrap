@@ -17,6 +17,7 @@
 ._*
 .cache
 .claude
+.cursor
 .DS_Store
 .idea
 .project
@@ -37,7 +38,7 @@ Thumbs.db
 # Folders to ignore
 /dist-sass/
 /js/coverage/
-/node_modules/
+/node_modules
 
 # Site
 /site/dist

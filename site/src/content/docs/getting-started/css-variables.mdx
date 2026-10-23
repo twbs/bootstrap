@@ -11,9 +11,9 @@ Bootstrap includes many [CSS custom properties (variables)](https://developer.mo
 
 ## Root variables
 
-Here are the variables we include (note that the `:root` is required) that can be accessed anywhere Bootstrap’s CSS is loaded. They’re located in our `_root.scss` file and included in our compiled dist files. Many of these resolve their light and dark values automatically via the CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) function, so a single `:root` declaration covers both [color modes]([[docsref:/customize/color-modes]]).
+Here are the variables we include (note that the `:root, :host` selector is required) that can be accessed anywhere Bootstrap’s CSS is loaded. They’re located in our `_root.scss` file and included in our compiled dist files. Many of these resolve their light and dark values automatically via the CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) function, so a single `:root, :host` declaration covers both [color modes]([[docsref:/customize/color-modes]]).
 
-<Code lang="css" filePath="dist/css/bootstrap.css" fileMatch=":(root {[^}]*})" />
+<Code lang="css" filePath="dist/css/bootstrap.css" fileMatch=":(root,\s*:host {[^}]*})" />
 
 ## Component variables
 

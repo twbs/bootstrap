@@ -17,6 +17,7 @@ $button-tokens: () !default;
 // scss-docs-start btn-tokens
 $button-tokens: defaults(
   (
+    --btn-gap: var(--btn-input-gap),
     --btn-min-height: var(--btn-input-min-height),
     --btn-padding-x: var(--btn-input-padding-x),
     --btn-padding-y: var(--btn-input-padding-y),
@@ -30,9 +31,9 @@ $button-tokens: defaults(
     --btn-border-radius: var(--radius-5),
     --btn-hover-border-color: transparent,
     --btn-disabled-opacity: .65,
-    --btn-transition-timing: .15s ease-in-out,
     --btn-transition-property: "color, background-color, border-color, box-shadow",
-    --btn-transition: var(--btn-transition-property) var(--btn-transition-timing),
+    --btn-transition-duration: .15s,
+    --btn-transition-timing: ease-in-out,
   ),
   $button-tokens
 );
@@ -177,7 +178,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     @include tokens($button-tokens);
 
     display: inline-flex;
-    gap: var(--btn-gap, .375rem);
+    gap: var(--btn-gap);
     align-items: center;
     justify-content: center;
     min-height: var(--btn-min-height);
@@ -195,7 +196,11 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     background-color: var(--btn-bg, var(--bg-2));
     border: var(--btn-border-width) solid var(--btn-border-color);
     @include border-radius(var(--btn-border-radius));
-    @include transition(var(--btn-transition));
+    @include transition-props(
+      var(--btn-transition-property),
+      var(--btn-transition-duration),
+      var(--btn-transition-timing)
+    );
 
     &:hover {
       color: var(--btn-hover-color);
@@ -349,6 +354,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
   @each $size, $_ in $button-sizes {
     .btn-#{$size},
     .btn-group-#{$size} > [class*="btn-"] {
+      --btn-gap: var(--btn-input-#{$size}-gap);
       --btn-min-height: var(--btn-input-#{$size}-min-height);
       --btn-padding-y: var(--btn-input-#{$size}-padding-y);
       --btn-padding-x: var(--btn-input-#{$size}-padding-x);
@@ -435,7 +441,8 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     }
 
     &:active,
-    &.active {
+    &.active,
+    &.show {
       background-image: none;
       border-color: color-mix(in lab, var(--theme-bg), var(--btn-border-mix-color) var(--btn-border-active-mix-amount));
       box-shadow: var(--btn-active-shadow);

@@ -11,7 +11,7 @@ import SelectorEngine from './dom/selector-engine.js'
 import type { ComponentConfig } from './util/config.js'
 import {
   getElement,
-  reflow,
+  getTransitionDurationFromElement,
   setAriaAttribute
 } from './util/index.js'
 
@@ -32,29 +32,21 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
-const CLASS_NAME_COLLAPSING = 'collapsing'
 const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`
-const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
 
-const WIDTH = 'width'
-const HEIGHT = 'height'
-
-const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing'
+const SELECTOR_ACTIVES = '.collapse.show'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 type CollapseConfig = {
   parent: string | Element | null
-  toggle: boolean
 }
 
 const Default: CollapseConfig = {
-  parent: null,
-  toggle: true
+  parent: null
 }
 
 const DefaultType = {
-  parent: '(null|element)',
-  toggle: 'boolean'
+  parent: '(null|element)'
 }
 
 /**
@@ -89,10 +81,6 @@ class Collapse extends BaseComponent {
     if (!this._config.parent) {
       this._setAriaExpanded(this._triggerArray, this._isShown())
     }
-
-    if (this._config.toggle) {
-      this.toggle()
-    }
   }
 
   // Getters
@@ -109,15 +97,11 @@ class Collapse extends BaseComponent {
   }
 
   // Public
-  toggle(): void {
-    if (this._isShown()) {
-      this.hide()
-    } else {
-      this.show()
-    }
+  toggle(): Promise<void> {
+    return this._isShown() ? this.hide() : this.show()
   }
 
-  show(): void {
+  async show(): Promise<void> {
     if (this._isTransitioning || this._isShown()) {
       return
     }
@@ -127,8 +111,8 @@ class Collapse extends BaseComponent {
     // find active children
     if (this._config.parent) {
       activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES)
-        .filter(element => element !== this._element)
-        .map(element => Collapse.getOrCreateInstance(element, { toggle: false }))
+        .filter(element => element !== this._element && !this._sharesTrigger(element))
+        .map(element => Collapse.getOrCreateInstance(element))
     }
 
     if (activeChildren.length && activeChildren[0]._isTransitioning) {
@@ -144,35 +128,22 @@ class Collapse extends BaseComponent {
       activeInstance.hide()
     }
 
-    const dimension = this._getDimension()
-
-    this._element.classList.remove(CLASS_NAME_COLLAPSE)
-    this._element.classList.add(CLASS_NAME_COLLAPSING)
-
-    this._element.style[dimension] = 0 as unknown as string
+    // The CSS owns the animation: .show is the only state, and the browser
+    // interpolates the size from 0 to the shown size on its own.
+    this._element.classList.add(CLASS_NAME_SHOW)
 
     this._setAriaExpanded(this._triggerArray, true)
     this._isTransitioning = true
 
     const complete = () => {
       this._isTransitioning = false
-
-      this._element.classList.remove(CLASS_NAME_COLLAPSING)
-      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
-
-      this._element.style[dimension] = ''
-
       EventHandler.trigger(this._element, EVENT_SHOWN)
     }
 
-    const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
-    const scrollSize = `scroll${capitalizedDimension}` as 'scrollWidth' | 'scrollHeight'
-
-    this._queueCallback(complete, this._element, true)
-    this._element.style[dimension] = `${this._element[scrollSize]}px`
+    await this._queueCallback(complete, this._element, this._isAnimated())
   }
 
-  hide(): void {
+  async hide(): Promise<void> {
     if (this._isTransitioning || !this._isShown()) {
       return
     }
@@ -182,14 +153,7 @@ class Collapse extends BaseComponent {
       return
     }
 
-    const dimension = this._getDimension()
-
-    this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`
-
-    reflow(this._element)
-
-    this._element.classList.add(CLASS_NAME_COLLAPSING)
-    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
+    this._element.classList.remove(CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
       const element = SelectorEngine.getElementFromSelector(trigger)
@@ -203,14 +167,10 @@ class Collapse extends BaseComponent {
 
     const complete = () => {
       this._isTransitioning = false
-      this._element.classList.remove(CLASS_NAME_COLLAPSING)
-      this._element.classList.add(CLASS_NAME_COLLAPSE)
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
-    this._element.style[dimension] = ''
-
-    this._queueCallback(complete, this._element, true)
+    await this._queueCallback(complete, this._element, this._isAnimated())
   }
 
   // Private
@@ -218,14 +178,23 @@ class Collapse extends BaseComponent {
     return element.classList.contains(CLASS_NAME_SHOW)
   }
 
-  protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
-    config.toggle = Boolean(config.toggle) // Coerce string values
-    config.parent = getElement(config.parent)
-    return config
+  // The collapse declares its transition in CSS, so a zero computed duration
+  // (reduced motion, .transition-none, or transitions disabled) means no wait.
+  protected _isAnimated(): boolean {
+    return getTransitionDurationFromElement(this._element) > 0
   }
 
-  protected _getDimension(): 'width' | 'height' {
-    return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT
+  // One trigger can target more than one collapse. Those collapses open
+  // together, so a shared parent must not close them against each other.
+  protected _sharesTrigger(element: HTMLElement): boolean {
+    return this._triggerArray.some(
+      trigger => SelectorEngine.getMultipleElementsFromSelector(trigger).includes(element)
+    )
+  }
+
+  protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
+    config.parent = getElement(config.parent)
+    return config
   }
 
   protected _initializeChildren(): void {
@@ -272,7 +241,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   }
 
   for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) {
-    Collapse.getOrCreateInstance(element, { toggle: false }).toggle()
+    Collapse.getOrCreateInstance(element).toggle()
   }
 })
 

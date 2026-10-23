@@ -34,7 +34,7 @@ type TogglerConfig = {
 // Toggler built without a `value` throws from `_typeCheckConfig`.
 const DefaultType = {
   attribute: 'string',
-  value: '(string|number|boolean)'
+  value: '(string|number|boolean|null)'
 }
 
 const Default: TogglerConfig = {
@@ -81,6 +81,11 @@ class Toggler extends BaseComponent {
 
     if (attribute === 'id') {
       return // You have to be kidding
+    }
+
+    // Nothing to toggle without a value (e.g. missing `data-bs-value`)
+    if (value === null || value === undefined) {
+      return
     }
 
     if (attribute === 'class') {

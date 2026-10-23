@@ -19,8 +19,16 @@ Our docs are available in a machine-readable format, following the [llms.txt](ht
 
 ## Skills
 
-Bootstrap ships [agent skills](https://github.com/twbs/bootstrap/tree/main/skills) in the `skills/` directory of our repository. Each skill is a `SKILL.md` file—a focused, step-by-step playbook that an agent can follow to complete a specific Bootstrap task, from migrating a project or setting up a new build to authoring a component and customizing our color system.
+Install every Bootstrap skill into your coding agent:
 
-To use one, point your agent at the relevant `SKILL.md` file (or copy it into your project) and describe what you want to do. The skill’s `description` field tells the agent when it applies, and its steps keep the agent aligned with our official guidance. Always review an agent’s changes against the matching documentation.
+```sh
+npx skills add twbs/bootstrap
+```
+
+The Skills CLI copies each `SKILL.md` from our repository into your agent. [skills.sh](https://skills.sh) lists the package after people run that command. There is no submit form.
+
+Bootstrap also ships the same [agent skills](https://github.com/twbs/bootstrap/tree/main/skills) in the `skills/` directory of our repository. Each skill is a focused, step-by-step playbook for one Bootstrap task, from migrating a project or setting up a new build to authoring a component and customizing our color system.
+
+To use one without the CLI, point your agent at the relevant `SKILL.md` file and describe what you want to do. The skill’s `description` field tells the agent when it applies, and its steps keep the agent aligned with our official guidance. Always review an agent’s changes against the matching documentation.
 
 <SkillsTable />

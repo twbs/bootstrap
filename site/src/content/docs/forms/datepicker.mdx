@@ -24,6 +24,7 @@ Note that we’re using a width utility of `.w-12` to ensure the input is wide e
 - Use `type="text"` to avoid conflicts with native browser date pickers
 - When focused, the calendar popup appears below the input
 - Selecting a date updates the input value and closes the picker
+- The picker also closes on a click outside it, on <kbd>Escape</kbd>, or when focus moves to an element outside it
 - The picker respects Bootstrap’s color modes (`data-bs-theme`)
 - Configurable with any [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings) via `vcpOptions` when initializing with JavaScript
 
@@ -51,6 +52,16 @@ Use the [form adorn component]([[docsref:/forms/form-adorn]]) to add a calendar 
       <svg class="bi" width="16" height="16"><use href="#calendar-week" /></svg>
     </div>
       <input type="text" class="form-ghost" id="datepickerIconStart" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">
+  </div>`} />
+
+Add `.form-adorn-end` to the `.form-adorn` wrapper to move the icon to the end of the input. The markup stays the same, with the icon before the input: the class only changes the visual order.
+
+<Example code={`<label for="datepickerIconEnd" class="form-label">Select date</label>
+  <div class="form-control form-adorn form-adorn-end w-12">
+    <div class="form-adorn-icon">
+      <svg class="bi" width="16" height="16"><use href="#calendar-week" /></svg>
+    </div>
+    <input type="text" class="form-ghost" id="datepickerIconEnd" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">
   </div>`} />
 
 ### Min & Max dates
@@ -204,6 +215,24 @@ Use `data-bs-datepicker-theme` to set the datepicker popup’s theme independent
 <Example code={`<label for="datepickerTheme" class="form-label">Light input, dark datepicker</label>
 <input type="text" class="form-control w-12" id="datepickerTheme" data-bs-toggle="datepicker" autocomplete="off" data-bs-datepicker-theme="dark" placeholder="Select a date">`} />
 
+## Shadow DOM
+
+The calendar renders inside a shadow root, which is useful for encapsulated web components. Two things differ from normal use:
+
+- Initialize the datepicker with JavaScript. Delegated events re-target at the shadow boundary, so `data-bs-toggle="datepicker"` does not reach elements inside a shadow root.
+- Adopt Bootstrap’s stylesheet into the shadow root. Document styles do not cross the boundary, so the calendar renders unstyled without it.
+
+```js
+const sheet = new CSSStyleSheet()
+sheet.replaceSync(await (await fetch('/path/to/bootstrap.min.css')).text())
+
+const root = host.attachShadow({ mode: 'open' })
+root.adoptedStyleSheets = [sheet]
+root.innerHTML = '<input type="text" id="shadowDatepicker">'
+
+new bootstrap.Datepicker(root.getElementById('shadowDatepicker'))
+```
+
 ## CSS
 
 ### Variables
@@ -274,13 +303,14 @@ const datepicker = new bootstrap.Datepicker(element, {
     disableDatesPast: true,                     // Disable past dates
     disableWeekdays: [0, 6],                    // Disable weekends
     disableDates: ['2026-12-25', '2026-12-26'], // Disable specific dates
-    selectedHolidays: ['2026-01-01'],           // Highlight holidays
-    selectionTimeMode: 24                       // Enable 24-hour time selection
+    selectedHolidays: ['2026-01-01']            // Highlight holidays
   }
 })
 ```
 
 See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options.
+
+Vanilla Calendar Pro ships its optional features as extensions. Bootstrap uses only the `months` extension, which `displayMonthsCount` needs. Options from other extensions are not supported, and Vanilla Calendar Pro throws an error when you set them. These include `animation`, `enableSwipe`, `selectionTimeMode`, `popups`, and the week view options.
 
 ### Methods
 

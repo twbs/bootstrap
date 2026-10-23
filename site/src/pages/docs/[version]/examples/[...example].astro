@@ -1,10 +1,14 @@
 ---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
 import ExamplesLayout from '@layouts/ExamplesLayout.astro'
 import { getConfig } from '@libs/config'
 import { exampleFrontmatterSchema, getExampleNameFromPagePath, type ExampleFrontmatter } from '@libs/examples'
 
 export async function getStaticPaths() {
-  const examplesPageModules = import.meta.glob('../../../../assets/examples/**/*.astro', { eager: true })
+  const examplesPageModules = import.meta.glob<ExampleFrontmatter & { default: AstroComponentFactory }>(
+    '../../../../assets/examples/**/*.astro',
+    { eager: true }
+  )
   const examplesPages = Object.entries(examplesPageModules).map(([file, module]) => {
     return {
       file,
@@ -13,7 +17,7 @@ export async function getStaticPaths() {
   })
 
   return examplesPages.map((examplesPage) => {
-    const { default: Content, file, url, ...props } = examplesPage
+    const { default: Content, file, ...props } = examplesPage
     const example = getExampleNameFromPagePath(examplesPage.file)
     let frontmatter: ExampleFrontmatter
 
@@ -30,7 +34,7 @@ export async function getStaticPaths() {
   })
 }
 
-type Props = ExampleFrontmatter
+type Props = ExampleFrontmatter & { Content: AstroComponentFactory }
 
 const { Content, ...props } = Astro.props
 ---

@@ -48,9 +48,9 @@
   .btn-group:where(.btn-group-divider) {
     > [class*="btn-"] + [class*="btn-"] {
       &::before {
+        inset-inline-start: calc(var(--btn-border-width) * -1);
         top: 25%;
         bottom: 25%;
-        left: calc(var(--btn-border-width) * -1);
         width: var(--btn-border-width);
       }
     }

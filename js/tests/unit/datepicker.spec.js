@@ -1,3 +1,4 @@
+import { months, motion } from 'vanilla-calendar-pro'
 import EventHandler from '../../src/dom/event-handler.js'
 import Datepicker from '../../src/datepicker.js'
 import {
@@ -387,7 +388,7 @@ describe('Datepicker', () => {
       expect(hideSpy).toHaveBeenCalled()
     })
 
-    it('should do nothing for inline mode', () => {
+    it('should do nothing for inline mode', async () => {
       fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-inline="true"></div>'
 
       const divEl = fixtureEl.querySelector('div')
@@ -395,9 +396,8 @@ describe('Datepicker', () => {
 
       const showSpy = spyOn(datepicker, 'show')
       const hideSpy = spyOn(datepicker, 'hide')
-      const result = datepicker.toggle()
 
-      expect(result).toBeUndefined()
+      await expect(datepicker.toggle()).resolves.toBeUndefined()
       expect(showSpy).not.toHaveBeenCalled()
       expect(hideSpy).not.toHaveBeenCalled()
     })
@@ -423,6 +423,35 @@ describe('Datepicker', () => {
       datepicker.setSelectedDates(dates)
 
       expect(datepicker.getSelectedDates()).toEqual(dates)
+      expect(inputEl.value).not.toEqual('')
+
+      datepicker.setSelectedDates([])
+      expect(datepicker.getSelectedDates()).toEqual([])
+      expect(inputEl.value).toEqual('')
+    })
+
+    it('should synchronize and clear bound values and display', () => {
+      fixtureEl.innerHTML = [
+        '<div data-bs-toggle="datepicker" data-bs-inline="true">',
+        '  <input type="hidden" name="date">',
+        '</div>',
+        '<span id="date-display">Select date</span>'
+      ].join('')
+
+      const datepickerEl = fixtureEl.querySelector('[data-bs-toggle="datepicker"]')
+      const hiddenInput = fixtureEl.querySelector('input')
+      const displayEl = fixtureEl.querySelector('#date-display')
+      const datepicker = new Datepicker(datepickerEl, {
+        displayElement: displayEl
+      })
+
+      datepicker.setSelectedDates(['2026-01-15'])
+      expect(hiddenInput.value).toEqual('2026-01-15')
+      expect(displayEl.textContent).not.toEqual('')
+
+      datepicker.setSelectedDates([])
+      expect(hiddenInput.value).toEqual('')
+      expect(displayEl.textContent).toEqual('')
     })
 
     it('should return copy of dates array, not reference', () => {
@@ -789,6 +818,62 @@ describe('Datepicker', () => {
     })
   })
 
+  // These assertions pin the Vanilla Calendar Pro markup that our Sass targets.
+  // VCP 3.2.0 added the row and cell wrappers for ARIA, which moved the grid
+  // columns off the container and broke the month and year layout silently.
+  describe('calendar markup', () => {
+    const createInlineCalendar = () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-inline="true"></div>'
+
+      const divEl = fixtureEl.querySelector('div')
+      Datepicker.getOrCreateInstance(divEl)
+
+      return divEl
+    }
+
+    it('should wrap months in rows and cells', () => {
+      const divEl = createInlineCalendar()
+
+      divEl.querySelector('[data-vc="month"]').click()
+
+      const monthsEl = divEl.querySelector('[data-vc="months"]')
+
+      expect(monthsEl.querySelectorAll('[data-vc-months="row"]')).toHaveSize(3)
+      expect(monthsEl.querySelectorAll('[data-vc-months="row"] > [data-vc-months="cell"] > [data-vc-months-month]')).toHaveSize(12)
+    })
+
+    it('should wrap years in rows and cells', () => {
+      const divEl = createInlineCalendar()
+
+      divEl.querySelector('[data-vc="year"]').click()
+
+      const yearsEl = divEl.querySelector('[data-vc="years"]')
+
+      expect(yearsEl.querySelectorAll('[data-vc-years="row"]')).toHaveSize(3)
+      expect(yearsEl.querySelectorAll('[data-vc-years="row"] > [data-vc-years="cell"] > [data-vc-years-year]')).toHaveSize(15)
+    })
+
+    it('should not mark inline calendars with data-vc-input', () => {
+      const divEl = createInlineCalendar()
+
+      expect(divEl.getAttribute('data-vc')).toEqual('calendar')
+      expect(divEl.hasAttribute('data-vc-input')).toBeFalse()
+    })
+
+    it('should mark popup calendars with data-vc-input', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      return datepicker.show().then(() => {
+        const calendarEl = datepicker._calendar.context.mainElement
+
+        expect(calendarEl.hasAttribute('data-vc-input')).toBeTrue()
+      })
+    })
+  })
+
   describe('data-api', () => {
     it('should toggle on click for buttons', () => {
       return new Promise(resolve => {
@@ -873,6 +958,199 @@ describe('Datepicker', () => {
     })
   })
 
+  describe('dismiss on focus', () => {
+    const showDatepicker = (html = '<input type="text" data-bs-toggle="datepicker">') => {
+      fixtureEl.innerHTML = `${html}<button type="button" id="outside">Outside</button>`
+
+      const triggerEl = fixtureEl.querySelector('[data-bs-toggle="datepicker"]')
+      const datepicker = new Datepicker(triggerEl)
+
+      return datepicker.show().then(() => ({ datepicker, triggerEl }))
+    }
+
+    const focusInto = element => {
+      element.dispatchEvent(new FocusEvent('focusin', { bubbles: true }))
+    }
+
+    const pointerDownOn = element => {
+      element.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))
+    }
+
+    it('should hide when focus moves to an element outside the calendar', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        expect(datepicker._isShown).toBeTrue()
+
+        focusInto(fixtureEl.querySelector('#outside'))
+
+        expect(datepicker._isShown).toBeFalse()
+      })
+    })
+
+    it('should hide a button trigger when focus moves outside', () => {
+      return showDatepicker('<button type="button" data-bs-toggle="datepicker">Select date</button>').then(({ datepicker }) => {
+        expect(datepicker._isShown).toBeTrue()
+
+        focusInto(fixtureEl.querySelector('#outside'))
+
+        expect(datepicker._isShown).toBeFalse()
+      })
+    })
+
+    it('should not hide when focus moves into the calendar', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        const dateBtn = datepicker._calendar.context.mainElement.querySelector('[data-vc-date-btn]')
+
+        focusInto(dateBtn)
+
+        expect(datepicker._isShown).toBeTrue()
+      })
+    })
+
+    it('should not hide when focus stays on the trigger', () => {
+      return showDatepicker().then(({ datepicker, triggerEl }) => {
+        focusInto(triggerEl)
+
+        expect(datepicker._isShown).toBeTrue()
+      })
+    })
+
+    it('should not hide when the popup is not shown', async () => {
+      const { datepicker } = await showDatepicker()
+      await datepicker.hide()
+
+      const hideSpy = spyOn(datepicker, 'hide')
+
+      focusInto(fixtureEl.querySelector('#outside'))
+
+      expect(hideSpy).not.toHaveBeenCalled()
+    })
+
+    it('should not register a listener for inline datepickers', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-inline="true"></div><button type="button" id="outside">Outside</button>'
+
+      const divEl = fixtureEl.querySelector('div')
+      const datepicker = new Datepicker(divEl)
+
+      expect(datepicker._onOutside).toBeUndefined()
+      expect(datepicker._isInline).toBeTrue()
+    })
+
+    it('should hide when a pointer press lands outside the calendar', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        expect(datepicker._isShown).toBeTrue()
+
+        pointerDownOn(fixtureEl.querySelector('#outside'))
+
+        expect(datepicker._isShown).toBeFalse()
+      })
+    })
+
+    it('should hide when a pointer press lands on a non-focusable element', () => {
+      return showDatepicker('<input type="text" data-bs-toggle="datepicker"><p id="text">Plain text</p>').then(({ datepicker }) => {
+        expect(datepicker._isShown).toBeTrue()
+
+        pointerDownOn(fixtureEl.querySelector('#text'))
+
+        expect(datepicker._isShown).toBeFalse()
+      })
+    })
+
+    it('should not hide when a pointer press lands inside the calendar', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        const dateBtn = datepicker._calendar.context.mainElement.querySelector('[data-vc-date-btn]')
+
+        pointerDownOn(dateBtn)
+
+        expect(datepicker._isShown).toBeTrue()
+      })
+    })
+
+    it('should not hide on an outside pointer press when the popup is not shown', async () => {
+      const { datepicker } = await showDatepicker()
+      await datepicker.hide()
+
+      const hideSpy = spyOn(datepicker, 'hide')
+
+      pointerDownOn(fixtureEl.querySelector('#outside'))
+
+      expect(hideSpy).not.toHaveBeenCalled()
+    })
+
+    it('should remove the document listeners on dispose', () => {
+      return showDatepicker().then(({ datepicker }) => {
+        const outsideHandler = datepicker._onOutside
+        const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+
+        datepicker.dispose()
+
+        expect(offSpy).toHaveBeenCalledWith(document, 'focusin.bs.datepicker', outsideHandler)
+        expect(offSpy).toHaveBeenCalledWith(document, 'pointerdown.bs.datepicker', outsideHandler)
+      })
+    })
+  })
+
+  describe('trigger clicks', () => {
+    // VCP defers its own show with `setTimeout`, so wait past it.
+    const settle = () => new Promise(resolve => {
+      setTimeout(resolve, 20)
+    })
+
+    const setupButton = () => {
+      fixtureEl.innerHTML = '<button type="button" data-bs-toggle="datepicker"><span id="label">Select date</span></button>'
+      return fixtureEl.querySelector('button')
+    }
+
+    it('should close a button trigger on the next click', async () => {
+      const buttonEl = setupButton()
+
+      buttonEl.click()
+      await settle()
+      const datepicker = Datepicker.getInstance(buttonEl)
+      expect(datepicker._isShown).toBeTrue()
+
+      buttonEl.click()
+      await settle()
+      expect(datepicker._isShown).toBeFalse()
+
+      buttonEl.click()
+      await settle()
+      expect(datepicker._isShown).toBeTrue()
+    })
+
+    it('should close a button trigger on the next click on a child element', async () => {
+      const buttonEl = setupButton()
+      const labelEl = fixtureEl.querySelector('#label')
+
+      labelEl.click()
+      await settle()
+      const datepicker = Datepicker.getInstance(buttonEl)
+      expect(datepicker._isShown).toBeTrue()
+
+      labelEl.click()
+      await settle()
+      expect(datepicker._isShown).toBeFalse()
+    })
+
+    it('should not register a trigger listener for input triggers', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const datepicker = new Datepicker(fixtureEl.querySelector('input'))
+
+      expect(datepicker._onTriggerClick).toBeUndefined()
+    })
+
+    it('should remove the trigger listener on dispose', () => {
+      const buttonEl = setupButton()
+      const datepicker = new Datepicker(buttonEl)
+      const triggerHandler = datepicker._onTriggerClick
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+
+      datepicker.dispose()
+
+      expect(offSpy).toHaveBeenCalledWith(buttonEl, 'click.bs.datepicker', triggerHandler)
+    })
+  })
+
   describe('getInstance', () => {
     it('should return datepicker instance', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
@@ -954,10 +1232,7 @@ describe('Datepicker', () => {
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl)
 
-      // Should have one date selected (exact date may vary due to timezone)
-      const dates = datepicker.getSelectedDates()
-      expect(dates.length).toEqual(1)
-      expect(dates[0]).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+      expect(datepicker.getSelectedDates()).toEqual(['2026-01-15'])
     })
 
     it('should handle invalid input value gracefully', () => {
@@ -991,6 +1266,50 @@ describe('Datepicker', () => {
       })
 
       expect(datepicker._config.vcpOptions.jumpMonths).toEqual(2)
+    })
+
+    it('should default to the single-month calendar type', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker._buildCalendarOptions().type).toEqual('default')
+    })
+
+    it('should use the multiple calendar type when displayMonthsCount is greater than 1', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        displayMonthsCount: 2
+      })
+
+      expect(datepicker._buildCalendarOptions().type).toEqual('multiple')
+    })
+  })
+
+  describe('extensions', () => {
+    it('should register only the months extension', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker._buildCalendarOptions().extensions).toEqual([months])
+    })
+
+    it('should ignore vcpOptions.extensions', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        vcpOptions: {
+          extensions: [months, motion]
+        }
+      })
+
+      expect(datepicker._buildCalendarOptions().extensions).toEqual([months])
     })
   })
 
@@ -1144,22 +1463,27 @@ describe('Datepicker', () => {
       })
     })
 
-    it('should handle empty date selection', () => {
-      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+    it('should clear bound values and display on empty date selection', () => {
+      fixtureEl.innerHTML = [
+        '<div data-bs-toggle="datepicker" data-bs-inline="true">',
+        '  <input type="hidden" name="date" value="2026-01-15">',
+        '</div>',
+        '<span id="date-display">January 15, 2026</span>'
+      ].join('')
 
-      const inputEl = fixtureEl.querySelector('input')
-      inputEl.value = 'previous value'
-      const datepicker = new Datepicker(inputEl)
+      const datepickerEl = fixtureEl.querySelector('[data-bs-toggle="datepicker"]')
+      const hiddenInput = fixtureEl.querySelector('input')
+      const displayEl = fixtureEl.querySelector('#date-display')
+      const datepicker = new Datepicker(datepickerEl, {
+        displayElement: displayEl
+      })
 
-      // Should not throw
-      expect(() => {
-        datepicker._handleDateClick({
-          context: { selectedDates: [] }
-        }, new Event('click'))
-      }).not.toThrow()
+      datepicker._handleDateClick({
+        context: { selectedDates: [] }
+      }, new Event('click'))
 
-      // Value should not be updated when no dates
-      expect(inputEl.value).toEqual('previous value')
+      expect(hiddenInput.value).toEqual('')
+      expect(displayEl.textContent).toEqual('')
     })
   })
 

@@ -1,4 +1,4 @@
-import { DefaultAllowlist, sanitizeHtml } from '../../../src/util/sanitizer.js'
+import { DefaultAllowlist, DefaultIconAllowlist, sanitizeHtml } from '../../../src/util/sanitizer.js'
 
 describe('Sanitizer', () => {
   describe('sanitizeHtml', () => {
@@ -164,6 +164,41 @@ describe('Sanitizer', () => {
 
       expect(firstResult).toContain('src')
       expect(secondResult).toContain('src')
+    })
+
+    it('should keep safe SVG icon markup with DefaultIconAllowlist', () => {
+      const template = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>'
+
+      const result = sanitizeHtml(template, DefaultIconAllowlist, null)
+
+      expect(result).toContain('<svg')
+      expect(result).toContain('<line')
+      expect(result).toContain('stroke-width')
+      // Sanitizer matches allowlist names in lowercase; `viewBox` must survive.
+      expect(result.toLowerCase()).toContain('viewbox')
+    })
+
+    it('should strip scripts, images, and event handlers from icon HTML', () => {
+      const template = '<svg class="ok" onload="alert(1)"><script>alert(2)</script><path d="M0 0"/><img src=x onerror="alert(3)"></svg>'
+
+      const result = sanitizeHtml(template, DefaultIconAllowlist, null)
+
+      expect(result).toContain('class="ok"')
+      expect(result).toContain('<path')
+      expect(result).not.toContain('<script')
+      expect(result).not.toContain('<img')
+      expect(result).not.toMatch(/onload/i)
+      expect(result).not.toMatch(/onerror/i)
+    })
+
+    it('should strip <use> from icon HTML to avoid external SVG loads', () => {
+      const template = '<svg><use href="https://evil.example/sprite.svg#icon"></use><path d="M0 0"/></svg>'
+
+      const result = sanitizeHtml(template, DefaultIconAllowlist, null)
+
+      expect(result).not.toContain('<use')
+      expect(result).not.toContain('evil.example')
+      expect(result).toContain('<path')
     })
   })
 })

@@ -1,5 +1,5 @@
 /*!
-* Bootstrap toggler.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Bootstrap toggler.js v6.0.0-alpha.1 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -24,7 +24,7 @@ const EVENT_CLICK = "click";
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"toggler\"]";
 const DefaultType = {
 	attribute: "string",
-	value: "(string|number|boolean)"
+	value: "(string|number|boolean|null)"
 };
 const Default = {
 	attribute: "class",
@@ -51,6 +51,7 @@ var Toggler = class extends BaseComponent {
 	_execute() {
 		const { attribute, value } = this._config;
 		if (attribute === "id") return;
+		if (value === null || value === void 0) return;
 		if (attribute === "class") {
 			this._element.classList.toggle(value);
 			return;

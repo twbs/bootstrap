@@ -28,7 +28,10 @@ const enableDismissTrigger = (component: typeof BaseComponent, method = 'hide'):
       return
     }
 
-    const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}`)
+    // Responsive variants replace the base class with a breakpoint-prefixed one, such
+    // as `lg:drawer`, which `.${name}` cannot match
+    const target = SelectorEngine.getElementFromSelector(this) ||
+      this.closest(`.${name}, [class*=":${name}"]`)
     const instance: any = component.getOrCreateInstance(target)
 
     // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method

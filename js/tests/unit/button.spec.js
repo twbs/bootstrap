@@ -76,6 +76,34 @@ describe('Button', () => {
       expect(btnEl.getAttribute('aria-pressed')).toEqual('true')
       expect(btnEl).toHaveClass('active')
     })
+
+    it('should set aria-pressed when the attribute is missing', () => {
+      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button"></button>'
+
+      const btnEl = fixtureEl.querySelector('.btn')
+
+      btnEl.click()
+
+      expect(btnEl.getAttribute('aria-pressed')).toEqual('true')
+    })
+  })
+
+  describe('DOMContentLoaded', () => {
+    it('should add a missing aria-pressed based on the active class', () => {
+      fixtureEl.innerHTML = [
+        '<button class="btn" data-bs-toggle="button">btn</button>',
+        '<button class="btn active" data-bs-toggle="button">active btn</button>',
+        '<button class="btn" data-bs-toggle="button" aria-pressed="true">pre-set btn</button>'
+      ].join('')
+
+      const [defaultBtn, activeBtn, preSetBtn] = fixtureEl.querySelectorAll('.btn')
+
+      document.dispatchEvent(new Event('DOMContentLoaded'))
+
+      expect(defaultBtn.getAttribute('aria-pressed')).toEqual('false')
+      expect(activeBtn.getAttribute('aria-pressed')).toEqual('true')
+      expect(preSetBtn.getAttribute('aria-pressed')).toEqual('true')
+    })
   })
 
   describe('dispose', () => {

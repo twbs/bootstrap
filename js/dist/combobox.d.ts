@@ -34,9 +34,9 @@ declare class Combobox extends BaseComponent {
     static get Default(): ComboboxConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
-    toggle(): void;
-    show(): void;
-    hide(): void;
+    toggle(): Promise<void>;
+    show(): Promise<void>;
+    hide(): Promise<void>;
     dispose(): void;
     protected _isShown(): boolean;
     protected _createHiddenInput(): void;

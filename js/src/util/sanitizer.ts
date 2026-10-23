@@ -48,6 +48,32 @@ export const DefaultAllowlist: SanitizerAllowList = {
 }
 // js-docs-end allow-list
 
+// js-docs-start icon-allow-list
+/**
+ * Allowlist for icon HTML options (Chips `dismissIcon`, NavOverflow `moreIcon`,
+ * and markup supplied via `[data-bs-overflow-icon]`). Covers the default SVG
+ * icons plus common inline-icon markup. Event-handler attributes and tags not
+ * listed here are stripped by `sanitizeHtml`.
+ */
+export const DefaultIconAllowlist: SanitizerAllowList = {
+  '*': ['class', 'role', ARIA_ATTRIBUTE_PATTERN],
+  // Attribute names are matched lowercased (see allowedAttribute). `viewBox` is
+  // listed as `viewbox` so the default SVG icons keep their coordinate system.
+  svg: ['xmlns', 'width', 'height', 'viewbox', 'fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'focusable'],
+  path: ['d', 'fill', 'stroke', 'stroke-width', 'fill-rule', 'clip-rule'],
+  line: ['x1', 'y1', 'x2', 'y2', 'stroke', 'stroke-width', 'stroke-linecap'],
+  circle: ['cx', 'cy', 'r', 'fill', 'stroke', 'stroke-width'],
+  rect: ['x', 'y', 'width', 'height', 'rx', 'ry', 'fill', 'stroke', 'stroke-width'],
+  polyline: ['points', 'fill', 'stroke', 'stroke-width'],
+  polygon: ['points', 'fill', 'stroke', 'stroke-width'],
+  g: ['fill', 'stroke', 'stroke-width', 'transform'],
+  // No `use` here: `href` / `xlink:href` on <use> can load external SVG
+  // fragments. Apps that need sprites can extend this allowlist deliberately.
+  span: [],
+  i: []
+}
+// js-docs-end icon-allow-list
+
 const uriAttributes = new Set([
   'background',
   'cite',

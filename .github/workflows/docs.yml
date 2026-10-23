@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - v6-dev
   pull_request:
   workflow_dispatch:
 
@@ -25,7 +24,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: ".nvmrc"
           cache: npm
@@ -38,11 +37,3 @@ jobs:
 
       - name: Validate HTML
         run: npm run docs-html-validate
-
-      - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@7b6b0bc671f6264e1a8daa4488a5bd91ce61dcd4 # v2.4.2
-        with:
-          paths: _site
-          recurse: true
-          verbosity: error
-          skip: "^http://localhost"

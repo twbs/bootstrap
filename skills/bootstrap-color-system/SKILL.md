@@ -93,7 +93,9 @@ Most roles are `light-dark(…)` pairs, and every value is a `var()` reference t
 ),
 ```
 
-The map produces two things: `--danger-fg`-style tokens on `:root`, and a `.theme-danger` class that assigns them to the generic `--theme-fg`, `--theme-bg-subtle`, and friends. That indirection is the whole point — a component written against `--theme-*` supports every color, current and future, with one rule.
+The map produces two things: `--danger-fg`-style tokens on `:root, :host`, and a `.theme-danger` class that assigns them to the generic `--theme-fg`, `--theme-bg-subtle`, and friends. That indirection is the whole point — a component written against `--theme-*` supports every color, current and future, with one rule.
+
+Use `.theme-reset` on a nested subtree to set those `--theme-*` tokens to `initial` and return children to their component defaults.
 
 The `primary`, `success`, and `danger` keys are required; other code (links, focus rings, form states, checked controls) reads their tokens. Renaming or removing them breaks the build.
 
@@ -109,7 +111,7 @@ Neutral surfaces don't live in `$theme-colors`. Three separate maps in `scss/_th
 
 Use these as the *unthemed* fallbacks in component tokens: `var(--theme-bg-subtle, var(--bg-1))`, `var(--theme-border, var(--border-color))`. Note that `--border-color` is a separate global token in `$root-tokens` — the default border color for components — distinct from this `--border-*` family.
 
-Unlike `$theme-colors`, these are flat maps, which makes them easy to extend with an extra surface step.
+Unlike `$theme-colors`, these are flat maps, which makes them easy to extend with an extra surface step. All four maps merge through `defaults()`, so pass only the keys you are changing.
 
 ---
 
@@ -117,7 +119,7 @@ Unlike `$theme-colors`, these are flat maps, which makes them easy to extend wit
 
 Bootstrap 6 does not redeclare variables per mode. Every adaptive token is a `light-dark()` pair, and CSS resolves it from the inherited `color-scheme`:
 
-- `:root` sets `color-scheme: light dark`, so the default is whatever the OS prefers.
+- `:root, :host` sets `color-scheme: light dark`, so the default is whatever the OS prefers.
 - `[data-bs-theme="dark"]` and `[data-bs-theme="light"]` set `color-scheme` on that subtree, forcing a mode. It works on any element, nests, and needs no JavaScript.
 
 So switching modes is a matter of setting one attribute, and authoring adaptive colors is a matter of using `light-dark()` instead of writing a dark-mode override block.
@@ -139,12 +141,11 @@ Custom modes work the same way: add your own `[data-bs-theme="blue"]` selector a
 
 ## Step 6: Compile-time overrides
 
-There's an asymmetry worth internalizing before you write any `with ()` config:
+Maps built with `defaults()` — `$colors`, `$color-tokens`, `$root-tokens`, `$theme-colors`, `$theme-bgs`, `$theme-fgs`, `$theme-borders`, and every component `$*-tokens` — **merge**. Pass only the keys you're changing, and pass `null` to remove one.
 
-- Maps built with `defaults()` — `$colors`, `$color-tokens`, `$root-tokens`, and every component `$*-tokens` — **merge**. Pass only the keys you're changing, and pass `null` to remove one.
-- `$theme-colors`, `$theme-bgs`, `$theme-fgs`, and `$theme-borders` are plain `!default` maps, so `with ()` **replaces them wholesale**.
+Nested theme-color maps merge one level deep. To change one role of a built-in theme, pass the whole sub-map for that theme. A partial sub-map replaces the theme's other roles.
 
-Retuning an existing theme color is therefore easiest one layer down — change the hue and everything derived from it follows:
+Retuning an existing theme color is still easiest one layer down — change the hue and everything derived from it follows:
 
 ```scss
 @use "bootstrap/scss/bootstrap" with (
@@ -152,12 +153,12 @@ Retuning an existing theme color is therefore easiest one layer down — change 
 );
 ```
 
-To restructure the semantic layer itself, configure the `theme` module before Bootstrap loads it, and pass the **full** map (start from the one in `scss/_theme.scss`, keeping `primary`, `success`, and `danger`):
+To add or restyle a theme color, pass a partial `$theme-colors` map through the main entrypoint. `defaults()` keeps the built-ins. Keep `primary`, `success`, and `danger` unless you replace their whole sub-map:
 
 ```scss
-@use "bootstrap/scss/theme" with (
+@use "bootstrap/scss/bootstrap" with (
   $theme-colors: (
-    "primary": (
+    "brand": (
       "base": var(--indigo-500),
       "fg": light-dark(var(--indigo-600), var(--indigo-400)),
       "fg-emphasis": light-dark(var(--indigo-800), var(--indigo-300)),
@@ -167,16 +168,12 @@ To restructure the semantic layer itself, configure the `theme` module before Bo
       "border": light-dark(var(--indigo-300), var(--indigo-600)),
       "focus-ring": light-dark(color-mix(in oklch, var(--indigo-500) 50%, var(--bg-body)), color-mix(in oklch, var(--indigo-500) 75%, var(--bg-body))),
       "contrast": var(--white)
-    ),
-    // … the remaining theme colors
+    )
   )
 );
-@use "bootstrap/scss/bootstrap";
 ```
 
-Order matters: the configured `@use` must come first, since a module can only be configured on its first load.
-
-When all you want is *one more* theme color, skip the Sass config and write the class yourself. Components only care about the `--theme-*` tokens:
+When all you want is *one more* theme color without utilities, skip the Sass config and write the class yourself. Components only care about the `--theme-*` tokens:
 
 ```scss
 @layer helpers {
@@ -200,8 +197,9 @@ When all you want is *one more* theme color, skip the Sass config and write the 
 Every token is a CSS custom property, so most color changes need no recompile at all:
 
 ```css
-/* Global */
-:root {
+/* Global — repeat on :host if you adopt the stylesheet in a shadow root */
+:root,
+:host {
   --bs-primary-bg-subtle: #eef2ff;
 }
 
