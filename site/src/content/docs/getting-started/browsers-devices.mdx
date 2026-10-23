@@ -15,43 +15,20 @@ Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `l
 <BsTable>
 | Browser | Minimum version |
 | --- | --- |
-| Chrome | 130 |
-| Edge | 130 |
-| Firefox | 132 |
-| Safari (macOS) | 18 |
-| Safari (iOS and iPadOS) | 18 |
+| Chrome | 138 |
+| Edge | 138 |
+| Firefox | 147 |
+| Safari (macOS) | 26 |
+| Safari (iOS and iPadOS) | 26 |
 </BsTable>
 
 Alternative browsers built on these engines (Chromium-based browsers like Brave, Opera, or Vivaldi, and browsers using WebKit on iOS) are not explicitly tested, but should be fully supported at equivalent engine versions.
 
-### How to read the query list
-
-Two of those lines do more than they look like they do:
-
-- **`last 2 major versions` carries our mobile coverage.** caniuse tracks Chrome for Android as a single unversioned entry rather than one entry per release, so this line, not the `>=` floors, is what picks it up.
-- **`unreleased versions` is worth about eight points of coverage, and it costs nothing.** caniuse gives the newest Safari a null release date, yet that version already holds most of Safari’s usage share. Both range queries and `last N versions` skip unreleased versions, so without this line we would exclude the single most-used Safari. It cannot pull in anything old, because an unreleased version is newer than every floor.
-
-To measure coverage yourself, run `npx browserslist --coverage` in a clone of the repository. Do not read the figure off browserslist.dev: that site pins an older copy of caniuse-db and reports a materially different number.
+To measure coverage yourself, run `npx browserslist --coverage` in a clone of the repository, or paste the query into [browsersl.ist](https://browsersl.ist).
 
 ### Why these versions?
 
-Bootstrap’s CSS is written against the modern platform baseline: [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) for [color modes]([[docsref:/customize/color-modes]]), `oklch()` and `color-mix()` for the [color system]([[docsref:/customize/color]]), native CSS nesting, container queries, and `:has()`.
-
-Our floors also have to last. They apply to the whole v6.x line, and we cannot raise them in a minor release, so they cap what every future 6.x feature may use. We therefore set each floor on the newest feature v6 already depends on, not the oldest version we could tolerate:
-
-<BsTable>
-| Feature | Sets the floor for |
-| --- | --- |
-| `:has()` | Firefox 121—used by forms, button groups, and cards |
-| `content-visibility` | Firefox 125 and Safari 18—the accordion transitions it with `allow-discrete` |
-| `<details name="…">` | Firefox 130—exclusive accordions |
-| `text-wrap: balance` | Chrome 130—shipped as a utility |
-| Unprefixed `backdrop-filter` | Safari and iOS 18—Dialog and Drawer blur their `::backdrop` |
-</BsTable>
-
-`light-dark()` sets the hard lower bound: Chrome 123, Firefox 120, and Safari 17.5. Below it, our build pipeline lowers `light-dark()` to a custom-property polyfill, and that polyfill breaks `data-bs-theme` dark mode. We will not go below that bound in any release.
-
-Together these targets cover about 85% of global browser usage.
+Bootstrap’s CSS is written against the modern platform baseline: [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) for [color modes]([[docsref:/customize/color-modes]]), `oklch()` and `color-mix()` for the [color system]([[docsref:/customize/color]]), native CSS nesting, container queries, and `:has()`. Together these targets cover about 86% of global browser usage. The share moves as Can I Use updates its data.
 
 Unlike previous major versions, Bootstrap 6 does not ship fallbacks, prefixes, or polyfills for browsers below this floor. Pages will not render correctly in unsupported browsers—most visibly, colors depending on `light-dark()` will not resolve.
 
@@ -85,24 +62,27 @@ The floors clear more of the platform than the components currently use. All of 
 - `text-wrap: balance`
 - Range syntax in media queries, such as `@media (width >= 1024px)`
 
+### New since v6.0.0-alpha1
+
+The new floors make these features safe to use:
+
+- Relative color syntax, including `currentColor` as the source color
+- Same-document view transitions
+- `::details-content` for styling the expandable part of `<details>`
+- `content-visibility` for skipping off-screen rendering work
+
+We'll look for more ways to incorporate these features into Bootstrap as we continue to develop v6.
+
 ### Not available yet
 
-These features sit above our floors, so v6 cannot use them without a fallback. Firefox is the blocker in nearly every case, which means Chrome support alone is never enough to tell you whether we can ship something.
+These features are not fully supported across our browser targets:
 
-<BsTable>
-| Feature | First fully supported in |
-| --- | --- |
-| Relative color syntax, `rgb(from …)` | Chrome 131, Firefox 133 |
-| View transitions | Firefox 144 |
-| Invoker Commands API (`command` / `commandfor`) | Chrome 135, Firefox 144, Safari 26.2 |
-| `@scope` | Firefox 146 |
-| Anchor positioning | Firefox 147, Safari 26 |
-| Style container queries | Firefox 151 |
-| `text-box-trim` | Firefox 154 |
-| Scrollbar styling | Safari 26.2 |
-</BsTable>
+- **Anchor positioning** is incomplete in Firefox 147 and Safari 26.
+- **Invoker Commands API** (`command` / `commandfor`) requires Safari 26.2.
+- **Customizable `<select>`** (`appearance: base-select`) is unavailable in Firefox.
+- **`text-box`** (`text-box-trim`) requires Firefox 154.
 
-Relative color syntax is the closest miss, one version above our Chrome floor. Anchor positioning is the one most worth waiting for: it would let Menu, Tooltip, Popover, and Combobox drop their [Floating UI](https://floating-ui.com/) dependency. Re-check these with `npx browserslist` before you assume one has landed.
+Expect support for these more bleeding edge features in future major releases.
 
 ## JavaScript
 
@@ -118,8 +98,8 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
 | Platform | Supported browsers |
 | --- | --- |
 | Android | Chrome (last two major versions) |
-| iOS and iPadOS | Safari 18+, Chrome (uses WebKit on iOS) |
-| Windows, macOS, Linux | Chrome 130+, Edge 130+, Firefox 132+; Safari 18+ on macOS |
+| iOS and iPadOS | Safari 26+, Chrome (uses WebKit on iOS) |
+| Windows, macOS, Linux | Chrome 138+, Edge 138+, Firefox 147+; Safari 26+ on macOS |
 </BsTable>
 
 As with v5, make sure you include the responsive viewport meta tag in your `<head>` for proper rendering on mobile devices:
