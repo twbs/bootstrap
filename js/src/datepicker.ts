@@ -540,15 +540,47 @@ class Datepicker extends BaseComponent {
     const dateOnlyMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
     const date = dateOnlyMatch ?
       new Date(Number(dateOnlyMatch[1]), Number(dateOnlyMatch[2]) - 1, Number(dateOnlyMatch[3])) :
-      new Date(value)
+      this._parseDisplayedDate(value) ?? new Date(value)
 
     if (!Number.isNaN(date.getTime())) {
-      const year = date.getFullYear()
-      const month = String(date.getMonth() + 1).padStart(2, '0')
-      const day = String(date.getDate()).padStart(2, '0')
-      const formatted = `${year}-${month}-${day}`
-      this._calendar!.set({ selectedDates: [formatted] })
+      this._calendar!.set({ selectedDates: [this._toDateString(date)] })
     }
+  }
+
+  // The input shows a date the way `_formatDate` writes it. Many locales put the
+  // day first, as in "05/10/2026" for en-GB, and `new Date()` reads that as May 10.
+  // This reads the numbers in the order of the locale. It keeps the result only
+  // when the result formats back to the same text.
+  protected _parseDisplayedDate(value: string): Date | null {
+    const { dateFormat } = this._config
+    const numbers = value.match(/\d+/g)
+    if (typeof dateFormat === 'function' || numbers?.length !== 3) {
+      return null
+    }
+
+    const locale = this._config.locale === 'default' ? undefined : this._config.locale
+    const order = new Intl.DateTimeFormat(locale, dateFormat ?? undefined)
+      .formatToParts(new Date(2000, 0, 1))
+      .map(part => part.type)
+      .filter(type => type === 'year' || type === 'month' || type === 'day')
+    if (order.length !== 3) {
+      return null
+    }
+
+    const parts = Object.fromEntries(order.map((type, index) => [type, numbers[index]]))
+    if (parts.year.length !== 4) {
+      return null
+    }
+
+    const date = new Date(Number(parts.year), Number(parts.month) - 1, Number(parts.day))
+    return this._formatDate(this._toDateString(date)) === value ? date : null
+  }
+
+  protected _toDateString(date: Date): string {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
   }
 }
 
