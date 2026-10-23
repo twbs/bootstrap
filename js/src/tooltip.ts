@@ -244,7 +244,6 @@ class Tooltip extends BaseComponent {
     this._removeEscapeListener()
     this._removeFocusOutsideListener()
 
-
     if (this._element.getAttribute('data-bs-original-title')) {
       this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title')!)
     }
@@ -676,7 +675,6 @@ class Tooltip extends BaseComponent {
         })
       }
     }
-
   }
 
   // Keep the tooltip open while the pointer or focus moves onto the tip
