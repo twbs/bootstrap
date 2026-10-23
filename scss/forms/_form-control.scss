@@ -101,6 +101,11 @@ $form-control-sizes: defaults(
       opacity: 1;
     }
 
+    // Keep the native picker container from shrinking in WebKit/Blink.
+    &:is([type="date"], [type="time"], [type="datetime-local"], [type="month"], [type="week"]) {
+      display: block;
+    }
+
     // Prevent excessive date input height in WebKit/Blink; see
     // https://github.com/twbs/bootstrap/issues/34433.
     &::-webkit-datetime-edit {
