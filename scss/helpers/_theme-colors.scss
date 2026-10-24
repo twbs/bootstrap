@@ -12,6 +12,13 @@
     --theme-fg-emphasis: var(--theme-contrast);
   }
 
+  // Table cells are filled by an inset shadow of --theme-bg-subtle, which hides the
+  // utility's background-color, so a contrast cell, row or table needs the solid fill there.
+  .table.theme-contrast,
+  .table .theme-contrast {
+    --theme-bg-subtle: var(--theme-bg);
+  }
+
   .theme-muted {
     --theme-fg: var(--theme-fg-emphasis);
   }
