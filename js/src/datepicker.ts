@@ -31,6 +31,7 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const EVENT_CHANGE = `change${EVENT_KEY}`
+const EVENT_INPUT = `input${EVENT_KEY}`
 const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -210,6 +211,7 @@ class Datepicker extends BaseComponent {
     }
 
     this._calendar = null
+    this._removeBoundInput()
     super.dispose()
   }
 
@@ -233,6 +235,11 @@ class Datepicker extends BaseComponent {
     // For inline mode, look for a hidden input child to bind to
     if (this._isInline && !this._isInput) {
       this._boundInput = this._element.querySelector<HTMLInputElement>('input[type="hidden"], input[name]')
+    }
+
+    // For a named input, submit the ISO date(s) through a hidden input instead
+    if (this._isInput && !this._isInline) {
+      this._createBoundInput()
     }
 
     this._positionElement = this._resolvePositionElement()
@@ -530,11 +537,59 @@ class Datepicker extends BaseComponent {
     return dates.map(d => this._formatDate(d)).join(separator)
   }
 
-  protected _parseInputValue(): void {
-    // Try to parse the input value as a date
-    const value = this._element.value.trim()
-    if (!value) {
+  // The text an input shows is locale formatted (`_formatDate`), which a server
+  // cannot parse back reliably, and whether it shows at all depends on the
+  // instance having been created. Like inline mode and `<input type="date">`,
+  // the form therefore gets the ISO date(s) from a hidden input that takes over
+  // the `name`. The visible input stays the display.
+  protected _createBoundInput(): void {
+    const name = this._element.getAttribute('name')
+    if (!name) {
       return
+    }
+
+    this._boundInput = document.createElement('input')
+    this._boundInput.type = 'hidden'
+    this._boundInput.name = name
+
+    const form = this._element.getAttribute('form')
+    if (form) {
+      this._boundInput.setAttribute('form', form)
+    }
+
+    this._element.removeAttribute('name')
+    this._element.before(this._boundInput)
+
+    // Keep the submitted value in step with text typed or cleared by hand
+    EventHandler.on(this._element, EVENT_INPUT, () => this._parseInputValue())
+  }
+
+  protected _removeBoundInput(): void {
+    if (!this._boundInput || !this._isInput) {
+      return
+    }
+
+    this._element.setAttribute('name', this._boundInput.name)
+    this._boundInput.remove()
+    this._boundInput = null
+  }
+
+  // Mirrors the input's text into the selection and the bound input. The text
+  // itself is left alone so typing is not interrupted by reformatting.
+  protected _parseInputValue(): void {
+    const date = this._parseLooseDate(this._element.value.trim())
+    const selectedDates = date ? [this._toIsoDate(date)] : []
+
+    this._calendar!.set({ selectedDates })
+
+    if (this._boundInput) {
+      this._boundInput.value = selectedDates.join(',')
+    }
+  }
+
+  protected _parseLooseDate(value: string): Date | null {
+    if (!value) {
+      return null
     }
 
     const dateOnlyMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
@@ -542,13 +597,14 @@ class Datepicker extends BaseComponent {
       new Date(Number(dateOnlyMatch[1]), Number(dateOnlyMatch[2]) - 1, Number(dateOnlyMatch[3])) :
       new Date(value)
 
-    if (!Number.isNaN(date.getTime())) {
-      const year = date.getFullYear()
-      const month = String(date.getMonth() + 1).padStart(2, '0')
-      const day = String(date.getDate()).padStart(2, '0')
-      const formatted = `${year}-${month}-${day}`
-      this._calendar!.set({ selectedDates: [formatted] })
-    }
+    return Number.isNaN(date.getTime()) ? null : date
+  }
+
+  protected _toIsoDate(date: Date): string {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
   }
 }
 
