@@ -1,6 +1,7 @@
 import EventHandler from '../../src/dom/event-handler.js'
 import Menu from '../../src/menu.js'
 import NavOverflow from '../../src/nav-overflow.js'
+import Tab from '../../src/tab.js'
 import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 describe('NavOverflow', () => {
@@ -1377,6 +1378,113 @@ describe('NavOverflow', () => {
       for (const item of originalItems) {
         expect(item).not.toHaveClass('d-none')
       }
+    })
+  })
+
+  describe('tabs', () => {
+    const tabMarkup = () => [
+      '<div class="nav-overflow" style="width: 160px;" data-bs-toggle="nav-overflow">',
+      '  <ul class="nav nav-pills" role="tablist" style="display: flex; flex-wrap: nowrap; gap: 0;">',
+      '    <li class="nav-item" style="flex:0 0 100px;width:100px;">',
+      '      <button type="button" class="nav-link active" id="tab-home" data-bs-toggle="tab" data-bs-target="#pane-home">Home</button>',
+      '    </li>',
+      '    <li class="nav-item" style="flex:0 0 100px;width:100px;">',
+      '      <button type="button" class="nav-link" id="tab-profile" data-bs-toggle="tab" data-bs-target="#pane-profile">Profile</button>',
+      '    </li>',
+      '    <li class="nav-item" style="flex:0 0 100px;width:100px;">',
+      '      <button type="button" class="nav-link" id="tab-contact" data-bs-toggle="tab" data-bs-target="#pane-contact">Contact</button>',
+      '    </li>',
+      '  </ul>',
+      '</div>',
+      '<div class="tab-content">',
+      '  <div class="tab-pane active" id="pane-home" style="transition: opacity .15s linear;"></div>',
+      '  <div class="tab-pane" id="pane-profile" style="transition: opacity .15s linear;"></div>',
+      '  <div class="tab-pane" id="pane-contact" style="transition: opacity .15s linear;"></div>',
+      '</div>'
+    ].join('')
+
+    it('should not reopen the overflow menu when a tab inside it is shown', async () => {
+      fixtureEl.innerHTML = tabMarkup()
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      const overflowMenu = wrapperEl.querySelector('.nav-overflow-menu')
+      const overflowTab = overflowMenu.querySelector('[data-bs-target="#pane-contact"]')
+      const menu = new Menu(toggle)
+
+      // A rebuild drops this clone before the pane transition ends.
+      navOverflow._resizeObserver?.disconnect()
+
+      expect(overflowTab).not.toBeNull()
+      await menu.show()
+      await menu.hide()
+      expect(overflowMenu).not.toHaveClass('show')
+
+      await Tab.getOrCreateInstance(overflowTab).show()
+
+      expect(fixtureEl.querySelector('#pane-contact')).toHaveClass('active')
+      expect(overflowTab).toHaveClass('active')
+      expect(toggle).toHaveClass('active')
+      expect(overflowMenu).not.toHaveClass('show')
+      expect(toggle.getAttribute('aria-expanded')).toEqual('false')
+
+      await Tab.getOrCreateInstance(fixtureEl.querySelector('#tab-home')).show()
+
+      expect(toggle).not.toHaveClass('active')
+      expect(overflowTab).not.toHaveClass('active')
+      expect(overflowMenu).not.toHaveClass('show')
+
+      navOverflow.dispose()
+    })
+
+    it('should keep the overflow menu closed after a click on a tab inside it', async () => {
+      fixtureEl.innerHTML = tabMarkup()
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const toggle = wrapperEl.querySelector('.nav-overflow-toggle')
+      const overflowMenu = wrapperEl.querySelector('.nav-overflow-menu')
+      const overflowTab = overflowMenu.querySelector('[data-bs-target="#pane-contact"]')
+      const menu = new Menu(toggle)
+
+      // A rebuild would drop this clone before the pane transition ends.
+      // Keep the menu out of flow, as the component CSS does.
+      navOverflow._resizeObserver?.disconnect()
+      overflowMenu.style.position = 'absolute'
+
+      expect(wrapperEl.querySelector('#tab-home').closest('.nav-item')).not.toHaveClass('d-none')
+      expect(overflowTab).not.toBeNull()
+
+      await menu.show()
+      expect(overflowMenu).toHaveClass('show')
+      expect(toggle.getAttribute('aria-expanded')).toEqual('true')
+
+      // The pane transition defers `shown.bs.tab` until after Menu auto-close.
+      const shown = new Promise(resolve => {
+        overflowTab.addEventListener('shown.bs.tab', resolve, { once: true })
+      })
+
+      overflowTab.click()
+
+      expect(overflowMenu).not.toHaveClass('show')
+      expect(toggle.getAttribute('aria-expanded')).toEqual('false')
+
+      await shown
+
+      expect(fixtureEl.querySelector('#pane-contact')).toHaveClass('active')
+      expect(overflowTab).toHaveClass('active')
+      expect(toggle).toHaveClass('active')
+      expect(overflowMenu).not.toHaveClass('show')
+      expect(toggle.getAttribute('aria-expanded')).toEqual('false')
+
+      fixtureEl.querySelector('#tab-home').click()
+
+      expect(fixtureEl.querySelector('#tab-home')).toHaveClass('active')
+      expect(toggle).not.toHaveClass('active')
+      expect(overflowMenu).not.toHaveClass('show')
+
+      navOverflow.dispose()
     })
   })
 })
