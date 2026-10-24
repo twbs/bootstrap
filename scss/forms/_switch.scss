@@ -96,6 +96,7 @@ $switch-tokens: defaults(
 
       &::before {
         inset-inline-start: calc(100% - var(--switch-indicator-width) - var(--switch-padding));
+        background-color: var(--theme-contrast, var(--switch-checked-indicator-bg));
       }
     }
 
