@@ -10,10 +10,7 @@ export function stackblitzPlugin() {
     name: 'stackblitz-config-replacer',
     transform(code, id) {
       if (id.includes('stackblitz.js')) {
-        return code
-          .replace(/__CSS_CDN__/g, config.cdn.css)
-          .replace(/__CURRENT_VERSION__/g, config.current_version)
-          .replace(/__DOCS_VERSION__/g, config.docs_version)
+        return code.replace(/__CSS_CDN__/g, config.cdn.css).replace(/__CURRENT_VERSION__/g, config.current_version)
       }
 
       return code
