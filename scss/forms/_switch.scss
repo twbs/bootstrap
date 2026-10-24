@@ -54,10 +54,6 @@ $switch-tokens: defaults(
 
     &::before {
       position: absolute;
-      // Center the thumb with a transform instead of a fixed top offset. At
-      // browser zoom levels below 100%, the offset, the border, and the thumb
-      // box each snap to device pixels on their own, which pushes the thumb
-      // off-center. A transform keeps the sub-pixel position.
       inset-block-start: 50%;
       inset-inline-start: var(--switch-padding);
       width: var(--switch-indicator-width);
