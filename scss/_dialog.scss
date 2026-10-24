@@ -71,9 +71,7 @@ $dialog-sizes: defaults(
   .dialog {
     @include tokens($dialog-tokens);
 
-    // Override UA display:none so visibility controls the hidden state,
-    // enabling reliable cross-browser exit animations after close().
-    display: flex;
+    display: none;
     flex-direction: column;
     width: var(--dialog-width);
     max-width: calc(100% - var(--dialog-margin) * 2);
@@ -88,6 +86,12 @@ $dialog-sizes: defaults(
     border: var(--dialog-border-width) solid var(--dialog-border-color);
     @include border-radius(var(--dialog-border-radius));
     @include box-shadow(var(--dialog-box-shadow));
+
+    // Keep the dialog rendered during its exit transition. The JavaScript
+    // removes [open] only after the transition finishes.
+    &[open] {
+      display: flex;
+    }
 
     // Animated variant (default) — transitions, opacity fade, slide transforms.
     // Adding .dialog-instant skips all animations (instant show/hide).
@@ -197,13 +201,27 @@ $dialog-sizes: defaults(
     }
   }
 
-  // Entry animation for ::backdrop via @starting-style. The backdrop only
-  // exists while the dialog is in the top layer, so its starting state can't
-  // be expressed on the base selector.
-  // Default dialog (fade only) and the slide variants do NOT need
-  // @starting-style — the base opacity: 0 (and base transform for slides)
-  // serves as the entry-from state with the visibility trick.
+  // Entry animation for the dialog and ::backdrop. The backdrop only exists
+  // while the dialog is in the top layer, so its starting state can't be
+  // expressed on the base selector.
+  // A closed dialog uses display: none, so @starting-style supplies the
+  // entry values for the dialog and its backdrop.
   @starting-style {
+    // A closed dialog is not rendered. Restate the animated starting values
+    // so the browser can transition them when [open] changes display to flex.
+    .dialog[open]:not(.dialog-instant) {
+      visibility: hidden;
+      opacity: 0;
+
+      &.dialog-slide-down {
+        transform: translateY(-3rem);
+      }
+
+      &.dialog-slide-up {
+        transform: translateY(3rem);
+      }
+    }
+
     .dialog:not(.dialog-instant)::backdrop {
       background-color: transparent;
       backdrop-filter: blur(0);
