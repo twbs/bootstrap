@@ -244,6 +244,83 @@ describe('Datepicker', () => {
 
       expect(spy).not.toHaveBeenCalled()
     })
+
+    it('should position the popup, not the input, when the input is prefilled', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" value="2026-01-15">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      datepicker.show()
+
+      const calendarEl = datepicker._calendar.context.mainElement
+      expect(calendarEl).not.toBe(inputEl)
+      expect(calendarEl.hasAttribute('data-vc-position')).toBeTrue()
+      expect(inputEl.hasAttribute('data-vc-position')).toBeFalse()
+      expect(inputEl.style.top).toEqual('')
+      expect(inputEl.style.left).toEqual('')
+      expect(datepicker._isShown).toBeTrue()
+    })
+
+    it('should position the popup, not the input, after setSelectedDates() before the first show', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      datepicker.setSelectedDates(['2026-01-15'])
+      datepicker.show()
+
+      const calendarEl = datepicker._calendar.context.mainElement
+      expect(calendarEl).not.toBe(inputEl)
+      expect(calendarEl.hasAttribute('data-vc-position')).toBeTrue()
+      expect(inputEl.hasAttribute('data-vc-position')).toBeFalse()
+      expect(datepicker._isShown).toBeTrue()
+    })
+
+    it('should position the popup, not the form-adorn wrapper, when the input is prefilled', () => {
+      fixtureEl.innerHTML = [
+        '<div class="form-adorn">',
+        '  <span class="form-adorn-text">Date</span>',
+        '  <input type="text" data-bs-toggle="datepicker" value="2026-01-15">',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('.form-adorn')
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      datepicker.show()
+
+      expect(datepicker._calendar.context.mainElement).not.toBe(wrapperEl)
+      expect(wrapperEl.hasAttribute('data-vc-position')).toBeFalse()
+      expect(wrapperEl.style.top).toEqual('')
+      expect(datepicker._isShown).toBeTrue()
+    })
+
+    it('should show a button trigger once when shown before its first click', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<button type="button" data-bs-toggle="datepicker">Select date</button>'
+
+        const buttonEl = fixtureEl.querySelector('button')
+        const datepicker = new Datepicker(buttonEl)
+        let shownCount = 0
+
+        buttonEl.addEventListener('shown.bs.datepicker', () => {
+          shownCount++
+        })
+
+        datepicker.show()
+
+        setTimeout(() => {
+          expect(shownCount).toEqual(1)
+          expect(datepicker._isShown).toBeTrue()
+          expect(buttonEl.hasAttribute('data-vc-position')).toBeFalse()
+          expect(datepicker._calendar.context.mainElement.hasAttribute('data-vc-calendar-hidden')).toBeFalse()
+          resolve()
+        }, 50)
+      })
+    })
   })
 
   describe('hide', () => {
@@ -904,6 +981,26 @@ describe('Datepicker', () => {
         })
 
         // Trigger focusin event
+        const focusEvent = createEvent('focusin', { bubbles: true })
+        inputEl.dispatchEvent(focusEvent)
+      })
+    })
+
+    it('should show on focus for prefilled inputs without positioning the input', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" value="2026-01-15">'
+
+        const inputEl = fixtureEl.querySelector('input')
+
+        inputEl.addEventListener('shown.bs.datepicker', () => {
+          const datepicker = Datepicker.getInstance(inputEl)
+          expect(datepicker._isShown).toBeTrue()
+          expect(inputEl.hasAttribute('data-vc-position')).toBeFalse()
+          expect(inputEl.style.top).toEqual('')
+          expect(datepicker._calendar.context.mainElement.hasAttribute('data-vc-position')).toBeTrue()
+          resolve()
+        })
+
         const focusEvent = createEvent('focusin', { bubbles: true })
         inputEl.dispatchEvent(focusEvent)
       })
