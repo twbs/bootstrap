@@ -1235,6 +1235,29 @@ describe('Datepicker', () => {
       expect(datepicker.getSelectedDates()).toEqual(['2026-01-15'])
     })
 
+    it('should read a day-first date that the input shows in its locale', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" data-bs-locale="en-GB" value="05/10/2026">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker.getSelectedDates()).toEqual(['2026-10-05'])
+      expect(inputEl.value).toEqual('05/10/2026')
+    })
+
+    it('should read a date that the input shows with a dateFormat object', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" value="25.10.2026">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl, {
+        locale: 'de-DE',
+        dateFormat: { day: '2-digit', month: '2-digit', year: 'numeric' }
+      })
+
+      expect(datepicker.getSelectedDates()).toEqual(['2026-10-25'])
+      expect(inputEl.value).toEqual('25.10.2026')
+    })
+
     it('should handle invalid input value gracefully', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" value="not-a-date">'
 
