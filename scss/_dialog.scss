@@ -27,6 +27,7 @@ $dialog-tokens: defaults(
     --dialog-border-color: var(--border-color-translucent),
     --dialog-border-width: var(--border-width),
     --dialog-border-radius: var(--radius-7),
+    --dialog-inner-border-radius: calc(var(--dialog-border-radius) - var(--dialog-border-width)),
     --dialog-box-shadow: var(--box-shadow-xl),
     --dialog-transition-property: "opacity, transform, visibility",
     --dialog-transition-duration: .3s,
@@ -279,6 +280,9 @@ $dialog-sizes: defaults(
   // Dialog header
   .dialog-header {
     @include dialog-header(var(--dialog-header-padding));
+    // Keep custom header backgrounds inside the dialog's rounded corners
+    // (the dialog uses `overflow: visible`, so it doesn't clip them itself).
+    @include border-top-radius(var(--dialog-inner-border-radius));
     border-block-end: var(--dialog-header-border-width) solid var(--dialog-header-border-color);
 
     .btn-close {
@@ -301,5 +305,8 @@ $dialog-sizes: defaults(
   // Dialog footer
   .dialog-footer {
     @include dialog-footer(var(--dialog-footer-padding), var(--dialog-footer-gap), var(--dialog-footer-border-width), var(--dialog-footer-border-color));
+    // Keep custom footer backgrounds inside the dialog's rounded corners
+    // (the dialog uses `overflow: visible`, so it doesn't clip them itself).
+    @include border-bottom-radius(var(--dialog-inner-border-radius));
   }
 }
