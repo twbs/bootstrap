@@ -62,6 +62,10 @@ $alert-tokens: defaults(
     margin-bottom: 0;
   }
 
+  .alert .btn-close {
+    color: inherit;
+  }
+
   .alert-heading {
     // Specified to prevent conflicts of changing --heading-color
     color: inherit;
