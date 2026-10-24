@@ -213,6 +213,20 @@ describe('Range', () => {
       expect(labels[1].textContent).toEqual('High')
     })
 
+    it('should rebuild the ticks from the datalist on update', () => {
+      fixtureEl.innerHTML = getTicksHtml()
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const range = new Range(rangeEl)
+
+      fixtureEl.querySelector('#ticksList').innerHTML = '<option value="50" label="Mid"></option>'
+      range.update()
+
+      expect(fixtureEl.querySelectorAll('.form-range-ticks').length).toEqual(1)
+      expect(fixtureEl.querySelectorAll('.form-range-tick').length).toEqual(1)
+      expect(fixtureEl.querySelector('.form-range-tick-label').textContent).toEqual('Mid')
+    })
+
     it('should do nothing when there is no linked datalist', () => {
       fixtureEl.innerHTML = getRangeHtml()
 
