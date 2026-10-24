@@ -302,6 +302,32 @@ describe('Strength', () => {
     })
   })
 
+  describe('custom weights', () => {
+    it('should keep the default weights that a custom weights object does not set', () => {
+      fixtureEl.innerHTML = getStrengthHtml()
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const strength = new Strength(strengthEl, {
+        weights: {
+          uppercase: 0,
+          special: 2
+        },
+        thresholds: [3, 5, 7]
+      })
+
+      // lowercase = 1, which is "weak" with [3, 5, 7]
+      passwordInput.value = 'a'
+      passwordInput.dispatchEvent(createEvent('input'))
+      expect(strength.getStrength()).toEqual('weak')
+
+      // minLength + lowercase + numbers + special (2) = 5, which is "fair" with [3, 5, 7]
+      passwordInput.value = 'password1!'
+      passwordInput.dispatchEvent(createEvent('input'))
+      expect(strength.getStrength()).toEqual('fair')
+    })
+  })
+
   describe('custom minLength', () => {
     it('should use custom minimum length', () => {
       fixtureEl.innerHTML = getStrengthHtml()
@@ -416,6 +442,24 @@ describe('Strength', () => {
       passwordInput.dispatchEvent(createEvent('input'))
 
       expect(textEl.textContent).toEqual('Too weak!')
+    })
+
+    it('should keep the default messages that custom messages do not set', () => {
+      fixtureEl.innerHTML = getStrengthHtml({ withText: true })
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const textEl = fixtureEl.querySelector('.strength-text')
+      new Strength(strengthEl, { // eslint-disable-line no-new
+        messages: {
+          strong: 'Excellent!'
+        }
+      })
+
+      passwordInput.value = 'password'
+      passwordInput.dispatchEvent(createEvent('input'))
+
+      expect(textEl.textContent).toEqual('Weak')
     })
   })
 
