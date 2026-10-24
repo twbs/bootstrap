@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Switch</title>
+  </head>
+  <body>
+    <div class="container py-4">
+      <h1>Switch <small>Bootstrap Visual Test</small></h1>
+      <p>Each switch must align with the first line of its label.</p>
+
+      <div class="form-field mb-3">
+        <div class="switch switch-sm">
+          <input type="checkbox" id="switchSmall" role="switch" switch>
+        </div>
+        <label for="switchSmall">Small switch</label>
+      </div>
+      <div class="form-field mb-3">
+        <div class="switch">
+          <input type="checkbox" id="switchDefault" role="switch" switch>
+        </div>
+        <label for="switchDefault">Default switch</label>
+      </div>
+      <div class="form-field mb-3">
+        <div class="switch switch-lg">
+          <input type="checkbox" id="switchLarge" role="switch" switch>
+        </div>
+        <label for="switchLarge">Large switch</label>
+      </div>
+      <div class="form-field mb-3">
+        <div class="switch switch-lg">
+          <input type="checkbox" id="switchMultiline" role="switch" switch checked>
+        </div>
+        <label for="switchMultiline">Large switch<br>Second label line</label>
+      </div>
+      <div class="form-field mb-3" dir="rtl">
+        <div class="switch switch-lg">
+          <input type="checkbox" id="switchRtl" role="switch" switch>
+        </div>
+        <label for="switchRtl">Large switch in a right-to-left layout</label>
+      </div>
+      <div class="form-field mb-3">
+        <div class="switch switch-lg">
+          <input type="checkbox" id="switchDisabled" role="switch" switch disabled>
+        </div>
+        <label for="switchDisabled">Disabled large switch</label>
+      </div>
+    </div>
+  </body>
+</html>

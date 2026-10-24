@@ -117,7 +117,7 @@ $switch-tokens: defaults(
   }
   .switch-lg {
     --switch-height: 1.5rem;
-    --switch-margin-block: .375rem;
+    --switch-margin-block: .1875rem;
 
     + label {
       font-size: var(--font-size-lg);
