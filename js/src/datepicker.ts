@@ -118,12 +118,16 @@ class Datepicker extends BaseComponent {
   protected declare _themeAncestor: Element | null | undefined
   protected declare _onOutside: (event: Event) => void
   protected declare _onTriggerClick: () => void
+  protected declare _onPopupResize: (() => void) | null
+  protected declare _popupResizeFrame: number | null
 
   constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null) {
     super(element, config)
 
     this._calendar = null
     this._isShown = false
+    this._onPopupResize = null
+    this._popupResizeFrame = null
 
     this._initCalendar()
   }
@@ -203,6 +207,16 @@ class Datepicker extends BaseComponent {
 
     if (this._onTriggerClick) {
       EventHandler.off(this._positionElement, EVENT_CLICK, this._onTriggerClick)
+    }
+
+    if (this._popupResizeFrame !== null) {
+      cancelAnimationFrame(this._popupResizeFrame)
+      this._popupResizeFrame = null
+    }
+
+    if (this._onPopupResize) {
+      window.removeEventListener('resize', this._onPopupResize)
+      this._onPopupResize = null
     }
 
     if (this._calendar) {
@@ -409,6 +423,95 @@ class Datepicker extends BaseComponent {
     EventHandler.on(document, EVENT_POINTERDOWN, this._onOutside)
   }
 
+  // Vanilla Calendar Pro appends the popup to the body.
+  // It writes `left` and `top` in page coordinates.
+  // A modal dialog and its backdrop sit in the top layer.
+  // A body popup paints under that layer, so z-index cannot raise it.
+  // Move the popup into an open dialog that does not clip overflow.
+  // Then map the page coordinates onto the dialog padding edge.
+  protected _syncPopupLayer(): void {
+    if (this._isInline || !this._isShown || !this._calendar) {
+      return
+    }
+
+    const popup = this._calendar.context.mainElement
+    if (!popup?.hasAttribute('data-vc-input')) {
+      return
+    }
+
+    const dialog = this._openDialogForPopup()
+    if (!dialog) {
+      this._restorePopupParent(popup)
+      return
+    }
+
+    if (popup.parentElement !== dialog) {
+      dialog.append(popup)
+    }
+
+    this._positionPopupInDialog(popup, dialog)
+  }
+
+  protected _openDialogForPopup(): HTMLDialogElement | null {
+    const dialog = this._element.closest('dialog[open]')
+    if (!(dialog instanceof HTMLDialogElement)) {
+      return null
+    }
+
+    // A clipping dialog (for example a drawer) would cut the popup off.
+    // Leave that popup on the body.
+    const style = getComputedStyle(dialog)
+    if (style.overflowX !== 'visible' || style.overflowY !== 'visible') {
+      return null
+    }
+
+    return dialog
+  }
+
+  protected _positionPopupInDialog(popup: HTMLElement, dialog: HTMLElement): void {
+    const docLeft = Number.parseFloat(popup.style.left)
+    const docTop = Number.parseFloat(popup.style.top)
+    if (Number.isNaN(docLeft) || Number.isNaN(docTop)) {
+      return
+    }
+
+    const rect = dialog.getBoundingClientRect()
+    const left = docLeft - window.scrollX - rect.left - dialog.clientLeft
+    const top = docTop - window.scrollY - rect.top - dialog.clientTop
+
+    popup.style.left = `${left}px`
+    popup.style.top = `${top}px`
+  }
+
+  protected _restorePopupParent(popup: HTMLElement): void {
+    if (!(popup.parentElement instanceof HTMLDialogElement)) {
+      return
+    }
+
+    document.body.append(popup)
+  }
+
+  // The library rewrites `left` and `top` in its own resize listener.
+  // Schedule the layer sync after that listener finishes.
+  protected _bindPopupResize(): void {
+    if (this._onPopupResize) {
+      return
+    }
+
+    this._onPopupResize = () => {
+      if (this._popupResizeFrame !== null) {
+        return
+      }
+
+      this._popupResizeFrame = requestAnimationFrame(() => {
+        this._popupResizeFrame = null
+        this._syncPopupLayer()
+      })
+    }
+
+    window.addEventListener('resize', this._onPopupResize)
+  }
+
   protected _buildCalendarOptions(): Options {
     // Get theme for VCP - use 'system' for auto-detection if no explicit theme
     const theme = this._getEffectiveTheme()
@@ -441,6 +544,8 @@ class Datepicker extends BaseComponent {
 
         this._isShown = true
         this._syncThemeAttribute(this._calendar.context.mainElement)
+        this._bindPopupResize()
+        this._syncPopupLayer()
       },
       onHide: () => {
         this._isShown = false
