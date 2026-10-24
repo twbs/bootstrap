@@ -46,14 +46,10 @@ const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
 const ESCAPE_KEY = 'Escape'
 
-const CLASS_NAME_MODAL = 'modal'
 const CLASS_NAME_SHOW = 'show'
 
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
-const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tooltip"]'
-
-const EVENT_MODAL_HIDE = 'hide.bs.modal'
 
 const TRIGGER_HOVER = 'hover'
 const TRIGGER_FOCUS = 'focus'
@@ -171,7 +167,6 @@ class Tooltip extends BaseComponent {
   protected declare _newContent: Record<string, TemplateContentEntry> | null
   protected declare _mediaQueryListeners: BreakpointListener[]
   protected declare _responsivePlacements: ResponsivePlacements | null
-  protected declare _hideModalHandler: () => void
   declare tip: HTMLElement | null
 
   constructor(element?: string | Element | null, config?: Partial<TooltipConfig> | null) {
@@ -248,8 +243,6 @@ class Tooltip extends BaseComponent {
 
     this._removeEscapeListener()
     this._removeFocusOutsideListener()
-
-    EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
     if (this._element.getAttribute('data-bs-original-title')) {
       this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title')!)
@@ -682,14 +675,6 @@ class Tooltip extends BaseComponent {
         })
       }
     }
-
-    this._hideModalHandler = () => {
-      if (this._element) {
-        this.hide()
-      }
-    }
-
-    EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
   }
 
   // Keep the tooltip open while the pointer or focus moves onto the tip
