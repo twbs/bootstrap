@@ -169,6 +169,14 @@ $dialog-sizes: defaults(
       }
     }
 
+    // Closed state. Because of `display: flex` above, a closed dialog keeps
+    // its box. The UA sets `position: absolute` on it, so a tall dialog can
+    // make the page scroll. A fixed box does not add scrollable overflow to
+    // the page.
+    &:not([open]) {
+      position: fixed;
+    }
+
     // Open state base (always applies, regardless of animation mode).
     // Excluded while .hiding is present so the animated exit (above) can
     // fall through to the base "exit" state — for instant dialogs, .hiding
