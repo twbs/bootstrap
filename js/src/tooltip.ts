@@ -933,6 +933,14 @@ class Tooltip extends BaseComponent {
       }
     }
 
+    if (this._element.getAttribute('data-bs-title') !== null) {
+      dataAttributes.title = this._element.getAttribute('data-bs-title')
+    }
+
+    if (this._element.getAttribute('data-bs-content') !== null) {
+      dataAttributes.content = this._element.getAttribute('data-bs-content')
+    }
+
     config = {
       ...dataAttributes,
       ...(typeof config === 'object' && config ? config : {})
@@ -961,11 +969,15 @@ class Tooltip extends BaseComponent {
     // Coerce number/boolean title and content to strings. `data-bs-title="true"`
     // / `data-bs-content="false"` are auto-converted to booleans by the data-API,
     // which would otherwise fail the (null|string|element|function) type check.
-    if (typeof config.title === 'number' || typeof config.title === 'boolean') {
+    if (config.title === null) {
+      config.title = ''
+    } else if (typeof config.title === 'number' || typeof config.title === 'boolean') {
       config.title = config.title.toString()
     }
 
-    if (typeof config.content === 'number' || typeof config.content === 'boolean') {
+    if (config.content === null) {
+      config.content = ''
+    } else if (typeof config.content === 'number' || typeof config.content === 'boolean') {
       config.content = config.content.toString()
     }
 
