@@ -13,7 +13,6 @@ export function stackblitzPlugin() {
         return code
           .replace(/__CSS_CDN__/g, config.cdn.css)
           .replace(/__CURRENT_VERSION__/g, config.current_version)
-          .replace(/__DOCS_VERSION__/g, config.docs_version)
       }
 
       return code
