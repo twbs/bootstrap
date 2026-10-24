@@ -58,8 +58,20 @@ $alert-tokens: defaults(
     // scss-docs-end alert-transition
   }
 
+  // Since .alert is a flex container, its content shrinks to fit, so text
+  // alignment utilities like .text-center have no room to work. Let the text
+  // take the free space, and align bare text nodes with justify-content.
   .alert > p {
+    flex-grow: 1;
     margin-bottom: 0;
+  }
+
+  .alert.text-center {
+    justify-content: center;
+  }
+
+  .alert.text-end {
+    justify-content: end;
   }
 
   .alert-heading {
