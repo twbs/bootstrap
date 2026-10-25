@@ -29,17 +29,28 @@ export default () => {
       const jsSnippet = btn.hasAttribute('data-sb-js-snippet')
       // Get extra classes for this example
       const classes = [...exampleEl.classList].join(' ')
+      const hasScrollspy = exampleEl.querySelector('[data-bs-spy="scroll"]') !== null
 
-      openBootstrapSnippet(htmlSnippet, jsSnippet, classes, getDocsStyles(exampleEl))
+      openBootstrapSnippet(htmlSnippet, jsSnippet, classes, getDocsStyles(exampleEl), hasScrollspy)
     })
   })
 }
 
 // The playground has neither the docs' icon sprite nor its files, so the
 // example takes the icons it uses along, and links to the docs' files with
-// absolute URLs
+// absolute URLs. Elements its buttons open but the page keeps outside of it,
+// like the dialogs of the dialog sizes example, come along too.
 const getPlaygroundMarkup = exampleEl => {
   const example = exampleEl.cloneNode(true)
+
+  const targetIds = new Set([...example.querySelectorAll('[data-bs-target^="#"]')]
+    .map(el => el.getAttribute('data-bs-target').slice(1)))
+  for (const id of targetIds) {
+    const target = document.getElementById(id)
+    if (target && !exampleEl.contains(target) && !target.contains(exampleEl)) {
+      example.append('\n', target.cloneNode(true))
+    }
+  }
 
   for (const attribute of ['src', 'href']) {
     example.querySelectorAll(`[${attribute}^="/"]:not([${attribute}^="//"])`).forEach(el => {
@@ -92,12 +103,20 @@ const getDocsStyles = exampleEl => {
   const classes = new Set([exampleEl, ...exampleEl.querySelectorAll('[class]')]
     .flatMap(el => [...el.classList]))
 
+  // The docs define custom color modes, like the blue one of the Color modes
+  // page, whose rules select the example by its `data-bs-theme` alone
+  const customModes = new Set([exampleEl, ...exampleEl.querySelectorAll('[data-bs-theme]')]
+    .map(el => el.getAttribute('data-bs-theme'))
+    .filter(mode => mode && mode !== 'light' && mode !== 'dark'))
+  const selectsCustomMode = selector => [...selector.matchAll(/\[data-bs-theme=["']?([\w-]+)/g)]
+    .some(match => customModes.has(match[1]))
+
   const appliesToExample = selector => {
     // Classes in `:not()` don't have to be in the example
     const selectorClasses = [...selector.replace(/:not\([^)]*\)/g, '').matchAll(/\.(-?[_a-z][\w-]*)/gi)]
       .map(match => match[1])
 
-    const targetsExample = selectorClasses.some(name => name !== 'bd-example') &&
+    const targetsExample = (selectorClasses.some(name => name !== 'bd-example') || selectsCustomMode(selector)) &&
       selectorClasses.every(name => classes.has(name))
     if (!targetsExample) {
       return false
@@ -155,7 +174,7 @@ const getDocsStyles = exampleEl => {
   ].join('\n')
 }
 
-const openBootstrapSnippet = (htmlSnippet, jsSnippet, classes, docsStyles) => {
+const openBootstrapSnippet = (htmlSnippet, jsSnippet, classes, docsStyles, hasScrollspy) => {
   const styleTag = docsStyles ?
     `\n    <style>\n${docsStyles.replace(/^/gm, '      ')}\n    </style>` :
     ''
@@ -190,10 +209,22 @@ snippets()
 ` :
     'import \'bootstrap/dist/js/bootstrap.bundle.js\'\n'
 
+  // Scrollspy starts from its data attributes on the window's `load` event,
+  // which has already fired when StackBlitz runs `index.js`
+  const scrollspyJs = hasScrollspy ?
+    `
+import { ScrollSpy } from 'bootstrap/dist/js/bootstrap.bundle.js'
+
+document.querySelectorAll('[data-bs-spy="scroll"]').forEach(element => {
+  ScrollSpy.getOrCreateInstance(element)
+})
+` :
+    ''
+
   const project = {
     files: {
       'index.html': indexHtml,
-      'index.js': indexJs
+      'index.js': `${indexJs}${scrollspyJs}`
     },
     title: 'Bootstrap Example',
     description: `Official example from ${window.location.href}`,
