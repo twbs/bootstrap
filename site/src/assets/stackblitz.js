@@ -331,12 +331,12 @@ const formatHtml = (node, depth = 0) => {
   }
 
   const children = [...node.childNodes].filter(child => child.nodeType !== Node.TEXT_NODE || child.textContent.trim() !== '')
-  const isSplittable = indent.length + node.outerHTML.length > PRINT_WIDTH &&
+  const canSplit = indent.length + node.outerHTML.length > PRINT_WIDTH &&
     !RAW_ELEMENTS.has(node.localName) &&
     children.length > 0 &&
     children.every(child => child.nodeType !== Node.TEXT_NODE)
 
-  if (!isSplittable) {
+  if (!canSplit) {
     return `${indent}${node.outerHTML}`
   }
 
