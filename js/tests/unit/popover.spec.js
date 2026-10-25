@@ -691,5 +691,45 @@ describe('Popover', () => {
 
       expect(preventDefaultSpy).toHaveBeenCalled()
     })
+
+    it('should not prevent default on click via data-api for a hover or focus popover', () => {
+      fixtureEl.innerHTML = '<a href="#test" data-bs-toggle="popover" data-bs-trigger="hover focus" title="Popover Title" data-bs-content="Popover content">Profile</a>'
+
+      const popoverEl = fixtureEl.querySelector('[data-bs-toggle="popover"]')
+      const clickEvent = createEvent('click')
+      const preventDefaultSpy = spyOn(clickEvent, 'preventDefault').and.callThrough()
+
+      popoverEl.dispatchEvent(clickEvent)
+
+      expect(preventDefaultSpy).not.toHaveBeenCalled()
+      expect(Popover.getInstance(popoverEl)).not.toBeNull()
+    })
+
+    it('should let a checkbox with a hover popover change state via data-api', () => {
+      fixtureEl.innerHTML = '<input type="checkbox" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="One email per month">'
+
+      const checkboxEl = fixtureEl.querySelector('input')
+      checkboxEl.click()
+
+      expect(checkboxEl.checked).toBeTrue()
+    })
+
+    it('should let a submit button in a hover popover wrapper submit its form via data-api', () => {
+      fixtureEl.innerHTML = [
+        '<form>',
+        '  <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Popover content">',
+        '    <button type="submit">Save</button>',
+        '  </span>',
+        '</form>'
+      ].join('')
+
+      const formEl = fixtureEl.querySelector('form')
+      const submitSpy = jasmine.createSpy('submit').and.callFake(event => event.preventDefault())
+      formEl.addEventListener('submit', submitSpy)
+
+      formEl.querySelector('button').click()
+
+      expect(submitSpy).toHaveBeenCalled()
+    })
   })
 })
