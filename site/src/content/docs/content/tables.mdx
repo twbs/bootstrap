@@ -576,7 +576,7 @@ Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be
 
 ## Footer
 
-<Example showMarkup={false} code={`
+<Example code={`
 <table class="table">
   <thead>
     <tr>
@@ -615,21 +615,17 @@ Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be
     </tr>
   </tfoot>
 </table>
-`} />
-
-```html
-<table class="table">
-  <thead>
-    ...
-  </thead>
-  <tbody>
-    ...
-  </tbody>
-  <tfoot>
-    ...
-  </tfoot>
-</table>
-```
+`} customMarkup={`<table class="table">
+    <thead>
+      ...
+    </thead>
+    <tbody>
+      ...
+    </tbody>
+    <tfoot>
+      ...
+    </tfoot>
+  </table>`} />
 
 ## Caption
 

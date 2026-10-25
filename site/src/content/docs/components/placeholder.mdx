@@ -17,7 +17,7 @@ Placeholders can be used to enhance the experience of your application. They’r
 
 In the example below, we take a typical card component and recreate it with placeholders applied to create a “loading card”. Size and proportions are the same between the two.
 
-<Example showMarkup={false} class="bd-example-placeholder-cards d-flex justify-content-around" code={`<div class="card">
+<Example class="bd-example-placeholder-cards d-flex justify-content-around" code={`<div class="card">
     <Placeholder width="100%" height="180" class="card-img-top" text={false} background="#20c997" />
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
@@ -41,36 +41,32 @@ In the example below, we take a typical card component and recreate it with plac
       </p>
       <a class="btn-solid theme-primary disabled col-6" aria-disabled="true"></a>
     </div>
+  </div>`} customMarkup={`<div class="card">
+    <img src="..." class="card-img-top" alt="...">
+
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  <div class="card" aria-hidden="true">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title placeholder-wave">
+        <span class="placeholder col-6"></span>
+      </h5>
+      <p class="card-text placeholder-wave">
+        <span class="placeholder col-7"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-6"></span>
+        <span class="placeholder col-8"></span>
+      </p>
+      <a class="btn-solid theme-primary disabled placeholder col-6" aria-disabled="true"></a>
+    </div>
   </div>`} />
-
-```html
-<div class="card">
-  <img src="..." class="card-img-top" alt="...">
-
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn-solid theme-primary">Go somewhere</a>
-  </div>
-</div>
-
-<div class="card" aria-hidden="true">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title placeholder-wave">
-      <span class="placeholder col-6"></span>
-    </h5>
-    <p class="card-text placeholder-wave">
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <a class="btn-solid theme-primary disabled placeholder col-6" aria-disabled="true"></a>
-  </div>
-</div>
-```
 
 ## How it works
 
