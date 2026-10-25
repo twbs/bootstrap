@@ -71,25 +71,60 @@ const getPlaygroundMarkup = exampleEl => {
   return `${sprite}${example.innerHTML.trimStart()}`
 }
 
-// Splits a selector list on its top-level commas, leaving `:is(.a, .b)` whole
-const splitSelectors = selectorText => {
-  const selectors = []
+// Splits a selector list on its top-level commas, or a declaration block on
+// its semicolons, leaving `:is(.a, .b)`, `url(a;b)` and strings whole
+const splitTopLevel = (text, separator) => {
+  const parts = []
   let depth = 0
+  let quote = null
   let start = 0
 
-  for (const [index, char] of [...selectorText].entries()) {
-    if (char === '(') {
-      depth++
-    } else if (char === ')') {
-      depth--
-    } else if (char === ',' && depth === 0) {
-      selectors.push(selectorText.slice(start, index).trim())
-      start = index + 1
+  // Code units rather than code points, so the indexes match `slice()`
+  for (let index = 0; index < text.length; index++) {
+    const char = text[index]
+
+    if (quote) {
+      if (char === quote && text[index - 1] !== '\\') {
+        quote = null
+      }
+
+      continue
+    }
+
+    switch (char) {
+      case '"':
+      case '\'': {
+        quote = char
+        break
+      }
+
+      case '(': {
+        depth++
+        break
+      }
+
+      case ')': {
+        depth--
+        break
+      }
+
+      case separator: {
+        if (depth === 0) {
+          parts.push(text.slice(start, index).trim())
+          start = index + 1
+        }
+
+        break
+      }
+
+      default: {
+        break
+      }
     }
   }
 
-  selectors.push(selectorText.slice(start).trim())
-  return selectors
+  parts.push(text.slice(start).trim())
+  return parts.filter(Boolean)
 }
 
 // Some examples are styled by the docs' own CSS (grid rows, flex boxes, custom
@@ -133,8 +168,11 @@ const getDocsStyles = exampleEl => {
 
   const collect = rules => [...rules].flatMap(rule => {
     if (rule instanceof CSSStyleRule) {
-      const selectors = splitSelectors(rule.selectorText).filter(appliesToExample)
-      return selectors.length > 0 ? [`${selectors.join(', ')} { ${rule.style.cssText} }`] : []
+      const selectors = splitTopLevel(rule.selectorText, ',').filter(appliesToExample)
+      const declarations = splitTopLevel(rule.style.cssText, ';').map(declaration => `  ${declaration};`)
+      return selectors.length > 0 && declarations.length > 0 ?
+        [`${selectors.join(', ')} {\n${declarations.join('\n')}\n}`] :
+        []
     }
 
     // `@media`, `@supports`, `@container`, `@layer` blocks
