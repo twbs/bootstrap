@@ -42,6 +42,7 @@ class DialogBase extends BaseComponent {
   protected declare _isTransitioning: boolean
   protected declare _openedAsModal: boolean
   protected declare _cancelHandler: (event: BootstrapEvent) => void
+  protected declare _closeHandler: () => void
 
   constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null) {
     super(element, config)
@@ -165,6 +166,7 @@ class DialogBase extends BaseComponent {
     // The `cancel` listener is unnamespaced, so super.dispose()'s EVENT_KEY
     // teardown misses it — remove this instance's own handler here.
     EventHandler.off(this._element, 'cancel', this._cancelHandler)
+    EventHandler.off(this._element, 'close', this._closeHandler)
 
     super.dispose()
   }
@@ -318,6 +320,18 @@ class DialogBase extends BaseComponent {
     }
 
     EventHandler.on(this._element, 'cancel', this._cancelHandler)
+
+    // The dialog can also close without hide(): a `<form method="dialog">`
+    // submit, an Invoker Command, or app code that calls close(). Clean up
+    // then too, or scroll prevention (dialog-open) stays on the root element.
+    // Skip it when the dialog opened again before this event ran.
+    this._closeHandler = () => {
+      if (!this._element.open) {
+        this._closeAndCleanup()
+      }
+    }
+
+    EventHandler.on(this._element, 'close', this._closeHandler)
 
     // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
     EventHandler.on(this._element, `keydown${eventKey}`, event => {
