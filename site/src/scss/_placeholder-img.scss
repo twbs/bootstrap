@@ -14,4 +14,18 @@
   .bd-placeholder-img-lg {
     font-size: 2.5rem;
   }
+
+  .bd-example-rounded-utils {
+    .bd-placeholder-img {
+      font-size: .875rem;
+
+      rect {
+        fill: light-dark(var(--bs-gray-300), var(--bs-gray-700));
+      }
+
+      text {
+        fill: light-dark(var(--bs-gray-800), var(--bs-gray-200));
+      }
+    }
+  }
 }
