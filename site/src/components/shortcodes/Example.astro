@@ -1,13 +1,51 @@
 ---
 import type { ComponentProps } from 'astro/types'
 import SharedExample from '@twbs/bui/components/Example'
+import { replacePlaceholdersInHtml } from '@twbs/bui/examples/placeholder'
 import { getConfig } from '@libs/config'
 
-type Props = ComponentProps<typeof SharedExample>
+type Props = ComponentProps<typeof SharedExample> & {
+  /**
+   * Shows the "Try it on StackBlitz" button. Turn it off for examples a
+   * playground can't reproduce.
+   * @default true
+   */
+  stackblitz?: boolean
+}
+
+// The button goes in the toolbar's `actions` slot, so `@twbs/bui` doesn't render
+// its own: it only shows one on examples marked `addStackblitzJs`
+const { addStackblitzJs = false, stackblitz = true, ...props } = Astro.props
+const showStackblitz = stackblitz && props.showPreview !== false
+
+// The playground starts from the example as written, not from its preview, which the plugins
+// change once they start (a range's fill and ticks, an OTP input's slots…)
+const sourceMarkup = showStackblitz
+  ? replacePlaceholdersInHtml(Array.isArray(props.code) ? props.code.join('\n') : props.code)
+  : ''
 
 const config = getConfig()
 ---
 
-<SharedExample {...Astro.props} repositoryUrl={config.repo} repositoryRef={`v${config.current_version}`}>
-  <slot name="actions" slot="actions" />
+<SharedExample {...props} repositoryUrl={config.repo} repositoryRef={`v${config.current_version}`}>
+  <Fragment slot="actions">
+    <slot name="actions" />
+    {
+      showStackblitz && (
+        <>
+          <button
+            type="button"
+            class="btn-edit text-nowrap"
+            title="Try it on StackBlitz"
+            data-sb-js-snippet={addStackblitzJs ? 'true' : undefined}
+          >
+            <svg class="bi" aria-hidden="true">
+              <use href="#lightning-charge-fill" />
+            </svg>
+          </button>
+          <template class="bd-example-source" set:html={sourceMarkup} />
+        </>
+      )
+    }
+  </Fragment>
 </SharedExample>

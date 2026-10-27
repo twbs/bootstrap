@@ -1,8 +1,52 @@
 ---
 import type { ComponentProps } from 'astro/types'
 import SharedResizableExample from '@twbs/bui/components/ResizableExample'
+import { replacePlaceholdersInHtml } from '@twbs/bui/examples/placeholder'
 
-type Props = ComponentProps<typeof SharedResizableExample>
+type Props = ComponentProps<typeof SharedResizableExample> & {
+  /**
+   * Adds the docs snippets (`partials/snippets.js`) to the StackBlitz playground.
+   * @default false
+   */
+  addStackblitzJs?: boolean
+  /**
+   * Shows the "Try it on StackBlitz" button. Turn it off for examples a
+   * playground can't reproduce.
+   * @default true
+   */
+  stackblitz?: boolean
+}
+
+// The button goes in the toolbar's `actions` slot, like on `Example.astro`
+const { addStackblitzJs = false, stackblitz = true, ...props } = Astro.props
+const showStackblitz = stackblitz && props.showMarkup !== false
+
+// The playground starts from the example as written, not from its preview, which the plugins
+// change once they start (a range's fill and ticks, an OTP input's slots…)
+const sourceMarkup = showStackblitz
+  ? replacePlaceholdersInHtml(Array.isArray(props.code) ? props.code.join('\n') : props.code)
+  : ''
 ---
 
-<SharedResizableExample {...Astro.props} />
+<SharedResizableExample {...props}>
+  <Fragment slot="actions">
+    <slot name="actions" />
+    {
+      showStackblitz && (
+        <>
+          <button
+            type="button"
+            class="btn-edit text-nowrap"
+            title="Try it on StackBlitz"
+            data-sb-js-snippet={addStackblitzJs ? 'true' : undefined}
+          >
+            <svg class="bi" aria-hidden="true">
+              <use href="#lightning-charge-fill" />
+            </svg>
+          </button>
+          <template class="bd-example-source" set:html={sourceMarkup} />
+        </>
+      )
+    }
+  </Fragment>
+</SharedResizableExample>

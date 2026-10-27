@@ -119,7 +119,7 @@ Tooltips, popovers, and toasts all work inside dialogs, but require some extra c
 
 Tooltips, popovers, toasts, and menus all work inside modal dialogs. Modal dialogs use `showModal()`, which promotes the dialog to the browser’s top layer -- a special rendering layer above everything else on the page.
 
-<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialogWithComponents">
+<Example addStackblitzJs code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialogWithComponents">
     Open dialog
   </button>
 
@@ -391,7 +391,7 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
   Extra large dialog
 </button>
 <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogLg">
@@ -402,14 +402,10 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
 </button>
 <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogSm">
   Small dialog
-</button>`} />
-
-```html
-<dialog class="dialog dialog-xl">…</dialog>
-<dialog class="dialog dialog-lg">…</dialog>
-<dialog class="dialog">…</dialog>
-<dialog class="dialog dialog-sm">…</dialog>
-```
+</button>`} customMarkup={`<dialog class="dialog dialog-xl">…</dialog>
+  <dialog class="dialog dialog-lg">…</dialog>
+  <dialog class="dialog">…</dialog>
+  <dialog class="dialog dialog-sm">…</dialog>`} />
 
 ## Fullscreen dialog
 

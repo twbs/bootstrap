@@ -301,4 +301,25 @@ describe('Range', () => {
       expect(Range.getOrCreateInstance(rangeEl)).toBeInstanceOf(Range)
     })
   })
+
+  describe('data API', () => {
+    it('should start ranges when Bootstrap loads after the page', async () => {
+      fixtureEl.innerHTML = getRangeHtml()
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const inputEl = rangeEl.querySelector('input')
+
+      // `DOMContentLoaded` has long fired: load a second copy of the plugin, as a playground
+      // that runs its script once the page is rendered does
+      await import('../../src/range.js?late')
+
+      expect(Range.getInstance(rangeEl)).not.toBeNull()
+      expect(rangeEl.style.getPropertyValue('--bs-range-fill')).toEqual('0.5')
+
+      inputEl.value = '80'
+      inputEl.dispatchEvent(createEvent('input'))
+
+      expect(rangeEl.style.getPropertyValue('--bs-range-fill')).toEqual('0.8')
+    })
+  })
 })
