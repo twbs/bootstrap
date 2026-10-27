@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import { onDocumentReady } from './util/component-functions.js'
 import type { ComponentConfig } from './util/config.js'
 
 /**
@@ -244,7 +245,7 @@ class Range extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_DOM_CONTENT_LOADED, () => {
+onDocumentReady(EVENT_DOM_CONTENT_LOADED, () => {
   for (const element of SelectorEngine.find(SELECTOR_RANGE)) {
     Range.getOrCreateInstance(element)
   }
