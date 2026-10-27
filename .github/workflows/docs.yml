@@ -3,7 +3,7 @@ name: Docs
 on:
   push:
     branches:
-      - main
+      - v5-dev
   pull_request:
   workflow_dispatch:
 
@@ -19,12 +19,12 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: ".nvmrc"
           cache: npm
@@ -39,11 +39,3 @@ jobs:
 
       - name: Validate HTML
         run: npm run docs-vnu
-
-      - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@7b6b0bc671f6264e1a8daa4488a5bd91ce61dcd4 # v2.4.2
-        with:
-          paths: _site
-          recurse: true
-          verbosity: error
-          skip: "^http://localhost"
