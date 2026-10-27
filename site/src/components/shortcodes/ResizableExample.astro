@@ -2,7 +2,41 @@
 import type { ComponentProps } from 'astro/types'
 import SharedResizableExample from '@twbs/bui/components/ResizableExample'
 
-type Props = ComponentProps<typeof SharedResizableExample>
+type Props = ComponentProps<typeof SharedResizableExample> & {
+  /**
+   * Adds the docs snippets (`partials/snippets.js`) to the StackBlitz playground.
+   * @default false
+   */
+  addStackblitzJs?: boolean
+  /**
+   * Shows the "Try it on StackBlitz" button. Turn it off for examples a
+   * playground can't reproduce.
+   * @default true
+   */
+  stackblitz?: boolean
+}
+
+// The button goes in the toolbar's `actions` slot, like on `Example.astro`
+const { addStackblitzJs = false, stackblitz = true, ...props } = Astro.props
+const showStackblitz = stackblitz && props.showMarkup !== false
 ---
 
-<SharedResizableExample {...Astro.props} />
+<SharedResizableExample {...props}>
+  <Fragment slot="actions">
+    <slot name="actions" />
+    {
+      showStackblitz && (
+        <button
+          type="button"
+          class="btn-edit text-nowrap"
+          title="Try it on StackBlitz"
+          data-sb-js-snippet={addStackblitzJs ? 'true' : undefined}
+        >
+          <svg class="bi" aria-hidden="true">
+            <use href="#lightning-charge-fill" />
+          </svg>
+        </button>
+      )
+    }
+  </Fragment>
+</SharedResizableExample>
