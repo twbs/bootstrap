@@ -9,6 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import Menu from './menu.js'
+import { onDocumentReady } from './util/component-functions.js'
 import { DefaultIconAllowlist, sanitizeHtml } from './util/sanitizer.js'
 
 /**
@@ -526,7 +527,7 @@ class NavOverflow extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, 'DOMContentLoaded', () => {
+onDocumentReady('DOMContentLoaded', () => {
   for (const element of SelectorEngine.find('[data-bs-toggle="nav-overflow"]')) {
     NavOverflow.getOrCreateInstance(element)
   }

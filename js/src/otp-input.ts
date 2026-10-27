@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import { onDocumentReady } from './util/component-functions.js'
 
 /**
  * Constants
@@ -444,7 +445,7 @@ class OtpInput extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_DOMCONTENT_LOADED, () => {
+onDocumentReady(EVENT_DOMCONTENT_LOADED, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_OTP)) {
     OtpInput.getOrCreateInstance(element)
   }
