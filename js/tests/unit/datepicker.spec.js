@@ -956,6 +956,36 @@ describe('Datepicker', () => {
         })
       })
     })
+
+    it('should auto-initialize inputs with a prefilled value on DOMContentLoaded', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<input type="text" id="prefilled" data-bs-toggle="datepicker" value="2026-06-10">',
+          '<input type="text" id="empty" data-bs-toggle="datepicker" value="">',
+          '<input type="text" id="plain" data-bs-toggle="datepicker">'
+        ].join('')
+
+        const prefilledEl = fixtureEl.querySelector('#prefilled')
+        const emptyEl = fixtureEl.querySelector('#empty')
+        const plainEl = fixtureEl.querySelector('#plain')
+
+        expect(Datepicker.getInstance(prefilledEl)).toBeNull()
+
+        const domContentLoadedEvent = createEvent('DOMContentLoaded')
+        document.dispatchEvent(domContentLoadedEvent)
+
+        setTimeout(() => {
+          const datepicker = Datepicker.getInstance(prefilledEl)
+          expect(datepicker).not.toBeNull()
+          expect(datepicker.getSelectedDates()).toEqual(['2026-06-10'])
+          expect(prefilledEl.value).toEqual(datepicker._formatDate('2026-06-10'))
+          expect(datepicker._isShown).toBeFalse()
+          expect(Datepicker.getInstance(emptyEl)).toBeNull()
+          expect(Datepicker.getInstance(plainEl)).toBeNull()
+          resolve()
+        })
+      })
+    })
   })
 
   describe('dismiss on focus', () => {
