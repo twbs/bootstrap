@@ -1,6 +1,7 @@
 ---
 import type { ComponentProps } from 'astro/types'
 import SharedExample from '@twbs/bui/components/Example'
+import { replacePlaceholdersInHtml } from '@twbs/bui/examples/placeholder'
 import { getConfig } from '@libs/config'
 
 type Props = ComponentProps<typeof SharedExample> & {
@@ -17,6 +18,12 @@ type Props = ComponentProps<typeof SharedExample> & {
 const { addStackblitzJs = false, stackblitz = true, ...props } = Astro.props
 const showStackblitz = stackblitz && props.showPreview !== false
 
+// The playground starts from the example as written, not from its preview, which the plugins
+// change once they start (a range's fill and ticks, an OTP input's slots…)
+const sourceMarkup = showStackblitz
+  ? replacePlaceholdersInHtml(Array.isArray(props.code) ? props.code.join('\n') : props.code)
+  : ''
+
 const config = getConfig()
 ---
 
@@ -25,16 +32,19 @@ const config = getConfig()
     <slot name="actions" />
     {
       showStackblitz && (
-        <button
-          type="button"
-          class="btn-edit text-nowrap"
-          title="Try it on StackBlitz"
-          data-sb-js-snippet={addStackblitzJs ? 'true' : undefined}
-        >
-          <svg class="bi" aria-hidden="true">
-            <use href="#lightning-charge-fill" />
-          </svg>
-        </button>
+        <>
+          <button
+            type="button"
+            class="btn-edit text-nowrap"
+            title="Try it on StackBlitz"
+            data-sb-js-snippet={addStackblitzJs ? 'true' : undefined}
+          >
+            <svg class="bi" aria-hidden="true">
+              <use href="#lightning-charge-fill" />
+            </svg>
+          </button>
+          <template class="bd-example-source" set:html={sourceMarkup} />
+        </>
       )
     }
   </Fragment>

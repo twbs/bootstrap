@@ -33,12 +33,27 @@ const LOAD_PLUGINS = {
   Carousel: '[data-bs-autoplay="true"]'
 }
 
+// These ones start on `DOMContentLoaded`, which has also fired by then. Bootstrap
+// starts them at once when it loads after the page, but not 6.0.0-alpha.1, the
+// version the playground installs
+const READY_PLUGINS = {
+  Chips: '[data-bs-chips]',
+  Combobox: '[data-bs-toggle="combobox"]',
+  Datepicker: '[data-bs-toggle="datepicker"][data-bs-inline="true"], [data-bs-toggle="datepicker"][data-bs-selected-dates]',
+  NavOverflow: '[data-bs-toggle="nav-overflow"]',
+  OtpInput: '[data-bs-otp]',
+  Range: '.form-range',
+  Strength: '[data-bs-strength]'
+}
+
+const STARTED_PLUGINS = { ...LOAD_PLUGINS, ...READY_PLUGINS }
+
 const startLoadPlugins = (root, plugins) => plugins
-  .filter(plugin => root.querySelector(LOAD_PLUGINS[plugin]) !== null)
+  .filter(plugin => root.querySelector(STARTED_PLUGINS[plugin]) !== null)
   .map(plugin => `
 import { ${plugin} } from '${BOOTSTRAP_JS}'
 
-document.querySelectorAll('${LOAD_PLUGINS[plugin]}').forEach(element => {
+document.querySelectorAll('${STARTED_PLUGINS[plugin]}').forEach(element => {
   ${plugin}.getOrCreateInstance(element)
 })
 `)
@@ -51,13 +66,13 @@ export default () => {
       const codeSnippet = btn.closest('.bd-code-snippet')
       const exampleEl = codeSnippet.querySelector('.bd-example')
 
-      const htmlSnippet = getPlaygroundMarkup(exampleEl)
+      const htmlSnippet = getPlaygroundMarkup(exampleEl, codeSnippet.querySelector('template.bd-example-source'))
       // Examples marked `addStackblitzJs` also get the docs snippets
       const jsSnippet = btn.hasAttribute('data-sb-js-snippet')
       // Get extra classes for this example
       const classes = [...exampleEl.classList].join(' ')
       // The snippets start the docs' other carousels themselves
-      const loadPluginsJs = startLoadPlugins(exampleEl, ['ScrollSpy'])
+      const loadPluginsJs = startLoadPlugins(exampleEl, ['ScrollSpy', ...Object.keys(READY_PLUGINS)])
 
       openBootstrapSnippet(htmlSnippet, jsSnippet, classes, getDocsStyles(exampleEl), loadPluginsJs)
     })
@@ -67,9 +82,16 @@ export default () => {
 // The playground has neither the docs' icon sprite nor its files, so the
 // example takes the icons it uses along, and links to the docs' files with
 // absolute URLs. Elements its buttons open but the page keeps outside of it,
-// like the dialogs of the dialog sizes example, come along too.
-const getPlaygroundMarkup = exampleEl => {
-  const example = exampleEl.cloneNode(true)
+// like the dialogs of the dialog sizes example, come along too. The example
+// comes from its source markup when the page keeps one: the preview has been
+// changed by the plugins (a range's fill and ticks…), which the playground
+// starts again.
+const getPlaygroundMarkup = (exampleEl, sourceTemplate) => {
+  let example = exampleEl.cloneNode(true)
+  if (sourceTemplate) {
+    example = document.createElement('div')
+    example.append(sourceTemplate.content.cloneNode(true))
+  }
 
   const targetIds = new Set([...example.querySelectorAll('[data-bs-target^="#"]')]
     .map(el => el.getAttribute('data-bs-target').slice(1)))
@@ -430,7 +452,7 @@ const getExampleProject = async exampleUrl => {
   return {
     files: {
       'index.html': `<!doctype html>\n${formatHtml(doc.documentElement)}\n`,
-      'index.js': `${imports.map(path => `import '${path}'\n`).join('')}${startLoadPlugins(doc.body, Object.keys(LOAD_PLUGINS))}`,
+      'index.js': `${imports.map(path => `import '${path}'\n`).join('')}${startLoadPlugins(doc.body, Object.keys(STARTED_PLUGINS))}`,
       ...files
     },
     title: doc.title,
