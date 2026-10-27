@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import { toType } from './util/index.js'
 
 /**
  * Constants
@@ -119,6 +120,20 @@ class Strength extends BaseComponent {
   }
 
   // Private
+  // `messages` and `weights` replace only the keys that a config sets. The other keys keep
+  // their defaults, so a partial `weights` object does not make the score NaN.
+  protected override _configAfterMerge(config: StrengthConfig): StrengthConfig {
+    if (toType(config.messages) === 'object') {
+      config.messages = { ...Default.messages, ...config.messages }
+    }
+
+    if (toType(config.weights) === 'object') {
+      config.weights = { ...Default.weights, ...config.weights }
+    }
+
+    return config
+  }
+
   protected _getInput(): HTMLInputElement | null {
     if (this._config.input) {
       return typeof this._config.input === 'string' ?
