@@ -56,15 +56,15 @@ For simple cards, you can use the `.card-body` class directly on the card elemen
 Card bodies arrange their direct children in a column and apply a consistent gap, so titles and text need no styles of their own. Use these optional classes as content hooks.
 
 - For a title, use `.card-title`.
-- For a subtitle, use `.card-subtitle`. It reduces the gap above the subtitle and takes its color from `--card-subtitle-color`, which inherits the card's color by default. A color utility on the subtitle, like `.fg-3`, overrides the token.
+- For a subtitle, use `.card-subtitle`. It reduces the gap above the subtitle.
 - For text, use `.card-text`.
 
-Use type and color utilities as needed. Links need no card-specific class.
+Use type and color utilities as needed. A color utility on `.card-subtitle` overrides `--card-subtitle-color`. Links need no card-specific class.
 
 <Example code={`<div class="card" style="max-width: 320px;">
     <div class="card-body">
       <h4 class="card-title">Example card title</h4>
-      <p class="card-subtitle">With a card subtitle</p>
+      <p class="card-subtitle fg-3">With a card subtitle</p>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
       <a href="#">Card link</a>
     </div>
