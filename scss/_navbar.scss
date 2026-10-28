@@ -33,12 +33,6 @@ $navbar-tokens: defaults(
     --navbar-brand-color: var(--fg-body),
     --navbar-brand-hover-color: var(--fg-body),
     --navbar-nav-link-padding-x: .75rem,
-    --navbar-toggler-width: 2rem,
-    --navbar-toggler-padding-y: .25rem,
-    --navbar-toggler-padding-x: .75rem,
-    --navbar-toggler-font-size: var(--font-size-lg),
-    --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
-    --navbar-toggler-border-radius: var(--radius-5),
     --navbar-toggler-transition: box-shadow .15s ease-in-out,
     --navbar-toggler-icon-size: 1.25rem,
     --navbar-toggler-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path stroke='black' stroke-linecap='round' stroke-width='1' d='M1 3.5h14M1 8h14M1 12.5h14'/></svg>"))},
@@ -57,7 +51,6 @@ $navbar-dark-tokens: defaults(
     --navbar-active-color: var(--white),
     --navbar-brand-color: var(--white),
     --navbar-brand-hover-color: var(--white),
-    --navbar-toggler-border-color: color-mix(in oklch, var(--white) 10%, transparent),
   ),
   $navbar-dark-tokens
 );
