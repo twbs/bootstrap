@@ -178,6 +178,7 @@ $tab-pane-tokens: defaults(
     .nav-link {
       border: var(--nav-tabs-border-width) solid transparent;
       border-bottom-color: var(--nav-tabs-border-color);
+      @include border-radius(var(--nav-tabs-border-radius));
       @include border-bottom-radius(0);
 
       &:hover {
