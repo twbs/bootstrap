@@ -88,11 +88,10 @@ With that setup in place, you can begin to modify any of the Sass token maps in 
 `@use` puts the members of a module behind a namespace. By default, the namespace is the last part of the URL. With Option A, Bootstrap’s variables, functions, and mixins are behind `bootstrap`:
 
 ```scss
-@use "sass:math";
 @use "../node_modules/bootstrap/scss/bootstrap";
 
 .custom-element {
-  padding: math.div(bootstrap.$spacer, 2);
+  padding: bootstrap.$spacer * .5;
 }
 
 @include bootstrap.media-breakpoint-up(md) {
@@ -117,10 +116,6 @@ To use the names without a prefix, as with `@import` in v5, load Bootstrap with 
 With Option B, use the namespace of the partial that defines the member. For example, `$spacer` is `config.$spacer` after `@use "../node_modules/bootstrap/scss/config"`, and the breakpoint mixins are `layout.media-breakpoint-up()` after `@use "../node_modules/bootstrap/scss/layout"`.
 
 A `@use` rule applies only to the file that contains it. Add it to each of your partials that uses Bootstrap’s members.
-
-<Callout>
-**Dart Sass doesn’t divide with `/`.** Use `math.div()` from `sass:math`, or `calc()`. For example, write `math.div(bootstrap.$spacer, 2)` instead of `$spacer / 2`.
-</Callout>
 
 ## Compiling
 
