@@ -85,6 +85,33 @@ Conversely, multiple `<button>` or `<a>` elements can show and hide the same ele
     </div>
   </div>`} />
 
+## Nested collapse
+
+A collapse can live inside another collapse. Each component works on its own: opening the outer collapse does not open or close the nested one, and toggling the nested one leaves the outer one open.
+
+If you add `data-bs-parent` to both, each parent scopes the accordion behavior to its own group. A nested collapse then only closes its siblings in the nested group, never the outer panels. This matches the plugin’s tested behavior.
+
+<Example code={`<p>
+    <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#outerCollapse" aria-expanded="false" aria-controls="outerCollapse">
+      Toggle outer collapse
+    </button>
+  </p>
+  <div class="collapse" id="outerCollapse">
+    <div class="card card-body">
+      <p>Some placeholder content for the outer collapse.</p>
+      <p>
+        <button class="btn-outline theme-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseExample" aria-expanded="false" aria-controls="nestedCollapseExample">
+          Toggle nested collapse
+        </button>
+      </p>
+      <div class="collapse" id="nestedCollapseExample">
+        <div class="card card-body">
+          Some placeholder content for the nested collapse. It is hidden by default and revealed when the user activates its trigger.
+        </div>
+      </div>
+    </div>
+  </div>`} />
+
 ## Accessibility
 
 Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you’ve set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element’s HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
