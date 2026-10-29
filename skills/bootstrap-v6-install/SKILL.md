@@ -134,5 +134,5 @@ Floating UI and Vanilla Calendar Pro are imported automatically through Bootstra
 1. Load the page (or run the dev server) and confirm the sample `.btn-solid.theme-primary` button and `.container` are styled — that proves Bootstrap's CSS is loaded.
 2. Trigger a JS component (e.g. a tooltip or dialog) to confirm the JavaScript loaded without console errors.
 3. For CDN setups, confirm the `integrity` hashes match the version you linked (mismatched hashes block the file from loading).
-4. If Sass fails to compile, confirm you used `@use` (not `@import`) and passed `--load-path=node_modules`.
+4. If Sass fails to compile, confirm you used `@use` (not `@import`) and passed `--load-path=node_modules`. If it reports an undefined Bootstrap variable or mixin, add the `bootstrap.` namespace (`bootstrap.$spacer`) or load Bootstrap with `@use "bootstrap/scss/bootstrap" as *;`.
 5. Bootstrap 6 requires a browser that supports `oklch()` and `color-mix()`.
