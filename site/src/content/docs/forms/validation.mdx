@@ -25,6 +25,21 @@ Here’s how form validation works with Bootstrap:
 
 With that in mind, consider the following demos for our custom form validation styles, optional server-side classes, and browser defaults.
 
+## Feedback display
+
+The `.valid-feedback` and `.invalid-feedback` elements are hidden by default. CSS shows the element that matches the state of its control. No JavaScript is involved.
+
+Place each feedback element after the control, as a sibling. Controls inside a `.form-field`, `.input-group`, or a similar wrapper also work. CSS then matches the feedback inside the wrapper with `:has()`.
+
+Two things can show a feedback element:
+
+- The control has the `.is-valid` or `.is-invalid` class. This works on any form. The [server-side](#server-side) styles use it.
+- The form has `data-bs-validate`. Then `:user-invalid` shows the invalid feedback. `:user-valid` shows the valid feedback when the form also has `data-bs-validate="valid"`.
+
+A field can hold both messages. CSS shows only the one that matches the current state. The markup does not need to change when the state changes.
+
+`aria-describedby` only affects what screen readers announce. It does not show or hide the feedback.
+
 ## Custom styles
 
 For custom Bootstrap form validation messages, add `data-bs-validate` and the `novalidate` boolean attribute to your `<form>`. The `data-bs-validate` attribute opts in to Bootstrap’s `:user-invalid` styling, while `novalidate` disables the browser default feedback tooltips. Custom feedback styles apply custom colors, borders, and focus styles to better communicate feedback.
@@ -183,7 +198,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 
 ## Server-side
 
-We recommend using client-side validation, but in case you require server-side validation, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
+We recommend using client-side validation, but in case you require server-side validation, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Both `.invalid-feedback` and `.valid-feedback` are supported with these classes. A field can hold both messages, as in the example below.
 
 For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
