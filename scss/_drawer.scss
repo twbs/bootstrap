@@ -279,17 +279,20 @@ $drawer-backdrop-tokens: defaults(
   // Overrides tokens so placement transforms (which use calc() with --drawer-inset)
   // automatically position the drawer at the viewport edge.
   .drawer-sheet {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    margin-inline: auto;
-    margin-bottom: calc(-1 * var(--drawer-border-width));
-    border-end-start-radius: 0;
-    border-end-end-radius: 0;
+    --drawer-inset: 0;
+    --drawer-border-width: 0;
+    --drawer-border-radius: 0;
+    --drawer-box-shadow: none;
 
-    @include media-breakpoint-up(lg) {
-      max-width: var(--drawer-sheet-width, 760px);
+    &:where(.drawer-top, .drawer-bottom) {
+      right: 0;
+      left: 0;
+      width: 100%;
+      margin-inline: auto;
+
+      @include media-breakpoint-up(lg) {
+        max-width: var(--drawer-sheet-width, 760px);
+      }
     }
   }
 
