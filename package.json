@@ -206,6 +206,7 @@
     ".browserslistrc"
   ],
   "overrides": {
-    "axios": "^1.16.0"
+    "axios": "^1.16.0",
+    "re2js": "^2.8.7"
   }
 }
