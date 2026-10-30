@@ -138,7 +138,7 @@
     "@floating-ui/dom": "^1.8.0",
     "@pagefind/component-ui": "^1.5.2",
     "@stackblitz/sdk": "^1.11.1",
-    "@twbs/bui": "^0.1.5",
+    "@twbs/bui": "^0.1.8",
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@vitest/browser": "^5.0.5",
@@ -206,6 +206,7 @@
     ".browserslistrc"
   ],
   "overrides": {
-    "axios": "^1.16.0"
+    "axios": "^1.16.0",
+    "re2js": "^2.8.7"
   }
 }
