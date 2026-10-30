@@ -42,6 +42,24 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
    );
    ```
 
+   Unlike `@import`, `@use` doesn’t put Bootstrap’s variables, functions, and mixins in the global scope. They are behind the `bootstrap` namespace, so v5 code that uses them without a prefix fails with “Undefined variable”, “Undefined function”, or “Undefined mixin”. Add the namespace, or load Bootstrap with `as *` to keep the names without a prefix.
+
+   ```scss
+   @use "bootstrap/scss/bootstrap";
+
+   .custom-class {
+     padding: bootstrap.$spacer * .5;
+   }
+
+   @include bootstrap.media-breakpoint-down(sm) {
+     .custom-class {
+       display: none;
+     }
+   }
+   ```
+
+   See [Variables, functions, and mixins]([[docsref:/customize/sass#variables-functions-and-mixins]]) for more.
+
 3. If using only certain parts of Bootstrap’s Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
 
    ```scss
