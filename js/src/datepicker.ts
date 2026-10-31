@@ -399,7 +399,8 @@ class Datepicker extends BaseComponent {
 
     this._onOutside = ({ target }) => {
       const mainElement = this._calendar?.context?.mainElement
-      const isOutside = !(target instanceof Node) || (!this._element.contains(target) && !mainElement?.contains(target))
+      const isOutside = !(target instanceof Node) ||
+        (!this._element.contains(target) && !this._positionElement.contains(target) && !mainElement?.contains(target))
 
       if (this._isShown && isOutside) {
         this.hide()
@@ -442,6 +443,11 @@ class Datepicker extends BaseComponent {
 
         this._isShown = true
         this._syncThemeAttribute(this._calendar.context.mainElement)
+
+        if (this._positionElement !== this._element) {
+          const cleanupClick = this._calendar.context.cleanupHandlers?.pop()
+          cleanupClick?.()
+        }
       },
       onHide: () => {
         this._isShown = false
