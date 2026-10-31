@@ -498,6 +498,23 @@ describe('Combobox', () => {
       expect(document.activeElement).toEqual(items[0])
     })
 
+    it('should not steal focus or prevent default on Home and End in search input', () => {
+      const { combobox, menuEl } = makeCombobox({ search: true }, markup({ search: SEARCH_HTML }))
+      combobox.show()
+      const searchEl = menuEl.querySelector('.combobox-search-input')
+      searchEl.focus()
+
+      const homeEvent = new KeyboardEvent('keydown', { key: 'Home', bubbles: true, cancelable: true })
+      searchEl.dispatchEvent(homeEvent)
+      expect(homeEvent.defaultPrevented).toBe(false)
+      expect(document.activeElement).toEqual(searchEl)
+
+      const endEvent = new KeyboardEvent('keydown', { key: 'End', bubbles: true, cancelable: true })
+      searchEl.dispatchEvent(endEvent)
+      expect(endEvent.defaultPrevented).toBe(false)
+      expect(document.activeElement).toEqual(searchEl)
+    })
+
     it('should select the focused item on Enter', () => {
       const { combobox, items, valueEl } = makeCombobox()
       combobox.show()

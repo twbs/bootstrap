@@ -425,7 +425,7 @@ class Combobox extends BaseComponent {
       return
     }
 
-    if (key === HOME_KEY || key === END_KEY) {
+    if ((key === HOME_KEY || key === END_KEY) && !isInput) {
       event.preventDefault()
       const items = this._getVisibleItems()
       if (items.length > 0) {
