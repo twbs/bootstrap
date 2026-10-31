@@ -54,7 +54,7 @@ $switch-tokens: defaults(
 
     &::before {
       position: absolute;
-      inset-block: var(--switch-padding);
+      inset-block-start: 50%;
       inset-inline-start: var(--switch-padding);
       width: var(--switch-indicator-width);
       height: var(--switch-indicator-height);
@@ -63,6 +63,7 @@ $switch-tokens: defaults(
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 10rem;
       box-shadow: 0 1px 2px rgb(0 0 0 / .1);
+      translate: 0 -50%;
       @include transition(inset-inline-start var(--switch-transition-duration) var(--switch-transition-timing));
     }
 
