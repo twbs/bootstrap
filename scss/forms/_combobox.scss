@@ -32,6 +32,19 @@
     white-space: nowrap;
   }
 
+  // Selected values rendered as chips with `showChips: true`
+  .combobox-chips {
+    flex-wrap: wrap;
+    gap: .25rem;
+    overflow: visible;
+    white-space: normal;
+
+    > .chip {
+      --chip-height: 1.5rem;
+      cursor: default;
+    }
+  }
+
   .combobox-placeholder {
     color: color-mix(in oklch, currentcolor 65%, transparent);
   }
