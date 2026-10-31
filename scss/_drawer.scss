@@ -53,11 +53,11 @@ $drawer-backdrop-tokens: defaults(
 );
 // scss-docs-end drawer-backdrop-tokens
 
-%drawer-css-vars {
-  @include tokens($drawer-tokens);
-}
-
 @layer components {
+  %drawer-css-vars {
+    @include tokens($drawer-tokens);
+  }
+
   // Apply CSS vars to all drawer responsive variants
   @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
     .#{$prefix}drawer {
