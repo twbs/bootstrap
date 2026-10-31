@@ -243,13 +243,27 @@ new bootstrap.Datepicker(root.getElementById('shadowDatepicker'))
 
 ### Via data attributes
 
-Add `data-bs-toggle="datepicker"` to any input element to initialize it as a datepicker.
+Add `data-bs-toggle="datepicker"` to any input element to initialize it as a datepicker. Every option, except a function formatter, has a matching `data-bs-` attribute. Set object and array values with JSON.
 
 <BsTable>
 | Attribute | Description |
 | --- | --- |
 | `data-bs-toggle="datepicker"` | Initializes the datepicker on the input (or button) element. |
+| `data-bs-datepicker-display` | Marks the child element that displays the selected date on button triggers. |
+| `data-bs-date-min` | Minimum selectable date in `YYYY-MM-DD` format. |
+| `data-bs-date-max` | Maximum selectable date in `YYYY-MM-DD` format. |
+| `data-bs-date-format` | Date formatting as an [`Intl.DateTimeFormat` options object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) in JSON. A function formatter needs JavaScript. |
+| `data-bs-display-element` | CSS selector for the element that shows the formatted date. Set to `false` to disable. |
+| `data-bs-display-months-count` | Number of months to display side-by-side in the calendar. |
+| `data-bs-first-weekday` | First day of week: `0` is Sunday, `1` is Monday. |
 | `data-bs-inline` | When `true`, renders the calendar inline instead of a popup. |
+| `data-bs-locale` | Locale for date formatting, for example `en-US` or `de-DE`. |
+| `data-bs-position-element` | CSS selector for the element to position the calendar against. Defaults to the `.form-adorn` wrapper when present. |
+| `data-bs-selected-dates` | JSON array of pre-selected dates in `YYYY-MM-DD` format. |
+| `data-bs-selection-mode` | Selection mode: `single`, `multiple`, or `multiple-ranged`. |
+| `data-bs-placement` | Calendar position relative to the input: `left` (default), `center`, `right`, or `auto`. |
+| `data-bs-datepicker-theme` | Forces the datepicker popup theme: `light`, `dark`, `auto`, or `null` to inherit from an ancestor `[data-bs-theme]`. |
+| `data-bs-vcp-options` | JSON object with any [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings). |
 </BsTable>
 
 ```html
