@@ -65,6 +65,7 @@ class Range extends BaseComponent {
   protected declare _bubbleText: HTMLElement | null
   protected declare _ticks: HTMLElement | null
   protected declare _updateHandler: () => void
+  protected declare _jsConfig: Partial<RangeConfig>
 
   constructor(element?: string | Element | null, config?: Partial<RangeConfig> | null) {
     super(element, config)
@@ -80,15 +81,14 @@ class Range extends BaseComponent {
       return
     }
 
+    // Keep the JS options, so `update()` can merge them again over the data attributes
+    this._jsConfig = typeof config === 'object' && config !== null ? { ...config } : {}
     this._bubble = null
     this._bubbleText = null
     this._ticks = null
     this._updateHandler = () => this._update()
 
-    if (this._config.bubble) {
-      this._createBubble()
-    }
-
+    this._syncBubble()
     this._createTicks()
     this._addEventListeners()
     this._update()
@@ -109,6 +109,9 @@ class Range extends BaseComponent {
 
   // Public
   update(): void {
+    // Read the data attributes again, so a changed `data-bs-bubble` takes effect
+    this._config = this._getConfig(this._jsConfig) as RangeConfig
+    this._syncBubble()
     this._update()
   }
 
@@ -167,6 +170,19 @@ class Range extends BaseComponent {
 
   protected _format(value: number): string {
     return typeof this._config.formatter === 'function' ? this._config.formatter(value) : String(value)
+  }
+
+  protected _syncBubble(): void {
+    if (this._config.bubble && !this._bubble) {
+      this._createBubble()
+      return
+    }
+
+    if (!this._config.bubble && this._bubble) {
+      this._bubble.remove()
+      this._bubble = null
+      this._bubbleText = null
+    }
   }
 
   protected _createBubble(): void {
