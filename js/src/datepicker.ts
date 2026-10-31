@@ -165,6 +165,22 @@ class Datepicker extends BaseComponent {
       return
     }
 
+    // VCP builds its popup on the first click or focus of the trigger. Until then
+    // `context.mainElement` is still the trigger itself. `set()` (a prefilled
+    // input value, `setSelectedDates()`) marks the calendar as rendered, so VCP's
+    // `show()` skips its own first-click fallback and positions the trigger
+    // instead of the popup: `data-vc-position` and inline `left`/`top` land on
+    // the input, where `[data-vc-position="bottom"]` adds a top margin and the
+    // field jumps down. Click the trigger first so the popup exists.
+    if (!this._calendar.context.inputModeInit) {
+      this._positionElement.click()
+
+      // A button's click runs the data API, which has already shown the popup
+      if (this._isShown) {
+        return
+      }
+    }
+
     this._calendar.show()
     this._isShown = true
 
