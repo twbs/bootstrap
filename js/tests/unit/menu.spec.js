@@ -1171,6 +1171,37 @@ describe('Menu', () => {
       expect(menu._menu).toBeNull()
       expect(menu._element).toBeNull()
       expect(spy).toHaveBeenCalledWith(btnMenu, Menu.EVENT_KEY)
+      expect(spy).toHaveBeenCalledWith(fixtureEl.querySelector('.menu'), Menu.EVENT_KEY)
+    })
+
+    it('should remove mouseover listeners on document.body.children if disposed while open on touch devices', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <a class="menu-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const defaultValueOnTouchStart = document.documentElement.ontouchstart
+        document.documentElement.ontouchstart = noop
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const menu = new Menu(btnMenu)
+        const spy = spyOn(EventHandler, 'off').and.callThrough()
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          menu.dispose()
+
+          expect(spy).toHaveBeenCalledWith(jasmine.any(Element), 'mouseover', noop)
+          document.documentElement.ontouchstart = defaultValueOnTouchStart
+          resolve()
+        })
+
+        menu.show()
+      })
     })
 
     it('should dispose menu with Floating UI', () => {
