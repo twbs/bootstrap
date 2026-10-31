@@ -23,7 +23,8 @@ Note that we’re using a width utility of `.w-12` to ensure the input is wide e
 - Add `data-bs-toggle="datepicker"` to any `<input>` element to enable the datepicker
 - Use `type="text"` to avoid conflicts with native browser date pickers
 - When focused, the calendar popup appears below the input
-- Selecting a date updates the input value and closes the picker
+- Selecting a date shows it in the input, formatted for the locale, and closes the picker
+- An input with a `name` submits the selected date(s) in `YYYY-MM-DD` format through a hidden input, see [Form submission](#form-submission)
 - The picker also closes on a click outside it, on <kbd>Escape</kbd>, or when focus moves to an element outside it
 - The picker respects Bootstrap’s color modes (`data-bs-theme`)
 - Configurable with any [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings) via `vcpOptions` when initializing with JavaScript
@@ -194,6 +195,23 @@ const datepicker = new bootstrap.Datepicker(element, {
   // Output: "Dec 23 – Dec 28"
 })
 ```
+
+## Form submission
+
+The text shown in the input is formatted for display, so it is not what a form should send. When the input has a `name`, the datepicker moves that name to a hidden `<input>` inserted before it and keeps it updated with the selected date(s) in `YYYY-MM-DD` format, the same value a native `<input type="date">` submits. The visible input only shows the formatted date.
+
+```html
+<!-- What you write -->
+<input type="text" class="form-control" name="start" data-bs-toggle="datepicker" value="2026-06-10">
+
+<!-- What the JS creates -->
+<input type="hidden" name="start" value="2026-06-10">
+<input type="text" class="form-control" data-bs-toggle="datepicker" value="6/10/2026">
+```
+
+For multiple dates and date ranges, the hidden input holds a comma-separated list, for example `2026-06-10,2026-06-18`. A date typed into the input is mirrored into the hidden input; text that is not a date submits an empty value.
+
+The instance is created when the input receives focus, so an input that is never focused submits its `value` attribute unchanged. Use the `YYYY-MM-DD` format for prefilled values.
 
 ## Dark mode
 
