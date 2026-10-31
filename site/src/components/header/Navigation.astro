@@ -42,7 +42,7 @@ const { addedIn, layout, title } = Astro.props
     }
     {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
 
-    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
+    <a class="navbar-brand p-0 me-0 me-lg-2" href={getVersionedDocsPath("/")} aria-label="Bootstrap">
       <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
     </a>
 
