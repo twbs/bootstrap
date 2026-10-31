@@ -9,6 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import { onDocumentReady } from './util/component-functions.js'
+import { isDisabled } from './util/index.js'
 
 /**
  * Constants
@@ -139,6 +140,10 @@ class OtpInput extends BaseComponent {
   }
 
   focus(): void {
+    if (isDisabled(this._input)) {
+      return
+    }
+
     this._input.focus()
     // Select the first empty slot (or the last one when the value is full)
     this._selectSlot(this._firstEmptyIndex())
@@ -288,7 +293,7 @@ class OtpInput extends BaseComponent {
 
   protected _handlePaste(event: BootstrapEvent): void {
     const pastedValue = event.clipboardData?.getData('text')
-    if (!pastedValue || this._input.readOnly) {
+    if (!pastedValue || this._input.readOnly || isDisabled(this._input)) {
       return
     }
 
@@ -314,10 +319,14 @@ class OtpInput extends BaseComponent {
     this._afterValueChange()
   }
 
-  // Intercept single-character typing and backspace so each slot is overwritten
+  // Intercept single-character typing and backspace/delete so each slot is overwritten
   // in place rather than inserting and shifting the rest of the value. Autofill
   // and IME composition fall through to `_handleInput`.
   protected _handleBeforeInput(event: BootstrapEvent): void {
+    if (this._input.readOnly || isDisabled(this._input)) {
+      return
+    }
+
     const { inputType, data } = event
 
     if (inputType === 'insertText' && data && data.length === 1) {
@@ -338,7 +347,7 @@ class OtpInput extends BaseComponent {
       return
     }
 
-    if (inputType === 'deleteContentBackward') {
+    if (inputType === 'deleteContentBackward' || inputType === 'deleteContentForward') {
       event.preventDefault()
 
       const start = this._input.selectionStart ?? 0
@@ -350,11 +359,16 @@ class OtpInput extends BaseComponent {
         chars.splice(start, end - start)
         this._input.value = chars.join('')
         this._selectSlot(start)
-      } else if (start > 0) {
+      } else if (inputType === 'deleteContentBackward' && start > 0) {
         // Collapsed caret: remove the previous character and step back
         chars.splice(start - 1, 1)
         this._input.value = chars.join('')
         this._selectSlot(start - 1)
+      } else if (inputType === 'deleteContentForward' && start < chars.length) {
+        // Collapsed caret: remove the character at caret and keep caret in place
+        chars.splice(start, 1)
+        this._input.value = chars.join('')
+        this._selectSlot(start)
       }
 
       this._afterValueChange()
@@ -362,6 +376,10 @@ class OtpInput extends BaseComponent {
   }
 
   protected _handlePointerDown(event: BootstrapEvent): void {
+    if (isDisabled(this._input)) {
+      return
+    }
+
     const index = this._slotIndexFromPoint(event.clientX)
     if (index === null) {
       return

@@ -40,8 +40,11 @@ describe('OtpInput', () => {
     }))
   }
 
-  const beforeInput = (input, options) =>
-    input.dispatchEvent(new InputEvent('beforeinput', { bubbles: true, cancelable: true, ...options }))
+  const beforeInput = (input, options) => {
+    const event = new InputEvent('beforeinput', { bubbles: true, cancelable: true, ...options })
+    input.dispatchEvent(event)
+    return event
+  }
 
   const pasteInto = (input, value) => {
     const event = new Event('paste', { bubbles: true, cancelable: true })
@@ -302,6 +305,82 @@ describe('OtpInput', () => {
       expect(input.value).toEqual('123456')
     })
 
+    it('should not paste into a disabled input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.disabled = true
+
+      const event = new Event('paste', { bubbles: true, cancelable: true })
+      event.clipboardData = { getData: () => '654321' }
+      input.dispatchEvent(event)
+
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should not allow typing into a readonly input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.readOnly = true
+
+      const event = beforeInput(input, { inputType: 'insertText', data: '9' })
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should not allow typing into a disabled input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.disabled = true
+
+      const event = beforeInput(input, { inputType: 'insertText', data: '9' })
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should not allow deleting on backspace in a readonly input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.readOnly = true
+
+      const event = beforeInput(input, { inputType: 'deleteContentBackward' })
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should not allow deleting on backspace in a disabled input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.disabled = true
+
+      const event = beforeInput(input, { inputType: 'deleteContentBackward' })
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('123456')
+    })
+
     it('should not clear the value when pasting empty text', () => {
       fixtureEl.innerHTML = getOtpHtml()
 
@@ -386,6 +465,22 @@ describe('OtpInput', () => {
 
       expect(input.value).toEqual('12')
       expect(input.selectionStart).toEqual(2)
+    })
+
+    it('should delete the current character on delete', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123')
+
+      input.focus()
+      input.setSelectionRange(1, 1)
+      input.dispatchEvent(new InputEvent('beforeinput', { inputType: 'deleteContentForward', bubbles: true, cancelable: true }))
+
+      expect(input.value).toEqual('13')
+      expect(input.selectionStart).toEqual(1)
     })
 
     it('should focus the first empty slot on keyboard focus', () => {
@@ -483,6 +578,23 @@ describe('OtpInput', () => {
       expect(input.selectionStart).toEqual(2)
     })
 
+    it('should clear the selected slot and keep the caret on delete', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      input.focus()
+      // A filled slot is selected (as the active slot always is)
+      input.setSelectionRange(2, 3)
+      beforeInput(input, { inputType: 'deleteContentForward' })
+
+      expect(input.value).toEqual('12456')
+      expect(input.selectionStart).toEqual(2)
+    })
+
     it('should do nothing on backspace at the start of an empty field', () => {
       fixtureEl.innerHTML = getOtpHtml()
 
@@ -547,9 +659,37 @@ describe('OtpInput', () => {
 
       expect(otpEl.querySelectorAll('.otp-slot')[3]).toHaveClass('otp-slot-active')
     })
+
+    it('should ignore pointerdown when input is disabled', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      input.disabled = true
+
+      layoutSlotsHorizontally(otpEl)
+      const slots = otpEl.querySelectorAll('.otp-slot')
+      pointerDownOnSlot(input, slots[2])
+
+      expect(otp._pointerActive).toBeFalse()
+    })
   })
 
   describe('focus', () => {
+    it('should not focus when input is disabled', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      input.disabled = true
+
+      otp.focus()
+
+      expect(document.activeElement).not.toEqual(input)
+    })
+
     it('should focus the input and select the first empty slot', () => {
       fixtureEl.innerHTML = getOtpHtml()
 
