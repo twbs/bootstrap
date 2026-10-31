@@ -2,9 +2,9 @@ import type { APIRoute } from 'astro'
 
 export const GET: APIRoute = function GET({ site }) {
   const isProduction = import.meta.env.PROD
-  const isNetlify = import.meta.env.NETLIFY === 'true'
+  const isPreviewDeploy = import.meta.env.VERCEL_ENV === 'preview'
 
-  const allowCrawling = !isNetlify && isProduction
+  const allowCrawling = !isPreviewDeploy && isProduction
 
   const robotsTxt = `# www.robotstxt.org${allowCrawling ? '\n# Allow crawling of all content' : ''}
 User-agent: *
