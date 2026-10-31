@@ -100,6 +100,16 @@ describe('Tooltip', () => {
       expect(tooltip._config.content).toEqual('false')
     })
 
+    it('should preserve raw strings without reformatting numbers or throwing on empty title/content', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="9.90" data-bs-content=""></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      expect(tooltip._config.title).toEqual('9.90')
+      expect(tooltip._config.content).toEqual('')
+    })
+
     it('should enable selector delegation', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div></div>'
