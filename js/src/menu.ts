@@ -277,6 +277,16 @@ class Menu extends BaseComponent {
   }
 
   override dispose(): void {
+    if (this._menu) {
+      EventHandler.off(this._menu, EVENT_KEY)
+    }
+
+    if ('ontouchstart' in document.documentElement) {
+      for (const element of document.body.children) {
+        EventHandler.off(element, 'mouseover', noop)
+      }
+    }
+
     this._disposeFloating()
     this._restoreMenuToOriginalParent()
     this._disposeMediaQueryListeners()
@@ -605,21 +615,21 @@ class Menu extends BaseComponent {
 
   protected _setupSubmenuListeners(): void {
     if (this._config.submenuTrigger === 'hover' || this._config.submenuTrigger === 'both') {
-      EventHandler.on(this._menu, 'mouseenter', SELECTOR_SUBMENU_TOGGLE, event => {
+      EventHandler.on(this._menu, `mouseenter${EVENT_KEY}`, SELECTOR_SUBMENU_TOGGLE, event => {
         this._onSubmenuTriggerEnter(event)
       })
 
-      EventHandler.on(this._menu, 'mouseleave', SELECTOR_SUBMENU, event => {
+      EventHandler.on(this._menu, `mouseleave${EVENT_KEY}`, SELECTOR_SUBMENU, event => {
         this._onSubmenuLeave(event)
       })
 
-      EventHandler.on(this._menu, 'mousemove', event => {
+      EventHandler.on(this._menu, `mousemove${EVENT_KEY}`, event => {
         this._trackMousePosition(event)
       })
     }
 
     if (this._config.submenuTrigger === 'click' || this._config.submenuTrigger === 'both') {
-      EventHandler.on(this._menu, 'click', SELECTOR_SUBMENU_TOGGLE, event => {
+      EventHandler.on(this._menu, `click${EVENT_KEY}`, SELECTOR_SUBMENU_TOGGLE, event => {
         this._onSubmenuTriggerClick(event)
       })
     }
@@ -718,7 +728,7 @@ class Menu extends BaseComponent {
     const cleanup = this._createSubmenuFloating(trigger, submenu, submenuWrapper)
     this._openSubmenus.set(submenu, cleanup)
 
-    EventHandler.on(submenu, 'mouseenter', () => {
+    EventHandler.on(submenu, `mouseenter${EVENT_KEY}`, () => {
       this._cancelSubmenuCloseTimeout(submenu)
     })
   }
@@ -742,7 +752,7 @@ class Menu extends BaseComponent {
     }
 
     this._openSubmenus.delete(submenu)
-    EventHandler.off(submenu, 'mouseenter')
+    EventHandler.off(submenu, `mouseenter${EVENT_KEY}`)
 
     if (trigger) {
       trigger.setAttribute('aria-expanded', 'false')
