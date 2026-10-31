@@ -119,12 +119,14 @@ class Datepicker extends BaseComponent {
   protected declare _themeAncestor: Element | null | undefined
   protected declare _onOutside: (event: Event) => void
   protected declare _onTriggerClick: () => void
+  protected declare _hideTimeout: ReturnType<typeof setTimeout> | null
 
   constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null) {
     super(element, config)
 
     this._calendar = null
     this._isShown = false
+    this._hideTimeout = null
 
     this._initCalendar()
   }
@@ -172,11 +174,12 @@ class Datepicker extends BaseComponent {
   }
 
   async hide(): Promise<void> {
-    if (this._config.inline) {
-      return // Inline calendars are always visible
+    if (this._hideTimeout) {
+      clearTimeout(this._hideTimeout)
+      this._hideTimeout = null
     }
 
-    if (!this._calendar || !this._isShown) {
+    if (!this._calendar || !this._config || !this._isShown || this._config.inline) {
       return
     }
 
@@ -192,6 +195,11 @@ class Datepicker extends BaseComponent {
   }
 
   override dispose(): void {
+    if (this._hideTimeout) {
+      clearTimeout(this._hideTimeout)
+      this._hideTimeout = null
+    }
+
     if (this._themeObserver) {
       this._themeObserver.disconnect()
       this._themeObserver = null
@@ -489,7 +497,14 @@ class Datepicker extends BaseComponent {
       (this._config.selectionMode === 'multiple-ranged' && selectedDates.length >= 2)
 
     if (shouldHide) {
-      setTimeout(() => this.hide(), HIDE_DELAY)
+      if (this._hideTimeout) {
+        clearTimeout(this._hideTimeout)
+      }
+
+      this._hideTimeout = setTimeout(() => {
+        this._hideTimeout = null
+        this.hide()
+      }, HIDE_DELAY)
     }
   }
 
