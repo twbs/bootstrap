@@ -787,6 +787,65 @@ describe('OtpInput', () => {
         typeInto(input, '12')
       })
     })
+
+    const countEvents = otpEl => {
+      const counts = { input: 0, complete: 0 }
+      otpEl.addEventListener('input.bs.otpInput', () => counts.input++)
+      otpEl.addEventListener('complete.bs.otpInput', () => counts.complete++)
+      return counts
+    }
+
+    it('should not trigger input or complete events on delete after the last character', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      const counts = countEvents(otpEl)
+
+      input.focus()
+      input.setSelectionRange(6, 6)
+      const event = beforeInput(input, { inputType: 'deleteContentForward' })
+
+      expect(event).toBeFalse()
+      expect(input.value).toEqual('123456')
+      expect(counts).toEqual({ input: 0, complete: 0 })
+    })
+
+    it('should not trigger an input event on backspace before the first character', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123')
+      const counts = countEvents(otpEl)
+
+      input.focus()
+      input.setSelectionRange(0, 0)
+      beforeInput(input, { inputType: 'deleteContentBackward' })
+
+      expect(input.value).toEqual('123')
+      expect(counts).toEqual({ input: 0, complete: 0 })
+    })
+
+    it('should trigger one input event when delete removes a character', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      const counts = countEvents(otpEl)
+
+      input.focus()
+      input.setSelectionRange(2, 3)
+      beforeInput(input, { inputType: 'deleteContentForward' })
+
+      expect(input.value).toEqual('12456')
+      expect(counts).toEqual({ input: 1, complete: 0 })
+    })
   })
 
   describe('dispose', () => {

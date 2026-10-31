@@ -360,12 +360,15 @@ class OtpInput extends BaseComponent {
       }
 
       const chars = [...this._input.value]
-      if (start >= 0 && end <= chars.length) {
-        chars.splice(start, end - start)
-        this._input.value = chars.join('')
-        this._selectSlot(start)
+      // Nothing to delete before the first character or after the last one:
+      // the value doesn't change, so no `input` or `complete` event either
+      if (start < 0 || end > chars.length) {
+        return
       }
 
+      chars.splice(start, end - start)
+      this._input.value = chars.join('')
+      this._selectSlot(start)
       this._afterValueChange()
     }
   }
