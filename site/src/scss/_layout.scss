@@ -12,7 +12,9 @@
     @include media-breakpoint-up(lg) {
       display: grid;
       grid-template-areas: "sidebar main";
-      grid-template-columns: 1fr 5fr;
+      // Keep the sidebar wide enough that sticky nav links do not force a
+      // horizontal scrollbar (see #43242).
+      grid-template-columns: minmax(210px, 1fr) 5fr;
       gap: $grid-gutter-x;
     }
 
