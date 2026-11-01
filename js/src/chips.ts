@@ -438,6 +438,13 @@ class Chips extends BaseComponent {
   }
 
   protected _handleInputKeydown(event: BootstrapEvent): void {
+    // Keys pressed during an IME composition (Chinese, Japanese, Korean, ...)
+    // belong to the input method: Enter commits the text and Escape cancels it.
+    // Safari sends the committing keydown after `compositionend`, with keyCode 229.
+    if (event.isComposing || event.keyCode === 229) {
+      return
+    }
+
     const { key } = event
 
     switch (key) {
