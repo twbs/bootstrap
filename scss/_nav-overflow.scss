@@ -25,6 +25,14 @@
     }
   }
 
+  // A column flex parent shares its free height with the wrapper. CSS can't read
+  // the parent's direction, so this list names the known column parents. A parent
+  // with a row class, such as `.md:flex-row`, keeps the grow, because a row
+  // wrapper that doesn't grow collapses to 0.
+  :is(.card, .dialog, .drawer, .flex-column):not([class*="-row"]) > .nav-overflow {
+    flex-grow: 0;
+  }
+
   // The nav fills the wrapper and stops wrapping, so items run past the edge in
   // one line for the component to measure.
   .nav-overflow > .nav {
