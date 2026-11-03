@@ -166,6 +166,14 @@ Breaking columns to a new line in flexbox requires a small hack: add an element 
     </div>
   </div>`} />
 
+<Callout>
+If the row uses vertical gutters (`.g-*` or `.gy-*`), the break element also gets the gutter margin from `.row > *`. This adds extra space. Add `.m-0` and `.p-0` to the break element to remove it.
+
+```html
+<div class="w-100 m-0 p-0"></div>
+```
+</Callout>
+
 You may also apply this break at specific breakpoints with our [responsive display utilities]([[docsref:/utilities/display]]).
 
 <Example class="bd-example-row" code={`<div class="container text-center">
