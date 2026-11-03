@@ -1,3 +1,4 @@
+// stylelint-disable length-zero-no-unit -- Zero gaps need a length type inside calc().
 @use "sass:map";
 @use "sass:math";
 @use "sass:meta";
@@ -9,13 +10,12 @@
 // Generate semantic grid columns with these mixins.
 
 @mixin make-row($gutter-x: $grid-gutter-x, $gutter-y: $grid-gutter-y) {
-  --gutter-x: #{$gutter-x};
+  // stylelint-disable-next-line scss/at-function-named-arguments
+  --gutter-x: #{if(sass($gutter-x == 0): 0px; else: $gutter-x)};
   --gutter-y: #{$gutter-y};
   display: flex;
   flex-wrap: wrap;
-  // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
-  margin-inline: calc(-.5 * var(--gutter-x));
-  margin-top: calc(-1 * var(--gutter-y));
+  gap: var(--gutter-y) var(--gutter-x);
 }
 
 @mixin make-col-ready() {
@@ -28,14 +28,13 @@
   flex-shrink: 0;
   width: 100%;
   max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
-  padding-inline: calc(var(--gutter-x) * .5);
-  margin-top: var(--gutter-y);
 }
 
-@mixin make-col($size: false, $columns: $grid-columns) {
+@mixin make-col($size: false, $columns: $grid-columns, $gap: var(--gutter-x, 0px)) {
   @if $size {
     flex: 0 0 auto;
-    width: math.percentage(math.div($size, $columns));
+    // A span includes its internal gaps and leaves one gap before the next column.
+    width: calc((100% + $gap) * #{math.div($size, $columns)} - $gap);
 
   } @else {
     flex: 1 1 0;
@@ -48,10 +47,10 @@
   width: auto;
 }
 
-@mixin make-col-offset($size, $columns: $grid-columns) {
+@mixin make-col-offset($size, $columns: $grid-columns, $gap: var(--gutter-x, 0px)) {
   $num: math.div($size, $columns);
   // stylelint-disable-next-line scss/at-function-named-arguments
-  margin-inline-start: if(sass($num == 0): 0; else: math.percentage($num));
+  margin-inline-start: if(sass($num == 0): 0; else: calc((100% + $gap) * #{$num}));
 }
 
 // Row columns
@@ -62,7 +61,7 @@
 @mixin row-cols($count) {
   > * {
     flex: 0 0 auto;
-    width: math.percentage(math.div(1, $count));
+    width: calc((100% + var(--gutter-x, 0px)) / #{$count} - var(--gutter-x, 0px));
   }
 }
 
@@ -99,7 +98,12 @@
       @if $columns > 0 {
         @for $i from 1 through $columns {
           .#{$prefix}col-#{$i} {
-            @include make-col($i, $columns);
+            // Keep percentage sizing when column classes are used outside rows.
+            @include make-col($i, $columns, 0px);
+
+            :where(.row) > & {
+              @include make-col($i, $columns);
+            }
           }
         }
 
@@ -107,7 +111,11 @@
         @for $i from 0 through ($columns - 1) {
           @if not ($prefix == "" and $i == 0) { // Avoid emitting useless .offset-0
             .#{$prefix}offset-#{$i} {
-              @include make-col-offset($i, $columns);
+              @include make-col-offset($i, $columns, 0px);
+
+              :where(.row) > & {
+                @include make-col-offset($i, $columns);
+              }
             }
           }
         }
@@ -119,7 +127,8 @@
       @each $key, $value in $gutters {
         .#{$prefix}g-#{$key},
         .#{$prefix}gx-#{$key} {
-          --gutter-x: #{$value};
+          // stylelint-disable-next-line scss/at-function-named-arguments
+          --gutter-x: #{if(sass($value == 0): 0px; else: $value)};
         }
 
         .#{$prefix}g-#{$key},
