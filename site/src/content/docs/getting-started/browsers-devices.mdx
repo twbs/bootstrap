@@ -12,7 +12,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
 
 Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `last 2 major versions`. They add every version above each floor, which is what sets our real minimums:
 
-<BsTable>
+<BsTable class="table">
 | Browser | Minimum version |
 | --- | --- |
 | Chrome | 138 |
@@ -62,14 +62,16 @@ The floors clear more of the platform than the components currently use. All of 
 - `text-wrap: balance`
 - Range syntax in media queries, such as `@media (width >= 1024px)`
 
-### New since v6.0.0-alpha1
+### Newly supported across all browser targets
 
-The new floors make these features safe to use:
+The higher floors make these features available across all supported browsers:
 
 - Relative color syntax, including `currentColor` as the source color
 - Same-document view transitions
 - `::details-content` for styling the expandable part of `<details>`
 - `content-visibility` for skipping off-screen rendering work
+
+Bootstrap already used `::details-content` in v6.0.0-alpha.1 as a progressive enhancement for accordion transitions. The higher floors make it available in every supported browser.
 
 We'll look for more ways to incorporate these features into Bootstrap as we continue to develop v6.
 
