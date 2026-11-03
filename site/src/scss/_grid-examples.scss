@@ -1,9 +1,0 @@
-// Include responsive column classes in the shared BUI example highlighting.
-@layer custom {
-  .bd-example-row [class*="col-"],
-  .bd-example-cols [class*="col-"] > * {
-    padding-block: .75rem;
-    background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
-    border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
-  }
-}

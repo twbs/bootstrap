@@ -36,7 +36,6 @@
 @use "toc";
 @use "footer";
 @use "@twbs/bui/scss/component-examples";
-@use "grid-examples";
 @use "badge";
 @use "callouts";
 @use "details";
@@ -49,3 +48,13 @@
 // Load docs dependencies
 @use "@twbs/bui/scss/syntax";
 @use "anchor";
+
+// Include responsive column classes in the shared BUI example highlighting.
+@layer custom {
+  .bd-example-row :is([class~="col"], [class*="col-"], [class*=":col"]),
+  .bd-example-cols :is([class~="col"], [class*="col-"], [class*=":col"]) > * {
+    padding-block: .75rem;
+    background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
+  }
+}
