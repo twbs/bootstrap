@@ -6,6 +6,12 @@
     --chip-height: var(--combobox-control-chip-height);
     --chip-padding-x: .5rem;
     --chip-gap: .25rem;
+    --chip-dismiss-size: 1.5rem;
+
+    > .chip-dismiss > svg {
+      width: .75rem;
+      height: .75rem;
+    }
 
     &:focus-visible {
       @include focus-ring(true);

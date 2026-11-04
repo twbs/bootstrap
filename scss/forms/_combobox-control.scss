@@ -46,6 +46,10 @@ $combobox-control-tokens: defaults(
     border: var(--control-border-width) solid var(--control-border-color);
     @include border-radius(var(--control-border-radius), 0);
 
+    &:has(> .chip) {
+      padding-inline-start: var(--combobox-control-gap);
+    }
+
     // Focus state when ghost input is focused
     &:focus-within {
       --focus-ring-offset: -1px;
