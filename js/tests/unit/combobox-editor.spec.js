@@ -385,4 +385,197 @@ describe('Combobox editor', () => {
     expect(x.input.value).toEqual('とうきょう')
     expect(values(x.form)).toEqual([])
   })
+  it('should highlight the last chip without changing form values on Backspace', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    const changed = jasmine.createSpy('changed')
+    x.form.addEventListener('change', changed)
+    x.input.focus()
+    key(x.input, 'Backspace')
+    const chip = x.root.querySelectorAll('.chip')[2]
+    expect(chip).toHaveClass('active')
+    expect(chip.getAttribute('aria-description')).toEqual('Selected for removal')
+    expect(instance.getSelectedValues()).toEqual(['science'])
+    expect(instance.getValues()).toEqual(['design', 'art,music', 'science'])
+    expect(changed).not.toHaveBeenCalled()
+  })
+
+  it('should select a chip on click and support modifier toggles', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    const chips = x.root.querySelectorAll('.chip')
+    chips[0].click()
+    expect(instance.getSelectedValues()).toEqual(['design'])
+    chips[2].dispatchEvent(new MouseEvent('click', { bubbles: true, ctrlKey: true }))
+    expect(instance.getSelectedValues()).toEqual(['design', 'science'])
+    chips[0].dispatchEvent(new MouseEvent('click', { bubbles: true, metaKey: true }))
+    expect(instance.getSelectedValues()).toEqual(['science'])
+    expect(document.activeElement).toBe(chips[0])
+  })
+
+  it('should extend and shrink a range without losing its anchor', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    const chips = x.root.querySelectorAll('.chip')
+    chips[2].click()
+    key(chips[2], 'ArrowLeft', { shiftKey: true })
+    expect(instance.getSelectedValues()).toEqual(['art,music', 'science'])
+    key(chips[1], 'ArrowLeft', { shiftKey: true })
+    expect(instance.getSelectedValues()).toEqual(['design', 'art,music', 'science'])
+    key(chips[0], 'ArrowRight', { shiftKey: true })
+    expect(instance.getSelectedValues()).toEqual(['art,music', 'science'])
+  })
+
+  it('should support shift-click and shift-Home/End range selection', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    const chips = x.root.querySelectorAll('.chip')
+    chips[0].click()
+    chips[2].dispatchEvent(new MouseEvent('click', { bubbles: true, shiftKey: true }))
+    expect(instance.getSelectedValues()).toEqual(['design', 'art,music', 'science'])
+    chips[1].click()
+    key(chips[1], 'Home', { shiftKey: true })
+    expect(instance.getSelectedValues()).toEqual(['design', 'art,music'])
+    key(chips[0], 'End', { shiftKey: true })
+    expect(instance.getSelectedValues()).toEqual(['art,music', 'science'])
+  })
+
+  it('should emit UI selection events with values and option identities', () => {
+    const x = make({}, { values: ['same', 'same'], selected: [0, 1] })
+    const events = []
+    x.root.addEventListener('select.bs.combobox', event => events.push([event.selected, event.items]))
+    const chips = x.root.querySelectorAll('.chip')
+    instance.selectChip(chips[1])
+    instance.clearSelection()
+    expect(events).toEqual([[['same'], [x.items[1]]], [[], []]])
+    expect(values(x.form)).toEqual(['same', 'same'])
+  })
+
+  it('should delete a selected range in one native change and focus a remaining chip', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    const chips = x.root.querySelectorAll('.chip')
+    chips[2].click()
+    key(chips[2], 'ArrowLeft', { shiftKey: true })
+    const changes = []
+    x.form.addEventListener('change', () => changes.push(values(x.form)))
+    key(chips[1], 'Delete')
+    expect(values(x.form)).toEqual(['design'])
+    expect(changes).toEqual([['design']])
+    expect(document.activeElement).toBe(chips[0])
+    expect(chips[0]).toHaveClass('active')
+  })
+
+  it('should select all chips with modifier+A but preserve native query selection', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    x.input.focus()
+    expect(key(x.input, 'a', { ctrlKey: true }).defaultPrevented).toBeTrue()
+    expect(instance.getSelectedValues()).toEqual(['design', 'art,music', 'science'])
+    key(document.activeElement, 'Delete')
+    expect(values(x.form)).toEqual([])
+    expect(document.activeElement).toBe(x.input)
+    type(x.input, 'query')
+    expect(key(x.input, 'a', { metaKey: true }).defaultPrevented).toBeFalse()
+  })
+
+  it('should clear highlighted chips when returning to the editor', () => {
+    const x = make({}, { selected: [0, 1] })
+    x.input.focus()
+    key(x.input, 'Backspace')
+    const last = x.root.querySelectorAll('.chip')[1]
+    key(last, 'ArrowRight')
+    expect(document.activeElement).toBe(x.input)
+    expect(instance.getSelectedValues()).toEqual([])
+    expect(last).not.toHaveClass('active')
+    expect(last.hasAttribute('aria-description')).toBeFalse()
+  })
+
+  it('should clear UI selection on Escape without removing committed values', () => {
+    const x = make({}, { selected: [0, 1] })
+    const chip = x.root.querySelector('.chip')
+    chip.click()
+    key(chip, 'Escape')
+    expect(instance.getSelectedValues()).toEqual([])
+    expect(instance.getValues()).toEqual(['design', 'art,music'])
+    expect(document.activeElement).toBe(x.input)
+  })
+
+  it('should preserve query text when arrowing back from a chip', () => {
+    const x = make({}, { selected: [0, 1] })
+    type(x.input, 'query')
+    x.input.setSelectionRange(0, 0)
+    key(x.input, 'ArrowLeft')
+    const chip = x.root.querySelectorAll('.chip')[1]
+    expect(chip).toHaveClass('active')
+    key(chip, 'End')
+    expect(x.input.value).toEqual('query')
+    expect(instance.getSelectedValues()).toEqual([])
+  })
+
+  it('should honor individual removal cancellation during bulk deletion', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    const chip = x.root.querySelector('.chip')
+    chip.click()
+    key(chip, 'a', { ctrlKey: true })
+    x.root.addEventListener('remove.bs.combobox', event => {
+      if (event.item === x.items[1]) {
+        event.preventDefault()
+      }
+    })
+    key(chip, 'Delete')
+    expect(instance.getValues()).toEqual(['art,music'])
+    expect(x.root.querySelector('.chip')).toHaveClass('active')
+  })
+
+  it('should exclude disabled chips from focus and range selection', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    x.items[2].disabled = true
+    instance.update()
+    x.input.focus()
+    key(x.input, 'Backspace')
+    expect(document.activeElement).toBe(x.root.querySelectorAll('.chip')[1])
+    key(document.activeElement, 'a', { ctrlKey: true })
+    expect(instance.getSelectedValues()).toEqual(['design', 'art,music'])
+  })
+
+  it('should navigate and extend chip ranges in RTL', () => {
+    document.documentElement.dir = 'rtl'
+    const x = make({}, { selected: [0, 1, 2] })
+    x.input.focus()
+    key(x.input, 'ArrowRight')
+    const chips = x.root.querySelectorAll('.chip')
+    key(chips[2], 'ArrowRight', { shiftKey: true })
+    expect(instance.getSelectedValues()).toEqual(['art,music', 'science'])
+    expect(document.activeElement).toBe(chips[1])
+    key(chips[1], 'ArrowLeft')
+    expect(instance.getSelectedValues()).toEqual(['science'])
+  })
+
+  it('should stop safely when a chip-selection listener disposes the component', () => {
+    const x = make({}, { selected: [0] })
+    const component = instance
+    x.root.addEventListener('select.bs.combobox', () => {
+      component.dispose()
+      instance = null
+    })
+    expect(() => key(x.input, 'Backspace')).not.toThrow()
+  })
+
+  it('should clear UI selection quietly on reset', async () => {
+    const x = make({}, { selected: [0, 1] })
+    x.root.querySelector('.chip').click()
+    const selected = jasmine.createSpy('selected')
+    x.root.addEventListener('select.bs.combobox', selected)
+    x.form.reset()
+    await new Promise(resolve => {
+      setTimeout(resolve, 0)
+    })
+    expect(instance.getSelectedValues()).toEqual([])
+    expect(x.root.querySelectorAll('.chip.active').length).toEqual(0)
+    expect(selected).not.toHaveBeenCalled()
+  })
+
+  it('should prune highlighted chips when their options are removed on update', () => {
+    const x = make({}, { selected: [0, 1] })
+    x.root.querySelector('.chip').click()
+    x.items[0].remove()
+    instance.update()
+    expect(instance.getSelectedValues()).toEqual([])
+    expect(instance._anchorChip).toBeNull()
+  })
 })

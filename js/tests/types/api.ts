@@ -67,6 +67,12 @@ combobox.add('design')
 combobox.remove('design')
 combobox.clear()
 combobox.focus()
+combobox.selectChip(element, { rangeSelect: true, addToSelection: true })
+combobox.clearSelection()
+const selectedChipValues: string[] = combobox.getSelectedValues()
+const removedSelectedChips: boolean = combobox.removeSelected()
+void selectedChipValues
+void removedSelectedChips
 const comboboxValues: string[] = combobox.getValues()
 new Combobox(element, {
   allowCustom: true, multiple: true, separator: ';', maxItems: 5
