@@ -943,6 +943,24 @@ describe('ScrollSpy', () => {
       link.click()
     })
 
+    it('should smoothScroll when clicking an element nested in an anchor', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const div = fixtureEl.querySelector('.content')
+      const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
+      const observable = fixtureEl.querySelector('#div-jsm-1')
+      const clickSpy = getElementScrollSpy(div)
+      link.innerHTML = '<span>div 1</span>'
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        offset: 1,
+        smoothScroll: true
+      })
+
+      link.querySelector('span').click()
+      expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
+    })
+
     it('should smoothscroll to observable with anchor link that contains a french word as id', done => {
       fixtureEl.innerHTML = [
         '<nav id="navBar" class="navbar">',
