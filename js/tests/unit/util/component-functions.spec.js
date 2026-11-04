@@ -39,7 +39,7 @@ describe('Plugin functions', () => {
       const spyTest = spyOn(DummyClass2.prototype, 'testMethod')
       const componentWrapper = fixtureEl.querySelector('#foo')
       const btnClose = fixtureEl.querySelector('[data-bs-dismiss="test"]')
-      const event = createEvent('click')
+      const event = createEvent('click', { bubbles: true })
 
       enableDismissTrigger(DummyClass2, 'testMethod')
       btnClose.dispatchEvent(event)
@@ -59,7 +59,7 @@ describe('Plugin functions', () => {
       const spyHide = spyOn(DummyClass2.prototype, 'hide')
       const componentWrapper = fixtureEl.querySelector('#foo')
       const btnClose = fixtureEl.querySelector('[data-bs-dismiss="test"]')
-      const event = createEvent('click')
+      const event = createEvent('click', { bubbles: true })
 
       enableDismissTrigger(DummyClass2)
       btnClose.dispatchEvent(event)
@@ -77,7 +77,7 @@ describe('Plugin functions', () => {
 
       const spy = spyOn(DummyClass2, 'getOrCreateInstance').and.callThrough()
       const btnClose = fixtureEl.querySelector('[data-bs-dismiss="test"]')
-      const event = createEvent('click')
+      const event = createEvent('click', { bubbles: true })
 
       enableDismissTrigger(DummyClass2)
       btnClose.dispatchEvent(event)
@@ -93,7 +93,7 @@ describe('Plugin functions', () => {
       ].join('')
 
       const btnClose = fixtureEl.querySelector('[data-bs-dismiss="test"]')
-      const event = createEvent('click')
+      const event = createEvent('click', { bubbles: true })
 
       enableDismissTrigger(DummyClass2)
       const spy = spyOn(Event.prototype, 'preventDefault').and.callThrough()

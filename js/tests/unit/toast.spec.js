@@ -246,7 +246,7 @@ describe('Toast', () => {
             resolve()
           })
 
-          const mouseOverEvent = createEvent('mouseover')
+          const mouseOverEvent = createEvent('mouseover', { bubbles: true })
           toastEl.dispatchEvent(mouseOverEvent)
         }, toast._config.delay / 2)
 
@@ -309,7 +309,7 @@ describe('Toast', () => {
           })
 
           toastEl.addEventListener('focusin', () => {
-            const mouseOutEvent = createEvent('mouseout')
+            const mouseOutEvent = createEvent('mouseout', { bubbles: true })
             toastEl.dispatchEvent(mouseOutEvent)
           })
 
@@ -323,7 +323,7 @@ describe('Toast', () => {
             resolve()
           })
 
-          const mouseOverEvent = createEvent('mouseover')
+          const mouseOverEvent = createEvent('mouseover', { bubbles: true })
           toastEl.dispatchEvent(mouseOverEvent)
         }, toast._config.delay / 2)
 
@@ -362,7 +362,7 @@ describe('Toast', () => {
             resolve()
           })
 
-          const mouseOverEvent = createEvent('mouseover')
+          const mouseOverEvent = createEvent('mouseover', { bubbles: true })
           toastEl.dispatchEvent(mouseOverEvent)
         }, toast._config.delay / 2)
 
@@ -392,7 +392,7 @@ describe('Toast', () => {
           })
 
           toastEl.addEventListener('focusin', () => {
-            const mouseOutEvent = createEvent('mouseout')
+            const mouseOutEvent = createEvent('mouseout', { bubbles: true })
             toastEl.dispatchEvent(mouseOutEvent)
           })
 
@@ -401,7 +401,7 @@ describe('Toast', () => {
             resolve()
           })
 
-          const mouseOverEvent = createEvent('mouseover')
+          const mouseOverEvent = createEvent('mouseover', { bubbles: true })
           toastEl.dispatchEvent(mouseOverEvent)
         }, toast._config.delay / 2)
 
