@@ -391,7 +391,16 @@ The combobox creates a hidden `<input>` for form submission when `data-bs-name` 
 <input type="hidden" name="country" value="us">
 ```
 
-For multiple selection, the hidden input value is a comma-separated list of selected values.
+For multiple selection, the combobox creates one hidden input per selected value. All inputs share the same `name`, so the form serializes like a native `<select multiple>` (for example `countries=us&countries=ca`). No input exists while nothing is selected.
+
+```html
+<!-- What the JS creates for a multiple combobox with two selected values -->
+<input type="hidden" name="countries" value="us">
+<input type="hidden" name="countries" value="ca">
+<button class="form-control combobox-toggle" ...>...</button>
+```
+
+If your server expects a bracket suffix for arrays, set `data-bs-name="countries[]"`. The combobox copies the name as written to every hidden input.
 
 ## JavaScript
 
@@ -404,7 +413,7 @@ For multiple selection, the hidden input value is a comma-separated list of sele
 | `data-bs-value` | On a `.menu-item`, the value submitted and shown when that option is selected. |
 | `data-bs-search` | Enables the search/filter field inside the menu. |
 | `data-bs-multiple` | Enables multi-select behavior. |
-| `data-bs-name` | `name` of the auto-created hidden input for form submission. |
+| `data-bs-name` | `name` of the auto-created hidden input(s) for form submission. |
 | `data-bs-placeholder` | Placeholder text shown in the toggle when nothing is selected. |
 </BsTable>
 
@@ -420,7 +429,7 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `multiple` | boolean | `false` | Enable multi-select mode. Selections toggle and the menu stays open. |
-| `name` | string \| null | `null` | Name for the auto-created hidden input. Also settable via `data-bs-name`. |
+| `name` | string \| null | `null` | Name for the auto-created hidden input(s). Also settable via `data-bs-name`. |
 | `placeholder` | string | `''` | Placeholder text for the toggle. Also settable via `data-bs-placeholder`. |
 | `search` | boolean | `false` | Enable search input in the menu. Also settable via `data-bs-search`. |
 | `searchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
@@ -437,7 +446,7 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | `toggle` | Toggles the menu. |
 | `show` | Shows the menu. |
 | `hide` | Hides the menu. |
-| `dispose` | Destroys the combobox instance and removes the hidden input. |
+| `dispose` | Destroys the combobox instance and removes the hidden input(s). |
 | `getInstance` | Static method to get the combobox instance from a DOM element. |
 | `getOrCreateInstance` | Static method to get or create a combobox instance. |
 </BsTable>
