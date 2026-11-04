@@ -223,12 +223,12 @@ body{margin:0}
     const count = viewport < 768 ? 2 : 3
     near(
       responsive.children[0].width,
-      ((viewport + 24) / count) - 24,
+      ((responsive.row.width + 24) / count) - 24,
       'responsive row-cols overrides'
     )
     near(
       offset.children[0].x,
-      viewport < 768 ? (viewport + 24) / 2 : 0,
+      viewport < 768 ? (offset.row.width + 24) / 2 : 0,
       'responsive offset reset'
     )
     checks++
