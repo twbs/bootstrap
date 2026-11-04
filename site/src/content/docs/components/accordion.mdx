@@ -236,7 +236,7 @@ Omit the `name` attribute on each `<details>` element to allow multiple accordio
 
 To enable expanding and collapsing of all accordion items at once, remove the `name` attribute from each `<details>` element using JavaScript. This allows multiple accordion items to be open simultaneously. Restore the `name` attribute when you collapse the items again if you want exclusive behavior back.
 
-<Example code={`<button type="button" class="btn-subtle btn-sm theme-secondary mb-3" id="btnAccordionToggleAll" aria-expanded="false">Expand all</button>
+<Example addStackblitzJs code={`<button type="button" class="btn-subtle btn-sm theme-secondary mb-3" id="btnAccordionToggleAll" aria-expanded="false">Expand all</button>
 
   <div class="accordion accordion-sm" id="accordionExpandCollapse">
     <details class="accordion-item" name="accordionExpandCollapse" open>

@@ -45,6 +45,27 @@ Work through each step in order. After each step, search the codebase for remain
 
 Customize by overriding the CSS token maps — `$root-tokens` for global tokens and each component's `$*-tokens` map — rather than legacy Sass scalars. See [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written **unprefixed** in Sass (e.g. `--spacer`, `--border-radius`); Bootstrap's dist/CDN CSS runs PostCSS to add the `--bs-` prefix (`--bs-spacer`), so when you compile the source yourself the properties stay unprefixed.
 
+`@use` doesn't put Bootstrap's members in the global scope like `@import` did. Bare v5 references to Bootstrap's variables, functions, or mixins fail with "Undefined variable", "Undefined function", or "Undefined mixin". Prefix them with the `bootstrap` namespace, or load Bootstrap with `as *` to keep the v5 names.
+
+```scss
+// v5
+@import "bootstrap/scss/bootstrap";
+.custom { padding: $spacer * .5; }
+@include media-breakpoint-down(sm) { .custom { display: none; } }
+
+// v6 — namespaced
+@use "bootstrap/scss/bootstrap";
+.custom { padding: bootstrap.$spacer * .5; }
+@include bootstrap.media-breakpoint-down(sm) { .custom { display: none; } }
+
+// v6 — v5 names kept with `as *`
+@use "bootstrap/scss/bootstrap" as *;
+.custom { padding: $spacer * .5; }
+@include media-breakpoint-down(sm) { .custom { display: none; } }
+```
+
+Each file that uses Bootstrap's members needs its own `@use`. See [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#variables-functions-and-mixins).
+
 ---
 
 ## Step 2: CSS Class & Attribute Renames
@@ -631,7 +652,7 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
    - `btn-primary`, `btn-outline-` (should use `.btn-solid .theme-*`)
    - `.text-primary`, `.text-danger` (should be `.fg-*`)
    - `@import` in Sass (should be `@use`)
-   - `form-select` (should be `form-control`)
+   - bare Bootstrap variables, functions, or mixins after `@use "bootstrap/scss/bootstrap"` (add the `bootstrap.` namespace, or load Bootstrap with `as *`)   - `form-select` (should be `form-control`)
    - `was-validated`, `needs-validation` (should be `data-bs-validate`)
    - `popperConfig` (should be `floatingConfig`)
    - `form-check` (should be `check`, `radio`, or `switch`)

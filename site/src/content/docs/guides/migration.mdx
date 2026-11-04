@@ -42,6 +42,24 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
    );
    ```
 
+   Unlike `@import`, `@use` doesn’t put Bootstrap’s variables, functions, and mixins in the global scope. They are behind the `bootstrap` namespace, so v5 code that uses them without a prefix fails with “Undefined variable”, “Undefined function”, or “Undefined mixin”. Add the namespace, or load Bootstrap with `as *` to keep the names without a prefix.
+
+   ```scss
+   @use "bootstrap/scss/bootstrap";
+
+   .custom-class {
+     padding: bootstrap.$spacer * .5;
+   }
+
+   @include bootstrap.media-breakpoint-down(sm) {
+     .custom-class {
+       display: none;
+     }
+   }
+   ```
+
+   See [Variables, functions, and mixins]([[docsref:/customize/sass#variables-functions-and-mixins]]) for more.
+
 3. If using only certain parts of Bootstrap’s Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
 
    ```scss
@@ -53,7 +71,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 5. Recompile your Sass to see the changes.
 
 <Callout type="warning">
-**Check your browser support first.** Bootstrap 6 raises the minimum browser versions sharply: Chrome and Edge 130, Firefox 132, and Safari 18 on both macOS and iOS. Bootstrap 5 supported Chrome and Firefox 60, and Safari 12. We build on `light-dark()`, `:has()`, container queries, `content-visibility`, and the native `<dialog>` element, and v6 ships no fallbacks, prefixes, or polyfills below the floor. Pages will not render correctly in older browsers. Check your own analytics before you upgrade, and see [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the full policy and the reason behind each version.
+**Check your browser support first.** Bootstrap 6 raises the minimum browser versions sharply: Chrome and Edge 138, Firefox 147, and Safari 26 on both macOS and iOS. Bootstrap 5 supported Chrome and Firefox 60, and Safari 12. We build on `light-dark()`, `:has()`, container queries, `content-visibility`, and the native `<dialog>` element, and v6 ships no fallbacks, prefixes, or polyfills below the floor. Pages will not render correctly in older browsers. Check your own analytics before you upgrade, and see [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the full policy and the reason behind each version.
 </Callout>
 
 ## Changelog
@@ -195,7 +213,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
 - Removed `js/index.umd.js` entry point.
 - Removed jQuery support and the `js-test-jquery` test target.
-- **Removed the internal `util/backdrop`, `util/focustrap`, and `util/scrollbar` helpers.** They’re obsolete now that Dialog and Drawer build on the native `<dialog>` element—the browser provides the backdrop (`::backdrop`), focus trap, and an inert top layer, and the body scroll-lock is handled in CSS (`:root.dialog-open` with `scrollbar-gutter: stable`). If you imported any of these modules directly from `bootstrap/js/src/util/`, they’re gone.
+- **Removed the legacy internal `util/backdrop`, `util/focustrap`, and `util/scrollbar` helpers.** Dialog and Drawer use the native `<dialog>` element for the backdrop (`::backdrop`), focus trap, and inert top layer. Their shared JavaScript scroll lock compensates for disappearing scrollbars while `:root.dialog-open` prevents page scrolling. The legacy module paths in `bootstrap/js/src/util/` are no longer available.
 - **Replaced the Dropdown component with Menu.** All `.dropdown-*` classes are now `.menu-*` classes, and `data-bs-toggle="dropdown"` is now `data-bs-toggle="menu"`. See the [Menu docs]([[docsref:/components/menus]]) for full details.
 - **Menu `shown.bs.menu` and `hidden.bs.menu` now fire after the CSS transition finishes**, rather than synchronously when `show()` / `hide()` are called—matching Dialog and Drawer. The menu also stays positioned in the DOM through its closing transition instead of being torn down immediately. Move any logic that assumed the old synchronous timing (or that the menu was removed the instant `hide()` returned) into the `shown` / `hidden` event handlers.
   - Renamed CSS classes: `.dropdown-menu` to `.menu`, `.dropdown-item` to `.menu-item`, `.dropdown-divider` to `.menu-divider`, `.dropdown-header` to `.menu-header`, `.dropdown-submenu` to `.submenu`.
@@ -226,14 +244,14 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Replaced the Modal component with Dialog.** Dialog is built on the native `<dialog>` element, using `showModal()` / `show()` / `close()` browser APIs. The markup, classes, data attributes, events, CSS variables, and JavaScript API have all changed:
   - Markup: The `.modal` > `.modal-dialog` > `.modal-content` wrapper structure has been replaced by a single `<dialog class="dialog">` element. Body sections use `.dialog-header`, `.dialog-body`, and `.dialog-footer` directly inside the `<dialog>`.
   - CSS classes: `.modal` &rarr; `.dialog`, `.modal-header` &rarr; `.dialog-header`, `.modal-body` &rarr; `.dialog-body`, `.modal-footer` &rarr; `.dialog-footer`, `.modal-title` &rarr; `.dialog-title`. The `.modal-dialog` and `.modal-content` wrapper classes have been removed entirely.
-  - Sizes: `.modal-sm` &rarr; `.dialog-sm`, `.modal-lg` &rarr; `.dialog-lg`, `.modal-xl` &rarr; `.dialog-xl`, `.modal-fullscreen` &rarr; `.dialog-fullscreen`.
+  - Sizes: `.modal-sm` &rarr; `.dialog-sm`, `.modal-lg` &rarr; `.dialog-lg`, `.modal-xl` &rarr; `.dialog-xl`, `.modal-xxl` &rarr; `.dialog-2xl`, `.modal-fullscreen` &rarr; `.dialog-fullscreen`.
   - Data attributes: `data-bs-toggle="modal"` &rarr; `data-bs-toggle="dialog"`, `data-bs-dismiss="modal"` &rarr; `data-bs-dismiss="dialog"`.
   - JavaScript: `Modal` &rarr; `Dialog` — update imports to `import { Dialog } from 'bootstrap'`.
   - Events: `show.bs.modal` &rarr; `show.bs.dialog`, `shown.bs.modal` &rarr; `shown.bs.dialog`, `hide.bs.modal` &rarr; `hide.bs.dialog`, `hidden.bs.modal` &rarr; `hidden.bs.dialog`, `hidePrevented.bs.modal` &rarr; `hidePrevented.bs.dialog`.
   - Data key: `bs.modal` &rarr; `bs.dialog` (affects `Dialog.getInstance()` and `Dialog.getOrCreateInstance()`).
   - CSS variables: `--modal-*` &rarr; `--dialog-*`.
   - Backdrop: The `.modal-backdrop` DOM element and the legacy `util/backdrop` helper are gone — Dialog uses the native `::backdrop` pseudo-element with `backdrop-filter: blur()` support.
-  - Scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the root (`<html>`) element, so it pairs with `scrollbar-gutter: stable` and the page doesn't shift when a dialog opens.
+  - Scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the root (`<html>`) element. JavaScript compensates for the scrollbar space that disappears while scrolling is locked. Bootstrap no longer reserves a permanent viewport gutter with `scrollbar-gutter: stable`.
   - New variant classes: `.dialog-slide-up`, `.dialog-slide-down` (slide animations), `.dialog-instant` (no animation), `.dialog-static` (static backdrop bounce), `.dialog-nonmodal` (non-modal positioning), `.dialog-scrollable`.
   - Non-modal support: Set `modal: false` or `data-bs-modal="false"` for non-modal dialogs.
   - Dialog swapping: Triggers inside an open dialog can open a new dialog and close the current one automatically.

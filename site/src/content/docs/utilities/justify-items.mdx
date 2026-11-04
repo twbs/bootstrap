@@ -17,8 +17,7 @@ Use `justify-items` utilities on CSS Grid containers to change the alignment of 
 
 Use `justify-items` utilities to control the horizontal alignment of grid items. Choose from `start`, `end`, `center`, or `stretch` (browser default).
 
-<div class="bd-example bd-example-flex vstack gap-3">
-  <div class="d-grid gap-3 justify-items-start" style="grid-template-columns: 1fr 1fr 1fr;">
+<Example class="bd-example-flex vstack gap-3" code={`<div class="d-grid gap-3 justify-items-start" style="grid-template-columns: 1fr 1fr 1fr;">
     <div class="p-2">Justify</div>
     <div class="p-2">Items</div>
     <div class="p-2">Start</div>
@@ -37,15 +36,10 @@ Use `justify-items` utilities to control the horizontal alignment of grid items.
     <div class="p-2">Justify</div>
     <div class="p-2">Items</div>
     <div class="p-2">Stretch</div>
-  </div>
-</div>
-
-```html
-<div class="d-grid justify-items-start">...</div>
-<div class="d-grid justify-items-end">...</div>
-<div class="d-grid justify-items-center">...</div>
-<div class="d-grid justify-items-stretch">...</div>
-```
+  </div>`} customMarkup={`<div class="d-grid justify-items-start">...</div>
+  <div class="d-grid justify-items-end">...</div>
+  <div class="d-grid justify-items-center">...</div>
+  <div class="d-grid justify-items-stretch">...</div>`} />
 
 ## Responsive
 

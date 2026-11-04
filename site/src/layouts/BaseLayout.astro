@@ -39,7 +39,11 @@ const mainProps = overrides?.main ?? {}
         <slot name="main" />
       </Fragment>
     ) : (
-      <slot />
+      <Fragment slot="main">
+        <main {...{ id: 'content', ...mainProps }}>
+          <slot />
+        </main>
+      </Fragment>
     )
   }
 

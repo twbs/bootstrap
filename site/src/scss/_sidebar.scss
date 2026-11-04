@@ -39,6 +39,8 @@
 
     .nav-link {
       margin-inline-start: .75rem;
+      // Let long titles wrap, or the sidebar scrolls sideways when its column gets narrow
+      white-space: normal;
     }
 
     @include media-breakpoint-between(xs, lg) {

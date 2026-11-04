@@ -91,6 +91,7 @@ $switch-tokens: defaults(
     }
 
     &:has(input:checked) {
+      --switch-indicator-bg: var(--switch-checked-indicator-bg);
       background-color: var(--theme-bg, var(--switch-checked-bg));
       border-color: var(--theme-bg, var(--switch-checked-border-color));
 
@@ -117,7 +118,6 @@ $switch-tokens: defaults(
   }
   .switch-lg {
     --switch-height: 1.5rem;
-    --switch-margin-block: .375rem;
 
     + label {
       font-size: var(--font-size-lg);

@@ -8,6 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import { onDocumentReady } from './util/component-functions.js'
 
 /**
  * Constants
@@ -251,15 +252,6 @@ class Strength extends BaseComponent {
       if (strength && this._config.messages[strength]) {
         this._textElement.textContent = this._config.messages[strength]
         this._textElement.dataset.bsStrength = strength
-
-        // Also set the color via inheriting from parent or using CSS variable
-        const colorMap: Record<string, string> = {
-          weak: 'danger',
-          fair: 'warning',
-          good: 'info',
-          strong: 'success'
-        }
-        this._textElement.style.setProperty('--strength-color', `var(--${colorMap[strength]}-text)`)
       } else {
         this._textElement.textContent = ''
         delete this._textElement.dataset.bsStrength
@@ -272,7 +264,7 @@ class Strength extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
+onDocumentReady(`DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_STRENGTH)) {
     Strength.getOrCreateInstance(element)
   }

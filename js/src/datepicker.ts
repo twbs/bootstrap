@@ -19,6 +19,7 @@ import {
 } from 'vanilla-calendar-pro'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
+import { onDocumentReady } from './util/component-functions.js'
 import { isDisabled } from './util/index.js'
 
 /**
@@ -579,7 +580,7 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function
 // Auto-initialize datepickers that need to render on load:
 // - inline datepickers (always visible)
 // - datepickers with preselected dates (so the value populates without focus)
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
+onDocumentReady(`DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
   const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"], ${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates]`
   for (const element of document.querySelectorAll(selector)) {
     Datepicker.getOrCreateInstance(element)
