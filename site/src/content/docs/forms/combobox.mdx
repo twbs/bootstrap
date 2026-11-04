@@ -309,6 +309,42 @@ Add `data-bs-multiple="true"` to the toggle for multi-select behavior. Selected 
     </button>
   </div>`} />
 
+### Chips
+
+Add `data-bs-show-chips="true"` alongside `data-bs-multiple="true"` to show each selected item as a [chip]([[docsref:/forms/chips]]) in the toggle instead of a count. Click a chip’s dismiss icon to deselect it, or press <kbd>Backspace</kbd> or <kbd>Delete</kbd> while the toggle is focused to deselect the last one. The chips wrap onto new lines when they don’t fit.
+
+<Example code={`<button class="form-control combobox-toggle" type="button"
+        data-bs-toggle="combobox"
+        data-bs-name="frameworks"
+        data-bs-placeholder="Select frameworks…"
+        data-bs-multiple="true"
+        data-bs-show-chips="true">
+    <span class="combobox-value">Select frameworks…</span>
+    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
+  </button>
+  <div class="menu">
+    <button class="menu-item selected" type="button" data-bs-value="astro" aria-selected="true">
+      Astro
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="next">
+      Next.js
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+    <button class="menu-item selected" type="button" data-bs-value="nuxt" aria-selected="true">
+      Nuxt
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="svelte">
+      SvelteKit
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="remix">
+      Remix
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+  </div>`} />
+
 ## Sizing
 
 Use `.form-control-sm` or `.form-control-lg` on the toggle button to change size.
@@ -406,6 +442,7 @@ For multiple selection, the hidden input value is a comma-separated list of sele
 | `data-bs-multiple` | Enables multi-select behavior. |
 | `data-bs-name` | `name` of the auto-created hidden input for form submission. |
 | `data-bs-placeholder` | Placeholder text shown in the toggle when nothing is selected. |
+| `data-bs-show-chips` | With `data-bs-multiple`, shows the selected items as dismissible chips. |
 </BsTable>
 
 ### Dependencies
@@ -424,6 +461,7 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | `placeholder` | string | `''` | Placeholder text for the toggle. Also settable via `data-bs-placeholder`. |
 | `search` | boolean | `false` | Enable search input in the menu. Also settable via `data-bs-search`. |
 | `searchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
+| `showChips` | boolean | `false` | With `multiple`, render the selected items as dismissible chips in the toggle instead of a count. Also settable via `data-bs-show-chips`. |
 | `placement` | string | `'bottom-start'` | Menu placement (uses Floating UI). |
 | `offset` | array | `[0, 2]` | Offset from the toggle `[skidding, distance]`. |
 | `boundary` | string \| element | `'clippingParents'` | Overflow boundary for the menu. |
