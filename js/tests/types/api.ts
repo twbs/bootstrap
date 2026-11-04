@@ -61,6 +61,11 @@ const popover: Popover = new Popover(element, { content: 'Hello', animation: tru
 const range: Range = new Range(element, { formatter: value => `${value} %` })
 const chips: Chips = new Chips(element, { separator: ';', maxChips: 5, allowDuplicates: true })
 const combobox: Combobox = new Combobox(element, { multiple: true, placeholder: 'Pick one' })
+const comboboxInput = document.createElement('input')
+comboboxInput.type = 'hidden'
+new Combobox(element, { input: comboboxInput })
+new Combobox(element, { input: '#combobox-input' })
+combobox.update()
 const navOverflow: NavOverflow = new NavOverflow(element, { moreText: 'More', collapseBelow: 768 })
 const navOverflowIconOnly: NavOverflow = new NavOverflow(element, { moreText: false })
 const otpInput: OtpInput = new OtpInput(element, { length: 6, type: 'alphanumeric', mask: true })

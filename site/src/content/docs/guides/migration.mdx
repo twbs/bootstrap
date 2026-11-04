@@ -100,6 +100,14 @@ Token names below use the unprefixed Sass source names. In Bootstrap’s compile
 - **Existing tokens now affect rendering.** Review overrides of `--card-subtitle-color`, `--nav-tabs-border-radius`, `--check-indeterminate-bg`, `--check-indeterminate-border-color`, and `--switch-checked-indicator-bg`. The components now read these tokens. Indeterminate checkbox colors default to the checked colors.
 - **Password strength label colors.** `.strength-text` now uses emphasis colors for each strength level. Replace label overrides of `--strength-color` with the `$strength-text-colors` Sass map, or style `.strength-text[data-bs-strength="weak"]` and the other strength levels directly. The meter still uses its `--strength-*-color` tokens. See [Password strength]([[docsref:/forms/password-strength]]).
 
+### Combobox forms
+
+- Multiple selection now submits one field per selected option instead of a comma-separated value. Update server handlers and use `FormData.getAll(name)` to read all values. Empty multiple selection submits no entries.
+- Use the `input` option or `data-bs-input` to bind an existing hidden input. Disposal keeps provided fields and removes generated fields.
+- Selection changes dispatch bubbling `input` and `change` events before `change.bs.combobox`. The first field remains a stable event target, including when the last option is deselected.
+- Form reset restores the initial selected markup. Call `update()` after changing selected classes or before a synchronous `FormData` read following attribute changes.
+- Combobox lifecycle events follow its Menu transitions, including outside-click dismissal. Search inputs retain their native <kbd>Home</kbd> and <kbd>End</kbd> editing behavior.
+
 ### JavaScript component instances
 
 - Different component types can now share an element. Combobox uses this to register its Menu instance on the same toggle.
