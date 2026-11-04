@@ -52,7 +52,7 @@
 
   .combobox-search {
     position: sticky;
-    top: 0;
+    inset-block-start: calc(-1 * var(--menu-padding-y, .25rem));
     z-index: 1;
     padding: var(--menu-padding-x, .25rem);
     background-color: var(--menu-bg, var(--bg-body));

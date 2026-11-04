@@ -391,7 +391,56 @@ The combobox creates a hidden `<input>` for form submission when `data-bs-name` 
 <input type="hidden" name="country" value="us">
 ```
 
-For multiple selection, the hidden input value is a comma-separated list of selected values.
+For multiple selection, each selected option submits a separate field with the same name. For example, selecting `us` and `ca` submits `countries=us&countries=ca`. Values that contain commas remain unchanged. If your server requires brackets, use `data-bs-name="countries[]"`; we copy the name as written.
+
+The first hidden input remains in the DOM so event listeners keep a stable target. It holds the first submitted value. Additional inputs hold the remaining values in menu order. With no multiple selection, the first input is disabled and no values are submitted. Single selection keeps one field, empty when no option is selected.
+
+```js
+const form = document.querySelector('#preferences')
+const selectedCountries = new FormData(form).getAll('countries')
+```
+
+### Use an existing input
+
+Set `data-bs-input` to the selector of a hidden input, or pass the element as the `input` option. We use that field’s name and form owner. The `name` option applies only to automatically created fields.
+
+```html
+<input type="hidden" id="comboboxCountryValue" name="country">
+<button class="form-control combobox-toggle" type="button"
+        data-bs-toggle="combobox" data-bs-input="#comboboxCountryValue"
+        aria-haspopup="listbox" aria-expanded="false" aria-controls="comboboxBoundOptions">
+  <span class="combobox-value">United States</span>
+</button>
+<div class="menu" id="comboboxBoundOptions" role="listbox">
+  <button class="menu-item selected" type="button" data-bs-value="us" role="option" aria-selected="true">United States</button>
+  <button class="menu-item" type="button" data-bs-value="ca" role="option" aria-selected="false">Canada</button>
+</div>
+```
+
+Mark the initial selection with `.selected` on the options. We sync the field from that markup; an existing field value does not select an option. Use an explicit selector for each component, even when several rows use the same field name. We do not infer a binding from neighboring elements or shared names.
+
+Calling `dispose()` keeps a provided input, its current first value, and its application attributes. It removes generated inputs and component listeners. In multiple mode, generated fields for the other values are also removed. One provided input cannot preserve the entire repeated-value payload after disposal.
+
+### Disabled state, reset, and updates
+
+A disabled toggle does not submit its generated fields. Provided inputs keep their own disabled setting. Generated fields follow the toggle’s `form` attribute, including forms outside the component’s parent.
+
+Resetting the form restores the initial option selection, label, and submitted values. Preventing the form’s `reset` event cancels that change. Initialization, reset, and `update()` do not emit selection-change events.
+
+We observe disabled and form-attribute changes. Call `update()` when you move the component or change its selected option markup. Also call it before reading `FormData` in the same task as an attribute change:
+
+```js
+const toggle = document.querySelector('#countryPicker')
+const combobox = bootstrap.Combobox.getInstance(toggle)
+
+toggle.disabled = true
+combobox.update()
+const data = new FormData(toggle.form)
+```
+
+Normal form submission also synchronizes the fields before submission. If you replace the entire menu element, dispose the component and initialize it again. Applications own asynchronous option loading.
+
+Hidden inputs do not participate in native constraint validation. Preserving attributes for an application validator does not add native `required` or `pattern` validation.
 
 ## JavaScript
 
@@ -404,7 +453,8 @@ For multiple selection, the hidden input value is a comma-separated list of sele
 | `data-bs-value` | On a `.menu-item`, the value submitted and shown when that option is selected. |
 | `data-bs-search` | Enables the search/filter field inside the menu. |
 | `data-bs-multiple` | Enables multi-select behavior. |
-| `data-bs-name` | `name` of the auto-created hidden input for form submission. |
+| `data-bs-name` | `name` of the automatically created fields for form submission. |
+| `data-bs-input` | Selector of a provided hidden input to reuse. |
 | `data-bs-placeholder` | Placeholder text shown in the toggle when nothing is selected. |
 </BsTable>
 
@@ -420,7 +470,8 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `multiple` | boolean | `false` | Enable multi-select mode. Selections toggle and the menu stays open. |
-| `name` | string \| null | `null` | Name for the auto-created hidden input. Also settable via `data-bs-name`. |
+| `name` | string \| null | `null` | Name for automatically created fields. Also settable via `data-bs-name`. |
+| `input` | string \| element \| null | `null` | Selector or element for a provided hidden input. Its name and form owner are retained. |
 | `placeholder` | string | `''` | Placeholder text for the toggle. Also settable via `data-bs-placeholder`. |
 | `search` | boolean | `false` | Enable search input in the menu. Also settable via `data-bs-search`. |
 | `searchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
@@ -437,16 +488,21 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | `toggle` | Toggles the menu. |
 | `show` | Shows the menu. |
 | `hide` | Hides the menu. |
-| `dispose` | Destroys the combobox and its Menu instance, and removes the hidden input. |
+| `dispose` | Destroys the combobox and its Menu instance, removes generated fields, and keeps a provided input. |
+| `update` | Syncs the selected markup, label, and form attributes without firing change events. |
 | `getInstance` | Static method to get the combobox instance from a DOM element. |
 | `getOrCreateInstance` | Static method to get or create a combobox instance. |
 </BsTable>
+
+Menu controls the show and hide transitions. Combobox forwards its lifecycle events, including outside-click dismissal. Cancel `show.bs.combobox` or `hide.bs.combobox` to prevent that action. Await `show()` or `hide()` for transition completion.
 
 Combobox owns the Menu instance registered on its toggle. Let Combobox create and dispose that instance. Do not replace or dispose the Menu separately.
 
 ### Events
 
-Events are fired on the toggle button element.
+Component events fire on the toggle. When selection changes, we first update the label and all submitted fields. We then dispatch bubbling `input` and `change` events from the stable hidden input, followed by `change.bs.combobox` on the toggle. Without a backing field, the plain events also fire on the toggle.
+
+Selecting the same single option again does not emit a change. Selecting a different option with the same value does. Read all multiple values from `event.value` on the component event or `FormData.getAll(name)`, rather than the first hidden input’s value.
 
 <BsTable>
 | Event | Description |
@@ -455,7 +511,7 @@ Events are fired on the toggle button element.
 | `shown.bs.combobox` | Fires when the menu has been made visible. |
 | `hide.bs.combobox` | Fires immediately when the `hide` method is called. |
 | `hidden.bs.combobox` | Fires when the menu has been hidden. |
-| `change.bs.combobox` | Fires when a selection is made. The event detail includes `value` and `item`. |
+| `change.bs.combobox` | Fires after selection changes. The event has `value` and `item` properties. `value` is an array in multiple mode. |
 </BsTable>
 
 ## Accessibility

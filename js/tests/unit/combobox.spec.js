@@ -316,7 +316,7 @@ describe('Combobox', () => {
 
       items[1].click()
       expect(valueEl.textContent).toEqual('2 selected')
-      expect(fixtureEl.querySelector('input[type="hidden"]').value).toEqual('us,uk')
+      expect([...fixtureEl.querySelectorAll('input[type="hidden"]')].map(input => input.value)).toEqual(['us', 'uk'])
     })
 
     it('should fire change with every selected value', () => {
