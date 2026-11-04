@@ -39,6 +39,8 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_NATIVE_INPUT = 'input'
+const EVENT_NATIVE_CHANGE = 'change'
 
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_SELECTED = 'selected'
@@ -268,6 +270,8 @@ class Combobox extends BaseComponent {
   }
 
   protected _selectItem(item: HTMLElement): void {
+    const previousValue = this._hiddenInput?.value
+
     if (this._config.multiple) {
       item.classList.toggle(CLASS_NAME_SELECTED)
       setAriaAttribute(item, 'aria-selected', item.classList.contains(CLASS_NAME_SELECTED))
@@ -284,6 +288,12 @@ class Combobox extends BaseComponent {
 
     this._updateToggleText()
     this._updateHiddenInput()
+
+    // Fire the events a native `<select>` fires, so form listeners see the new value
+    if (this._hiddenInput && this._hiddenInput.value !== previousValue) {
+      EventHandler.trigger(this._hiddenInput, EVENT_NATIVE_INPUT)
+      EventHandler.trigger(this._hiddenInput, EVENT_NATIVE_CHANGE)
+    }
 
     const value = this._config.multiple ?
       this._getSelectedItems().map(el => el.dataset.bsValue) :

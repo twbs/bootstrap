@@ -268,6 +268,47 @@ describe('Combobox', () => {
       expect(event.item).toEqual(items[0])
     })
 
+    it('should fire native input then change on the hidden input, like a select', () => {
+      const { items } = makeCombobox({ name: 'country' })
+      const hiddenInput = fixtureEl.querySelector('input[type="hidden"]')
+      const fired = []
+      const listener = event => {
+        fired.push(`${event.type}:${event.target.value}`)
+      }
+
+      fixtureEl.addEventListener('input', listener)
+      fixtureEl.addEventListener('change', listener)
+      items[1].click()
+      fixtureEl.removeEventListener('input', listener)
+      fixtureEl.removeEventListener('change', listener)
+
+      expect(fired).toEqual(['input:uk', 'change:uk'])
+      expect(hiddenInput.value).toEqual('uk')
+    })
+
+    it('should not fire native change when the selected item is picked again', () => {
+      const { items } = makeCombobox({ name: 'country' })
+      const hiddenInput = fixtureEl.querySelector('input[type="hidden"]')
+      const changeSpy = jasmine.createSpy('change')
+
+      items[0].click()
+      hiddenInput.addEventListener('change', changeSpy)
+      items[0].click()
+
+      expect(changeSpy).not.toHaveBeenCalled()
+    })
+
+    it('should not fire native change for the selection synced on init', () => {
+      const preSelected = '<button class="menu-item selected" type="button" data-bs-value="ca">Canada</button>'
+      const changeSpy = jasmine.createSpy('change')
+
+      fixtureEl.addEventListener('change', changeSpy)
+      makeCombobox({ name: 'country' }, markup({ items: preSelected }))
+      fixtureEl.removeEventListener('change', changeSpy)
+
+      expect(changeSpy).not.toHaveBeenCalled()
+    })
+
     it('should hide the menu after selecting', () => {
       const { combobox, menuEl, items } = makeCombobox()
       combobox.show()
@@ -328,6 +369,21 @@ describe('Combobox', () => {
       items[2].click()
 
       expect(changeSpy.calls.mostRecent().args[0].value).toEqual(['us', 'ca'])
+    })
+
+    it('should fire native change on the hidden input for each selection and deselection', () => {
+      const { items } = makeCombobox({ multiple: true, name: 'countries' })
+      const hiddenInput = fixtureEl.querySelector('input[type="hidden"]')
+      const values = []
+
+      hiddenInput.addEventListener('change', event => {
+        values.push(event.target.value)
+      })
+      items[0].click()
+      items[2].click()
+      items[0].click()
+
+      expect(values).toEqual(['us', 'us,ca', 'ca'])
     })
 
     it('should fall back to the placeholder when the last item is deselected', () => {

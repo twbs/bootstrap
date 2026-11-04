@@ -393,6 +393,14 @@ The combobox creates a hidden `<input>` for form submission when `data-bs-name` 
 
 For multiple selection, the hidden input value is a comma-separated list of selected values.
 
+When the selection changes, the hidden input fires native `input` and `change` events, like a `<select>`. Both events bubble, so a listener on the form gets them.
+
+```js
+document.querySelector('form').addEventListener('change', event => {
+  console.log(event.target.name, event.target.value) // "country", "us"
+})
+```
+
 ## JavaScript
 
 ### Via data attributes
@@ -457,6 +465,8 @@ Events are fired on the toggle button element.
 | `hidden.bs.combobox` | Fires when the menu has been hidden. |
 | `change.bs.combobox` | Fires when a selection is made. The event detail includes `value` and `item`. |
 </BsTable>
+
+When `name` is set, the hidden input also fires native `input` and `change` events. See [form submission](#form-submission).
 
 ## Accessibility
 
