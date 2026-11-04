@@ -10,15 +10,15 @@ csstricks:
 
 Bootstrap’s default grid system represents the culmination of over a decade of CSS layout techniques, tried and tested by millions of people. But, it was also created without many of the modern CSS features and techniques we’re seeing in browsers like the new CSS Grid.
 
-<Callout type="warning">
-**Heads up—our CSS Grid system is opt-in!** We included it in our documentation’s CSS to demonstrate it for you, but it’s disabled by default. Keep reading to learn how to enable it in your projects. See also our [container query utilities]([[docsref:/utilities/container-queries]]), which cover a related but distinct use case.
+<Callout type="info">
+**The CSS Grid system ships enabled by default in v6.** The `$enable-cssgrid` Sass variable defaults to `true`, so `.grid` and `.g-col-*` classes work out of the box. Set `$enable-cssgrid: false` to compile without them. See also our [container query utilities]([[docsref:/utilities/container-queries]]), which cover a related but distinct use case.
 </Callout>
 
 ## How it works
 
-Bootstrap includes an optional grid system built on CSS Grid, but with a Bootstrap twist. You still get classes you can apply on a whim to build responsive layouts, but with a different approach under the hood.
+Bootstrap includes a second grid system built on CSS Grid, but with a Bootstrap twist. You still get classes you can apply on a whim to build responsive layouts, but with a different approach under the hood.
 
-- **CSS Grid is opt-in.** Disable the default grid system by setting `$enable-grid-classes: false` and enable the CSS Grid by setting `$enable-cssgrid: true`. Then, recompile your Sass.
+- **CSS Grid is enabled by default.** Set `$enable-cssgrid: false` to compile without the CSS Grid classes. The flexbox grid classes remain available with `$enable-grid-classes` (also `true` by default), so both grid systems can be used side by side.
 
 - **Replace instances of `.row` with `.grid`.** The `.grid` class sets `display: grid` and creates a `grid-template` that you build on with your HTML.
 
