@@ -437,10 +437,12 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | `toggle` | Toggles the menu. |
 | `show` | Shows the menu. |
 | `hide` | Hides the menu. |
-| `dispose` | Destroys the combobox instance and removes the hidden input. |
+| `dispose` | Destroys the combobox and its Menu instance, and removes the hidden input. |
 | `getInstance` | Static method to get the combobox instance from a DOM element. |
 | `getOrCreateInstance` | Static method to get or create a combobox instance. |
 </BsTable>
+
+Combobox owns the Menu instance registered on its toggle. Let Combobox create and dispose that instance. Do not replace or dispose the Menu separately.
 
 ### Events
 
