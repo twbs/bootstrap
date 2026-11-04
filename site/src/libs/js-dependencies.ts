@@ -26,6 +26,7 @@ const FILE_DESCRIPTIONS: Record<string, string> = {
   'util/floating-ui': 'Responsive placement utilities',
   'util/index': 'Core utility functions',
   'util/sanitizer': 'HTML content sanitizer',
+  'util/scroll-lock': 'Page scroll locking and scrollbar compensation',
   'util/swipe': 'Swipe gesture utilities',
   'util/template-factory': 'Template rendering utilities'
 }

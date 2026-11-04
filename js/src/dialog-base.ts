@@ -9,12 +9,7 @@ import BaseComponent from './base-component.js'
 import Data from './dom/data.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-
-/**
- * Constants
- */
-
-const CLASS_NAME_OPEN = 'dialog-open'
+import { lockScroll, unlockScroll } from './util/scroll-lock.js'
 
 type DialogBaseConfig = {
   backdrop: boolean | string
@@ -41,6 +36,7 @@ class DialogBase extends BaseComponent {
   protected declare _config: DialogBaseConfig
   protected declare _isTransitioning: boolean
   protected declare _openedAsModal: boolean
+  protected declare _closeHandler: () => void
   protected declare _cancelHandler: (event: BootstrapEvent) => void
 
   constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null) {
@@ -151,10 +147,13 @@ class DialogBase extends BaseComponent {
   override dispose(): void {
     // If disposed while still open, close the native <dialog> and restore body
     // scroll. Otherwise `dialog-open` (overflow: hidden) would stay stuck on the
-    // body — e.g. when an SPA tears the component down mid-navigation.
+    // root — e.g. when an SPA tears the component down mid-navigation.
     if (this._element.open) {
       this._closeAndCleanup()
     }
+
+    // Native close queues its event; dispose must also release an already-closed dialog.
+    unlockScroll(this._element)
 
     // `_queueCallback` skips its completion callback once the instance is
     // disposed, so nothing else would clear the exit state. A stranded
@@ -165,6 +164,7 @@ class DialogBase extends BaseComponent {
     // The `cancel` listener is unnamespaced, so super.dispose()'s EVENT_KEY
     // teardown misses it — remove this instance's own handler here.
     EventHandler.off(this._element, 'cancel', this._cancelHandler)
+    EventHandler.off(this._element, 'close', this._closeHandler)
 
     super.dispose()
   }
@@ -211,11 +211,7 @@ class DialogBase extends BaseComponent {
     }
 
     if (preventBodyScroll) {
-      // Lock scroll on the root element (not <body>) so it lands on the same
-      // element that carries `scrollbar-gutter: stable`. Co-locating them keeps
-      // the gutter reserved while the scrollbar is hidden, so the page doesn't
-      // shift (and the ::backdrop covers the gutter instead of leaving a strip).
-      document.documentElement.classList.add(CLASS_NAME_OPEN)
+      lockScroll(this._element)
     }
   }
 
@@ -243,10 +239,7 @@ class DialogBase extends BaseComponent {
     this._element.close()
     this._openedAsModal = false
 
-    // Only restore scroll if no other modal dialogs are open
-    if (!document.querySelector('dialog[open]:modal')) {
-      document.documentElement.classList.remove(CLASS_NAME_OPEN)
-    }
+    unlockScroll(this._element)
   }
 
   // Hook: return true to keep the dialog in the top layer (i.e., delay
@@ -300,6 +293,17 @@ class DialogBase extends BaseComponent {
 
   protected _addDialogListeners(): void {
     const eventKey = this.constructor.EVENT_KEY
+
+    // Native close() and <form method="dialog"> bypass hide(). A queued close
+    // event from an earlier opening must not unlock a reopened dialog.
+    this._closeHandler = () => {
+      if (!this._element.open) {
+        this._openedAsModal = false
+        unlockScroll(this._element)
+      }
+    }
+
+    EventHandler.on(this._element, 'close', this._closeHandler)
 
     // Handle native cancel event (Escape key) — only fires for modal dialogs.
     // Bound unnamespaced because `cancel` is a real native event, not one of
