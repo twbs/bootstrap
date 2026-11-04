@@ -4,6 +4,7 @@
 @layer components {
   .combobox-control > .chip {
     --chip-height: var(--combobox-control-chip-height);
+    --chip-border-radius: max(0px, calc(var(--control-border-radius) - var(--control-border-width) - var(--combobox-control-gap)));
     --chip-padding-x: .5rem;
     --chip-gap: .25rem;
     --chip-dismiss-size: 1.5rem;
