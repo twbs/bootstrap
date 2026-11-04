@@ -679,6 +679,74 @@ describe('Datepicker', () => {
 
       expect(datepicker._positionElement).toEqual(customEl)
     })
+
+    it('should not hide or flicker when input inside form-adorn is clicked', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="form-adorn" id="adorn-wrapper">',
+        '  <span class="icon">icon</span>',
+        '  <input type="text" data-bs-toggle="datepicker">',
+        '</div>'
+      ].join('')
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+      await datepicker.show()
+
+      expect(datepicker._isShown).toBeTrue()
+
+      const hideSpy = spyOn(datepicker, 'hide').and.callThrough()
+      const vcpHideSpy = spyOn(datepicker._calendar, 'hide').and.callThrough()
+
+      inputEl.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }))
+
+      expect(hideSpy).not.toHaveBeenCalled()
+      expect(vcpHideSpy).not.toHaveBeenCalled()
+      expect(datepicker._isShown).toBeTrue()
+    })
+
+    it('should not hide when clicking inside form-adorn wrapper or icon', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="form-adorn" id="adorn-wrapper">',
+        '  <span class="icon">icon</span>',
+        '  <input type="text" data-bs-toggle="datepicker">',
+        '</div>'
+      ].join('')
+
+      const inputEl = fixtureEl.querySelector('input')
+      const iconEl = fixtureEl.querySelector('.icon')
+      const datepicker = new Datepicker(inputEl)
+      await datepicker.show()
+
+      const hideSpy = spyOn(datepicker, 'hide').and.callThrough()
+
+      iconEl.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))
+      iconEl.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }))
+
+      expect(hideSpy).not.toHaveBeenCalled()
+      expect(datepicker._isShown).toBeTrue()
+    })
+
+    it('should hide when clicking outside form-adorn', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="form-adorn" id="adorn-wrapper">',
+        '  <span class="icon">icon</span>',
+        '  <input type="text" data-bs-toggle="datepicker">',
+        '</div>',
+        '<button type="button" id="outside">Outside</button>'
+      ].join('')
+
+      const inputEl = fixtureEl.querySelector('input')
+      const outsideEl = fixtureEl.querySelector('#outside')
+      const datepicker = new Datepicker(inputEl)
+      await datepicker.show()
+
+      const hideSpy = spyOn(datepicker, 'hide').and.callThrough()
+
+      outsideEl.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }))
+
+      expect(hideSpy).toHaveBeenCalled()
+      expect(datepicker._isShown).toBeFalse()
+    })
   })
 
   describe('button trigger', () => {
