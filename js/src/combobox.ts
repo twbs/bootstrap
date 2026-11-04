@@ -42,6 +42,8 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_SELECTED = 'selected'
 const CLASS_NAME_PLACEHOLDER = 'combobox-placeholder'
 
+const DISMISS_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>'
+
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="combobox"]'
 const SELECTOR_MENU = '.menu'
 const SELECTOR_MENU_ITEM = '.menu-item[data-bs-value]'
@@ -478,7 +480,7 @@ class Combobox extends BaseComponent {
         const button = document.createElement('button')
         button.type = 'button'
         button.className = 'chip-dismiss'
-        button.textContent = '×'
+        button.innerHTML = DISMISS_ICON
         chip.append(text, button)
         this._chips.set(item, chip)
       }

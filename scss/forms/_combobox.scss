@@ -2,8 +2,14 @@
 @use "../mixins/focus-ring" as *;
 
 @layer components {
-  .combobox-control > .chip:focus-visible {
-    @include focus-ring(true);
+  .combobox-control > .chip {
+    --chip-height: var(--combobox-control-chip-height);
+    --chip-padding-x: .5rem;
+    --chip-gap: .25rem;
+
+    &:focus-visible {
+      @include focus-ring(true);
+    }
   }
 
   .combobox-control + .menu,
