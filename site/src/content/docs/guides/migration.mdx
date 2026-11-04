@@ -244,7 +244,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Replaced the Modal component with Dialog.** Dialog is built on the native `<dialog>` element, using `showModal()` / `show()` / `close()` browser APIs. The markup, classes, data attributes, events, CSS variables, and JavaScript API have all changed:
   - Markup: The `.modal` > `.modal-dialog` > `.modal-content` wrapper structure has been replaced by a single `<dialog class="dialog">` element. Body sections use `.dialog-header`, `.dialog-body`, and `.dialog-footer` directly inside the `<dialog>`.
   - CSS classes: `.modal` &rarr; `.dialog`, `.modal-header` &rarr; `.dialog-header`, `.modal-body` &rarr; `.dialog-body`, `.modal-footer` &rarr; `.dialog-footer`, `.modal-title` &rarr; `.dialog-title`. The `.modal-dialog` and `.modal-content` wrapper classes have been removed entirely.
-  - Sizes: `.modal-sm` &rarr; `.dialog-sm`, `.modal-lg` &rarr; `.dialog-lg`, `.modal-xl` &rarr; `.dialog-xl`, `.modal-fullscreen` &rarr; `.dialog-fullscreen`.
+  - Sizes: `.modal-sm` &rarr; `.dialog-sm`, `.modal-lg` &rarr; `.dialog-lg`, `.modal-xl` &rarr; `.dialog-xl`, `.modal-xxl` &rarr; `.dialog-2xl`, `.modal-fullscreen` &rarr; `.dialog-fullscreen`.
   - Data attributes: `data-bs-toggle="modal"` &rarr; `data-bs-toggle="dialog"`, `data-bs-dismiss="modal"` &rarr; `data-bs-dismiss="dialog"`.
   - JavaScript: `Modal` &rarr; `Dialog` — update imports to `import { Dialog } from 'bootstrap'`.
   - Events: `show.bs.modal` &rarr; `show.bs.dialog`, `shown.bs.modal` &rarr; `shown.bs.dialog`, `hide.bs.modal` &rarr; `hide.bs.dialog`, `hidden.bs.modal` &rarr; `hidden.bs.dialog`, `hidePrevented.bs.modal` &rarr; `hidePrevented.bs.dialog`.
