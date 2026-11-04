@@ -1047,6 +1047,48 @@ describe('Tab', () => {
       expect(fixtureEl.querySelector('.nav-link')).not.toHaveClass('active')
     })
 
+    it('should mark the menu toggle active without opening the menu', async () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav nav-tabs">',
+        '  <li class="nav-item"><a class="nav-link active" id="home-tab" href="#home" data-bs-toggle="tab">Home</a></li>',
+        '  <li class="nav-item">',
+        '    <a class="nav-link" id="menu-toggle" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
+        '    <div class="menu">',
+        '      <a class="menu-item" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
+        '    </div>',
+        '  </li>',
+        '</ul>',
+        '<div class="tab-content">',
+        '  <div class="tab-pane active" id="home"></div>',
+        '  <div class="tab-pane" id="menu1"></div>',
+        '</div>'
+      ].join('')
+
+      const homeTab = fixtureEl.querySelector('#home-tab')
+      const menuToggle = fixtureEl.querySelector('#menu-toggle')
+      const menu = fixtureEl.querySelector('.menu')
+      const menuTab = fixtureEl.querySelector('#menu1-tab')
+
+      await Tab.getOrCreateInstance(menuTab).show()
+
+      expect(menuTab).toHaveClass('active')
+      expect(fixtureEl.querySelector('#menu1')).toHaveClass('active')
+      expect(menuToggle).toHaveClass('active')
+      expect(menu).not.toHaveClass('show')
+      expect(menuToggle.getAttribute('aria-expanded')).toEqual('false')
+
+      menu.classList.add('show')
+      menuToggle.setAttribute('aria-expanded', 'true')
+
+      await Tab.getOrCreateInstance(homeTab).show()
+
+      expect(homeTab).toHaveClass('active')
+      expect(menuTab).not.toHaveClass('active')
+      expect(menuToggle).not.toHaveClass('active')
+      expect(menu).not.toHaveClass('show')
+      expect(menuToggle.getAttribute('aria-expanded')).toEqual('false')
+    })
+
     it('should handle nested tabs', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [

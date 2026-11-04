@@ -255,14 +255,21 @@ class Tab extends BaseComponent {
       return
     }
 
-    const menu = SelectorEngine.findOne(SELECTOR_MENU, outerElem)
-
     menuToggle.classList.toggle(CLASS_NAME_ACTIVE, open)
-    if (menu) {
-      menu.classList.toggle(CLASS_NAME_SHOW, open)
+
+    // `.active` marks the toggle that holds the current tab.
+    // Menu owns `.show` and `aria-expanded`. Do not open the menu here.
+    if (open) {
+      return
     }
 
-    setAriaAttribute(menuToggle, 'aria-expanded', open)
+    const menu = SelectorEngine.findOne(SELECTOR_MENU, outerElem)
+
+    if (menu) {
+      menu.classList.remove(CLASS_NAME_SHOW)
+    }
+
+    setAriaAttribute(menuToggle, 'aria-expanded', false)
   }
 
   protected _setAttributeIfNotExists(element: Element, attribute: string, value: string): void {
