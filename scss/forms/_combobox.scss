@@ -8,9 +8,13 @@
     --chip-gap: .25rem;
     --chip-dismiss-size: 1.5rem;
 
-    > .chip-dismiss > svg {
-      width: .75rem;
-      height: .75rem;
+    > .chip-dismiss {
+      margin-inline: -.25rem -.375rem;
+
+      > svg {
+        width: .75rem;
+        height: .75rem;
+      }
     }
 
     &:focus-visible {
