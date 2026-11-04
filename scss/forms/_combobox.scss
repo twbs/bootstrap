@@ -52,7 +52,8 @@
 
   .combobox-search {
     position: sticky;
-    top: 0;
+    // Cover the menu block padding. Scrolled items then stay under the search.
+    top: calc(-1 * var(--menu-padding-y, .25rem));
     z-index: 1;
     padding: var(--menu-padding-x, .25rem);
     background-color: var(--menu-bg, var(--bg-body));
