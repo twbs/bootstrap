@@ -9,9 +9,13 @@ $combobox-control-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $combobox-control-tokens: defaults(
   (
-    --combobox-control-padding-y: .75rem,
-    --combobox-control-padding-x: .75rem,
-    --combobox-control-gap: .375rem,
+    --combobox-control-padding-y: var(--btn-input-padding-y),
+    --combobox-control-padding-x: var(--btn-input-padding-x),
+    --combobox-control-gap: .25rem,
+    --combobox-control-chip-height: 1.5rem,
+    --control-min-height: var(--btn-input-min-height),
+    --control-font-size: var(--btn-input-font-size),
+    --control-line-height: var(--btn-input-line-height),
     --combobox-control-ghost-min-width: 5rem,
     --control-fg: var(--btn-input-fg),
     --control-bg: var(--btn-input-bg),
@@ -32,8 +36,11 @@ $combobox-control-tokens: defaults(
     flex-wrap: wrap;
     gap: var(--combobox-control-gap);
     align-items: center;
+    min-block-size: var(--control-min-height);
     padding: var(--combobox-control-padding-y) var(--combobox-control-padding-x);
 
+    font-size: var(--control-font-size);
+    line-height: var(--control-line-height);
     color: var(--control-fg);
     background-color: var(--control-bg);
     border: var(--control-border-width) solid var(--control-border-color);
@@ -51,7 +58,7 @@ $combobox-control-tokens: defaults(
     > .combobox-input {
       flex: 1 1 0;
       min-inline-size: var(--combobox-control-ghost-min-width);
-      min-block-size: 1.75rem;
+      min-block-size: 1lh;
     }
 
     // Disabled state
