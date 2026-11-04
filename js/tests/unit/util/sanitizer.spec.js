@@ -31,6 +31,7 @@ describe('Sanitizer', () => {
         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/', // Truncated.
         'data:video/webm;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/',
         'data:audio/opus;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/',
+        'data:audio/mpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/',
         'unknown-scheme:abc'
       ]
 
@@ -67,7 +68,13 @@ describe('Sanitizer', () => {
         'jav\u0000ascript:alert();'
       ]
 
-      for (const url of invalidUrls) {
+      const dangerousDataUrls = [
+        'data:text/html,hello',
+        'data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==',
+        'vbscript:msgbox(1)'
+      ]
+
+      for (const url of [...invalidUrls, ...dangerousDataUrls]) {
         const template = [
           '<div>',
           `  <a href="${url}">Click me</a>`,
