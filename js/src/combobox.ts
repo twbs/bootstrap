@@ -5,6 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
+import type { MiddlewareState } from '@floating-ui/dom'
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
@@ -13,7 +14,7 @@ import { onDocumentReady } from './util/component-functions.js'
 import type { ComponentConfig } from './util/config.js'
 import type { FloatingOffsetOption } from './util/floating-ui.js'
 import {
-  getElement, getNextActiveElement, isDisabled, isVisible, setAriaAttribute
+  getElement, getNextActiveElement, getUID, isDisabled, isVisible, setAriaAttribute
 } from './util/index.js'
 
 /**
@@ -50,6 +51,10 @@ const SELECTOR_SEARCH_INPUT = '.combobox-search-input'
 const SELECTOR_NO_RESULTS = '.combobox-no-results'
 
 type ComboboxConfig = {
+  allowCustom: boolean
+  createOnBlur: boolean
+  maxItems: number | null
+  separator: string | null
   boundary: string | Element
   input: string | HTMLInputElement | null
   multiple: boolean
@@ -62,6 +67,10 @@ type ComboboxConfig = {
 }
 
 const Default: ComboboxConfig = {
+  allowCustom: false,
+  createOnBlur: false,
+  maxItems: null,
+  separator: null,
   boundary: 'clippingParents',
   input: null,
   multiple: false,
@@ -74,6 +83,10 @@ const Default: ComboboxConfig = {
 }
 
 const DefaultType = {
+  allowCustom: 'boolean',
+  createOnBlur: 'boolean',
+  maxItems: '(number|null)',
+  separator: '(string|null)',
   boundary: '(string|element)',
   input: '(null|element)',
   multiple: 'boolean',
@@ -105,18 +118,52 @@ class Combobox extends BaseComponent {
   protected declare _form: HTMLFormElement | null
   protected declare _formObserver: MutationObserver
   protected declare _submitHandler: () => void
+  protected declare _resetTimeout: number | null
   protected declare _resetHandler: (event: BootstrapEvent) => void
   protected declare _menuEventHandlers: Map<string, (event: BootstrapEvent) => void>
   protected declare _changeId: number
+  protected declare _editor: HTMLInputElement | null
+  protected declare _activeItem: HTMLElement | null
+  protected declare _chips: Map<HTMLElement, HTMLElement>
+  protected declare _query: string | null
+  protected declare _ownsMenu: boolean
+  protected declare _status: HTMLElement | null
+  protected declare _menuMinWidth: string
+  protected declare _attributes: Map<Element, Map<string, string | null>>
 
   constructor(element?: string | Element | null, config?: Partial<ComboboxConfig> | null) {
     super(element, config)
 
-    this._toggle = this._element
-    this._menu = SelectorEngine.next(this._toggle, SELECTOR_MENU)[0] as HTMLElement
+    this._editor = this._element.matches('input') ?
+      this._element as HTMLInputElement :
+      SelectorEngine.findOne<HTMLInputElement>('.combobox-input, .form-ghost', this._element)
+    if (this._editor === this._element && this._config.multiple) {
+      throw new TypeError('COMBOBOX: Multiple selection requires a wrapping element.')
+    }
+
+    this._toggle = this._editor ?? this._element
+    const field = this._editor && !this._element.matches('input') ? this._element : this._toggle
+    this._menu = SelectorEngine.next(field, SELECTOR_MENU)[0] as HTMLElement
+    this._ownsMenu = !this._menu && Boolean(this._editor)
+    if (this._ownsMenu) {
+      this._menu = document.createElement('div')
+      this._menu.className = 'menu'
+      field.after(this._menu)
+    }
+
+    this._menuMinWidth = this._menu.style.minWidth
     this._valueDisplay = SelectorEngine.findOne(SELECTOR_VALUE, this._toggle)!
-    this._searchInput = SelectorEngine.findOne<HTMLInputElement>(SELECTOR_SEARCH_INPUT, this._menu)
+    this._searchInput = this._editor ?? SelectorEngine.findOne<HTMLInputElement>(SELECTOR_SEARCH_INPUT, this._menu)
     this._noResults = SelectorEngine.findOne(SELECTOR_NO_RESULTS, this._menu)
+    this._activeItem = null
+    this._chips = new Map()
+    this._query = null
+    this._status = null
+    this._attributes = new Map()
+    if (this._editor) {
+      this._setupEditor()
+    }
+
     this._hiddenInput = null
     this._menuInstance = null
     this._ownsInput = false
@@ -131,9 +178,12 @@ class Combobox extends BaseComponent {
       this.update()
     })
     this._submitHandler = () => this.update()
+    this._resetTimeout = null
     this._resetHandler = event => {
-      // Wait until listeners can cancel the reset and the browser restores fields.
-      queueMicrotask(() => {
+      // Trusted reset clicks can run microtasks before the native default action.
+      clearTimeout(this._resetTimeout!)
+      this._resetTimeout = window.setTimeout(() => {
+        this._resetTimeout = null
         if (!this._element || event.defaultPrevented || event.target !== this._form) {
           return
         }
@@ -144,6 +194,7 @@ class Combobox extends BaseComponent {
           setAriaAttribute(item, 'aria-selected', selected.has(item))
         }
 
+        this._query = null
         this.update()
       })
     }
@@ -173,7 +224,7 @@ class Combobox extends BaseComponent {
   }
 
   async show(): Promise<void> {
-    if (isDisabled(this._toggle) || this._toggle.matches(':disabled') || this._isShown()) {
+    if (this._isDisabled() || this._isShown() || (this._editor && !this._getVisibleItems().length)) {
       return
     }
 
@@ -193,6 +244,7 @@ class Combobox extends BaseComponent {
   }
 
   override dispose(): void {
+    clearTimeout(this._resetTimeout!)
     this._readInputDisabled(this._formObserver.takeRecords())
     this._formObserver.disconnect()
     EventHandler.off(this._form, `reset${EVENT_KEY}`, this._resetHandler)
@@ -217,6 +269,33 @@ class Combobox extends BaseComponent {
       this._hiddenInput = null
     }
 
+    for (const chip of this._chips.values()) {
+      chip.remove()
+    }
+
+    if (this._editor) {
+      this._editor.classList.remove(CLASS_NAME_SHOW)
+      this._element.classList.remove(CLASS_NAME_SHOW)
+      this._menu.classList.remove(CLASS_NAME_SHOW)
+      this._activeItem?.classList.remove('active')
+    }
+
+    this._status?.remove()
+    this._menu.style.minWidth = this._menuMinWidth
+    for (const [element, attributes] of this._attributes) {
+      for (const [name, value] of attributes) {
+        if (value === null) {
+          element.removeAttribute(name)
+        } else {
+          element.setAttribute(name, value)
+        }
+      }
+    }
+
+    if (this._ownsMenu) {
+      this._menu.remove()
+    }
+
     EventHandler.off(this._menu, EVENT_KEY)
     EventHandler.off(this._toggle, EVENT_KEY)
     EventHandler.off(this._searchInput, EVENT_KEY)
@@ -224,12 +303,409 @@ class Combobox extends BaseComponent {
     super.dispose()
   }
 
+  getValues(): string[] {
+    return this._getSelectedItems().map(item => item.dataset.bsValue ?? '')
+  }
+
+  add(value: string): HTMLElement | null {
+    if (this._isDisabled() || (this._config.multiple && this._config.maxItems !== null && this.getValues().length >= this._config.maxItems)) {
+      return null
+    }
+
+    let item = SelectorEngine.find(SELECTOR_MENU_ITEM, this._menu).find(option => option.dataset.bsValue === value)
+    if (!item && this._config.allowCustom && value.trim()) {
+      item = document.createElement('button')
+      item.setAttribute('type', 'button')
+      item.className = 'menu-item'
+      item.dataset.bsValue = value
+      item.textContent = value
+      this._menu.append(item)
+    }
+
+    if (!item || item.classList.contains(CLASS_NAME_SELECTED) || isDisabled(item)) {
+      return null
+    }
+
+    this._selectItem(item)
+    return this._element && item.classList.contains(CLASS_NAME_SELECTED) ? this._chips.get(item) ?? item : null
+  }
+
+  remove(value: string | HTMLElement): boolean {
+    const item = this._getSelectedItems().find(option => typeof value === 'string' ? option.dataset.bsValue === value : option === value || this._chips.get(option) === value)
+    if (!item || isDisabled(item) || this._isDisabled()) {
+      return false
+    }
+
+    const event = EventHandler.trigger(this._element, `remove${EVENT_KEY}`, { value: item.dataset.bsValue, item })
+    if (!this._element || event.defaultPrevented) {
+      return false
+    }
+
+    item.classList.remove(CLASS_NAME_SELECTED)
+    setAriaAttribute(item, 'aria-selected', false)
+    this._selectionChanged(item)
+    return true
+  }
+
+  clear(): void {
+    this._clearSelection(null)
+  }
+
+  protected _clearSelection(query: string | null): void {
+    if (this._isDisabled() || !this._getSelectedItems().length) {
+      return
+    }
+
+    let changed = false
+    for (const item of this._getSelectedItems()) {
+      if (!isDisabled(item)) {
+        const event = EventHandler.trigger(this._element, `remove${EVENT_KEY}`, { value: item.dataset.bsValue, item })
+        if (!this._element) {
+          return
+        }
+
+        if (event.defaultPrevented) {
+          continue
+        }
+
+        changed = true
+        item.classList.remove(CLASS_NAME_SELECTED)
+        setAriaAttribute(item, 'aria-selected', false)
+      }
+    }
+
+    if (changed) {
+      this._selectionChanged(null, query)
+    }
+  }
+
+  focus(): void {
+    this._toggle.focus()
+  }
+
   // Private
+  protected _isDisabled(): boolean {
+    return isDisabled(this._element) || isDisabled(this._toggle) || this._toggle.matches(':disabled')
+  }
+
+  protected _setAttribute(element: Element, name: string, value: string): void {
+    if (!this._attributes.has(element)) {
+      this._attributes.set(element, new Map())
+    }
+
+    const attributes = this._attributes.get(element)!
+    if (!attributes.has(name)) {
+      attributes.set(name, element.getAttribute(name))
+    }
+
+    element.setAttribute(name, value)
+  }
+
+  protected _setupEditor(): void {
+    const editor = this._editor!
+    if (this._config.placeholder && !editor.placeholder) {
+      this._setAttribute(editor, 'placeholder', this._config.placeholder)
+    }
+
+    if (!this._menu.id) {
+      this._setAttribute(this._menu, 'id', getUID('combobox-'))
+    }
+
+    this._setAttribute(editor, 'role', 'combobox')
+    this._setAttribute(editor, 'aria-autocomplete', 'list')
+    this._setAttribute(editor, 'aria-expanded', 'false')
+    this._setAttribute(editor, 'aria-controls', this._menu.id)
+    this._setAttribute(editor, 'autocomplete', 'off')
+    this._setAttribute(editor, 'aria-activedescendant', '')
+    editor.removeAttribute('aria-activedescendant')
+    this._setAttribute(this._menu, 'role', 'listbox')
+    if (this._config.multiple) {
+      this._setAttribute(this._menu, 'aria-multiselectable', 'true')
+    }
+
+    this._status = document.createElement('span')
+    this._status.className = 'visually-hidden'
+    this._status.setAttribute('role', 'status')
+    this._menu.after(this._status)
+  }
+
+  protected _getItemLabel(item: HTMLElement): string {
+    const label = SelectorEngine.findOne('.menu-item-content > span:first-child', item)
+    return label?.textContent ?? item.textContent!.trim()
+  }
+
+  protected _renderEditor(): void {
+    const editor = this._editor!
+    const selected = this._getSelectedItems()
+    const selectedSet = new Set(selected)
+    for (const [item, chip] of this._chips) {
+      if (!selectedSet.has(item)) {
+        chip.remove()
+        this._chips.delete(item)
+      }
+    }
+
+    for (const item of SelectorEngine.find(SELECTOR_MENU_ITEM, this._menu)) {
+      if (!item.id) {
+        this._setAttribute(item, 'id', getUID('combobox-option-'))
+      }
+
+      this._setAttribute(item, 'role', 'option')
+      this._setAttribute(item, 'tabindex', '-1')
+      setAriaAttribute(item, 'aria-selected', selectedSet.has(item))
+    }
+
+    if (!this._config.multiple) {
+      const value = this._query ?? (selected.length ? this._getItemLabel(selected[0]) : '')
+      if (editor.value !== value) {
+        editor.value = value
+      }
+
+      return
+    }
+
+    const inputBeforeEditor = this._hiddenInput?.parentElement === editor.parentElement && this._hiddenInput.compareDocumentPosition(editor) === Node.DOCUMENT_POSITION_FOLLOWING
+    let next: Element = inputBeforeEditor ? this._hiddenInput! : editor
+    for (let index = selected.length - 1; index >= 0; index--) {
+      const item = selected[index]
+      let chip = this._chips.get(item)
+      const label = this._getItemLabel(item)
+      if (!chip) {
+        chip = document.createElement('span')
+        chip.className = 'chip'
+        chip.tabIndex = -1
+        const text = document.createElement('span')
+        const button = document.createElement('button')
+        button.type = 'button'
+        button.className = 'chip-dismiss'
+        button.textContent = '×'
+        chip.append(text, button)
+        this._chips.set(item, chip)
+      }
+
+      chip.firstElementChild!.textContent = label
+      const button = chip.lastElementChild as HTMLButtonElement
+      button.setAttribute('aria-label', `Remove ${label}`)
+      button.disabled = this._isDisabled() || isDisabled(item)
+      if (chip.nextElementSibling !== next) {
+        next.before(chip)
+      }
+
+      next = chip
+    }
+
+    const value = this._query ?? ''
+    if (editor.value !== value) {
+      editor.value = value
+    }
+
+    this._menuInstance?.update()
+  }
+
+  protected _setActiveItem(item: HTMLElement | null): void {
+    this._activeItem?.classList.remove('active')
+    this._activeItem = item
+    if (!item) {
+      this._editor!.removeAttribute('aria-activedescendant')
+      return
+    }
+
+    item.classList.add('active')
+    this._editor!.setAttribute('aria-activedescendant', item.id)
+    item.scrollIntoView({ block: 'nearest' })
+  }
+
+  protected _addEditorListeners(): void {
+    const editor = this._editor!
+    EventHandler.on(this._menu, `mousedown${EVENT_KEY}`, SELECTOR_MENU_ITEM, event => event.preventDefault())
+    EventHandler.on(editor, `input${EVENT_KEY}`, event => {
+      if (event.isComposing) {
+        this._query = editor.value
+        return
+      }
+
+      if (this._isDisabled()) {
+        return
+      }
+
+      let query = editor.value
+      if (this._config.allowCustom && this._config.separator && query.includes(this._config.separator)) {
+        const parts = query.split(this._config.separator)
+        query = parts.pop()!
+        for (const part of parts) {
+          this.add(part.trim())
+          if (!this._element) {
+            return
+          }
+        }
+      }
+
+      // A changed visible label must not submit an old single-selection value.
+      if (!this._config.multiple && this._getSelectedItems().length) {
+        this._clearSelection(query)
+        if (!this._element) {
+          return
+        }
+
+        if (this._getSelectedItems().length) {
+          this._query = null
+          this._renderEditor()
+          return
+        }
+      }
+
+      this._query = query
+      editor.value = query
+      this._filterItems(query)
+      this._setActiveItem(null)
+      if (this._getVisibleItems().length) {
+        this.show()
+      } else {
+        this.hide()
+      }
+    })
+    EventHandler.on(editor, `compositionend${EVENT_KEY}`, () => {
+      // Some engines finish composition before the final input event.
+      if (this._element) {
+        this._query = editor.value
+        this._filterItems(editor.value)
+      }
+    })
+    EventHandler.on(editor, `paste${EVENT_KEY}`, event => {
+      const { separator, allowCustom } = this._config
+      const text = event.clipboardData?.getData('text') ?? ''
+      if (!allowCustom || !separator || !text.includes(separator) || this._isDisabled()) {
+        return
+      }
+
+      event.preventDefault()
+      for (const value of text.split(separator)) {
+        this.add(value.trim())
+        if (!this._element) {
+          return
+        }
+      }
+    })
+    EventHandler.on(editor, `blur${EVENT_KEY}`, event => {
+      if (this._config.allowCustom && this._config.createOnBlur && !(event.relatedTarget as Element | null)?.closest('.chip, .menu')) {
+        this.add(editor.value.trim())
+      }
+    })
+    EventHandler.on(this._element, `keydown${EVENT_KEY}`, '.chip', event => this._handleChipKeydown(event))
+    EventHandler.on(this._element, `click${EVENT_KEY}`, '.chip-dismiss', event => {
+      event.preventDefault()
+      event.stopPropagation()
+      const chip = (event.target as Element).closest<HTMLElement>('.chip')!
+      this.remove(chip)
+      if (this._element) {
+        editor.focus()
+      }
+    })
+  }
+
+  protected _handleEditorKeydown(event: BootstrapEvent): void {
+    if (event.isComposing || event.keyCode === 229 || this._isDisabled()) {
+      return
+    }
+
+    const editor = this._editor!
+    if ([ARROW_DOWN_KEY, ARROW_UP_KEY].includes(event.key)) {
+      event.preventDefault()
+      const items = this._getVisibleItems()
+      if (items.length) {
+        const item = getNextActiveElement(items, this._activeItem!, event.key === ARROW_DOWN_KEY, true)
+        this.show()
+        this._setActiveItem(item)
+      }
+
+      return
+    }
+
+    if (event.key === ENTER_KEY) {
+      if (this._activeItem && this._isShown()) {
+        event.preventDefault()
+        this._selectItem(this._activeItem)
+      } else if (this._config.allowCustom && editor.value.trim()) {
+        event.preventDefault()
+        this.add(editor.value.trim())
+      }
+
+      return
+    }
+
+    if (event.key === ESCAPE_KEY || event.key === TAB_KEY) {
+      if (event.key === ESCAPE_KEY && this._isShown()) {
+        event.preventDefault()
+      }
+
+      this.hide()
+      this._setActiveItem(null)
+      return
+    }
+
+    this._handleEditorChipFocus(event)
+  }
+
+  protected _handleEditorChipFocus(event: BootstrapEvent): void {
+    const editor = this._editor!
+    const rtl = getComputedStyle(editor).direction === 'rtl'
+    const previousKey = rtl ? 'ArrowRight' : 'ArrowLeft'
+    if ((event.key === 'Backspace' && !editor.value) ||
+        (event.key === previousKey && !editor.value && editor.selectionStart === 0 && editor.selectionEnd === 0)) {
+      const chip = this._getSelectedItems().map(item => this._chips.get(item)!).at(-1)
+      if (chip) {
+        event.preventDefault()
+        chip.focus()
+      }
+    }
+  }
+
+  protected _handleChipKeydown(event: BootstrapEvent): void {
+    if (event.isComposing || event.keyCode === 229 || this._isDisabled()) {
+      return
+    }
+
+    const chip = (event.target as Element).closest<HTMLElement>('.chip')!
+    const chips = this._getSelectedItems().map(item => this._chips.get(item)!)
+    const index = chips.indexOf(chip)
+    if (index === -1) {
+      return
+    }
+
+    if (['Backspace', 'Delete'].includes(event.key)) {
+      event.preventDefault()
+      if (this.remove(chip) && this._element) {
+        const target = chips[index + 1] ?? chips[index - 1] ?? this._editor!
+        target.focus()
+      }
+
+      return
+    }
+
+    const rtl = getComputedStyle(this._editor!).direction === 'rtl'
+    if (['ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      event.preventDefault()
+      const next = index + ((event.key === 'ArrowRight') === rtl ? -1 : 1)
+      const target = chips[next] ?? (next < 0 ? chips[0] : this._editor!)
+      target.focus()
+    } else if (event.key === HOME_KEY) {
+      event.preventDefault()
+      chips[0].focus()
+    } else if ([END_KEY, ESCAPE_KEY].includes(event.key)) {
+      event.preventDefault()
+      this._editor!.focus()
+    }
+  }
+
   protected _isShown(): boolean {
     return this._menu.classList.contains(CLASS_NAME_SHOW)
   }
 
   protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
+    if (config.maxItems !== null && (!Number.isSafeInteger(config.maxItems) || config.maxItems < 1)) {
+      throw new TypeError('COMBOBOX: Option "maxItems" must be a positive integer or null.')
+    }
+
     if (config.input !== null) {
       const input = getElement(config.input)
       if (!(input instanceof HTMLInputElement) || input.type !== 'hidden') {
@@ -256,7 +732,8 @@ class Combobox extends BaseComponent {
     this._hiddenInput = document.createElement('input')
     this._hiddenInput.type = 'hidden'
     this._hiddenInput.name = this._config.name
-    this._toggle.before(this._hiddenInput)
+    const anchor = this._editor ? this._element : this._toggle
+    anchor.before(this._hiddenInput)
     this._ownsInput = true
   }
 
@@ -276,6 +753,10 @@ class Combobox extends BaseComponent {
 
   protected _observeFormState(): void {
     this._formObserver.disconnect()
+    if (this._element !== this._toggle) {
+      this._formObserver.observe(this._element, { attributes: true, attributeFilter: ['class'] })
+    }
+
     this._formObserver.observe(this._toggle, { attributes: true, attributeFilter: ['disabled', 'class', 'form'] })
     if (this._hiddenInput) {
       this._formObserver.observe(this._hiddenInput, { attributes: true, attributeFilter: ['disabled', 'name', 'form'] })
@@ -308,10 +789,23 @@ class Combobox extends BaseComponent {
   protected _createMenuInstance(): void {
     this._menuInstance = new Menu(this._toggle, {
       menu: this._menu,
+      reference: this._editor ? this._element : 'toggle',
       autoClose: this._config.multiple ? 'outside' : true,
       boundary: this._config.boundary,
       offset: this._config.offset,
-      placement: this._config.placement
+      placement: this._config.placement,
+      floatingConfig: this._editor ?
+        config => ({
+          ...config,
+          middleware: [...config.middleware, {
+            name: 'comboboxSize',
+            fn({ elements, rects }: MiddlewareState) {
+              elements.floating.style.minWidth = `${rects.reference.width}px`
+              return {}
+            }
+          }]
+        }) :
+        null
     })
   }
 
@@ -324,17 +818,21 @@ class Combobox extends BaseComponent {
           return
         }
 
+        if (type === 'hidden' && this._editor) {
+          this._setActiveItem(null)
+        }
+
         if (type === 'shown' && document.activeElement === this._toggle) {
           this._searchInput?.focus()
         }
 
-        const forwarded = EventHandler.trigger(this._toggle, this.constructor.eventName(type))
+        const forwarded = EventHandler.trigger(this._element, this.constructor.eventName(type))
         if (forwarded?.defaultPrevented || !this._element) {
           menuEvent.preventDefault()
           return
         }
 
-        if (type === 'show' && !menuEvent.defaultPrevented && this._searchInput) {
+        if (type === 'show' && !menuEvent.defaultPrevented && this._searchInput && !this._editor) {
           this._searchInput.value = ''
           this._filterItems('')
         }
@@ -356,12 +854,21 @@ class Combobox extends BaseComponent {
     })
 
     EventHandler.on(this._toggle, `keydown${EVENT_KEY}`, event => {
-      this._handleToggleKeydown(event)
+      if (this._editor) {
+        this._handleEditorKeydown(event)
+      } else {
+        this._handleToggleKeydown(event)
+      }
     })
 
     EventHandler.on(this._menu, `keydown${EVENT_KEY}`, event => {
       this._handleMenuKeydown(event)
     })
+
+    if (this._editor) {
+      this._addEditorListeners()
+      return
+    }
 
     if (this._searchInput) {
       EventHandler.on(this._searchInput, `input${EVENT_KEY}`, () => {
@@ -386,12 +893,22 @@ class Combobox extends BaseComponent {
   }
 
   protected _selectItem(item: HTMLElement): void {
-    if (isDisabled(this._toggle) || this._toggle.matches(':disabled') || isDisabled(item)) {
+    if (this._isDisabled() || isDisabled(item)) {
       return
     }
 
     const previous = this._getSelectedItems()
+    if (this._config.multiple && !previous.includes(item) && this._config.maxItems !== null && previous.length >= this._config.maxItems) {
+      return
+    }
+
     if (!this._config.multiple && previous.length === 1 && previous[0] === item) {
+      return
+    }
+
+    const type = this._config.multiple && previous.includes(item) ? 'remove' : 'add'
+    const event = EventHandler.trigger(this._element, `${type}${EVENT_KEY}`, { value: item.dataset.bsValue, item })
+    if (!this._element || event.defaultPrevented) {
       return
     }
 
@@ -408,11 +925,17 @@ class Combobox extends BaseComponent {
       item.setAttribute('aria-selected', 'true')
     }
 
+    this._selectionChanged(item)
+  }
+
+  protected _selectionChanged(item: HTMLElement | null, query: string | null = null): void {
+    this._query = query
     this.update()
     const changeId = this._changeId
     const { multiple } = this._config
-    const value = multiple ? this._getSelectedItems().map(element => element.dataset.bsValue) : item.dataset.bsValue
-    const target = this._hiddenInput ?? this._toggle
+    const values = this.getValues()
+    const value = multiple ? values : values[0] ?? ''
+    const target = this._hiddenInput ?? this._element
 
     for (const event of ['input', 'change']) {
       EventHandler.trigger(target, event)
@@ -421,9 +944,17 @@ class Combobox extends BaseComponent {
       }
     }
 
-    EventHandler.trigger(this._toggle, EVENT_CHANGE, { value, item })
+    EventHandler.trigger(this._element, EVENT_CHANGE, { value, item })
     if (!this._element || changeId !== this._changeId) {
       return
+    }
+
+    if (this._editor) {
+      this._setActiveItem(null)
+      this._filterItems('')
+      if (this._status) {
+        this._status.textContent = `${values.length} selected`
+      }
     }
 
     if (!multiple) {
@@ -433,6 +964,11 @@ class Combobox extends BaseComponent {
   }
 
   protected _updateToggleText(): void {
+    if (this._editor) {
+      this._renderEditor()
+      return
+    }
+
     const selectedItems = this._getSelectedItems()
 
     if (selectedItems.length === 0) {
@@ -467,13 +1003,14 @@ class Combobox extends BaseComponent {
       .filter(item => !isDisabled(item))
       .map(item => item.dataset.bsValue ?? '')
     const submittedValues = this._config.multiple ? values : [values[0] ?? '']
-    const disabled = this._inputDisabled || isDisabled(this._toggle) || this._toggle.matches(':disabled')
+    const disabled = this._inputDisabled || this._isDisabled()
 
     if (this._ownsInput) {
+      const anchor = this._editor ? this._element : this._toggle
       const fields = [input, ...this._extraInputs]
-      if (fields.at(-1)!.nextElementSibling !== this._toggle) {
+      if (fields.at(-1)!.nextElementSibling !== anchor) {
         for (const field of fields) {
-          this._toggle.before(field)
+          anchor.before(field)
         }
       }
 
@@ -527,8 +1064,21 @@ class Combobox extends BaseComponent {
   }
 
   protected _getVisibleItems(): HTMLElement[] {
-    return SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu)
-      .filter(item => isVisible(item))
+    return SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(item => {
+      if (!this._editor) {
+        return isVisible(item)
+      }
+
+      // A closed popup has no client rects; inspect the option and its groups.
+      for (let current: HTMLElement | null = item; current && current !== this._menu; current = current.parentElement) {
+        const style = getComputedStyle(current)
+        if (current.hidden || style.display === 'none' || style.visibility === 'hidden') {
+          return false
+        }
+      }
+
+      return true
+    })
   }
 
   protected _filterItems(query: string): void {
@@ -636,8 +1186,18 @@ class Combobox extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+  const instance = Combobox.getOrCreateInstance(this)
+  if (this.matches('input') || this.querySelector('.combobox-input, .form-ghost')) {
+    if (!(event.target as Element).closest('.chip')) {
+      instance.focus()
+      instance.show()
+    }
+
+    return
+  }
+
   event.preventDefault()
-  Combobox.getOrCreateInstance(this).toggle()
+  instance.toggle()
 })
 
 onDocumentReady('DOMContentLoaded', () => {

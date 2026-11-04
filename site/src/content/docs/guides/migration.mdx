@@ -100,6 +100,14 @@ Token names below use the unprefixed Sass source names. In Bootstrap’s compile
 - **Existing tokens now affect rendering.** Review overrides of `--card-subtitle-color`, `--nav-tabs-border-radius`, `--check-indeterminate-bg`, `--check-indeterminate-border-color`, and `--switch-checked-indicator-bg`. The components now read these tokens. Indeterminate checkbox colors default to the checked colors.
 - **Password strength label colors.** `.strength-text` now uses emphasis colors for each strength level. Replace label overrides of `--strength-color` with the `$strength-text-colors` Sass map, or style `.strength-text[data-bs-strength="weak"]` and the other strength levels directly. The meter still uses its `--strength-*-color` tokens. See [Password strength]([[docsref:/forms/password-strength]]).
 
+### Chip input becomes Combobox
+
+- Remove the `Chips` JavaScript import and replace `data-bs-chips` with `data-bs-toggle="combobox"`, `data-bs-multiple="true"`, and `data-bs-allow-custom="true"` on the wrapper.
+- Replace `.chip-input` with `.combobox-control`. Add `.combobox-input` beside `.form-ghost` on the editor. Move initial values to `.menu-item.selected[data-bs-value]` elements in a neighboring `.menu`; Combobox renders the chips.
+- Use `Combobox.add()`, `remove()`, `clear()`, `focus()`, and `getValues()`. Replace `maxChips` with `maxItems`. Separators and creation on blur now require explicit options. Repeated free-entry strings do not create duplicate chips.
+- Replace `add.bs.chips`, `remove.bs.chips`, and `change.bs.chips` with their `.bs.combobox` equivalents. The change payload is `event.value`, rather than `event.values`. Chip range selection and its `select.bs.chips` API are removed; the editor provides individual focus, removal buttons, and directional navigation.
+- Keep `.chip` for standalone presentation. Replace `$chip-input-tokens` and `--chip-input-*` customizations with `$combobox-control-tokens` and `--combobox-control-*`. Configurable dismiss HTML is removed; generated removal buttons use safe text.
+
 ### Combobox forms
 
 - Multiple selection now submits one field per selected option instead of a comma-separated value. Update server handlers and use `FormData.getAll(name)` to read all values. Empty multiple selection submits no entries.
@@ -679,7 +687,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Dialog** — replaces Modal, built on the native `<dialog>` element. See the Components section above for the full migration.
 - **Stepper** — new `.stepper` component for multi-step workflows with `.stepper-item` and `.stepper-horizontal` variant. CSS-only.
 - **Avatar** — new `.avatar` component with sizes (`.avatar-xs` through `.avatar-xl`), status indicators (`.avatar-status .status-online|offline|busy|away`), subtle variant, and `.avatar-stack` for grouped avatars.
-- **Chip and Chip Input** — new `.chip` component for tags/tokens and `.chip-input[data-bs-chips]` for interactive chip entry. `Chips` JavaScript plugin with events: `add.bs.chips`, `remove.bs.chips`, `change.bs.chips`, `select.bs.chips`.
+- **Chips** — use `.chip` for tags and tokens. Use editable Combobox for interactive entry and multiple-value form submission.
 - **OTP Input** — new `.otp` component for one-time password fields. Built on a single `<input>` rendered as separate digit slots for full accessibility. `OtpInput` JavaScript plugin with events: `input.bs.otpInput`, `complete.bs.otpInput` (both expose `event.value`).
 - **Password Strength** — `Strength` JavaScript plugin for password strength metering with `strengthChange.bs.strength` event.
 - **Range** — `Range` JavaScript plugin that turns `.form-range` into a styled slider with a filled track, optional value bubble, and `<datalist>` tick marks, with a `changed.bs.range` event.
