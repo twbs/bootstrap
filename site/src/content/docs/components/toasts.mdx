@@ -329,6 +329,10 @@ You can also get fancy with flexbox utilities to align toasts horizontally and/o
     </div>
   </div>`} />
 
+### Drawers and dialogs
+
+Modal [drawers]([[docsref:/components/drawer]]) and [dialogs]([[docsref:/components/dialog]]) use the native `<dialog>` top layer. A `.toast-container` sitting outside that markup (for example directly under `<body>`) stays behind the open dialog even when toast z-index is higher on the Bootstrap scale. Put the toast container inside the drawer or dialog when you need toasts while it is open—see [Dialog overlays]([[docsref:/components/dialog#overlays]]).
+
 ## Accessibility
 
 Toasts are intended to be small interruptions to your visitors or users, so to help those with screen readers and similar assistive technologies, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). Changes to live regions (such as injecting/updating a toast component) are automatically announced by screen readers without needing to move the user’s focus or otherwise interrupt the user. Additionally, include `aria-atomic="true"` to ensure that the entire toast is always announced as a single (atomic) unit, rather than just announcing what was changed (which could lead to problems if you only update part of the toast’s content, or if displaying the same toast content at a later point in time). If the information needed is important for the process, e.g. for a list of errors in a form, then use the [alert component]([[docsref:/components/alerts]]) instead of toast.
