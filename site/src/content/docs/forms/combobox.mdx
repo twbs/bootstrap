@@ -359,8 +359,12 @@ Commas remain part of a value by default. Set `separator` explicitly to split ty
 - <kbd>↑</kbd> and <kbd>↓</kbd> highlight available suggestions while focus stays in the input.
 - <kbd>Enter</kbd> commits the active suggestion, or the query when free entry is enabled.
 - <kbd>Escape</kbd> closes the popup. <kbd>Tab</kbd> leaves the field without selecting a suggestion.
-- With an empty query, <kbd>Backspace</kbd> focuses the last chip. Press <kbd>Backspace</kbd> or <kbd>Delete</kbd> on a chip to remove it.
-- Horizontal arrow keys move between chips in the field’s direction. <kbd>Home</kbd> selects the first chip; <kbd>End</kbd> returns to the editor. Native text editing keys stay with the input.
+- With an empty query, <kbd>Backspace</kbd> or <kbd>Delete</kbd> focuses and highlights the last enabled chip. Press either key on a chip to remove the highlighted chips.
+- Horizontal arrow keys move between chips in the field’s direction. Hold <kbd>Shift</kbd> to extend or shrink a range from its anchor. <kbd>Home</kbd> selects the first chip; <kbd>Shift+End</kbd> extends to the last. Plain <kbd>End</kbd> or <kbd>Escape</kbd> clears the chip highlight and returns to the editor.
+- Click a chip to highlight it. Use <kbd>Ctrl</kbd> or <kbd>Cmd</kbd> while clicking to toggle individual highlights, or <kbd>Shift</kbd> to select a range.
+- <kbd>Ctrl+A</kbd> or <kbd>Cmd+A</kbd> selects all enabled chips when a chip has focus or the query is empty. With query text, the input keeps native text selection.
+
+Chip highlights use the filled `.active` style. They select values for a removal action; they do not change submitted values. Returning to the input clears these highlights. Bulk removal emits one committed change and honors each option’s cancelable removal event.
 
 Input-method composition takes precedence over component shortcuts. Removable chips also provide named buttons for direct keyboard access. Check the complete multiple-value interaction with your supported browsers and assistive technologies before release.
 
@@ -545,6 +549,10 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | Method | Description |
 | --- | --- |
 | `getValues` | Returns the committed values in menu order. |
+| `getSelectedValues` | Returns the values of highlighted chips, without changing committed selections. |
+| `selectChip(chip, options)` | Highlights an owned chip. Use `addToSelection` for a toggle or `rangeSelect` to extend from the anchor. |
+| `clearSelection` | Clears chip highlights without removing values. |
+| `removeSelected` | Removes highlighted chips in one change, then focuses the nearest remaining chip or editor. Returns whether values changed. |
 | `add(value)` | Selects an existing value, or creates one when allowed. Returns its chip or option, or `null`. |
 | `remove(valueOrElement)` | Removes a selected value, option, or chip. Returns whether it changed. |
 | `clear` | Removes enabled selections in one change. |
@@ -577,6 +585,7 @@ Selecting the same single option again does not emit a change. Selecting a diffe
 | `shown.bs.combobox` | Fires when the menu has been made visible. |
 | `hide.bs.combobox` | Fires immediately when the `hide` method is called. |
 | `hidden.bs.combobox` | Fires when the menu has been hidden. |
+| `select.bs.combobox` | Fires after chip highlights change. Contains `selected` values and their option `items`. Does not change form values. |
 | `change.bs.combobox` | Fires after selection changes. The event has `value` and `item` properties. `value` is an array in multiple mode. |
 </BsTable>
 

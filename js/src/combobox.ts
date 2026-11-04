@@ -127,6 +127,8 @@ class Combobox extends BaseComponent {
   protected declare _editor: HTMLInputElement | null
   protected declare _activeItem: HTMLElement | null
   protected declare _chips: Map<HTMLElement, HTMLElement>
+  protected declare _selectedChips: Set<HTMLElement>
+  protected declare _anchorChip: HTMLElement | null
   protected declare _query: string | null
   protected declare _ownsMenu: boolean
   protected declare _status: HTMLElement | null
@@ -159,6 +161,8 @@ class Combobox extends BaseComponent {
     this._noResults = SelectorEngine.findOne(SELECTOR_NO_RESULTS, this._menu)
     this._activeItem = null
     this._chips = new Map()
+    this._selectedChips = new Set()
+    this._anchorChip = null
     this._query = null
     this._status = null
     this._attributes = new Map()
@@ -197,6 +201,8 @@ class Combobox extends BaseComponent {
         }
 
         this._query = null
+        this._selectedChips.clear()
+        this._anchorChip = null
         this.update()
       })
     }
@@ -338,15 +344,7 @@ class Combobox extends BaseComponent {
       return false
     }
 
-    const event = EventHandler.trigger(this._element, `remove${EVENT_KEY}`, { value: item.dataset.bsValue, item })
-    if (!this._element || event.defaultPrevented) {
-      return false
-    }
-
-    item.classList.remove(CLASS_NAME_SELECTED)
-    setAriaAttribute(item, 'aria-selected', false)
-    this._selectionChanged(item)
-    return true
+    return this._removeItems([item])
   }
 
   clear(): void {
@@ -354,35 +352,168 @@ class Combobox extends BaseComponent {
   }
 
   protected _clearSelection(query: string | null): void {
-    if (this._isDisabled() || !this._getSelectedItems().length) {
-      return
-    }
-
-    let changed = false
-    for (const item of this._getSelectedItems()) {
-      if (!isDisabled(item)) {
-        const event = EventHandler.trigger(this._element, `remove${EVENT_KEY}`, { value: item.dataset.bsValue, item })
-        if (!this._element) {
-          return
-        }
-
-        if (event.defaultPrevented) {
-          continue
-        }
-
-        changed = true
-        item.classList.remove(CLASS_NAME_SELECTED)
-        setAriaAttribute(item, 'aria-selected', false)
-      }
-    }
-
-    if (changed) {
-      this._selectionChanged(null, query)
-    }
+    this._removeItems(this._getSelectedItems(), query)
   }
 
   focus(): void {
     this._toggle.focus()
+  }
+
+  getSelectedValues(): string[] {
+    return this._getSelectedItems()
+      .filter(item => this._selectedChips.has(this._chips.get(item)!))
+      .map(item => item.dataset.bsValue ?? '')
+  }
+
+  selectChip(chip: HTMLElement, options: { addToSelection?: boolean, rangeSelect?: boolean } = {}): void {
+    const chips = this._getChipElements()
+    if (this._isDisabled() || !chips.includes(chip)) {
+      return
+    }
+
+    const previous = new Set(this._selectedChips)
+    const { addToSelection = false, rangeSelect = false } = options
+    if (rangeSelect && this._anchorChip && chips.includes(this._anchorChip)) {
+      const anchor = chips.indexOf(this._anchorChip)
+      const target = chips.indexOf(chip)
+      if (!addToSelection) {
+        this._selectedChips.clear()
+      }
+
+      for (let index = Math.min(anchor, target); index <= Math.max(anchor, target); index++) {
+        this._selectedChips.add(chips[index])
+      }
+    } else if (addToSelection) {
+      if (this._selectedChips.has(chip)) {
+        this._selectedChips.delete(chip)
+      } else {
+        this._selectedChips.add(chip)
+        this._anchorChip = chip
+      }
+    } else {
+      this._selectedChips = new Set([chip])
+      this._anchorChip = chip
+    }
+
+    if (previous.size !== this._selectedChips.size || [...previous].some(element => !this._selectedChips.has(element))) {
+      this._notifyChipSelection()
+    }
+  }
+
+  clearSelection(): void {
+    this._anchorChip = null
+    if (!this._selectedChips.size) {
+      return
+    }
+
+    this._selectedChips.clear()
+    this._notifyChipSelection()
+  }
+
+  removeSelected(): boolean {
+    const chips = this._getChipElements()
+    const active = (document.activeElement as HTMLElement | null)?.closest<HTMLElement>('.chip')
+    const index = Math.max(0, chips.indexOf(active!))
+    const items = this._getSelectedItems().filter(item => this._selectedChips.has(this._chips.get(item)!))
+    const changed = this._removeItems(items)
+    if (changed && this._element) {
+      const remaining = this._getChipElements()
+      const target = remaining[Math.min(index, remaining.length - 1)]
+      if (target) {
+        this._focusChip(target)
+      } else {
+        this._editor!.focus()
+      }
+    }
+
+    return changed
+  }
+
+  protected _getChipElements(): HTMLElement[] {
+    return this._getSelectedItems()
+      .filter(item => !isDisabled(item))
+      .map(item => this._chips.get(item))
+      .filter((chip): chip is HTMLElement => Boolean(chip))
+  }
+
+  protected _syncChipSelection(): void {
+    for (const chip of this._chips.values()) {
+      const selected = this._selectedChips.has(chip)
+      chip.classList.toggle('active', selected)
+      if (selected) {
+        chip.setAttribute('aria-description', 'Selected for removal')
+      } else {
+        chip.removeAttribute('aria-description')
+      }
+    }
+  }
+
+  protected _notifyChipSelection(): void {
+    this._syncChipSelection()
+    const items = this._getSelectedItems().filter(item => this._selectedChips.has(this._chips.get(item)!))
+    const selected = items.map(item => item.dataset.bsValue ?? '')
+    if (this._status) {
+      this._status.textContent = selected.length ? `${selected.length} chip${selected.length === 1 ? '' : 's'} selected for removal` : 'Chip selection cleared'
+    }
+
+    EventHandler.trigger(this._element, `select${EVENT_KEY}`, { selected, items })
+  }
+
+  protected _focusChip(chip: HTMLElement, options: { addToSelection?: boolean, rangeSelect?: boolean } = {}): void {
+    this.selectChip(chip, options)
+    if (!this._element) {
+      return
+    }
+
+    this.hide()
+    if (this._element) {
+      chip.focus()
+    }
+  }
+
+  protected _selectAllChips(): void {
+    const chips = this._getChipElements()
+    if (!chips.length) {
+      return
+    }
+
+    this._selectedChips = new Set(chips)
+    this._anchorChip ??= chips[0]
+    this._notifyChipSelection()
+  }
+
+  protected _removeItems(items: HTMLElement[], query: string | null = null): boolean {
+    if (this._isDisabled() || !items.length) {
+      return false
+    }
+
+    const allowed: HTMLElement[] = []
+    const changeId = this._changeId
+    for (const item of items) {
+      if (isDisabled(item)) {
+        continue
+      }
+
+      const event = EventHandler.trigger(this._element, `remove${EVENT_KEY}`, { value: item.dataset.bsValue, item })
+      if (!this._element || changeId !== this._changeId) {
+        return false
+      }
+
+      if (!event.defaultPrevented) {
+        allowed.push(item)
+      }
+    }
+
+    for (const item of allowed) {
+      item.classList.remove(CLASS_NAME_SELECTED)
+      setAriaAttribute(item, 'aria-selected', false)
+    }
+
+    if (allowed.length) {
+      this._selectionChanged(allowed.length === 1 ? allowed[0] : null, query)
+    }
+
+    return allowed.length > 0
   }
 
   // Private
@@ -444,6 +575,10 @@ class Combobox extends BaseComponent {
       if (!selectedSet.has(item)) {
         chip.remove()
         this._chips.delete(item)
+        this._selectedChips.delete(chip)
+        if (this._anchorChip === chip) {
+          this._anchorChip = null
+        }
       }
     }
 
@@ -485,10 +620,7 @@ class Combobox extends BaseComponent {
         this._chips.set(item, chip)
       }
 
-      chip.firstElementChild!.textContent = label
-      const button = chip.lastElementChild as HTMLButtonElement
-      button.setAttribute('aria-label', `Remove ${label}`)
-      button.disabled = this._isDisabled() || isDisabled(item)
+      this._updateChipState(item, chip, label)
       if (chip.nextElementSibling !== next) {
         next.before(chip)
       }
@@ -496,12 +628,32 @@ class Combobox extends BaseComponent {
       next = chip
     }
 
+    this._syncChipSelection()
     const value = this._query ?? ''
     if (editor.value !== value) {
       editor.value = value
     }
 
     this._menuInstance?.update()
+  }
+
+  protected _updateChipState(item: HTMLElement, chip: HTMLElement, label: string): void {
+    chip.firstElementChild!.textContent = label
+    const button = chip.lastElementChild as HTMLButtonElement
+    button.setAttribute('aria-label', `Remove ${label}`)
+    button.disabled = this._isDisabled() || isDisabled(item)
+    chip.setAttribute('role', 'group')
+    chip.setAttribute('aria-label', label)
+    chip.classList.toggle('disabled', button.disabled)
+    if (button.disabled) {
+      chip.setAttribute('aria-disabled', 'true')
+      this._selectedChips.delete(chip)
+      if (this._anchorChip === chip) {
+        this._anchorChip = null
+      }
+    } else {
+      chip.removeAttribute('aria-disabled')
+    }
   }
 
   protected _setActiveItem(item: HTMLElement | null): void {
@@ -593,6 +745,17 @@ class Combobox extends BaseComponent {
         this.add(editor.value.trim())
       }
     })
+    EventHandler.on(editor, `focus${EVENT_KEY}`, () => this.clearSelection())
+    EventHandler.on(this._element, `click${EVENT_KEY}`, '.chip', event => {
+      if ((event.target as Element).closest('.chip-dismiss') || this._isDisabled()) {
+        return
+      }
+
+      event.preventDefault()
+      event.stopPropagation()
+      const chip = (event.target as Element).closest<HTMLElement>('.chip')!
+      this._focusChip(chip, { addToSelection: event.metaKey || event.ctrlKey, rangeSelect: event.shiftKey })
+    })
     EventHandler.on(this._element, `keydown${EVENT_KEY}`, '.chip', event => this._handleChipKeydown(event))
     EventHandler.on(this._element, `click${EVENT_KEY}`, '.chip-dismiss', event => {
       event.preventDefault()
@@ -650,14 +813,35 @@ class Combobox extends BaseComponent {
 
   protected _handleEditorChipFocus(event: BootstrapEvent): void {
     const editor = this._editor!
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'a' && !editor.value) {
+      const chips = this._getChipElements()
+      if (chips.length) {
+        event.preventDefault()
+        this._selectAllChips()
+        if (this._element) {
+          this.hide()
+          if (this._element) {
+            chips.at(-1)!.focus()
+          }
+        }
+      }
+
+      return
+    }
+
+    if (event.metaKey || event.ctrlKey || event.altKey) {
+      return
+    }
+
     const rtl = getComputedStyle(editor).direction === 'rtl'
     const previousKey = rtl ? 'ArrowRight' : 'ArrowLeft'
-    if ((event.key === 'Backspace' && !editor.value) ||
-        (event.key === previousKey && !editor.value && editor.selectionStart === 0 && editor.selectionEnd === 0)) {
-      const chip = this._getSelectedItems().map(item => this._chips.get(item)!).at(-1)
+    const backwardDelete = ['Backspace', 'Delete'].includes(event.key) && !editor.value
+    const atStart = event.key === previousKey && editor.selectionStart === 0 && editor.selectionEnd === 0
+    if (backwardDelete || atStart) {
+      const chip = this._getChipElements().at(-1)
       if (chip) {
         event.preventDefault()
-        chip.focus()
+        this._focusChip(chip, { addToSelection: event.shiftKey })
       }
     }
   }
@@ -668,18 +852,21 @@ class Combobox extends BaseComponent {
     }
 
     const chip = (event.target as Element).closest<HTMLElement>('.chip')!
-    const chips = this._getSelectedItems().map(item => this._chips.get(item)!)
+    const chips = this._getChipElements()
     const index = chips.indexOf(chip)
     if (index === -1) {
       return
     }
 
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'a') {
+      event.preventDefault()
+      this._selectAllChips()
+      return
+    }
+
     if (['Backspace', 'Delete'].includes(event.key)) {
       event.preventDefault()
-      if (this.remove(chip) && this._element) {
-        const target = chips[index + 1] ?? chips[index - 1] ?? this._editor!
-        target.focus()
-      }
+      this._deleteChipSelection(chip)
 
       return
     }
@@ -688,14 +875,34 @@ class Combobox extends BaseComponent {
     if (['ArrowLeft', 'ArrowRight'].includes(event.key)) {
       event.preventDefault()
       const next = index + ((event.key === 'ArrowRight') === rtl ? -1 : 1)
-      const target = chips[next] ?? (next < 0 ? chips[0] : this._editor!)
-      target.focus()
-    } else if (event.key === HOME_KEY) {
+      if (next >= chips.length) {
+        this.clearSelection()
+        if (this._element) {
+          this._editor!.focus()
+        }
+      } else {
+        this._focusChip(chips[Math.max(0, next)], { rangeSelect: event.shiftKey })
+      }
+    } else if (event.key === HOME_KEY || (event.key === END_KEY && event.shiftKey)) {
       event.preventDefault()
-      chips[0].focus()
+      const target = event.key === HOME_KEY ? chips[0] : chips.at(-1)!
+      this._focusChip(target, { rangeSelect: event.shiftKey })
     } else if ([END_KEY, ESCAPE_KEY].includes(event.key)) {
       event.preventDefault()
-      this._editor!.focus()
+      this.clearSelection()
+      if (this._element) {
+        this._editor!.focus()
+      }
+    }
+  }
+
+  protected _deleteChipSelection(chip: HTMLElement): void {
+    if (!this._selectedChips.has(chip)) {
+      this.selectChip(chip)
+    }
+
+    if (this._element) {
+      this.removeSelected()
     }
   }
 
