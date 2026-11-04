@@ -578,4 +578,29 @@ describe('Combobox editor', () => {
     expect(instance.getSelectedValues()).toEqual([])
     expect(instance._anchorChip).toBeNull()
   })
+  it('should fill a chip when it receives direct focus', () => {
+    const x = make({}, { selected: [0, 1] })
+    const chip = x.root.querySelectorAll('.chip')[1]
+    chip.focus()
+    expect(chip).toHaveClass('active')
+    expect(instance.getSelectedValues()).toEqual(['art,music'])
+    expect(values(x.form)).toEqual(['design', 'art,music'])
+  })
+
+  it('should fill the owning chip when its remove button receives focus', () => {
+    const x = make({}, { selected: [0, 1] })
+    const chip = x.root.querySelectorAll('.chip')[1]
+    chip.querySelector('button').focus()
+    expect(chip).toHaveClass('active')
+    expect(instance.getSelectedValues()).toEqual(['art,music'])
+  })
+
+  it('should preserve a range while focusing a member through keyboard navigation', () => {
+    const x = make({}, { selected: [0, 1, 2] })
+    const chips = x.root.querySelectorAll('.chip')
+    chips[2].click()
+    key(chips[2], 'Home', { shiftKey: true })
+    expect(instance.getSelectedValues()).toEqual(['design', 'art,music', 'science'])
+    expect(document.activeElement).toBe(chips[0])
+  })
 })

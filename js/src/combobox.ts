@@ -129,6 +129,7 @@ class Combobox extends BaseComponent {
   protected declare _chips: Map<HTMLElement, HTMLElement>
   protected declare _selectedChips: Set<HTMLElement>
   protected declare _anchorChip: HTMLElement | null
+  protected declare _focusingChip: boolean
   protected declare _query: string | null
   protected declare _ownsMenu: boolean
   protected declare _status: HTMLElement | null
@@ -163,6 +164,7 @@ class Combobox extends BaseComponent {
     this._chips = new Map()
     this._selectedChips = new Set()
     this._anchorChip = null
+    this._focusingChip = false
     this._query = null
     this._status = null
     this._attributes = new Map()
@@ -467,7 +469,18 @@ class Combobox extends BaseComponent {
 
     this.hide()
     if (this._element) {
+      this._focusSelectedChip(chip)
+    }
+  }
+
+  protected _focusSelectedChip(chip: HTMLElement): void {
+    this._focusingChip = true
+    try {
       chip.focus()
+    } finally {
+      if (this._element) {
+        this._focusingChip = false
+      }
     }
   }
 
@@ -746,6 +759,26 @@ class Combobox extends BaseComponent {
       }
     })
     EventHandler.on(editor, `focus${EVENT_KEY}`, () => this.clearSelection())
+    EventHandler.on(this._element, `mousedown${EVENT_KEY}`, '.chip', event => {
+      // The click handler owns modifier selection and focus on the chip body.
+      if (!(event.target as Element).closest('.chip-dismiss')) {
+        event.preventDefault()
+      }
+    })
+    EventHandler.on(this._element, `focusin${EVENT_KEY}`, '.chip', event => {
+      if (this._focusingChip || this._isDisabled()) {
+        return
+      }
+
+      const chip = (event.target as Element).closest<HTMLElement>('.chip')!
+      if (!this._selectedChips.has(chip)) {
+        this.selectChip(chip)
+      }
+
+      if (this._element) {
+        this.hide()
+      }
+    })
     EventHandler.on(this._element, `click${EVENT_KEY}`, '.chip', event => {
       if ((event.target as Element).closest('.chip-dismiss') || this._isDisabled()) {
         return
@@ -821,7 +854,7 @@ class Combobox extends BaseComponent {
         if (this._element) {
           this.hide()
           if (this._element) {
-            chips.at(-1)!.focus()
+            this._focusSelectedChip(chips.at(-1)!)
           }
         }
       }

@@ -364,7 +364,7 @@ Commas remain part of a value by default. Set `separator` explicitly to split ty
 - Click a chip to highlight it. Use <kbd>Ctrl</kbd> or <kbd>Cmd</kbd> while clicking to toggle individual highlights, or <kbd>Shift</kbd> to select a range.
 - <kbd>Ctrl+A</kbd> or <kbd>Cmd+A</kbd> selects all enabled chips when a chip has focus or the query is empty. With query text, the input keeps native text selection.
 
-Chip highlights use the filled `.active` style. They select values for a removal action; they do not change submitted values. Returning to the input clears these highlights. Bulk removal emits one committed change and honors each option’s cancelable removal event.
+Chip highlights use the filled `.active` style. Focusing a chip or tabbing to its remove button also highlights the chip. They select values for a removal action; they do not change submitted values. Returning to the input clears these highlights. Bulk removal emits one committed change and honors each option’s cancelable removal event.
 
 Input-method composition takes precedence over component shortcuts. Removable chips also provide named buttons for direct keyboard access. Check the complete multiple-value interaction with your supported browsers and assistive technologies before release.
 
