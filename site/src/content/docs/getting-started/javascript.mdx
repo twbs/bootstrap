@@ -175,6 +175,22 @@ bootstrap.Popover.getOrCreateInstance(myPopoverEl, configObject)
 
 In case an instance wasn’t initialized, it may accept and use an optional configuration object as second argument.
 
+### Component instances
+
+Different component types can share an element. Retrieve each instance through its own component class. For example, Combobox registers both a Combobox and a Menu on its toggle:
+
+```js
+const toggle = document.querySelector('[data-bs-toggle="combobox"]')
+const combobox = bootstrap.Combobox.getOrCreateInstance(toggle)
+const menu = bootstrap.Menu.getInstance(toggle)
+```
+
+Each component type has one instance per element. Constructing another instance of that type disposes the previous one. Use `getOrCreateInstance()` to reuse an existing instance.
+
+Calling `dispose()` removes that component’s registration and listeners. Other component types remain registered unless the component owns and disposes them. For example, `combobox.dispose()` also disposes its Menu. Let Combobox manage that Menu instead of replacing or disposing it separately.
+
+Shared registration does not make every combination of component behaviors compatible. Each component’s markup, events, and lifecycle requirements still apply.
+
 ### CSS selectors in constructors
 
 In addition to the `getInstance` and `getOrCreateInstance` methods, all plugin constructors can accept a DOM element or a valid [CSS selector](#selectors) as the first argument. Plugin elements are found with the `querySelector` method since our plugins only support a single element.

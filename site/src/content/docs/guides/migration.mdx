@@ -74,6 +74,19 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 **Check your browser support first.** Bootstrap 6 raises the minimum browser versions sharply: Chrome and Edge 138, Firefox 147, and Safari 26 on both macOS and iOS. Bootstrap 5 supported Chrome and Firefox 60, and Safari 12. We build on `light-dark()`, `:has()`, container queries, `content-visibility`, and the native `<dialog>` element, and v6 ships no fallbacks, prefixes, or polyfills below the floor. Pages will not render correctly in older browsers. Check your own analytics before you upgrade, and see [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the full policy and the reason behind each version.
 </Callout>
 
+## Alpha 2 changes
+
+Review these changes when you upgrade from v6.0.0-alpha.1 to alpha 2.
+
+### JavaScript component instances
+
+- Different component types can now share an element. Combobox uses this to register its Menu instance on the same toggle.
+- Each component type still has one instance per element. Use that component’s `getInstance()` or `getOrCreateInstance()` method to retrieve it. Constructing another instance of the same type disposes the previous instance.
+- Disposing one component leaves instances of other types registered. A component still disposes the child instances it owns, such as Combobox’s Menu.
+- The internal `Data.getAny()` helper is removed. If your code imports this internal module, replace the call with the component’s public `getInstance()` method.
+
+See the [programmatic API]([[docsref:/getting-started/javascript#component-instances]]) for instance lookup and disposal.
+
 ## Changelog
 
 ### CSS
