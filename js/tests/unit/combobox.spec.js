@@ -96,6 +96,35 @@ describe('Combobox', () => {
       expect(hiddenInput.nextElementSibling).toEqual(toggleEl)
     })
 
+    it('should reuse an existing hidden input if present in the markup', () => {
+      const html = [
+        '<div class="combobox-wrapper">',
+        '  <input type="hidden" name="country" id="row-1" class="is-invalid" value="uk">',
+        '  <button class="form-control combobox-toggle" type="button" data-bs-toggle="combobox" data-bs-name="country">',
+        '    <span class="combobox-value"></span>',
+        '  </button>',
+        '  <div class="menu">',
+        '    <button class="menu-item" type="button" data-bs-value="us">United States</button>',
+        '    <button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      fixtureEl.innerHTML = html
+      const toggleEl = fixtureEl.querySelector('[data-bs-toggle="combobox"]')
+      const existingInput = fixtureEl.querySelector('input[type="hidden"]')
+      const combobox = new Combobox(toggleEl)
+
+      expect(fixtureEl.querySelectorAll('input[type="hidden"]').length).toEqual(1)
+      expect(existingInput.id).toEqual('row-1')
+      expect(existingInput.classList.contains('is-invalid')).toBeTrue()
+      expect(existingInput.value).toEqual('uk')
+
+      const valueEl = fixtureEl.querySelector('.combobox-value')
+      expect(valueEl.textContent).toEqual('United Kingdom')
+      combobox.dispose()
+    })
+
     it('should sync an item pre-selected in the markup', () => {
       const preSelected = [
         '<button class="menu-item selected" type="button" data-bs-value="ca">Canada</button>',
@@ -548,6 +577,33 @@ describe('Combobox', () => {
       expect(fixtureEl.querySelector('input[type="hidden"]')).toBeNull()
       expect(Combobox.getInstance(toggleEl)).toBeNull()
       expect(Menu.getInstance(toggleEl)).toBeNull()
+    })
+
+    it('should not remove a pre-existing hidden input on dispose', () => {
+      const html = [
+        '<div class="combobox-wrapper">',
+        '  <input type="hidden" name="country" id="row-1" class="is-invalid">',
+        '  <button class="form-control combobox-toggle" type="button" data-bs-toggle="combobox" data-bs-name="country">',
+        '    <span class="combobox-value"></span>',
+        '  </button>',
+        '  <div class="menu">',
+        '    <button class="menu-item" type="button" data-bs-value="us">United States</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      fixtureEl.innerHTML = html
+      const toggleEl = fixtureEl.querySelector('[data-bs-toggle="combobox"]')
+      const existingInput = fixtureEl.querySelector('input[type="hidden"]')
+      const combobox = new Combobox(toggleEl)
+
+      expect(fixtureEl.querySelector('input[type="hidden"]')).not.toBeNull()
+
+      combobox.dispose()
+
+      expect(fixtureEl.querySelector('input[type="hidden"]')).toEqual(existingInput)
+      expect(fixtureEl.querySelector('#row-1')).not.toBeNull()
+      expect(Combobox.getInstance(toggleEl)).toBeNull()
     })
 
     it('should remove component listeners and keep consumer listeners', () => {
