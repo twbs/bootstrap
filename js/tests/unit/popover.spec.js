@@ -57,6 +57,73 @@ describe('Popover', () => {
     })
   })
 
+  describe('raw content attributes', () => {
+    it('should display the literal decimal content', async () => {
+      const element = document.createElement('button')
+      element.setAttribute('data-bs-content', '9.90')
+      fixtureEl.append(element)
+
+      const popover = new Popover(element, { animation: false, trigger: 'manual' })
+      await popover.show()
+
+      expect(document.querySelector('.popover-body').textContent).toEqual('9.90')
+      popover.dispose()
+    })
+
+    it('should show content when the title attribute is empty', async () => {
+      const element = document.createElement('button')
+      element.setAttribute('data-bs-title', '')
+      element.setAttribute('data-bs-content', 'Body without a heading')
+      fixtureEl.append(element)
+
+      const popover = new Popover(element, { animation: false, trigger: 'manual' })
+      await popover.show()
+
+      expect(document.querySelector('.popover-header')).toBeNull()
+      expect(document.querySelector('.popover-body').textContent).toEqual('Body without a heading')
+      popover.dispose()
+    })
+
+    it('should prefer an explicit content option over the raw attribute', () => {
+      const element = document.createElement('button')
+      element.setAttribute('data-bs-content', '9.90')
+      fixtureEl.append(element)
+
+      const popover = new Popover(element, { content: 'Explicit content' })
+
+      expect(popover._config.content).toEqual('Explicit content')
+      popover.dispose()
+    })
+
+    for (const html of [false, true]) {
+      it(`should retain the HTML security boundary with html: ${html}`, () => {
+        const element = document.createElement('button')
+        const content = '<b onclick="window.__unexpected = true">Text</b><script>window.__unexpected = true</script>'
+        element.setAttribute('data-bs-content', content)
+        element.setAttribute('data-bs-sanitize', 'false')
+        element.setAttribute('data-bs-allow-list', '{}')
+        element.setAttribute('data-bs-sanitize-fn', 'ignored')
+        fixtureEl.append(element)
+
+        const popover = new Popover(element, { html })
+        const tip = popover._getTemplateFactory(popover._getContentForTemplate()).toHtml()
+        const body = tip.querySelector('.popover-body')
+
+        expect(popover._config.sanitize).toBeTrue()
+        expect(popover._config.sanitizeFn).toBeNull()
+        if (html) {
+          expect(body.querySelector('b').textContent).toEqual('Text')
+          expect(body.querySelector('[onclick], script')).toBeNull()
+        } else {
+          expect(body.textContent).toEqual(content)
+          expect(body.children.length).toEqual(0)
+        }
+
+        popover.dispose()
+      })
+    }
+  })
+
   describe('show', () => {
     it('should toggle a popover after show', () => {
       return new Promise(resolve => {

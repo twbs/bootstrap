@@ -110,6 +110,30 @@ describe('Tooltip', () => {
       expect(tooltip._config.content).toEqual('')
     })
 
+    for (const title of ['9.90', '', '[1,2]', 'null']) {
+      it(`should preserve the literal title attribute ${JSON.stringify(title)}`, () => {
+        const element = document.createElement('button')
+        element.setAttribute('data-bs-title', title)
+        fixtureEl.append(element)
+
+        const tooltip = new Tooltip(element)
+
+        expect(tooltip._config.title).toEqual(title)
+        tooltip.dispose()
+      })
+    }
+
+    it('should prefer an explicit title option over the raw attribute', () => {
+      const element = document.createElement('button')
+      element.setAttribute('data-bs-title', '9.90')
+      fixtureEl.append(element)
+
+      const tooltip = new Tooltip(element, { title: 'Explicit title' })
+
+      expect(tooltip._config.title).toEqual('Explicit title')
+      tooltip.dispose()
+    })
+
     it('should enable selector delegation', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div></div>'
