@@ -564,7 +564,8 @@ class ScrollSpy extends BaseComponent {
   protected _clearActiveClass(parent: HTMLElement): void {
     parent.classList.remove(CLASS_NAME_ACTIVE)
 
-    const activeNodes = SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)
+    // `_activateParents()` also marks menu toggles, which are often buttons without an `href`
+    const activeNodes = SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}, ${SELECTOR_MENU_TOGGLE}.${CLASS_NAME_ACTIVE}`, parent)
     for (const node of activeNodes) {
       node.classList.remove(CLASS_NAME_ACTIVE)
     }
