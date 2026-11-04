@@ -309,6 +309,61 @@ Add `data-bs-multiple="true"` to the toggle for multi-select behavior. Selected 
     </button>
   </div>`} />
 
+## Editable input
+
+Use an input inside `.combobox` to search from the field itself. Place the listbox after the wrapper. The input keeps focus while the arrow keys highlight suggestions. Press <kbd>Enter</kbd> to commit a highlighted option. Typing alone does not select it.
+
+<Example code={`<label for="editableLanguage">Language</label>
+<div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
+  <input class="form-control combobox-input" id="editableLanguage" placeholder="Choose a language">
+</div>
+<div class="menu" aria-label="Languages">
+  <button class="menu-item" type="button" data-bs-value="en">English</button>
+  <button class="menu-item" type="button" data-bs-value="fr">French</button>
+  <button class="menu-item" type="button" data-bs-value="ja">Japanese</button>
+</div>`} />
+
+We set the input’s combobox attributes and the listbox option IDs. Give the input an accessible name with a label. Keep the query input unnamed; `data-bs-name` names the submitted backing fields. Editing a selected single value clears its committed value until you select an option again.
+
+### Multiple selections as chips
+
+Use `.combobox-control` for a wrapping field and add `data-bs-multiple="true"`. The input uses `.form-ghost` to share the field with selected chips. Remove buttons include the option’s name. An empty multiple selection submits no entries.
+
+<Example code={`<label for="editableInterests">Interests</label>
+<div class="combobox-control" data-bs-toggle="combobox"
+     data-bs-name="interests" data-bs-multiple="true">
+  <input class="form-ghost combobox-input" id="editableInterests" placeholder="Add an interest">
+</div>
+<div class="menu" aria-label="Interests">
+  <button class="menu-item" type="button" data-bs-value="design">Design</button>
+  <button class="menu-item" type="button" data-bs-value="art,music">Art, music</button>
+  <button class="menu-item" type="button" data-bs-value="engineering">Engineering</button>
+</div>`} />
+
+Selecting an option clears the query and keeps the editor ready for another search. The chips use the existing [chip styles]([[docsref:/forms/chips]]). The menu remains the source of option identity and submitted values.
+
+### Free-entry values
+
+Set `data-bs-allow-custom="true"` to accept values outside the option list. Press <kbd>Enter</kbd> to commit the text. A popup is optional for a field with no predefined options; we create one when needed. We render value labels as text.
+
+<Example code={`<label for="editableTags">Tags</label>
+<div class="combobox-control" data-bs-toggle="combobox"
+     data-bs-name="tags" data-bs-multiple="true" data-bs-allow-custom="true">
+  <input class="form-ghost combobox-input" id="editableTags" placeholder="Type a tag and press Enter">
+</div>`} />
+
+Commas remain part of a value by default. Set `separator` explicitly to split typed or pasted values. `createOnBlur` is off by default so moving focus does not commit unfinished text. `maxItems` limits committed multiple selections. Repeated free-entry strings reuse an existing option rather than creating another chip.
+
+### Editor keyboard behavior
+
+- <kbd>↑</kbd> and <kbd>↓</kbd> highlight available suggestions while focus stays in the input.
+- <kbd>Enter</kbd> commits the active suggestion, or the query when free entry is enabled.
+- <kbd>Escape</kbd> closes the popup. <kbd>Tab</kbd> leaves the field without selecting a suggestion.
+- With an empty query, <kbd>Backspace</kbd> focuses the last chip. Press <kbd>Backspace</kbd> or <kbd>Delete</kbd> on a chip to remove it.
+- Horizontal arrow keys move between chips in the field’s direction. <kbd>Home</kbd> selects the first chip; <kbd>End</kbd> returns to the editor. Native text editing keys stay with the input.
+
+Input-method composition takes precedence over component shortcuts. Removable chips also provide named buttons for direct keyboard access. Check the complete multiple-value interaction with your supported browsers and assistive technologies before release.
+
 ## Sizing
 
 Use `.form-control-sm` or `.form-control-lg` on the toggle button to change size.
@@ -469,6 +524,10 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `allowCustom` | boolean | `false` | Allow free-entry values from the editable input. |
+| `createOnBlur` | boolean | `false` | Commit free-entry text when the editor loses focus. |
+| `maxItems` | number \| null | `null` | Positive maximum number of committed multiple selections. |
+| `separator` | string \| null | `null` | Explicit delimiter for typed or pasted free-entry values. |
 | `multiple` | boolean | `false` | Enable multi-select mode. Selections toggle and the menu stays open. |
 | `name` | string \| null | `null` | Name for automatically created fields. Also settable via `data-bs-name`. |
 | `input` | string \| element \| null | `null` | Selector or element for a provided hidden input. Its name and form owner are retained. |
@@ -485,6 +544,11 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 <BsTable>
 | Method | Description |
 | --- | --- |
+| `getValues` | Returns the committed values in menu order. |
+| `add(value)` | Selects an existing value, or creates one when allowed. Returns its chip or option, or `null`. |
+| `remove(valueOrElement)` | Removes a selected value, option, or chip. Returns whether it changed. |
+| `clear` | Removes enabled selections in one change. |
+| `focus` | Focuses the toggle or editable input. |
 | `toggle` | Toggles the menu. |
 | `show` | Shows the menu. |
 | `hide` | Hides the menu. |
@@ -500,13 +564,15 @@ Combobox owns the Menu instance registered on its toggle. Let Combobox create an
 
 ### Events
 
-Component events fire on the toggle. When selection changes, we first update the label and all submitted fields. We then dispatch bubbling `input` and `change` events from the stable hidden input, followed by `change.bs.combobox` on the toggle. Without a backing field, the plain events also fire on the toggle.
+Component events fire on the component root: the button for the original markup, or the wrapping element for an editable field. Query input events remain native input events; they do not commit a value. When selection changes, we first update the label and all submitted fields. We then dispatch bubbling `input` and `change` events from the stable hidden input, followed by `change.bs.combobox` on the toggle. Without a backing field, the plain events also fire on the toggle.
 
 Selecting the same single option again does not emit a change. Selecting a different option with the same value does. Read all multiple values from `event.value` on the component event or `FormData.getAll(name)`, rather than the first hidden input’s value.
 
 <BsTable>
 | Event | Description |
 | --- | --- |
+| `add.bs.combobox` | Fires before an option is selected. Cancel it to prevent selection. Has `value` and `item` properties. |
+| `remove.bs.combobox` | Fires before a selected option is removed. Cancel it to keep that value. Has `value` and `item` properties. |
 | `show.bs.combobox` | Fires immediately when the `show` method is called. |
 | `shown.bs.combobox` | Fires when the menu has been made visible. |
 | `hide.bs.combobox` | Fires immediately when the `hide` method is called. |
@@ -526,3 +592,7 @@ The combobox component follows WAI-ARIA combobox patterns:
 ## CSS custom properties
 
 The combobox uses CSS custom properties prefixed with `--combobox-*` for the toggle, and inherits `--menu-*` properties from the Menu component for the menu overlay. See the [source SCSS](https://github.com/twbs/bootstrap/blob/main/scss/forms/_combobox.scss) for the full list of available tokens.
+
+### Editable field variables
+
+<ScssDocs name="combobox-control-tokens" file="scss/forms/_combobox-control.scss" />

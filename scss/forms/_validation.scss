@@ -201,9 +201,9 @@ $validation-states: defaults(
     }
   }
 
-  // Chip input — wrapper has the visible border; the .form-ghost inside
+  // Combobox — wrapper has the visible border; the .form-ghost inside
   // receives the native pseudo-class.
-  .chip-input:has(.form-ghost.is-#{$state}) {
+  .combobox-control:has(.form-ghost.is-#{$state}) {
     border-color: var(--#{$theme}-border);
 
     &:focus-within {
@@ -216,7 +216,7 @@ $validation-states: defaults(
   }
 
   @if $state == "invalid" {
-    [data-bs-validate] .chip-input:has(.form-ghost:user-invalid) {
+    [data-bs-validate] .combobox-control:has(.form-ghost:user-invalid) {
       border-color: var(--#{$theme}-border);
 
       &:focus-within {
@@ -228,7 +228,7 @@ $validation-states: defaults(
       ~ .invalid-tooltip { display: block; }
     }
   } @else if $state == "valid" {
-    [data-bs-validate~="valid"] .chip-input:has(.form-ghost:user-valid) {
+    [data-bs-validate~="valid"] .combobox-control:has(.form-ghost:user-valid) {
       border-color: var(--#{$theme}-border);
 
       &:focus-within {

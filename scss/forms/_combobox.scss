@@ -1,6 +1,17 @@
 @use "../mixins/transition" as *;
+@use "../mixins/focus-ring" as *;
 
 @layer components {
+  .combobox-control > .chip:focus-visible {
+    @include focus-ring(true);
+  }
+
+  .combobox-control + .menu,
+  .combobox + .menu {
+    --menu-max-height: 300px;
+    --menu-overflow-y: auto;
+  }
+
   .combobox-toggle {
     display: inline-flex;
     gap: .5rem;

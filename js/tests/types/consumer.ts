@@ -18,7 +18,6 @@ import {
   Alert,
   Button,
   Carousel,
-  Chips,
   Collapse,
   Combobox,
   Datepicker,
@@ -41,7 +40,6 @@ import DeepTooltip, { type TooltipConfig } from 'bootstrap/js/src/tooltip.js'
 import EventHandler from 'bootstrap/js/src/dom/event-handler.js'
 import SelectorEngine from 'bootstrap/js/src/dom/selector-engine.js'
 import type { CarouselConfig } from 'bootstrap/js/src/carousel.js'
-import type { ChipsConfig } from 'bootstrap/js/src/chips.js'
 import type { CollapseConfig } from 'bootstrap/js/src/collapse.js'
 import type { ComboboxConfig } from 'bootstrap/js/src/combobox.js'
 import type { DatepickerConfig } from 'bootstrap/js/src/datepicker.js'
@@ -66,13 +64,21 @@ const dialog: Dialog = new Dialog(element, { modal: true, keyboard: false })
 const drawer: Drawer = new Drawer(element, { scroll: true })
 const popover: Popover = new Popover(element, { content: 'Hello', animation: true })
 const range: Range = new Range(element, { formatter: value => `${value} %` })
-const chips: Chips = new Chips(element, { separator: ';', maxChips: 5, allowDuplicates: true })
 const combobox: Combobox = new Combobox(element, { multiple: true, placeholder: 'Pick one' })
 const comboboxInput = document.createElement('input')
 comboboxInput.type = 'hidden'
 new Combobox(element, { input: comboboxInput })
 new Combobox(element, { input: '#combobox-input' })
 combobox.update()
+combobox.add('design')
+combobox.remove('design')
+combobox.clear()
+combobox.focus()
+const comboboxValues: string[] = combobox.getValues()
+new Combobox(element, {
+  allowCustom: true, multiple: true, separator: ';', maxItems: 5
+})
+void comboboxValues
 const navOverflow: NavOverflow = new NavOverflow(element, { moreText: 'More', collapseBelow: 768 })
 const navOverflowIconOnly: NavOverflow = new NavOverflow(element, { moreText: false })
 const otpInput: OtpInput = new OtpInput(element, { length: 6, type: 'alphanumeric', mask: true })
@@ -123,7 +129,6 @@ const collapseDefault: CollapseConfig = Collapse.Default
 const carouselDefault: CarouselConfig = Carousel.Default
 const dialogDefault: DialogConfig = Dialog.Default
 const drawerDefault: DrawerConfig = Drawer.Default
-const chipsDefault: ChipsConfig = Chips.Default
 const comboboxDefault: ComboboxConfig = Combobox.Default
 const datepickerDefault: DatepickerConfig = Datepicker.Default
 const navOverflowDefault: NavOverflowConfig = NavOverflow.Default
