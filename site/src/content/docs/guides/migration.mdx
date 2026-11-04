@@ -213,7 +213,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
 - Removed `js/index.umd.js` entry point.
 - Removed jQuery support and the `js-test-jquery` test target.
-- **Removed the internal `util/backdrop`, `util/focustrap`, and `util/scrollbar` helpers.** They’re obsolete now that Dialog and Drawer build on the native `<dialog>` element—the browser provides the backdrop (`::backdrop`), focus trap, and an inert top layer, and the body scroll-lock is handled in CSS (`:root.dialog-open` with `scrollbar-gutter: stable`). If you imported any of these modules directly from `bootstrap/js/src/util/`, they’re gone.
+- **Removed the legacy internal `util/backdrop`, `util/focustrap`, and `util/scrollbar` helpers.** Dialog and Drawer use the native `<dialog>` element for the backdrop (`::backdrop`), focus trap, and inert top layer. Their shared JavaScript scroll lock compensates for disappearing scrollbars while `:root.dialog-open` prevents page scrolling. The legacy module paths in `bootstrap/js/src/util/` are no longer available.
 - **Replaced the Dropdown component with Menu.** All `.dropdown-*` classes are now `.menu-*` classes, and `data-bs-toggle="dropdown"` is now `data-bs-toggle="menu"`. See the [Menu docs]([[docsref:/components/menus]]) for full details.
 - **Menu `shown.bs.menu` and `hidden.bs.menu` now fire after the CSS transition finishes**, rather than synchronously when `show()` / `hide()` are called—matching Dialog and Drawer. The menu also stays positioned in the DOM through its closing transition instead of being torn down immediately. Move any logic that assumed the old synchronous timing (or that the menu was removed the instant `hide()` returned) into the `shown` / `hidden` event handlers.
   - Renamed CSS classes: `.dropdown-menu` to `.menu`, `.dropdown-item` to `.menu-item`, `.dropdown-divider` to `.menu-divider`, `.dropdown-header` to `.menu-header`, `.dropdown-submenu` to `.submenu`.
@@ -251,7 +251,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
   - Data key: `bs.modal` &rarr; `bs.dialog` (affects `Dialog.getInstance()` and `Dialog.getOrCreateInstance()`).
   - CSS variables: `--modal-*` &rarr; `--dialog-*`.
   - Backdrop: The `.modal-backdrop` DOM element and the legacy `util/backdrop` helper are gone — Dialog uses the native `::backdrop` pseudo-element with `backdrop-filter: blur()` support.
-  - Scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the root (`<html>`) element, so it pairs with `scrollbar-gutter: stable` and the page doesn't shift when a dialog opens.
+  - Scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the root (`<html>`) element. JavaScript compensates for the scrollbar space that disappears while scrolling is locked. Bootstrap no longer reserves a permanent viewport gutter with `scrollbar-gutter: stable`.
   - New variant classes: `.dialog-slide-up`, `.dialog-slide-down` (slide animations), `.dialog-instant` (no animation), `.dialog-static` (static backdrop bounce), `.dialog-nonmodal` (non-modal positioning), `.dialog-scrollable`.
   - Non-modal support: Set `modal: false` or `data-bs-modal="false"` for non-modal dialogs.
   - Dialog swapping: Triggers inside an open dialog can open a new dialog and close the current one automatically.

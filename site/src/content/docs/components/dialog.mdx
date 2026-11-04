@@ -21,6 +21,8 @@ Key features of the native dialog:
 - **Accessibility** — focus is trapped inside modal dialogs and returned to the trigger on close, with native `<dialog>` ARIA semantics.
 - **Animated open and close** — circumvent browser restrictions by using a `.hiding` class to keep dialogs in the top layer during close so the exit transition (including `::backdrop`) are animated properly.
 
+Bootstrap prevents page scrolling while a modal dialog is open. JavaScript compensates for any scrollbar space that disappears and restores the original spacing when the last scroll-locking dialog or drawer closes. Full-width `.fixed-top`, `.fixed-bottom`, and `.is-fixed` elements are compensated too; normal-flow and sticky content follow the root padding.
+
 <Callout name="info-prefersreducedmotion" />
 
 ## Example
