@@ -410,6 +410,39 @@ describe('Chips', () => {
       expect(input.value).toEqual('')
     })
 
+    it('should not create a chip on the Enter that commits an IME composition', () => {
+      const { chips } = makeChips()
+      const input = chips._input
+
+      input.value = 'とうきょう'
+      keydown(input, 'Enter', { isComposing: true })
+
+      expect(chips.getValues()).toEqual([])
+      expect(input.value).toEqual('とうきょう')
+
+      // Safari sends this keydown after compositionend, with keyCode 229
+      input.value = '東京'
+      keydown(input, 'Enter', { keyCode: 229 })
+
+      expect(chips.getValues()).toEqual([])
+      expect(input.value).toEqual('東京')
+
+      keydown(input, 'Enter')
+
+      expect(chips.getValues()).toEqual(['東京'])
+      expect(input.value).toEqual('')
+    })
+
+    it('should not clear the input on the Escape that cancels an IME composition', () => {
+      const { chips } = makeChips()
+      const input = chips._input
+      input.value = 'とうきょう'
+
+      keydown(input, 'Escape', { isComposing: true })
+
+      expect(input.value).toEqual('とうきょう')
+    })
+
     it('should select the last chip on Backspace with an empty input', () => {
       const { chips } = makeChips()
       chips.add('alpha')
