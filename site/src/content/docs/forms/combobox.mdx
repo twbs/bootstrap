@@ -376,7 +376,7 @@ Add `disabled` to the toggle button or individual menu items.
 
 ## Form submission
 
-The combobox creates a hidden `<input>` for form submission when `data-bs-name` is set on the toggle. The hidden input’s `name` matches the attribute value and its `value` updates whenever the selection changes.
+The combobox creates a hidden `<input>` for form submission when `data-bs-name` is set on the toggle. If a hidden `<input>` already exists in the markup preceding the toggle, the combobox reuses it and preserves it when disposed, retaining any custom attributes or initial values. The hidden input's `name` matches the attribute value and its `value` updates whenever the selection changes.
 
 ```html
 <!-- What you write -->
@@ -420,7 +420,7 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `multiple` | boolean | `false` | Enable multi-select mode. Selections toggle and the menu stays open. |
-| `name` | string \| null | `null` | Name for the auto-created hidden input. Also settable via `data-bs-name`. |
+| `name` | string \| null | `null` | Name for the hidden input (auto-created if one does not already exist in the markup). Also settable via `data-bs-name`. |
 | `placeholder` | string | `''` | Placeholder text for the toggle. Also settable via `data-bs-placeholder`. |
 | `search` | boolean | `false` | Enable search input in the menu. Also settable via `data-bs-search`. |
 | `searchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
@@ -437,7 +437,7 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 | `toggle` | Toggles the menu. |
 | `show` | Shows the menu. |
 | `hide` | Hides the menu. |
-| `dispose` | Destroys the combobox and its Menu instance, and removes the hidden input. |
+| `dispose` | Destroys the combobox and its Menu instance, and removes any auto-created hidden input. |
 | `getInstance` | Static method to get the combobox instance from a DOM element. |
 | `getOrCreateInstance` | Static method to get or create a combobox instance. |
 </BsTable>

@@ -97,6 +97,7 @@ class Combobox extends BaseComponent {
   protected declare _searchInput: HTMLInputElement | null
   protected declare _noResults: HTMLElement | null
   protected declare _hiddenInput: HTMLInputElement | null
+  protected declare _createdHiddenInput: boolean
   protected declare _menuInstance: Menu | null
 
   constructor(element?: string | Element | null, config?: Partial<ComboboxConfig> | null) {
@@ -108,6 +109,7 @@ class Combobox extends BaseComponent {
     this._searchInput = SelectorEngine.findOne<HTMLInputElement>(SELECTOR_SEARCH_INPUT, this._menu)
     this._noResults = SelectorEngine.findOne(SELECTOR_NO_RESULTS, this._menu)
     this._hiddenInput = null
+    this._createdHiddenInput = false
     this._menuInstance = null
 
     this._createHiddenInput()
@@ -176,7 +178,10 @@ class Combobox extends BaseComponent {
     }
 
     if (this._hiddenInput) {
-      this._hiddenInput.remove()
+      if (this._createdHiddenInput) {
+        this._hiddenInput.remove()
+      }
+
       this._hiddenInput = null
     }
 
@@ -194,15 +199,25 @@ class Combobox extends BaseComponent {
 
   protected _createHiddenInput(): void {
     const { name } = this._config
-    if (!name) {
+    const prev = this._toggle.previousElementSibling
+    const existing = prev instanceof HTMLInputElement && prev.type === 'hidden' ?
+      prev :
+      (this._toggle.parentElement && name ? SelectorEngine.findOne<HTMLInputElement>(`input[type="hidden"][name="${name}"]`, this._toggle.parentElement) : null)
+
+    if (existing) {
+      this._hiddenInput = existing
+      if (name && !existing.name) {
+        existing.name = name
+      }
+
       return
     }
 
-    this._hiddenInput = document.createElement('input')
-    this._hiddenInput.type = 'hidden'
-    this._hiddenInput.name = name
-    this._hiddenInput.value = ''
-    this._toggle.parentNode!.insertBefore(this._hiddenInput, this._toggle)
+    if (name) {
+      this._hiddenInput = Object.assign(document.createElement('input'), { type: 'hidden', name, value: '' })
+      this._createdHiddenInput = true
+      this._toggle.before(this._hiddenInput)
+    }
   }
 
   protected _createMenuInstance(): void {
@@ -220,6 +235,18 @@ class Combobox extends BaseComponent {
     if (selectedItems.length > 0) {
       this._updateToggleText()
       this._updateHiddenInput()
+    } else if (this._hiddenInput?.value) {
+      for (const val of this._hiddenInput.value.split(',')) {
+        const item = SelectorEngine.findOne<HTMLElement>(`.menu-item[data-bs-value="${val}"]`, this._menu)
+        item?.classList.add(CLASS_NAME_SELECTED)
+        item?.setAttribute('aria-selected', 'true')
+      }
+
+      if (this._getSelectedItems().length > 0) {
+        this._updateToggleText()
+      } else {
+        this._showPlaceholder()
+      }
     } else {
       this._showPlaceholder()
     }
