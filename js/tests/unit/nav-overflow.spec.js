@@ -423,6 +423,85 @@ describe('NavOverflow', () => {
       navOverflow.dispose()
     })
 
+    it('should not reserve room for the toggle when every item fits without it', () => {
+      // The items need 360px. They fit in 370px, but not next to the toggle.
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 370px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex;">',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const overflowItem = wrapperEl.querySelector('.nav-overflow-item')
+
+      expect(wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]').length).toEqual(0)
+      expect(overflowItem).toHaveClass('d-none')
+
+      // Once an item has to move, the toggle shows again
+      wrapperEl.style.width = '340px'
+      navOverflow.update()
+
+      expect(wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]').length).toBeGreaterThan(0)
+      expect(overflowItem).not.toHaveClass('d-none')
+
+      navOverflow.dispose()
+    })
+
+    it('should not count a gap after the last item', () => {
+      // Four 90px items and three 10px gaps need exactly 390px
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 390px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex; column-gap: 10px;">',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      expect(wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]').length).toEqual(0)
+      expect(wrapperEl.querySelector('.nav-overflow-item')).toHaveClass('d-none')
+
+      navOverflow.dispose()
+    })
+
+    it('should not count a gap after the toggle', () => {
+      // Three 90px items, the 60px toggle and three 10px gaps need exactly 360px
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 360px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex; column-gap: 10px;">',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '    <li class="nav-item nav-overflow-item" style="flex: 0 0 60px; width: 60px;">',
+        '      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu">More</button>',
+        '      <div class="nav-overflow-menu menu"></div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const hiddenItems = wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]')
+
+      expect(hiddenItems.length).toEqual(1)
+      expect(hiddenItems[0].textContent).toEqual('Link 4')
+
+      navOverflow.dispose()
+    })
+
     it('should clone overflowed items into the menu', () => {
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
