@@ -75,6 +75,10 @@ $avatar-sizes: defaults(
     background-color: var(--theme-bg, var(--avatar-bg));
     @include border-radius(var(--avatar-border-radius));
 
+    &:where(a) {
+      text-decoration: none;
+    }
+
     > .avatar-img {
       width: 100%;
       height: 100%;
