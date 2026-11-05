@@ -94,7 +94,8 @@ const nativeEvents = new Set([
   'error',
   'abort',
   'scroll',
-  'scrollend'
+  'scrollend',
+  'hashchange'
 ])
 
 /**
