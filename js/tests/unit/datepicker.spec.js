@@ -856,7 +856,7 @@ describe('Datepicker', () => {
     it('should not mark inline calendars with data-vc-input', () => {
       const divEl = createInlineCalendar()
 
-      expect(divEl.getAttribute('data-vc')).toEqual('calendar')
+      expect(divEl.querySelector('[data-vc="calendar"]')).not.toBeNull()
       expect(divEl.hasAttribute('data-vc-input')).toBeFalse()
     })
 
@@ -1131,12 +1131,12 @@ describe('Datepicker', () => {
       expect(datepicker._isShown).toBeFalse()
     })
 
-    it('should not register a trigger listener for input triggers', () => {
+    it('should register an input click listener for reopening', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
 
       const datepicker = new Datepicker(fixtureEl.querySelector('input'))
 
-      expect(datepicker._onTriggerClick).toBeUndefined()
+      expect(datepicker._onTriggerClick).toEqual(jasmine.any(Function))
     })
 
     it('should remove the trigger listener on dispose', () => {

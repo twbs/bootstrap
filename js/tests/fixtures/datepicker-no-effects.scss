@@ -1,0 +1,4 @@
+@use "../../../scss/bootstrap" with (
+  $enable-rounded: false,
+  $enable-shadows: false
+);

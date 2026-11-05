@@ -263,6 +263,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Added new Combobox component.** A searchable select built on top of Menu, with single and multi-select support. See the [Combobox docs]([[docsref:/forms/combobox]]).
 - Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for menu, tooltip, and popover positioning. The `popperConfig` option on Tooltip, Popover, and Menu (formerly Dropdown) has been renamed to `floatingConfig`. Update any custom positioning configuration accordingly.
 - Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component. Popup datepickers close on outside interaction, on <kbd>Escape</kbd>, or when focus leaves the input and calendar.
+- Initialized named Datepicker inputs submit ISO dates through an internal form binding. The visible text remains localized. Use `getSelectedDates()` to read dates. Disposal restores the input’s name and removes the binding. Bootstrap owns popup focus and positioning; `vcpOptions` cannot override its lifecycle callbacks.
 - Removed the `jspm` configuration from `package.json`.
 - Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap’s plugins register at the top level.
 - Added `"exports"` map to `package.json` for explicit subpath access to source, dist, and Sass files.
