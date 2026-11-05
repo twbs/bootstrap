@@ -98,16 +98,18 @@ const initPopover = (event: BootstrapEvent): void => {
     return
   }
 
-  // Prevent default for click events to avoid navigation (e.g. <a href="#">)
-  if (event.type === 'click') {
-    event.preventDefault()
-  }
-
   // Lazily create the instance. The instance's own `_setListeners()` registers
   // the appropriate listeners on the element for the configured triggers
   // (click/focus/hover), so we don't toggle or call `_enter` here — doing so
   // would duplicate handlers and leave stale state on `_activeTrigger`.
-  Popover.getOrCreateInstance(target)
+  const popover: any = Popover.getOrCreateInstance(target)
+
+  // Prevent default for click events to avoid navigation (e.g. <a href="#">),
+  // but only when a click toggles the popover. A hover or focus popover must
+  // keep the default action of its link, checkbox, or submit button.
+  if (event.type === 'click' && popover._getTrigger().split(' ').includes('click')) {
+    event.preventDefault()
+  }
 }
 
 // Auto-initialize popovers on first interaction for click, hover, and focus triggers
