@@ -1,5 +1,4 @@
 @use "../mixins/transition" as *;
-@use "../mixins/focus-ring" as *;
 
 @layer components {
   .combobox-control > .chip {
@@ -18,8 +17,9 @@
       }
     }
 
-    &:focus-visible {
-      @include focus-ring(true);
+    &:focus-visible,
+    > .chip-dismiss:focus-visible {
+      outline: 0;
     }
   }
 
