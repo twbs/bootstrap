@@ -47,14 +47,9 @@ $chip-tokens: defaults(
     text-decoration: none;
     white-space: nowrap;
     vertical-align: middle;
-    cursor: pointer;
     background-color: var(--chip-bg);
     border: var(--border-width) solid var(--chip-border-color);
     @include border-radius(var(--chip-border-radius));
-
-    &:hover {
-      --chip-bg: var(--theme-bg-muted, var(--bg-3));
-    }
 
     &:focus-visible {
       outline: 0;
@@ -64,8 +59,18 @@ $chip-tokens: defaults(
       --chip-color: var(--chip-selected-color);
       --chip-bg: var(--chip-selected-bg);
       --chip-border-color: var(--chip-selected-border-color);
+    }
+
+    &:is(:any-link, button, [role="button"], [role="link"]):not(:disabled, .disabled, [aria-disabled="true"]),
+    :is(:any-link, button, [role="button"], [role="link"]):not(:disabled, .disabled, [aria-disabled="true"]) &,
+    .combobox-control > & {
+      cursor: pointer;
 
       &:hover {
+        --chip-bg: var(--theme-bg-muted, var(--bg-3));
+      }
+
+      &.active:hover {
         --chip-bg: var(--chip-selected-bg);
         opacity: .9;
       }
