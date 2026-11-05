@@ -36,11 +36,13 @@ We’re building a npm project with Bootstrap from scratch, so there are some pr
    npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
    ```
 
-3. **Install additional dependencies.** In addition to Bootstrap, we need a few more dependencies to compile and post-process our CSS. Sass compiles our source `.scss` files into CSS, and Autoprefixer and PostCSS handle browser compatibility. We install the `postcss-cli` package so we can run PostCSS from the command line.
+3. **Install additional dependencies.** In addition to Bootstrap, we need a few more dependencies to compile and post-process our CSS. Sass compiles our source `.scss` files into CSS. PostCSS then adds the `bs-` prefix to CSS custom properties and Autoprefixer handles browser compatibility. We install the `postcss-cli` package so we can run PostCSS from the command line.
 
    ```sh
-   npm i --save-dev autoprefixer postcss postcss-cli sass
+   npm i --save-dev autoprefixer postcss postcss-cli postcss-prefix-custom-properties sass
    ```
+
+   The `postcss-prefix-custom-properties` plugin is required when you compile Bootstrap’s Sass yourself. Our JavaScript plugins read prefixed names such as `--bs-range-fill`. Without this plugin, those names stay unprefixed in your CSS and the plugins stop matching them. See [CSS variables]([[docsref:/getting-started/css-variables#prefix]]) for details.
 
 4. **Install local development tools.** Lastly, to make life a little easier, we recommend installing some dev tools to make running local servers with hot refresh (where changes you make are reflected in the browser automatically) and add some code quality checks.
 
@@ -81,13 +83,18 @@ At this point, everything is in the right place, but we’ll need to configure o
 
 With dependencies installed and our project folder ready for us to start coding, we can now configure our npm scripts and run our project locally.
 
-1. **Open `postcss.config.js` in your editor.** We need to configure Autoprefixer to run after Sass compilation for browser compatibility.
+1. **Open `postcss.config.js` in your editor.** After Sass compiles, PostCSS must prefix CSS custom properties with `bs-` and then run Autoprefixer. Match the options Bootstrap uses in its own build so JavaScript plugins keep working.
 
    ```js
    const autoprefixer = require('autoprefixer')
+   const postcssPrefixCustomProperties = require('postcss-prefix-custom-properties')
 
    module.exports = {
      plugins: [
+       postcssPrefixCustomProperties({
+         prefix: 'bs-',
+         ignore: [/^--bs-/, /^--bd-/]
+       }),
        autoprefixer
      ]
    }
@@ -118,7 +125,7 @@ With dependencies installed and our project folder ready for us to start coding,
 
    *[Read our JavaScript docs]([[docsref:/getting-started/javascript/]]) for more information on how to use Bootstrap’s plugins.*
 
-3. **Add npm scripts to `package.json`.** Open `package.json` and add the following scripts. We use `sass` to compile our Sass (with `--load-path=node_modules` so it can resolve Bootstrap), `postcss-cli` to apply Autoprefixer, `nodemon` to watch for changes, `npm-run-all` to run scripts in sequence or in parallel, `sirv-cli` to serve our project, and `stylelint` to lint our Sass.
+3. **Add npm scripts to `package.json`.** Open `package.json` and add the following scripts. We use `sass` to compile our Sass (with `--load-path=node_modules` so it can resolve Bootstrap), `postcss-cli` to prefix CSS variables and apply Autoprefixer, `nodemon` to watch for changes, `npm-run-all` to run scripts in sequence or in parallel, `sirv-cli` to serve our project, and `stylelint` to lint our Sass.
 
    ```json
    {
