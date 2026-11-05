@@ -11,6 +11,10 @@ import SelectorEngine from './dom/selector-engine.js'
 import { onDocumentReady } from './util/component-functions.js'
 import type { ComponentConfig } from './util/config.js'
 
+// Future consideration: opt-in clickable labels for sparse tick presets.
+// Use real buttons with keyboard activation, visible focus, and usable targets.
+// Keep decorative ticks as the default; do not add a tab stop for every tick.
+
 /**
  * Constants
  */
