@@ -78,6 +78,28 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 Review these changes when you upgrade from v6.0.0-alpha.1 to alpha 2.
 
+### Browser support
+
+The minimum browser versions have increased from Chrome and Edge 130 to 138, Firefox 132 to 147, and Safari 18 to 26 on macOS and iOS. Check your browser requirements before upgrading. See [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the features that set each minimum version.
+
+### Dialog and Drawer
+
+- Bootstrap no longer applies `scrollbar-gutter: stable` globally. Dialog and Drawer now use JavaScript to compensate for disappearing scrollbar space while page scrolling is locked. Full-width fixed elements with `.fixed-top`, `.fixed-bottom`, or `.is-fixed` are compensated too. Review any custom scrollbar compensation you added for alpha 1. See [Dialog]([[docsref:/components/dialog]]).
+- Animated drawers now keep their native `open` attribute until the exit transition ends, so their backdrop can fade out. Wait for `hidden.bs.drawer` or `await drawer.hide()` before reading the closed state or removing the element.
+- Added `.dialog-2xl` for dialogs up to `1440px` wide. See [Optional sizes]([[docsref:/components/dialog#optional-sizes]]).
+
+### CSS customization
+
+Token names below use the unprefixed Sass source names. In Bootstrap’s compiled CSS, they use the `--bs-` prefix.
+
+- **Close button color.** `--btn-close-color` now defaults to `var(--fg-body)` instead of `currentcolor`. For a light icon on a dark surface, add `data-bs-theme="dark"` to the button or a parent. Set `--btn-close-color: currentcolor` if your custom component needs the button to inherit its text color. See [Close button]([[docsref:/components/close-button]]).
+- **Removed unused tokens.** These tokens had no effect in alpha 1. Remove their overrides and use the controls below:
+  - `--table-striped-bg`, `--table-active-bg`, and `--table-hover-bg`: use the corresponding `--table-*-bg-factor` tokens to control the color mix. See [Tables]([[docsref:/content/tables#css]]).
+  - `--form-text-margin-top`: wrap related controls and help text in `.form-field` for shared spacing, or add a margin utility. See [Field]([[docsref:/forms/field]]).
+  - `--navbar-toggler-width`, `--navbar-toggler-padding-x`, `--navbar-toggler-padding-y`, `--navbar-toggler-font-size`, `--navbar-toggler-border-color`, and `--navbar-toggler-border-radius`: customize the toggler’s `.btn-icon` with button tokens or sizing utilities. See [Buttons]([[docsref:/components/button#css]]).
+- **Existing tokens now affect rendering.** Review overrides of `--card-subtitle-color`, `--nav-tabs-border-radius`, `--check-indeterminate-bg`, `--check-indeterminate-border-color`, and `--switch-checked-indicator-bg`. The components now read these tokens. Indeterminate checkbox colors default to the checked colors.
+- **Password strength label colors.** `.strength-text` now uses emphasis colors for each strength level. Replace label overrides of `--strength-color` with the `$strength-text-colors` Sass map, or style `.strength-text[data-bs-strength="weak"]` and the other strength levels directly. The meter still uses its `--strength-*-color` tokens. See [Password strength]([[docsref:/forms/password-strength]]).
+
 ### JavaScript component instances
 
 - Different component types can now share an element. Combobox uses this to register its Menu instance on the same toggle.
