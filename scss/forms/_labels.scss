@@ -1,4 +1,5 @@
 @use "../functions" as *;
+@use "../mixins/tokens" as *;
 
 $form-label-tokens: () !default;
 
@@ -19,6 +20,8 @@ $form-label-tokens: defaults(
 @layer forms {
   .form-label,
   .col-form-label {
+    @include tokens($form-label-tokens);
+
     font-size: var(--label-font-size, inherit);
     font-style: var(--label-font-style, inherit);
     font-weight: var(--label-font-weight, 500);
