@@ -1,3 +1,4 @@
+import { userEvent } from 'vitest/browser'
 import Data from '../../src/dom/data.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import Dialog from '../../src/dialog.js'
@@ -740,6 +741,57 @@ describe('Dialog', () => {
 
         dialog.show()
       })
+    })
+
+    it('should keep a modal dialog open on real Escape presses when keyboard = false', async () => {
+      fixtureEl.innerHTML = [
+        '<dialog class="dialog dialog-instant">',
+        '  <button type="button">Save</button>',
+        '</dialog>'
+      ].join('')
+
+      const dialogEl = fixtureEl.querySelector('.dialog')
+      const dialog = new Dialog(dialogEl, {
+        keyboard: false
+      })
+      const hideSpy = spyOn(dialog, 'hide')
+      const backdropSpy = spyOn(dialog, '_triggerBackdropTransition').and.callThrough()
+
+      const pressEscape = async () => {
+        await userEvent.keyboard('{Escape}')
+        await new Promise(resolve => {
+          setTimeout(resolve, 50)
+        })
+      }
+
+      await dialog.show()
+      await pressEscape()
+      await pressEscape()
+      await pressEscape()
+
+      expect(dialogEl.open).toBeTrue()
+      expect(hideSpy).not.toHaveBeenCalled()
+      expect(backdropSpy).toHaveBeenCalledTimes(3)
+    })
+
+    it('should close a modal dialog and fire cancel.bs.dialog on a real Escape press', async () => {
+      fixtureEl.innerHTML = [
+        '<dialog class="dialog dialog-instant">',
+        '  <button type="button">Save</button>',
+        '</dialog>'
+      ].join('')
+
+      const dialogEl = fixtureEl.querySelector('.dialog')
+      const dialog = new Dialog(dialogEl)
+      const cancelSpy = jasmine.createSpy('cancel')
+
+      dialogEl.addEventListener('cancel.bs.dialog', cancelSpy)
+
+      await dialog.show()
+      await userEvent.keyboard('{Escape}')
+
+      expect(cancelSpy).toHaveBeenCalled()
+      expect(dialogEl.open).toBeFalse()
     })
   })
 
