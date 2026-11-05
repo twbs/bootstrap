@@ -106,7 +106,7 @@ Token names below use the unprefixed Sass source names. In Bootstrap’s compile
 - Replace `.chip-input` with `.combobox-control`. Add `.combobox-input` beside `.form-ghost` on the editor. Move initial values to `.menu-item.selected[data-bs-value]` elements in a neighboring `.menu`; Combobox renders the chips.
 - Use `Combobox.add()`, `remove()`, `clear()`, `focus()`, and `getValues()`. Replace `maxChips` with `maxItems`. Separators and creation on blur now require explicit options. Repeated free-entry strings do not create duplicate chips.
 - Replace `add.bs.chips`, `remove.bs.chips`, and `change.bs.chips` with their `.bs.combobox` equivalents. The change payload is `event.value`, rather than `event.values`. Chip highlighting, range selection, `selectChip()`, `getSelectedValues()`, `clearSelection()`, and `removeSelected()` now belong to Combobox. Replace `select.bs.chips` with `select.bs.combobox`; its `selected` values describe highlighted chips, not all committed values.
-- Keep `.chip` for standalone presentation. Replace `$chip-input-tokens` and `--chip-input-*` customizations with `$combobox-control-tokens` and `--combobox-control-*`. Configurable dismiss HTML is removed; generated removal buttons use the built-in SVG icon.
+- Keep `.chip` for standalone presentation, documented under [Components]([[docsref:/components/chips]]). Replace `$chip-input-tokens` and `--chip-input-*` customizations with `$combobox-control-tokens` and `--combobox-control-*`. Configurable dismiss HTML is removed; generated removal buttons use the built-in SVG icon.
 
 ### Combobox forms
 

@@ -1,7 +1,9 @@
 ---
 title: Chips
-description: Small interactive elements representing entities like people, places, tags, or values. Use Combobox for multiple-value form fields.
+description: Small elements for people, places, tags, and values, with optional icons, avatars, and dismiss buttons.
 toc: true
+aliases:
+  - /docs/[[config:docs_version]]/forms/chips/
 css_layer: forms
 ---
 
@@ -9,9 +11,9 @@ import { getData } from '@libs/data'
 
 ## Overview
 
-Chips are small interactive elements representing entities. They can be used to group and select values in forms or other interactive contexts. They're similar to the older [Badges]([[docsref:/components/badge]]) component, but have some meaningful differences.
+Chips represent people, places, tags, or values. Use them on their own or within components such as [Combobox]([[docsref:/forms/combobox]]), where they display selected values. They're similar to [Badges]([[docsref:/components/badge]]), but have some meaningful differences.
 
-- Chips are interactive elements, not static like Badges.
+- Chips support active states and dismiss buttons.
 - Chips have one size—they don't scale with the parent `font-size` like Badges.
 - Chips can have icons, avatars, and dismiss buttons.
 - Chips can be themed, individually or as a group on the parent container. By default, chips use the `subtle` and `text` theme tokens, while active state uses the `bg` and `contrast` tokens.
