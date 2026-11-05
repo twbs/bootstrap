@@ -4,7 +4,7 @@ description: Small elements for people, places, tags, and values, with optional 
 toc: true
 aliases:
   - /docs/[[config:docs_version]]/forms/chips/
-css_layer: forms
+css_layer: components
 ---
 
 import { getData } from '@libs/data'
@@ -24,6 +24,8 @@ See examples of all of this in action below.
 ## Chips
 
 Use `.chip` for standalone chips. Add `.chip-icon` for a leading icon, `.chip-img` for an image like an avatar, and `.chip-dismiss` for a remove button. Note that we use an inline SVG for the dismiss button icon—you can modify this as needed.
+
+Static chips have no hover effect. A dismiss button has its own hover state without changing the whole chip.
 
 <Example class="d-flex flex-wrap gap-2" code={`<span class="chip">Basic chip</span>
 
@@ -47,6 +49,13 @@ Use `.chip` for standalone chips. Add `.chip-icon` for a leading icon, `.chip-im
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
     </button>
   </span>`} />
+
+### Interactive chips
+
+Use a button for an action or a link for navigation. Chips on or inside interactive elements have a pointer cursor and hover feedback. Combobox also provides these states for its selectable chips.
+
+<Example class="d-flex flex-wrap gap-2" code={`<button type="button" class="chip">Action chip</button>
+  <a class="chip" href="#multiple-value-inputs">Link chip</a>`} />
 
 ### Themed chips
 
