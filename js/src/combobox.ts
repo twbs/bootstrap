@@ -130,6 +130,7 @@ class Combobox extends BaseComponent {
   protected declare _selectedChips: Set<HTMLElement>
   protected declare _anchorChip: HTMLElement | null
   protected declare _focusingChip: boolean
+  protected declare _composing: boolean
   protected declare _query: string | null
   protected declare _ownsMenu: boolean
   protected declare _status: HTMLElement | null
@@ -165,6 +166,7 @@ class Combobox extends BaseComponent {
     this._selectedChips = new Set()
     this._anchorChip = null
     this._focusingChip = false
+    this._composing = false
     this._query = null
     this._status = null
     this._attributes = new Map()
@@ -251,6 +253,9 @@ class Combobox extends BaseComponent {
     this._updateToggleText()
     this._updateHiddenInput()
     this._observeFormState()
+    if (this._editor && this._activeItem && !this._getVisibleItems().includes(this._activeItem)) {
+      this._setActiveItem(null)
+    }
   }
 
   override dispose(): void {
@@ -358,7 +363,7 @@ class Combobox extends BaseComponent {
   }
 
   focus(): void {
-    this._toggle.focus()
+    this._toggle?.focus()
   }
 
   getSelectedValues(): string[] {
@@ -686,7 +691,7 @@ class Combobox extends BaseComponent {
     const editor = this._editor!
     EventHandler.on(this._menu, `mousedown${EVENT_KEY}`, SELECTOR_MENU_ITEM, event => event.preventDefault())
     EventHandler.on(editor, `input${EVENT_KEY}`, event => {
-      if (event.isComposing) {
+      if (this._composing || event.isComposing) {
         this._query = editor.value
         return
       }
@@ -695,47 +700,15 @@ class Combobox extends BaseComponent {
         return
       }
 
-      let query = editor.value
-      if (this._config.allowCustom && this._config.separator && query.includes(this._config.separator)) {
-        const parts = query.split(this._config.separator)
-        query = parts.pop()!
-        for (const part of parts) {
-          this.add(part.trim())
-          if (!this._element) {
-            return
-          }
-        }
-      }
-
-      // A changed visible label must not submit an old single-selection value.
-      if (!this._config.multiple && this._getSelectedItems().length) {
-        this._clearSelection(query)
-        if (!this._element) {
-          return
-        }
-
-        if (this._getSelectedItems().length) {
-          this._query = null
-          this._renderEditor()
-          return
-        }
-      }
-
-      this._query = query
-      editor.value = query
-      this._filterItems(query)
-      this._setActiveItem(null)
-      if (this._getVisibleItems().length) {
-        this.show()
-      } else {
-        this.hide()
-      }
+      this._handleEditorInput()
+    })
+    EventHandler.on(editor, `compositionstart${EVENT_KEY}`, () => {
+      this._composing = true
     })
     EventHandler.on(editor, `compositionend${EVENT_KEY}`, () => {
-      // Some engines finish composition before the final input event.
-      if (this._element) {
-        this._query = editor.value
-        this._filterItems(editor.value)
+      this._composing = false
+      if (this._element && !this._isDisabled()) {
+        this._handleEditorInput(document.activeElement === editor)
       }
     })
     EventHandler.on(editor, `paste${EVENT_KEY}`, event => {
@@ -754,7 +727,7 @@ class Combobox extends BaseComponent {
       }
     })
     EventHandler.on(editor, `blur${EVENT_KEY}`, event => {
-      if (this._config.allowCustom && this._config.createOnBlur && !(event.relatedTarget as Element | null)?.closest('.chip, .menu')) {
+      if (!this._composing && this._config.allowCustom && this._config.createOnBlur && !(event.relatedTarget as Element | null)?.closest('.chip, .menu')) {
         this.add(editor.value.trim())
       }
     })
@@ -801,8 +774,50 @@ class Combobox extends BaseComponent {
     })
   }
 
+  protected _handleEditorInput(openMenu = true): void {
+    const editor = this._editor!
+    let query = editor.value
+    if (this._config.allowCustom && this._config.separator && query.includes(this._config.separator)) {
+      const parts = query.split(this._config.separator)
+      query = parts.pop()!
+      for (const part of parts) {
+        this.add(part.trim())
+        if (!this._element) {
+          return
+        }
+      }
+    }
+
+    // A changed visible label must not submit an old single-selection value.
+    if (!this._config.multiple && this._getSelectedItems().length) {
+      this._clearSelection(query)
+      if (!this._element) {
+        return
+      }
+
+      if (this._getSelectedItems().length) {
+        this._query = null
+        this._renderEditor()
+        return
+      }
+    }
+
+    this._query = query
+    if (editor.value !== query) {
+      editor.value = query
+    }
+
+    this._filterItems(query)
+    this._setActiveItem(null)
+    if (openMenu && this._getVisibleItems().length) {
+      this.show()
+    } else {
+      this.hide()
+    }
+  }
+
   protected _handleEditorKeydown(event: BootstrapEvent): void {
-    if (event.isComposing || event.keyCode === 229 || this._isDisabled()) {
+    if (this._composing || event.isComposing || event.keyCode === 229 || this._isDisabled()) {
       return
     }
 
@@ -813,7 +828,9 @@ class Combobox extends BaseComponent {
       if (items.length) {
         const item = getNextActiveElement(items, this._activeItem!, event.key === ARROW_DOWN_KEY, true)
         this.show()
-        this._setActiveItem(item)
+        if (this._element) {
+          this._setActiveItem(item)
+        }
       }
 
       return
@@ -837,7 +854,10 @@ class Combobox extends BaseComponent {
       }
 
       this.hide()
-      this._setActiveItem(null)
+      if (this._element) {
+        this._setActiveItem(null)
+      }
+
       return
     }
 
@@ -880,7 +900,7 @@ class Combobox extends BaseComponent {
   }
 
   protected _handleChipKeydown(event: BootstrapEvent): void {
-    if (event.isComposing || event.keyCode === 229 || this._isDisabled()) {
+    if (this._composing || event.isComposing || event.keyCode === 229 || this._isDisabled()) {
       return
     }
 
@@ -1018,7 +1038,11 @@ class Combobox extends BaseComponent {
       this._formObserver.observe(fieldset, { attributes: true, attributeFilter: ['disabled'] })
     }
 
-    const form = this._hiddenInput ? this._hiddenInput.form : this._toggle.closest<HTMLFormElement>('form')
+    const form = this._hiddenInput ?
+      this._hiddenInput.form :
+      (this._toggle instanceof HTMLInputElement || this._toggle instanceof HTMLButtonElement ?
+        this._toggle.form :
+        this._toggle.closest<HTMLFormElement>('form'))
     if (form !== this._form) {
       EventHandler.off(this._form, `reset${EVENT_KEY}`, this._resetHandler)
       EventHandler.off(this._form, `submit${EVENT_KEY}`, this._submitHandler)
@@ -1041,8 +1065,11 @@ class Combobox extends BaseComponent {
           ...config,
           middleware: [...config.middleware, {
             name: 'comboboxSize',
-            fn({ elements, rects }: MiddlewareState) {
-              elements.floating.style.minWidth = `${rects.reference.width}px`
+            fn: ({ elements, rects }: MiddlewareState) => {
+              if (this._element) {
+                elements.floating.style.minWidth = `${rects.reference.width}px`
+              }
+
               return {}
             }
           }]
@@ -1118,6 +1145,10 @@ class Combobox extends BaseComponent {
       })
 
       EventHandler.on(this._searchInput, `keydown${EVENT_KEY}`, event => {
+        if (event.isComposing || event.keyCode === 229) {
+          return
+        }
+
         if (event.key === ARROW_DOWN_KEY) {
           event.preventDefault()
           const items = this._getVisibleItems()
@@ -1128,14 +1159,14 @@ class Combobox extends BaseComponent {
 
         if (event.key === ESCAPE_KEY) {
           this.hide()
-          this._toggle.focus()
+          this._toggle?.focus()
         }
       })
     }
   }
 
   protected _selectItem(item: HTMLElement): void {
-    if (this._isDisabled() || isDisabled(item)) {
+    if (this._isDisabled() || isDisabled(item) || !this._menu.contains(item)) {
       return
     }
 
@@ -1148,9 +1179,10 @@ class Combobox extends BaseComponent {
       return
     }
 
+    const changeId = this._changeId
     const type = this._config.multiple && previous.includes(item) ? 'remove' : 'add'
     const event = EventHandler.trigger(this._element, `${type}${EVENT_KEY}`, { value: item.dataset.bsValue, item })
-    if (!this._element || event.defaultPrevented) {
+    if (!this._element || event.defaultPrevented || changeId !== this._changeId || this._isDisabled() || isDisabled(item) || !this._menu.contains(item)) {
       return
     }
 
@@ -1199,9 +1231,9 @@ class Combobox extends BaseComponent {
       }
     }
 
-    if (!multiple) {
+    if (!multiple && query === null) {
       this.hide()
-      this._toggle.focus()
+      this._toggle?.focus()
     }
   }
 
@@ -1241,11 +1273,12 @@ class Combobox extends BaseComponent {
       return
     }
 
-    const values = this._getSelectedItems()
+    const selected = this._getSelectedItems()
+    const values = selected
       .filter(item => !isDisabled(item))
       .map(item => item.dataset.bsValue ?? '')
     const submittedValues = this._config.multiple ? values : [values[0] ?? '']
-    const disabled = this._inputDisabled || this._isDisabled()
+    const disabled = this._inputDisabled || this._isDisabled() || (selected.length > 0 && values.length === 0)
 
     if (this._ownsInput) {
       const anchor = this._editor ? this._element : this._toggle
@@ -1351,6 +1384,10 @@ class Combobox extends BaseComponent {
   }
 
   protected _handleToggleKeydown(event: BootstrapEvent): void {
+    if (event.isComposing || event.keyCode === 229) {
+      return
+    }
+
     const { key } = event
 
     if (key === ARROW_DOWN_KEY || key === ARROW_UP_KEY) {
@@ -1375,13 +1412,17 @@ class Combobox extends BaseComponent {
   }
 
   protected _handleMenuKeydown(event: BootstrapEvent): void {
+    if (event.isComposing || event.keyCode === 229) {
+      return
+    }
+
     const { key, target } = event
 
     if (key === ESCAPE_KEY) {
       event.preventDefault()
       event.stopPropagation()
       this.hide()
-      this._toggle.focus()
+      this._toggle?.focus()
       return
     }
 

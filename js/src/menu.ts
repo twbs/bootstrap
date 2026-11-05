@@ -1041,6 +1041,10 @@ class Menu extends BaseComponent {
   }
 
   static dataApiKeydownHandler(this: HTMLElement, event: BootstrapEvent): void {
+    if (event.isComposing || event.keyCode === 229) {
+      return
+    }
+
     // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
     // menu doesn't hijack their arrow keys.
     const isInput = /input|textarea/i.test((event.target as HTMLElement).tagName) || (event.target as HTMLElement).isContentEditable

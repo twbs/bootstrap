@@ -603,4 +603,139 @@ describe('Combobox editor', () => {
     expect(instance.getSelectedValues()).toEqual(['design', 'art,music', 'science'])
     expect(document.activeElement).toBe(chips[0])
   })
+
+  it('should stop an outer single selection when an add listener selects another option', () => {
+    const x = make({ multiple: false })
+    x.root.addEventListener('add.bs.combobox', () => instance.add('science'), { once: true })
+    instance.add('design')
+    expect(instance.getValues()).toEqual(['science'])
+    expect(x.menu.querySelectorAll('.selected').length).toEqual(1)
+    expect(x.input.value).toEqual('Label 2')
+  })
+
+  it('should preserve the insertion caret during a native input event', () => {
+    const x = make()
+    x.input.value = 'LaXbel'
+    x.input.setSelectionRange(3, 3)
+    x.input.dispatchEvent(new InputEvent('input', { bubbles: true }))
+    expect(x.input.selectionStart).toEqual(3)
+    expect(x.input.selectionEnd).toEqual(3)
+  })
+
+  it('should reconcile the committed single value when composition ends', () => {
+    const x = make({ multiple: false }, { selected: [0] })
+    x.input.dispatchEvent(new CompositionEvent('compositionstart'))
+    x.input.value = '東京'
+    x.input.dispatchEvent(new InputEvent('input', { bubbles: true, isComposing: true }))
+    x.input.dispatchEvent(new CompositionEvent('compositionend'))
+    expect(values(x.form)).toEqual([''])
+    expect(x.input.value).toEqual('東京')
+  })
+
+  it('should not create a value on blur while composition is in progress', () => {
+    const x = make({ allowCustom: true, createOnBlur: true })
+    x.input.dispatchEvent(new CompositionEvent('compositionstart'))
+    x.input.value = 'とうきょう'
+    x.input.dispatchEvent(new InputEvent('input', { bubbles: true, isComposing: true }))
+    x.input.dispatchEvent(new FocusEvent('blur', { relatedTarget: x.form }))
+    expect(instance.getValues()).toEqual([])
+    expect(x.input.value).toEqual('とうきょう')
+  })
+
+  it('should follow an external reset form without a submitted field', async () => {
+    const x = make({ name: null, multiple: false }, { selected: [0] })
+    x.form.id = 'external-editor-form'
+    fixture.append(x.root, x.menu)
+    x.input.setAttribute('form', x.form.id)
+    instance.update()
+    instance.add('science')
+    x.form.reset()
+    await new Promise(resolve => {
+      setTimeout(resolve, 0)
+    })
+    expect(instance.getValues()).toEqual(['design'])
+    expect(x.input.value).toEqual('Label 0')
+  })
+
+  it('should omit a disabled selected single option from submission', () => {
+    const x = make({ multiple: false }, { selected: [0] })
+    x.items[0].disabled = true
+    instance.update()
+    expect(values(x.form)).toEqual([])
+    x.items[0].disabled = false
+    instance.update()
+    expect(values(x.form)).toEqual(['design'])
+  })
+
+  it('should not rewrite restored popup width after disposal during show', async () => {
+    const x = make()
+    const showing = instance.show()
+    instance.dispose()
+    instance = null
+    await showing
+    await new Promise(resolve => {
+      requestAnimationFrame(resolve)
+    })
+    expect(x.menu.style.minWidth).toEqual('')
+  })
+
+  it('should clear an active descendant when its option is removed or disabled', async () => {
+    const x = make()
+    key(x.input, 'ArrowDown')
+    await instance.show()
+    x.items[0].remove()
+    instance.update()
+    expect(x.input.hasAttribute('aria-activedescendant')).toBeFalse()
+    key(x.input, 'ArrowDown')
+    x.items[1].disabled = true
+    instance.update()
+    expect(x.input.hasAttribute('aria-activedescendant')).toBeFalse()
+  })
+  it('should leave Escape to an IME in the popup search input', async () => {
+    const x = make()
+    const search = document.createElement('input')
+    x.menu.prepend(search)
+    await instance.show()
+    search.focus()
+    key(search, 'Escape', { isComposing: true })
+    expect(x.menu.classList.contains('show')).toBeTrue()
+    key(search, 'Escape')
+    expect(x.menu.classList.contains('show')).toBeFalse()
+  })
+
+  it('should stop selection if an add listener disables the option', () => {
+    const x = make()
+    x.root.addEventListener('add.bs.combobox', () => {
+      x.items[0].disabled = true
+    }, { once: true })
+    instance.add('design')
+    expect(instance.getValues()).toEqual([])
+    expect(values(x.form)).toEqual([])
+  })
+
+  it('should stop focus work when a hide listener disposes the editor', async () => {
+    const x = make({ multiple: false })
+    await instance.show()
+    x.root.addEventListener('hide.bs.combobox', event => {
+      event.preventDefault()
+      instance.dispose()
+      instance = null
+    }, { once: true })
+    const editor = instance
+    expect(() => editor.add('design')).not.toThrow()
+  })
+  it('should reconcile composition after blur without stealing focus', () => {
+    const x = make({ multiple: false }, { selected: [0] })
+    const other = document.createElement('button')
+    other.type = 'button'
+    fixture.append(other)
+    x.input.focus()
+    x.input.dispatchEvent(new CompositionEvent('compositionstart'))
+    x.input.value = '東京'
+    other.focus()
+    x.input.dispatchEvent(new CompositionEvent('compositionend'))
+    expect(values(x.form)).toEqual([''])
+    expect(document.activeElement).toBe(other)
+    expect(x.menu.classList.contains('show')).toBeFalse()
+  })
 })
