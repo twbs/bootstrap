@@ -113,6 +113,8 @@ See the [programmatic API]([[docsref:/getting-started/javascript#component-insta
 
 ### CSS
 
+- **Flexbox grid gutters now use native `gap`.** Keep `.g-*`, `.gx-*`, and `.gy-*` to control spacing. Rows no longer have negative gutter margins, and columns no longer add gutter padding. Move content padding to an inner wrapper when needed, and remove wrappers used only to clip gutter overflow. Numbered column widths and offsets account for the gaps; standalone column classes keep their percentage widths. See [Gutters]([[docsref:/layout/gutters]]).
+
 - **Clarified and simplified CSS-Sass setup.** Read more about our [approach]([[docsref:/getting-started/approach]]) for how we use Sass and CSS together to build and customize projects for your specific needs, in particular how we use CSS variables inside Sass maps as our first-class customization layer.
 - **Implemented CSS layers** in `_root.scss` and applied them to all our Sass files.
   - Layers are set in `_root.scss` and then utilized across separate Sass partials.
