@@ -9,10 +9,11 @@ $chip-input-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $chip-input-tokens: defaults(
   (
-    --chip-input-padding-y: .75rem,
+    --chip-input-padding-y: .25rem,
     --chip-input-padding-x: .75rem,
     --chip-input-gap: .375rem,
     --chip-input-ghost-min-width: 5rem,
+    --control-min-height: var(--btn-input-min-height),
     --control-fg: var(--btn-input-fg),
     --control-bg: var(--btn-input-bg),
     --control-border-width: var(--border-width),
@@ -32,6 +33,8 @@ $chip-input-tokens: defaults(
     flex-wrap: wrap;
     gap: var(--chip-input-gap);
     align-items: center;
+    // Lines up with the other form controls; the padding fits a row of chips in it
+    min-height: var(--control-min-height);
     padding: var(--chip-input-padding-y) var(--chip-input-padding-x);
 
     color: var(--control-fg);
