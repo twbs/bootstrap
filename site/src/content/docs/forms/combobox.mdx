@@ -486,7 +486,7 @@ A disabled toggle does not submit its generated fields. Provided inputs keep the
 
 Resetting the form restores the initial option selection, label, and submitted values. Preventing the form’s `reset` event cancels that change. Initialization, reset, and `update()` do not emit selection-change events.
 
-We observe disabled and form-attribute changes. Call `update()` when you move the component or change its selected option markup. Also call it before reading `FormData` in the same task as an attribute change:
+We observe disabled and form-attribute changes. Call `update()` when you move the component or change its selected option markup. Also call it before reading `FormData` or submitting to a new form in the same task as an attribute change:
 
 ```js
 const toggle = document.querySelector('#countryPicker')
