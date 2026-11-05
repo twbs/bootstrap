@@ -27,6 +27,15 @@ npx skills add twbs/bootstrap
 
 The Skills CLI copies each `SKILL.md` from our repository into your agent. [skills.sh](https://skills.sh) lists the package after people run that command. There is no submit form.
 
+With pnpm 12.11 or later, install Bootstrap and approve its skills:
+
+```sh
+pnpm add bootstrap
+pnpm approve
+```
+
+pnpm puts a link to each skill from our package in the skills folder of your agent, such as `.claude/skills` or `.cursor/skills`. You approve the skills one time. The approval stays for later versions of Bootstrap. See [pnpm’s agent skills docs](https://pnpm.io/agent-skills) for the settings.
+
 Bootstrap also ships the same [agent skills](https://github.com/twbs/bootstrap/tree/main/skills) in the `skills/` directory of our repository. Each skill is a focused, step-by-step playbook for one Bootstrap task, from migrating a project or setting up a new build to authoring a component and customizing our color system.
 
 To use one without the CLI, point your agent at the relevant `SKILL.md` file and describe what you want to do. The skill’s `description` field tells the agent when it applies, and its steps keep the agent aligned with our official guidance. Always review an agent’s changes against the matching documentation.
