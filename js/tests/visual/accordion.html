@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Accordion</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Accordion <small>Bootstrap Visual Test</small></h1>
+      <p>Content must stay inside the accordion's bottom corners, including when the body has no padding. Toggle each header to check both states.</p>
+
+      <h2>Joined items</h2>
+      <div class="accordion">
+        <details class="accordion-item" open>
+          <summary class="accordion-header">First item: square bottom corners</summary>
+          <div class="accordion-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Flush list in an unpadded body</li>
+            </ul>
+          </div>
+        </details>
+        <details class="accordion-item" open>
+          <summary class="accordion-header">Last item: rounded bottom corners</summary>
+          <div class="accordion-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Flush list in an unpadded body</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <h2>Flush: square corners</h2>
+      <div class="accordion accordion-flush">
+        <details class="accordion-item" open>
+          <summary class="accordion-header">Flush item</summary>
+          <div class="accordion-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Flush list in an unpadded body</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <h2>Gapped: rounded corners</h2>
+      <div class="accordion accordion-gap">
+        <details class="accordion-item" open>
+          <summary class="accordion-header">Gapped item</summary>
+          <div class="accordion-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Flush list in an unpadded body</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <h2>Non-flush list: rounded list and panel corners</h2>
+      <div class="accordion">
+        <details class="accordion-item" open>
+          <summary class="accordion-header">Non-flush list</summary>
+          <div class="accordion-body p-0">
+            <ul class="list-group">
+              <li class="list-group-item">Rounded list in an unpadded body</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <h2>RTL: logical corners</h2>
+      <div class="accordion" dir="rtl">
+        <details class="accordion-item" open>
+          <summary class="accordion-header">RTL item</summary>
+          <div class="accordion-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Flush list in an unpadded RTL body</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <h2>Custom border width and radius</h2>
+      <div class="accordion" style="--bs-accordion-border-width: 4px; --bs-accordion-border-radius: 2rem;">
+        <details class="accordion-item" open>
+          <summary class="accordion-header">Custom corners</summary>
+          <div class="accordion-body p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Flush list with a thick border and large radius</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <h2>Menu overflow</h2>
+      <p>The first menu uses its default container. The second menu moves to the document body. Both menus must remain usable.</p>
+      <div class="accordion mb-5">
+        <details class="accordion-item" open>
+          <summary class="accordion-header">Menus in the last panel</summary>
+          <div class="accordion-body d-flex gap-3">
+            <div>
+              <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+                Default container
+              </button>
+              <div class="menu">
+                <button class="menu-item" type="button">First action</button>
+                <button class="menu-item" type="button">Second action</button>
+              </div>
+            </div>
+            <div>
+              <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-container="body" aria-expanded="false">
+                Body container
+              </button>
+              <div class="menu">
+                <button class="menu-item" type="button">First action</button>
+                <button class="menu-item" type="button">Second action</button>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+    <script src="accordion.js" type="module"></script>
+  </body>
+</html>
