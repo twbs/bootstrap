@@ -158,6 +158,8 @@
     --bs-bg-body: var(--bs-blue-500);
     --bs-bg-3: var(--bs-blue-600);
     --bs-hr-border-color: var(--bs-blue-400);
+    --bs-shadow-strength: 2.4;
+    color-scheme: dark;
 
     .menu {
       --bs-menu-bg: color-mix(in lab, var(--bs-blue-600), var(--bs-blue-700));
@@ -172,8 +174,6 @@
       --bs-btn-hover-border-color: color-mix(in lab, var(--bs-fg-body) 25%, transparent);
       --bs-btn-active-bg: color-mix(in lab, color-mix(in lab, var(--bs-gray-600), var(--bs-blue-400)), var(--bs-black) 10%);
       --bs-btn-active-border-color: color-mix(in lab, var(--bs-fg-body), transparent);
-      --bs-btn-focus-border-color: color-mix(in lab, var(--bs-fg-body), transparent);
-      --bs-btn-focus-box-shadow: 0 0 0 .25rem rgb(255 255 255 / .2);
     }
   }
   // scss-docs-end custom-color-mode
