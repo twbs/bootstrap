@@ -1,0 +1,297 @@
+---
+title: Color picker
+description: Turn any text input into a color picker with an OKLCH chroma and lightness plane, hue and alpha sliders, preset swatches, and hex, RGB, HSL, or OKLCH output.
+toc: true
+css_layer: forms
+js: required
+deps:
+  - title: Menu
+---
+
+## Overview
+
+The color picker decorates a real `<input>`, so the value, form submission, labels, and validation all come from the platform rather than being reimplemented. Add `data-bs-color-picker` and the plugin paints a color chip inside the field and builds a panel next to it.
+
+- The input is the component—`name`, `value`, `required`, `disabled`, `readonly`, `form.reset()`, `FormData`, and constraint validation all work as they normally do
+- A chroma and lightness plane plus hue and alpha sliders, all in [OKLCH]([[docsref:/customize/color]])
+- Output in hex, RGB, HSL, or OKLCH, switchable by the user
+- Preset swatches from the theme colors, the full palette, a `<datalist>`, or your own array
+- Uses the [EyeDropper API](https://developer.mozilla.org/docs/Web/API/EyeDropper) to sample colors from anywhere on screen, where the browser supports it
+
+## Example
+
+The only required markup is a text input with `data-bs-color-picker`. Without JavaScript it degrades to a plain text field that still submits a valid CSS color.
+
+<Example code={`<div class="form-field">
+    <label for="brandColor" class="form-label">Brand color</label>
+    <input type="text" class="form-control" data-bs-color-picker
+           id="brandColor" name="brand_color" value="#0d6efd"
+           autocomplete="off" spellcheck="false">
+  </div>`} />
+
+The color chip is painted as a background layer on the input, not a child element, because `::before` and `::after` don’t render on form controls. It reuses the same technique as the [form select]([[docsref:/forms/form-control#select]]) caret. Setting your own `background-image` on the input will replace it.
+
+## Formats
+
+The picker reads the format from the initial value, so a field that starts as `oklch(…)` keeps emitting OKLCH. Users can switch formats with the select in the panel, which rewrites the input value in place.
+
+<Example code={`<div class="form-field">
+    <label for="oklchColor" class="form-label">Accent color</label>
+    <input type="text" class="form-control" data-bs-color-picker
+           id="oklchColor" value="oklch(62.8% 0.2577 29.23)"
+           autocomplete="off" spellcheck="false">
+  </div>`} />
+
+Restrict the choices with `formats`, or pass a single-item array to hide the select entirely and lock the output.
+
+<Example code={`<div class="form-field">
+    <label for="hexOnlyColor" class="form-label">Hex only</label>
+    <input type="text" class="form-control" data-bs-color-picker
+           id="hexOnlyColor" value="#20c997"
+           data-bs-config='{"formats":["hex"]}'
+           autocomplete="off" spellcheck="false">
+  </div>`} />
+
+<Callout type="info">
+OKLCH can express colors that hex and RGB cannot display. When you switch to a format bound to sRGB, the picker reduces chroma until the color fits, holding lightness and hue steady—clamping the RGB channels directly would shift the hue instead.
+</Callout>
+
+## Alpha
+
+Set `alpha` to add an alpha slider. Transparency is appended to the output only when it’s below 1, as `#rrggbbaa`, `rgb(r g b / a)`, or `oklch(l c h / a)`.
+
+<Example code={`<div class="form-field">
+    <label for="alphaColor" class="form-label">Overlay color</label>
+    <input type="text" class="form-control" data-bs-color-picker
+           id="alphaColor" value="#0d6efd80"
+           data-bs-config='{"alpha":true}'
+           autocomplete="off" spellcheck="false">
+  </div>`} />
+
+## Swatches
+
+Preset swatches sit at the bottom of the panel. By default you get the eight [theme colors]([[docsref:/customize/theme]]).
+
+### From the palette
+
+Use `swatches: "palette"` for the 16 base hues, and `swatchStops` to pick which stops to include. `[100, 300, 500, 700, 900]` gives a 16 by 5 grid.
+
+<Example code={`<div class="form-field">
+    <label for="paletteColor" class="form-label">Palette</label>
+    <input type="text" class="form-control" data-bs-color-picker
+           id="paletteColor" value="#0d6efd"
+           data-bs-config='{"swatches":"palette","swatchStops":[300,500,700]}'
+           autocomplete="off" spellcheck="false">
+  </div>`} />
+
+### From a datalist
+
+Point the input’s `list` attribute at a `<datalist>` and its options become the swatches, using each `label` as the accessible name. This keeps your presets declarative and server-renderable, and it’s the same pattern the [range]([[docsref:/forms/range#tick-marks]]) uses for tick marks. An input with a `list` uses its datalist automatically, so no configuration is needed.
+
+<Example code={`<div class="form-field">
+    <label for="datalistColor" class="form-label">Brand palette</label>
+    <input type="text" class="form-control" data-bs-color-picker
+           id="datalistColor" value="var(--bs-blue-500)"
+           list="brandSwatches"
+           autocomplete="off" spellcheck="false">
+  </div>
+  <datalist id="brandSwatches">
+    <option value="var(--bs-blue-500)" label="Blue"></option>
+    <option value="var(--bs-green-500)" label="Green"></option>
+    <option value="var(--bs-orange-500)" label="Orange"></option>
+    <option value="var(--bs-purple-500)" label="Purple"></option>
+  </datalist>`} />
+
+Swatch values can be anything CSS understands—`var(--bs-blue-500)`, `color-mix(…)`, `rebeccapurple`, or a plain hex string. The plugin resolves them through the browser, so custom properties and color functions all work.
+
+## Optional wrapper
+
+Wrap the input in a `.color-picker` to get a genuinely clickable swatch button, and switch the input to `.form-ghost` so the wrapper owns the border and focus ring. It follows the same recipe as the [chip input]([[docsref:/forms/chips#chip-input]]). Worth the extra markup when you want the swatch to be its own control or need to compose with an [input group]([[docsref:/forms/input-group]]).
+
+<Example code={`<div class="form-field">
+    <label for="wrappedColor" class="form-label">Background</label>
+    <div class="color-picker">
+      <button type="button" class="color-picker-preview" aria-label="Choose a color"></button>
+      <input type="text" class="form-ghost" data-bs-color-picker
+             id="wrappedColor" value="#6f42c1"
+             autocomplete="off" spellcheck="false">
+    </div>
+  </div>`} />
+
+## Custom triggers
+
+Put `data-bs-toggle="color-picker"` and `data-bs-target` on any element to make it the trigger. The input remains the single source of truth and can live anywhere in the form, including visually hidden.
+
+<Example code={`<button type="button" class="btn btn-secondary"
+          data-bs-toggle="color-picker" data-bs-target="#triggeredColor">
+    Choose a color
+  </button>
+  <input type="text" class="form-control mt-2" data-bs-color-picker
+         id="triggeredColor" value="#fd7e14"
+         autocomplete="off" spellcheck="false">`} />
+
+<Callout type="warning">
+The panel is inserted next to the input so it follows the field in tab order. When the trigger sits far from the input, keyboard users tabbing from the trigger won’t land in the panel. Keep custom triggers next to their input, or use the wrapper instead.
+</Callout>
+
+## Typing a value
+
+The field stays fully editable. Typing updates the panel live, but the text is only reformatted on blur or <kbd>Enter</kbd>, so a partial value like `oklch(60% 0.2` is never rewritten mid-keystroke. Named colors and custom properties are accepted and resolved.
+
+When the text can’t be parsed, the picker calls `setCustomValidity()`, which picks up the existing [validation]([[docsref:/forms/validation]]) styling for free. Turn this off with `validate: false`.
+
+## Native color inputs
+
+An `<input type="color">` still works with no JavaScript at all, and is the only arrangement with a true replaced-element swatch—see [`.form-control-color`]([[docsref:/forms/form-control#color]]).
+
+You can attach the picker to one, but a native color input sanitizes its value to a lowercase `#rrggbb` string, so no other format and no alpha can survive a round trip through it. The plugin therefore forces `format: "hex"`, hides the format select, disables `alpha`, and suppresses the operating system’s own dialog. Use `type="text"` unless you specifically need the native fallback.
+
+<Example code={`<div class="form-field">
+    <label for="nativeColor" class="form-label">Hex only, native input</label>
+    <input type="color" class="form-control form-control-color" data-bs-color-picker
+           id="nativeColor" value="#0dcaf0">
+  </div>`} />
+
+## Accessibility
+
+The panel is a `role="dialog"` labelled “Choose a color”, and the input carries `aria-expanded`, `aria-haspopup`, and `aria-controls`. The hue and alpha sliders are real `<input type="range">` elements, so their keyboard support and `aria-valuenow` come from the platform.
+
+<BsTable>
+| Key | Description |
+| --- | --- |
+| <kbd>↓</kbd> | Opens the panel from the input. |
+| <kbd>Esc</kbd> | Closes the panel and returns focus to the input. |
+| <kbd>Tab</kbd> | Moves through the panel, closing it on the way out. |
+| <kbd>←</kbd> <kbd>→</kbd> | On the plane, decreases and increases chroma. |
+| <kbd>↑</kbd> <kbd>↓</kbd> | On the plane, increases and decreases lightness. |
+| <kbd>Shift</kbd> + arrows | Same, in coarser steps. |
+| <kbd>Home</kbd> <kbd>End</kbd> | On the plane, jumps to minimum and maximum chroma. |
+| <kbd>PgUp</kbd> <kbd>PgDn</kbd> | On the plane, jumps lightness in coarse steps. |
+</BsTable>
+
+The plane is a two-dimensional control, which no single ARIA role describes well. Its thumb is exposed as a `role="slider"` reporting chroma, with an `aria-valuetext` that announces both chroma and lightness. Because the plane duplicates what the sliders and swatches already offer, set `area: false` for a picker that relies only on single-axis controls.
+
+The plane is deliberately not mirrored in right-to-left documents, since a color space has no reading direction. The inline chip does flip to the inline-end side.
+
+## Usage
+
+Every input with `data-bs-color-picker` is initialized on page load. The component is JavaScript-driven: without it, the field is a plain text input showing an empty chip.
+
+### Via data attributes
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-color-picker` | Marks an input as a color picker. Takes no value. |
+| `data-bs-config` | JSON object of any of the options below. |
+| `data-bs-toggle="color-picker"` + `data-bs-target` | Makes any element a [custom trigger](#custom-triggers). |
+| `list` (on the input) + `<datalist>` | Sources the [swatches](#from-a-datalist) from the datalist options. |
+</BsTable>
+
+```html
+<input type="text" class="form-control" data-bs-color-picker
+       name="brand_color" value="#0d6efd"
+       data-bs-config='{"alpha":true,"swatches":"palette"}'>
+```
+
+### Via JavaScript
+
+```js
+const input = document.querySelector('#brandColor')
+const picker = new bootstrap.ColorPicker(input, {
+  alpha: true,
+  format: 'oklch',
+  swatches: ['#0d6efd', 'var(--bs-green-500)', { value: '#6f42c1', label: 'Grape' }]
+})
+```
+
+<JsDataAttributes />
+
+### Dependencies
+
+<JsDependencies component="color-picker" name="color picker" />
+
+### Options
+
+<BsTable>
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `alpha` | boolean | `false` | Show the alpha slider and include alpha in the output. |
+| `area` | boolean | `true` | Show the chroma and lightness plane. |
+| `boundary` | string, element | `'clippingParents'` | Overflow constraint boundary of the panel, passed to [Menu]([[docsref:/components/menu]]). |
+| `closeOnSelect` | boolean | `false` | Close the panel after a swatch is clicked. |
+| `container` | string, element, boolean | `false` | Appends the panel to a specific element. By default it’s inserted next to the field, which keeps tab order and the surrounding color mode intact. Use this to escape a clipping ancestor. |
+| `eyedropper` | boolean | `true` | Show the eyedropper button where the browser supports the EyeDropper API. |
+| `format` | string, null | `null` | Output format: `'hex'`, `'rgb'`, `'hsl'`, or `'oklch'`. Inferred from the initial value when `null`. |
+| `formats` | array | `['hex', 'rgb', 'hsl', 'oklch']` | Formats offered in the panel’s select. A single-item array hides it. |
+| `offset` | array, string, function | `[0, 2]` | Panel offset from the field. |
+| `placement` | string | `'bottom-start'` | Panel placement. |
+| `swatches` | string, array, boolean | `'theme'` | `'theme'`, `'palette'`, `'datalist'`, an array of strings or `{ value, label }` objects, or `false` for none. Defaults to `'datalist'` when the input has a `list` attribute. |
+| `swatchStops` | array | `[500]` | Palette stops used when `swatches` is `'palette'`. |
+| `validate` | boolean | `true` | Call `setCustomValidity()` when the typed value can’t be parsed. |
+</BsTable>
+
+There is no `name` or `value` option. Those belong to the input, and duplicating them would invite the two to disagree.
+
+### Methods
+
+<BsTable>
+| Method | Description |
+| --- | --- |
+| `show()` | Opens the panel. Does nothing on a disabled or readonly input. |
+| `hide()` | Closes the panel. |
+| `toggle()` | Toggles the panel. |
+| `getValue(format)` | Returns the current value. With no argument, returns the input’s value as displayed; with a format, converts on the fly, so `getValue('oklch')` works whatever is shown. |
+| `setValue(value)` | Sets the color from any CSS color string. Ignores values it can’t resolve. |
+| `update()` | Re-reads the input’s value and refreshes the chip and panel. Use after setting `input.value` directly. |
+| `dispose()` | Destroys the instance and removes the panel it created. |
+| `getInstance()` | Static method to get the instance associated with an input. |
+| `getOrCreateInstance()` | Static method to get the instance, or create one if it doesn’t exist. |
+</BsTable>
+
+### Events
+
+The value itself travels on the input’s own native `input` and `change` events, which is what form libraries, `FormData`, and framework bindings already listen for. `input` streams during a drag; `change` fires once the interaction settles, matching a native range.
+
+Namespaced events cover only what the platform has no equivalent for. All of them fire on the input.
+
+<BsTable>
+| Event | Description |
+| --- | --- |
+| `show.bs.colorPicker` | Fires immediately when `show` is called. Cancelable. |
+| `shown.bs.colorPicker` | Fires when the panel has been made visible. |
+| `hide.bs.colorPicker` | Fires immediately when `hide` is called. Cancelable. |
+| `hidden.bs.colorPicker` | Fires when the panel has been hidden. |
+| `changed.bs.colorPicker` | Fires on every commit with the full picture: `value` (the formatted string), `format`, and `color` (the OKLCH components as `{ l, c, h, alpha }`). |
+</BsTable>
+
+```js
+const input = document.querySelector('#brandColor')
+
+input.addEventListener('changed.bs.colorPicker', event => {
+  console.log(event.value, event.format, event.color)
+})
+
+// The plain value channel works too
+input.addEventListener('change', () => console.log(input.value))
+```
+
+## CSS
+
+### Variables
+
+<CSSVariables component="Color pickers" className="color-picker" />
+
+<ScssDocs name="color-picker-tokens" file="scss/forms/_color-picker.scss" />
+
+The tokens are declared on `.color-picker`, `.color-picker-menu`, and `[data-bs-color-picker]`. The panel is a separate element from the field, so each host needs its own copy.
+
+### Range track hook
+
+The hue and alpha sliders are real `.form-range` elements that swap in their own track gradient through `--bs-range-track-bg-image`, an override hook on the range track. Set it on any `.form-range` to replace the fill gradient without reimplementing the thumb and track.
+
+```css
+.my-gradient-slider {
+  --bs-range-track-bg-image: linear-gradient(to right, #000, #fff);
+}
+```
