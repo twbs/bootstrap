@@ -3,6 +3,7 @@
 @use "functions" as *;
 @use "config" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
 @use "mixins/focus-ring" as *;
 @use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
@@ -23,11 +24,11 @@ $datepicker-tokens: defaults(
     --datepicker-font-size: var(--font-size-sm),
     --datepicker-min-width: 280px,
     --datepicker-zindex: var(--z-menu),
-    --datepicker-header-font-weight: 600,
+    --datepicker-header-font-weight: var(--font-weight-semibold),
     --datepicker-weekday-color: var(--fg-3),
     --datepicker-day-hover-bg: var(--bg-1),
-    --datepicker-day-selected-bg: var(--primary-bg),
-    --datepicker-day-selected-color: var(--primary-contrast),
+    --datepicker-day-selected-bg: var(--theme-bg, var(--primary-bg)),
+    --datepicker-day-selected-color: var(--theme-contrast, var(--primary-contrast)),
     --datepicker-day-today-bg: var(--bg-2),
     --datepicker-day-today-color: var(--fg-1),
     --datepicker-day-disabled-color: var(--fg-4),
@@ -41,20 +42,22 @@ $datepicker-tokens: defaults(
     @include tokens($datepicker-tokens);
 
     position: absolute;
+    inset: auto;
     z-index: var(--datepicker-zindex);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     min-width: var(--datepicker-min-width);
     padding: var(--datepicker-padding);
+    margin: 0;
     font-family: var(--body-font-family);
     font-size: var(--datepicker-font-size);
     color: var(--datepicker-color);
-    color-scheme: light dark;
+    color-scheme: inherit;
     background-color: var(--datepicker-bg);
     border: var(--datepicker-border-width) solid var(--datepicker-border-color);
-    box-shadow: var(--datepicker-box-shadow);
     opacity: 1;
+    @include box-shadow(var(--datepicker-box-shadow));
     @include border-radius(var(--datepicker-border-radius));
 
     // Respond to Bootstrap's color mode system
@@ -75,8 +78,7 @@ $datepicker-tokens: defaults(
   }
 
   [data-vc-calendar-hidden] {
-    pointer-events: none;
-    opacity: 0;
+    display: none;
   }
 
   // Inline calendars
@@ -90,12 +92,12 @@ $datepicker-tokens: defaults(
     box-shadow: none;
   }
 
-  [data-vc-position="bottom"] {
-    margin-block-start: .25rem;
+  [data-vc="calendar"][data-vc-position="bottom"] {
+    margin-block-start: 0;
   }
 
-  [data-vc-position="top"] {
-    margin-block-end: -.25rem;
+  [data-vc="calendar"][data-vc-position="top"] {
+    margin-block-end: 0;
   }
 
   [data-vc-arrow] {
@@ -129,6 +131,14 @@ $datepicker-tokens: defaults(
 
   [data-vc-arrow="next"]::before {
     transform: rotate(-90deg);
+  }
+
+  [data-vc-arrow="prev"]:dir(rtl)::before {
+    transform: rotate(-90deg);
+  }
+
+  [data-vc-arrow="next"]:dir(rtl)::before {
+    transform: rotate(90deg);
   }
 
   // Grid layout
@@ -185,7 +195,7 @@ $datepicker-tokens: defaults(
   [data-vc="year"] {
     padding: .25rem .5rem;
     margin-inline: -.125rem;
-    font-size: 1rem;
+    font-size: calc(var(--datepicker-font-size) * 8 / 7);
     font-weight: var(--datepicker-header-font-weight);
     color: var(--datepicker-color);
     // cursor: pointer;
@@ -246,9 +256,9 @@ $datepicker-tokens: defaults(
     width: 100%;
     height: 2.5rem;
     padding: .25rem;
-    font-size: .75rem;
-    font-weight: 600;
-    line-height: 1rem;
+    font-size: calc(var(--datepicker-font-size) * 6 / 7);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.333333;
     color: var(--datepicker-weekday-color);
     text-align: center;
     word-break: break-all;
@@ -294,9 +304,9 @@ $datepicker-tokens: defaults(
     min-width: 1.875rem;
     padding: 0;
     margin: 0;
-    font-size: .75rem;
-    font-weight: 600;
-    line-height: 1rem;
+    font-size: calc(var(--datepicker-font-size) * 6 / 7);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.333333;
     color: var(--datepicker-weekday-color);
     background-color: transparent;
     border: 0;
@@ -346,14 +356,14 @@ $datepicker-tokens: defaults(
     height: 100%;
     min-height: 1.875rem;
     padding: 0;
-    font-size: .75rem;
-    font-weight: 400;
-    line-height: 1rem;
+    font-size: calc(var(--datepicker-font-size) * 6 / 7);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.333333;
     color: var(--datepicker-color);
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    border-radius: var(--radius-5);
+    @include border-radius(var(--radius-5), 0);
 
     &:hover {
       background-color: var(--datepicker-day-hover-bg);
@@ -362,7 +372,7 @@ $datepicker-tokens: defaults(
 
   // Today
   [data-vc-date-today] [data-vc-date-btn] {
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     color: var(--datepicker-day-today-color);
     background-color: var(--datepicker-day-today-bg);
   }
@@ -370,7 +380,7 @@ $datepicker-tokens: defaults(
   // Outside month
   [data-vc-date-month="next"] [data-vc-date-btn],
   [data-vc-date-month="prev"] [data-vc-date-btn] {
-    opacity: .5;
+    color: var(--fg-2);
   }
 
   // Disabled
@@ -385,22 +395,15 @@ $datepicker-tokens: defaults(
   }
 
   [data-vc-date-hover="first"] [data-vc-date-btn] {
-    border-start-start-radius: var(--radius-5);
-    border-end-start-radius: var(--radius-5);
+    @include border-start-radius(var(--radius-5));
   }
 
   [data-vc-date-hover="last"] [data-vc-date-btn] {
-    border-start-end-radius: var(--radius-5);
-    border-end-end-radius: var(--radius-5);
+    @include border-end-radius(var(--radius-5));
   }
 
   [data-vc-date-hover="first-and-last"] [data-vc-date-btn] {
-    border-radius: var(--radius-5);
-  }
-
-  [data-vc-date-selected="middle"] [data-vc-date-btn] {
-    border-radius: 0;
-    opacity: .8;
+    @include border-radius(var(--radius-5), 0);
   }
 
   // Selected
@@ -410,21 +413,23 @@ $datepicker-tokens: defaults(
 
   }
 
+  [data-vc-date-selected="middle"] [data-vc-date-btn] {
+    color: var(--theme-fg-emphasis, var(--primary-fg-emphasis));
+    background-color: var(--theme-bg-subtle, var(--primary-bg-subtle));
+    border-radius: 0;
+  }
+
   [data-vc-date-selected="first"] [data-vc-date-btn] {
-    border-top-left-radius: var(--radius-5);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: var(--radius-5);
+    border-radius: 0;
+    @include border-start-radius(var(--radius-5));
   }
 
   [data-vc-date-selected="last"] [data-vc-date-btn] {
-    border-top-left-radius: 0;
-    border-top-right-radius: var(--radius-5);
-    border-bottom-right-radius: var(--radius-5);
-    border-bottom-left-radius: 0;
+    border-radius: 0;
+    @include border-end-radius(var(--radius-5));
   }
 
   [data-vc-date-selected="first-and-last"] [data-vc-date-btn] {
-    border-radius: var(--radius-5);
+    @include border-radius(var(--radius-5), 0);
   }
 }
