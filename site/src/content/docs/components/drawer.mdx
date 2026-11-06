@@ -198,7 +198,9 @@ Add `.drawer-translucent` to the drawer panel to blur and saturate the backgroun
 
 ## Sheet
 
-Add `.drawer-sheet` to render the panel flush against the viewport edge. The sheet variant removes the drawer’s inset, border, border-radius, and box-shadow, so it sits edge-to-edge like a traditional offcanvas. It works with any placement.
+Use `.drawer-sheet` with `.drawer-bottom` for a bottom sheet designed primarily for mobile. On smaller screens, the sheet spans the viewport width and sits flush against the bottom edge. At the `lg` breakpoint and above, it keeps its sheet shape but centers horizontally at the bottom of the viewport, with a default maximum width of `760px`.
+
+Use `.drawer-start` or `.drawer-end` without `.drawer-sheet` when you need a side drawer.
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerSheet" aria-controls="drawerSheet">
     Toggle sheet drawer
@@ -210,7 +212,7 @@ Add `.drawer-sheet` to render the panel flush against the viewport edge. The she
       <CloseButton dismiss="drawer" />
     </div>
     <div class="drawer-body">
-      Content for the sheet drawer goes here. It sits flush to the edge with no inset, border, rounded corners, or shadow.
+      Resize your browser to see this mobile bottom sheet become a centered bottom sheet on larger screens.
     </div>
   </dialog>`} />
 

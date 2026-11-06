@@ -91,6 +91,13 @@ class Dialog extends DialogBase {
 
     const config = Manipulator.getDataAttributes(trigger)
     const currentDialog = trigger.closest<HTMLDialogElement>('dialog[open]')
+
+    // A trigger inside the open dialog that targets the same dialog has
+    // nothing to swap to. Keep the dialog open instead of toggling it closed.
+    if (currentDialog === target) {
+      return
+    }
+
     const shouldSwap = currentDialog && currentDialog !== target
 
     if (!shouldSwap) {
