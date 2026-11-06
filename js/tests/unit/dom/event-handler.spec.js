@@ -70,6 +70,30 @@ describe('EventHandler', () => {
       })
     })
 
+    it('should add native namespaced event listener for modern DOM events', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<input type="text">'
+
+        const input = fixtureEl.querySelector('input')
+        let cancelFired = false
+        let beforeInputFired = false
+
+        EventHandler.on(input, 'cancel.namespace', () => {
+          cancelFired = true
+        })
+
+        EventHandler.on(input, 'beforeinput.namespace', () => {
+          beforeInputFired = true
+          expect(cancelFired).toBe(true)
+          expect(beforeInputFired).toBe(true)
+          resolve()
+        })
+
+        input.dispatchEvent(new Event('cancel'))
+        input.dispatchEvent(new InputEvent('beforeinput'))
+      })
+    })
+
     it('should handle event delegation', () => {
       return new Promise(resolve => {
         EventHandler.on(document, 'click', '.test', () => {
