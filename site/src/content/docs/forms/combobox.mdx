@@ -28,14 +28,14 @@ Add `data-bs-toggle="combobox"` to a `.combobox` wrapper with a `.combobox-input
 Type in the input to filter the options. The input keeps focus while the arrow keys highlight suggestions. Press <kbd>Enter</kbd> to commit a highlighted option. Typing alone does not select it.
 
 <Example code={`<label for="editableLanguage">Language</label>
-<div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
-  <input class="form-control combobox-input" id="editableLanguage" placeholder="Choose a language">
-</div>
-<div class="menu" aria-label="Languages">
-  <button class="menu-item" type="button" data-bs-value="en">English</button>
-  <button class="menu-item" type="button" data-bs-value="fr">French</button>
-  <button class="menu-item" type="button" data-bs-value="ja">Japanese</button>
-</div>`} />
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
+    <input class="form-control combobox-input" id="editableLanguage" placeholder="Choose a language">
+  </div>
+  <div class="menu" aria-label="Languages">
+    <button class="menu-item" type="button" data-bs-value="en">English</button>
+    <button class="menu-item" type="button" data-bs-value="fr">French</button>
+    <button class="menu-item" type="button" data-bs-value="ja">Japanese</button>
+  </div>`} />
 
 We set the input’s combobox attributes and the listbox option IDs. Give the input an accessible name with a label. Keep the query input unnamed; `data-bs-name` names the submitted backing fields. Editing a selected single value clears its committed value until you select an option again.
 
@@ -44,59 +44,59 @@ We set the input’s combobox attributes and the listbox option IDs. Give the in
 Use the input’s `placeholder` attribute to show a hint before you type or select a value.
 
 <Example code={`<label class="form-label" for="comboboxCountry">Country</label>
-<div class="combobox" data-bs-toggle="combobox" data-bs-name="country">
-  <input class="form-control combobox-input" id="comboboxCountry" placeholder="Pick a country…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="us">United States</button>
-  <button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>
-  <button class="menu-item" type="button" data-bs-value="ca">Canada</button>
-</div>`} />
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="country">
+    <input class="form-control combobox-input" id="comboboxCountry" placeholder="Pick a country…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="us">United States</button>
+    <button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>
+    <button class="menu-item" type="button" data-bs-value="ca">Canada</button>
+  </div>`} />
 
 ### Pre-selected value
 
 Add `.selected` to a menu item to preselect it. The input shows that option’s label when Combobox initializes.
 
 <Example code={`<label class="form-label" for="comboboxRole">Role</label>
-<div class="combobox" data-bs-toggle="combobox" data-bs-name="role">
-  <input class="form-control combobox-input" id="comboboxRole" placeholder="Choose a role…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="admin">Admin</button>
-  <button class="menu-item selected" type="button" data-bs-value="editor" aria-selected="true">Editor</button>
-  <button class="menu-item" type="button" data-bs-value="viewer">Viewer</button>
-</div>`} />
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="role">
+    <input class="form-control combobox-input" id="comboboxRole" placeholder="Choose a role…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="admin">Admin</button>
+    <button class="menu-item selected" type="button" data-bs-value="editor" aria-selected="true">Editor</button>
+    <button class="menu-item" type="button" data-bs-value="viewer">Viewer</button>
+  </div>`} />
 
 ### With form field
 
 Use the [form field]([[docsref:/forms/field]]) component to stack a label, Combobox, and any help text or validation messages.
 
 <Example code={`<div class="form-field">
-  <label for="exampleCombobox" class="form-label">Combobox</label>
-  <div class="combobox" data-bs-toggle="combobox" data-bs-name="country">
-    <input class="form-control combobox-input" id="exampleCombobox" placeholder="Pick a country…">
-  </div>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="us">United States</button>
-    <button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>
-    <button class="menu-item" type="button" data-bs-value="ca">Canada</button>
-  </div>
-</div>`} />
+    <label for="exampleCombobox" class="form-label">Combobox</label>
+    <div class="combobox" data-bs-toggle="combobox" data-bs-name="country">
+      <input class="form-control combobox-input" id="exampleCombobox" placeholder="Pick a country…">
+    </div>
+    <div class="menu">
+      <button class="menu-item" type="button" data-bs-value="us">United States</button>
+      <button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>
+      <button class="menu-item" type="button" data-bs-value="ca">Canada</button>
+    </div>
+  </div>`} />
 
 ## Multiple selections as chips
 
 Use `.combobox-control` for a wrapping field and add `data-bs-multiple="true"`. The input uses `.form-ghost` to share the field with selected chips. Remove buttons include the option’s name. An empty multiple selection submits no entries.
 
 <Example code={`<label for="editableInterests">Interests</label>
-<div class="combobox-control" data-bs-toggle="combobox"
-     data-bs-name="interests" data-bs-multiple="true">
-  <input class="form-ghost combobox-input" id="editableInterests" placeholder="Add an interest">
-</div>
-<div class="menu" aria-label="Interests">
-  <button class="menu-item" type="button" data-bs-value="design">Design</button>
-  <button class="menu-item" type="button" data-bs-value="art,music">Art, music</button>
-  <button class="menu-item" type="button" data-bs-value="engineering">Engineering</button>
-</div>`} />
+  <div class="combobox-control" data-bs-toggle="combobox"
+       data-bs-name="interests" data-bs-multiple="true">
+    <input class="form-ghost combobox-input" id="editableInterests" placeholder="Add an interest">
+  </div>
+  <div class="menu" aria-label="Interests">
+    <button class="menu-item" type="button" data-bs-value="design">Design</button>
+    <button class="menu-item" type="button" data-bs-value="art,music">Art, music</button>
+    <button class="menu-item" type="button" data-bs-value="engineering">Engineering</button>
+  </div>`} />
 
 Selecting an option clears the query and keeps the editor ready for another search. The chips use the existing [chip styles]([[docsref:/components/chips]]). The menu remains the source of option identity and submitted values.
 
@@ -105,10 +105,10 @@ Selecting an option clears the query and keeps the editor ready for another sear
 Set `data-bs-allow-custom="true"` to accept values outside the option list. Press <kbd>Enter</kbd> to commit the text. A popup is optional for a field with no predefined options; we create one when needed. We render value labels as text.
 
 <Example code={`<label for="editableTags">Tags</label>
-<div class="combobox-control" data-bs-toggle="combobox"
-     data-bs-name="tags" data-bs-multiple="true" data-bs-allow-custom="true">
-  <input class="form-ghost combobox-input" id="editableTags" placeholder="Type a tag and press Enter">
-</div>`} />
+  <div class="combobox-control" data-bs-toggle="combobox"
+       data-bs-name="tags" data-bs-multiple="true" data-bs-allow-custom="true">
+    <input class="form-ghost combobox-input" id="editableTags" placeholder="Type a tag and press Enter">
+  </div>`} />
 
 Commas remain part of a value by default. Set `separator` explicitly to split typed or pasted values. `createOnBlur` is off by default so moving focus does not commit unfinished text. `maxItems` limits committed multiple selections. Repeated free-entry strings reuse an existing option rather than creating another chip.
 
@@ -135,190 +135,190 @@ Menu items can include icons, images, descriptions, and badges.
 Add `.menu-item-icon` directly to an `<svg>` element inside a menu item for a leading icon.
 
 <Example code={`<label class="form-label" for="comboboxIconLanguage">Language</label>
-<div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
-  <input class="form-control combobox-input" id="comboboxIconLanguage" placeholder="Choose a language…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="html">
-    <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/></svg>
-    <span>HTML</span>
-  </button>
-  <button class="menu-item" type="button" data-bs-value="css">
-    <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/></svg>
-    <span>CSS</span>
-  </button>
-  <button class="menu-item" type="button" data-bs-value="js">
-    <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/></svg>
-    <span>JavaScript</span>
-  </button>
-</div>`} />
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
+    <input class="form-control combobox-input" id="comboboxIconLanguage" placeholder="Choose a language…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="html">
+      <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/></svg>
+      <span>HTML</span>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="css">
+      <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/></svg>
+      <span>CSS</span>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="js">
+      <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/></svg>
+      <span>JavaScript</span>
+    </button>
+  </div>`} />
 
 ### Descriptions
 
 Use `.menu-item-content` for a flex column layout and `.menu-item-description` for secondary text.
 
 <Example code={`<label class="form-label" for="comboboxRoleDetails">Role</label>
-<div class="combobox" data-bs-toggle="combobox" data-bs-name="role">
-  <input class="form-control combobox-input" id="comboboxRoleDetails" placeholder="Select a role…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="admin">
-    <span class="menu-item-content">
-      <span>Admin</span>
-      <small class="menu-item-description">Full access to all resources</small>
-    </span>
-  </button>
-  <button class="menu-item" type="button" data-bs-value="editor">
-    <span class="menu-item-content">
-      <span>Editor</span>
-      <small class="menu-item-description">Can edit and publish content</small>
-    </span>
-  </button>
-  <button class="menu-item" type="button" data-bs-value="viewer">
-    <span class="menu-item-content">
-      <span>Viewer</span>
-      <small class="menu-item-description">Read-only access</small>
-    </span>
-  </button>
-</div>`} />
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="role">
+    <input class="form-control combobox-input" id="comboboxRoleDetails" placeholder="Select a role…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="admin">
+      <span class="menu-item-content">
+        <span>Admin</span>
+        <small class="menu-item-description">Full access to all resources</small>
+      </span>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="editor">
+      <span class="menu-item-content">
+        <span>Editor</span>
+        <small class="menu-item-description">Can edit and publish content</small>
+      </span>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="viewer">
+      <span class="menu-item-content">
+        <span>Viewer</span>
+        <small class="menu-item-description">Read-only access</small>
+      </span>
+    </button>
+  </div>`} />
 
 ### Checked icon
 
 Add `.menu-item-check` directly on an `<svg>` inside each menu item to show a check mark indicator. It is hidden by default and becomes visible when the item has the `.selected` class.
 
 <Example code={`<label class="form-label" for="comboboxStatus">Status</label>
-<div class="combobox" data-bs-toggle="combobox" data-bs-name="status">
-  <input class="form-control combobox-input" id="comboboxStatus" placeholder="Choose a status…">
-</div>
-<div class="menu">
-  <button class="menu-item selected" type="button" data-bs-value="active" aria-selected="true">
-    <span class="menu-item-content">
-      <span>Active</span>
-      <small class="menu-item-description">Visible to users</small>
-    </span>
-    <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
-  </button>
-  <button class="menu-item" type="button" data-bs-value="draft">
-    <span class="menu-item-content">
-      <span>Draft</span>
-      <small class="menu-item-description">Not yet published</small>
-    </span>
-    <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
-  </button>
-  <hr class="menu-divider">
-  <button class="menu-item" type="button" data-bs-value="archived">
-    <span>Archived</span>
-    <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
-  </button>
-</div>`} />
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="status">
+    <input class="form-control combobox-input" id="comboboxStatus" placeholder="Choose a status…">
+  </div>
+  <div class="menu">
+    <button class="menu-item selected" type="button" data-bs-value="active" aria-selected="true">
+      <span class="menu-item-content">
+        <span>Active</span>
+        <small class="menu-item-description">Visible to users</small>
+      </span>
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="draft">
+      <span class="menu-item-content">
+        <span>Draft</span>
+        <small class="menu-item-description">Not yet published</small>
+      </span>
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+    <hr class="menu-divider">
+    <button class="menu-item" type="button" data-bs-value="archived">
+      <span>Archived</span>
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+  </div>`} />
 
 ### All together
 
 Combine all three for a rich menu item layout.
 
 <Example code={`<label class="form-label" for="comboboxPriority">Priority</label>
-<div class="combobox" data-bs-toggle="combobox" data-bs-name="priority">
-  <input class="form-control combobox-input" id="comboboxPriority" placeholder="Set priority…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="low">
-    <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/></svg>
-    <span class="menu-item-content">
-      <span>Low</span>
-      <small class="menu-item-description">No rush</small>
-    </span>
-    <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
-  </button>
-  <button class="menu-item" type="button" data-bs-value="medium">
-    <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/></svg>
-    <span class="menu-item-content">
-      <span>Medium</span>
-      <small class="menu-item-description">Normal priority</small>
-    </span>
-    <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
-  </button>
-  <button class="menu-item" type="button" data-bs-value="high">
-    <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/></svg>
-    <span class="menu-item-content">
-      <span>High</span>
-      <small class="menu-item-description">Needs attention</small>
-    </span>
-    <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
-  </button>
-</div>`} />
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="priority">
+    <input class="form-control combobox-input" id="comboboxPriority" placeholder="Set priority…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="low">
+      <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/></svg>
+      <span class="menu-item-content">
+        <span>Low</span>
+        <small class="menu-item-description">No rush</small>
+      </span>
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="medium">
+      <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/></svg>
+      <span class="menu-item-content">
+        <span>Medium</span>
+        <small class="menu-item-description">Normal priority</small>
+      </span>
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+    <button class="menu-item" type="button" data-bs-value="high">
+      <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/></svg>
+      <span class="menu-item-content">
+        <span>High</span>
+        <small class="menu-item-description">Needs attention</small>
+      </span>
+      <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
+    </button>
+  </div>`} />
 
 ## Groups
 
 Use `.menu-header` elements to create labeled groups within the menu.
 
 <Example code={`<label class="form-label" for="comboboxLanguageGroup">Language</label>
-<div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
-  <input class="form-control combobox-input" id="comboboxLanguageGroup" placeholder="Select a language…">
-</div>
-<div class="menu">
-  <div class="menu-header">Frontend</div>
-  <button class="menu-item" type="button" data-bs-value="html">HTML</button>
-  <button class="menu-item" type="button" data-bs-value="css">CSS</button>
-  <button class="menu-item" type="button" data-bs-value="js">JavaScript</button>
-  <div class="menu-header">Backend</div>
-  <button class="menu-item" type="button" data-bs-value="python">Python</button>
-  <button class="menu-item" type="button" data-bs-value="ruby">Ruby</button>
-  <button class="menu-item" type="button" data-bs-value="go">Go</button>
-</div>`} />
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
+    <input class="form-control combobox-input" id="comboboxLanguageGroup" placeholder="Select a language…">
+  </div>
+  <div class="menu">
+    <div class="menu-header">Frontend</div>
+    <button class="menu-item" type="button" data-bs-value="html">HTML</button>
+    <button class="menu-item" type="button" data-bs-value="css">CSS</button>
+    <button class="menu-item" type="button" data-bs-value="js">JavaScript</button>
+    <div class="menu-header">Backend</div>
+    <button class="menu-item" type="button" data-bs-value="python">Python</button>
+    <button class="menu-item" type="button" data-bs-value="ruby">Ruby</button>
+    <button class="menu-item" type="button" data-bs-value="go">Go</button>
+  </div>`} />
 
 ## Sizing
 
 Use `.form-control-sm` or `.form-control-lg` on the input to change size.
 
 <Example code={`<label class="form-label" for="comboboxSmall">Small</label>
-<div class="combobox" data-bs-toggle="combobox">
-  <input class="form-control form-control-sm combobox-input" id="comboboxSmall" placeholder="Small select…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-  <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-</div>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control form-control-sm combobox-input" id="comboboxSmall" placeholder="Small select…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  </div>
 
-<label class="form-label mt-3" for="comboboxDefault">Default</label>
-<div class="combobox" data-bs-toggle="combobox">
-  <input class="form-control combobox-input" id="comboboxDefault" placeholder="Default select…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-  <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-</div>
+  <label class="form-label mt-3" for="comboboxDefault">Default</label>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control combobox-input" id="comboboxDefault" placeholder="Default select…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  </div>
 
-<label class="form-label mt-3" for="comboboxLarge">Large</label>
-<div class="combobox" data-bs-toggle="combobox">
-  <input class="form-control form-control-lg combobox-input" id="comboboxLarge" placeholder="Large select…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-  <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-</div>`} />
+  <label class="form-label mt-3" for="comboboxLarge">Large</label>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control form-control-lg combobox-input" id="comboboxLarge" placeholder="Large select…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  </div>`} />
 
 ## Disabled
 
 Add `disabled` to the input or individual menu items.
 
 <Example code={`<label class="form-label" for="comboboxDisabled">Disabled field</label>
-<div class="combobox" data-bs-toggle="combobox">
-  <input class="form-control combobox-input" id="comboboxDisabled" placeholder="Cannot interact…" disabled>
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-  <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-</div>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control combobox-input" id="comboboxDisabled" placeholder="Cannot interact…" disabled>
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  </div>
 
-<label class="form-label mt-3" for="comboboxDisabledOption">Disabled option</label>
-<div class="combobox" data-bs-toggle="combobox">
-  <input class="form-control combobox-input" id="comboboxDisabledOption" placeholder="Select an option…">
-</div>
-<div class="menu">
-  <button class="menu-item" type="button" data-bs-value="1">Available</button>
-  <button class="menu-item" type="button" data-bs-value="2" disabled>Unavailable</button>
-  <button class="menu-item" type="button" data-bs-value="3">Available</button>
-</div>`} />
+  <label class="form-label mt-3" for="comboboxDisabledOption">Disabled option</label>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control combobox-input" id="comboboxDisabledOption" placeholder="Select an option…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Available</button>
+    <button class="menu-item" type="button" data-bs-value="2" disabled>Unavailable</button>
+    <button class="menu-item" type="button" data-bs-value="3">Available</button>
+  </div>`} />
 
 ## Button examples
 
