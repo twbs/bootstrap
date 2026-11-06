@@ -10,9 +10,16 @@ deps:
 
 ## Overview
 
-Use Combobox to search and select values from a menu. Write the input and menu items in HTML, then let Bootstrap handle filtering, keyboard navigation, selection, and form submission.
+The combobox component provides a styled select experience using standard HTML markup. Pair an editable input or a [toggle button]([[docsref:/forms/combobox#button-examples]]) with a `.menu` overlay. Combobox is markup-first: you write the control and menu items in HTML, and Bootstrap handles filtering, keyboard navigation, selection, and form submission.
 
-Select a single value or show multiple values as removable chips. You can also allow free entry. Use a [button]([[docsref:/forms/combobox#button-examples]]) when you want a select-like control with a separate menu.
+- Custom menu item content, including icons, descriptions, badges, and images
+- Live filtering as you type in the field or in a button’s menu search input
+- Optional check marks for selected items
+- Single and multiple selection, with removable chips for multiple values in the editable field
+- Optional free entry for values outside the menu
+- Keyboard navigation for suggestions, with shortcuts for selecting and removing chips
+- Form submission through generated or provided hidden inputs, with one entry per selected value in multiple mode
+- Bubbling `input` and `change` events when a selection changes
 
 ## Example
 
