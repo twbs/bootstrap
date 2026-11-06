@@ -9,7 +9,7 @@
  * Copyright 2026 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-
+console.log("yihe yene new")
 import { afterEach, expect, vi } from 'vitest'
 import hammerSimulatorSource from 'hammer-simulator/index.js?raw'
 
