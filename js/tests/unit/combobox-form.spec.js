@@ -343,13 +343,15 @@ describe('Combobox form contract', () => {
     expect(x.menu).not.toHaveClass('show')
   })
 
-  it('should not move focus after hide or disposal during a pending show', async () => {
+  it('should not move focus after disposal during the opening transition', async () => {
     const x = make()
     x.menu.style.transitionDuration = '.03s'
     const showing = x.instance.show()
+    expect(document.activeElement).toBe(x.search)
     x.instance.dispose()
+    x.toggle.focus()
     await showing
-    expect(document.activeElement).not.toBe(x.search)
+    expect(document.activeElement).toBe(x.toggle)
   })
 
   it('should permit Home and End text editing in RTL while retaining option navigation', async () => {

@@ -52,6 +52,12 @@ const SELECTOR_VALUE = '.combobox-value'
 const SELECTOR_SEARCH_INPUT = '.combobox-search-input'
 const SELECTOR_NO_RESULTS = '.combobox-no-results'
 
+class ComboboxMenu extends Menu {
+  override show(focus?: () => void): Promise<void> {
+    return this._show(focus)
+  }
+}
+
 type ComboboxConfig = {
   allowCustom: boolean
   createOnBlur: boolean
@@ -112,7 +118,7 @@ class Combobox extends BaseComponent {
   protected declare _searchInput: HTMLInputElement | null
   protected declare _noResults: HTMLElement | null
   protected declare _hiddenInput: HTMLInputElement | null
-  protected declare _menuInstance: Menu | null
+  protected declare _menuInstance: ComboboxMenu | null
   protected declare _ownsInput: boolean
   protected declare _inputDisabled: boolean
   protected declare _extraInputs: HTMLInputElement[]
@@ -235,12 +241,8 @@ class Combobox extends BaseComponent {
     return this._isShown() ? this.hide() : this.show()
   }
 
-  async show(): Promise<void> {
-    if (this._isDisabled() || this._isShown() || (this._editor && !this._getVisibleItems().length)) {
-      return
-    }
-
-    await this._menuInstance!.show()
+  show(): Promise<void> {
+    return this._showMenu()
   }
 
   async hide(): Promise<void> {
@@ -1052,8 +1054,17 @@ class Combobox extends BaseComponent {
     }
   }
 
+  protected async _showMenu(focus?: () => void): Promise<void> {
+    if (this._isDisabled() || this._isShown() || (this._editor && !this._getVisibleItems().length)) {
+      return
+    }
+
+    const search = this._editor || isDisabled(this._searchInput) ? null : this._searchInput
+    await this._menuInstance!.show(focus ?? (search ? () => search.focus({ preventScroll: true }) : undefined))
+  }
+
   protected _createMenuInstance(): void {
-    this._menuInstance = new Menu(this._toggle, {
+    this._menuInstance = new ComboboxMenu(this._toggle, {
       menu: this._menu,
       reference: this._editor ? this._element : 'toggle',
       autoClose: this._config.multiple ? 'outside' : true,
@@ -1089,10 +1100,6 @@ class Combobox extends BaseComponent {
 
         if (type === 'hidden' && this._editor) {
           this._setActiveItem(null)
-        }
-
-        if (type === 'shown' && document.activeElement === this._toggle) {
-          this._searchInput?.focus()
         }
 
         const forwarded = EventHandler.trigger(this._element, this.constructor.eventName(type))
@@ -1140,6 +1147,13 @@ class Combobox extends BaseComponent {
     }
 
     if (this._searchInput) {
+      EventHandler.on(this._toggle, `mousedown${EVENT_KEY}`, event => {
+        if (event.button === 0 && !this._isShown() && !this._isDisabled() && !isDisabled(this._searchInput)) {
+          // The search field receives focus when the menu opens on click.
+          event.preventDefault()
+        }
+      })
+
       EventHandler.on(this._searchInput, `input${EVENT_KEY}`, () => {
         this._filterItems(this._searchInput!.value)
       })
@@ -1392,14 +1406,17 @@ class Combobox extends BaseComponent {
 
     if (key === ARROW_DOWN_KEY || key === ARROW_UP_KEY) {
       event.preventDefault()
-      if (!this._isShown()) {
-        this.show()
+      const focusItem = () => {
+        const items = this._getVisibleItems()
+        const item = key === ARROW_DOWN_KEY ? items[0] : items.at(-1)
+        const target = item ?? (isDisabled(this._searchInput) ? this._toggle : this._searchInput)
+        target?.focus()
       }
 
-      const items = this._getVisibleItems()
-      if (items.length > 0) {
-        const target = key === ARROW_DOWN_KEY ? items[0] : items.at(-1)!
-        target.focus()
+      if (this._isShown()) {
+        focusItem()
+      } else {
+        this._showMenu(focusItem)
       }
 
       return

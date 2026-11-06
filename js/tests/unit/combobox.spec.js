@@ -1,3 +1,4 @@
+import { page, userEvent } from 'vitest/browser'
 import Combobox from '../../src/combobox.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import Menu from '../../src/menu.js'
@@ -343,6 +344,33 @@ describe('Combobox', () => {
 
   describe('search', () => {
     const searchMarkup = () => markup({ search: SEARCH_HTML, noResults: NO_RESULTS_HTML })
+
+    it('should focus search directly on click and return to the toggle on Escape', async () => {
+      const { combobox, menuEl, toggleEl } = makeCombobox({ search: true, placeholder: 'Select a country' }, searchMarkup())
+      const searchEl = menuEl.querySelector('.combobox-search-input')
+      const focusOrder = []
+      toggleEl.style.cssText = 'position: fixed; top: 1rem; left: 1rem'
+      toggleEl.addEventListener('focus', () => focusOrder.push(toggleEl))
+      searchEl.addEventListener('focus', () => focusOrder.push(searchEl))
+
+      try {
+        const toggle = page.getByRole('button', { name: 'Select a country' })
+        await toggle.click()
+
+        expect(focusOrder).toEqual([searchEl])
+        expect(document.activeElement).toBe(searchEl)
+
+        keydown(searchEl, 'Escape')
+
+        expect(document.activeElement).toBe(toggleEl)
+
+        await userEvent.keyboard('{Enter}')
+
+        expect(document.activeElement).toBe(searchEl)
+      } finally {
+        combobox.dispose()
+      }
+    })
 
     const typeSearch = (searchEl, value) => {
       searchEl.value = value
