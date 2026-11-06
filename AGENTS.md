@@ -84,6 +84,7 @@ Act as a teacher for JavaScript, TypeScript, React, and all JavaScript-family to
 - Astro 5 + MDX in `site/src/content/docs/`
 - Frontmatter schema: `title` (required), `description` (required), `toc`, `aliases`, `added`, `mdn`, `reference`, etc.
 - Shortcodes: `Example`, `Callout`, `Code`, `Details`
+- For multiline `<Example code={...}>` template literals that start on the same line as the shortcode, add two extra spaces to each subsequent nonblank line. Top-level markup starts with two spaces in the source, and its children start with four. The rendered snippet removes the extra level. Follow `site/src/content/docs/forms/field.mdx` and check the rendered code before committing.
 - Internal links: `[[docsref:/path/]]`
 - JS component "Dependencies" tables are auto-generated — add a `### Dependencies` heading with `<JsDependencies component="<js-src-basename>" />` (before `### Options`) on any doc for a `js/src/*.ts` component. The table is derived at build time by walking the component's import graph in `site/src/libs/js-dependencies.ts`; never hand-write the file list. When a new source file or third-party package enters the graph, add its human-readable label to `FILE_DESCRIPTIONS` / `PACKAGE_DESCRIPTIONS` in that lib (the build throws if a label is missing).
 
