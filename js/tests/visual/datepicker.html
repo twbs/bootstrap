@@ -118,6 +118,26 @@
 
       <hr>
 
+      <h2>Inside a dialog</h2>
+      <p>The menu must paint above the dialog and its backdrop.</p>
+      <div class="row mb-4">
+        <div class="md:col-6">
+          <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#datepickerDialog">Open dialog</button>
+          <dialog class="dialog" id="datepickerDialog">
+            <div class="dialog-header">
+              <h2 class="dialog-title">Pick a date</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+            </div>
+            <div class="dialog-body">
+              <label for="dialogDatepicker" class="form-label">Date</label>
+              <input type="text" class="form-control" id="dialogDatepicker" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date">
+            </div>
+          </dialog>
+        </div>
+      </div>
+
+      <hr>
+
       <h2>Events Test</h2>
       <div class="row mb-4">
         <div class="md:col-6">
