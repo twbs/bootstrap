@@ -154,6 +154,75 @@ describe('OtpInput', () => {
       expect(input.getAttribute('inputmode')).toEqual('text')
       expect(input.getAttribute('pattern')).toEqual('[A-Za-z0-9]*')
     })
+
+    it('should set a text inputmode and pattern for the alpha type and strip digits', () => {
+      fixtureEl.innerHTML = getOtpHtml('data-bs-type="alpha"')
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+
+      const input = otpEl.querySelector('input')
+      expect(input.getAttribute('inputmode')).toEqual('text')
+      expect(input.getAttribute('pattern')).toEqual('[A-Za-z]*')
+
+      otp.setValue('a1B2c3')
+      expect(otp.getValue()).toEqual('aBc')
+    })
+
+    it('should fall back to the numeric type for an unknown type', () => {
+      fixtureEl.innerHTML = getOtpHtml('data-bs-type="hex"')
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+
+      const input = otpEl.querySelector('input')
+      expect(input.getAttribute('inputmode')).toEqual('numeric')
+      expect(input.getAttribute('pattern')).toEqual('[0-9]*')
+
+      otp.setValue('1a2b3c')
+      expect(otp.getValue()).toEqual('123')
+    })
+
+    for (const maxlength of ['0', '-2', 'abc']) {
+      it(`should fall back to six slots for the maxlength attribute ${JSON.stringify(maxlength)}`, () => {
+        fixtureEl.innerHTML = getOtpHtml('', maxlength)
+
+        const otpEl = fixtureEl.querySelector('.otp')
+        new OtpInput(otpEl) // eslint-disable-line no-new
+
+        expect(otpEl.querySelector('input').getAttribute('maxlength')).toEqual('6')
+        expect(otpEl.querySelectorAll('.otp-slot').length).toEqual(6)
+      })
+    }
+
+    for (const type of ['number', 'password']) {
+      it(`should change a ${type} input to a text input`, () => {
+        fixtureEl.innerHTML = `<div class="otp"><input type="${type}" maxlength="6"></div>`
+
+        const otpEl = fixtureEl.querySelector('.otp')
+        new OtpInput(otpEl) // eslint-disable-line no-new
+
+        expect(otpEl.querySelector('input').type).toEqual('text')
+      })
+    }
+
+    it('should keep an existing autocomplete attribute', () => {
+      fixtureEl.innerHTML = '<div class="otp"><input type="text" maxlength="6" autocomplete="off"></div>'
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+
+      expect(otpEl.querySelector('input').getAttribute('autocomplete')).toEqual('off')
+    })
+
+    it('should sanitize a pre-filled value', () => {
+      fixtureEl.innerHTML = '<div class="otp"><input type="text" maxlength="4" value="1a2-3 45"></div>'
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+
+      expect(otp.getValue()).toEqual('1234')
+    })
   })
 
   describe('value handling', () => {
@@ -751,6 +820,34 @@ describe('OtpInput', () => {
 
       expect(otpEl.querySelectorAll('.otp-separator').length).toEqual(1)
       expect(otpEl.querySelectorAll('.otp-slot').length).toEqual(6)
+    })
+
+    it('should repeat the last group size and not add a trailing separator', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      new OtpInput(otpEl, { groups: [2] }) // eslint-disable-line no-new
+
+      const classes = [...otpEl.querySelector('.otp-slots').children].map(child => child.className)
+      expect(classes).toEqual([
+        'otp-slot',
+        'otp-slot',
+        'otp-separator',
+        'otp-slot',
+        'otp-slot',
+        'otp-separator',
+        'otp-slot',
+        'otp-slot'
+      ])
+    })
+
+    it('should render the separator option as the separator text', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      new OtpInput(otpEl, { groups: [3, 3], separator: '-' }) // eslint-disable-line no-new
+
+      expect(otpEl.querySelector('.otp-separator').textContent).toEqual('-')
     })
   })
 
