@@ -1,6 +1,34 @@
 @use "../mixins/transition" as *;
 
 @layer components {
+  .combobox-control > .chip {
+    --chip-height: var(--combobox-control-chip-height);
+    --chip-border-radius: max(0px, calc(var(--control-border-radius) / 2));
+    --chip-padding-x: .5rem;
+    --chip-gap: .25rem;
+    --chip-dismiss-size: 1.5rem;
+
+    > .chip-dismiss {
+      margin-inline: -.25rem -.5rem;
+
+      > svg {
+        width: .75rem;
+        height: .75rem;
+      }
+    }
+
+    &:focus-visible,
+    > .chip-dismiss:focus-visible {
+      outline: 0;
+    }
+  }
+
+  .combobox-control + .menu,
+  .combobox + .menu {
+    --menu-max-height: 300px;
+    --menu-overflow-y: auto;
+  }
+
   .combobox-toggle {
     display: inline-flex;
     gap: .5rem;
@@ -52,7 +80,7 @@
 
   .combobox-search {
     position: sticky;
-    top: 0;
+    inset-block-start: calc(-1 * var(--menu-padding-y, .25rem));
     z-index: 1;
     padding: var(--menu-padding-x, .25rem);
     background-color: var(--menu-bg, var(--bg-body));
