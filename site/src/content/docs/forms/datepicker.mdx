@@ -5,13 +5,17 @@ toc: true
 css_layer: components
 js: required
 deps:
+  - title: Floating UI
+    url: https://floating-ui.com/
   - title: Vanilla Calendar Pro
     url: https://vanilla-calendar.pro/
 ---
 
 ## Overview
 
-The Bootstrap Datepicker is a wrapper around [Vanilla Calendar Pro](https://vanilla-calendar.pro/) that provides a consistent, accessible date selection experience. It supports light/dark themes, input binding, and flexible configuration via data attributes or JavaScript.
+Use a native `<input type="date">` for a single date when it meets your needs. The browser handles its calendar, keyboard interaction, and ISO date value.
+
+Bootstrap Datepicker uses [Vanilla Calendar Pro](https://vanilla-calendar.pro/) for custom calendars, including inline, multiple-date, and range selection. Bootstrap handles popup positioning, focus, and events.
 
 <Example code={`<label for="datepicker1" class="form-label">Datepicker</label>
   <input type="text" class="form-control w-12" id="datepicker1" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">`} />
@@ -26,9 +30,28 @@ Note that we’re using a width utility of `.w-12` to ensure the input is wide e
 - Selecting a date updates the input value and closes the picker
 - The picker also closes on a click outside it, on <kbd>Escape</kbd>, or when focus moves to an element outside it
 - The picker respects Bootstrap’s color modes (`data-bs-theme`)
-- Configurable with any [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings) via `vcpOptions` when initializing with JavaScript
+- Use `vcpOptions` for supported [Vanilla Calendar Pro options](https://vanilla-calendar.pro/docs/reference/settings). Bootstrap controls popup behavior and callbacks.
 
 ## Examples
+
+### Form submission
+
+Give the text input a `name` to submit selected dates in `YYYY-MM-DD` format. The visible value uses your locale. Multiple dates and ranges submit comma-separated ISO dates. An empty selection submits an empty string.
+
+<Example code={`<form>
+  <label for="datepickerSubmit" class="form-label">Departure date</label>
+  <input type="text" class="form-control w-12" id="datepickerSubmit" name="departure" value="2026-10-05" data-bs-toggle="datepicker" data-bs-locale="en-GB" autocomplete="off">
+  <button type="submit" class="btn-solid theme-primary mt-3">Submit</button>
+  <button type="reset" class="btn-outline theme-secondary mt-3">Reset</button>
+</form>`} />
+
+On initialization, Bootstrap moves the input’s name to an internal form binding. Form submission and `new FormData(form)` use that name with the ISO value. Disabled fields are omitted. A form reset restores the initial selection. `dispose()` removes the binding and restores the original input and its name. The disposed input then submits its visible value.
+
+Use `getSelectedDates()` to read selected dates in application code. Do not query the generated hidden input. Dispose and initialize the component again if you move an initialized input between forms. Initialize Datepicker explicitly if you need this binding before the first focus. Prefilled fields are not all initialized on page load.
+
+Use ISO dates for initial values. Manual input accepts valid ISO dates. It also accepts numeric Gregorian dates with ASCII digits and a four-digit year that exactly match the component’s own locale format. It does not parse arbitrary date phrases, month names, custom formatter output, or multiple-date text. Invalid manual input clears the selection and submitted value. Use the calendar or `setSelectedDates()` for multiple dates and ranges.
+
+Always validate submitted dates and application rules on your server. Client-side limits do not protect server endpoints.
 
 ### With form field
 
@@ -195,6 +218,8 @@ const datepicker = new bootstrap.Datepicker(element, {
 })
 ```
 
+Formatter results are inserted as text, including strings that contain HTML. Formatting changes the display, not the submitted ISO dates.
+
 ## Dark mode
 
 The datepicker automatically adapts to Bootstrap’s color modes. When `data-bs-theme="dark"` is set on a parent element or the `<html>` tag, the calendar popup inherits that theme.
@@ -233,6 +258,12 @@ root.innerHTML = '<input type="text" id="shadowDatepicker">'
 new bootstrap.Datepicker(root.getElementById('shadowDatepicker'))
 ```
 
+## Accessibility
+
+Give each input an associated label. When the popup opens, <kbd>Tab</kbd> enters its controls and continues to the next field after the last control. <kbd>Shift</kbd>+<kbd>Tab</kbd> from the first control returns to the input. <kbd>Escape</kbd> closes the popup and returns focus to the input. Hidden calendars do not receive keyboard focus.
+
+The popup uses the browser’s top layer inside dialogs. Bootstrap positions it with Floating UI and updates its position during scrolling.
+
 ## CSS
 
 ### Variables
@@ -250,6 +281,19 @@ Add `data-bs-toggle="datepicker"` to any input element to initialize it as a dat
 | --- | --- |
 | `data-bs-toggle="datepicker"` | Initializes the datepicker on the input (or button) element. |
 | `data-bs-inline` | When `true`, renders the calendar inline instead of a popup. |
+| `data-bs-selected-dates` | JSON array of ISO dates. Initializes the field on page load. |
+| `data-bs-selection-mode` | `single`, `multiple`, or `multiple-ranged`. |
+| `data-bs-display-months-count` | Number of displayed months. |
+| `data-bs-first-weekday` | First weekday, from `0` (Sunday) to `6` (Saturday). |
+| `data-bs-date-min` | Minimum date in `YYYY-MM-DD` format. |
+| `data-bs-date-max` | Maximum date in `YYYY-MM-DD` format. |
+| `data-bs-locale` | Locale used for displayed dates. |
+| `data-bs-date-format` | JSON object of `Intl.DateTimeFormat` options. Functions require JavaScript. |
+| `data-bs-display-element` | Display target selector, or `false` to disable it. |
+| `data-bs-position-element` | Position target selector. |
+| `data-bs-placement` | `left`, `center`, `right`, or `auto`. |
+| `data-bs-datepicker-theme` | `light`, `dark`, or `auto`. Omit it to inherit. |
+| `data-bs-vcp-options` | JSON object of supported Vanilla Calendar Pro settings. |
 </BsTable>
 
 ```html
@@ -290,12 +334,12 @@ const datepicker = new bootstrap.Datepicker(datepickerEl, {
 | `selectionMode` | string | `'single'` | Selection mode: `'single'`, `'multiple'`, or `'multiple-ranged'` |
 | `placement` | string | `'left'` | Calendar position relative to input: `'left'`, `'center'`, `'right'`, `'auto'` |
 | `datepickerTheme` | string | `null` | Force datepicker popup theme: `'light'`, `'dark'`, `'auto'`, or `null` to inherit from ancestor `[data-bs-theme]` |
-| `vcpOptions` | object | `{}` | Pass-through object for any [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings) |
+| `vcpOptions` | object | `{}` | Pass-through object for supported [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings) |
 </BsTable>
 
 ### Advanced configuration
 
-For features not directly exposed by Bootstrap’s options, use `vcpOptions` to pass any Vanilla Calendar Pro setting:
+For supported settings not exposed by Bootstrap’s options, use `vcpOptions`:
 
 ```js
 const datepicker = new bootstrap.Datepicker(element, {
@@ -308,7 +352,9 @@ const datepicker = new bootstrap.Datepicker(element, {
 })
 ```
 
-See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options.
+See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for available settings. Bootstrap overrides input mode, placement, themes, extensions, and its initialization, update, and date-click callbacks to keep its public behavior consistent.
+
+Vanilla Calendar Pro templates, including `layouts`, contain trusted HTML. Do not populate them with untrusted content or user-supplied JSON. This also applies to templates inside `data-bs-vcp-options`. Bootstrap does not sanitize these templates. Use formatter functions for plain text.
 
 Vanilla Calendar Pro ships its optional features as extensions. Bootstrap uses only the `months` extension, which `displayMonthsCount` needs. Options from other extensions are not supported, and Vanilla Calendar Pro throws an error when you set them. These include `animation`, `enableSwipe`, `selectionTimeMode`, `popups`, and the week view options.
 
