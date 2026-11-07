@@ -266,7 +266,7 @@ $utilities: map.merge(
       values: map.merge($border-widths, (keyline: var(--border-width-keyline)))
     ),
     "border-opacity": (
-      class: border,
+      class: border-opacity,
       property: border-color,
       values: theme-opacity-values(--bc)
     ),

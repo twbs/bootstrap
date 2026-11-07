@@ -24,7 +24,7 @@ For example, `.border-primary` sets the `--bs-bc` variable to `var(--bs-primary-
 }
 ```
 
-This approach allows us to also easily support translucency with our `.border-{opacity}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
+This approach allows us to also easily support translucency with our `.border-opacity-{n}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
 
 <Callout>
 The `--bs-bc` variable is registered with `@property` as non-inheriting (`inherits: false`), so border color utilities are scoped to the element they’re applied to and never cascade into nested elements or components. This is why `--bs-bc` is deliberately separate from the inheriting `--bs-border-color` design token that components resolve their default borders from.
@@ -73,15 +73,15 @@ Because border color utilities set the non-inheriting `--bs-bc` variable, parent
 Change the opacity of a border color by using any of the `.border-<percentage>` utilities which use `color-mix()` to mix the border color with `transparent` thanks to the CSS variable approach mentioned above. Because `--bs-bc` is scoped to the element, pair these opacity utilities with a `.border-{color}` utility on the same element—they no longer inherit a border color from an ancestor.
 
 <Example code={`<div class="border border-5 border-primary p-2 mb-2">Default border</div>
-<div class="border border-5 border-primary border-90 p-2 mb-2">90% opacity</div>
-<div class="border border-5 border-primary border-80 p-2 mb-2">80% opacity</div>
-<div class="border border-5 border-primary border-70 p-2 mb-2">70% opacity</div>
-<div class="border border-5 border-primary border-60 p-2 mb-2">60% opacity</div>
-<div class="border border-5 border-primary border-50 p-2 mb-2">50% opacity</div>
-<div class="border border-5 border-primary border-40 p-2 mb-2">40% opacity</div>
-<div class="border border-5 border-primary border-30 p-2 mb-2">30% opacity</div>
-<div class="border border-5 border-primary border-20 p-2 mb-2">20% opacity</div>
-<div class="border border-5 border-primary border-10 p-2">10% opacity</div>`} />
+<div class="border border-5 border-primary border-opacity-90 p-2 mb-2">90% opacity</div>
+<div class="border border-5 border-primary border-opacity-80 p-2 mb-2">80% opacity</div>
+<div class="border border-5 border-primary border-opacity-70 p-2 mb-2">70% opacity</div>
+<div class="border border-5 border-primary border-opacity-60 p-2 mb-2">60% opacity</div>
+<div class="border border-5 border-primary border-opacity-50 p-2 mb-2">50% opacity</div>
+<div class="border border-5 border-primary border-opacity-40 p-2 mb-2">40% opacity</div>
+<div class="border border-5 border-primary border-opacity-30 p-2 mb-2">30% opacity</div>
+<div class="border border-5 border-primary border-opacity-20 p-2 mb-2">20% opacity</div>
+<div class="border border-5 border-primary border-opacity-10 p-2">10% opacity</div>`} />
 
 ## CSS
 

@@ -524,16 +524,16 @@ The [`theme-color-values($key)`]([[docsref:/customize/theme]]) function in `scss
 The [`theme-opacity-values($color-var, $opacities)`]([[docsref:/customize/theme]]) function in `scss/_theme.scss` generates a map of opacity variants for a CSS custom property using `color-mix()`. The `$opacities` argument defaults to `$util-opacity` (10 through 100 in steps of 10). At `100`, it returns the variable directly; for all other steps, it mixes the variable against `transparent`:
 
 ```scss
-// In _utilities.scss — generate .border-{opacity} classes
+// In _utilities.scss — generate .border-opacity-{n} classes
 "border-opacity": (
-  class: border,
+  class: border-opacity,
   property: border-color,
   values: theme-opacity-values(--border-color)
 ),
 
-// Generate .fg-{opacity} classes
+// Generate .fg-opacity-{n} classes
 "fg-opacity": (
-  class: fg,
+  class: fg-opacity,
   property: color,
   values: theme-opacity-values(--fg)
 ),
