@@ -42,20 +42,20 @@ Change the underline’s color independent of the text color.
 
 Change the underline’s opacity. Fades the current text color by default, or pair with `.underline-{color}` to first set a color that the opacity is then mixed against.
 
-<Example code={`<p><a class="underline-10" href="#">Underline opacity 10</a></p>
-<p><a class="underline-20" href="#">Underline opacity 20</a></p>
-<p><a class="underline-30" href="#">Underline opacity 30</a></p>
-<p><a class="underline-40" href="#">Underline opacity 40</a></p>
-<p><a class="underline-50" href="#">Underline opacity 50</a></p>
-<p><a class="underline-60" href="#">Underline opacity 60</a></p>
-<p><a class="underline-70" href="#">Underline opacity 70</a></p>
-<p><a class="underline-80" href="#">Underline opacity 80</a></p>
-<p><a class="underline-90" href="#">Underline opacity 90</a></p>
-<p><a class="underline-100" href="#">Underline opacity 100</a></p>`} />
+<Example code={`<p><a class="underline-opacity-10" href="#">Underline opacity 10</a></p>
+<p><a class="underline-opacity-20" href="#">Underline opacity 20</a></p>
+<p><a class="underline-opacity-30" href="#">Underline opacity 30</a></p>
+<p><a class="underline-opacity-40" href="#">Underline opacity 40</a></p>
+<p><a class="underline-opacity-50" href="#">Underline opacity 50</a></p>
+<p><a class="underline-opacity-60" href="#">Underline opacity 60</a></p>
+<p><a class="underline-opacity-70" href="#">Underline opacity 70</a></p>
+<p><a class="underline-opacity-80" href="#">Underline opacity 80</a></p>
+<p><a class="underline-opacity-90" href="#">Underline opacity 90</a></p>
+<p><a class="underline-opacity-100" href="#">Underline opacity 100</a></p>`} />
 
 Pair an opacity class with a color class to fade that specific color instead of the default text color:
 
-<Example code={`<a class="theme-success underline-success underline-30 hover:underline-80" href="#">Faded success underline</a>`} />
+<Example code={`<a class="theme-success underline-success underline-opacity-30 hover:underline-opacity-80" href="#">Faded success underline</a>`} />
 
 ### Thickness
 
@@ -70,9 +70,9 @@ Change the thickness of the underline.
 
 ### Hover variants
 
-The `.underline-offset`, `.underline-{N}`, and `.underline-thickness` utilities include `:hover` variants by default. Mix and match to create unique link styles.
+The `.underline-offset`, `.underline-opacity-{n}`, and `.underline-thickness` utilities include `:hover` variants by default. Mix and match to create unique link styles.
 
-<Example code={`<a class="underline-offset-2 hover:underline-offset-3 underline-10 hover:underline-50 hover:underline-thickness-2" href="#">
+<Example code={`<a class="underline-offset-2 hover:underline-offset-3 underline-opacity-10 hover:underline-opacity-50 hover:underline-thickness-2" href="#">
     Underline with offset and opacity changes on hover
   </a>`} />
 
