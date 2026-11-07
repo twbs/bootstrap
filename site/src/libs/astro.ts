@@ -1,11 +1,13 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import type { AstroIntegration } from 'astro'
 import autoImport from 'astro-auto-import'
 import type { Element, Text } from 'hast'
+import * as pagefind from 'pagefind'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { getConfig } from './config'
 import { rehypeBsTable } from './rehype'
@@ -39,13 +41,16 @@ export function bootstrap(): AstroIntegration[] {
   const sitemapExcludedUrls = sitemapExcludes.map((url) => `${getConfig().baseURL}${url}/`)
 
   configurePrism()
+  let isDev = false
 
   return [
     bootstrap_auto_import(),
     {
       name: 'bootstrap-integration',
       hooks: {
-        'astro:config:setup': ({ addWatchFile, updateConfig }) => {
+        'astro:config:setup': ({ addWatchFile, command, updateConfig }) => {
+          isDev = command === 'dev'
+
           // Reload the config when the integration is modified.
           addWatchFile(path.join(getDocsFsPath(), 'src/libs/astro.ts'))
 
@@ -77,9 +82,14 @@ export function bootstrap(): AstroIntegration[] {
           copyBootstrap()
           copyStatic()
           aliasStatic()
+          if (isDev) {
+            copyPagefindIndex()
+          }
         },
-        'astro:build:done': ({ dir }) => {
+        'astro:build:done': async ({ dir, logger }) => {
           validateVersionedDocsPaths(dir)
+          const pageCount = await buildPagefindIndex(fileURLToPath(dir))
+          logger.info('Pagefind processed ' + pageCount + ' documentation files.')
         }
       }
     },
@@ -134,6 +144,44 @@ export declare global {
   return autoImport({
     imports: autoImportedComponents
   })
+}
+
+function pagefindPath() {
+  return path.join('docs', getConfig().docs_version, 'pagefind')
+}
+
+function copyPagefindIndex() {
+  const source = path.join(process.cwd(), '_site', pagefindPath())
+  if (fs.existsSync(source)) {
+    fs.cpSync(source, path.join(getDocsPublicFsPath(), pagefindPath()), { recursive: true })
+  }
+}
+
+async function buildPagefindIndex(directory: string) {
+  try {
+    // Preserve CSS, Sass, and HTML punctuation in search terms.
+    const { index, errors } = await pagefind.createIndex({ includeCharacters: '$&-_<>:.' })
+    if (!index || errors.length) {
+      throw new Error('Pagefind could not create an index. ' + errors.join('\n'))
+    }
+
+    const indexed = await index.addDirectory({
+      path: directory,
+      glob: 'docs/' + getConfig().docs_version + '/**/*.html'
+    })
+    if (indexed.errors.length || !indexed.page_count) {
+      throw new Error('Pagefind could not index the documentation. ' + indexed.errors.join('\n'))
+    }
+
+    const written = await index.writeFiles({ outputPath: path.join(directory, pagefindPath()) })
+    if (written.errors.length) {
+      throw new Error('Pagefind could not write the index. ' + written.errors.join('\n'))
+    }
+
+    return indexed.page_count
+  } finally {
+    await pagefind.close()
+  }
 }
 
 function cleanPublicDirectory() {
