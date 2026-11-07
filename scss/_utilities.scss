@@ -809,7 +809,7 @@ $utilities: map.merge(
       values: theme-color-refs("contrast"),
     ),
     "fg-opacity": (
-      class: fg,
+      class: fg-opacity,
       property: color,
       values: theme-opacity-values(--fg)
     ),
