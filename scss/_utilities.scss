@@ -887,7 +887,7 @@ $utilities: map.merge(
       values: theme-color-refs("bg-muted"),
     ),
     "bg-opacity": (
-      class: bg,
+      class: bg-opacity,
       property: background-color,
       values: theme-opacity-values(--bg)
     ),
