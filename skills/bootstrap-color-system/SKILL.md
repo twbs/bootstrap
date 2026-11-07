@@ -226,7 +226,7 @@ Helpers in `scss/_theme.scss` for reading across the color maps, mostly used whe
 
 `color-contrast($background)` in `scss/_functions.scss` returns a light, dark, or black foreground using the WCAG contrast algorithm. It works on Sass color values, not `var()` references, so it's for build-time swatches and generated classes — the `contrast` role in `$theme-colors` is the runtime answer.
 
-The generated utilities follow the role names: `.fg-primary`, `.fg-emphasis-primary`, `.fg-contrast-primary`, `.bg-primary`, `.bg-subtle-primary`, `.bg-muted-primary`, `.border-primary`, and `.border-subtle-primary`, for every theme color. The layer colors get the same treatment (`.bg-1` through `.bg-4`, `.fg-1` through `.fg-4`, `.border-subtle`), and opacity is a numeric ladder on the same class names — `.fg-50`, `.bg-opacity-70`, `.border-30`, in steps of 10.
+The generated utilities follow the role names: `.fg-primary`, `.fg-emphasis-primary`, `.fg-contrast-primary`, `.bg-primary`, `.bg-subtle-primary`, `.bg-muted-primary`, `.border-primary`, and `.border-subtle-primary`, for every theme color. The layer colors get the same treatment (`.bg-1` through `.bg-4`, `.fg-1` through `.fg-4`, `.border-subtle`), and opacity is a numeric ladder on the same class names — `.fg-opacity-50`, `.bg-opacity-70`, `.border-30`, in steps of 10.
 
 Reach for `.theme-*` instead when you want a whole element themed rather than one property recolored.
 
