@@ -464,7 +464,7 @@ Events are fired on the toggle button element.
 | `change.bs.combobox` | Fires when a selection is made. The event detail includes `value` and `item`. |
 </BsTable>
 
-When `name` is set, the hidden input also fires native `input` and `change` events. See [form submission](#form-submission).
+When the selection changes, native `input` and `change` events also fire. The hidden input fires them when `name` is set. Otherwise, the toggle button fires them. See [form submission](#form-submission).
 
 ## Accessibility
 

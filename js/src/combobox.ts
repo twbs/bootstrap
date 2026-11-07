@@ -270,7 +270,7 @@ class Combobox extends BaseComponent {
   }
 
   protected _selectItem(item: HTMLElement): void {
-    const previousValue = this._hiddenInput?.value
+    const previousValues = this._getSelectedValues().join(',')
 
     if (this._config.multiple) {
       item.classList.toggle(CLASS_NAME_SELECTED)
@@ -289,14 +289,16 @@ class Combobox extends BaseComponent {
     this._updateToggleText()
     this._updateHiddenInput()
 
-    // Fire the events a native `<select>` fires, so form listeners see the new value
-    if (this._hiddenInput && this._hiddenInput.value !== previousValue) {
-      EventHandler.trigger(this._hiddenInput, EVENT_NATIVE_INPUT)
-      EventHandler.trigger(this._hiddenInput, EVENT_NATIVE_CHANGE)
+    // Fire the events a native `<select>` fires, so form listeners see the new value.
+    // Without a hidden input, the toggle fires them.
+    if (this._getSelectedValues().join(',') !== previousValues) {
+      const target = this._hiddenInput ?? this._toggle
+      EventHandler.trigger(target, EVENT_NATIVE_INPUT)
+      EventHandler.trigger(target, EVENT_NATIVE_CHANGE)
     }
 
     const value = this._config.multiple ?
-      this._getSelectedItems().map(el => el.dataset.bsValue) :
+      this._getSelectedValues() :
       item.dataset.bsValue
 
     EventHandler.trigger(this._toggle, EVENT_CHANGE, {
@@ -342,13 +344,16 @@ class Combobox extends BaseComponent {
       return
     }
 
-    const selectedItems = this._getSelectedItems()
-    const values = selectedItems.map(el => el.dataset.bsValue)
+    const values = this._getSelectedValues()
     this._hiddenInput.value = this._config.multiple ? values.join(',') : (values[0] || '')
   }
 
   protected _getSelectedItems(): HTMLElement[] {
     return SelectorEngine.find(`.${CLASS_NAME_SELECTED}`, this._menu)
+  }
+
+  protected _getSelectedValues(): Array<string | undefined> {
+    return this._getSelectedItems().map(el => el.dataset.bsValue)
   }
 
   protected _getVisibleItems(): HTMLElement[] {

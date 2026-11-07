@@ -278,6 +278,22 @@ describe('Combobox', () => {
       expect(hiddenInput.value).toEqual('uk')
     })
 
+    it('should fire native input then change on the toggle when no name is set', () => {
+      const { toggleEl, items } = makeCombobox()
+      const fired = []
+      const listener = event => {
+        fired.push(`${event.type}:${event.target === toggleEl}`)
+      }
+
+      fixtureEl.addEventListener('input', listener)
+      fixtureEl.addEventListener('change', listener)
+      items[1].click()
+      fixtureEl.removeEventListener('input', listener)
+      fixtureEl.removeEventListener('change', listener)
+
+      expect(fired).toEqual(['input:true', 'change:true'])
+    })
+
     it('should not fire native change when the selected item is picked again', () => {
       const { items } = makeCombobox({ name: 'country' })
       const hiddenInput = fixtureEl.querySelector('input[type="hidden"]')
@@ -571,6 +587,19 @@ describe('Combobox', () => {
       keydown(items[2], ' ')
 
       expect(items[2]).toHaveClass('selected')
+    })
+
+    it('should fire native change on the hidden input when an item is selected on Enter', () => {
+      const { combobox, items } = makeCombobox({ name: 'country' })
+      const hiddenInput = fixtureEl.querySelector('input[type="hidden"]')
+      const changeSpy = jasmine.createSpy('change')
+      hiddenInput.addEventListener('change', changeSpy)
+      combobox.show()
+
+      keydown(items[1], 'Enter')
+
+      expect(changeSpy).toHaveBeenCalledTimes(1)
+      expect(hiddenInput.value).toEqual('uk')
     })
   })
 
