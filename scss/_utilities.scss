@@ -844,7 +844,7 @@ $utilities: map.merge(
     ),
     "underline-opacity": (
       property: text-decoration-color,
-      class: underline,
+      class: underline-opacity,
       state: hover,
       values: theme-opacity-values(--underline-color, currentcolor)
     ),

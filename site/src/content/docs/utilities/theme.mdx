@@ -23,7 +23,7 @@ Contrast pairs the `bg` theme token with the `contrast` text color for maximum r
 
 Nested links inherit the contrast foreground so they stay legible on the solid background:
 
-<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-contrast">Theme ${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">nested link</a> inside.</div>`)} />
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-contrast">Theme ${themeColor.title} with a <a class="underline-opacity-50 hover:underline-opacity-100" href="#">nested link</a> inside.</div>`)} />
 
 ### Subtle
 
@@ -37,7 +37,7 @@ And with borders:
 
 Nested links inherit the subtle foreground so they stay legible on the subtle background:
 
-<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-subtle">Theme ${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">nested link</a> inside.</div>`)} />
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-subtle">Theme ${themeColor.title} with a <a class="underline-opacity-50 hover:underline-opacity-100" href="#">nested link</a> inside.</div>`)} />
 
 ### Muted
 
@@ -51,16 +51,16 @@ And with borders:
 
 Nested links inherit the muted foreground so they stay legible on the muted background:
 
-<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-muted">Theme ${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">nested link</a> inside.</div>`)} />
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-3 theme-${themeColor.name} theme-muted">Theme ${themeColor.title} with a <a class="underline-opacity-50 hover:underline-opacity-100" href="#">nested link</a> inside.</div>`)} />
 
 ## Comparison
 
 Here’s a side-by-side comparison of all three styles for each theme color, including nested links:
 
 <Example code={getData('theme-colors').map((themeColor) => `<div class="d-flex gap-2 mb-2">
-    <div class="theme-${themeColor.name} theme-contrast p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">link</a></div>
-    <div class="theme-${themeColor.name} theme-subtle p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">link</a></div>
-    <div class="theme-${themeColor.name} theme-muted p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-50 hover:underline-100" href="#">link</a></div>
+    <div class="theme-${themeColor.name} theme-contrast p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-opacity-50 hover:underline-opacity-100" href="#">link</a></div>
+    <div class="theme-${themeColor.name} theme-subtle p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-opacity-50 hover:underline-opacity-100" href="#">link</a></div>
+    <div class="theme-${themeColor.name} theme-muted p-3 flex-fill text-center rounded">${themeColor.title} with a <a class="underline-opacity-50 hover:underline-opacity-100" href="#">link</a></div>
   </div>`)} />
 
 ## With components
