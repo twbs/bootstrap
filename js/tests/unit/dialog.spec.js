@@ -755,12 +755,39 @@ describe('Dialog', () => {
         dialogEl.addEventListener('cancel.bs.dialog', cancelSpy)
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
-          inputEl.dispatchEvent(createEvent('cancel', { bubbles: true }))
+          // Cancelable, so a preventDefault() call from the dialog would show.
+          const inputCancelEvent = createEvent('cancel', { bubbles: true, cancelable: true })
+          inputEl.dispatchEvent(inputCancelEvent)
 
           setTimeout(() => {
+            expect(inputCancelEvent.defaultPrevented).toBeFalse()
             expect(hideSpy).not.toHaveBeenCalled()
             expect(cancelSpy).not.toHaveBeenCalled()
             expect(dialogEl.open).toBeTrue()
+            resolve()
+          }, 10)
+        })
+
+        dialog.show()
+      })
+    })
+
+    it('should still close on escape after a file input inside the dialog fires cancel', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"><input type="file"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const inputEl = fixtureEl.querySelector('input')
+        const dialog = new Dialog(dialogEl)
+
+        const hideSpy = spyOn(dialog, 'hide')
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          inputEl.dispatchEvent(createEvent('cancel', { bubbles: true }))
+          dialogEl.dispatchEvent(createEvent('cancel'))
+
+          setTimeout(() => {
+            expect(hideSpy).toHaveBeenCalledTimes(1)
             resolve()
           }, 10)
         })
