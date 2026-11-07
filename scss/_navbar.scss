@@ -194,14 +194,13 @@ $navbar-nav-tokens: defaults(
   // navbar responds to its own width, not the viewport width.
 
   // Mixin for expanded state styles (applied to descendants)
-
-    // Style the inner container since we can't style .navbar itself with container queries
-      @mixin navbar-expanded {
+  @mixin navbar-expanded {
     // Style the inner container since we can't style .navbar itself with container queries
     > .container,
     > .container-fluid,
     %navbar-expand-container {
       flex-wrap: nowrap;
+      align-self: stretch;
       justify-content: flex-start;
     }
 
@@ -251,7 +250,9 @@ $navbar-nav-tokens: defaults(
         flex-grow: 1;
         flex-direction: row;
         align-items: stretch;
+        align-self: stretch;
         padding: 0;
+        margin-block: calc(var(--navbar-padding-y) * -1);
         overflow-y: visible;
       }
     }
