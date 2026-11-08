@@ -195,7 +195,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     event.preventDefault()
   }
 
-  if (isDisabled(this)) {
+  if (!target || isDisabled(this)) {
     return
   }
 
@@ -206,9 +206,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   })
 
   // Avoid conflict when clicking a toggler of a drawer, while another is open
-  const alreadyOpen = SelectorEngine.findOne('dialog.drawer[open]')
+  const alreadyOpen = SelectorEngine.findOne(SELECTOR_OPEN)
   if (alreadyOpen && alreadyOpen !== target) {
-    Drawer.getInstance(alreadyOpen)!.hide()
+    Drawer.getOrCreateInstance(alreadyOpen).hide()
   }
 
   const data = Drawer.getOrCreateInstance(target)
