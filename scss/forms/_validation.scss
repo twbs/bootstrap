@@ -329,6 +329,24 @@ $validation-states: defaults(
     }
   }
 
+  // Floating label feedback follows the wrapper that contains the control.
+  .form-floating:has(> :where(.form-control).is-#{$state}) {
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip { display: block; }
+  }
+
+  @if $state == "invalid" {
+    [data-bs-validate] .form-floating:has(> :where(.form-control):user-invalid) {
+      ~ .invalid-feedback,
+      ~ .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .form-floating:has(> :where(.form-control):user-valid) {
+      ~ .valid-feedback,
+      ~ .valid-tooltip { display: block; }
+    }
+  }
+
   .input-group {
     > .form-control:not(:focus),
     > .form-floating:not(:focus-within) {

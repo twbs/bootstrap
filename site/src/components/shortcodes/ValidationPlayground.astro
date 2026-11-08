@@ -65,7 +65,6 @@ const groups = [
       element,
       field: element.closest('.form-field')!,
       inlineOnly: Boolean(element.closest('.form-group')),
-      floating: element.classList.contains('d-block'),
       invalidText: element.textContent
     }))
 
@@ -93,7 +92,7 @@ const groups = [
         }
       }
 
-      for (const { element, field, inlineOnly, floating, invalidText } of messages) {
+      for (const { element, field, inlineOnly, invalidText } of messages) {
         const tooltip = showFeedback && feedback === 'tooltip' && !inlineOnly
         field.classList.toggle('position-relative', tooltip)
         field.classList.toggle('mb-4', tooltip)
@@ -102,7 +101,6 @@ const groups = [
         element.classList.toggle('invalid-feedback', showFeedback && invalid && !tooltip)
         element.classList.toggle('valid-tooltip', valid && tooltip)
         element.classList.toggle('invalid-tooltip', invalid && tooltip)
-        element.classList.toggle('d-block', showFeedback && floating)
         element.hidden = !showFeedback
         element.textContent = valid ? 'Looks good.' : invalidText
       }
