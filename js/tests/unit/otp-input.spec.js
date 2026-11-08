@@ -497,6 +497,23 @@ describe('OtpInput', () => {
       expect(input.selectionStart).toEqual(2)
     })
 
+    it('should replace a multi-slot selection with the typed character', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      input.focus()
+      // Select all, then type over it
+      input.setSelectionRange(0, 6)
+      beforeInput(input, { inputType: 'insertText', data: '9' })
+
+      expect(input.value).toEqual('9')
+      expect(input.selectionStart).toEqual(1)
+    })
+
     it('should do nothing on backspace at the start of an empty field', () => {
       fixtureEl.innerHTML = getOtpHtml()
 
