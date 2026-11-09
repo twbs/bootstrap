@@ -22,11 +22,6 @@ swag:                   "https://cottonbureau.com/people/bootstrap"
 analytics:
   fathom_site:          "ITUSEYJG"
 
-algolia:
-  app_id:                "AK7KMZKZHQ"
-  api_key:               "3151f502c7b9e9dafd5e6372b691a24e"
-  index_name:            "bootstrap"
-
 download:
   source:               "https://github.com/twbs/bootstrap/archive/v5.3.8.zip"
   dist:                 "https://github.com/twbs/bootstrap/releases/download/v5.3.8/bootstrap-5.3.8-dist.zip"
