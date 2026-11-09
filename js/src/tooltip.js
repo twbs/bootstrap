@@ -539,6 +539,18 @@ class Tooltip extends BaseComponent {
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
 
+    // Read text attributes without coercing their values.
+    const title = this._element.getAttribute('data-bs-title')
+    const content = this._element.getAttribute('data-bs-content')
+
+    if (title !== null) {
+      dataAttributes.title = title
+    }
+
+    if (content !== null) {
+      dataAttributes.content = content
+    }
+
     for (const dataAttribute of Object.keys(dataAttributes)) {
       if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {
         delete dataAttributes[dataAttribute]
