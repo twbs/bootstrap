@@ -21,6 +21,7 @@ interface Props {
 }
 
 const { addedIn, layout, title } = Astro.props
+const docsHome = getVersionedDocsPath('getting-started/introduction/')
 ---
 
 <header class="navbar navbar-expand-lg bd-navbar sticky-top">
@@ -44,7 +45,7 @@ const { addedIn, layout, title } = Astro.props
     }
     {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
 
-    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
+    <a class="navbar-brand p-0 me-0 me-lg-2" href={layout === 'docs' ? docsHome : '/'} aria-label="Bootstrap">
       <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
     </a>
 
@@ -82,9 +83,7 @@ const { addedIn, layout, title } = Astro.props
       <div class="offcanvas-body p-4 pt-0 p-lg-0">
         <hr class="d-lg-none text-white-50" />
         <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
-          <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/introduction/')} track>
-            Docs
-          </LinkItem>
+          <LinkItem active={layout === 'docs'} href={docsHome} track> Docs </LinkItem>
           <LinkItem active={title === 'Examples'} href={getVersionedDocsPath('examples/')} track>Examples</LinkItem>
           <LinkItem href={getConfig().icons} target="_blank" rel="noopener" track>Icons</LinkItem>
           <LinkItem href={getConfig().blog} target="_blank" rel="noopener" track>Blog</LinkItem>
