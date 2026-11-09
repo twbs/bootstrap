@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Dropdown Test</title>
+
+  <!-- Use your freshly built Bootstrap -->
+  <link rel="stylesheet" href="dist/css/bootstrap.css">
+  <script src="dist/js/bootstrap.bundle.js"></script>
+
+</head>
+<body class="p-5">
+
+<ul class="nav">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button"
+       data-bs-toggle="dropdown" data-bs-auto-close="outside"
+       aria-expanded="false" id="menuDemo">
+      Demo
+    </a>
+
+    <ul class="dropdown-menu">
+
+      <li class="dropend">
+        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+           data-bs-auto-close="outside" href="#">
+          Submenu 1
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li class="dropdown-item">Menu Item 1A</li>
+          <li class="dropdown-item">Menu Item 1B</li>
+        </ul>
+      </li>
+
+      <li class="dropend">
+        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+           data-bs-auto-close="outside" href="#">
+          Submenu 2
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li class="dropdown-item">Menu Item 2A</li>
+          <li class="dropdown-item">Menu Item 2B</li>
+          <li class="dropdown-item">Menu Item 2C</li>
+        </ul>
+      </li>
+
+      <li class="dropend">
+        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+           data-bs-auto-close="outside" href="#">
+          Submenu 3
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li class="dropdown-item">Menu Item 3A</li>
+          <li class="dropdown-item">Menu Item 3B</li>
+        </ul>
+      </li>
+
+    </ul>
+  </li>
+</ul>
+
+</body>
+</html>
