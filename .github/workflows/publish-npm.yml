@@ -36,7 +36,7 @@ jobs:
           package-manager-cache: false
 
       - name: Install npm with staged publishing support
-        run: npm install --global npm@12.2.1
+        run: npm install --global npm@11.21.1
 
       - name: Verify package version and select npm tag
         id: package
