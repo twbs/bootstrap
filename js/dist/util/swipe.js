@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap swipe.js v5.3.8 (https://getbootstrap.com/)
-  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap swipe.js v5.3.9 (https://getbootstrap.com/)
+  * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -55,6 +55,7 @@
         return;
       }
       this._config = this._getConfig(config);
+      this._startX = 0;
       this._deltaX = 0;
       this._supportPointerEvents = Boolean(window.PointerEvent);
       this._initEvents();
@@ -78,23 +79,24 @@
 
     // Private
     _start(event) {
+      this._deltaX = 0;
       if (!this._supportPointerEvents) {
-        this._deltaX = event.touches[0].clientX;
+        this._startX = event.touches[0].clientX;
         return;
       }
       if (this._eventIsPointerPenTouch(event)) {
-        this._deltaX = event.clientX;
+        this._startX = event.clientX;
       }
     }
     _end(event) {
       if (this._eventIsPointerPenTouch(event)) {
-        this._deltaX = event.clientX - this._deltaX;
+        this._deltaX = event.clientX - this._startX;
       }
       this._handleSwipe();
       index_js.execute(this._config.endCallback);
     }
     _move(event) {
-      this._deltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this._deltaX;
+      this._deltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this._startX;
     }
     _handleSwipe() {
       const absDeltaX = Math.abs(this._deltaX);
