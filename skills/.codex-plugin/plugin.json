@@ -1,9 +1,10 @@
 {
   "name": "bootstrap",
-  "description": "Bootstrap agent skills",
+  "version": "0.1.1",
+  "description": "Agent skills for installing, customizing, and migrating Bootstrap 6 projects.",
   "author": {
     "name": "Bootstrap",
-    "url": "https://github.com/twbs"
+    "url": "https://getbootstrap.com"
   },
   "homepage": "https://getbootstrap.com",
   "repository": "https://github.com/twbs/bootstrap",
@@ -11,9 +12,12 @@
   "keywords": [
     "bootstrap",
     "css",
-    "html",
+    "sass",
+    "javascript",
     "ui",
-    "frontend"
+    "frontend",
+    "components",
+    "migration"
   ],
   "skills": [
     "./bootstrap-color-system",
@@ -30,10 +34,23 @@
   ],
   "interface": {
     "displayName": "Bootstrap",
-    "shortDescription": "Bootstrap agent skills",
-    "longDescription": "Agent skills for working with Bootstrap 6, installed from the skills already in this repository.",
+    "shortDescription": "Install, customize, and migrate Bootstrap 6 with agent skills",
+    "longDescription": "Bootstrap is a CSS and JavaScript framework for building responsive interfaces. This plugin gives coding agents the Bootstrap 6 skills already in this repository.\n\nUse it when installing Bootstrap 6 (CDN or package managers), wiring Vite, Webpack, Parcel, or npm-only setups, authoring component CSS and TypeScript, working with the color system or utility API, or migrating from Bootstrap 4 or 5 to Bootstrap 6.\n\nEach skill walks through a concrete workflow with the same guidance as the Bootstrap docs guides — from project setup through migration checklists.",
     "developerName": "Bootstrap",
     "category": "Developer Tools",
-    "websiteURL": "https://getbootstrap.com"
+    "capabilities": [
+      "Bootstrap 6 install and bundler setup",
+      "Component CSS and JavaScript authoring",
+      "v4/v5 to v6 migration"
+    ],
+    "websiteURL": "https://getbootstrap.com",
+    "defaultPrompt": [
+      "Set up Bootstrap 6 with Vite in this project",
+      "Migrate this Bootstrap 5 UI to Bootstrap 6",
+      "Add a custom Bootstrap component with Sass tokens and TypeScript"
+    ],
+    "brandColor": "#4c0bce",
+    "composerIcon": "./assets/logo.svg",
+    "logo": "./assets/logo.svg"
   }
 }
