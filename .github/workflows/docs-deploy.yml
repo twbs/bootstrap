@@ -1,0 +1,84 @@
+name: Docs deploy
+
+# Manual only. Dispatch this workflow from the branch you want to publish.
+# It builds the docs and pushes only this version to `gh-pages`.
+
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 2
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.repository == 'twbs/bootstrap'
+    permissions:
+      # allow the job to push the built site to the `gh-pages` branch
+      contents: write
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build dist
+        run: npm run dist
+
+      - name: Build docs
+        run: npm run docs-build
+
+      # Checked out after the build so the docs build never sees this directory.
+      # Keeps its credentials, because the push at the end needs them.
+      - name: Check out gh-pages
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: gh-pages
+          path: .gh-pages
+
+      # Replace only the configured docs version, removing stale files while
+      # preserving the main site and every other `docs/<version>` directory.
+      - name: Copy the built docs over gh-pages
+        run: |
+          DOCS_VERSION=$(node --input-type=module -e '
+            import fs from "node:fs";
+            import { load } from "js-yaml";
+            const { docs_version } = load(fs.readFileSync("config.yml", "utf8"));
+            if (!/^5\.\d+$/.test(docs_version)) {
+              throw new Error("Expected a v5 docs version in config.yml");
+            }
+            console.log(docs_version);
+          ')
+          test -d "_site/docs/${DOCS_VERSION}"
+          mkdir -p .gh-pages/docs
+          rsync --archive --delete --exclude .git "_site/docs/${DOCS_VERSION}/" ".gh-pages/docs/${DOCS_VERSION}/"
+          touch .gh-pages/.nojekyll
+
+      - name: Commit and push
+        working-directory: .gh-pages
+        env:
+          SOURCE_REF: ${{ github.ref_name }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add --all
+          if git diff --staged --quiet; then
+            echo "The built site matches gh-pages. Nothing to publish."
+            exit 0
+          fi
+          git commit -m "Deploy docs from ${SOURCE_REF}@${SOURCE_SHA}"
+          git push origin gh-pages
