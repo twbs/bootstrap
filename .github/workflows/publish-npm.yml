@@ -1,0 +1,58 @@
+name: Publish npm Package
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-npm-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  publish-npm:
+    if: ${{ github.repository == 'twbs/bootstrap' && startsWith(github.event.release.tag_name, 'v') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name }}
+      RELEASE_PRERELEASE: ${{ github.event.release.prerelease }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+
+      - name: Verify package version and select npm tag
+        id: package
+        run: |
+          node --input-type=commonjs <<'NODE'
+          const fs = require('node:fs')
+          const { name, version } = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+          if (name !== 'bootstrap' || process.env.RELEASE_TAG !== `v${version}`) {
+            throw new Error(`Release ${process.env.RELEASE_TAG} does not match ${name}@${version}`)
+          }
+          const prerelease = version.includes('-') || process.env.RELEASE_PRERELEASE === 'true'
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `tag=${prerelease ? 'next' : 'latest'}\n`)
+          NODE
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build package
+        run: npm run dist
+
+      - name: Publish to npm
+        run: npm publish --tag "${{ steps.package.outputs.tag }}"
