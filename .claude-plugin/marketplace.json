@@ -1,0 +1,44 @@
+{
+  "name": "bootstrap",
+  "owner": {
+    "name": "Bootstrap"
+  },
+  "description": "Bootstrap agent skills",
+  "plugins": [
+    {
+      "name": "bootstrap",
+      "displayName": "Bootstrap",
+      "description": "Bootstrap agent skills for Claude Code",
+      "source": "./skills",
+      "strict": false,
+      "author": {
+        "name": "Bootstrap",
+        "url": "https://github.com/twbs"
+      },
+      "homepage": "https://getbootstrap.com",
+      "repository": "https://github.com/twbs/bootstrap",
+      "license": "MIT",
+      "keywords": [
+        "bootstrap",
+        "css",
+        "html",
+        "ui",
+        "frontend"
+      ],
+      "category": "development",
+      "skills": [
+        "./bootstrap-color-system",
+        "./bootstrap-component-js",
+        "./bootstrap-component",
+        "./bootstrap-npm",
+        "./bootstrap-parcel",
+        "./bootstrap-utility-api",
+        "./bootstrap-v4-v6-migration",
+        "./bootstrap-v5-v6-migration",
+        "./bootstrap-v6-install",
+        "./bootstrap-vite",
+        "./bootstrap-webpack"
+      ]
+    }
+  ]
+}
