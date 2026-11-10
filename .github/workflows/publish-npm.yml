@@ -35,6 +35,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false
 
+      - name: Install npm with staged publishing support
+        run: npm install --global npm@12.2.1
+
       - name: Verify package version and select npm tag
         id: package
         run: |
@@ -54,5 +57,5 @@ jobs:
       - name: Build package
         run: npm run dist
 
-      - name: Publish to npm
-        run: npm publish --tag "${{ steps.package.outputs.tag }}"
+      - name: Stage package on npm for maintainer approval
+        run: npm stage publish --tag "${{ steps.package.outputs.tag }}"
