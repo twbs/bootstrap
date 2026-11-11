@@ -101,6 +101,7 @@
   icon: magic
   icon_color: orange
   pages:
+    - title: Animations
     - title: Clearfix
     - title: Color & background
     - title: Colored links
