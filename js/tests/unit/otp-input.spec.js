@@ -302,6 +302,20 @@ describe('OtpInput', () => {
       expect(input.value).toEqual('123456')
     })
 
+    it('should not paste into an input inside a disabled fieldset', () => {
+      fixtureEl.innerHTML = `<fieldset disabled>${getOtpHtml()}</fieldset>`
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      const event = pasteInto(input, '654321')
+
+      expect(event.defaultPrevented).toBeFalse()
+      expect(input.value).toEqual('123456')
+    })
+
     it('should not clear the value when pasting empty text', () => {
       fixtureEl.innerHTML = getOtpHtml()
 
@@ -501,6 +515,87 @@ describe('OtpInput', () => {
       expect(event.defaultPrevented).toBeTrue()
     })
 
+    it('should delete the next character on delete and keep the caret', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123')
+
+      input.focus()
+      input.setSelectionRange(1, 1)
+      beforeInput(input, { inputType: 'deleteContentForward' })
+
+      expect(input.value).toEqual('13')
+      expect(input.selectionStart).toEqual(1)
+    })
+
+    it('should clear the selected slot and keep the caret on delete', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      input.focus()
+      input.setSelectionRange(2, 3)
+      beforeInput(input, { inputType: 'deleteContentForward' })
+
+      expect(input.value).toEqual('12456')
+      expect(input.selectionStart).toEqual(2)
+    })
+
+    it('should do nothing on delete at the end of the value', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123')
+
+      input.focus()
+      input.setSelectionRange(3, 3)
+      beforeInput(input, { inputType: 'deleteContentForward' })
+
+      expect(input.value).toEqual('123')
+    })
+
+    it('should leave a readonly input to the browser on beforeinput', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.readOnly = true
+
+      input.focus()
+      input.setSelectionRange(2, 3)
+      const typed = beforeInput(input, { inputType: 'insertText', data: '9' })
+      const deleted = beforeInput(input, { inputType: 'deleteContentBackward' })
+
+      // Not cancelled, so the browser's own readonly handling applies
+      expect(typed).toBeTrue()
+      expect(deleted).toBeTrue()
+      expect(input.value).toEqual('123456')
+    })
+
+    it('should leave an input inside a disabled fieldset to the browser on beforeinput', () => {
+      fixtureEl.innerHTML = `<fieldset disabled>${getOtpHtml()}</fieldset>`
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      const typed = beforeInput(input, { inputType: 'insertText', data: '9' })
+
+      expect(typed).toBeTrue()
+      expect(input.value).toEqual('123456')
+    })
+
     it('should append into an empty slot when typing at the caret', () => {
       fixtureEl.innerHTML = getOtpHtml()
 
@@ -546,6 +641,48 @@ describe('OtpInput', () => {
       document.dispatchEvent(new Event('selectionchange'))
 
       expect(otpEl.querySelectorAll('.otp-slot')[3]).toHaveClass('otp-slot-active')
+    })
+
+    it('should not remember a tap on a disabled input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123')
+      layoutSlotsHorizontally(otpEl)
+      input.disabled = true
+
+      const slots = otpEl.querySelectorAll('.otp-slot')
+      pointerDownOnSlot(input, slots[1])
+
+      // Enabled later, the first keyboard focus selects the first empty slot,
+      // not the slot tapped while disabled
+      input.disabled = false
+      input.focus()
+
+      expect(input.selectionStart).toEqual(3)
+      expect(slots[3]).toHaveClass('otp-slot-active')
+    })
+
+    it('should not remember a tap on an input inside a disabled fieldset', () => {
+      fixtureEl.innerHTML = `<fieldset disabled>${getOtpHtml()}</fieldset>`
+
+      const fieldset = fixtureEl.querySelector('fieldset')
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123')
+      layoutSlotsHorizontally(otpEl)
+
+      const slots = otpEl.querySelectorAll('.otp-slot')
+      pointerDownOnSlot(input, slots[1])
+
+      fieldset.disabled = false
+      input.focus()
+
+      expect(input.selectionStart).toEqual(3)
+      expect(slots[3]).toHaveClass('otp-slot-active')
     })
   })
 
@@ -649,6 +786,65 @@ describe('OtpInput', () => {
 
         typeInto(input, '12')
       })
+    })
+
+    const countEvents = otpEl => {
+      const counts = { input: 0, complete: 0 }
+      otpEl.addEventListener('input.bs.otpInput', () => counts.input++)
+      otpEl.addEventListener('complete.bs.otpInput', () => counts.complete++)
+      return counts
+    }
+
+    it('should not trigger input or complete events on delete after the last character', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      const counts = countEvents(otpEl)
+
+      input.focus()
+      input.setSelectionRange(6, 6)
+      const event = beforeInput(input, { inputType: 'deleteContentForward' })
+
+      expect(event).toBeFalse()
+      expect(input.value).toEqual('123456')
+      expect(counts).toEqual({ input: 0, complete: 0 })
+    })
+
+    it('should not trigger an input event on backspace before the first character', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123')
+      const counts = countEvents(otpEl)
+
+      input.focus()
+      input.setSelectionRange(0, 0)
+      beforeInput(input, { inputType: 'deleteContentBackward' })
+
+      expect(input.value).toEqual('123')
+      expect(counts).toEqual({ input: 0, complete: 0 })
+    })
+
+    it('should trigger one input event when delete removes a character', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      const counts = countEvents(otpEl)
+
+      input.focus()
+      input.setSelectionRange(2, 3)
+      beforeInput(input, { inputType: 'deleteContentForward' })
+
+      expect(input.value).toEqual('12456')
+      expect(counts).toEqual({ input: 1, complete: 0 })
     })
   })
 

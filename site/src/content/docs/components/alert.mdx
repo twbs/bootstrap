@@ -12,7 +12,7 @@ import { getData } from '@libs/data'
 
 ## Default alert
 
-Alerts are available for any length of text, as well as an optional close button. Alerts are designed to be used with theme colors, but have neutral fallback colors for when no theme color is applied. For inline dismissal, use the [alerts JavaScript plugin](#dismiss).
+Alerts are flex containers that can contain any length of text, as well as an optional close button. They’re designed to be used with theme colors, but have neutral fallback colors for when no theme color is applied. For inline dismissal, use the [alerts JavaScript plugin](#dismiss). [Custom content](#additional-content) is also supported, with additional utilities or markup required.
 
 <Example code={`<div class="alert" role="alert">
     <p>A simple alert—check it out!</p>
@@ -47,24 +47,11 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
     <p>A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</p>
   </div>`)} />
 
-## Additional content
-
-Alerts can also contain additional HTML elements like headings, paragraphs and dividers.
-
-<Example code={`<div class="alert theme-success" role="alert">
-    <div class="vstack">
-      <h4 class="alert-heading mb-2">Well done!</h4>
-      <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-      <hr class="mt-0 mb-3">
-      <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-    </div>
-  </div>`} />
-
 ## With icons
 
 Similarly, you can use [flexbox utilities]([[docsref:/utilities/flex]]) and [Bootstrap Icons]([[config:icons]]) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
 
-<Example code={`<div class="alert theme-primary d-flex align-items-center" role="alert">
+<Example code={`<div class="alert theme-primary align-items-center" role="alert"><!-- [!code highlight] -->
     <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0" viewBox="0 0 16 16" role="img" aria-label="Warning:">
       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
     </svg>
@@ -91,6 +78,27 @@ You can see this in action with a live demo:
 <Callout type="warning">
 When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document. For this reason, we recommend including additional JavaScript that listens for the `closed.bs.alert` event and programmatically sets `focus()` to the most appropriate location in the page. If you’re planning to move focus to a non-interactive element that normally does not receive focus, make sure to add `tabindex="-1"` to the element.
 </Callout>
+
+## Additional content
+
+For simple vertical layouts, it should be enough to add the `flex-column` class to the alert.
+
+<Example code={`<div class="alert theme-success flex-column align-items-stretch" role="alert"><!-- [!code highlight] -->
+    <h4 class="alert-heading mb-2">Well done!</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr class="my-3" />
+    <p>Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+  </div>`} />
+
+More complex layouts may require additional HTML within the alert—like when mixing in icons and dismiss buttons.
+
+<Example code={`<div class="alert theme-warning" role="alert">
+    <div class="pe-3">
+      <h5 class="alert-heading mb-2">More complex alert</h5>
+      <p class="fs-sm mb-0">Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    </div>
+    <CloseButton dismiss="alert" class="ms-auto" />
+  </div>`} />
 
 ## CSS
 

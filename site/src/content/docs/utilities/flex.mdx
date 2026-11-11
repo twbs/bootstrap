@@ -137,24 +137,17 @@ Responsive variations also exist for `flex-grow` and `flex-shrink`.
 
 Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, wrapping with `.flex-wrap`, or reverse wrapping with `.flex-wrap-reverse`.
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex flex-nowrap" style="width: 8rem;">
+<Example class="bd-example-flex" code={`<div class="d-flex flex-nowrap" style="width: 8rem;">
     <div class="p-2">Flex item</div>
     <div class="p-2">Flex item</div>
     <div class="p-2">Flex item</div>
     <div class="p-2">Flex item</div>
     <div class="p-2">Flex item</div>
-  </div>
-</div>
+  </div>`} customMarkup={`<div class="d-flex flex-nowrap">
+    ...
+  </div>`} />
 
-```html
-<div class="d-flex flex-nowrap">
-  ...
-</div>
-```
-
-<div class="bd-example bd-example-flex">
-  <div class="d-flex flex-wrap">
+<Example class="bd-example-flex" code={`<div class="d-flex flex-wrap">
     <div class="p-2">Flex item 1</div>
     <div class="p-2">Flex item 2</div>
     <div class="p-2">Flex item 3</div>
@@ -169,17 +162,11 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
     <div class="p-2">Flex item 12</div>
     <div class="p-2">Flex item 13</div>
     <div class="p-2">Flex item 14</div>
-  </div>
-</div>
+  </div>`} customMarkup={`<div class="d-flex flex-wrap">
+    ...
+  </div>`} />
 
-```html
-<div class="d-flex flex-wrap">
-  ...
-</div>
-```
-
-<div class="bd-example bd-example-flex">
-  <div class="d-flex flex-wrap-reverse">
+<Example class="bd-example-flex" code={`<div class="d-flex flex-wrap-reverse">
     <div class="p-2">Flex item 1</div>
     <div class="p-2">Flex item 2</div>
     <div class="p-2">Flex item 3</div>
@@ -194,14 +181,9 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
     <div class="p-2">Flex item 12</div>
     <div class="p-2">Flex item 13</div>
     <div class="p-2">Flex item 14</div>
-  </div>
-</div>
-
-```html
-<div class="d-flex flex-wrap-reverse">
-  ...
-</div>
-```
+  </div>`} customMarkup={`<div class="d-flex flex-wrap-reverse">
+    ...
+  </div>`} />
 
 Responsive variations also exist for `flex-wrap`.
 

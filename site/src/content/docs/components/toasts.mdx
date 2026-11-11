@@ -25,7 +25,7 @@ To encourage extensible and predictable toasts, we recommend a header and body. 
 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your “toasted” content and strongly encourage a dismiss button.
 
-<Example class="bg-1" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<Example addStackblitzJs class="bg-1" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -84,7 +84,7 @@ We use the following JavaScript to trigger our live toast demo:
 
 Toasts are slightly translucent to blend in with what’s below them.
 
-<Example class="bg-1" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<Example addStackblitzJs class="bg-1" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -98,7 +98,7 @@ Toasts are slightly translucent to blend in with what’s below them.
 
 Add `.toast-translucent` to enhance the translucency with a backdrop blur and saturation filter.
 
-<Example class="bg-black" code={`<div class="toast toast-translucent" role="alert" aria-live="assertive" aria-atomic="true">
+<Example addStackblitzJs class="bg-black" code={`<div class="toast toast-translucent" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -114,7 +114,7 @@ Add `.toast-translucent` to enhance the translucency with a backdrop blur and sa
 
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
 
-<Example code={`<div class="toast-container position-static">
+<Example addStackblitzJs code={`<div class="toast-container position-static">
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
@@ -144,7 +144,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 
 Set a toast to dark mode by adding the `data-bs-theme="dark"` attribute to the `.toast` element.
 
-<Example class="vstack gap-3" code={`<div class="toast" data-bs-theme="dark" role="alert" aria-live="assertive" aria-atomic="true">
+<Example addStackblitzJs class="vstack gap-3" code={`<div class="toast" data-bs-theme="dark" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -164,7 +164,7 @@ Set a toast to dark mode by adding the `data-bs-theme="dark"` attribute to the `
 
 Toasts can be themed with our [theme color utilities]([[docsref:/customize/theme]]). Apply to the entire toast or individual elements within the toast.
 
-<Example class="vstack gap-3" code={`<div class="toast theme-primary" role="alert" aria-live="assertive" aria-atomic="true">
+<Example addStackblitzJs class="vstack gap-3" code={`<div class="toast theme-primary" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -200,7 +200,7 @@ Toasts can be themed with our [theme color utilities]([[docsref:/customize/theme
 
 Customize your toasts by removing sub-components, tweaking them with [utilities]([[docsref:/utilities/api]]), or by adding your own markup. Here we’ve created a simpler toast by removing the default `.toast-header`, adding a custom hide icon from [Bootstrap Icons]([[config:icons]]), and using some [flexbox utilities]([[docsref:/utilities/flex]]) to adjust the layout.
 
-<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<Example addStackblitzJs code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex justify-content-between">
       <div class="toast-body">
         Hello, world! This is a toast message.
@@ -211,7 +211,7 @@ Customize your toasts by removing sub-components, tweaking them with [utilities]
 
 Alternatively, you can also add additional controls and components to toasts.
 
-<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<Example addStackblitzJs code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body">
       This is a custom toast message with additional content like a horizontal rule and buttons.
       <hr class="my-3" />
@@ -226,7 +226,7 @@ Alternatively, you can also add additional controls and components to toasts.
 
 By default, toasts fade in and out. To disable the animation, add `.toast-instant` to the toast. The `show` and `hide` methods then finish immediately, so `shown.bs.toast` and `hidden.bs.toast` fire right away.
 
-<Example class="bg-1" code={`<div class="toast toast-instant" role="alert" aria-live="assertive" aria-atomic="true">
+<Example addStackblitzJs class="bg-1" code={`<div class="toast toast-instant" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -276,7 +276,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
 
 For systems that generate more notifications, consider using a wrapping element so they can easily stack.
 
-<Example class="bd-example-toasts p-0" code={`<div aria-live="polite" aria-atomic="true" class="position-relative">
+<Example addStackblitzJs class="bd-example-toasts p-0" code={`<div aria-live="polite" aria-atomic="true" class="position-relative">
     <!-- Position it: -->
     <!-- - \`.toast-container\` for spacing between toasts -->
     <!-- - \`top-0\` & \`end-0\` to position the toasts in the upper right corner -->
@@ -312,7 +312,7 @@ For systems that generate more notifications, consider using a wrapping element 
 
 You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.
 
-<Example class="bd-example-toasts d-flex" code={`<!-- Flexbox container for aligning the toasts -->
+<Example addStackblitzJs class="bd-example-toasts d-flex" code={`<!-- Flexbox container for aligning the toasts -->
   <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
 
     <!-- Then put toasts within -->
@@ -347,7 +347,7 @@ As the content you’re displaying changes, be sure to update the [`delay` timeo
 
 When using `autohide: false`, you must add a close button to allow users to dismiss the toast.
 
-<Example code={`<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
+<Example addStackblitzJs code={`<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>

@@ -9,6 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import Menu from './menu.js'
+import { onDocumentReady } from './util/component-functions.js'
 import type { FloatingOffsetOption } from './util/floating-ui.js'
 import {
   getNextActiveElement, isDisabled, isVisible, setAriaAttribute
@@ -454,7 +455,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   Combobox.getOrCreateInstance(this).toggle()
 })
 
-EventHandler.on(document, 'DOMContentLoaded', () => {
+onDocumentReady('DOMContentLoaded', () => {
   for (const toggle of SelectorEngine.find(SELECTOR_DATA_TOGGLE)) {
     Combobox.getOrCreateInstance(toggle)
   }
