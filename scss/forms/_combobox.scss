@@ -7,7 +7,7 @@
     --chip-border-radius: max(0px, calc(var(--control-border-radius) / 2));
     --chip-padding-x: .5rem;
     --chip-gap: .25rem;
-    --chip-dismiss-size: 1.5rem;
+    --chip-dismiss-size: var(--combobox-control-chip-height);
 
     > .chip-dismiss {
       margin-inline: -.25rem -.5rem;

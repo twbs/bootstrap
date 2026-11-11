@@ -12,7 +12,7 @@ $combobox-control-tokens: defaults(
     --combobox-control-padding-y: var(--btn-input-padding-y),
     --combobox-control-padding-x: var(--btn-input-padding-x),
     --combobox-control-gap: .25rem,
-    --combobox-control-chip-height: 1.5rem,
+    --combobox-control-chip-height: calc(var(--control-min-height) - 2 * var(--combobox-control-padding-y) - 2 * var(--control-border-width)),
     --control-min-height: var(--btn-input-min-height),
     --control-font-size: var(--btn-input-font-size),
     --control-line-height: var(--btn-input-line-height),
