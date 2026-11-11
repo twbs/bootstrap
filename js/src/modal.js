@@ -67,6 +67,7 @@ class Modal extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
+    this._deleteDialogRoleWhenHiding = false
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
@@ -177,7 +178,12 @@ class Modal extends BaseComponent {
     this._element.style.display = 'block'
     this._element.removeAttribute('aria-hidden')
     this._element.setAttribute('aria-modal', true)
-    this._element.setAttribute('role', 'dialog')
+
+    if (this._element.getAttribute('role') !== 'dialog') {
+      this._deleteDialogRoleWhenHiding = true
+      this._element.setAttribute('role', 'dialog')
+    }
+
     this._element.scrollTop = 0
 
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog)
@@ -246,7 +252,11 @@ class Modal extends BaseComponent {
     this._element.style.display = 'none'
     this._element.setAttribute('aria-hidden', true)
     this._element.removeAttribute('aria-modal')
-    this._element.removeAttribute('role')
+
+    if (this._deleteDialogRoleWhenHiding) {
+      this._element.removeAttribute('role')
+    }
+
     this._isTransitioning = false
 
     this._backdrop.hide(() => {
