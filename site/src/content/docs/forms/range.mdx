@@ -106,6 +106,8 @@ Wrap the `.form-range` in a `.form-field` to pair it with a label and descriptio
 
 Every `.form-range` is initialized automatically on page load—the component is JavaScript-driven, so the fill won’t render without the plugin.
 
+When compiling Sass yourself, apply the `bs-` prefix with `postcss-prefix-custom-properties`. The Range plugin writes `--bs-range-fill`, which must match your compiled CSS. See [CSS variables]([[docsref:/customize/css-variables]]).
+
 After setting `input.value` in JavaScript, call `update()` on the instance to refresh its display. Native form reset refreshes the fill and bubble automatically after the browser restores the value. If you change which form owns the input, call `update()` to refresh that association.
 
 ### Via data attributes

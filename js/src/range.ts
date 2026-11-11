@@ -27,7 +27,6 @@ const DATA_API_KEY = '.data-api'
 const EVENT_CHANGED = `changed${EVENT_KEY}`
 const EVENT_DOM_CONTENT_LOADED = `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`
 
-// `input` is not in EventHandler's native-event list, so it can't be namespaced; bind it raw
 const EVENT_INPUT = 'input'
 const EVENT_CHANGE = 'change'
 const EVENT_RESET = 'reset'
