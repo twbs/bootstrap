@@ -415,11 +415,11 @@ describe('Util', () => {
   })
 
   describe('reflow', () => {
-    it('should return element offset height to force the reflow', () => {
+    it('should force the reflow with a method call that minifiers keep', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
-      const spy = spyOnProperty(div, 'offsetHeight')
+      const spy = spyOn(div, 'getBoundingClientRect').and.callThrough()
       Util.reflow(div)
       expect(spy).toHaveBeenCalled()
     })
