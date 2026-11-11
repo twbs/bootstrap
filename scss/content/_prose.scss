@@ -62,11 +62,11 @@ $prose-tokens: defaults(
     :where(h1, h2, h3, h4, h5, h6):not([class], :where(.not-prose, .not-prose *)) {
       margin-top: 0;
       margin-bottom: calc(var(--content-gap) / -2);
-      font-weight: 500;
+      font-weight: var(--font-weight-medium);
       line-height: 1.25;
 
       code {
-        font-weight: 600;
+        font-weight: var(--font-weight-semibold);
         color: inherit;
       }
     }
@@ -118,7 +118,7 @@ $prose-tokens: defaults(
       border-inline-start: 4px solid var(--border-color);
     }
 
-    :where(blockquote, details):not(:where(.not-prose, .not-prose *)) > :not(:first-child) {
+    :where(blockquote, details):not(:where(.not-prose, .not-prose *)) > :not(:first-child, :where(.not-prose, .not-prose *)) {
       margin-block-start: calc(var(--content-gap) / 2);
     }
 
@@ -138,7 +138,7 @@ $prose-tokens: defaults(
     }
 
     :where(dt):not(:where(.not-prose, .not-prose *)) {
-      font-weight: 500;
+      font-weight: var(--font-weight-medium);
     }
 
     :where(video, img):not(:where(.not-prose, .not-prose *)) {
