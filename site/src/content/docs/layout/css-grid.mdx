@@ -34,9 +34,9 @@ Compared to the default grid system:
 
 - Flex utilities don’t affect the CSS Grid columns in the same way.
 
-- Gaps replaces gutters. The `gap` property replaces the horizontal `padding` from our default grid system and functions more like `margin`.
+- Both grids use native CSS `gap`. The flexbox grid uses `.g-*`, `.gx-*`, and `.gy-*` to keep column widths in sync. CSS Grid uses `--bs-gap` or gap utilities.
 
-- As such, unlike `.row`s, `.grid`s have no negative margins and margin utilities cannot be used to change the grid gutters. Grid gaps are applied horizontally and vertically by default. See the [customizing section](#customizing) for more details.
+- Neither grid uses negative gutter margins. Use gap controls to space columns, and padding to space content inside them. CSS Grid applies gaps in both directions by default. See the [customizing section](#customizing) for more details.
 
 - Inline and custom styles should be viewed as replacements for modifier classes (e.g., `style="--bs-columns: 3;"` vs `class="row-cols-3"`).
 

@@ -258,6 +258,20 @@ body{margin:0}
   near(layout.children[1].right, 1200, 'custom grid fills row')
   checks++
 
+  const gridOnly = sass.compile(path.join(root, 'scss/bootstrap-grid.scss')).css
+  for (const styles of [css, gridOnly]) {
+    for (const dir of ['ltr', 'rtl']) {
+      await render(
+        `<div class="row row-cols-2">${column(6)}${column(6)}</div>`,
+        { dir, styles: `${styles} .cell { padding: 12px; border: 2px solid; }` }
+      );
+      [layout] = await boxes()
+      near(layout.children[0].width, 588, 'padded column includes borders and padding')
+      near(layout.children[1].y, layout.children[0].y, 'padded columns do not wrap without reboot')
+      checks++
+    }
+  }
+
   if (process.env.GRID_TEST_SCREENSHOT) {
     await render(
       `<div class="row">${column(3)}${column(3)}${column(6)}</div><div class="row">${column(9, 'offset-3')}</div>`

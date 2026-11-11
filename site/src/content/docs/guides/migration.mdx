@@ -78,6 +78,17 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 Review these changes when you upgrade from v6.0.0-alpha.1 to alpha 2.
 
+### Grid gutters
+
+- Rows now use native CSS `gap`. Columns no longer add gutter padding, and rows no longer use negative gutter margins.
+- Keep `.g-*`, `.gx-*`, and `.gy-*`. These classes update the gaps and the column width calculations together. Do not replace them with `.gap-*`.
+- Add content padding to an inner wrapper. Remove wrappers used only to clip gutter overflow. Container padding remains unchanged.
+- Review nested rows. They now fit inside the parent column’s content box, without negative margins.
+- Full-width column breaks take a flex line and create a vertical gap on each side. Use separate rows for one gap.
+- Pass `$gap: 0px` to `make-col()` and `make-col-offset()` outside a gap-based row.
+
+See [Gutters]([[docsref:/layout/gutters]]) for sizing and custom CSS.
+
 ### Browser support
 
 The minimum browser versions have increased from Chrome and Edge 130 to 138, Firefox 132 to 147, and Safari 18 to 26 on macOS and iOS. Check your browser requirements before upgrading. See [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the features that set each minimum version.

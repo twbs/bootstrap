@@ -166,6 +166,8 @@ Breaking columns to a new line in flexbox requires a small hack: add an element 
     </div>
   </div>`} />
 
+A full-width break takes its own flex line. With vertical gutters, this creates a gap on each side of the break. Use separate rows when you need one vertical gap between groups. Removing padding or margins from the break does not remove native row gaps.
+
 You may also apply this break at specific breakpoints with our [responsive display utilities]([[docsref:/utilities/display]]).
 
 <Example class="bd-example-row" code={`<div class="container text-center">
@@ -302,7 +304,7 @@ With the move to flexbox in v4, you can use margin utilities like `.me-auto` to 
 
 ## Standalone column classes
 
-The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Whenever column classes are used as non-direct children of a row, the paddings are omitted.
+The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Column classes do not add padding, inside or outside a row. Outside a row, numbered columns keep their percentage widths.
 
 <Example class="bd-example-row" code={`<div class="col-3 p-3 mb-2">
     .col-3: width of 25%
