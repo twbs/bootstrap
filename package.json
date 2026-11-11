@@ -153,7 +153,7 @@
     "eslint": "^10.14.0",
     "eslint-config-xo": "^0.53.2",
     "eslint-plugin-html": "^8.2.1",
-    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-import-x": "^4.18.1",
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-unicorn": "^68.0.0",
     "find-unused-sass-variables": "^6.2.1",
@@ -206,7 +206,25 @@
     ".browserslistrc"
   ],
   "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    },
     "axios": "^1.16.0",
+    "eslint": {
+      "minimatch": "^11.0.1"
+    },
+    "eslint-plugin-import-x": {
+      "minimatch": "^11.0.1"
+    },
+    "jasmine": {
+      "glob": "^14.0.4"
+    },
+    "markdownlint-cli": {
+      "minimatch": "^11.0.1"
+    },
+    "nodemon": {
+      "minimatch": "^11.0.1"
+    },
     "re2js": "^2.8.7"
   }
 }
