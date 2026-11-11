@@ -1,0 +1,1509 @@
+/*
+ * Why all the :is(*, #\#) prefixes?
+ *
+ * These components are embedded in who-knows-what sites with unpredictable CSS.
+ * We need our styles to win against host page selectors like `.content p` or
+ * `article a:hover` without using !important everywhere.
+ *
+ * The :is(*, #\#) trick adds ID-level specificity (0,1,0) without requiring
+ * an actual ID in the DOM. Chaining it (2x or 3x) builds enough specificity
+ * to beat most host selectors.
+ *
+ * The #\# is an escaped # character, creating an invalid-but-harmless ID
+ * selector that never matches, but still contributes specificity via :is().
+ *
+ * We also need these overrides to only affect the Component UI elements themselves.
+ * Users can provide custom templates to the results and searchbox components,
+ * and these must inherit their styles without having to fight ours.
+ *
+ * It's admittedly a bit of a hack but it does provide best effort styling consistency
+ * for the Component UI out in the wild.
+ */
+
+:root {
+    --pf-text: #1a1a1a;
+    --pf-text-secondary: #666;
+    --pf-text-muted: #767676;
+    --pf-background: #fff;
+    --pf-border: #e0e0e0;
+    --pf-border-focus: #999;
+    --pf-skeleton: #eee;
+    --pf-skeleton-shine: #f5f5f5;
+    --pf-hover: #f5f5f5;
+    --pf-mark: #1a1a1a;
+    --pf-scroll-shadow: rgba(0, 0, 0, 0.08);
+
+    --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
+
+    --pf-error-bg: #fef2f2;
+    --pf-error-border: #fecaca;
+    --pf-error-text: #dc2626;
+    --pf-error-text-secondary: #b91c1c;
+
+    --pf-outline-focus: #0969da;
+    --pf-outline-width: 2px;
+    --pf-outline-offset: 2px;
+
+    --pf-font:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
+
+    --pf-input-height: 36px;
+    --pf-input-font-size: 16px;
+    --pf-summary-font-size: 12px;
+    --pf-result-title-font-size: 14px;
+    --pf-result-excerpt-font-size: 13px;
+    --pf-modal-backdrop: rgba(0, 0, 0, 0.5);
+    --pf-results-display: flex;
+    --pf-results-flex-direction: column;
+    --pf-results-flex-wrap: nowrap;
+    --pf-results-columns: none;
+    --pf-results-gap: 8px;
+
+    --pf-border-radius: 6px;
+    --pf-image-width: 64px;
+    --pf-image-height: 48px;
+
+    --pf-icon-search: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.7549 11.255H11.9649L11.6849 10.985C12.6649 9.845 13.2549 8.365 13.2549 6.755C13.2549 3.165 10.3449 0.255005 6.75488 0.255005C3.16488 0.255005 0.254883 3.165 0.254883 6.755C0.254883 10.345 3.16488 13.255 6.75488 13.255C8.36488 13.255 9.84488 12.665 10.9849 11.685L11.2549 11.965V12.755L16.2549 17.745L17.7449 16.255L12.7549 11.255ZM6.75488 11.255C4.26488 11.255 2.25488 9.245 2.25488 6.755C2.25488 4.26501 4.26488 2.255 6.75488 2.255C9.24488 2.255 11.2549 4.26501 11.2549 6.755C11.2549 9.245 9.24488 11.255 6.75488 11.255Z' fill='%23000000'/%3E%3C/svg%3E%0A");
+    --pf-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23000' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+    --pf-dropdown-z-index: 9999;
+
+    --pf-modal-max-width: 560px;
+    --pf-modal-max-height: min(80dvh, 800px);
+    --pf-modal-top: 10dvh;
+
+    --pf-searchbox-max-width: 480px;
+    --pf-searchbox-dropdown-max-height: 320px;
+
+    --pf-dropdown-max-height: 280px;
+}
+
+[data-pf-theme="dark"] {
+    --pf-text: #e5e5e5;
+    --pf-text-secondary: #a0a0a0;
+    --pf-text-muted: #949494;
+    --pf-background: #1a1a1a;
+    --pf-border: #333;
+    --pf-border-focus: #555;
+    --pf-skeleton: #2a2a2a;
+    --pf-skeleton-shine: #333;
+    --pf-hover: #252525;
+    --pf-mark: #e5e5e5;
+    --pf-scroll-shadow: rgba(255, 255, 255, 0.1);
+
+    --pf-outline-focus: #58a6ff;
+
+    --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+
+    --pf-error-bg: #2a1a1a;
+    --pf-error-border: #5c2828;
+    --pf-error-text: #f87171;
+    --pf-error-text-secondary: #ef4444;
+
+    --pf-modal-backdrop: rgba(0, 0, 0, 0.7);
+}
+
+pagefind-config,
+pagefind-filter-dropdown,
+pagefind-filter-pane,
+pagefind-input,
+pagefind-keyboard-hints,
+pagefind-modal,
+pagefind-modal-body,
+pagefind-modal-footer,
+pagefind-modal-header,
+pagefind-modal-trigger,
+pagefind-results,
+pagefind-searchbox,
+pagefind-summary {
+    all: initial;
+    display: block;
+    box-sizing: border-box;
+
+    /* Typography baseline */
+    font-family:
+        var(--pf-font,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            sans-serif);
+    font-size: 16px;
+    line-height: 1.5;
+    color: CanvasText;
+    contain: layout style;
+}
+
+pagefind-searchbox,
+pagefind-filter-dropdown {
+    position: relative;
+}
+
+pagefind-searchbox:has(.pf-searchbox.open),
+pagefind-filter-dropdown:has(.pf-dropdown-trigger.open) {
+    z-index: var(--pf-dropdown-z-index);
+}
+
+pagefind-config {
+    display: none;
+}
+
+pagefind-modal-trigger {
+    display: inline-block;
+}
+
+:is(*, #\#):is(*, #\#) :is([class^="pf-"], [class*=" pf-"]):not(svg, svg *) {
+    all: revert;
+    box-sizing: border-box;
+}
+
+:is(*, #\#):is(*, #\#) :is([class^="pf-"], [class*=" pf-"]):not(svg, svg *)::before,
+:is(*, #\#):is(*, #\#) :is([class^="pf-"], [class*=" pf-"]):not(svg, svg *)::after {
+    box-sizing: border-box;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) [class^="pf-"][hidden],
+:is(*, #\#):is(*, #\#):is(*, #\#) [class*=" pf-"][hidden] {
+    display: none;
+}
+
+[data-pf-hidden] {
+    display: none !important;
+}
+
+[data-pf-suppressed] {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+[data-pf-sr-hidden] {
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(100%) !important;
+    clip-path: inset(100%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+/*
+* Suppress native browser outlines.
+* This is only okay because we exhaustively
+* provide our own high-contrast custom focus styles.
+*/
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-clear:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-clear:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-link:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-link:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-link:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-link:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-checkbox-input:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-checkbox-input:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-btn:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-btn:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-close:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-close:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-options:focus,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-options:focus-visible {
+    outline: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-clear:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-clear:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-btn:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-close:focus-visible {
+    outline: var(--pf-outline-width) solid var(--pf-outline-focus);
+    outline-offset: var(--pf-outline-offset);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-key,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-key,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-footer-key,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-keyboard-key,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-footer-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    background: var(--pf-hover);
+    border: 1px solid var(--pf-border);
+    border-radius: 3px;
+    font-weight: 500;
+    color: var(--pf-text-secondary);
+    font-family: var(--pf-font);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-key--sm,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-footer-key {
+    min-width: 16px;
+    height: 16px;
+    font-size: 9px;
+    padding: 0 3px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-wrapper {
+    position: relative;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-wrapper::before,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input-wrapper::before {
+    content: "";
+    position: absolute;
+    background-color: var(--pf-text-muted);
+    width: 14px;
+    height: 14px;
+    top: calc((var(--pf-input-height) - 14px) / 2);
+    inset-inline-start: 10px;
+    -webkit-mask-image: var(--pf-icon-search);
+    mask-image: var(--pf-icon-search);
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+    pointer-events: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input-wrapper::before {
+    z-index: 1;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input {
+    width: 100%;
+    height: var(--pf-input-height);
+    background-color: var(--pf-background);
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-border-radius);
+    font-family: var(--pf-font, inherit);
+    font-size: var(--pf-input-font-size);
+    color: var(--pf-text);
+    box-sizing: border-box;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input {
+    padding: 0;
+    padding-inline-start: 32px;
+    padding-inline-end: 36px;
+    font-weight: 400;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input:focus-visible,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input:focus-visible {
+    border-color: var(--pf-outline-focus);
+    box-shadow: 0 0 0 var(--pf-outline-width) var(--pf-outline-focus);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input::placeholder,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input::placeholder {
+    color: var(--pf-text-muted);
+}
+
+/* Hide native search clear button - we have our own */
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input::-webkit-search-decoration,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input::-webkit-search-cancel-button,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input::-webkit-search-results-button,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input::-webkit-search-results-decoration {
+    display: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-clear {
+    position: absolute;
+    inset-inline-end: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: calc(100% - 4px);
+    min-width: 44px;
+    padding: 0 8px;
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: var(--pf-text-muted);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-clear:hover {
+    background: var(--pf-hover);
+    color: var(--pf-text-secondary);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-clear[data-pf-suppressed] {
+    display: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-summary {
+    font-size: var(--pf-summary-font-size);
+    color: var(--pf-text-muted);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: var(--pf-results-display);
+    flex-direction: var(--pf-results-flex-direction);
+    flex-wrap: var(--pf-results-flex-wrap);
+    grid-template-columns: var(--pf-results-columns);
+    gap: var(--pf-results-gap);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-card {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: var(--pf-background);
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-border-radius);
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-card:hover {
+    border-color: var(--pf-border-focus);
+    box-shadow: var(--pf-shadow-sm);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-result-card:has(.pf-result-link:focus-visible) {
+    border-color: var(--pf-outline-focus);
+    box-shadow: 0 0 0 var(--pf-outline-width) var(--pf-outline-focus);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-card:has([data-pf-selected]) {
+    border-color: var(--pf-border-focus);
+    background: var(--pf-hover);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-image {
+    width: var(--pf-image-width);
+    height: var(--pf-image-height);
+    border-radius: 4px;
+    object-fit: cover;
+    background: var(--pf-skeleton);
+    flex-shrink: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-content {
+    flex: 1;
+    min-width: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-title {
+    font-size: var(--pf-result-title-font-size);
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-link {
+    color: var(--pf-text);
+    text-decoration: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-link:hover {
+    text-decoration: underline;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-excerpt {
+    font-size: var(--pf-result-excerpt-font-size);
+    color: var(--pf-text-secondary);
+    margin: 4px 0 0 0;
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-result-excerpt mark,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-excerpt mark,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result-excerpt mark {
+    background: transparent;
+    font-weight: 500;
+    color: var(--pf-mark);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-skeleton {
+    background: var(--pf-skeleton);
+    border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-skeleton {
+        background: linear-gradient(
+            90deg,
+            var(--pf-skeleton) 25%,
+            var(--pf-skeleton-shine) 50%,
+            var(--pf-skeleton) 75%
+        );
+        background-size: 200% 100%;
+        animation: pf-shimmer 1.5s infinite;
+    }
+
+    @keyframes pf-shimmer {
+        0% {
+            background-position: 200% 0;
+        }
+        100% {
+            background-position: -200% 0;
+        }
+    }
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-skeleton-title {
+    height: 14px;
+    width: 60%;
+    margin-bottom: 8px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-skeleton-excerpt {
+    height: 13px;
+    width: 90%;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-skeleton-image {
+    width: var(--pf-image-width);
+    height: var(--pf-image-height);
+    flex-shrink: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-empty {
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--pf-text-muted);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-empty-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    opacity: 0.4;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-empty-text {
+    font-size: 14px;
+    margin: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-error {
+    padding: 12px 16px;
+    background: var(--pf-error-bg);
+    border: 1px solid var(--pf-error-border);
+    border-radius: var(--pf-border-radius);
+    color: var(--pf-error-text);
+    font-size: 13px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-error strong {
+    font-weight: 600;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-error small {
+    display: block;
+    margin-top: 4px;
+    color: var(--pf-error-text-secondary);
+    font-size: 12px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    padding-inline-start: 12px;
+    list-style: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-chip {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    background: var(--pf-background);
+    border: 1px solid var(--pf-border);
+    border-radius: 6px;
+    font-size: 12px;
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+    position: relative;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-chip:hover {
+    border-color: var(--pf-border-focus);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-heading-chip:has(.pf-heading-link:focus-visible) {
+    border-color: var(--pf-outline-focus);
+    box-shadow: 0 0 0 var(--pf-outline-width) var(--pf-outline-focus);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-chip:has([data-pf-selected]) {
+    border-color: var(--pf-border-focus);
+    background: var(--pf-hover);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-link {
+    color: var(--pf-text);
+    font-weight: 500;
+    text-decoration: none;
+    line-height: 1.3;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-link::before {
+    content: "#";
+    color: var(--pf-text-muted);
+    margin-inline-end: 4px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-link:hover {
+    text-decoration: underline;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-heading-excerpt {
+    margin: 0;
+    font-size: 12px;
+    color: var(--pf-text-secondary);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+    background: var(--pf-skeleton);
+    border-radius: var(--pf-border-radius);
+    border: 1px solid var(--pf-border);
+    overflow: hidden;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) details.pf-filter-group {
+    display: block;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) details.pf-filter-group > .pf-filter-options {
+    margin-top: 8px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    details.pf-filter-group
+    > .pf-filter-fieldset {
+    margin-top: 8px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-group-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--pf-text-muted);
+    margin: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-group-name,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger-label,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-option-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) summary.pf-filter-group-title {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    margin: -4px 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    summary.pf-filter-group-title::-webkit-details-marker {
+    display: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) summary.pf-filter-group-title::after {
+    content: "";
+    width: 10px;
+    height: 6px;
+    flex-shrink: 0;
+    margin-inline-start: 8px;
+    background: var(--pf-text-muted);
+    -webkit-mask-image: var(--pf-icon-arrow);
+    mask-image: var(--pf-icon-arrow);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    transition: transform 0.15s;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    details.pf-filter-group:not([open])
+    > summary.pf-filter-group-title::after {
+    transform: rotate(-90deg);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    [dir="rtl"]
+    details.pf-filter-group:not([open])
+    > summary.pf-filter-group-title::after {
+    transform: rotate(90deg);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) summary.pf-filter-group-title:hover {
+    color: var(--pf-text-secondary);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-group-count,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-selected-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--pf-text);
+    color: var(--pf-background);
+    font-size: 11px;
+    font-weight: 500;
+    height: 18px;
+    min-width: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    font-variant-numeric: tabular-nums;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-group-count {
+    margin-inline-start: auto;
+    text-transform: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-filter-group-count[data-pf-hidden],
+:is(*, #\#):is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-selected-badge[data-pf-hidden] {
+    display: inline-flex !important;
+    visibility: hidden;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 30px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--pf-text-secondary);
+}
+
+@media (pointer: coarse) {
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-checkbox {
+        min-height: 44px;
+    }
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-checkbox:hover {
+    color: var(--pf-text);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-checkbox-input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--pf-text);
+    cursor: pointer;
+    color-scheme: light;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) [data-pf-theme="dark"] .pf-checkbox-input {
+    color-scheme: dark;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-filter-checkbox:has(.pf-checkbox-input:focus-visible) {
+    outline: var(--pf-outline-width) solid var(--pf-outline-focus);
+    outline-offset: var(--pf-outline-offset);
+    border-radius: 4px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-checkbox-count {
+    margin-inline-start: auto;
+    font-size: 11px;
+    color: var(--pf-text-muted);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: var(--pf-input-height);
+    padding: 0 12px;
+    background: var(--pf-background);
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-border-radius);
+    font-size: 13px;
+    color: var(--pf-text-secondary);
+    cursor: pointer;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger:hover {
+    border-color: var(--pf-border-focus);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger.open {
+    border-color: var(--pf-border-focus);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger.wrap {
+    height: auto;
+    min-height: var(--pf-input-height);
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger-label.wrap,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-option-label.wrap {
+    white-space: normal;
+    line-height: 1.3;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-arrow {
+    width: 10px;
+    height: 6px;
+    flex-shrink: 0;
+    background: var(--pf-text-muted);
+    -webkit-mask-image: var(--pf-icon-arrow);
+    mask-image: var(--pf-icon-arrow);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger.open .pf-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    inset-inline-start: 0;
+    min-width: 180px;
+    max-height: var(--pf-dropdown-max-height);
+    overflow-y: auto;
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-border-radius);
+    box-shadow: var(--pf-shadow-md);
+    padding: 4px;
+    z-index: 100;
+
+    background:
+        /* Top shadow cover (moves with content) */
+        linear-gradient(var(--pf-background) 30%, transparent) center top,
+        /* Bottom shadow cover (moves with content) */
+            linear-gradient(transparent, var(--pf-background) 70%) center bottom,
+        /* Top shadow (stays fixed) */
+            linear-gradient(var(--pf-scroll-shadow), transparent) center top,
+        /* Bottom shadow (stays fixed) */
+            linear-gradient(transparent, var(--pf-scroll-shadow)) center bottom,
+        var(--pf-background);
+    background-size:
+        100% 40px,
+        100% 40px,
+        100% 14px,
+        100% 14px,
+        100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: local, local, scroll, scroll, scroll;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 10px;
+    min-height: 44px;
+    font-size: 13px;
+    color: var(--pf-text-secondary);
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-option:hover {
+    background: var(--pf-hover);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-option.pf-dropdown-option-focused {
+    outline: var(--pf-outline-width) solid var(--pf-outline-focus);
+    outline-offset: -2px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-option.wrap {
+    align-items: flex-start;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-checkbox {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    border: 1px solid var(--pf-border);
+    border-radius: 3px;
+    background: var(--pf-background);
+    position: relative;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-option.wrap
+    .pf-dropdown-checkbox {
+    margin-top: 2px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-option[aria-selected="true"]
+    .pf-dropdown-checkbox {
+    background: var(--pf-text);
+    border-color: var(--pf-text);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-option[aria-selected="true"]
+    .pf-dropdown-checkbox::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid var(--pf-background);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-option-label {
+    flex: 1;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-option-count {
+    margin-inline-start: auto;
+    font-size: 11px;
+    color: var(--pf-text-muted);
+    flex-shrink: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-option.wrap
+    .pf-dropdown-option-count {
+    margin-top: 2px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-option-loading {
+    pointer-events: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-option-loading
+    .pf-dropdown-checkbox {
+    width: 16px;
+    height: 16px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-option-loading
+    .pf-dropdown-option-label {
+    height: 13px;
+    border-radius: 4px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-error {
+    padding: 12px 10px;
+    font-size: 13px;
+    color: var(--pf-error-text);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-clear {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 10px;
+    margin-inline-start: 4px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--pf-border-radius);
+    font-size: 12px;
+    color: var(--pf-text-secondary);
+    cursor: pointer;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-dropdown-clear:hover:not([aria-disabled="true"]) {
+    background: var(--pf-hover);
+    border-color: var(--pf-border);
+    color: var(--pf-text);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-clear[aria-disabled="true"] {
+    color: var(--pf-text-muted);
+    cursor: default;
+    opacity: 0.4;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-options {
+    max-height: var(--pf-dropdown-max-height);
+    overflow-y: auto;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: var(--pf-input-height);
+    padding: 0 14px;
+    background: var(--pf-background);
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-border-radius);
+    font-size: 14px;
+    color: var(--pf-text-muted);
+    cursor: pointer;
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-btn:hover {
+    border-color: var(--pf-border-focus);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-icon {
+    width: 14px;
+    height: 14px;
+    background: var(--pf-text-muted);
+    -webkit-mask-image: var(--pf-icon-search);
+    mask-image: var(--pf-icon-search);
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+    flex-shrink: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-text {
+    flex: 1;
+    text-align: start;
+    color: var(--pf-text-muted);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-shortcut {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-inline-start: 8px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-key {
+    min-width: 20px;
+    height: 18px;
+    font-size: 11px;
+    border-radius: 4px;
+}
+
+/*
+  NB: Background scrolling is prevented with the overscroll-behavior: contain
+  values below, plus overflow: hidden on the backdrop.
+  As of writing, this only works on Chrome 144. Tracking:
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1837436
+  https://bugs.webkit.org/show_bug.cgi?id=243452
+*/
+
+:is(*, #\#):is(*, #\#):is(*, #\#) dialog.pf-modal {
+    position: fixed;
+    width: 100%;
+    max-width: var(--pf-modal-max-width);
+    max-height: var(--pf-modal-max-height);
+    margin: var(--pf-modal-top) auto;
+    padding: 0;
+    background: var(--pf-background);
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--pf-shadow-lg);
+    flex-direction: column;
+    overflow: hidden;
+    overscroll-behavior: contain;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) dialog.pf-modal::backdrop {
+    background: var(--pf-modal-backdrop);
+    overflow: hidden;
+    overscroll-behavior: contain;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) dialog.pf-modal[open] {
+    display: flex;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :is(*, #\#):is(*, #\#):is(*, #\#) dialog.pf-modal[open] {
+        animation: pf-modal-appear 0.15s ease-out;
+    }
+
+    @keyframes pf-modal-appear {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    :is(*, #\#):is(*, #\#):is(*, #\#) dialog.pf-modal[open] {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        max-width: none;
+        max-height: none;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        animation: none;
+    }
+
+    :is(*, #\#):is(*, #\#):is(*, #\#) pagefind-modal-header,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-header {
+        padding-top: max(16px, env(safe-area-inset-top));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+    }
+
+    :is(*, #\#):is(*, #\#):is(*, #\#) pagefind-modal-body,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-body {
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+    }
+
+    :is(*, #\#):is(*, #\#):is(*, #\#) pagefind-modal-footer,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-footer {
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+    }
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) pagefind-modal-header,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    border-bottom: 1px solid var(--pf-border);
+    flex-shrink: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-header-content {
+    flex: 1;
+    min-width: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-close {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--pf-text-secondary);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-close:hover {
+    background: var(--pf-hover);
+    color: var(--pf-text);
+}
+
+@media (max-width: 640px) {
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-close {
+        display: flex;
+    }
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    pagefind-modal-header
+    .pf-input-wrapper::before,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-header .pf-input-wrapper::before {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) pagefind-modal-header .pf-input,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-header .pf-input {
+    border: none;
+    background: transparent;
+    font-size: var(--pf-input-font-size);
+    height: 40px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) pagefind-modal-body,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 8px 16px 16px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) pagefind-modal-body .pf-summary,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-body .pf-summary {
+    margin-bottom: 8px;
+}
+
+/* Modal body uses the base card styles - only minor adjustments needed */
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    pagefind-modal-body
+    .pf-result-card:has([data-pf-selected]),
+:is(*, #\#):is(*, #\#):is(*, #\#)
+    .pf-modal-body
+    .pf-result-card:has([data-pf-selected]) {
+    background: var(--pf-skeleton);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) pagefind-modal-footer,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-footer {
+    padding: 10px 16px;
+    border-top: 1px solid var(--pf-border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--pf-text-muted);
+    flex-shrink: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-footer-hint,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-keyboard-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-footer-key,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-keyboard-key {
+    min-width: 18px;
+    height: 18px;
+    font-size: 10px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) pagefind-keyboard-hints,
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-keyboard-hints {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--pf-text-muted);
+    min-height: 20px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: var(--pf-searchbox-max-width);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input-wrapper {
+    position: relative;
+}
+
+/* Override trigger-shortcut positioning when inside searchbox */
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input-wrapper .pf-trigger-shortcut {
+    position: absolute;
+    inset-inline-end: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    margin-inline-start: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input {
+    padding: 0;
+    padding-inline-start: 32px;
+    padding-inline-end: 12px;
+}
+
+/* Add padding when shortcut is present */
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input-wrapper:has(.pf-trigger-shortcut) .pf-searchbox-input {
+    padding-inline-end: 72px;
+}
+
+/* Hide shortcut badge when input is focused */
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input:focus ~ .pf-trigger-shortcut {
+    display: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input:focus {
+    padding-inline-end: 12px;
+    border-color: var(--pf-border-focus);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox.open .pf-searchbox-input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: var(--pf-border);
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-dropdown {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--pf-background);
+    border: 1px solid var(--pf-border);
+    border-top: none;
+    border-radius: 0 0 var(--pf-border-radius) var(--pf-border-radius);
+    box-shadow: var(--pf-shadow-md);
+    max-height: var(--pf-searchbox-dropdown-max-height);
+    z-index: 100;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox.open .pf-searchbox-dropdown {
+    display: flex;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-results {
+    list-style: none;
+    padding: 4px;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result {
+    display: block;
+    padding: 12px 10px;
+    min-height: 44px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result:hover {
+    background: var(--pf-hover);
+}
+
+/* Placeholder skeleton - non-interactive */
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-placeholder {
+    cursor: default;
+    pointer-events: none;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-placeholder:hover {
+    background: transparent;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result[data-pf-selected] {
+    background: var(--pf-hover);
+    outline: var(--pf-outline-width) solid var(--pf-outline-focus);
+    outline-offset: -2px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--pf-text);
+    margin: 0;
+    line-height: 1.3;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result-excerpt {
+    font-size: 12px;
+    color: var(--pf-text-secondary);
+    margin: 2px 0 0 0;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-subresult {
+    padding-inline-start: 20px;
+    border-inline-start: 2px solid var(--pf-border);
+    margin-inline-start: 10px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-footer {
+    padding: 8px 10px;
+    border-top: 1px solid var(--pf-border);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    font-size: 11px;
+    color: var(--pf-text-muted);
+    flex-shrink: 0;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-footer-hint {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-empty {
+    padding: 20px 10px;
+    text-align: center;
+    color: var(--pf-text-muted);
+    font-size: 13px;
+}
+
+:is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-loading {
+    padding: 16px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--pf-text-muted);
+    font-size: 13px;
+}
+
+/* Ensure focus indicators are visible in Windows High Contrast Mode */
+@media (forced-colors: active) {
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-input:focus-visible,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-input:focus-visible,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-input-clear:focus-visible,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-btn:focus-visible,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-close:focus-visible,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-trigger:focus-visible,
+    :is(*, #\#):is(*, #\#):is(*, #\#)
+        .pf-result-card:has(.pf-result-link:focus-visible),
+    :is(*, #\#):is(*, #\#):is(*, #\#)
+        .pf-heading-chip:has(.pf-heading-link:focus-visible),
+    :is(*, #\#):is(*, #\#):is(*, #\#)
+        .pf-filter-checkbox:has(.pf-checkbox-input:focus-visible),
+    :is(*, #\#):is(*, #\#):is(*, #\#)
+        .pf-dropdown-option.pf-dropdown-option-focused,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-result[data-pf-selected] {
+        outline: 2px solid CanvasText;
+        outline-offset: 2px;
+    }
+}
+
+/* Hide keyboard hints on touch-only devices (no hover capability) */
+@media (hover: none) {
+    :is(*, #\#):is(*, #\#):is(*, #\#) pagefind-keyboard-hints,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-keyboard-hints,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-footer,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-footer-hint {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-dropdown-menu {
+        min-width: unset;
+        width: max(180px, calc(100vw - 32px));
+        max-width: calc(100vw - 32px);
+        inset-inline-start: unset;
+        left: 50%;
+        transform: translateX(-50%);
+        max-height: min(var(--pf-dropdown-max-height), 50vh);
+    }
+
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-dropdown {
+        max-height: min(var(--pf-searchbox-dropdown-max-height), 60vh);
+    }
+
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-filter-pane {
+        padding: 12px;
+        gap: 16px;
+    }
+}
