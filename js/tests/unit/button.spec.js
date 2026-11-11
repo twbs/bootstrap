@@ -16,9 +16,9 @@ describe('Button', () => {
     fixtureEl.innerHTML = '<button data-bs-toggle="button">Placeholder</button>'
     const buttonEl = fixtureEl.querySelector('[data-bs-toggle="button"]')
     const buttonBySelector = new Button('[data-bs-toggle="button"]')
-    const buttonByElement = new Button(buttonEl)
-
     expect(buttonBySelector._element).toEqual(buttonEl)
+
+    const buttonByElement = new Button(buttonEl)
     expect(buttonByElement._element).toEqual(buttonEl)
   })
 
