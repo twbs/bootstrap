@@ -66,12 +66,18 @@ $range-tokens: defaults(
   color: transparent;
   cursor: var(--range-track-cursor);
   // Fill (progress) up to the thumb. The Range plugin keeps `--range-fill` (0–1) in sync.
+  // `--range-track-bg-image` lets a consumer replace the fill with its own ramp — the
+  // color picker paints a hue wheel and an alpha gradient through it — without
+  // reimplementing the thumb and track.
   background-color: var(--range-track-bg);
   background-image:
-    linear-gradient(
-      to right,
-      var(--range-track-fill-bg) calc(var(--range-fill, 0) * 100%),
-      transparent calc(var(--range-fill, 0) * 100%)
+    var(
+      --range-track-bg-image,
+      linear-gradient(
+        to right,
+        var(--range-track-fill-bg) calc(var(--range-fill, 0) * 100%),
+        transparent calc(var(--range-fill, 0) * 100%)
+      )
     );
   border-color: transparent;
   @include border-radius(var(--range-track-border-radius));
