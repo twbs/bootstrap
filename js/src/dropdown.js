@@ -398,12 +398,13 @@ class Dropdown extends BaseComponent {
     const isInput = /input|textarea/i.test(event.target.tagName)
     const isEscapeEvent = event.key === ESCAPE_KEY
     const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
+    const isContentEditable = event.target.closest('[contenteditable]') !== null
 
     if (!isUpOrDownEvent && !isEscapeEvent) {
       return
     }
 
-    if (isInput && !isEscapeEvent) {
+    if ((isInput || isContentEditable) && !isEscapeEvent) {
       return
     }
 
