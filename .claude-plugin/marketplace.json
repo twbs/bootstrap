@@ -4,7 +4,7 @@
     "name": "Bootstrap",
     "url": "https://getbootstrap.com"
   },
-  "description": "The Bootstrap agent skills for Claude Code",
+  "description": "The Bootstrap agent skills",
   "plugins": [
     {
       "name": "bootstrap",

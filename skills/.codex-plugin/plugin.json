@@ -34,7 +34,7 @@
   ],
   "interface": {
     "displayName": "Bootstrap",
-    "shortDescription": "Install, customize, and migrate Bootstrap 6 with agent skills",
+    "shortDescription": "Install, customize, and migrate Bootstrap 6",
     "longDescription": "Bootstrap is a CSS and JavaScript framework for building responsive interfaces. This plugin gives coding agents the Bootstrap 6 skills already in this repository.\n\nUse it when installing Bootstrap 6 (CDN or package managers), wiring Vite, Webpack, Parcel, or npm-only setups, authoring component CSS and TypeScript, working with the color system or utility API, or migrating from Bootstrap 4 or 5 to Bootstrap 6.\n\nEach skill walks through a concrete workflow with the same guidance as the Bootstrap docs guides — from project setup through migration checklists.",
     "developerName": "Bootstrap",
     "category": "Developer Tools",
