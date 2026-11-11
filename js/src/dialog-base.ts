@@ -267,11 +267,11 @@ class DialogBase extends BaseComponent {
     }, this._element)
   }
 
-  // Hide any tooltips, popovers, or toasts inside the dialog before closing.
+  // Hide child popups before closing the dialog.
   // These components append to the dialog (for top-layer rendering) and would
   // otherwise persist visibly after close().
   protected _hideChildComponents(): void {
-    const selector = '[data-bs-toggle="tooltip"], [data-bs-toggle="popover"]'
+    const selector = '[data-bs-toggle="tooltip"], [data-bs-toggle="popover"], [data-bs-toggle="datepicker"]'
 
     for (const el of SelectorEngine.find(selector, this._element)) {
       const instance = Data.get(el, `bs.${el.getAttribute('data-bs-toggle')}`)

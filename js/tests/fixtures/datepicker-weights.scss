@@ -1,0 +1,3 @@
+@use "../../../scss/bootstrap" with (
+  $font-weights: ("normal": 450, "medium": 550, "semibold": 650)
+);
