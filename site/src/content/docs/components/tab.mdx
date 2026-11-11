@@ -164,6 +164,8 @@ The tab plugin also works with [list groups]([[docsref:/components/list-group]])
 
 ## Hash links
 
+Hash links also work when Bootstrap loads after the page. A later fragment change cancels an earlier target’s pending scroll.
+
 Add `data-bs-hash` to a tab pane to show it when the URL fragment matches its `id`. Use a normal in-page link to try it. You may need to use `scroll-margin-block-start` for some viewport offsetting if using a stickied or fixed navbar.
 
 <Example class="vstack gap-3" code={`<p class="d-inline-flex gap-2 mb-0">

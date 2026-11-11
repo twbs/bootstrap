@@ -70,7 +70,9 @@ const getHashTarget = (): HTMLElement | null => {
  * scrolls the target into view after it is shown.
  */
 const enableHashTarget = (namespace: string, handler: HashTargetHandler): void => {
+  let generation = 0
   const onHash = (): void => {
+    const current = ++generation
     const element = getHashTarget()
     if (!element || !handler.matches(element)) {
       return
@@ -82,12 +84,17 @@ const enableHashTarget = (namespace: string, handler: HashTargetHandler): void =
     }
 
     handler.open(element, () => {
-      element.scrollIntoView()
+      if (current === generation && element.isConnected && getHashTarget() === element) {
+        element.scrollIntoView()
+      }
     })
   }
 
   EventHandler.on(window, `load${namespace}`, onHash)
   EventHandler.on(window, `hashchange${namespace}`, onHash)
+  if (document.readyState === 'complete') {
+    onHash()
+  }
 }
 
 export {

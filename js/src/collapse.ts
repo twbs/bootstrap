@@ -266,14 +266,16 @@ const getCollapseTrigger = (collapseEl: HTMLElement): HTMLElement | null => {
 enableHashTarget(`${EVENT_KEY}${DATA_API_KEY}`, {
   matches: element => element.classList.contains(CLASS_NAME_COLLAPSE),
   getAnchor: getCollapseTrigger,
-  open(element, done) {
+  async open(element, done) {
     if (element.classList.contains(CLASS_NAME_SHOW)) {
       done()
       return
     }
 
-    EventHandler.one(element, EVENT_SHOWN, done)
-    Collapse.getOrCreateInstance(element).show()
+    await Collapse.getOrCreateInstance(element).show()
+    if (element.classList.contains(CLASS_NAME_SHOW)) {
+      done()
+    }
   }
 })
 

@@ -87,6 +87,8 @@ Conversely, multiple `<button>` or `<a>` elements can show and hide the same ele
 
 ## Hash links
 
+Hash links also work when Bootstrap loads after the page. A later fragment change cancels an earlier target’s pending scroll.
+
 Add `data-bs-hash` to a collapsible target to open it when the URL fragment matches its `id`. Use a normal in-page link (without `data-bs-toggle`) to try it. You may need to use `scroll-margin-block-start` for some viewport offsetting if using a stickied or fixed navbar.
 
 <Example code={`<p class="d-inline-flex gap-1">

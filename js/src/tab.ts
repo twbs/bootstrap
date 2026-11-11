@@ -342,7 +342,7 @@ const getTabTriggerFromPane = (pane: HTMLElement): HTMLElement | null => {
 enableHashTarget(`${EVENT_KEY}.data-api`, {
   matches: element => Boolean(getTabTriggerFromPane(element)),
   getAnchor: getTabTriggerFromPane,
-  open(element, done) {
+  async open(element, done) {
     const trigger = getTabTriggerFromPane(element)
     if (!trigger) {
       return
@@ -353,8 +353,10 @@ enableHashTarget(`${EVENT_KEY}.data-api`, {
       return
     }
 
-    EventHandler.one(trigger, EVENT_SHOWN, done)
-    Tab.getOrCreateInstance(trigger).show()
+    await Tab.getOrCreateInstance(trigger).show()
+    if (trigger.classList.contains(CLASS_NAME_ACTIVE)) {
+      done()
+    }
   }
 })
 
