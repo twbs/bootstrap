@@ -126,7 +126,7 @@ class Combobox extends BaseComponent {
   protected declare _form: HTMLFormElement | null
   protected declare _formObserver: MutationObserver
   protected declare _submitHandler: () => void
-  protected declare _resetTimeout: number | null
+  protected declare _resetTimeouts: Set<number>
   protected declare _resetHandler: (event: BootstrapEvent) => void
   protected declare _menuEventHandlers: Map<string, (event: BootstrapEvent) => void>
   protected declare _changeId: number
@@ -194,12 +194,11 @@ class Combobox extends BaseComponent {
       this.update()
     })
     this._submitHandler = () => this.update()
-    this._resetTimeout = null
+    this._resetTimeouts = new Set()
     this._resetHandler = event => {
       // Trusted reset clicks can run microtasks before the native default action.
-      clearTimeout(this._resetTimeout!)
-      this._resetTimeout = window.setTimeout(() => {
-        this._resetTimeout = null
+      const timeout = window.setTimeout(() => {
+        this._resetTimeouts.delete(timeout)
         if (!this._element || event.defaultPrevented || event.target !== this._form) {
           return
         }
@@ -215,6 +214,7 @@ class Combobox extends BaseComponent {
         this._anchorChip = null
         this.update()
       })
+      this._resetTimeouts.add(timeout)
     }
 
     this._createHiddenInput()
@@ -252,6 +252,7 @@ class Combobox extends BaseComponent {
   update(): void {
     this._changeId++
     this._readInputDisabled(this._formObserver.takeRecords())
+    this._syncOptionRoles()
     this._updateToggleText()
     this._updateHiddenInput()
     this._observeFormState()
@@ -261,7 +262,7 @@ class Combobox extends BaseComponent {
   }
 
   override dispose(): void {
-    clearTimeout(this._resetTimeout!)
+    this._resetTimeouts.forEach(timeout => clearTimeout(timeout))
     this._readInputDisabled(this._formObserver.takeRecords())
     this._formObserver.disconnect()
     EventHandler.off(this._form, `reset${EVENT_KEY}`, this._resetHandler)
@@ -554,6 +555,24 @@ class Combobox extends BaseComponent {
     element.setAttribute(name, value)
   }
 
+  protected _syncOptionRoles(): void {
+    if (!this._menu.id) {
+      this._setAttribute(this._menu, 'id', getUID('combobox-'))
+    }
+
+    this._setAttribute(this._toggle, 'aria-controls', this._menu.id)
+    this._setAttribute(this._toggle, 'aria-haspopup', 'listbox')
+    this._setAttribute(this._menu, 'role', 'listbox')
+    if (this._config.multiple) {
+      this._setAttribute(this._menu, 'aria-multiselectable', 'true')
+    }
+
+    for (const item of SelectorEngine.find(SELECTOR_MENU_ITEM, this._menu)) {
+      this._setAttribute(item, 'role', 'option')
+      this._setAttribute(item, 'aria-selected', String(item.classList.contains(CLASS_NAME_SELECTED)))
+    }
+  }
+
   protected _setupEditor(): void {
     const editor = this._editor!
     if (this._config.placeholder && !editor.placeholder) {
@@ -607,9 +626,7 @@ class Combobox extends BaseComponent {
         this._setAttribute(item, 'id', getUID('combobox-option-'))
       }
 
-      this._setAttribute(item, 'role', 'option')
       this._setAttribute(item, 'tabindex', '-1')
-      setAriaAttribute(item, 'aria-selected', selectedSet.has(item))
     }
 
     if (!this._config.multiple) {
@@ -1419,6 +1436,13 @@ class Combobox extends BaseComponent {
         this._showMenu(focusItem)
       }
 
+      return
+    }
+
+    if (key === ESCAPE_KEY && this._isShown()) {
+      event.preventDefault()
+      event.stopPropagation()
+      this.hide()
       return
     }
 

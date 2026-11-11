@@ -136,6 +136,44 @@ describe('Combobox form contract', () => {
     expect(events).toEqual([])
   })
 
+  it('should retain a completed reset when a second reset is canceled', async () => {
+    const x = make({}, { selected: [0] })
+    x.items[1].click()
+    x.form.reset()
+    x.form.addEventListener('reset', event => event.preventDefault(), { once: true })
+    x.form.reset()
+    await new Promise(resolve => {
+      setTimeout(resolve, 10)
+    })
+    expect(x.instance.getValues()).toEqual(['a,b'])
+    expect(values(x.form)).toEqual(['a,b'])
+  })
+
+  it('should close from Escape while the button keeps focus', async () => {
+    const x = make({ search: false })
+    await x.instance.show()
+    x.toggle.focus()
+    const event = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true })
+    x.toggle.dispatchEvent(event)
+    await tick()
+    expect(event.defaultPrevented).toBeTrue()
+    expect(x.menu.classList.contains('show')).toBeFalse()
+    expect(x.toggle.getAttribute('aria-expanded')).toEqual('false')
+    expect(document.activeElement).toBe(x.toggle)
+  })
+
+  it('should set and restore option roles in button mode', () => {
+    const x = make({ multiple: true }, { selected: [0] })
+    expect(x.menu.getAttribute('role')).toEqual('listbox')
+    expect(x.menu.getAttribute('aria-multiselectable')).toEqual('true')
+    expect(x.toggle.getAttribute('aria-controls')).toEqual(x.menu.id)
+    expect(x.items[0].getAttribute('role')).toEqual('option')
+    expect(x.items[0].getAttribute('aria-selected')).toEqual('true')
+    x.instance.dispose()
+    expect(x.menu.hasAttribute('role')).toBeFalse()
+    expect(x.items[0].hasAttribute('role')).toBeFalse()
+  })
+
   it('should retain a provided field and its attributes when disposed', () => {
     const input = field()
     const x = make({}, { input })

@@ -41,7 +41,7 @@ $chip-tokens: defaults(
     height: var(--chip-height);
     padding-inline: var(--chip-padding-x);
     font-size: var(--chip-font-size, var(--font-size-sm));
-    font-weight: var(--chip-font-weight, var(--font-weight-base));
+    font-weight: var(--chip-font-weight, var(--font-weight-normal));
     line-height: var(--chip-line-height, 1.25rem);
     color: var(--chip-color);
     text-decoration: none;
@@ -52,7 +52,7 @@ $chip-tokens: defaults(
     @include border-radius(var(--chip-border-radius));
 
     &:focus-visible {
-      outline: 0;
+      @include focus-ring();
     }
 
     &.active {
@@ -79,7 +79,7 @@ $chip-tokens: defaults(
     &.disabled,
     &:disabled {
       pointer-events: none;
-      opacity: .65;
+      opacity: var(--control-disabled-opacity);
     }
   }
 
