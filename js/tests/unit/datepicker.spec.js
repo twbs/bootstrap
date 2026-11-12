@@ -497,6 +497,23 @@ describe('Datepicker', () => {
 
       expect(Datepicker.getInstance(inputEl)).toBeNull()
     })
+
+    it('should clear pending hide timeout on dispose without throwing', async () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      datepicker._maybeHideAfterSelection(['2026-10-31'])
+      expect(datepicker._hideTimeout).not.toBeNull()
+
+      datepicker.dispose()
+      expect(datepicker._hideTimeout).toBeNull()
+
+      await new Promise(resolve => {
+        setTimeout(resolve, 350)
+      })
+    })
   })
 
   describe('options', () => {
