@@ -568,9 +568,17 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   Datepicker.getOrCreateInstance(this).toggle()
 })
 
-EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function () {
+EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function (this: HTMLInputElement) {
   // Handle focus for input elements
   if (this.tagName !== 'INPUT') {
+    return
+  }
+
+  // Do not open the calendar when focus arrives via keyboard (Tab/Shift+Tab).
+  // VCP marks itself as shown in input-mode on show(), but the calendar DOM is
+  // not yet in the document, so its Tab keydown handler calls preventDefault()
+  // on a non-existent element — trapping keyboard focus (WCAG 2.1.2).
+  if (this.matches(':focus-visible')) {
     return
   }
 
