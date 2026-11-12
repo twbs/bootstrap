@@ -200,12 +200,16 @@ $navbar-nav-tokens: defaults(
     > .container-fluid,
     %navbar-expand-container {
       flex-wrap: nowrap;
+      align-self: stretch;
       justify-content: flex-start;
     }
 
     .navbar-nav {
-      --nav-link-padding-x: var(--navbar-nav-link-padding-x);
+      --nav-gap: 0;
+      --nav-link-padding-x: calc(var(--navbar-nav-link-padding-x) + .125rem);
+
       flex-direction: row;
+      align-self: stretch;
     }
 
     .navbar-toggler {
@@ -245,8 +249,10 @@ $navbar-nav-tokens: defaults(
         display: flex;
         flex-grow: 1;
         flex-direction: row;
-        align-items: center;
+        align-items: stretch;
+        align-self: stretch;
         padding: 0;
+        margin-block: calc(var(--navbar-padding-y) * -1);
         overflow-y: visible;
       }
     }
