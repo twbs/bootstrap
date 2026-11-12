@@ -253,6 +253,7 @@ $tab-pane-tokens: defaults(
 
       &:hover,
       &:focus {
+        background-color: transparent;
         border-block-end-color: currentcolor;
       }
     }
