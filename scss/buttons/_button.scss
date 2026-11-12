@@ -402,14 +402,18 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     }
 
     &:has(input:disabled) {
-      color: var(--btn-disabled-color);
       pointer-events: none;
+      opacity: var(--btn-disabled-opacity);
+      @include box-shadow(none);
+    }
+
+    // A disabled toggle that is checked keeps its checked colors, so the selected option stays visible.
+    &:has(input:disabled):not(:has(input:checked)) {
+      color: var(--btn-disabled-color);
       background-color: var(--btn-disabled-bg, var(--bg-1));
       // stylelint-disable-next-line scss/at-function-named-arguments
       background-image: if(sass($enable-gradients): none; else: null);
       border-color: var(--btn-disabled-border-color);
-      opacity: var(--btn-disabled-opacity);
-      @include box-shadow(none);
     }
   }
 
