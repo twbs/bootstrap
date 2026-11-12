@@ -15,7 +15,9 @@ declare module 'astro-broken-links-checker' {
 }
 
 interface ImportMetaEnv {
-  readonly NETLIFY?: string
+  readonly VERCEL?: string
+  readonly VERCEL_ENV?: string
+  readonly VERCEL_URL?: string
 }
 
 interface ImportMeta {
