@@ -266,7 +266,7 @@ $utilities: map.merge(
       values: map.merge($border-widths, (keyline: var(--border-width-keyline)))
     ),
     "border-opacity": (
-      class: border,
+      class: border-opacity,
       property: border-color,
       values: theme-opacity-values(--bc)
     ),
@@ -809,7 +809,7 @@ $utilities: map.merge(
       values: theme-color-refs("contrast"),
     ),
     "fg-opacity": (
-      class: fg,
+      class: fg-opacity,
       property: color,
       values: theme-opacity-values(--fg)
     ),
@@ -844,7 +844,7 @@ $utilities: map.merge(
     ),
     "underline-opacity": (
       property: text-decoration-color,
-      class: underline,
+      class: underline-opacity,
       state: hover,
       values: theme-opacity-values(--underline-color, currentcolor)
     ),
@@ -887,7 +887,7 @@ $utilities: map.merge(
       values: theme-color-refs("bg-muted"),
     ),
     "bg-opacity": (
-      class: bg,
+      class: bg-opacity,
       property: background-color,
       values: theme-opacity-values(--bg)
     ),

@@ -26,7 +26,7 @@ For example, `.fg-primary` sets the `--bs-fg` variable to `var(--bs-primary-fg)`
 }
 ```
 
-This approach allows us to also easily support translucency with our `.fg-{opacity}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
+This approach allows us to also easily support translucency with our `.fg-opacity-{n}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
 
 If you want to colorize links, you can use the [`.link-{color}` utilities]([[docsref:/utilities/link]]) which have `:hover` and `:focus` states.
 
@@ -49,15 +49,15 @@ If you want to colorize links, you can use the [`.link-{color}` utilities]([[doc
 Change the opacity of a text color by using any of the `.fg-<percentage>` utilities which use `color-mix()` to mix the text color with `transparent` thanks to the CSS variable approach mentioned above.
 
 <Example class="d-flex flex-column gap-2" code={`<div class="fg-primary">This is default primary text</div>
-<div class="fg-primary fg-90">This is 90% opacity primary text</div>
-<div class="fg-primary fg-80">This is 80% opacity primary text</div>
-<div class="fg-primary fg-70">This is 70% opacity primary text</div>
-<div class="fg-primary fg-60">This is 60% opacity primary text</div>
-<div class="fg-primary fg-50">This is 50% opacity primary text</div>
-<div class="fg-primary fg-40">This is 40% opacity primary text</div>
-<div class="fg-primary fg-30">This is 30% opacity primary text</div>
-<div class="fg-primary fg-20">This is 20% opacity primary text</div>
-<div class="fg-primary fg-10">This is 10% opacity primary text</div>`} />
+<div class="fg-primary fg-opacity-90">This is 90% opacity primary text</div>
+<div class="fg-primary fg-opacity-80">This is 80% opacity primary text</div>
+<div class="fg-primary fg-opacity-70">This is 70% opacity primary text</div>
+<div class="fg-primary fg-opacity-60">This is 60% opacity primary text</div>
+<div class="fg-primary fg-opacity-50">This is 50% opacity primary text</div>
+<div class="fg-primary fg-opacity-40">This is 40% opacity primary text</div>
+<div class="fg-primary fg-opacity-30">This is 30% opacity primary text</div>
+<div class="fg-primary fg-opacity-20">This is 20% opacity primary text</div>
+<div class="fg-primary fg-opacity-10">This is 10% opacity primary text</div>`} />
 
 ## Contrast colors
 
@@ -80,16 +80,16 @@ Change the contrast color of a text or link with `.fg-contrast-{color}`. This wi
 
 These even mix with the opacity utilities.
 
-<Example class="d-flex flex-column gap-2" code={`<p class="bg-primary fg-contrast-primary fg-100">.fg-contrast-primary fg-100</p>
-<p class="bg-primary fg-contrast-primary fg-90">.fg-contrast-primary fg-90</p>
-<p class="bg-primary fg-contrast-primary fg-80">.fg-contrast-primary fg-80</p>
-<p class="bg-primary fg-contrast-primary fg-70">.fg-contrast-primary fg-70</p>
-<p class="bg-primary fg-contrast-primary fg-60">.fg-contrast-primary fg-60</p>
-<p class="bg-primary fg-contrast-primary fg-50">.fg-contrast-primary fg-50</p>
-<p class="bg-primary fg-contrast-primary fg-40">.fg-contrast-primary fg-40</p>
-<p class="bg-primary fg-contrast-primary fg-30">.fg-contrast-primary fg-30</p>
-<p class="bg-primary fg-contrast-primary fg-20">.fg-contrast-primary fg-20</p>
-<p class="bg-primary fg-contrast-primary fg-10">.fg-contrast-primary fg-10</p>`} />
+<Example class="d-flex flex-column gap-2" code={`<p class="bg-primary fg-contrast-primary fg-opacity-100">.fg-contrast-primary fg-opacity-100</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-90">.fg-contrast-primary fg-opacity-90</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-80">.fg-contrast-primary fg-opacity-80</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-70">.fg-contrast-primary fg-opacity-70</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-60">.fg-contrast-primary fg-opacity-60</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-50">.fg-contrast-primary fg-opacity-50</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-40">.fg-contrast-primary fg-opacity-40</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-30">.fg-contrast-primary fg-opacity-30</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-20">.fg-contrast-primary fg-opacity-20</p>
+<p class="bg-primary fg-contrast-primary fg-opacity-10">.fg-contrast-primary fg-opacity-10</p>`} />
 
 ## Reset color
 
