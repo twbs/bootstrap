@@ -1254,6 +1254,144 @@ describe('Datepicker', () => {
     })
   })
 
+  describe('form submission', () => {
+    it('should move the name to a hidden input that holds the ISO date', () => {
+      fixtureEl.innerHTML = '<form><input type="text" name="start" data-bs-toggle="datepicker" value="2026-01-15"></form>'
+
+      const formEl = fixtureEl.querySelector('form')
+      const inputEl = fixtureEl.querySelector('input[type="text"]')
+      const datepicker = new Datepicker(inputEl)
+      const hiddenInput = fixtureEl.querySelector('input[type="hidden"]')
+
+      expect(hiddenInput).not.toBeNull()
+      expect(hiddenInput.name).toEqual('start')
+      expect(hiddenInput.nextElementSibling).toEqual(inputEl)
+      expect(inputEl.hasAttribute('name')).toBeFalse()
+      expect(datepicker._boundInput).toEqual(hiddenInput)
+      expect(hiddenInput.value).toEqual('2026-01-15')
+      expect(inputEl.value).not.toEqual('')
+      expect(new FormData(formEl).get('start')).toEqual('2026-01-15')
+    })
+
+    it('should not create a hidden input for an input without a name', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" value="2026-01-15">'
+
+      const inputEl = fixtureEl.querySelector('input')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(fixtureEl.querySelector('input[type="hidden"]')).toBeNull()
+      expect(datepicker._boundInput).toBeUndefined()
+    })
+
+    it('should carry the form attribute over to the hidden input', () => {
+      fixtureEl.innerHTML = '<form id="outer"></form><input type="text" name="start" form="outer" data-bs-toggle="datepicker" value="2026-01-15">'
+
+      const formEl = fixtureEl.querySelector('form')
+      const inputEl = fixtureEl.querySelector('input[type="text"]')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker._boundInput.getAttribute('form')).toEqual('outer')
+      expect(new FormData(formEl).get('start')).toEqual('2026-01-15')
+    })
+
+    it('should submit selected dates as ISO strings whatever the display format', () => {
+      fixtureEl.innerHTML = '<input type="text" name="dates" data-bs-toggle="datepicker" data-bs-selection-mode="multiple" data-bs-locale="de-DE">'
+
+      const inputEl = fixtureEl.querySelector('input[type="text"]')
+      const datepicker = new Datepicker(inputEl)
+
+      datepicker.setSelectedDates(['2026-01-15', '2026-01-20'])
+
+      expect(inputEl.value).not.toContain('2026-01-15')
+      expect(datepicker._boundInput.value).toEqual('2026-01-15,2026-01-20')
+
+      datepicker.setSelectedDates([])
+
+      expect(inputEl.value).toEqual('')
+      expect(datepicker._boundInput.value).toEqual('')
+    })
+
+    it('should update the hidden input from a date typed into the input', () => {
+      fixtureEl.innerHTML = '<input type="text" name="start" data-bs-toggle="datepicker">'
+
+      const inputEl = fixtureEl.querySelector('input[type="text"]')
+      const datepicker = new Datepicker(inputEl)
+
+      inputEl.value = '2026-02-03'
+      inputEl.dispatchEvent(createEvent('input', { bubbles: true }))
+
+      expect(datepicker._boundInput.value).toEqual('2026-02-03')
+      expect(datepicker.getSelectedDates()).toEqual(['2026-02-03'])
+      // The text is not reformatted while the user is typing
+      expect(inputEl.value).toEqual('2026-02-03')
+    })
+
+    it('should clear the hidden input when the text is cleared or is not a date', () => {
+      fixtureEl.innerHTML = '<input type="text" name="start" data-bs-toggle="datepicker" value="2026-01-15">'
+
+      const inputEl = fixtureEl.querySelector('input[type="text"]')
+      const datepicker = new Datepicker(inputEl)
+
+      expect(datepicker._boundInput.value).toEqual('2026-01-15')
+
+      inputEl.value = ''
+      inputEl.dispatchEvent(createEvent('input', { bubbles: true }))
+
+      expect(datepicker._boundInput.value).toEqual('')
+      expect(datepicker.getSelectedDates()).toEqual([])
+
+      inputEl.value = 'soon'
+      inputEl.dispatchEvent(createEvent('input', { bubbles: true }))
+
+      expect(datepicker._boundInput.value).toEqual('')
+      expect(datepicker.getSelectedDates()).toEqual([])
+      expect(inputEl.value).toEqual('soon')
+    })
+
+    it('should give the name back to the input on dispose', () => {
+      fixtureEl.innerHTML = '<input type="text" name="start" data-bs-toggle="datepicker" value="2026-01-15">'
+
+      const inputEl = fixtureEl.querySelector('input[type="text"]')
+      const datepicker = new Datepicker(inputEl)
+
+      datepicker.dispose()
+
+      expect(fixtureEl.querySelector('input[type="hidden"]')).toBeNull()
+      expect(inputEl.getAttribute('name')).toEqual('start')
+    })
+
+    it('should keep a hand-written hidden input of an inline datepicker on dispose', () => {
+      fixtureEl.innerHTML = [
+        '<div data-bs-toggle="datepicker" data-bs-inline="true">',
+        '  <input type="hidden" name="selected_date">',
+        '</div>'
+      ].join('')
+
+      const divEl = fixtureEl.querySelector('div')
+      const datepicker = new Datepicker(divEl)
+
+      datepicker.dispose()
+
+      expect(fixtureEl.querySelector('input[type="hidden"]').name).toEqual('selected_date')
+    })
+
+    it('should submit the ISO date once the data API created the instance on focus', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<form><input type="text" name="start" data-bs-toggle="datepicker" value="2026-01-15"></form>'
+
+        const formEl = fixtureEl.querySelector('form')
+        const inputEl = fixtureEl.querySelector('input[type="text"]')
+
+        inputEl.addEventListener('shown.bs.datepicker', () => {
+          expect(new FormData(formEl).get('start')).toEqual('2026-01-15')
+          resolve()
+        })
+
+        inputEl.dispatchEvent(createEvent('focusin', { bubbles: true }))
+      })
+    })
+  })
+
   describe('vcpOptions pass-through', () => {
     it('should pass vcpOptions to VCP', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
