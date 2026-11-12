@@ -195,6 +195,12 @@ The nav overflow pattern can also be used within a [navbar]([[docsref:/component
     </div>
   </nav>`} />
 
+### In a column flex parent
+
+The wrapper grows to fill the free space of a flex parent. This gives the wrapper its width in a row, but in a column it takes a share of the free height. Bootstrap removes this growth when the parent is a `.card`, `.dialog`, `.drawer`, or `.flex-column`.
+
+Add `.flex-grow-0` to the wrapper in any other column parent. If the parent changes direction at a breakpoint, set the growth for each direction. For example, use `.flex-grow-0 .md:flex-grow-1` when the parent is `.flex-column .md:flex-row`.
+
 ### With menus
 
 A nav item that already hosts a [menu]([[docsref:/components/menu]]) becomes a submenu of the overflow menu. The plugin moves the original `.menu` rather than cloning it, so nested submenus stay intact.
