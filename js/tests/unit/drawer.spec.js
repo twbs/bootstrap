@@ -1,3 +1,4 @@
+import { userEvent } from 'vitest/browser'
 import Data from '../../src/dom/data.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import Drawer from '../../src/drawer.js'
@@ -180,6 +181,35 @@ describe('Drawer', () => {
 
         drawer.show()
       })
+    })
+
+    it('should keep a modal drawer open on real Escape presses when keyboard = false', async () => {
+      fixtureEl.innerHTML = [
+        '<dialog class="drawer drawer-instant">',
+        '  <button type="button">Save</button>',
+        '</dialog>'
+      ].join('')
+
+      const drawerEl = fixtureEl.querySelector('.drawer')
+      const drawer = new Drawer(drawerEl, { keyboard: false })
+      const hideSpy = spyOn(drawer, 'hide')
+      const backdropSpy = spyOn(drawer, '_triggerBackdropTransition').and.callThrough()
+
+      const pressEscape = async () => {
+        await userEvent.keyboard('{Escape}')
+        await new Promise(resolve => {
+          setTimeout(resolve, 50)
+        })
+      }
+
+      await drawer.show()
+      await pressEscape()
+      await pressEscape()
+      await pressEscape()
+
+      expect(drawerEl.open).toBeTrue()
+      expect(hideSpy).not.toHaveBeenCalled()
+      expect(backdropSpy).toHaveBeenCalledTimes(3)
     })
 
     it('should not hide if user clicks on static backdrop', () => {
