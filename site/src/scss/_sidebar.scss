@@ -1,4 +1,5 @@
 @use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
 
 @layer custom {
   .bd-sidebar {
@@ -43,17 +44,87 @@
       white-space: normal;
     }
 
-    @include media-breakpoint-between(xs, lg) {
-      column-count: 2;
-      column-gap: 1.5rem;
+    .nav-link.active {
+      font-weight: 600;
+    }
+  }
 
-      .bd-links-group {
-        break-inside: avoid;
-      }
+  // Universes: the first level of the docs navigation
+  .bd-universes {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 
-      .bd-links-span-all {
-        column-span: all;
-      }
+    // A compact grid in the small screens drawer, so the pages keep most of its height
+    @include media-breakpoint-down(lg) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    }
+  }
+
+  .bd-universe {
+    gap: .5rem;
+    padding: .375rem .75rem;
+    font-weight: 500;
+    color: var(--bs-fg-2);
+    background: none;
+    border: 0;
+    @include border-radius(var(--bs-radius-5));
+
+    .bi {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      color: var(--bs-fg-body);
+      background-color: var(--bs-bg-1);
+    }
+
+    &:focus-visible {
+      outline: var(--bs-focus-ring);
+      outline-offset: -2px;
+    }
+
+    &.active {
+      font-weight: 600;
+      color: var(--bs-fg-body);
+      background-color: var(--bs-bg-2);
+    }
+  }
+
+  // Universes and filter stay in view while the pages scroll
+  .bd-links-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--bs-bg-body);
+    // Covers the pages scrolling through the scroll container's top padding
+    box-shadow: 0 -1.5rem 0 var(--bs-bg-body);
+
+    // Fades the pages scrolling under the header
+    &::after {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      height: .75rem;
+      pointer-events: none;
+      content: "";
+      background: linear-gradient(var(--bs-bg-body), transparent);
+    }
+  }
+
+  .bd-links-filter {
+    padding-block: 1rem .5rem;
+
+    .form-control {
+      width: 100%;
+    }
+
+    // The search input clear button is enough, Escape also clears it
+    input::-webkit-search-cancel-button {
+      cursor: pointer;
     }
   }
 

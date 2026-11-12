@@ -8,6 +8,7 @@
  */
 
 import sidebarScroll from './partials/sidebar.js'
+import sidebarUniverses from './partials/sidebar-universes.js'
 import snippets from './partials/snippets.js'
 import stickyNav from './partials/sticky.js'
 import tocDrawer from './partials/toc.js'
@@ -15,6 +16,7 @@ import tocHeight from './partials/toc-height.js'
 import tocScroll from './partials/toc-scroll.js'
 
 export default () => {
+  sidebarUniverses()
   sidebarScroll()
   snippets()
   stickyNav()
