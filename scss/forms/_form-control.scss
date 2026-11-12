@@ -122,7 +122,7 @@ $form-control-sizes: defaults(
       }
     }
     &::file-selector-button {
-      min-height: var(--control-min-height);
+      min-height: calc(var(--btn-input-min-height) - 2 * var(--border-width));
       padding: var(--control-padding-y) var(--control-padding-x);
       margin: calc(var(--control-padding-y) * -1) calc(var(--control-padding-x) * -1);
       margin-inline-end: var(--control-padding-x);
