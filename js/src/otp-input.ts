@@ -334,8 +334,16 @@ class OtpInput extends BaseComponent {
       }
 
       const index = Math.min(this._input.selectionStart ?? 0, this._length - 1)
+      const end = this._input.selectionEnd ?? index
       const chars = [...this._input.value]
-      chars[index] = char
+      // A selection over more than one slot (e.g. select all) is replaced like
+      // native text; otherwise the character overwrites the active slot
+      if (end - index > 1) {
+        chars.splice(index, end - index, char)
+      } else {
+        chars[index] = char
+      }
+
       this._input.value = chars.join('').slice(0, this._length)
 
       this._selectSlot(index + 1)
