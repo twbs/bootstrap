@@ -17,14 +17,16 @@ $range-tokens: defaults(
     --range-track-height: .5rem,
     --range-track-cursor: pointer,
     --range-track-bg: var(--bg-3),
-    --range-track-border-radius: 1rem,
+    --range-track-border-radius: var(--radius-pill),
+    --range-track-box-shadow: var(--box-shadow-inset),
     --range-track-fill-bg: var(--theme-bg, var(--primary-base)),
+    --range-track-fill-direction: to right,
     --range-track-disabled-bg: color-mix(in oklch, var(--bg-4), var(--fg-3)),
     --range-thumb-width: 1rem,
     --range-thumb-height: var(--range-thumb-width),
     --range-thumb-bg: var(--theme-bg, var(--primary-base)),
     --range-thumb-border: var(--range-thumb-bg) solid var(--border-color),
-    --range-thumb-border-radius: 1rem,
+    --range-thumb-border-radius: var(--radius-pill),
     --range-thumb-box-shadow: "0 1px 2px rgb(0 0 0 / 7.5%), 0 2px 4px rgb(0 0 0 / 7.5%)",
     --range-thumb-active-bg: color-mix(in oklch, var(--theme-bg, var(--primary-base)) 70%, var(--bg-body)),
     --range-thumb-disabled-bg: var(--fg-3),
@@ -69,7 +71,7 @@ $range-tokens: defaults(
   background-color: var(--range-track-bg);
   background-image:
     linear-gradient(
-      to right,
+      var(--range-track-fill-direction),
       var(--range-track-fill-bg) calc(var(--range-fill, 0) * 100%),
       transparent calc(var(--range-fill, 0) * 100%)
     );
@@ -86,6 +88,10 @@ $range-tokens: defaults(
     position: relative;
     display: block;
     width: 100%;
+
+    &:dir(rtl) {
+      --range-track-fill-direction: to left;
+    }
   }
 
   .form-range-input {
@@ -164,26 +170,34 @@ $range-tokens: defaults(
   // pill and arrow. We only add the static positioning the Tooltip plugin would normally do.
   .form-range-bubble {
     position: absolute;
+    inset-inline-start: calc((var(--range-thumb-width) * .5) + var(--range-fill, 0) * (100% - var(--range-thumb-width)));
     bottom: 100%;
-    left: calc((var(--range-thumb-width) * .5) + var(--range-fill, 0) * (100% - var(--range-thumb-width)));
     margin-bottom: var(--tooltip-arrow-height);
     pointer-events: none;
     transform: translateX(-50%);
 
+    &:dir(rtl) {
+      transform: translateX(50%);
+    }
+
     .tooltip-arrow {
       position: absolute;
+      inset-inline-start: 50%;
       bottom: calc(-1 * var(--tooltip-arrow-height));
-      left: 50%;
       transform: translateX(-50%);
+
+      &:dir(rtl) {
+        transform: translateX(50%);
+      }
     }
   }
 
   // Tick marks generated from the linked <datalist>. Plugin builds `grid-template-columns`
   // from the gaps between values so each tick lands on a grid line (handles uneven values).
-  // Track is inset by 1/4th of the thumb width to keep alignment.
+  // Track is inset by half the thumb width to match its center at each end.
   .form-range-ticks {
     display: grid;
-    padding-inline: calc(var(--range-thumb-width) * .25);
+    padding-inline: calc(var(--range-thumb-width) * .5);
   }
 
   .form-range-tick {
