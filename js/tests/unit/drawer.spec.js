@@ -846,6 +846,63 @@ describe('Drawer', () => {
       })
     })
 
+    it('should not throw if another open drawer does not have a Drawer instance yet', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="btn2" data-bs-toggle="drawer" data-bs-target="#drawer2"></button>',
+          '<dialog id="drawer1" class="drawer"></dialog>',
+          '<dialog id="drawer2" class="drawer"></dialog>'
+        ].join('')
+
+        const trigger2 = fixtureEl.querySelector('#btn2')
+        const drawerEl1 = document.querySelector('#drawer1')
+        const drawerEl2 = document.querySelector('#drawer2')
+
+        drawerEl1.showModal()
+
+        drawerEl2.addEventListener('shown.bs.drawer', () => {
+          expect(drawerEl1.open).toBeFalse()
+          expect(drawerEl2.open).toBeTrue()
+          resolve()
+        })
+
+        trigger2.click()
+      })
+    })
+
+    it('should call hide first if another responsive drawer is open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button id="btn2" data-bs-toggle="drawer" data-bs-target="#drawer2"></button>',
+          '<dialog id="drawer1" class="md:drawer"></dialog>',
+          '<dialog id="drawer2" class="drawer"></dialog>'
+        ].join('')
+
+        const trigger2 = fixtureEl.querySelector('#btn2')
+        const drawerEl1 = document.querySelector('#drawer1')
+        const drawerEl2 = document.querySelector('#drawer2')
+
+        drawerEl1.showModal()
+
+        drawerEl2.addEventListener('shown.bs.drawer', () => {
+          expect(drawerEl1.open).toBeFalse()
+          expect(drawerEl2.open).toBeTrue()
+          resolve()
+        })
+
+        trigger2.click()
+      })
+    })
+
+    it('should not throw if target element does not exist', () => {
+      fixtureEl.innerHTML = '<button id="btn" data-bs-toggle="drawer" data-bs-target="#nonexistent"></button>'
+
+      const trigger = fixtureEl.querySelector('#btn')
+      expect(() => {
+        trigger.click()
+      }).not.toThrow()
+    })
+
     it('should focus on trigger element after closing drawer', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
