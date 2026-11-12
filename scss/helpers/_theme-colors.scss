@@ -12,6 +12,16 @@
     --theme-fg-emphasis: var(--theme-contrast);
   }
 
+  // Table cells are filled by an inset shadow of --theme-bg-subtle, which hides the
+  // background-color the .theme-contrast and .theme-muted utilities set, so a cell,
+  // row or table using them needs its own fill token there. .theme-subtle already matches.
+  @each $modifier, $token in ("contrast": "bg", "muted": "bg-muted") {
+    .table.theme-#{$modifier},
+    .table .theme-#{$modifier} {
+      --theme-bg-subtle: var(--theme-#{$token});
+    }
+  }
+
   .theme-muted {
     --theme-fg: var(--theme-fg-emphasis);
   }
