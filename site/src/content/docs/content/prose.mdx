@@ -13,7 +13,9 @@ Wrap your content in the `.prose` class to get modified font-size, line-height, 
 - Normalize the spacing of lists
 - Set a default `margin-bottom` for headings.
 - Some headings get an additional `margin-top` to ensure proper spacing between headings and other content.
-- Style blockquotes, code, and other inline elements.
+- Space the children of blockquotes and disclosures.
+- Keep images and videos within the content width without changing their aspect ratio.
+- Use shared font-weight tokens for headings, heading code, and description terms.
 
 <Callout>
   The `.not-prose` utility class can be used to opt out of `.prose` typography styles in specific elements. This is useful for components that have their own styling, such as code snippets or examples. Adding a `.prose` within a `.not-prose` won’t work.
@@ -27,7 +29,9 @@ Below is an example of Markdown demonstrating several types of HTML content supp
 # Getting started with documentation
 Writing clear and effective documentation is essential for any project. When you create content that others will read and use, [proper formatting](#) makes all the difference. *Good documentation* helps users understand complex concepts quickly and efficiently.
 
-> Documentation is a love letter that you write to your future self. Clear writing today saves countless hours of confusion tomorrow.
+> Documentation is a guide for your future self. Write each instruction so you can follow it later.
+>
+> Leave space between paragraphs so readers can see where each thought starts.
 
 The foundation of great documentation starts with **understanding your audience** and their needs. Writers should focus on clarity, consistency, and providing practical examples that readers can follow.
 
@@ -49,7 +53,7 @@ Most of these elements are styled by browsers with few modifications on our part
 
 Effective documentation requires careful attention to structure and flow. When organizing content, consider how readers will navigate through your material and what information they need first. Clear headings help users scan quickly and find relevant sections.
 
-### Code
+### Inline `code`
 
 Inline code is available with the `<code>` element. Snippets of multiple lines of code are supported through Rouge. Longer lines will automatically scroll horizontally when needed. You may also use code fencing (triple backticks) for rendering code.
 
@@ -108,11 +112,30 @@ Technical definitions should be clear and accessible to your target audience. Av
 
 Visual elements enhance understanding by providing concrete examples of abstract concepts. Choose images that directly support your written content rather than serving as mere decoration.
 
-<Placeholder width="800" height="400" alt="Large example image" class="d-block img-fluid mb-3" />
+Images keep their aspect ratio when the content becomes narrower. Small images keep their own width instead of stretching. These images have no `.img-fluid` or spacing classes. The same sizing rules apply to `<video>` elements.
 
-<Placeholder width="400" height="200" alt="Medium example image" class="d-block img-fluid mb-3" />
+<img src="/docs/[[config:docs_version]]/assets/img/bootstrap-themes.png" width="700" height="500" alt="A collection of Bootstrap theme previews" />
 
-<Placeholder width="200" height="200" alt="Small example image" class="d-block img-fluid mb-3" />
+<img src="/docs/[[config:docs_version]]/assets/brand/bootstrap-logo.svg" width="256" height="204" alt="Bootstrap logo" />
+
+### Disclosures
+
+Use a disclosure to keep supporting information beside the main instructions. Paragraphs inside it keep space between them.
+
+<details open>
+  <summary>Before you publish</summary>
+  <p>Check each example in a browser. Confirm that the instructions match the result.</p>
+  <p>Read the page at a narrow width. Images should fit the content without changing shape.</p>
+</details>
+
+### Content with its own styles
+
+Use `.not-prose` when a block needs its own typography and spacing.
+
+<div class="not-prose border rounded-3 p-3">
+  <h3 class="h6">Excluded content</h3>
+  <p class="mb-0">This block uses its own heading and paragraph styles.</p>
+</div>
 
 ### Tables
 
