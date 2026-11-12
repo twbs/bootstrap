@@ -241,6 +241,20 @@ $validation-states: defaults(
     }
   }
 
+  // Form adorn — docs put `.is-*` on the `.form-control.form-adorn` wrapper
+  // while focus lands on the inner `.form-ghost`. Mirror `.form-control` but
+  // use `:focus-within` so the validation border and focus ring stay semantic.
+  .form-adorn {
+    @include form-validation-state-selector($state) {
+      --control-border-color: var(--#{$theme}-border);
+
+      &:focus-within {
+        @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
+        --control-border-color: var(--#{$theme}-border);
+      }
+    }
+  }
+
   // Form adorn — :user-invalid fires on the inner .form-ghost, so we
   // propagate it to the visible wrapper with :has().
   .form-adorn:has(.form-ghost.is-#{$state}) {
