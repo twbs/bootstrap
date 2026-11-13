@@ -19,7 +19,7 @@ jobs:
       # allow streetsidesoftware/cspell-action to fetch files for commits and PRs
       contents: read
       pull-requests: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Clone repository
