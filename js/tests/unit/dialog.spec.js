@@ -1296,6 +1296,37 @@ describe('Dialog', () => {
       })
     })
 
+    it('should hide datepicker instances inside dialog when another component is registered first', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<dialog class="dialog">',
+          '  <input type="text" data-bs-toggle="datepicker">',
+          '</dialog>'
+        ].join('')
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const inputEl = fixtureEl.querySelector('[data-bs-toggle="datepicker"]')
+        const dialog = new Dialog(dialogEl)
+
+        const fakeDatepicker = { hide: jasmine.createSpy('datepickerHide') }
+        Data.set(inputEl, 'bs.button', {})
+        Data.set(inputEl, 'bs.datepicker', fakeDatepicker)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialog.hide()
+        })
+
+        dialogEl.addEventListener('hidden.bs.dialog', () => {
+          expect(fakeDatepicker.hide).toHaveBeenCalled()
+          Data.remove(inputEl, 'bs.button')
+          Data.remove(inputEl, 'bs.datepicker')
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
+
     it('should hide toast instances inside dialog when another component is registered first', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
