@@ -1,0 +1,88 @@
+---
+title: Chips
+description: Small elements for people, places, tags, and values, with optional icons, avatars, and dismiss buttons.
+toc: true
+aliases:
+  - /docs/[[config:docs_version]]/forms/chips/
+css_layer: components
+---
+
+import { getData } from '@libs/data'
+
+## Overview
+
+Chips represent people, places, tags, or values. Use them on their own or within components such as [Combobox]([[docsref:/forms/combobox]]), where they display selected values. They're similar to [Badges]([[docsref:/components/badge]]), but have some meaningful differences.
+
+- Chips support active states and dismiss buttons.
+- Chips have one size—they don't scale with the parent `font-size` like Badges.
+- Chips can have icons, avatars, and dismiss buttons.
+- Chips can be themed, individually or as a group on the parent container. By default, chips use the `subtle` and `text` theme tokens, while active state uses the `bg` and `contrast` tokens.
+- Chips can be active or disabled.
+
+See examples of all of this in action below.
+
+## Chips
+
+Use `.chip` for standalone chips. Add `.chip-icon` for a leading icon, `.chip-img` for an image like an avatar, and `.chip-dismiss` for a remove button. Note that we use an inline SVG for the dismiss button icon—you can modify this as needed.
+
+Static chips have no hover effect. A dismiss button has its own hover state without changing the whole chip.
+
+<Example class="d-flex flex-wrap gap-2" code={`<span class="chip">Basic chip</span>
+
+  <span class="chip">
+    <img src="https://github.com/mdo.png" class="chip-img" width="16" height="16" alt="">
+    With avatar
+  </span>
+
+  <span class="chip">
+    <span class="chip-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+      </svg>
+    </span>
+    With icon
+  </span>
+
+  <span class="chip">
+    Dismissible
+    <button type="button" class="chip-dismiss" aria-label="Remove">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+    </button>
+  </span>`} />
+
+### Interactive chips
+
+Use a button for an action or a link for navigation. Chips on or inside interactive elements have a pointer cursor and hover feedback. Combobox also provides these states for its selectable chips.
+
+<Example class="d-flex flex-wrap gap-2" code={`<button type="button" class="chip">Action chip</button>
+  <a class="chip" href="#multiple-value-inputs">Link chip</a>`} />
+
+### Themed chips
+
+Apply `.theme-*` classes to color your chips. Chips are subtle by default as this allows for a clear, themed active state.
+
+<Example class="d-flex flex-wrap gap-2" code={[
+  `<span class="chip">Default</span>`,
+  ...getData('theme-colors').map((themeColor) => `<span class="chip theme-${themeColor.name}">${themeColor.title}</span>`)
+]} />
+
+### Active state
+
+Add `.active` to make chips use the solid appearance (bg/contrast). This is useful for toggle-style chip selections.
+
+<Example class="d-flex flex-wrap gap-2" code={`<span class="chip theme-primary">Default</span>
+  <span class="chip theme-primary active">Active</span>
+  <span class="chip theme-success">Default</span>
+  <span class="chip theme-success active">Active</span>`} />
+
+## Multiple-value inputs
+
+Use [Combobox]([[docsref:/forms/combobox]]) for selectable options and free-entry values. Its multiple mode renders chips beside an editable input. The `.chip` classes on this page provide the visual treatment; Combobox owns keyboard behavior, removal, and form submission.
+
+## CSS
+
+### Chip variables
+
+<CSSVariables component="Chip" className="chip" />
+
+<ScssDocs name="chip-tokens" file="scss/_chip.scss" />

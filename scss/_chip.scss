@@ -41,31 +41,36 @@ $chip-tokens: defaults(
     height: var(--chip-height);
     padding-inline: var(--chip-padding-x);
     font-size: var(--chip-font-size, var(--font-size-sm));
-    font-weight: var(--chip-font-weight, var(--font-weight-base));
+    font-weight: var(--chip-font-weight, var(--font-weight-normal));
     line-height: var(--chip-line-height, 1.25rem);
     color: var(--chip-color);
     text-decoration: none;
     white-space: nowrap;
     vertical-align: middle;
-    cursor: pointer;
     background-color: var(--chip-bg);
     border: var(--border-width) solid var(--chip-border-color);
     @include border-radius(var(--chip-border-radius));
 
-    &:hover {
-      --chip-bg: var(--theme-bg-muted, var(--bg-3));
-    }
-
     &:focus-visible {
-      outline: 0;
+      @include focus-ring();
     }
 
     &.active {
       --chip-color: var(--chip-selected-color);
       --chip-bg: var(--chip-selected-bg);
       --chip-border-color: var(--chip-selected-border-color);
+    }
+
+    &:is(:any-link, button, [role="button"], [role="link"]):not(:disabled, .disabled, [aria-disabled="true"]),
+    :is(:any-link, button, [role="button"], [role="link"]):not(:disabled, .disabled, [aria-disabled="true"]) &,
+    .combobox-control > & {
+      cursor: pointer;
 
       &:hover {
+        --chip-bg: var(--theme-bg-muted, var(--bg-3));
+      }
+
+      &.active:hover {
         --chip-bg: var(--chip-selected-bg);
         opacity: .9;
       }
@@ -74,7 +79,7 @@ $chip-tokens: defaults(
     &.disabled,
     &:disabled {
       pointer-events: none;
-      opacity: .65;
+      opacity: var(--control-disabled-opacity);
     }
   }
 

@@ -1,6 +1,7 @@
 ---
 title: Combobox
-description: A customizable select-like component built with markup-first HTML, powered by the Menu component for positioning and keyboard navigation.
+description: Search and select one or more values from a customizable menu.
+aliases: "/docs/[[config:docs_version]]/forms/chips/"
 toc: true
 css_layer: components
 js: required
@@ -8,45 +9,49 @@ deps:
   - title: Menu
 ---
 
+<Callout type="warning">
+**Chip input is now part of Combobox.** Use editable Combobox for free-entry values and multiple selections as chips. See the [migration guide]([[docsref:/guides/migration#chip-input-becomes-combobox]]) to update existing chip inputs.
+</Callout>
+
 ## Overview
 
-The combobox component provides a styled select experience using standard HTML markup — a toggle button paired with a `.menu` overlay. Unlike traditional select enhancements, the combobox is markup-first: you write the toggle and menu items directly in HTML. The JavaScript handles show/hide, selection state, form submission via a hidden input, and keyboard navigation.
+The combobox component provides a styled select experience using standard HTML markup. Pair an editable input or a [toggle button]([[docsref:/forms/combobox#button-examples]]) with a `.menu` overlay. Combobox is markup-first: you write the control and menu items in HTML, and Bootstrap handles filtering, keyboard navigation, selection, and form submission.
 
-- Full control over menu item content (icons, descriptions, badges, images — anything)
-- Live search/filtering
-- Check mark indicators for selected items
-- Single and multiple selection modes
-- Full keyboard navigation and accessibility
-- Form submission via auto-created hidden input
+- Custom menu item content, including icons, descriptions, badges, and images
+- Live filtering as you type in the field or in a button’s menu search input
+- Optional check marks for selected items
+- Single and multiple selection, with removable chips for multiple values in the editable field
+- Optional free entry for values outside the menu
+- Keyboard navigation for suggestions, with shortcuts for selecting and removing chips
+- Form submission through generated or provided hidden inputs, with one entry per selected value in multiple mode
+- Bubbling `input` and `change` events when a selection changes
 
 ## Example
 
-Add `data-bs-toggle="combobox"` to a `<button>` element, followed by a `.menu` with `.menu-item` buttons. Each selectable item needs a `data-bs-value` attribute.
+Add `data-bs-toggle="combobox"` to a `.combobox` wrapper with a `.combobox-input` inside. Place a `.menu` after the wrapper, and give each selectable `.menu-item` a `data-bs-value`.
 
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="option"
-        data-bs-placeholder="Select an item…">
-    <span class="combobox-value">Select an item…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-    <button class="menu-item" type="button" data-bs-value="3">Option three</button>
+Type in the input to filter the options. The input keeps focus while the arrow keys highlight suggestions. Press <kbd>Enter</kbd> to commit a highlighted option. Typing alone does not select it.
+
+<Example code={`<label class="form-label" for="editableLanguage">Language</label>
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
+    <input class="form-control combobox-input" id="editableLanguage" placeholder="Choose a language">
+  </div>
+  <div class="menu" aria-label="Languages">
+    <button class="menu-item" type="button" data-bs-value="en">English</button>
+    <button class="menu-item" type="button" data-bs-value="fr">French</button>
+    <button class="menu-item" type="button" data-bs-value="ja">Japanese</button>
   </div>`} />
+
+We set the input’s combobox attributes and the listbox option IDs. Give the input an accessible name with a label. Keep the query input unnamed; `data-bs-name` names the submitted backing fields. Editing a selected single value clears its committed value until you select an option again.
 
 ### Placeholders
 
-Set placeholder text with `data-bs-placeholder` on the toggle button. The `.combobox-value` element shows this text when nothing is selected, styled with `.combobox-placeholder`.
+Use the input’s `placeholder` attribute to show a hint before you type or select a value.
 
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="country"
-        data-bs-placeholder="Pick a country…">
-    <span class="combobox-value">Pick a country…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
+<Example code={`<label class="form-label" for="comboboxCountry">Country</label>
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="country">
+    <input class="form-control combobox-input" id="comboboxCountry" placeholder="Pick a country…">
+  </div>
   <div class="menu">
     <button class="menu-item" type="button" data-bs-value="us">United States</button>
     <button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>
@@ -55,15 +60,12 @@ Set placeholder text with `data-bs-placeholder` on the toggle button. The `.comb
 
 ### Pre-selected value
 
-Add the `.selected` class and `aria-selected="true"` to a menu item to pre-select it. The toggle text updates automatically on initialization.
+Add `.selected` to a menu item to preselect it. The input shows that option’s label when Combobox initializes.
 
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="role"
-        data-bs-placeholder="Choose a role…">
-    <span class="combobox-value">Choose a role…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
+<Example code={`<label class="form-label" for="comboboxRole">Role</label>
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="role">
+    <input class="form-control combobox-input" id="comboboxRole" placeholder="Choose a role…">
+  </div>
   <div class="menu">
     <button class="menu-item" type="button" data-bs-value="admin">Admin</button>
     <button class="menu-item selected" type="button" data-bs-value="editor" aria-selected="true">Editor</button>
@@ -72,17 +74,13 @@ Add the `.selected` class and `aria-selected="true"` to a menu item to pre-selec
 
 ### With form field
 
-Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your combobox with a label, description, and validation feedback messages in a vertical stack.
+Use the [form field]([[docsref:/forms/field]]) component to stack a label, Combobox, and any help text or validation messages.
 
 <Example code={`<div class="form-field">
     <label for="exampleCombobox" class="form-label">Combobox</label>
-    <button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="country"
-        data-bs-placeholder="Pick a country…">
-      <span class="combobox-value">Pick a country…</span>
-      <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-    </button>
+    <div class="combobox" data-bs-toggle="combobox" data-bs-name="country">
+      <input class="form-control combobox-input" id="exampleCombobox" placeholder="Pick a country…">
+    </div>
     <div class="menu">
       <button class="menu-item" type="button" data-bs-value="us">United States</button>
       <button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>
@@ -90,21 +88,61 @@ Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your
     </div>
   </div>`} />
 
+## Multiple selections as chips
+
+Use `.combobox-control` for a wrapping field and add `data-bs-multiple="true"`. The input uses `.form-ghost` to share the field with selected chips. Remove buttons include the option’s name. An empty multiple selection submits no entries.
+
+<Example code={`<label for="editableInterests">Interests</label>
+  <div class="combobox-control" data-bs-toggle="combobox"
+       data-bs-name="interests" data-bs-multiple="true">
+    <input class="form-ghost combobox-input" id="editableInterests" placeholder="Add an interest">
+  </div>
+  <div class="menu" aria-label="Interests">
+    <button class="menu-item" type="button" data-bs-value="design">Design</button>
+    <button class="menu-item" type="button" data-bs-value="art,music">Art, music</button>
+    <button class="menu-item" type="button" data-bs-value="engineering">Engineering</button>
+  </div>`} />
+
+Selecting an option clears the query and keeps the editor ready for another search. The chips use the existing [chip styles]([[docsref:/components/chips]]). The menu remains the source of option identity and submitted values.
+
+## Free-entry values
+
+Set `data-bs-allow-custom="true"` to accept values outside the option list. Press <kbd>Enter</kbd> to commit the text. A popup is optional for a field with no predefined options; we create one when needed. We render value labels as text.
+
+<Example code={`<label for="editableTags">Tags</label>
+  <div class="combobox-control" data-bs-toggle="combobox"
+       data-bs-name="tags" data-bs-multiple="true" data-bs-allow-custom="true">
+    <input class="form-ghost combobox-input" id="editableTags" placeholder="Type a tag and press Enter">
+  </div>`} />
+
+Commas remain part of a value by default. Set `separator` explicitly to split typed or pasted values. `createOnBlur` is off by default so moving focus does not commit unfinished text. `maxItems` limits committed multiple selections. Repeated free-entry strings reuse an existing option rather than creating another chip.
+
+## Editor keyboard behavior
+
+- <kbd>↑</kbd> and <kbd>↓</kbd> highlight available suggestions while focus stays in the input.
+- <kbd>Enter</kbd> commits the active suggestion, or the query when free entry is enabled.
+- <kbd>Escape</kbd> closes the popup. <kbd>Tab</kbd> leaves the field without selecting a suggestion.
+- With an empty query, <kbd>Backspace</kbd> or <kbd>Delete</kbd> focuses and highlights the last enabled chip. Press either key on a chip to remove the highlighted chips.
+- Horizontal arrow keys move between chips in the field’s direction. Hold <kbd>Shift</kbd> to extend or shrink a range from its anchor. <kbd>Home</kbd> selects the first chip; <kbd>Shift+End</kbd> extends to the last. Plain <kbd>End</kbd> or <kbd>Escape</kbd> clears the chip highlight and returns to the editor.
+- Click a chip to highlight it. Use <kbd>Ctrl</kbd> or <kbd>Cmd</kbd> while clicking to toggle individual highlights, or <kbd>Shift</kbd> to select a range.
+- <kbd>Ctrl+A</kbd> or <kbd>Cmd+A</kbd> selects all enabled chips when a chip has focus or the query is empty. With query text, the input keeps native text selection.
+
+Chip highlights use the filled `.active` style. Focusing a chip or tabbing to its remove button also highlights the chip. They select values for a removal action; they do not change submitted values. Returning to the input clears these highlights. Bulk removal emits one committed change and honors each option’s cancelable removal event.
+
+Input-method composition takes precedence over component shortcuts. Removable chips also provide named buttons for direct keyboard access. Check the complete multiple-value interaction with your supported browsers and assistive technologies before release.
+
 ## Custom content
 
-Since menu items are standard HTML, you can put anything inside them — SVG icons, images, description text, badges, or any other markup.
+Menu items can include icons, images, descriptions, and badges.
 
 ### Icons
 
 Add `.menu-item-icon` directly to an `<svg>` element inside a menu item for a leading icon.
 
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="language"
-        data-bs-placeholder="Choose a language…">
-    <span class="combobox-value">Choose a language…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
+<Example code={`<label class="form-label" for="comboboxIconLanguage">Language</label>
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
+    <input class="form-control combobox-input" id="comboboxIconLanguage" placeholder="Choose a language…">
+  </div>
   <div class="menu">
     <button class="menu-item" type="button" data-bs-value="html">
       <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/></svg>
@@ -124,13 +162,10 @@ Add `.menu-item-icon` directly to an `<svg>` element inside a menu item for a le
 
 Use `.menu-item-content` for a flex column layout and `.menu-item-description` for secondary text.
 
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="role"
-        data-bs-placeholder="Select a role…">
-    <span class="combobox-value">Select a role…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
+<Example code={`<label class="form-label" for="comboboxRoleDetails">Role</label>
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="role">
+    <input class="form-control combobox-input" id="comboboxRoleDetails" placeholder="Select a role…">
+  </div>
   <div class="menu">
     <button class="menu-item" type="button" data-bs-value="admin">
       <span class="menu-item-content">
@@ -156,13 +191,10 @@ Use `.menu-item-content` for a flex column layout and `.menu-item-description` f
 
 Add `.menu-item-check` directly on an `<svg>` inside each menu item to show a check mark indicator. It is hidden by default and becomes visible when the item has the `.selected` class.
 
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="status"
-        data-bs-placeholder="Choose a status…">
-    <span class="combobox-value">Choose a status…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
+<Example code={`<label class="form-label" for="comboboxStatus">Status</label>
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="status">
+    <input class="form-control combobox-input" id="comboboxStatus" placeholder="Choose a status…">
+  </div>
   <div class="menu">
     <button class="menu-item selected" type="button" data-bs-value="active" aria-selected="true">
       <span class="menu-item-content">
@@ -189,13 +221,10 @@ Add `.menu-item-check` directly on an `<svg>` inside each menu item to show a ch
 
 Combine all three for a rich menu item layout.
 
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="priority"
-        data-bs-placeholder="Set priority…">
-    <span class="combobox-value">Set priority…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
+<Example code={`<label class="form-label" for="comboboxPriority">Priority</label>
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="priority">
+    <input class="form-control combobox-input" id="comboboxPriority" placeholder="Set priority…">
+  </div>
   <div class="menu">
     <button class="menu-item" type="button" data-bs-value="low">
       <svg class="menu-item-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/></svg>
@@ -223,19 +252,117 @@ Combine all three for a rich menu item layout.
     </button>
   </div>`} />
 
-## Search menu items
+## Groups
+
+Use `.menu-header` elements to create labeled groups within the menu.
+
+<Example code={`<label class="form-label" for="comboboxLanguageGroup">Language</label>
+  <div class="combobox" data-bs-toggle="combobox" data-bs-name="language">
+    <input class="form-control combobox-input" id="comboboxLanguageGroup" placeholder="Select a language…">
+  </div>
+  <div class="menu">
+    <div class="menu-header">Frontend</div>
+    <button class="menu-item" type="button" data-bs-value="html">HTML</button>
+    <button class="menu-item" type="button" data-bs-value="css">CSS</button>
+    <button class="menu-item" type="button" data-bs-value="js">JavaScript</button>
+    <div class="menu-header">Backend</div>
+    <button class="menu-item" type="button" data-bs-value="python">Python</button>
+    <button class="menu-item" type="button" data-bs-value="ruby">Ruby</button>
+    <button class="menu-item" type="button" data-bs-value="go">Go</button>
+  </div>`} />
+
+## Sizing
+
+Use `.form-control-sm` or `.form-control-lg` on the input to change size.
+
+Multiple-selection fields follow the shared `--bs-btn-input-*` sizing tokens. Chips use the height left after vertical padding and borders. Use `--bs-combobox-control-chip-height` for a custom chip height.
+
+<Example code={`<label class="form-label" for="comboboxSmall">Small</label>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control form-control-sm combobox-input" id="comboboxSmall" placeholder="Small select…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  </div>
+
+  <label class="form-label mt-3" for="comboboxDefault">Default</label>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control combobox-input" id="comboboxDefault" placeholder="Default select…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  </div>
+
+  <label class="form-label mt-3" for="comboboxLarge">Large</label>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control form-control-lg combobox-input" id="comboboxLarge" placeholder="Large select…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  </div>`} />
+
+## Disabled
+
+Add `disabled` to the input or individual menu items.
+
+<Example code={`<label class="form-label" for="comboboxDisabled">Disabled field</label>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control combobox-input" id="comboboxDisabled" placeholder="Cannot interact…" disabled>
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  </div>
+
+  <label class="form-label mt-3" for="comboboxDisabledOption">Disabled option</label>
+  <div class="combobox" data-bs-toggle="combobox">
+    <input class="form-control combobox-input" id="comboboxDisabledOption" placeholder="Select an option…">
+  </div>
+  <div class="menu">
+    <button class="menu-item" type="button" data-bs-value="1">Available</button>
+    <button class="menu-item" type="button" data-bs-value="2" disabled>Unavailable</button>
+    <button class="menu-item" type="button" data-bs-value="3">Available</button>
+  </div>`} />
+
+## Button examples
+
+Use a button when you want to choose from a menu without typing in the field.
+
+### Basic button
+
+Add `data-bs-toggle="combobox"` to a `<button>` element, followed by a `.menu` with `.menu-item` buttons. Each selectable item needs a `data-bs-value` attribute. Set `data-bs-placeholder` to display a hint in `.combobox-value` before selection.
+
+<Example code={`<button class="form-control combobox-toggle" type="button"
+        data-bs-toggle="combobox"
+        aria-haspopup="listbox" aria-expanded="false" aria-controls="comboboxButtonOptions"
+        data-bs-name="option"
+        data-bs-placeholder="Select an item…">
+    <span class="combobox-value">Select an item…</span>
+    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
+  </button>
+  <div class="menu" id="comboboxButtonOptions" role="listbox" aria-label="Options">
+    <button class="menu-item" type="button" data-bs-value="1" aria-selected="false" role="option">Option one</button>
+    <button class="menu-item" type="button" data-bs-value="2" aria-selected="false" role="option">Option two</button>
+    <button class="menu-item" type="button" data-bs-value="3" aria-selected="false" role="option">Option three</button>
+  </div>`} />
+
+### Search menu items
 
 Enable filtering with `data-bs-search="true"` on the toggle. Add a search input and optional no-results message inside the `.menu`, before the items. Items are filtered by matching their `textContent` against the query.
 
 <Example code={`<button class="form-control combobox-toggle" type="button"
         data-bs-toggle="combobox"
+        aria-expanded="false" aria-controls="comboboxButtonCountries"
         data-bs-name="country"
         data-bs-placeholder="Select a country…"
         data-bs-search="true">
     <span class="combobox-value">Select a country…</span>
     <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
   </button>
-  <div class="menu">
+  <div class="menu" id="comboboxButtonCountries">
     <div class="combobox-search">
       <input type="text" class="form-control combobox-search-input" placeholder="Search…" autocomplete="off" aria-label="Search…">
     </div>
@@ -252,146 +379,108 @@ Enable filtering with `data-bs-search="true"` on the toggle. Add a search input 
     <div class="combobox-no-results d-none">No results found</div>
   </div>`} />
 
-## Groups
-
-Use `.menu-header` elements to create labeled groups within the menu.
-
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="language"
-        data-bs-placeholder="Select a language…">
-    <span class="combobox-value">Select a language…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
-  <div class="menu">
-    <div class="menu-header">Frontend</div>
-    <button class="menu-item" type="button" data-bs-value="html">HTML</button>
-    <button class="menu-item" type="button" data-bs-value="css">CSS</button>
-    <button class="menu-item" type="button" data-bs-value="js">JavaScript</button>
-    <div class="menu-header">Backend</div>
-    <button class="menu-item" type="button" data-bs-value="python">Python</button>
-    <button class="menu-item" type="button" data-bs-value="ruby">Ruby</button>
-    <button class="menu-item" type="button" data-bs-value="go">Go</button>
-  </div>`} />
-
-## Multiple select
+### Multiple select
 
 Add `data-bs-multiple="true"` to the toggle for multi-select behavior. Selected items are toggled on click and the menu stays open. The toggle displays the count when more than one item is selected.
 
 <Example code={`<button class="form-control combobox-toggle" type="button"
         data-bs-toggle="combobox"
+        aria-haspopup="listbox" aria-expanded="false" aria-controls="comboboxButtonLanguages"
         data-bs-name="skills"
         data-bs-placeholder="Select skills…"
         data-bs-multiple="true">
     <span class="combobox-value">Select skills…</span>
     <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
   </button>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="html">
+  <div class="menu" id="comboboxButtonLanguages" role="listbox" aria-label="Languages" aria-multiselectable="true">
+    <button class="menu-item" type="button" data-bs-value="html" aria-selected="false" role="option">
       HTML
       <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
     </button>
-    <button class="menu-item" type="button" data-bs-value="css">
+    <button class="menu-item" type="button" data-bs-value="css" aria-selected="false" role="option">
       CSS
       <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
     </button>
-    <button class="menu-item" type="button" data-bs-value="js">
+    <button class="menu-item" type="button" data-bs-value="js" aria-selected="false" role="option">
       JavaScript
       <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
     </button>
-    <button class="menu-item" type="button" data-bs-value="python">
+    <button class="menu-item" type="button" data-bs-value="python" aria-selected="false" role="option">
       Python
       <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
     </button>
-    <button class="menu-item" type="button" data-bs-value="ruby">
+    <button class="menu-item" type="button" data-bs-value="ruby" aria-selected="false" role="option">
       Ruby
       <svg class="menu-item-check" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 16 16"><path d="m2 7 4 5 8-8"/></svg>
     </button>
   </div>`} />
 
-## Sizing
-
-Use `.form-control-sm` or `.form-control-lg` on the toggle button to change size.
-
-<Example code={`<button class="form-control form-control-sm combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-placeholder="Small select…">
-    <span class="combobox-value">Small select…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-  </div>
-
-  <button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-placeholder="Default select…">
-    <span class="combobox-value">Default select…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-  </div>
-
-  <button class="form-control form-control-lg combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-placeholder="Large select…">
-    <span class="combobox-value">Large select…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-  </div>`} />
-
-## Disabled
-
-Add `disabled` to the toggle button or individual menu items.
-
-<Example code={`<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-placeholder="Cannot interact…"
-        disabled>
-    <span class="combobox-value">Cannot interact…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-  </div>
-
-  <button class="form-control combobox-toggle mt-3" type="button"
-        data-bs-toggle="combobox"
-        data-bs-placeholder="Select an option…">
-    <span class="combobox-value">Select an option…</span>
-    <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
-  </button>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Available</button>
-    <button class="menu-item" type="button" data-bs-value="2" disabled>Unavailable</button>
-    <button class="menu-item" type="button" data-bs-value="3">Available</button>
-  </div>`} />
-
 ## Form submission
 
-The combobox creates a hidden `<input>` for form submission when `data-bs-name` is set on the toggle. The hidden input’s `name` matches the attribute value and its `value` updates whenever the selection changes.
+The combobox creates a hidden `<input>` for form submission when `data-bs-name` is set on the wrapper or button. The hidden input’s `name` matches the attribute value and its `value` updates whenever the selection changes.
 
 ```html
 <!-- What you write -->
-<button class="form-control combobox-toggle" type="button"
-        data-bs-toggle="combobox"
-        data-bs-name="country">
-  ...
-</button>
+<label for="countryPickerInput">Country</label>
+<div id="countryPicker" class="combobox" data-bs-toggle="combobox" data-bs-name="country">
+  <input class="form-control combobox-input" id="countryPickerInput">
+</div>
 <div class="menu">...</div>
 
-<!-- What the JS creates (inserted before the toggle) -->
+<!-- What the JS creates (inserted before the wrapper) -->
 <input type="hidden" name="country" value="us">
 ```
 
-For multiple selection, the hidden input value is a comma-separated list of selected values.
+For multiple selection, each selected option submits a separate field with the same name. For example, selecting `us` and `ca` submits `countries=us&countries=ca`. Values that contain commas remain unchanged. If your server requires brackets, use `data-bs-name="countries[]"`; we copy the name as written.
+
+The first hidden input remains in the DOM so event listeners keep a stable target. It holds the first submitted value. Additional inputs hold the remaining values in menu order. With no multiple selection, the first input is disabled and no values are submitted. Single selection keeps one field, empty when no option is selected.
+
+```js
+const form = document.querySelector('#preferences')
+const selectedCountries = new FormData(form).getAll('countries')
+```
+
+### Use an existing input
+
+Set `data-bs-input` to the selector of a hidden input, or pass the element as the `input` option. We use that field’s name and form owner. The `name` option applies only to automatically created fields.
+
+```html
+<input type="hidden" id="comboboxCountryValue" name="country">
+<label for="comboboxBoundCountry">Country</label>
+<div class="combobox" data-bs-toggle="combobox" data-bs-input="#comboboxCountryValue">
+  <input class="form-control combobox-input" id="comboboxBoundCountry">
+</div>
+<div class="menu" aria-label="Countries">
+  <button class="menu-item selected" type="button" data-bs-value="us" role="option" aria-selected="true">United States</button>
+  <button class="menu-item" type="button" data-bs-value="ca" role="option" aria-selected="false">Canada</button>
+</div>
+```
+
+Mark the initial selection with `.selected` on the options. We sync the field from that markup; an existing field value does not select an option. Use an explicit selector for each component, even when several rows use the same field name. We do not infer a binding from neighboring elements or shared names.
+
+Calling `dispose()` keeps a provided input, its current first value, and its application attributes. It removes generated inputs and component listeners. In multiple mode, generated fields for the other values are also removed. One provided input cannot preserve the entire repeated-value payload after disposal.
+
+### Disabled state, reset, and updates
+
+A disabled input or button does not submit its generated fields. Provided inputs keep their own disabled setting. Generated fields follow the input or button’s `form` attribute, including forms outside the component’s parent.
+
+Resetting the form restores the initial option selection, label, and submitted values. Preventing the form’s `reset` event cancels that change. Initialization, reset, and `update()` do not emit selection-change events.
+
+We observe disabled and form-attribute changes. Call `update()` when you move the component or change its selected option markup. Also call it before reading `FormData` or submitting to a new form in the same task as an attribute change:
+
+```js
+const picker = document.querySelector('#countryPicker')
+const input = picker.querySelector('input')
+const combobox = bootstrap.Combobox.getInstance(picker)
+
+input.disabled = true
+combobox.update()
+const data = new FormData(input.form)
+```
+
+Normal form submission also synchronizes the fields before submission. If you replace the entire menu element, dispose the component and initialize it again. Applications own asynchronous option loading.
+
+Hidden inputs do not participate in native constraint validation. Preserving attributes for an application validator does not add native `required` or `pattern` validation.
 
 ## JavaScript
 
@@ -400,11 +489,12 @@ For multiple selection, the hidden input value is a comma-separated list of sele
 <BsTable>
 | Attribute | Description |
 | --- | --- |
-| `data-bs-toggle="combobox"` | Initializes the combobox on the toggle button. |
+| `data-bs-toggle="combobox"` | Initializes Combobox on the editable wrapper or button. |
 | `data-bs-value` | On a `.menu-item`, the value submitted and shown when that option is selected. |
-| `data-bs-search` | Enables the search/filter field inside the menu. |
+| `data-bs-search` | Enables a search field inside the menu for a button Combobox. |
 | `data-bs-multiple` | Enables multi-select behavior. |
-| `data-bs-name` | `name` of the auto-created hidden input for form submission. |
+| `data-bs-name` | `name` of the automatically created fields for form submission. |
+| `data-bs-input` | Selector of a provided hidden input to reuse. |
 | `data-bs-placeholder` | Placeholder text shown in the toggle when nothing is selected. |
 </BsTable>
 
@@ -414,15 +504,20 @@ For multiple selection, the hidden input value is a comma-separated list of sele
 
 ### Options
 
-Options can be passed via data attributes on the toggle button (e.g., `data-bs-search="true"`) or as a config object when initializing via JavaScript.
+Options can be passed via data attributes on the wrapper or button (e.g., `data-bs-search="true"`) or as a config object when initializing via JavaScript.
 
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `allowCustom` | boolean | `false` | Allow free-entry values from the editable input. |
+| `createOnBlur` | boolean | `false` | Commit free-entry text when the editor loses focus. |
+| `maxItems` | number \| null | `null` | Positive maximum number of committed multiple selections. |
+| `separator` | string \| null | `null` | Explicit delimiter for typed or pasted free-entry values. |
 | `multiple` | boolean | `false` | Enable multi-select mode. Selections toggle and the menu stays open. |
-| `name` | string \| null | `null` | Name for the auto-created hidden input. Also settable via `data-bs-name`. |
-| `placeholder` | string | `''` | Placeholder text for the toggle. Also settable via `data-bs-placeholder`. |
-| `search` | boolean | `false` | Enable search input in the menu. Also settable via `data-bs-search`. |
+| `name` | string \| null | `null` | Name for automatically created fields. Also settable via `data-bs-name`. |
+| `input` | string \| element \| null | `null` | Selector or element for a provided hidden input. Its name and form owner are retained. |
+| `placeholder` | string | `''` | Placeholder text for the button. Also settable via `data-bs-placeholder`. |
+| `search` | boolean | `false` | Enable search input in a button’s menu. Also settable via `data-bs-search`. |
 | `searchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
 | `placement` | string | `'bottom-start'` | Menu placement (uses Floating UI). |
 | `offset` | array | `[0, 2]` | Offset from the toggle `[skidding, distance]`. |
@@ -434,39 +529,57 @@ Options can be passed via data attributes on the toggle button (e.g., `data-bs-s
 <BsTable>
 | Method | Description |
 | --- | --- |
+| `getValues` | Returns the committed values in menu order. |
+| `getSelectedValues` | Returns the values of highlighted chips, without changing committed selections. |
+| `selectChip(chip, options)` | Highlights an owned chip. Use `addToSelection` for a toggle or `rangeSelect` to extend from the anchor. |
+| `clearSelection` | Clears chip highlights without removing values. |
+| `removeSelected` | Removes highlighted chips in one change, then focuses the nearest remaining chip or editor. Returns whether values changed. |
+| `add(value)` | Selects an existing value, or creates one when allowed. Returns its chip or option, or `null`. |
+| `remove(valueOrElement)` | Removes a selected value, option, or chip. Returns whether it changed. |
+| `clear` | Removes enabled selections in one change. |
+| `focus` | Focuses the toggle or editable input. |
 | `toggle` | Toggles the menu. |
 | `show` | Shows the menu. |
 | `hide` | Hides the menu. |
-| `dispose` | Destroys the combobox and its Menu instance, and removes the hidden input. |
+| `dispose` | Destroys the combobox and its Menu instance, removes generated fields, and keeps a provided input. |
+| `update` | Syncs the selected markup, label, and form attributes without firing change events. |
 | `getInstance` | Static method to get the combobox instance from a DOM element. |
 | `getOrCreateInstance` | Static method to get or create a combobox instance. |
 </BsTable>
 
-Combobox owns the Menu instance registered on its toggle. Let Combobox create and dispose that instance. Do not replace or dispose the Menu separately.
+Menu controls the show and hide transitions. Combobox forwards its lifecycle events, including outside-click dismissal. Cancel `show.bs.combobox` or `hide.bs.combobox` to prevent that action. Await `show()` or `hide()` for transition completion.
+
+Combobox owns the Menu instance registered on its input or button. Let Combobox create and dispose that instance. Do not replace or dispose the Menu separately.
 
 ### Events
 
-Events are fired on the toggle button element.
+Component events fire on the component root: the wrapper for an editable field, or the button. Query input events remain native input events; they do not commit a value. When selection changes, we first update the label and all submitted fields. We then dispatch bubbling `input` and `change` events from the stable hidden input, followed by `change.bs.combobox` on the root. Without a backing field, the plain events also fire on the root.
+
+Selecting the same single option again does not emit a change. Selecting a different option with the same value does. Read all multiple values from `event.value` on the component event or `FormData.getAll(name)`, rather than the first hidden input’s value.
 
 <BsTable>
 | Event | Description |
 | --- | --- |
+| `add.bs.combobox` | Fires before an option is selected. Cancel it to prevent selection. Has `value` and `item` properties. |
+| `remove.bs.combobox` | Fires before a selected option is removed. Cancel it to keep that value. Has `value` and `item` properties. |
 | `show.bs.combobox` | Fires immediately when the `show` method is called. |
 | `shown.bs.combobox` | Fires when the menu has been made visible. |
 | `hide.bs.combobox` | Fires immediately when the `hide` method is called. |
 | `hidden.bs.combobox` | Fires when the menu has been hidden. |
-| `change.bs.combobox` | Fires when a selection is made. The event detail includes `value` and `item`. |
+| `select.bs.combobox` | Fires after chip highlights change. Contains `selected` values and their option `items`. Does not change form values. |
+| `change.bs.combobox` | Fires after selection changes. The event has `value` and `item` properties. `value` is an array in multiple mode. |
 </BsTable>
 
 ## Accessibility
 
-The combobox component follows WAI-ARIA combobox patterns:
+Give the input a visible label. We set its `role="combobox"`, connect it to the listbox, and update `aria-expanded` as the menu opens and closes. The input retains focus while you navigate suggestions with the arrow keys.
 
-- The toggle button has `aria-haspopup="listbox"` and `aria-expanded`.
-- Each selectable item should have `role="option"` and `aria-selected`.
-- Full keyboard navigation: Arrow keys, Home, End, Enter, Space, Escape, and Tab.
-- Disabled items have the `disabled` attribute and `aria-disabled="true"`.
+For a button that opens a listbox, give the button `aria-haspopup="listbox"` and `aria-expanded="false"`. Set `role="listbox"` on the menu and use `role="option"` and `aria-selected` on its options. Use `disabled` on unavailable option buttons.
 
 ## CSS custom properties
 
 The combobox uses CSS custom properties prefixed with `--combobox-*` for the toggle, and inherits `--menu-*` properties from the Menu component for the menu overlay. See the [source SCSS](https://github.com/twbs/bootstrap/blob/main/scss/forms/_combobox.scss) for the full list of available tokens.
+
+### Editable field variables
+
+<ScssDocs name="combobox-control-tokens" file="scss/forms/_combobox-control.scss" />
