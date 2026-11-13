@@ -645,7 +645,7 @@ class Menu extends BaseComponent {
 
   protected _onSubmenuTriggerEnter(event: BootstrapEvent): void {
     // A tap fires an emulated `mouseenter` before `click`, so let the click open the submenu
-    if (this._lastPointerType && this._lastPointerType !== 'mouse') {
+    if (this._config.submenuTrigger === 'both' && this._lastPointerType && this._lastPointerType !== 'mouse') {
       return
     }
 
