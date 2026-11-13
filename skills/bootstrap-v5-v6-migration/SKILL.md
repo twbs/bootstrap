@@ -45,6 +45,27 @@ Work through each step in order. After each step, search the codebase for remain
 
 Customize by overriding the CSS token maps — `$root-tokens` for global tokens and each component's `$*-tokens` map — rather than legacy Sass scalars. See [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written **unprefixed** in Sass (e.g. `--spacer`, `--border-radius`); Bootstrap's dist/CDN CSS runs PostCSS to add the `--bs-` prefix (`--bs-spacer`), so when you compile the source yourself the properties stay unprefixed.
 
+`@use` doesn't put Bootstrap's members in the global scope like `@import` did. Bare v5 references to Bootstrap's variables, functions, or mixins fail with "Undefined variable", "Undefined function", or "Undefined mixin". Prefix them with the `bootstrap` namespace, or load Bootstrap with `as *` to keep the v5 names.
+
+```scss
+// v5
+@import "bootstrap/scss/bootstrap";
+.custom { padding: $spacer * .5; }
+@include media-breakpoint-down(sm) { .custom { display: none; } }
+
+// v6 — namespaced
+@use "bootstrap/scss/bootstrap";
+.custom { padding: bootstrap.$spacer * .5; }
+@include bootstrap.media-breakpoint-down(sm) { .custom { display: none; } }
+
+// v6 — v5 names kept with `as *`
+@use "bootstrap/scss/bootstrap" as *;
+.custom { padding: $spacer * .5; }
+@include media-breakpoint-down(sm) { .custom { display: none; } }
+```
+
+Each file that uses Bootstrap's members needs its own `@use`. See [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#variables-functions-and-mixins).
+
 ---
 
 ## Step 2: CSS Class & Attribute Renames
@@ -181,6 +202,8 @@ Keys 2-5 have changed values. To preserve v5 spacing: `.p-2` (0.5rem) -> `.p-3`,
 | 4 | `1.5rem` | `0.75rem` |
 | 5 | `3rem` | `1rem` |
 | 6-12 | — | `1.25rem` through `3rem`, in `0.25rem` steps |
+
+Negative margins are limited to `.ms--1`, `.ms--2`, `.me--1`, `.me--2` (`-0.25rem`, `-0.5rem`). v5's `.m*-n*` classes (e.g. `.mt-n1`, `.ms-n3`) are gone: use one of these or a custom style.
 
 ### Form validation
 
@@ -515,6 +538,7 @@ document.querySelectorAll('form[data-bs-validate]')
 | `$zindex-offcanvas` | `$zindex-drawer` |
 | `$form-validation-states` | `$validation-states` |
 | `$btn-close-white-filter` | Removed — icon uses `currentcolor` |
+| `$enable-negative-margins` | Removed — negative margins are always generated; customize `$negative-spacers` |
 | `add()` / `subtract()` | `calc()` |
 | `breakpoint-infix()` | `breakpoint-prefix()` (returns `"md\:"` not `"-md"`) |
 | `$infix` (in loop mixins) | `$prefix` |
@@ -595,8 +619,8 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 
 | Component | Trigger / hook | Purpose |
 | --- | --- | --- |
-| Combobox | `data-bs-toggle="combobox"` | Filterable/autocomplete select built on Menu |
-| Chip / Chip input | `.chip`, `.chip-input` (`data-bs-chips`) | Tags / tokens + interactive entry |
+| Combobox | `data-bs-toggle="combobox"` | Editable single or multiple selection and optional free entry, built on Menu |
+| Chip | `.chip` | Standalone tag / token presentation |
 | Datepicker | `data-bs-toggle="datepicker"` | Date picker (peer dep `vanilla-calendar-pro`) |
 | Range | `.form-range` (+ `data-bs-bubble`, ticks) | Enhanced range slider with a value bubble |
 | Strength | `data-bs-strength` | Password-strength meter |
@@ -628,7 +652,7 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
    - `btn-primary`, `btn-outline-` (should use `.btn-solid .theme-*`)
    - `.text-primary`, `.text-danger` (should be `.fg-*`)
    - `@import` in Sass (should be `@use`)
-   - `form-select` (should be `form-control`)
+   - bare Bootstrap variables, functions, or mixins after `@use "bootstrap/scss/bootstrap"` (add the `bootstrap.` namespace, or load Bootstrap with `as *`)   - `form-select` (should be `form-control`)
    - `was-validated`, `needs-validation` (should be `data-bs-validate`)
    - `popperConfig` (should be `floatingConfig`)
    - `form-check` (should be `check`, `radio`, or `switch`)

@@ -1,5 +1,7 @@
+import { page, userEvent } from 'vitest/browser'
 import Combobox from '../../src/combobox.js'
 import EventHandler from '../../src/dom/event-handler.js'
+import Menu from '../../src/menu.js'
 import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 describe('Combobox', () => {
@@ -65,6 +67,13 @@ describe('Combobox', () => {
   })
 
   describe('constructor', () => {
+    it('should register both the combobox and its menu on the toggle', () => {
+      const { combobox, toggleEl } = makeCombobox()
+
+      expect(Combobox.getInstance(toggleEl)).toBe(combobox)
+      expect(Menu.getInstance(toggleEl)).toBe(combobox._menuInstance)
+    })
+
     it('should show the placeholder when nothing is selected', () => {
       const { valueEl } = makeCombobox({ placeholder: 'Pick one…' })
 
@@ -308,7 +317,7 @@ describe('Combobox', () => {
 
       items[1].click()
       expect(valueEl.textContent).toEqual('2 selected')
-      expect(fixtureEl.querySelector('input[type="hidden"]').value).toEqual('us,uk')
+      expect([...fixtureEl.querySelectorAll('input[type="hidden"]')].map(input => input.value)).toEqual(['us', 'uk'])
     })
 
     it('should fire change with every selected value', () => {
@@ -335,6 +344,33 @@ describe('Combobox', () => {
 
   describe('search', () => {
     const searchMarkup = () => markup({ search: SEARCH_HTML, noResults: NO_RESULTS_HTML })
+
+    it('should focus search directly on click and return to the toggle on Escape', async () => {
+      const { combobox, menuEl, toggleEl } = makeCombobox({ search: true, placeholder: 'Select a country' }, searchMarkup())
+      const searchEl = menuEl.querySelector('.combobox-search-input')
+      const focusOrder = []
+      toggleEl.style.cssText = 'position: fixed; top: 1rem; left: 1rem'
+      toggleEl.addEventListener('focus', () => focusOrder.push(toggleEl))
+      searchEl.addEventListener('focus', () => focusOrder.push(searchEl))
+
+      try {
+        const toggle = page.getByRole('button', { name: 'Select a country' })
+        await toggle.click()
+
+        expect(focusOrder).toEqual([searchEl])
+        expect(document.activeElement).toBe(searchEl)
+
+        keydown(searchEl, 'Escape')
+
+        expect(document.activeElement).toBe(toggleEl)
+
+        await userEvent.keyboard('{Enter}')
+
+        expect(document.activeElement).toBe(searchEl)
+      } finally {
+        combobox.dispose()
+      }
+    })
 
     const typeSearch = (searchEl, value) => {
       searchEl.value = value
@@ -486,6 +522,17 @@ describe('Combobox', () => {
       expect(document.activeElement).toEqual(items[0])
     })
 
+    it('should reuse its menu instance across repeated arrow key presses', () => {
+      const { combobox, toggleEl, items } = makeCombobox()
+      const menu = Menu.getInstance(toggleEl)
+      combobox.show()
+
+      keydown(items[0], 'ArrowDown')
+      keydown(items[1], 'ArrowDown')
+
+      expect(Menu.getInstance(toggleEl)).toBe(menu)
+    })
+
     it('should jump to the first item on Home and the last on End', () => {
       const { combobox, items } = makeCombobox()
       combobox.show()
@@ -528,6 +575,7 @@ describe('Combobox', () => {
 
       expect(fixtureEl.querySelector('input[type="hidden"]')).toBeNull()
       expect(Combobox.getInstance(toggleEl)).toBeNull()
+      expect(Menu.getInstance(toggleEl)).toBeNull()
     })
 
     it('should remove component listeners and keep consumer listeners', () => {

@@ -642,17 +642,18 @@ Sass cannot read a module and configure the same module in one file. Some change
 
 The partial loads the config module with `as *`. This avoids a namespace prefix, so you can reference `$utilities` directly. An assignment to `$utilities` then writes back to the config module.
 
-For a utility-only build, load `bootstrap/scss/utilities` and then `bootstrap/scss/utilities/api`. The API module emits the utility classes and nothing else.
+For a utility-only build, load `bootstrap/scss/bootstrap-utilities`. It accepts `$utilities` like the full build. It also loads the root tokens and the helpers the utilities depend on, so `.bg-primary`, `.shadow` and `.theme-*` work on their own.
 
 ```scss
 // my-bootstrap-utilities.scss
-@use "bootstrap/scss/utilities" with (
+@use "bootstrap/scss/bootstrap-utilities" with (
   $utilities: (
     // Your utility groups go here
   )
 );
-@use "bootstrap/scss/utilities/api";
 ```
+
+Don't load `bootstrap/scss/utilities` and `bootstrap/scss/utilities/api` on their own. The utilities read global tokens such as `--primary-base`, `--shadow-color` and `--white`, which only `bootstrap/scss/root` defines. Without it, the build compiles, but every declaration that reads one of those tokens has no value.
 
 ### Override utilities
 

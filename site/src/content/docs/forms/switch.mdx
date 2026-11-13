@@ -11,8 +11,10 @@ import { getData } from '@libs/data'
 
 Switches work by layering an invisible checkbox over the custom switch indicator. This preserves interactivity while giving you a completely customizable layer underneath. Switches also include the `switch` attribute for browsers that support it, which provides haptic feedback when toggling.
 
+A switch without a visible label still needs an accessible name for assistive technologies, for instance with `aria-label`. The name should say what the switch turns on or off, like `aria-label="Email notifications"`, and replaces the `...` placeholder in the example below. See the [forms overview accessibility]([[docsref:/forms/overview/#accessibility]]) section for details.
+
 <Example code={`<div class="switch">
-    <input type="checkbox" value="" id="switch" role="switch" switch>
+    <input type="checkbox" value="" id="switch" role="switch" switch aria-label="...">
   </div>`} />
 
 ## With form field

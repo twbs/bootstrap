@@ -1,6 +1,7 @@
 {
   "version": "0.2",
   "words": [
+    "activedescendant",
     "affordance",
     "allowfullscreen",
     "Analyser",
@@ -18,6 +19,7 @@
     "Bootstrappers",
     "borderless",
     "Brotli",
+    "browsersl",
     "browserslist",
     "browserslistrc",
     "bsversion",
@@ -123,6 +125,7 @@
     "mkdir",
     "monospace",
     "mouseleave",
+    "multiselectable",
     "navbars",
     "navs",
     "navoverflow",

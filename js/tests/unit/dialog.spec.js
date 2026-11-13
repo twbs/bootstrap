@@ -391,6 +391,28 @@ describe('Dialog', () => {
         dialog.show()
       })
     })
+
+    it('should remove dialog-open when the dialog is closed during the exit transition', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialog.hide()
+          // Something else closes the dialog before the exit transition ends
+          dialogEl.close()
+        })
+
+        dialogEl.addEventListener('hidden.bs.dialog', () => {
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
   })
 
   describe('backdrop static', () => {
@@ -979,6 +1001,64 @@ describe('Dialog', () => {
       })
     })
 
+    it('should keep the dialog open when a trigger inside it targets the same dialog', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button data-bs-toggle="dialog" data-bs-target="#dialog1">Open first</button>',
+          '<dialog id="dialog1" class="dialog">',
+          '  <button data-bs-toggle="dialog" data-bs-target="#dialog1">Same dialog</button>',
+          '</dialog>'
+        ].join('')
+
+        const dialog1El = fixtureEl.querySelector('#dialog1')
+        const firstTrigger = fixtureEl.querySelector('button[data-bs-target="#dialog1"]')
+        const sameTrigger = dialog1El.querySelector('[data-bs-target="#dialog1"]')
+        let hideFired = false
+
+        dialog1El.addEventListener('hide.bs.dialog', () => {
+          hideFired = true
+        })
+
+        dialog1El.addEventListener('shown.bs.dialog', () => {
+          sameTrigger.click()
+
+          setTimeout(() => {
+            expect(hideFired).toBeFalse()
+            expect(dialog1El.open).toBeTrue()
+            resolve()
+          }, 10)
+        }, { once: true })
+
+        firstTrigger.click()
+      })
+    })
+
+    it('should prevent default on a link trigger that targets its own open dialog', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button data-bs-toggle="dialog" data-bs-target="#dialog1">Open first</button>',
+          '<dialog id="dialog1" class="dialog">',
+          '  <a href="#dialog1" data-bs-toggle="dialog">Same dialog</a>',
+          '</dialog>'
+        ].join('')
+
+        const dialog1El = fixtureEl.querySelector('#dialog1')
+        const firstTrigger = fixtureEl.querySelector('button[data-bs-target="#dialog1"]')
+        const sameLink = dialog1El.querySelector('a')
+
+        dialog1El.addEventListener('shown.bs.dialog', () => {
+          const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true })
+          sameLink.dispatchEvent(clickEvent)
+
+          expect(clickEvent.defaultPrevented).toBeTrue()
+          expect(dialog1El.open).toBeTrue()
+          resolve()
+        }, { once: true })
+
+        firstTrigger.click()
+      })
+    })
+
     it('should not open both dialogs when a swap trigger is clicked mid-swap', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -1154,7 +1234,7 @@ describe('Dialog', () => {
   })
 
   describe('child component cleanup', () => {
-    it('should hide tooltip instances inside dialog when dialog closes', () => {
+    it('should hide tooltip instances inside dialog when another component is registered first', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<dialog class="dialog">',
@@ -1167,6 +1247,7 @@ describe('Dialog', () => {
         const dialog = new Dialog(dialogEl)
 
         const fakeTooltip = { hide: jasmine.createSpy('tooltipHide') }
+        Data.set(tooltipTrigger, 'bs.button', {})
         Data.set(tooltipTrigger, 'bs.tooltip', fakeTooltip)
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
@@ -1175,6 +1256,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('hidden.bs.dialog', () => {
           expect(fakeTooltip.hide).toHaveBeenCalled()
+          Data.remove(tooltipTrigger, 'bs.button')
           Data.remove(tooltipTrigger, 'bs.tooltip')
           resolve()
         })
@@ -1183,7 +1265,7 @@ describe('Dialog', () => {
       })
     })
 
-    it('should hide popover instances inside dialog when dialog closes', () => {
+    it('should hide popover instances inside dialog when another component is registered first', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<dialog class="dialog">',
@@ -1196,6 +1278,7 @@ describe('Dialog', () => {
         const dialog = new Dialog(dialogEl)
 
         const fakePopover = { hide: jasmine.createSpy('popoverHide') }
+        Data.set(popoverTrigger, 'bs.button', {})
         Data.set(popoverTrigger, 'bs.popover', fakePopover)
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
@@ -1204,6 +1287,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('hidden.bs.dialog', () => {
           expect(fakePopover.hide).toHaveBeenCalled()
+          Data.remove(popoverTrigger, 'bs.button')
           Data.remove(popoverTrigger, 'bs.popover')
           resolve()
         })
@@ -1212,7 +1296,7 @@ describe('Dialog', () => {
       })
     })
 
-    it('should hide toast instances inside dialog when dialog closes', () => {
+    it('should hide toast instances inside dialog when another component is registered first', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<dialog class="dialog">',
@@ -1225,6 +1309,7 @@ describe('Dialog', () => {
         const dialog = new Dialog(dialogEl)
 
         const fakeToast = { hide: jasmine.createSpy('toastHide') }
+        Data.set(toastEl, 'bs.button', {})
         Data.set(toastEl, 'bs.toast', fakeToast)
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
@@ -1233,6 +1318,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('hidden.bs.dialog', () => {
           expect(fakeToast.hide).toHaveBeenCalled()
+          Data.remove(toastEl, 'bs.button')
           Data.remove(toastEl, 'bs.toast')
           resolve()
         })

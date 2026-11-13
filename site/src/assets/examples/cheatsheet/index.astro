@@ -655,12 +655,12 @@ export const body_class = 'bg-1'
 
         <Example showMarkup={false} code={`
         <div class="alert theme-success" role="alert">
-          <vstack>
+          <div class="vstack">
             <h4 class="alert-heading">Well done!</h4>
             <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-            <hr>
+            <hr class="mt-0">
             <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-          </vstack>
+          </div>
         </div>
         `} />
       </div>
@@ -1272,8 +1272,8 @@ export const body_class = 'bg-1'
         <nav aria-label="Pagination example">
           <ul class="pagination pagination-sm">
             <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">2</a>
+            <li class="page-item active">
+              <a class="page-link" href="#" aria-current="page">2</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
           </ul>
@@ -1307,8 +1307,8 @@ export const body_class = 'bg-1'
               <a class="page-link">Previous</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">2</a>
+            <li class="page-item active">
+              <a class="page-link" href="#" aria-current="page">2</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item">

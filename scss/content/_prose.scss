@@ -41,6 +41,10 @@ $prose-tokens: defaults(
       margin-block: 0;
     }
 
+    :where(p):not(:where(.not-prose, .not-prose *)) {
+      text-wrap: pretty;
+    }
+
     :where(ul, ol):not([class], :where(.not-prose, .not-prose *)) li:not(:last-child) {
       margin-bottom: calc(var(--content-gap) / 4);
     }

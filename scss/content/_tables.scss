@@ -23,13 +23,10 @@ $table-tokens: defaults(
     --table-group-separator-color: currentcolor,
     --table-striped-color: var(--table-color),
     --table-striped-bg-factor: 5%,
-    --table-striped-bg: color-mix(in srgb, var(--table-color) var(--table-striped-bg-factor), transparent),
     --table-active-color: var(--table-color),
     --table-active-bg-factor: 10%,
-    --table-active-bg: color-mix(in srgb, var(--table-color) var(--table-active-bg-factor), transparent),
     --table-hover-color: var(--table-color),
     --table-hover-bg-factor: 7.5%,
-    --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
   ),
   $table-tokens
 );

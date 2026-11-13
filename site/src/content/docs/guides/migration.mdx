@@ -42,6 +42,24 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
    );
    ```
 
+   Unlike `@import`, `@use` doesn’t put Bootstrap’s variables, functions, and mixins in the global scope. They are behind the `bootstrap` namespace, so v5 code that uses them without a prefix fails with “Undefined variable”, “Undefined function”, or “Undefined mixin”. Add the namespace, or load Bootstrap with `as *` to keep the names without a prefix.
+
+   ```scss
+   @use "bootstrap/scss/bootstrap";
+
+   .custom-class {
+     padding: bootstrap.$spacer * .5;
+   }
+
+   @include bootstrap.media-breakpoint-down(sm) {
+     .custom-class {
+       display: none;
+     }
+   }
+   ```
+
+   See [Variables, functions, and mixins]([[docsref:/customize/sass#variables-functions-and-mixins]]) for more.
+
 3. If using only certain parts of Bootstrap’s Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
 
    ```scss
@@ -53,8 +71,59 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 5. Recompile your Sass to see the changes.
 
 <Callout type="warning">
-**Check your browser support first.** Bootstrap 6 raises the minimum browser versions sharply: Chrome and Edge 130, Firefox 132, and Safari 18 on both macOS and iOS. Bootstrap 5 supported Chrome and Firefox 60, and Safari 12. We build on `light-dark()`, `:has()`, container queries, `content-visibility`, and the native `<dialog>` element, and v6 ships no fallbacks, prefixes, or polyfills below the floor. Pages will not render correctly in older browsers. Check your own analytics before you upgrade, and see [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the full policy and the reason behind each version.
+**Check your browser support first.** Bootstrap 6 raises the minimum browser versions sharply: Chrome and Edge 138, Firefox 147, and Safari 26 on both macOS and iOS. Bootstrap 5 supported Chrome and Firefox 60, and Safari 12. We build on `light-dark()`, `:has()`, container queries, `content-visibility`, and the native `<dialog>` element, and v6 ships no fallbacks, prefixes, or polyfills below the floor. Pages will not render correctly in older browsers. Check your own analytics before you upgrade, and see [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the full policy and the reason behind each version.
 </Callout>
+
+## Alpha 2 changes
+
+Review these changes when you upgrade from v6.0.0-alpha.1 to alpha 2.
+
+### Browser support
+
+The minimum browser versions have increased from Chrome and Edge 130 to 138, Firefox 132 to 147, and Safari 18 to 26 on macOS and iOS. Check your browser requirements before upgrading. See [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the features that set each minimum version.
+
+### Dialog and Drawer
+
+- Bootstrap no longer applies `scrollbar-gutter: stable` globally. Dialog and Drawer now use JavaScript to compensate for disappearing scrollbar space while page scrolling is locked. Full-width fixed elements with `.fixed-top`, `.fixed-bottom`, or `.is-fixed` are compensated too. Review any custom scrollbar compensation you added for alpha 1. See [Dialog]([[docsref:/components/dialog]]).
+- Animated drawers now keep their native `open` attribute until the exit transition ends, so their backdrop can fade out. Wait for `hidden.bs.drawer` or `await drawer.hide()` before reading the closed state or removing the element.
+- Added `.dialog-2xl` for dialogs up to `1440px` wide. See [Optional sizes]([[docsref:/components/dialog#optional-sizes]]).
+
+### CSS customization
+
+Token names below use the unprefixed Sass source names. In Bootstrap’s compiled CSS, they use the `--bs-` prefix.
+
+- **Close button color.** `--btn-close-color` now defaults to `var(--fg-body)` instead of `currentcolor`. For a light icon on a dark surface, add `data-bs-theme="dark"` to the button or a parent. Set `--btn-close-color: currentcolor` if your custom component needs the button to inherit its text color. See [Close button]([[docsref:/components/close-button]]).
+- **Removed unused tokens.** These tokens had no effect in alpha 1. Remove their overrides and use the controls below:
+  - `--table-striped-bg`, `--table-active-bg`, and `--table-hover-bg`: use the corresponding `--table-*-bg-factor` tokens to control the color mix. See [Tables]([[docsref:/content/tables#css]]).
+  - `--form-text-margin-top`: wrap related controls and help text in `.form-field` for shared spacing, or add a margin utility. See [Field]([[docsref:/forms/field]]).
+  - `--navbar-toggler-width`, `--navbar-toggler-padding-x`, `--navbar-toggler-padding-y`, `--navbar-toggler-font-size`, `--navbar-toggler-border-color`, and `--navbar-toggler-border-radius`: customize the toggler’s `.btn-icon` with button tokens or sizing utilities. See [Buttons]([[docsref:/components/button#css]]).
+- **Existing tokens now affect rendering.** Review overrides of `--card-subtitle-color`, `--nav-tabs-border-radius`, `--check-indeterminate-bg`, `--check-indeterminate-border-color`, and `--switch-checked-indicator-bg`. The components now read these tokens. Indeterminate checkbox colors default to the checked colors.
+- **Password strength label colors.** `.strength-text` now uses emphasis colors for each strength level. Replace label overrides of `--strength-color` with the `$strength-text-colors` Sass map, or style `.strength-text[data-bs-strength="weak"]` and the other strength levels directly. The meter still uses its `--strength-*-color` tokens. See [Password strength]([[docsref:/forms/password-strength]]).
+
+### Chip input becomes Combobox
+
+- Remove the `Chips` JavaScript import and replace `data-bs-chips` with `data-bs-toggle="combobox"`, `data-bs-multiple="true"`, and `data-bs-allow-custom="true"` on the wrapper.
+- Replace `.chip-input` with `.combobox-control`. Add `.combobox-input` beside `.form-ghost` on the editor. Move initial values to `.menu-item.selected[data-bs-value]` elements in a neighboring `.menu`; Combobox renders the chips.
+- Use `Combobox.add()`, `remove()`, `clear()`, `focus()`, and `getValues()`. Replace `maxChips` with `maxItems`. Separators and creation on blur now require explicit options. Repeated free-entry strings do not create duplicate chips.
+- Replace `add.bs.chips`, `remove.bs.chips`, and `change.bs.chips` with their `.bs.combobox` equivalents. The change payload is `event.value`, rather than `event.values`. Chip highlighting, range selection, `selectChip()`, `getSelectedValues()`, `clearSelection()`, and `removeSelected()` now belong to Combobox. Replace `select.bs.chips` with `select.bs.combobox`; its `selected` values describe highlighted chips, not all committed values.
+- Keep `.chip` for standalone presentation, documented under [Components]([[docsref:/components/chips]]). Replace `$chip-input-tokens` and `--chip-input-*` customizations with `$combobox-control-tokens` and `--combobox-control-*`. Configurable dismiss HTML is removed; generated removal buttons use the built-in SVG icon.
+
+### Combobox forms
+
+- Multiple selection now submits one field per selected option instead of a comma-separated value. Update server handlers and use `FormData.getAll(name)` to read all values. Empty multiple selection submits no entries.
+- Use the `input` option or `data-bs-input` to bind an existing hidden input. Disposal keeps provided fields and removes generated fields.
+- Selection changes dispatch bubbling `input` and `change` events before `change.bs.combobox`. The first field remains a stable event target, including when the last option is deselected.
+- Form reset restores the initial selected markup. Call `update()` after changing selected classes or before a synchronous `FormData` read following attribute changes.
+- Combobox lifecycle events follow its Menu transitions, including outside-click dismissal. Search inputs retain their native <kbd>Home</kbd> and <kbd>End</kbd> editing behavior.
+
+### JavaScript component instances
+
+- Different component types can now share an element. Combobox uses this to register its Menu instance on the same toggle.
+- Each component type still has one instance per element. Use that component’s `getInstance()` or `getOrCreateInstance()` method to retrieve it. Constructing another instance of the same type disposes the previous instance.
+- Disposing one component leaves instances of other types registered. A component still disposes the child instances it owns, such as Combobox’s Menu.
+- The internal `Data.getAny()` helper is removed. If your code imports this internal module, replace the call with the component’s public `getInstance()` method.
+
+See the [programmatic API]([[docsref:/getting-started/javascript#component-instances]]) for instance lookup and disposal.
 
 ## Changelog
 
@@ -126,11 +195,12 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Theme and config maps now merge via `defaults()`.** `$theme-colors`, `$theme-bgs`, `$theme-fgs`, `$theme-borders`, `$badge-variants`, and the other global maps accept a partial `@use ... with ()` override. v5 required a full map replacement. Set a key to `null` to drop it. Nested theme-color maps merge one level deep—pass the whole sub-map to change one role. See [Sass]([[docsref:/customize/sass]]).
 - **Removed `$enable-dark-mode`.** Dark mode support is always compiled; control it at runtime with `data-bs-theme` (or the `color-mode()` mixin) instead of toggling a Sass flag.
 - **Removed `$enable-caret` and the caret mixins.** Menu toggles lost their automatic caret when menus moved to Floating UI, so the flag had no effect. The `caret()`, `caret-down()`, `caret-up()`, `caret-end()`, and `caret-start()` mixins, the `scss/mixins/_caret.scss` file, and the `$caret-width`, `$caret-vertical-align`, and `$caret-spacing` variables are gone too. Add an icon to the toggle markup if you want a caret.
+- **Removed `$enable-negative-margins`.** Negative margin utilities are always generated now, from the `$negative-spacers` map in `scss/_config.scss`. Override that map to change their values, or set a key to `null` to drop it. See [negative margins limited](#utilities) under Utilities.
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.
   - Removed `muted`, `black-50`, and `white-50` from text colors utilities map
   - Removed the carousel dark Sass variables (`$carousel-dark-indicator-active-bg`, `$carousel-dark-control-icon-filter`) and the `.carousel-dark` class—they’re not reassigned. Dark carousels now use `data-bs-theme="dark"` (see the carousel changes below). Carousel captions were removed entirely too.
-  - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `currentcolor`, so it adapts to dark backgrounds automatically.
+  - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `--btn-close-color`, which defaults to `var(--fg-body)`, so it follows `data-bs-theme` like other components.
   - Removed all `$border-radius-*` variables (`-xs`, `-sm`, default, `-lg`, `-xl`, `-xxl`, `-pill`) in favor of the numeric `$radii` map and `--radius-*` tokens—see [Border radius tokens](#utilities) under Utilities.
   - Removed `$text-muted` for secondary color.
   - Removed `$hr-bg-color` for `$hr-border-color` and `$hr-height` for `$hr-border-width`.
@@ -194,7 +264,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
 - Removed `js/index.umd.js` entry point.
 - Removed jQuery support and the `js-test-jquery` test target.
-- **Removed the internal `util/backdrop`, `util/focustrap`, and `util/scrollbar` helpers.** They’re obsolete now that Dialog and Drawer build on the native `<dialog>` element—the browser provides the backdrop (`::backdrop`), focus trap, and an inert top layer, and the body scroll-lock is handled in CSS (`:root.dialog-open` with `scrollbar-gutter: stable`). If you imported any of these modules directly from `bootstrap/js/src/util/`, they’re gone.
+- **Removed the legacy internal `util/backdrop`, `util/focustrap`, and `util/scrollbar` helpers.** Dialog and Drawer use the native `<dialog>` element for the backdrop (`::backdrop`), focus trap, and inert top layer. Their shared JavaScript scroll lock compensates for disappearing scrollbars while `:root.dialog-open` prevents page scrolling. The legacy module paths in `bootstrap/js/src/util/` are no longer available.
 - **Replaced the Dropdown component with Menu.** All `.dropdown-*` classes are now `.menu-*` classes, and `data-bs-toggle="dropdown"` is now `data-bs-toggle="menu"`. See the [Menu docs]([[docsref:/components/menus]]) for full details.
 - **Menu `shown.bs.menu` and `hidden.bs.menu` now fire after the CSS transition finishes**, rather than synchronously when `show()` / `hide()` are called—matching Dialog and Drawer. The menu also stays positioned in the DOM through its closing transition instead of being torn down immediately. Move any logic that assumed the old synchronous timing (or that the menu was removed the instant `hide()` returned) into the `shown` / `hidden` event handlers.
   - Renamed CSS classes: `.dropdown-menu` to `.menu`, `.dropdown-item` to `.menu-item`, `.dropdown-divider` to `.menu-divider`, `.dropdown-header` to `.menu-header`, `.dropdown-submenu` to `.submenu`.
@@ -225,14 +295,14 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Replaced the Modal component with Dialog.** Dialog is built on the native `<dialog>` element, using `showModal()` / `show()` / `close()` browser APIs. The markup, classes, data attributes, events, CSS variables, and JavaScript API have all changed:
   - Markup: The `.modal` > `.modal-dialog` > `.modal-content` wrapper structure has been replaced by a single `<dialog class="dialog">` element. Body sections use `.dialog-header`, `.dialog-body`, and `.dialog-footer` directly inside the `<dialog>`.
   - CSS classes: `.modal` &rarr; `.dialog`, `.modal-header` &rarr; `.dialog-header`, `.modal-body` &rarr; `.dialog-body`, `.modal-footer` &rarr; `.dialog-footer`, `.modal-title` &rarr; `.dialog-title`. The `.modal-dialog` and `.modal-content` wrapper classes have been removed entirely.
-  - Sizes: `.modal-sm` &rarr; `.dialog-sm`, `.modal-lg` &rarr; `.dialog-lg`, `.modal-xl` &rarr; `.dialog-xl`, `.modal-fullscreen` &rarr; `.dialog-fullscreen`.
+  - Sizes: `.modal-sm` &rarr; `.dialog-sm`, `.modal-lg` &rarr; `.dialog-lg`, `.modal-xl` &rarr; `.dialog-xl`, `.modal-xxl` &rarr; `.dialog-2xl`, `.modal-fullscreen` &rarr; `.dialog-fullscreen`.
   - Data attributes: `data-bs-toggle="modal"` &rarr; `data-bs-toggle="dialog"`, `data-bs-dismiss="modal"` &rarr; `data-bs-dismiss="dialog"`.
   - JavaScript: `Modal` &rarr; `Dialog` — update imports to `import { Dialog } from 'bootstrap'`.
   - Events: `show.bs.modal` &rarr; `show.bs.dialog`, `shown.bs.modal` &rarr; `shown.bs.dialog`, `hide.bs.modal` &rarr; `hide.bs.dialog`, `hidden.bs.modal` &rarr; `hidden.bs.dialog`, `hidePrevented.bs.modal` &rarr; `hidePrevented.bs.dialog`.
   - Data key: `bs.modal` &rarr; `bs.dialog` (affects `Dialog.getInstance()` and `Dialog.getOrCreateInstance()`).
   - CSS variables: `--modal-*` &rarr; `--dialog-*`.
   - Backdrop: The `.modal-backdrop` DOM element and the legacy `util/backdrop` helper are gone — Dialog uses the native `::backdrop` pseudo-element with `backdrop-filter: blur()` support.
-  - Scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the root (`<html>`) element, so it pairs with `scrollbar-gutter: stable` and the page doesn't shift when a dialog opens.
+  - Scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the root (`<html>`) element. JavaScript compensates for the scrollbar space that disappears while scrolling is locked. Bootstrap no longer reserves a permanent viewport gutter with `scrollbar-gutter: stable`.
   - New variant classes: `.dialog-slide-up`, `.dialog-slide-down` (slide animations), `.dialog-instant` (no animation), `.dialog-static` (static backdrop bounce), `.dialog-nonmodal` (non-modal positioning), `.dialog-scrollable`.
   - Non-modal support: Set `modal: false` or `data-bs-modal="false"` for non-modal dialogs.
   - Dialog swapping: Triggers inside an open dialog can open a new dialog and close the current one automatically.
@@ -283,7 +353,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
   - Open state styling uses `details[open]` instead of JavaScript-toggled classes.
   - Theme coloring via `.theme-*` classes on the `.accordion` wrapper.
   - New modifiers: `.accordion-sm` for compact padding and type, and `.accordion-gap` to space items as separate rounded cards (`--accordion-gap`).
-- **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance, and the `.btn-close-white` class has been removed. On a dark themed surface, the icon now inherits the contrast color automatically.
+- **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by the `--btn-close-color` token, and the `.btn-close-white` class has been removed. Add `data-bs-theme="dark"` to the button or a parent for a light icon. In alerts and toast headers, the icon takes the component's text color.
 - **Removed `.alert-dismissible`.** Dismissible alerts no longer require the `.alert-dismissible` modifier class. Place a `.btn-close` directly inside the alert—the alert's flex layout positions it automatically. Remove any `.alert-dismissible` class from your markup.
 - **Restructured cards.** The outer border lives on `.card`. Header and footer keep a divider border only. Use `.list-group-flush` inside a card—`.card-list` is gone. Added `--card-box-shadow` and `--card-body-gap` tokens. New variant classes: `.card-translucent` (frosted glass effect) and `.card-subtle` (themed with subtle backgrounds). Horizontal cards use a new `.card-row` class. Removed `.card-link` class. `.card-body` is now an optional flex column that removes direct-child block margins and uses `--card-body-gap` for spacing. Add `.flex-row` for a horizontal body. `.card-title` and `.card-text` remain available as project hooks but no longer add styles; `.card-subtitle` still reduces the gap above the subtitle.
 - **Card groups now use container queries.** `.card-group` switches to its attached, equal-width row layout with a `@container` query instead of a viewport `@media` query, so it responds to the width of a parent query container rather than the viewport. Wrap the card group in a query container—e.g. add the `.contains-inline` utility to a parent element—or the cards stay stacked.
@@ -617,7 +687,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Dialog** — replaces Modal, built on the native `<dialog>` element. See the Components section above for the full migration.
 - **Stepper** — new `.stepper` component for multi-step workflows with `.stepper-item` and `.stepper-horizontal` variant. CSS-only.
 - **Avatar** — new `.avatar` component with sizes (`.avatar-xs` through `.avatar-xl`), status indicators (`.avatar-status .status-online|offline|busy|away`), subtle variant, and `.avatar-stack` for grouped avatars.
-- **Chip and Chip Input** — new `.chip` component for tags/tokens and `.chip-input[data-bs-chips]` for interactive chip entry. `Chips` JavaScript plugin with events: `add.bs.chips`, `remove.bs.chips`, `change.bs.chips`, `select.bs.chips`.
+- **Chips** — use `.chip` for tags and tokens. Use editable Combobox for interactive entry and multiple-value form submission.
 - **OTP Input** — new `.otp` component for one-time password fields. Built on a single `<input>` rendered as separate digit slots for full accessibility. `OtpInput` JavaScript plugin with events: `input.bs.otpInput`, `complete.bs.otpInput` (both expose `event.value`).
 - **Password Strength** — `Strength` JavaScript plugin for password strength metering with `strengthChange.bs.strength` event.
 - **Range** — `Range` JavaScript plugin that turns `.form-range` into a styled slider with a filled track, optional value bubble, and `<datalist>` tick marks, with a `changed.bs.range` event.

@@ -4,13 +4,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import type { AstroIntegration } from 'astro'
 import { getConfig } from './config'
-import {
-  docsDirectory,
-  getDocsFsPath,
-  getDocsPublicFsPath,
-  getDocsStaticFsPath,
-  validateVersionedDocsPaths
-} from './path'
+import { getDocsFsPath, getDocsPublicFsPath, getDocsStaticFsPath, validateVersionedDocsPaths } from './path'
 
 // A list of static file paths that will be aliased to a different path.
 const staticFileAliases = {

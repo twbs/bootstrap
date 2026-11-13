@@ -218,7 +218,11 @@ class Menu extends BaseComponent {
     return this._isShown() ? this.hide() : this.show()
   }
 
-  async show(): Promise<void> {
+  show(): Promise<void> {
+    return this._show()
+  }
+
+  protected async _show(focus?: () => void): Promise<void> {
     if (isDisabled(this._element) || this._isShown()) {
       return
     }
@@ -242,7 +246,6 @@ class Menu extends BaseComponent {
       }
     }
 
-    this._element.focus({ focusVisible: false })
     this._element.setAttribute('aria-expanded', 'true')
 
     this._menu.classList.add(CLASS_NAME_SHOW)
@@ -253,6 +256,15 @@ class Menu extends BaseComponent {
     }
 
     Menu._openInstances.add(this)
+    if (focus) {
+      focus()
+    } else {
+      this._element.focus({ focusVisible: false })
+    }
+
+    if (!this._element || !this._isShown()) {
+      return
+    }
 
     // Wait for the CSS entry transition (opacity/transform) to finish before
     // announcing `shown`, so listeners run against the settled menu.
@@ -1041,6 +1053,10 @@ class Menu extends BaseComponent {
   }
 
   static dataApiKeydownHandler(this: HTMLElement, event: BootstrapEvent): void {
+    if (event.isComposing || event.keyCode === 229) {
+      return
+    }
+
     // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
     // menu doesn't hijack their arrow keys.
     const isInput = /input|textarea/i.test((event.target as HTMLElement).tagName) || (event.target as HTMLElement).isContentEditable

@@ -843,7 +843,7 @@ describe('Carousel', () => {
       expect(document.activeElement).toEqual(prev)
     })
 
-    it('should fall back to the viewport when there is no opposite control to focus', () => {
+    it('should not leave focus on the disabled control when the viewport is not focusable', () => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
@@ -867,7 +867,7 @@ describe('Carousel', () => {
       carousel._refreshActiveState()
 
       expect(prev.disabled).toBeTrue()
-      expect(document.activeElement).not.toEqual(prev)
+      expect(document.activeElement).toBe(document.body)
     })
 
     // Multi-item/peek/variable-width layouts can't bring the last slide to the

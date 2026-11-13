@@ -8,7 +8,12 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
+import { onDocumentReady } from './util/component-functions.js'
 import type { ComponentConfig } from './util/config.js'
+
+// Future consideration: opt-in clickable labels for sparse tick presets.
+// Use real buttons with keyboard activation, visible focus, and usable targets.
+// Keep decorative ticks as the default; do not add a tab stop for every tick.
 
 /**
  * Constants
@@ -22,9 +27,9 @@ const DATA_API_KEY = '.data-api'
 const EVENT_CHANGED = `changed${EVENT_KEY}`
 const EVENT_DOM_CONTENT_LOADED = `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`
 
-// `input` is not in EventHandler's native-event list, so it can't be namespaced; bind it raw
 const EVENT_INPUT = 'input'
 const EVENT_CHANGE = 'change'
+const EVENT_RESET = 'reset'
 
 const SELECTOR_RANGE = '.form-range'
 const SELECTOR_INPUT = '.form-range-input'
@@ -45,7 +50,7 @@ type RangeConfig = {
 
 const Default: RangeConfig = {
   bubble: false, // Show a value bubble above the thumb
-  formatter: null // (value) => string, for the bubble and tick labels
+  formatter: null // (value) => string, for the bubble
 }
 
 const DefaultType = {
@@ -64,6 +69,10 @@ class Range extends BaseComponent {
   protected declare _bubbleText: HTMLElement | null
   protected declare _ticks: HTMLElement | null
   protected declare _updateHandler: () => void
+  protected declare _initialConfig: Partial<RangeConfig>
+  protected declare _form: HTMLFormElement | null
+  protected declare _resetHandler: (event: Event) => void
+  protected declare _resetTimeouts: Set<number>
 
   constructor(element?: string | Element | null, config?: Partial<RangeConfig> | null) {
     super(element, config)
@@ -83,10 +92,22 @@ class Range extends BaseComponent {
     this._bubbleText = null
     this._ticks = null
     this._updateHandler = () => this._update()
-
-    if (this._config.bubble) {
-      this._createBubble()
+    this._initialConfig = { ...config }
+    this._form = null
+    this._resetTimeouts = new Set()
+    this._resetHandler = event => {
+      // Native reset restores values after dispatching the reset event.
+      const timeout = window.setTimeout(() => {
+        this._resetTimeouts.delete(timeout)
+        if (!event.defaultPrevented) {
+          this._update()
+        }
+      }, 0)
+      this._resetTimeouts.add(timeout)
     }
+
+    this._syncBubble()
+    this._syncForm()
 
     this._createTicks()
     this._addEventListeners()
@@ -108,12 +129,25 @@ class Range extends BaseComponent {
 
   // Public
   update(): void {
+    if (!this._input) {
+      return
+    }
+
+    this._config = this._getConfig(this._initialConfig) as RangeConfig
+    this._syncBubble()
+    this._ticks?.remove()
+    this._ticks = null
+    this._createTicks()
+    this._syncForm()
     this._update()
   }
 
   override dispose(): void {
     EventHandler.off(this._input, EVENT_INPUT, this._updateHandler)
     EventHandler.off(this._input, EVENT_CHANGE, this._updateHandler)
+
+    EventHandler.off(this._form, EVENT_RESET, this._resetHandler)
+    this._resetTimeouts?.forEach(timeout => clearTimeout(timeout))
 
     this._bubble?.remove()
     this._ticks?.remove()
@@ -129,6 +163,31 @@ class Range extends BaseComponent {
     }
 
     return config
+  }
+
+  protected _syncBubble(): void {
+    if (this._config.bubble) {
+      if (!this._bubble) {
+        this._createBubble()
+      }
+    } else {
+      this._bubble?.remove()
+      this._bubble = null
+      this._bubbleText = null
+    }
+  }
+
+  protected _syncForm(): void {
+    const { form } = this._input!
+    if (form === this._form) {
+      return
+    }
+
+    EventHandler.off(this._form, EVENT_RESET, this._resetHandler)
+    this._resetTimeouts.forEach(timeout => clearTimeout(timeout))
+    this._resetTimeouts.clear()
+    this._form = form
+    EventHandler.on(this._form, EVENT_RESET, this._resetHandler)
   }
 
   protected _addEventListeners(): void {
@@ -170,7 +229,7 @@ class Range extends BaseComponent {
 
   protected _createBubble(): void {
     // Reuse the tooltip markup so we don't duplicate the pill and arrow styles
-    this._bubble = document.createElement('output')
+    this._bubble = document.createElement('div')
     this._bubble.className = `${CLASS_NAME_BUBBLE} tooltip bs-tooltip-top show`
     this._bubble.setAttribute('aria-hidden', 'true')
 
@@ -244,7 +303,7 @@ class Range extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_DOM_CONTENT_LOADED, () => {
+onDocumentReady(EVENT_DOM_CONTENT_LOADED, () => {
   for (const element of SelectorEngine.find(SELECTOR_RANGE)) {
     Range.getOrCreateInstance(element)
   }

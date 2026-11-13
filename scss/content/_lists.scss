@@ -17,7 +17,7 @@
     display: inline-block;
 
     &:not(:last-child) {
-      margin-inline-end: var(--list-inline-padding, var(--spacer) / 2);
+      margin-inline-end: var(--list-inline-padding, calc(var(--spacer) / 2));
     }
   }
 }

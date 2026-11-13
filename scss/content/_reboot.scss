@@ -475,6 +475,15 @@ $reboot-mark-tokens: defaults(
     line-height: inherit;
   }
 
+  input:is([type="date"], [type="datetime-local"], [type="month"], [type="week"], [type="time"]) {
+    position: relative;
+
+    &::-webkit-calendar-picker-indicator {
+      position: absolute;
+      inset-inline-end: var(--control-padding-x, .75rem);
+    }
+  }
+
   // Set the cursor for non-`<button>` buttons
   //
   // Details at https://github.com/twbs/bootstrap/pull/30562
