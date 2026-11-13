@@ -3223,7 +3223,7 @@ textarea.form-control-lg {
   border-radius: 0.188rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transform: translateZ(0);
-  min-width: 90px;
+  min-width: 44px;
 }
 @media (prefers-reduced-motion: reduce) {
   .btn {
@@ -3968,14 +3968,14 @@ textarea.form-control-lg {
   font-size: 1rem;
   border-radius: 0.188rem;
   line-height: 1.375;
-  min-width: 120px;
+  min-width: 44px;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.157rem 1rem;
   font-size: 0.875rem;
   border-radius: 0.125rem;
-  min-width: 70px;
+  min-width: 44px;
 }
 
 .btn-action {
@@ -4081,7 +4081,7 @@ textarea.form-control-lg {
 }
 
 .btn-more {
-  min-width: 60px;
+  min-width: 44px;
 }
 
 .fade {
@@ -16669,7 +16669,7 @@ svg {
   padding: 0.3125rem 1rem;
   font-size: 1rem;
   border-radius: 0.188rem;
-  min-width: 70px;
+  min-width: 44px;
 }
 @media (prefers-reduced-motion: reduce) {
   #fg_container button.btn,

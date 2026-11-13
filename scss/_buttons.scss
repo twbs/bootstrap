@@ -19,7 +19,7 @@
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
   @include transition($btn-transition);
   transform: translateZ(0);
-  min-width: 90px;
+  min-width: $btn-min-width;
 
   &:hover {
     color: $body-color;
@@ -111,12 +111,12 @@
 .btn-lg {
   @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
   line-height: $janus-input-btn-lg-line-height;
-  min-width: 120px;
+  min-width: $btn-min-width;
 }
 
 .btn-sm {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
-  min-width: 70px;
+  min-width: $btn-min-width;
 }
 
 
@@ -254,5 +254,5 @@
 }
 
 .btn-more {
-  min-width: 60px;
+  min-width: $btn-min-width;
 }
