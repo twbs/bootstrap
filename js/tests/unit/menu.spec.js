@@ -2896,6 +2896,41 @@ describe('Menu', () => {
       })
     })
 
+    it('should open submenu on tap with the default submenuTrigger', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <ul class="menu">',
+          '    <li class="submenu">',
+          '      <button class="menu-item" type="button">More options</button>',
+          '      <ul class="menu">',
+          '        <li><a class="menu-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const submenuTrigger = fixtureEl.querySelector('.submenu > .menu-item')
+        const submenu = fixtureEl.querySelector('.submenu > .menu')
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          submenuTrigger.dispatchEvent(new PointerEvent('pointerover', { bubbles: true, pointerType: 'touch' }))
+          submenuTrigger.dispatchEvent(createEvent('mouseover', { bubbles: true }))
+          submenuTrigger.click()
+
+          expect(submenu.classList.contains('show')).toBeTrue()
+          resolve()
+        })
+
+        // eslint-disable-next-line no-new
+        new Menu(btnMenu)
+        btnMenu.click()
+      })
+    })
+
     it('should close sibling submenus when opening a new one', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
