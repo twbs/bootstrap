@@ -37,7 +37,6 @@ const LOAD_PLUGINS = {
 // starts them at once when it loads after the page, but not 6.0.0-alpha.1, the
 // version the playground installs
 const READY_PLUGINS = {
-  Chips: '[data-bs-chips]',
   Combobox: '[data-bs-toggle="combobox"]',
   Datepicker: '[data-bs-toggle="datepicker"][data-bs-inline="true"], [data-bs-toggle="datepicker"][data-bs-selected-dates]',
   NavOverflow: '[data-bs-toggle="nav-overflow"]',

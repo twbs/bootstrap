@@ -3,41 +3,52 @@
 @use "../mixins/focus-ring" as *;
 @use "../mixins/tokens" as *;
 
-$chip-input-tokens: () !default;
+$combobox-control-tokens: () !default;
 
-// scss-docs-start chip-input-tokens
+// scss-docs-start combobox-control-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$chip-input-tokens: defaults(
+$combobox-control-tokens: defaults(
   (
-    --chip-input-padding-y: .75rem,
-    --chip-input-padding-x: .75rem,
-    --chip-input-gap: .375rem,
-    --chip-input-ghost-min-width: 5rem,
+    --combobox-control-padding-y: var(--btn-input-padding-y),
+    --combobox-control-padding-x: var(--btn-input-padding-x),
+    --combobox-control-gap: .25rem,
+    --combobox-control-chip-height: calc(var(--control-min-height) - 2 * var(--combobox-control-padding-y) - 2 * var(--control-border-width)),
+    --control-min-height: var(--btn-input-min-height),
+    --control-font-size: var(--btn-input-font-size),
+    --control-line-height: var(--btn-input-line-height),
+    --combobox-control-ghost-min-width: 5rem,
     --control-fg: var(--btn-input-fg),
     --control-bg: var(--btn-input-bg),
     --control-border-width: var(--border-width),
     --control-border-color: var(--border-color),
     --control-border-radius: var(--radius-5),
   ),
-  $chip-input-tokens
+  $combobox-control-tokens
 );
-// scss-docs-end chip-input-tokens
+// scss-docs-end combobox-control-tokens
 
 @layer forms {
-  .chip-input {
-    @include tokens($chip-input-tokens);
+  .combobox-control {
+    @include tokens($combobox-control-tokens);
 
     // Flexbox wrapping layout
     display: flex;
     flex-wrap: wrap;
-    gap: var(--chip-input-gap);
+    gap: var(--combobox-control-gap);
     align-items: center;
-    padding: var(--chip-input-padding-y) var(--chip-input-padding-x);
+    min-block-size: var(--control-min-height);
+    padding: var(--combobox-control-padding-y) var(--combobox-control-padding-x);
 
+    font-size: var(--control-font-size);
+    line-height: var(--control-line-height);
     color: var(--control-fg);
     background-color: var(--control-bg);
     border: var(--control-border-width) solid var(--control-border-color);
     @include border-radius(var(--control-border-radius), 0);
+
+    &:has(> .chip) {
+      padding-inline: var(--combobox-control-padding-y);
+    }
 
     // Focus state when ghost input is focused
     &:focus-within {
@@ -47,10 +58,11 @@ $chip-input-tokens: defaults(
     }
 
     // Ghost input fills remaining space
-    > .form-ghost {
+    > .form-ghost,
+    > .combobox-input {
       flex: 1 1 0;
-      min-width: var(--chip-input-ghost-min-width);
-      min-height: 1.75rem;
+      min-inline-size: var(--combobox-control-ghost-min-width);
+      min-block-size: 1lh;
     }
 
     // Disabled state
