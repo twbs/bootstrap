@@ -4465,6 +4465,38 @@ describe('Menu', () => {
         menu.show()
       })
     })
+
+    it('should leave Home and End to the browser on the toggle', async () => {
+      fixtureEl.innerHTML = [
+        '<div>',
+        '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '  <div class="menu">',
+        '    <a class="menu-item" href="#">First</a>',
+        '    <a class="menu-item" href="#">Last</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const menu = new Menu(btnMenu)
+      const pressKeys = () => {
+        for (const key of ['Home', 'End']) {
+          const keydown = createEvent('keydown', { bubbles: true, cancelable: true })
+          keydown.key = key
+          btnMenu.dispatchEvent(keydown)
+
+          expect(keydown.defaultPrevented).toBeFalse()
+          expect(document.activeElement).toEqual(btnMenu)
+        }
+      }
+
+      btnMenu.focus()
+      pressKeys()
+
+      await menu.show()
+      btnMenu.focus()
+      pressKeys()
+    })
   })
 
   describe('ArrowLeft to close submenu', () => {
