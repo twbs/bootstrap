@@ -64,7 +64,11 @@ jobs:
     if: ${{ github.repository == 'twbs/bootstrap' && startsWith(github.event.release.tag_name, 'v') }}
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
+    outputs:
+      missing: ${{ steps.assets.outputs.missing }}
+      artifact-id: ${{ steps.archives.outputs.artifact-id }}
+      artifact-url: ${{ steps.archives.outputs.artifact-url }}
     env:
       RELEASE_TAG: ${{ github.event.release.tag_name }}
     steps:
@@ -112,8 +116,37 @@ jobs:
         if: steps.assets.outputs.missing == 'true'
         run: npm run release
 
-      - name: Upload missing release assets
+      - name: Save release archives for review
         if: steps.assets.outputs.missing == 'true'
+        id: archives
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-archives-${{ github.run_attempt }}
+          path: |
+            bootstrap-*-dist.zip
+            bootstrap-*-examples.zip
+          if-no-files-found: error
+          compression-level: 0
+
+  upload-release-assets:
+    needs: release-assets
+    if: needs.release-assets.outputs.missing == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: release
+      url: ${{ needs.release-assets.outputs.artifact-url }}
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name }}
+    steps:
+      - name: Download approved release archives
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          artifact-ids: ${{ needs.release-assets.outputs.artifact-id }}
+          merge-multiple: true
+
+      - name: Upload missing release assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
