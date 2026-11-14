@@ -24,10 +24,29 @@ const sourceMarkup = showStackblitz
   ? replacePlaceholdersInHtml(Array.isArray(props.code) ? props.code.join('\n') : props.code)
   : ''
 
+// Grid previews fill the example. Keep containers in the code and playground.
+const isGridExample = props.class?.split(/\s+/).some((name) => name === 'bd-example-row' || name === 'bd-example-cols')
+const previewCode = isGridExample
+  ? (Array.isArray(props.code) ? props.code.join('\n') : props.code).replace(
+      / class="([^"]*)"/g,
+      (_match, classes: string) => {
+        const names = classes.split(/\s+/).filter((name) => name !== 'container' && name !== 'container-fluid')
+        return names.length ? ` class="${names.join(' ')}"` : ''
+      }
+    )
+  : props.code
+const displayedCode = props.customMarkup ?? (isGridExample ? props.code : undefined)
+
 const config = getConfig()
 ---
 
-<SharedExample {...props} repositoryUrl={config.repo} repositoryRef={`v${config.current_version}`}>
+<SharedExample
+  {...props}
+  code={previewCode}
+  customMarkup={displayedCode}
+  repositoryUrl={config.repo}
+  repositoryRef={`v${config.current_version}`}
+>
   <Fragment slot="actions">
     <slot name="actions" />
     {
