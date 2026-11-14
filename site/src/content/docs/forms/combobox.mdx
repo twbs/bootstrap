@@ -92,17 +92,15 @@ Use the [form field]([[docsref:/forms/field]]) component to stack a label, Combo
 
 Use `.combobox-control` for a wrapping field and add `data-bs-multiple="true"`. The input uses `.form-ghost` to share the field with selected chips. Remove buttons include the option’s name. An empty multiple selection submits no entries.
 
-<Example code={`<div class="form-field">
-    <label for="editableInterests" class="form-label">Interests</label>
-    <div class="combobox-control" data-bs-toggle="combobox"
-         data-bs-name="interests" data-bs-multiple="true">
-      <input class="form-ghost combobox-input" id="editableInterests" placeholder="Add an interest">
-    </div>
-    <div class="menu" aria-label="Interests">
-      <button class="menu-item" type="button" data-bs-value="design">Design</button>
-      <button class="menu-item" type="button" data-bs-value="art,music">Art, music</button>
-      <button class="menu-item" type="button" data-bs-value="engineering">Engineering</button>
-    </div>
+<Example code={`<label for="editableInterests" class="form-label">Interests</label>
+  <div class="combobox-control" data-bs-toggle="combobox"
+       data-bs-name="interests" data-bs-multiple="true">
+    <input class="form-ghost combobox-input" id="editableInterests" placeholder="Add an interest">
+  </div>
+  <div class="menu" aria-label="Interests">
+    <button class="menu-item" type="button" data-bs-value="design">Design</button>
+    <button class="menu-item" type="button" data-bs-value="art,music">Art, music</button>
+    <button class="menu-item" type="button" data-bs-value="engineering">Engineering</button>
   </div>`} />
 
 Selecting an option clears the query and keeps the editor ready for another search. The chips use the existing [chip styles]([[docsref:/components/chips]]). The menu remains the source of option identity and submitted values.
@@ -111,12 +109,10 @@ Selecting an option clears the query and keeps the editor ready for another sear
 
 Set `data-bs-allow-custom="true"` to accept values outside the option list. Press <kbd>Enter</kbd> to commit the text. A popup is optional for a field with no predefined options; we create one when needed. We render value labels as text.
 
-<Example code={`<div class="form-field">
-    <label for="editableTags" class="form-label">Tags</label>
-    <div class="combobox-control" data-bs-toggle="combobox"
-         data-bs-name="tags" data-bs-multiple="true" data-bs-allow-custom="true">
-      <input class="form-ghost combobox-input" id="editableTags" placeholder="Type a tag and press Enter">
-    </div>
+<Example code={`<label for="editableTags" class="form-label">Tags</label>
+  <div class="combobox-control" data-bs-toggle="combobox"
+       data-bs-name="tags" data-bs-multiple="true" data-bs-allow-custom="true">
+    <input class="form-ghost combobox-input" id="editableTags" placeholder="Type a tag and press Enter">
   </div>`} />
 
 Commas remain part of a value by default. Set `separator` explicitly to split typed or pasted values. `createOnBlur` is off by default so moving focus does not commit unfinished text. `maxItems` limits committed multiple selections. Repeated free-entry strings reuse an existing option rather than creating another chip.
