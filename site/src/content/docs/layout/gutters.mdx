@@ -133,6 +133,8 @@ Use `.g-*`, `.gx-*`, and `.gy-*` to change flex grid gaps. Generic `.gap-*` util
 
 Classes are built from the `$gutters` Sass map which is inherited from the `$spacers` Sass map.
 
+Gutter classes use values from the Sass map. A runtime override of `--bs-spacer-*` does not change those classes. To change gaps at runtime, set `--bs-gutter-x` and `--bs-gutter-y` on the row.
+
 ```scss
 $grid-gutter-x: 1.5rem;
 $gutters: $spacers;

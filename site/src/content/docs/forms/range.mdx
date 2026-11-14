@@ -64,6 +64,14 @@ Add `data-bs-bubble` to the wrapper to show a value bubble that follows the thum
     <input type="range" class="form-range-input" min="0" max="100" value="60" id="rangeBubble">
   </div>`} />
 
+To change the bubble after initialization, change `data-bs-bubble` and call `update()`. JavaScript options passed to the constructor still take priority over data attributes.
+
+```js
+const element = document.querySelector('.form-range')
+element.dataset.bsBubble = 'true'
+bootstrap.Range.getOrCreateInstance(element).update()
+```
+
 ## Tick marks
 
 Link a `<datalist>` to the input with the `list` attribute and the plugin renders a tick mark for each `<option>`, positioned at its value (even when the values are unevenly spaced). An `<option>`’s `label` is shown beneath its tick.
@@ -80,6 +88,8 @@ Link a `<datalist>` to the input with the `list` attribute and the plugin render
     <option value="100" label="Hot"></option>
   </datalist>`} />
 
+After you change the datalist options, the input’s `list`, or its `min` and `max`, call `update()` to rebuild the tick marks.
+
 ## With form field
 
 Wrap the `.form-range` in a `.form-field` to pair it with a label and description.
@@ -95,6 +105,10 @@ Wrap the `.form-range` in a `.form-field` to pair it with a label and descriptio
 ## Usage
 
 Every `.form-range` is initialized automatically on page load—the component is JavaScript-driven, so the fill won’t render without the plugin.
+
+When compiling Sass yourself, apply the `bs-` prefix with `postcss-prefix-custom-properties`. The Range plugin writes `--bs-range-fill`, which must match your compiled CSS. See [CSS variables]([[docsref:/customize/css-variables]]).
+
+After setting `input.value` in JavaScript, call `update()` on the instance to refresh its display. Native form reset refreshes the fill and bubble automatically after the browser restores the value. If you change which form owns the input, call `update()` to refresh that association.
 
 ### Via data attributes
 
@@ -131,7 +145,7 @@ const range = new bootstrap.Range(element, {
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `bubble` | boolean | `false` | Show a value bubble above the thumb. |
-| `formatter` | function | `null` | `(value) => string` used for the bubble and tick label text. |
+| `formatter` | function | `null` | `(value) => string` used for bubble text. Tick labels use the datalist options’ labels. |
 </BsTable>
 
 ### Methods
@@ -139,7 +153,7 @@ const range = new bootstrap.Range(element, {
 <BsTable>
 | Method | Description |
 | --- | --- |
-| `update()` | Recompute the fill from the input’s current value. Useful after setting the value programmatically. |
+| `update()` | Refresh the fill and bubble from the input’s current value, apply current data attributes, and rebuild tick marks. JavaScript constructor options retain priority. |
 | `dispose()` | Destroys the instance and removes the bubble and tick marks it created. |
 | `getInstance()` | Static method to get the instance associated with a `.form-range` element. |
 | `getOrCreateInstance()` | Static method to get the instance, or create one if it doesn’t exist. |
@@ -150,7 +164,7 @@ const range = new bootstrap.Range(element, {
 <BsTable>
 | Event | Description |
 | --- | --- |
-| `changed.bs.range` | Fired on the input when the value updates (on `input` and `change`). The event’s `value` property holds the current numeric value. |
+| `changed.bs.range` | Fired on the input during initialization, explicit updates, native `input` and `change` events, and completed form resets. The event’s `value` property holds the current numeric value. |
 </BsTable>
 
 ```js

@@ -1,6 +1,7 @@
 {
   "version": "0.2",
   "words": [
+    "activedescendant",
     "affordance",
     "allowfullscreen",
     "Analyser",
@@ -124,6 +125,7 @@
     "mkdir",
     "monospace",
     "mouseleave",
+    "multiselectable",
     "navbars",
     "navs",
     "navoverflow",
