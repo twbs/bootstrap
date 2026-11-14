@@ -59,3 +59,68 @@ jobs:
 
       - name: Stage package on npm for maintainer approval
         run: npm stage publish --tag "${{ steps.package.outputs.tag }}"
+
+  release-assets:
+    if: ${{ github.repository == 'twbs/bootstrap' && startsWith(github.event.release.tag_name, 'v') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Verify release version
+        run: |
+          node --input-type=commonjs <<'NODE'
+          const fs = require('node:fs')
+          const { name, version } = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+          if (name !== 'bootstrap' || process.env.RELEASE_TAG !== `v${version}`) {
+            throw new Error(`Release ${process.env.RELEASE_TAG} does not match ${name}@${version}`)
+          }
+          NODE
+
+      - name: Check release assets
+        id: assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          assets=$(gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
+          for suffix in dist examples; do
+            file="bootstrap-${RELEASE_TAG#v}-${suffix}.zip"
+            if ! grep -Fxq -- "$file" <<< "$assets"; then
+              echo "missing=true" >> "$GITHUB_OUTPUT"
+              break
+            fi
+          done
+
+      - name: Install npm dependencies
+        if: steps.assets.outputs.missing == 'true'
+        run: npm ci
+
+      - name: Build release archives
+        if: steps.assets.outputs.missing == 'true'
+        run: npm run release
+
+      - name: Upload missing release assets
+        if: steps.assets.outputs.missing == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          assets=$(gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
+          for suffix in dist examples; do
+            file="bootstrap-${RELEASE_TAG#v}-${suffix}.zip"
+            if ! grep -Fxq -- "$file" <<< "$assets"; then
+              gh release upload "$RELEASE_TAG" "$file" --repo "$GITHUB_REPOSITORY"
+            fi
+          done
