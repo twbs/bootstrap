@@ -974,10 +974,15 @@ class Menu extends BaseComponent {
     }
 
     if (key === HOME_KEY || key === END_KEY) {
+      // The toggle sits outside the menu, so Home and End keep their default action there
+      const currentMenu = (target as Element).closest(SELECTOR_MENU)
+      if (!currentMenu) {
+        return false
+      }
+
       event.preventDefault()
       event.stopPropagation()
 
-      const currentMenu = (target as Element).closest(SELECTOR_MENU)!
       const items = this._getItemsInMenu(currentMenu)
 
       if (items.length) {
