@@ -26,6 +26,8 @@ Note that we’re using a width utility of `.w-12` to ensure the input is wide e
 
 - Add `data-bs-toggle="datepicker"` to any `<input>` element to enable the datepicker
 - Use `type="text"` to avoid conflicts with native browser date pickers
+- Inline calendars, preselected dates, and inputs with a nonempty `value` attribute initialize on page load.
+- Prefilled inputs show the localized date before focus and submit ISO dates without opening the calendar.
 - When focused, the calendar popup appears below the input
 - Selecting a date updates the input value and closes the picker
 - The picker also closes on a click outside it, on <kbd>Escape</kbd>, or when focus moves to an element outside it
@@ -45,9 +47,9 @@ Give the text input a `name` to submit selected dates in `YYYY-MM-DD` format. Th
   <button type="reset" class="btn-outline theme-secondary mt-3">Reset</button>
 </form>`} />
 
-On initialization, Bootstrap moves the input’s name to an internal form binding. Form submission and `new FormData(form)` use that name with the ISO value. Disabled fields are omitted. A form reset restores the initial selection. `dispose()` removes the binding and restores the original input and its name. The disposed input then submits its visible value.
+On initialization, Bootstrap moves the input’s name to an internal form binding. Form submission and `new FormData(form)` use that name with the ISO value. Disabled fields are omitted. A form reset restores the initial selection. Canceling a later reset does not discard a completed reset. `dispose()` removes the binding and restores the original input and its name. The disposed input then submits its visible value.
 
-Use `getSelectedDates()` to read selected dates in application code. Do not query the generated hidden input. Dispose and initialize the component again if you move an initialized input between forms. Initialize Datepicker explicitly if you need this binding before the first focus. Prefilled fields are not all initialized on page load.
+Use `getSelectedDates()` to read selected dates in application code. Do not query the generated hidden input. Dispose and initialize the component again if you move an initialized input between forms. Prefilled inputs initialize on page load. For empty inputs, initialize Datepicker explicitly if you need this binding before focus.
 
 Use ISO dates for initial values. Manual input accepts valid ISO dates. It also accepts numeric Gregorian dates with ASCII digits and a four-digit year that exactly match the component’s own locale format. It does not parse arbitrary date phrases, month names, custom formatter output, or multiple-date text. Invalid manual input clears the selection and submitted value. Use the calendar or `setSelectedDates()` for multiple dates and ranges.
 

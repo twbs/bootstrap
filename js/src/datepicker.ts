@@ -173,9 +173,10 @@ class Datepicker extends BaseComponent {
   protected declare _popup: HTMLElement | null
   protected declare _floatingCleanup: (() => void) | null
   protected declare _hideTimeout: ReturnType<typeof setTimeout> | null
-  protected declare _resetTimeout: ReturnType<typeof setTimeout> | null
+  protected declare _resetTimeouts: Set<ReturnType<typeof setTimeout>>
   protected declare _suppressFocus: boolean
   protected declare _positionGeneration: number
+  protected declare _showGeneration: number
   protected declare _inputName: string | null
   protected declare _inputObserver: MutationObserver | null
   protected declare _form: HTMLFormElement | null
@@ -194,9 +195,10 @@ class Datepicker extends BaseComponent {
     this._isShown = false
     this._floatingCleanup = null
     this._hideTimeout = null
-    this._resetTimeout = null
+    this._resetTimeouts = new Set()
     this._suppressFocus = false
     this._positionGeneration = 0
+    this._showGeneration = 0
     this._inputName = null
     this._inputObserver = null
     this._form = null
@@ -236,7 +238,7 @@ class Datepicker extends BaseComponent {
   }
 
   async show(): Promise<void> {
-    if (!this._calendar || this._isInline || this._isShown || this._eventPending || this._suppressFocus || isDisabled(this._element)) {
+    if (!this._calendar || this._isInline || this._isShown || this._eventPending || this._suppressFocus || isDisabled(this._element) || this._element.matches(':disabled')) {
       return
     }
 
@@ -245,6 +247,7 @@ class Datepicker extends BaseComponent {
       return
     }
 
+    const generation = ++this._showGeneration
     this._isShown = true
     const popup = this._popup!
     this._mountPopup()
@@ -255,7 +258,7 @@ class Datepicker extends BaseComponent {
 
     this._element.setAttribute('aria-expanded', 'true')
     await this._updatePosition()
-    if (!this._calendar || !this._isShown) {
+    if (generation !== this._showGeneration || !this._calendar || !this._isShown) {
       return
     }
 
@@ -291,6 +294,7 @@ class Datepicker extends BaseComponent {
   }
 
   protected _closePopup(): void {
+    this._showGeneration++
     this._isShown = false
     this._positionGeneration++
     this._floatingCleanup?.()
@@ -308,7 +312,7 @@ class Datepicker extends BaseComponent {
 
   override dispose(): void {
     clearTimeout(this._hideTimeout ?? undefined)
-    clearTimeout(this._resetTimeout ?? undefined)
+    this._resetTimeouts.forEach(timeout => clearTimeout(timeout))
     this._closePopup()
     this._themeObserver?.disconnect()
     this._inputObserver?.disconnect()
@@ -470,6 +474,8 @@ class Datepicker extends BaseComponent {
     }
 
     this._formCleanup?.()
+    this._resetTimeouts.forEach(timeout => clearTimeout(timeout))
+    this._resetTimeouts.clear()
     if (this._form) {
       EventHandler.off(this._form, `reset${EVENT_KEY}`, this._onReset)
     }
@@ -489,13 +495,13 @@ class Datepicker extends BaseComponent {
     }
 
     this._onReset = event => {
-      clearTimeout(this._resetTimeout ?? undefined)
-      this._resetTimeout = setTimeout(() => {
-        this._resetTimeout = null
-        if (!event.defaultPrevented && this._calendar) {
+      const timeout = setTimeout(() => {
+        this._resetTimeouts.delete(timeout)
+        if (!event.defaultPrevented && this._calendar && event.target === this._form) {
           this.setSelectedDates(this._initialDates)
         }
       }, 0)
+      this._resetTimeouts.add(timeout)
     }
 
     EventHandler.on(form, `reset${EVENT_KEY}`, this._onReset)
@@ -974,9 +980,9 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function
 
 // Auto-initialize datepickers that need to render on load:
 // - inline datepickers (always visible)
-// - datepickers with preselected dates (so the value populates without focus)
+// - datepickers with preselected dates or prefilled inputs (before focus)
 onDocumentReady(`DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
-  const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"], ${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates]`
+  const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"], ${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates], input${SELECTOR_DATA_TOGGLE}[value]:not([value=""])`
   for (const element of document.querySelectorAll(selector)) {
     Datepicker.getOrCreateInstance(element)
   }

@@ -121,6 +121,12 @@ Token names below use the unprefixed Sass source names. In Bootstrap’s compile
 - **Existing tokens now affect rendering.** Review overrides of `--card-subtitle-color`, `--nav-tabs-border-radius`, `--check-indeterminate-bg`, `--check-indeterminate-border-color`, and `--switch-checked-indicator-bg`. The components now read these tokens. Indeterminate checkbox colors default to the checked colors.
 - **Password strength label colors.** `.strength-text` now uses emphasis colors for each strength level. Replace label overrides of `--strength-color` with the `$strength-text-colors` Sass map, or style `.strength-text[data-bs-strength="weak"]` and the other strength levels directly. The meter still uses its `--strength-*-color` tokens. See [Password strength]([[docsref:/forms/password-strength]]).
 
+### Datepicker
+
+- Prefilled inputs now initialize on page load. Their visible dates use the selected locale, and forms submit ISO dates before focus.
+- Popup calendars use the browser’s top layer. The original input and its application listeners survive initialization and disposal.
+- Native form reset restores the initial selection. A canceled reset does not change it or cancel an earlier completed reset.
+
 ### Chip input becomes Combobox
 
 - Remove the `Chips` JavaScript import and replace `data-bs-chips` with `data-bs-toggle="combobox"`, `data-bs-multiple="true"`, and `data-bs-allow-custom="true"` on the wrapper.

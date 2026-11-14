@@ -99,6 +99,35 @@ describe('Datepicker browser interactions', () => {
     expect(picker.getSelectedDates()).toEqual(['2026-12-06'])
   })
 
+  it('keeps a completed reset when a later reset is canceled', async () => {
+    const { picker, input, form } = make(formHtml)
+    picker.setSelectedDates(['2026-12-06'])
+    form.reset()
+    form.addEventListener('reset', event => event.preventDefault(), { once: true })
+    form.reset()
+    await new Promise(resolve => {
+      setTimeout(resolve, 10)
+    })
+    expect(picker.getSelectedDates()).toEqual(['2026-10-05'])
+    expect(input.value).toBe('05/10/2026')
+    expect(new FormData(form).getAll('date')).toEqual(['2026-10-05', 'other'])
+  })
+
+  it('formats prefilled inputs and binds ISO submission before focus', () => {
+    host.innerHTML = '<form><input name="date" value="2026-10-05" data-bs-toggle="datepicker" data-bs-locale="en-GB"><input data-bs-toggle="datepicker"><input value="2026-10-06"></form>'
+    document.dispatchEvent(new Event('DOMContentLoaded'))
+    const inputs = host.querySelectorAll('input:not([type="hidden"])')
+    const picker = Datepicker.getInstance(inputs[0])
+    expect(picker).not.toBeNull()
+    pickers.push(picker)
+    expect(inputs[0].value).toBe('05/10/2026')
+    expect(new FormData(host.querySelector('form')).get('date')).toBe('2026-10-05')
+    expect(picker._isShown).toBe(false)
+    expect(picker._popup.inert).toBe(true)
+    expect(Datepicker.getInstance(inputs[1])).toBeNull()
+    expect(Datepicker.getInstance(inputs[2])).toBeNull()
+  })
+
   it('supports ISO and its own numeric output, and clears invalid manual dates', () => {
     const { picker, input, form } = make(formHtml)
     for (const [value, expected] of [['06/12/2026', '2026-12-06'], ['2026-06-12', '2026-06-12'], ['2026-02-31', ''], ['', '']]) {
@@ -273,6 +302,37 @@ describe('Datepicker browser interactions', () => {
     await picker.hide()
     await opening
     expect(shown).not.toHaveBeenCalled()
+  })
+
+  it('does not install positioning listeners from an older opening', async () => {
+    const { picker, input } = make()
+    const pending = []
+    vi.spyOn(picker, '_updatePosition').mockImplementation(() => pending.length < 2 ?
+      new Promise(resolve => {
+        pending.push(resolve)
+      }) :
+      Promise.resolve())
+    const shown = vi.fn()
+    input.addEventListener('shown.bs.datepicker', shown)
+    const first = picker.show()
+    await picker.hide()
+    const second = picker.show()
+    pending[0]()
+    await first
+    expect(shown).not.toHaveBeenCalled()
+    expect(picker._floatingCleanup).toBeNull()
+    pending[1]()
+    await second
+    expect(shown).toHaveBeenCalledTimes(1)
+    expect(picker._floatingCleanup).toEqual(jasmine.any(Function))
+    await picker.hide()
+    expect(picker._floatingCleanup).toBeNull()
+  })
+
+  it('does not open an input inside a disabled fieldset', async () => {
+    const { picker } = make('<fieldset disabled><input name="date" value="2026-10-05"></fieldset>')
+    await picker.show()
+    expect(picker._isShown).toBe(false)
   })
 
   it('cancels selection timers and handles disposal in a change callback', async () => {
