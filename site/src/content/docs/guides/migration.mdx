@@ -78,6 +78,16 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 Review these changes when you upgrade from v6.0.0-alpha.1 to alpha 2.
 
+### Highlights
+
+- **Native grid gaps.** Rows use CSS `gap`, without gutter padding on columns or negative margins. Continue using `.g-*`, `.gx-*`, and `.gy-*`. See [Gutters]([[docsref:/layout/gutters]]).
+- **Higher browser minimums.** Chrome and Edge require version 138, Firefox 147, and Safari 26 on macOS and iOS. See [Browsers & devices]([[docsref:/getting-started/browsers-devices]]).
+- **Combobox replaces Chip input.** Editable search, multiple selection, and custom values now share one component. Multiple values submit as separate form fields. See [Combobox]([[docsref:/forms/combobox]]).
+- **Form control fixes.** [Range]([[docsref:/forms/range]]) updates refresh its display and tick marks. [Datepicker]([[docsref:/forms/datepicker]]) displays local dates, submits ISO dates, and preserves the original input.
+- **Dialog and Drawer updates.** Scroll locking compensates for scrollbar space. Drawer backdrops fade during closing, and `.dialog-2xl` supports larger content. See [Dialog and Drawer](#dialog-and-drawer).
+- **CSS token fixes.** Several overrides now affect rendering, while unused tokens are removed. Review the [CSS customization changes](#css-customization) before copying alpha 1 customizations.
+- **Hash links for tabs and collapses.** Add `data-bs-hash` to open a matching tab pane or collapse from a URL fragment. See [Tab]([[docsref:/components/tab]]) and [Collapse]([[docsref:/components/collapse]]).
+
 ### Browser support
 
 The minimum browser versions have increased from Chrome and Edge 130 to 138, Firefox 132 to 147, and Safari 18 to 26 on macOS and iOS. Check your browser requirements before upgrading. See [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the features that set each minimum version.
