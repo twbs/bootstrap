@@ -457,7 +457,7 @@ describe('NavOverflow', () => {
       // Four 90px items and three 10px gaps need exactly 390px
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 390px;" data-bs-toggle="nav-overflow">',
-        '  <ul class="nav" style="display: flex; column-gap: 10px;">',
+        '  <ul class="nav" style="display: flex; column-gap: 10px; padding-inline: 0;">',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
@@ -479,7 +479,7 @@ describe('NavOverflow', () => {
       // Three 90px items, the 60px toggle and three 10px gaps need exactly 360px
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 360px;" data-bs-toggle="nav-overflow">',
-        '  <ul class="nav" style="display: flex; column-gap: 10px;">',
+        '  <ul class="nav" style="display: flex; column-gap: 10px; padding-inline: 0;">',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
