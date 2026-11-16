@@ -427,7 +427,7 @@ describe('NavOverflow', () => {
       // The items need 360px. They fit in 370px, but not next to the toggle.
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 370px;" data-bs-toggle="nav-overflow">',
-        '  <ul class="nav" style="display: flex;">',
+        '  <ul class="nav" style="display: flex; padding-inline: 0;">',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
