@@ -72,6 +72,7 @@ type ComboboxConfig = {
   placement: string
   search: boolean
   searchNormalize: boolean
+  selectedText: string | ((count: number) => string)
 }
 
 const Default: ComboboxConfig = {
@@ -87,7 +88,8 @@ const Default: ComboboxConfig = {
   placeholder: '',
   placement: 'bottom-start',
   search: false,
-  searchNormalize: false
+  searchNormalize: false,
+  selectedText: '{count} selected'
 }
 
 const DefaultType = {
@@ -103,7 +105,8 @@ const DefaultType = {
   placeholder: 'string',
   placement: 'string',
   search: 'boolean',
-  searchNormalize: 'boolean'
+  searchNormalize: 'boolean',
+  selectedText: '(string|function)'
 }
 
 /**
@@ -1284,7 +1287,15 @@ class Combobox extends BaseComponent {
     this._valueDisplay.classList.remove(CLASS_NAME_PLACEHOLDER)
 
     if (this._config.multiple && selectedItems.length > 1) {
-      this._valueDisplay.textContent = `${selectedItems.length} selected`
+      const count = selectedItems.length
+      if (typeof this._config.selectedText === 'function') {
+        this._valueDisplay.textContent = this._config.selectedText(count)
+      } else {
+        const template = this._config.selectedText || '{count} selected'
+        this._valueDisplay.textContent = template.includes('{count}') ?
+          template.replace('{count}', String(count)) :
+          `${count} ${template}`
+      }
     } else {
       const item = selectedItems[0]
       const label = SelectorEngine.findOne('.menu-item-content > span:first-child', item)
