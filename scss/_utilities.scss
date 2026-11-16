@@ -31,8 +31,8 @@ $utilities: map.merge(
     // scss-docs-start utils-aspect-ratio
     "aspect-ratio-attr": (
       selector: "attr-includes",
-      class: "ratio-",
       property: aspect-ratio,
+      class: "ratio-",
       values: var(--ratio),
     ),
     "aspect-ratio": (
@@ -195,8 +195,8 @@ $utilities: map.merge(
       )
     ),
     "border-top": (
-      class: border-top,
       property: border-block-start,
+      class: border-top,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
         0: 0,
