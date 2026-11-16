@@ -227,16 +227,16 @@ $utilities: map.merge(
       )
     ),
     "border-y": (
-      class: border-y,
       property: border-block,
+      class: border-y,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
         0: 0,
       )
     ),
     "border-x": (
-      class: border-x,
       property: border-inline,
+      class: border-x,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
         0: 0,
