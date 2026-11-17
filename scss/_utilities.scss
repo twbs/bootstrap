@@ -266,8 +266,8 @@ $utilities: map.merge(
       values: map.merge($border-widths, (keyline: var(--border-width-keyline)))
     ),
     "border-opacity": (
-      class: border-opacity,
       property: border-color,
+      class: border-opacity,
       values: theme-opacity-values(--bc)
     ),
     // scss-docs-end utils-border-color
@@ -887,8 +887,8 @@ $utilities: map.merge(
       values: theme-color-refs("bg-muted"),
     ),
     "bg-opacity": (
-      class: bg-opacity,
       property: background-color,
+      class: bg-opacity,
       values: theme-opacity-values(--bg)
     ),
     // scss-docs-end utils-bg-color
