@@ -43,8 +43,8 @@ $utilities: map.merge(
     // scss-docs-end utils-aspect-ratio
     // scss-docs-start utils-float
     "float": (
-      property: float,
       responsive: true,
+      property: float,
       values: (
         start: inline-start,
         end: inline-end,
