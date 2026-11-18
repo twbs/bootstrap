@@ -267,7 +267,7 @@ describe('Datepicker browser interactions', () => {
     expect(hidden).not.toHaveBeenCalled()
     await userEvent.click(host.querySelector('button'))
     expect(picker._isShown).toBe(false)
-    expect(hidden).toHaveBeenCalledOnce()
+    await vi.waitFor(() => expect(hidden).toHaveBeenCalledOnce())
   })
 
   it('keeps a closed popup out of keyboard navigation', () => {
@@ -335,11 +335,11 @@ describe('Datepicker browser interactions', () => {
     expect(picker._isShown).toBe(false)
   })
 
-  it('cancels selection timers and handles disposal in a change callback', async () => {
+  it('closes immediately and handles disposal in a change callback', async () => {
     const { picker, input } = make()
     await picker.show()
     picker._handleDateClick(picker._calendar, new MouseEvent('click'))
-    expect(picker._hideTimeout).not.toBeNull()
+    expect(picker._isShown).toBe(false)
     input.addEventListener('change.bs.datepicker', () => picker.dispose())
     picker._handleDateClick(picker._calendar, new MouseEvent('click'))
     await new Promise(resolve => {

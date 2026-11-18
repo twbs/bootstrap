@@ -126,6 +126,10 @@ Token names below use the unprefixed Sass source names. In Bootstrap’s compile
 - Prefilled inputs now initialize on page load. Their visible dates use the selected locale, and forms submit ISO dates before focus.
 - Popup calendars use the browser’s top layer. The original input and its application listeners survive initialization and disposal.
 - Native form reset restores the initial selection. A canceled reset does not change it or cancel an earlier completed reset.
+- Use `toggleElement` with an input to add a separate calendar button. Set `showOnFocus: false` to keep typing separate from opening. Button triggers focus the selected date or today.
+- Popup opening and closing now use Menu-style motion and respect reduced motion. `show()`, `hide()`, and `toggle()` resolve after their transitions. Date buttons use the full `--datepicker-font-size` value.
+- Manual input accepts ISO dates and the picker’s numeric locale format. Invalid input and disabled dates clear the selection and submitted value. Use a read-only input or button for multiple dates and ranges.
+- Bootstrap owns popup focus, positioning, and lifecycle callbacks. Remove those overrides from `vcpOptions`. Only the `months` extension is supported; options that need other extensions now throw. See [Datepicker options]([[docsref:/forms/datepicker#advanced-configuration]]).
 
 ### Chip input becomes Combobox
 
@@ -722,7 +726,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Password Strength** — `Strength` JavaScript plugin for password strength metering with `strengthChange.bs.strength` event.
 - **Range** — `Range` JavaScript plugin that turns `.form-range` into a styled slider with a filled track, optional value bubble, and `<datalist>` tick marks, with a `changed.bs.range` event.
 - **Toggler** — `Toggler` JavaScript plugin for toggling classes or attributes on elements via `data-bs-toggle="toggler"`, with `toggle.bs.toggler` and `toggled.bs.toggler` events.
-- **Datepicker** — `Datepicker` JavaScript plugin built on Vanilla Calendar Pro. Popup datepickers close after selection, on outside interaction, on <kbd>Escape</kbd>, or when focus moves outside. Events: `change.bs.datepicker`, `show.bs.datepicker`, `shown.bs.datepicker`, `hide.bs.datepicker`, `hidden.bs.datepicker`.
+- **Datepicker** — `Datepicker` JavaScript plugin built on Vanilla Calendar Pro. Popup datepickers close after a single date or completed range, on outside interaction, or on <kbd>Escape</kbd>. Multiple-date selection keeps the popup open. Events: `change.bs.datepicker`, `show.bs.datepicker`, `shown.bs.datepicker`, `hide.bs.datepicker`, `hidden.bs.datepicker`.
 - **Form Adorn** — new `.form-adorn` component for adding icons or text decoration to form inputs.
 - **Prose** — new `.prose` class for rich typography scoping and `.not-prose` to opt out of prose styles within a prose container.
 - **NavOverflow** — Wrap a `.nav` in `<div class="nav-overflow" data-bs-toggle="nav-overflow">` to collapse overflowing items into a menu. The plugin measures and observes the wrapper, and fires `update.bs.navoverflow` and `overflow.bs.navoverflow` there. See the [Nav overflow docs]([[docsref:/components/nav-overflow]]).

@@ -12,10 +12,37 @@ import {
   Tooltip,
   Popover,
   Toast,
-  Carousel
+  Carousel,
+  Datepicker
 } from '@bootstrap'
 
 export default () => {
+  // js-docs-start datepicker-presets
+  const presets = document.getElementById('datepickerPresets')
+  if (presets) {
+    const trigger = document.getElementById('datepickerPresetTrigger')
+    const picker = Datepicker.getOrCreateInstance(trigger)
+    const iso = date => {
+      const month = String(date.getMonth() + 1).padStart(2, '0')
+      const day = String(date.getDate()).padStart(2, '0')
+      return `${date.getFullYear()}-${month}-${day}`
+    }
+
+    const applyPreset = days => {
+      const end = new Date()
+      const start = new Date(end)
+      start.setDate(end.getDate() - days + 1)
+      picker.setSelectedDates(days === 1 ? [iso(end)] : [iso(start), iso(end)])
+    }
+
+    for (const button of presets.querySelectorAll('[data-datepicker-preset]')) {
+      button.addEventListener('click', () => applyPreset(Number(button.dataset.datepickerPreset)))
+    }
+
+    applyPreset(7)
+  }
+  // js-docs-end datepicker-presets
+
   // --------
   // Tooltips
   // --------

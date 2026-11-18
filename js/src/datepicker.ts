@@ -18,12 +18,14 @@ import {
   type WeekDayID
 } from 'vanilla-calendar-pro'
 import {
-  autoUpdate, computePosition, flip, offset, shift
+  autoUpdate, computePosition, flip, offset, shift, size
 } from '@floating-ui/dom'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import { onDocumentReady } from './util/component-functions.js'
-import { getUID, isDisabled, isVisible } from './util/index.js'
+import {
+  getTransitionDurationFromElement, getUID, isDisabled, isVisible
+} from './util/index.js'
 
 /**
  * Constants
@@ -50,8 +52,6 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="datepicker"]'
 const EVENT_KEYDOWN = `keydown${EVENT_KEY}`
 const FOCUSABLE = 'a[href], button, input, select, textarea, [tabindex], [contenteditable="true"]'
 
-const HIDE_DELAY = 100 // ms delay before hiding after selection
-
 // Keep the existing VCP option types, including the public placement names.
 // Their literal unions reject unsupported values at compile time.
 type DatepickerConfig = {
@@ -63,6 +63,8 @@ type DatepickerConfig = {
   displayMonthsCount: MonthsCount
   firstWeekday: WeekDayID
   inline: boolean
+  showOnFocus: boolean
+  toggleElement: string | HTMLElement | null
   locale: string
   positionElement: string | HTMLElement | null
   selectedDates: string[]
@@ -80,6 +82,8 @@ const Default: DatepickerConfig = {
   displayMonthsCount: 1, // Number of months to display side-by-side
   firstWeekday: 1, // Monday
   inline: false, // Render calendar inline (no popup)
+  showOnFocus: true,
+  toggleElement: null,
   locale: 'default',
   positionElement: null, // Element to position calendar relative to (defaults to input)
   selectedDates: [],
@@ -97,6 +101,8 @@ const DefaultType = {
   displayMonthsCount: 'number',
   firstWeekday: 'number',
   inline: 'boolean',
+  showOnFocus: 'boolean',
+  toggleElement: '(null|string|element)',
   locale: 'string',
   positionElement: '(null|string|element)',
   selectedDates: 'array',
@@ -165,14 +171,17 @@ class Datepicker extends BaseComponent {
   protected declare _isInline: boolean
   protected declare _boundInput: HTMLInputElement | null
   protected declare _positionElement: HTMLElement
+  protected declare _toggleElement: HTMLElement | null
+  protected declare _returnFocusElement: HTMLElement
+  protected declare _originalToggleAria: Map<string, string | null>
+  protected declare _onToggleClick: () => void
   protected declare _displayElement: HTMLElement | false | null
   protected declare _themeObserver: MutationObserver | null
   protected declare _onOutside: (event: Event) => void
-  protected declare _onTriggerClick: () => void
+  protected declare _onTriggerClick: (event: Event) => void
   protected declare _onKeydown: (event: Event) => void
   protected declare _popup: HTMLElement | null
   protected declare _floatingCleanup: (() => void) | null
-  protected declare _hideTimeout: ReturnType<typeof setTimeout> | null
   protected declare _resetTimeouts: Set<ReturnType<typeof setTimeout>>
   protected declare _suppressFocus: boolean
   protected declare _positionGeneration: number
@@ -191,10 +200,12 @@ class Datepicker extends BaseComponent {
   constructor(element?: string | Element | null, config?: Partial<DatepickerConfig> | null) {
     super(element, config)
     this._calendar = null
+    this._toggleElement = null
+    this._returnFocusElement = this._element
+    this._originalToggleAria = new Map()
     this._popup = null
     this._isShown = false
     this._floatingCleanup = null
-    this._hideTimeout = null
     this._resetTimeouts = new Set()
     this._suppressFocus = false
     this._positionGeneration = 0
@@ -206,7 +217,7 @@ class Datepicker extends BaseComponent {
     this._dialog = null
     this._initialDates = []
     this._eventPending = false
-    this._originalAria = new Map(['aria-haspopup', 'aria-expanded'].map(name => [name, this._element.getAttribute(name)]))
+    this._originalAria = new Map(['aria-haspopup', 'aria-expanded', 'aria-controls'].map(name => [name, this._element.getAttribute(name)]))
     try {
       this._initCalendar()
     } catch (error) {
@@ -229,15 +240,19 @@ class Datepicker extends BaseComponent {
   }
 
   // Public
-  toggle(): Promise<void> {
+  toggle(relatedTarget?: HTMLElement): Promise<void> {
     if (this._isInline) {
       return Promise.resolve()
     }
 
-    return this._isShown ? this.hide() : this.show()
+    return this._isShown ? this.hide() : this.show(relatedTarget)
   }
 
-  async show(): Promise<void> {
+  async show(relatedTarget?: HTMLElement): Promise<void> {
+    if (this._skipFocusTrigger(relatedTarget)) {
+      return
+    }
+
     if (!this._calendar || this._isInline || this._isShown || this._eventPending || this._suppressFocus || isDisabled(this._element) || this._element.matches(':disabled')) {
       return
     }
@@ -247,30 +262,41 @@ class Datepicker extends BaseComponent {
       return
     }
 
+    this._popup!.style.removeProperty('max-inline-size')
+    this._popup!.style.removeProperty('max-block-size')
+    this._returnFocusElement = relatedTarget || this._element
     const generation = ++this._showGeneration
     this._isShown = true
     const popup = this._popup!
     this._mountPopup()
     this._syncPopupState(this._calendar)
-    if (typeof popup.showPopover === 'function') {
+    popup.removeAttribute('data-vc-calendar-closing')
+    if (typeof popup.showPopover === 'function' && !popup.matches(':popover-open')) {
       popup.showPopover()
     }
 
     this._element.setAttribute('aria-expanded', 'true')
     await this._updatePosition()
-    if (generation !== this._showGeneration || !this._calendar || !this._isShown) {
+    if (!this._isCurrentOpening(generation)) {
       return
     }
 
+    this._floatingCleanup?.()
     this._floatingCleanup = autoUpdate(this._positionElement, popup, () => {
       this._updatePosition()
     })
-    EventHandler.trigger(this._element, EVENT_SHOWN)
+    if (!this._isInput || (relatedTarget && relatedTarget !== this._element)) {
+      this._focusCalendarDate()
+    }
+
+    await this._queueCallback(() => {
+      if (this._isCurrentOpening(generation)) {
+        EventHandler.trigger(this._element, EVENT_SHOWN)
+      }
+    }, popup, getTransitionDurationFromElement(popup) > 0)
   }
 
   async hide(): Promise<void> {
-    clearTimeout(this._hideTimeout ?? undefined)
-    this._hideTimeout = null
     if (!this._calendar || this._isInline || !this._isShown || this._eventPending) {
       return
     }
@@ -280,8 +306,16 @@ class Datepicker extends BaseComponent {
       return
     }
 
-    this._closePopup()
-    EventHandler.trigger(this._element, EVENT_HIDDEN)
+    const popup = this._popup!
+    const animated = getTransitionDurationFromElement(popup) > 0
+    this._closePopup(animated)
+    const generation = this._showGeneration
+    await this._queueCallback(() => {
+      if (this._calendar && !this._isShown && generation === this._showGeneration) {
+        this._finishPopupClose()
+        EventHandler.trigger(this._element, EVENT_HIDDEN)
+      }
+    }, popup, animated)
   }
 
   protected _triggerLifecycleEvent(name: string): Event {
@@ -293,14 +327,14 @@ class Datepicker extends BaseComponent {
     }
   }
 
-  protected _closePopup(): void {
+  protected _closePopup(animated = false): void {
     this._showGeneration++
     this._isShown = false
     this._positionGeneration++
-    this._floatingCleanup?.()
-    this._floatingCleanup = null
-    if (this._popup?.matches(':popover-open')) {
-      this._popup.hidePopover()
+    if (animated) {
+      this._popup?.setAttribute('data-vc-calendar-closing', '')
+    } else {
+      this._finishPopupClose()
     }
 
     if (this._calendar) {
@@ -310,8 +344,18 @@ class Datepicker extends BaseComponent {
     this._element?.setAttribute('aria-expanded', 'false')
   }
 
+  protected _finishPopupClose(): void {
+    this._floatingCleanup?.()
+    this._floatingCleanup = null
+    if (this._popup?.matches(':popover-open')) {
+      this._popup.hidePopover()
+    }
+
+    this._popup?.removeAttribute('data-vc-calendar-closing')
+  }
+
   override dispose(): void {
-    clearTimeout(this._hideTimeout ?? undefined)
+    this._syncBoundInput()
     this._resetTimeouts.forEach(timeout => clearTimeout(timeout))
     this._closePopup()
     this._themeObserver?.disconnect()
@@ -329,6 +373,12 @@ class Datepicker extends BaseComponent {
     if (this._onKeydown) {
       EventHandler.off(this._element, EVENT_KEYDOWN, this._onKeydown)
       EventHandler.off(this._popup!, EVENT_KEYDOWN, this._onKeydown)
+    }
+
+    if (this._toggleElement) {
+      EventHandler.off(this._toggleElement, EVENT_CLICK, this._onToggleClick)
+      EventHandler.off(this._toggleElement, EVENT_KEYDOWN, this._onKeydown)
+      this._restoreAria(this._toggleElement, this._originalToggleAria)
     }
 
     if (this._onTriggerClick) {
@@ -351,13 +401,7 @@ class Datepicker extends BaseComponent {
       this._boundInput?.remove()
     }
 
-    for (const [name, value] of this._originalAria) {
-      if (value === null) {
-        this._element.removeAttribute(name)
-      } else {
-        this._element.setAttribute(name, value)
-      }
-    }
+    this._restoreAria(this._element, this._originalAria)
 
     this._calendar = null
     super.dispose()
@@ -382,11 +426,45 @@ class Datepicker extends BaseComponent {
   }
 
   // Private
+  protected _isCurrentOpening(generation: number): boolean {
+    return Boolean(this._calendar) && this._isShown && generation === this._showGeneration
+  }
+
+  protected _skipFocusTrigger(relatedTarget?: HTMLElement): boolean {
+    return this._isInput && relatedTarget === this._element && !this._config.showOnFocus
+  }
+
+  protected _containsTrigger(target: Node): boolean {
+    return this._positionElement.contains(target) || this._element.contains(target) || Boolean(this._toggleElement?.contains(target))
+  }
+
+  protected _restoreAria(element: HTMLElement, original: Map<string, string | null>): void {
+    for (const [name, value] of original) {
+      if (value === null) {
+        element.removeAttribute(name)
+      } else {
+        element.setAttribute(name, value)
+      }
+    }
+  }
+
   protected _initCalendar(): void {
     this._isInput = this._element.tagName === 'INPUT'
     this._isInline = this._config.inline
     if (this._isInline && !this._isInput) {
       this._boundInput = this._element.querySelector<HTMLInputElement>('input[type="hidden"], input[name]')
+    }
+
+    if (this._isInput && !this._isInline && this._config.toggleElement) {
+      const root = this._element.getRootNode() as Document | ShadowRoot
+      this._toggleElement = typeof this._config.toggleElement === 'string' ? root.querySelector<HTMLElement>(this._config.toggleElement) : this._config.toggleElement
+      if (this._toggleElement === this._element) {
+        throw new TypeError('The Datepicker toggle must be separate from its input')
+      }
+
+      if (this._toggleElement) {
+        this._originalToggleAria = new Map(['aria-haspopup', 'aria-expanded', 'aria-controls'].map(name => [name, this._toggleElement!.getAttribute(name)]))
+      }
     }
 
     this._positionElement = this._resolvePositionElement()
@@ -395,9 +473,16 @@ class Datepicker extends BaseComponent {
     if (this._isInline) {
       this._element.append(this._popup)
     } else {
+      this._popup.id = getUID('bs-datepicker-calendar-')
       this._popup.setAttribute('popover', 'manual')
       this._element.setAttribute('aria-haspopup', 'dialog')
       this._element.setAttribute('aria-expanded', 'false')
+      this._element.setAttribute('aria-controls', this._popup.id)
+      if (this._toggleElement) {
+        this._toggleElement.setAttribute('aria-haspopup', 'dialog')
+        this._toggleElement.setAttribute('aria-controls', this._popup.id)
+      }
+
       this._mountPopup()
     }
 
@@ -508,7 +593,14 @@ class Datepicker extends BaseComponent {
   }
 
   protected _mountPopup(): void {
-    const dialog = this._element.closest<HTMLDialogElement>('dialog[open]')
+    let ancestor: Element | null = this._element
+    let dialog: HTMLDialogElement | null = null
+    while (ancestor && !dialog) {
+      dialog = ancestor.closest<HTMLDialogElement>('dialog[open]')
+      const root = ancestor.getRootNode()
+      ancestor = root instanceof ShadowRoot ? root.host : null
+    }
+
     if (dialog !== this._dialog) {
       if (this._dialog) {
         EventHandler.off(this._dialog, 'close', this._onDialogClose)
@@ -522,7 +614,7 @@ class Datepicker extends BaseComponent {
     }
 
     const root = this._element.getRootNode()
-    const parent = dialog || (root instanceof ShadowRoot ? root : document.body)
+    const parent = root instanceof ShadowRoot ? root : (dialog || document.body)
     if (this._popup!.parentNode !== parent) {
       parent.append(this._popup!)
     }
@@ -530,7 +622,7 @@ class Datepicker extends BaseComponent {
 
   protected async _updatePosition(): Promise<void> {
     const popup = this._popup
-    if (!popup || !this._isShown) {
+    if (!popup || (!this._isShown && !popup.hasAttribute('data-vc-calendar-closing'))) {
       return
     }
 
@@ -541,9 +633,24 @@ class Datepicker extends BaseComponent {
     const result = await computePosition(this._positionElement, popup, {
       placement: `bottom${alignment}` as 'bottom' | 'bottom-start' | 'bottom-end',
       strategy: 'fixed',
-      middleware: [offset(4), flip(), shift({ padding: 8 })]
+      middleware: [
+        offset(4),
+        flip({ padding: 8 }),
+        shift({ padding: 8, crossAxis: true }),
+        size({
+          padding: 8,
+          apply: ({ availableWidth, availableHeight, elements }) => {
+            if (generation === this._positionGeneration) {
+              Object.assign(elements.floating.style, {
+                maxInlineSize: `${Math.max(0, availableWidth)}px`,
+                maxBlockSize: `${Math.max(0, availableHeight)}px`
+              })
+            }
+          }
+        })
+      ]
     })
-    if (generation !== this._positionGeneration || !this._isShown) {
+    if (generation !== this._positionGeneration || (!this._isShown && !popup.hasAttribute('data-vc-calendar-closing'))) {
       return
     }
 
@@ -559,6 +666,7 @@ class Datepicker extends BaseComponent {
       popup.toggleAttribute('data-vc-calendar-hidden', !this._isShown)
       popup.inert = !this._isShown
       popup.setAttribute('aria-hidden', String(!this._isShown))
+      this._toggleElement?.setAttribute('aria-expanded', String(this._isShown))
     }
 
     this._syncThemeAttribute(popup)
@@ -591,7 +699,8 @@ class Datepicker extends BaseComponent {
     let { positionElement } = this._config
 
     if (typeof positionElement === 'string') {
-      positionElement = document.querySelector<HTMLElement>(positionElement)
+      const root = this._element.getRootNode() as Document | ShadowRoot
+      positionElement = root.querySelector<HTMLElement>(positionElement)
     }
 
     // Use input's parent if in form-adorn
@@ -609,7 +718,8 @@ class Datepicker extends BaseComponent {
     const { displayElement } = this._config
 
     if (typeof displayElement === 'string') {
-      return document.querySelector<HTMLElement>(displayElement)
+      const root = this._element.getRootNode() as Document | ShadowRoot
+      return root.querySelector<HTMLElement>(displayElement)
     }
 
     // For buttons/non-inputs (not inline), look for a [data-bs-datepicker-display] child
@@ -696,9 +806,13 @@ class Datepicker extends BaseComponent {
       return
     }
 
-    this._onTriggerClick = () => {
+    this._onTriggerClick = event => {
+      if (event.target instanceof Node && this._toggleElement?.contains(event.target)) {
+        return
+      }
+
       if (this._isInput) {
-        this.show()
+        this.show(this._element)
       } else if (this._element.dataset.bsToggle !== NAME) {
         this.toggle()
       }
@@ -706,7 +820,7 @@ class Datepicker extends BaseComponent {
 
     EventHandler.on(this._positionElement, EVENT_CLICK, this._onTriggerClick)
     if (this._isInput) {
-      EventHandler.on(this._element, EVENT_FOCUSIN, () => this.show())
+      EventHandler.on(this._element, EVENT_FOCUSIN, () => this.show(this._element))
     }
 
     this._onOutside = event => {
@@ -715,7 +829,7 @@ class Datepicker extends BaseComponent {
       }
 
       const inside = event.composedPath().some(node => node instanceof Node && (
-        this._positionElement.contains(node) || this._element.contains(node) || this._popup?.contains(node)
+        this._positionElement.contains(node) || this._element.contains(node) || this._toggleElement?.contains(node) || this._popup?.contains(node)
       ))
       if (!inside) {
         this.hide()
@@ -727,17 +841,43 @@ class Datepicker extends BaseComponent {
     this._onKeydown = event => this._handleKeydown(event as KeyboardEvent)
     EventHandler.on(this._element, EVENT_KEYDOWN, this._onKeydown)
     EventHandler.on(this._popup!, EVENT_KEYDOWN, this._onKeydown)
+    if (this._toggleElement) {
+      this._onToggleClick = () => {
+        if (!isDisabled(this._toggleElement!) && !this._toggleElement!.matches(':disabled')) {
+          this.toggle(this._toggleElement!)
+        }
+      }
+
+      EventHandler.on(this._toggleElement, EVENT_CLICK, this._onToggleClick)
+      EventHandler.on(this._toggleElement, EVENT_KEYDOWN, this._onKeydown)
+    }
+  }
+
+  protected _focusCalendarDate(): void {
+    for (const selector of ['[data-vc-date-selected] [data-vc-date-btn]', '[data-vc-date-today] [data-vc-date-btn]', '[data-vc-date-btn][tabindex="0"]', 'button']) {
+      const candidates = this._popup?.querySelectorAll<HTMLElement>(selector)
+      const control = [...(candidates || [])].find(element => !isDisabled(element) && isVisible(element))
+      if (control) {
+        control.focus()
+        return
+      }
+    }
   }
 
   protected _focusTrigger(): void {
+    if (!this._element) {
+      return
+    }
+
     this._suppressFocus = true
-    this._element.focus()
+    const trigger = this._returnFocusElement?.isConnected ? this._returnFocusElement : this._element
+    trigger.focus()
     this._suppressFocus = false
   }
 
   protected _handleKeydown(event: KeyboardEvent): void {
     const { target } = event
-    if (!this._isShown || !(target instanceof Node) || (!this._positionElement.contains(target) && !this._element.contains(target) && !this._popup?.contains(target))) {
+    if (!this._isShown || !(target instanceof Node) || (!this._containsTrigger(target) && !this._popup?.contains(target))) {
       return
     }
 
@@ -759,7 +899,7 @@ class Datepicker extends BaseComponent {
     const controls = [...this._popup!.querySelectorAll<HTMLElement>(FOCUSABLE)].filter(
       element => element.tabIndex >= 0 && !isDisabled(element) && isVisible(element)
     )
-    if (this._positionElement.contains(target) || this._element.contains(target)) {
+    if (this._containsTrigger(target)) {
       if (!event.shiftKey && controls[0]) {
         event.preventDefault()
         controls[0].focus()
@@ -856,11 +996,13 @@ class Datepicker extends BaseComponent {
       (this._config.selectionMode === 'single' && selectedDates.length > 0) || (this._config.selectionMode === 'multiple-ranged' && selectedDates.length >= 2)
 
     if (shouldHide) {
-      clearTimeout(this._hideTimeout ?? undefined)
-      this._hideTimeout = setTimeout(() => {
-        this._hideTimeout = null
-        this.hide()
-      }, HIDE_DELAY)
+      const root = this._popup!.getRootNode() as Document | ShadowRoot
+      const wasInCalendar = this._popup?.contains(root.activeElement)
+      this.hide()
+      const active = root.activeElement
+      if (!this._isShown && this._calendar && wasInCalendar && (active === document.body || this._popup?.contains(active))) {
+        this._focusTrigger()
+      }
     }
   }
 
@@ -948,9 +1090,14 @@ class Datepicker extends BaseComponent {
       selectedDates: dates,
       ...(date ? { selectedMonth: date.getMonth() as Range<12>, selectedYear: date.getFullYear() } : {})
     })
-    if (this._boundInput) {
-      this._boundInput.value = dates.join(',')
+    if (date && this._calendar) {
+      const button = this._popup?.querySelector<HTMLButtonElement>(`[data-vc-date="${dates[0]}"] [data-vc-date-btn]`)
+      if (!button || isDisabled(button)) {
+        this._calendar.set({ selectedDates: [] })
+      }
     }
+
+    this._syncBoundInput()
   }
 }
 
@@ -966,7 +1113,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   }
 
   event.preventDefault()
-  Datepicker.getOrCreateInstance(this).toggle()
+  Datepicker.getOrCreateInstance(this).toggle(this)
 })
 
 EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function () {
@@ -975,14 +1122,19 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function
     return
   }
 
-  Datepicker.getOrCreateInstance(this).show()
+  Datepicker.getOrCreateInstance(this).show(this)
 })
 
 // Auto-initialize datepickers that need to render on load:
 // - inline datepickers (always visible)
 // - datepickers with preselected dates or prefilled inputs (before focus)
 onDocumentReady(`DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
-  const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"], ${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates], input${SELECTOR_DATA_TOGGLE}[value]:not([value=""])`
+  const selector = [
+    `${SELECTOR_DATA_TOGGLE}[data-bs-inline="true"]`,
+    `${SELECTOR_DATA_TOGGLE}[data-bs-selected-dates]`,
+    `input${SELECTOR_DATA_TOGGLE}[value]:not([value=""])`,
+    `input${SELECTOR_DATA_TOGGLE}[data-bs-toggle-element]`
+  ].join(', ')
   for (const element of document.querySelectorAll(selector)) {
     Datepicker.getOrCreateInstance(element)
   }

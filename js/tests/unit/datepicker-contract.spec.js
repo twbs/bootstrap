@@ -189,10 +189,11 @@ describe('Datepicker rendered contract', () => {
     }
 
     await userEvent.click(input)
-    await vi.waitFor(() => expect(calendar(picker).matches('[data-vc="calendar"]')).toBe(true))
+    await vi.waitFor(() => expect(events).toEqual(['show', 'shown']))
     await userEvent.keyboard('{Escape}')
+    await vi.waitFor(() => expect(events).toEqual(['show', 'shown', 'hide', 'hidden']))
     await userEvent.click(input)
-    expect(events).toEqual(['show', 'shown', 'hide', 'hidden', 'show', 'shown'])
+    await vi.waitFor(() => expect(events).toEqual(['show', 'shown', 'hide', 'hidden', 'show', 'shown']))
   })
 
   it('PG356: continues to the field after the popup on Tab', async () => {
