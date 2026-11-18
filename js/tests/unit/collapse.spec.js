@@ -1039,4 +1039,24 @@ describe('Collapse', () => {
       expect(showSpy).not.toHaveBeenCalled()
     })
   })
+
+  describe('_isAnimated', () => {
+    it('should report as not animated when collapse-instant is present', () => {
+      fixtureEl.innerHTML = '<div class="collapse collapse-instant" style="transition: block-size 0.35s;"></div>'
+
+      const collapseEl = fixtureEl.querySelector('.collapse')
+      const collapse = new Collapse(collapseEl)
+
+      expect(collapse._isAnimated()).toBeFalse()
+    })
+
+    it('should report as animated when collapse-instant is not present and duration > 0', () => {
+      fixtureEl.innerHTML = '<div class="collapse" style="transition: block-size 0.35s;"></div>'
+
+      const collapseEl = fixtureEl.querySelector('.collapse')
+      const collapse = new Collapse(collapseEl)
+
+      expect(collapse._isAnimated()).toBeTrue()
+    })
+  })
 })
