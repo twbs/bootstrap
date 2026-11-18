@@ -47,6 +47,24 @@ $datepicker-tokens: defaults(
     @include text-truncate();
   }
 
+  [data-bs-selection-mode="multiple-ranged"] {
+    > [data-bs-datepicker-display] {
+      text-align: start;
+      white-space: normal;
+    }
+
+    @media (width < 576px) {
+      &:has(> [data-bs-datepicker-display]) {
+        gap: .25rem;
+        padding-inline: .375rem;
+      }
+
+      > [data-bs-datepicker-display] {
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+
   [data-vc="calendar"] {
     @include tokens($datepicker-tokens);
 
@@ -418,6 +436,10 @@ $datepicker-tokens: defaults(
     background-color: transparent;
     border: 0;
     @include border-radius(var(--radius-5), 0);
+
+    @media (pointer: coarse) {
+      min-height: 2.5rem;
+    }
 
     &:hover {
       background-color: var(--datepicker-day-hover-bg);

@@ -128,7 +128,7 @@ Token names below use the unprefixed Sass source names. In Bootstrap’s compile
 - Native form reset restores the initial selection. A canceled reset does not change it or cancel an earlier completed reset.
 - Use `toggleElement` with an input to add a separate calendar button. Set `showOnFocus: false` to keep typing separate from opening. Button triggers focus the selected date or today.
 - Popup opening and closing now use Menu-style motion and respect reduced motion. `show()`, `hide()`, and `toggle()` resolve after their transitions. Date buttons use the full `--datepicker-font-size` value.
-- Manual input accepts ISO dates and the picker’s numeric locale format. Invalid input and disabled dates clear the selection and submitted value. Use a read-only input or button for multiple dates and ranges.
+- Manual input accepts ISO dates and the picker’s numeric locale format. Invalid input and unavailable dates clear the selection and block form submission. Use a read-only input or button for multiple dates and ranges. An unfinished range keeps the prior submitted value.
 - Bootstrap owns popup focus, positioning, and lifecycle callbacks. Remove those overrides from `vcpOptions`. Only the `months` extension is supported; options that need other extensions now throw. See [Datepicker options]([[docsref:/forms/datepicker#advanced-configuration]]).
 
 ### Chip input becomes Combobox

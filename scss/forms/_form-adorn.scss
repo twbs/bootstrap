@@ -65,11 +65,14 @@ $form-adorn-tokens: defaults(
 
 @layer components {
   .form-adorn > .btn-icon {
-    --btn-min-height: calc(var(--control-min-height) - 2 * var(--control-border-width));
+    --form-adorn-button-inset: 4px;
+    --btn-bg: transparent;
+    --btn-border-radius: max(0px, calc(var(--control-border-radius) - var(--control-border-width) - var(--form-adorn-button-inset)));
+    --btn-min-height: calc(var(--control-min-height) - 2 * (var(--control-border-width) + var(--form-adorn-button-inset)));
     --btn-padding-x: 0;
     --btn-padding-y: 0;
     flex-shrink: 0;
-    margin-block: calc(-1 * var(--control-padding-y));
-    margin-inline-end: calc(-1 * var(--control-padding-x));
+    margin-block: calc(var(--form-adorn-button-inset) - var(--control-padding-y));
+    margin-inline-end: calc(var(--form-adorn-button-inset) - var(--control-padding-x));
   }
 }

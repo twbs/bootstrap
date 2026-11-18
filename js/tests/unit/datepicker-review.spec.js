@@ -1,4 +1,5 @@
 import { vi } from 'vitest'
+import { userEvent } from 'vitest/browser'
 import css from '../../../scss/bootstrap.scss?inline'
 import Datepicker from '../../src/datepicker.js'
 
@@ -22,6 +23,87 @@ describe('Datepicker review regressions', () => {
 
     host.remove()
     style.remove()
+  })
+
+  it('restores the prior range when the new start is clicked again', async () => {
+    host.innerHTML = '<button type="button"><span data-bs-datepicker-display data-bs-datepicker-end-placeholder="MM/DD/YYYY">MM/DD/YYYY – MM/DD/YYYY</span></button>'
+    const button = host.firstElementChild
+    picker = new Datepicker(button, {
+      selectionMode: 'multiple-ranged',
+      selectedDates: ['2026-06-10', '2026-06-18'],
+      locale: 'en-US',
+      dateFormat: { month: '2-digit', day: '2-digit', year: 'numeric' }
+    })
+    await picker.show()
+    const start = () => picker._popup.querySelector('[data-vc-date="2026-06-12"] [data-vc-date-btn]')
+    start().click()
+    expect(picker.getSelectedDates()).toEqual(['2026-06-10', '2026-06-18'])
+    expect(button.textContent).toBe('06/12/2026 – MM/DD/YYYY')
+    start().click()
+    expect(picker.getSelectedDates()).toEqual(['2026-06-10', '2026-06-18'])
+    expect(button.textContent).toBe('06/10/2026 – 06/18/2026')
+    expect(button.getAttribute('aria-expanded')).toBe('true')
+
+    start().click()
+    picker._popup.querySelector('[data-vc-date="2026-06-14"] [data-vc-date-btn]').click()
+    expect(picker.getSelectedDates()).toEqual(['2026-06-12', '2026-06-14'])
+    expect(button.textContent).toBe('06/12/2026 – 06/14/2026')
+    expect(button.getAttribute('aria-expanded')).toBe('false')
+
+    picker.setSelectedDates([])
+    expect(picker.getSelectedDates()).toEqual([])
+    expect(button.textContent).toBe('MM/DD/YYYY – MM/DD/YYYY')
+  })
+
+  it('blocks a typed unavailable date and clears its error after correction', () => {
+    host.innerHTML = '<form><input name="date" required aria-describedby="hint"><span id="hint">Enter a date</span></form>'
+    const input = host.querySelector('input')
+    picker = new Datepicker(input, { dateMax: '2026-10-31' })
+    input.value = '2026-11-01'
+    input.dispatchEvent(new Event('input', { bubbles: true }))
+    expect(input.form.checkValidity()).toBe(false)
+    expect(input.getAttribute('aria-invalid')).toBe('true')
+    const errorId = input.getAttribute('aria-describedby').split(' ').at(-1)
+    expect(document.getElementById(errorId).textContent).toBe(picker._config.invalidDateMessage)
+
+    input.value = '2026-10-31'
+    input.dispatchEvent(new Event('input', { bubbles: true }))
+    expect(input.form.checkValidity()).toBe(true)
+    expect(input.getAttribute('aria-describedby')).toBe('hint')
+    expect(input.hasAttribute('aria-invalid')).toBe(false)
+    expect(new FormData(input.form).get('date')).toBe('2026-10-31')
+  })
+
+  it('submits the previous range while picking and restores it on Escape', async () => {
+    host.innerHTML = '<form><label for="dates">Trip dates</label><input id="dates" name="trip" readonly></form>'
+    const input = host.querySelector('input')
+    picker = new Datepicker(input, { selectionMode: 'multiple-ranged', selectedDates: ['2026-06-10', '2026-06-18'] })
+    await picker.show()
+    const start = picker._popup.querySelector('[data-vc-date="2026-06-12"] [data-vc-date-btn]')
+    start.focus()
+    start.click()
+    expect(picker._popup.getAttribute('aria-label')).toBe('Trip dates')
+    expect(picker._popup.querySelector('[role="status"]').textContent).toBe('Choose an end date.')
+    expect(new FormData(input.form).get('trip')).toBe('2026-06-10,2026-06-18')
+    await userEvent.keyboard('{Escape}')
+    expect(document.activeElement).toBe(input)
+    expect(new FormData(input.form).get('trip')).toBe('2026-06-10,2026-06-18')
+    await picker.show()
+    expect(picker._popup.querySelector('[data-vc-date="2026-06-18"]').hasAttribute('data-vc-date-selected')).toBe(true)
+  })
+
+  it('uses Page Down and Shift+Page Up to move by month and year', async () => {
+    host.innerHTML = '<button type="button" aria-label="Departure date">Calendar</button>'
+    picker = new Datepicker(host.firstElementChild, { selectedDates: ['2026-01-31'] })
+    await picker.show()
+    const focusedDate = () => document.activeElement.closest('[data-vc-date]').dataset.vcDate
+    await userEvent.keyboard('{PageDown}')
+    expect(focusedDate()).toBe('2026-02-28')
+    await userEvent.keyboard('{Shift>}{PageUp}{/Shift}')
+    expect(focusedDate()).toBe('2025-02-28')
+    await userEvent.keyboard('{ArrowRight}')
+    expect(focusedDate()).toBe('2025-03-01')
+    expect(picker._popup.querySelector('[data-vc="month"]').textContent).toBe('March')
   })
 
   it('prefers the selected date when today appears earlier in the month', async () => {

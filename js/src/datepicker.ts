@@ -63,6 +63,7 @@ type DatepickerConfig = {
   displayMonthsCount: MonthsCount
   firstWeekday: WeekDayID
   inline: boolean
+  invalidDateMessage: string
   showOnFocus: boolean
   toggleElement: string | HTMLElement | null
   locale: string
@@ -70,6 +71,7 @@ type DatepickerConfig = {
   selectedDates: string[]
   selectionMode: DateMode
   placement: PositionToInput
+  rangeEndMessage: string
   vcpOptions: Options
 }
 
@@ -81,6 +83,7 @@ const Default: DatepickerConfig = {
   displayElement: null, // Element to show formatted date (defaults to element for buttons)
   displayMonthsCount: 1, // Number of months to display side-by-side
   firstWeekday: 1, // Monday
+  invalidDateMessage: 'Enter a valid date available in the calendar.',
   inline: false, // Render calendar inline (no popup)
   showOnFocus: true,
   toggleElement: null,
@@ -88,6 +91,7 @@ const Default: DatepickerConfig = {
   positionElement: null, // Element to position calendar relative to (defaults to input)
   selectedDates: [],
   selectionMode: 'single', // 'single', 'multiple', 'multiple-ranged'
+  rangeEndMessage: 'Choose an end date.',
   placement: 'left', // 'left', 'center', 'right', 'auto'
   vcpOptions: {} // Pass-through for any VCP option
 }
@@ -101,6 +105,7 @@ const DefaultType = {
   displayMonthsCount: 'number',
   firstWeekday: 'number',
   inline: 'boolean',
+  invalidDateMessage: 'string',
   showOnFocus: 'boolean',
   toggleElement: '(null|string|element)',
   locale: 'string',
@@ -108,6 +113,7 @@ const DefaultType = {
   selectedDates: 'array',
   selectionMode: 'string',
   placement: 'string',
+  rangeEndMessage: 'string',
   vcpOptions: 'object'
 }
 
@@ -176,6 +182,7 @@ class Datepicker extends BaseComponent {
   protected declare _originalToggleAria: Map<string, string | null>
   protected declare _onToggleClick: () => void
   protected declare _displayElement: HTMLElement | false | null
+  protected declare _displayPlaceholder: string
   protected declare _themeObserver: MutationObserver | null
   protected declare _onOutside: (event: Event) => void
   protected declare _onTriggerClick: (event: Event) => void
@@ -192,6 +199,13 @@ class Datepicker extends BaseComponent {
   protected declare _formCleanup: (() => void) | null
   protected declare _onReset: (event: Event) => void
   protected declare _initialDates: string[]
+  protected declare _rangeDates: string[]
+  protected declare _pendingRange: boolean
+  protected declare _rangeStatus: HTMLElement | null
+  protected declare _onInvalid: () => void
+  protected declare _inputError: HTMLElement | null
+  protected declare _inputErrorMessage: string
+  protected declare _originalInvalid: string | null
   protected declare _dialog: HTMLDialogElement | null
   protected declare _onDialogClose: () => void
   protected declare _eventPending: boolean
@@ -216,6 +230,12 @@ class Datepicker extends BaseComponent {
     this._formCleanup = null
     this._dialog = null
     this._initialDates = []
+    this._rangeDates = []
+    this._pendingRange = false
+    this._rangeStatus = null
+    this._inputError = null
+    this._inputErrorMessage = ''
+    this._originalInvalid = null
     this._eventPending = false
     this._originalAria = new Map(['aria-haspopup', 'aria-expanded', 'aria-controls'].map(name => [name, this._element.getAttribute(name)]))
     try {
@@ -269,6 +289,7 @@ class Datepicker extends BaseComponent {
     this._isShown = true
     const popup = this._popup!
     this._mountPopup()
+    this._syncDisplayMonths()
     this._syncPopupState(this._calendar)
     popup.removeAttribute('data-vc-calendar-closing')
     if (typeof popup.showPopover === 'function' && !popup.matches(':popover-open')) {
@@ -283,6 +304,7 @@ class Datepicker extends BaseComponent {
 
     this._floatingCleanup?.()
     this._floatingCleanup = autoUpdate(this._positionElement, popup, () => {
+      this._syncDisplayMonths()
       this._updatePosition()
     })
     if (!this._isInput || (relatedTarget && relatedTarget !== this._element)) {
@@ -338,6 +360,7 @@ class Datepicker extends BaseComponent {
     }
 
     if (this._calendar) {
+      this._cancelPendingRange()
       this._syncPopupState(this._calendar)
     }
 
@@ -356,6 +379,11 @@ class Datepicker extends BaseComponent {
 
   override dispose(): void {
     this._syncBoundInput()
+    this._setInputError('')
+    if (this._onInvalid) {
+      this._element.removeEventListener('invalid', this._onInvalid)
+    }
+
     this._resetTimeouts.forEach(timeout => clearTimeout(timeout))
     this._closePopup()
     this._themeObserver?.disconnect()
@@ -372,7 +400,7 @@ class Datepicker extends BaseComponent {
 
     if (this._onKeydown) {
       EventHandler.off(this._element, EVENT_KEYDOWN, this._onKeydown)
-      EventHandler.off(this._popup!, EVENT_KEYDOWN, this._onKeydown)
+      this._popup?.removeEventListener('keydown', this._onKeydown, true)
     }
 
     if (this._toggleElement) {
@@ -408,7 +436,7 @@ class Datepicker extends BaseComponent {
   }
 
   getSelectedDates(): string[] {
-    const dates = this._calendar?.context?.selectedDates
+    const dates = this._config?.selectionMode === 'multiple-ranged' ? this._rangeDates : this._calendar?.context.selectedDates
     return dates ? [...dates] : []
   }
 
@@ -420,8 +448,10 @@ class Datepicker extends BaseComponent {
         }
       }
 
+      this._pendingRange = false
       this._calendar.set({ selectedDates: dates })
-      this._syncSelectedDates([...this._calendar.context.selectedDates])
+      this._rangeDates = [...this._calendar.context.selectedDates]
+      this._syncSelectedDates(this.getSelectedDates())
     }
   }
 
@@ -469,6 +499,8 @@ class Datepicker extends BaseComponent {
 
     this._positionElement = this._resolvePositionElement()
     this._displayElement = this._resolveDisplayElement()
+    const display = this._displayElement
+    this._displayPlaceholder = display && this._element.contains(display) && display.hasAttribute('data-bs-datepicker-display') ? display.textContent : ''
     this._popup = document.createElement('div')
     if (this._isInline) {
       this._element.append(this._popup)
@@ -490,7 +522,8 @@ class Datepicker extends BaseComponent {
     // positioning, focus, and events; VCP never replaces the application node.
     this._calendar = new Calendar(this._popup, this._buildCalendarOptions())
     this._calendar.init()
-    if (this._isInput && this._element.value) {
+    this._rangeDates = [...this._calendar.context.selectedDates]
+    if (this._isInput && this._element.value && (!(this._element as HTMLInputElement).readOnly || !this._rangeDates.length)) {
       this._parseInputValue()
     }
 
@@ -499,6 +532,9 @@ class Datepicker extends BaseComponent {
       this._createBoundInput()
       this._bindInputForm()
       EventHandler.on(this._element, `input${EVENT_KEY}`, () => this._parseInputValue())
+      this._onInvalid = () => this._showInputError()
+      EventHandler.on(this._element, `blur${EVENT_KEY}`, this._onInvalid)
+      this._element.addEventListener('invalid', this._onInvalid)
     }
 
     this._updateDisplayWithSelectedDates()
@@ -658,18 +694,85 @@ class Datepicker extends BaseComponent {
     popup.dataset.vcPosition = result.placement.startsWith('top') ? 'top' : 'bottom'
   }
 
+  protected _getCalendarLabel(): string {
+    const root = this._element.getRootNode() as Document | ShadowRoot
+    const ids = this._element.getAttribute('aria-labelledby')
+    const labelledBy = ids?.trim().split(/\s+/).map(id => {
+      const label = root.getElementById?.(id)
+      return label?.hasAttribute('data-bs-datepicker-display') ? '' : label?.textContent.trim()
+    }).filter(Boolean).join(' ')
+    const label = labelledBy || this._element.getAttribute('aria-label')
+    if (label) {
+      return label
+    }
+
+    if (this._isInput) {
+      return [...((this._element as HTMLInputElement).labels || [])].map(label => label.textContent.trim()).filter(Boolean).join(' ')
+    }
+
+    return ''
+  }
+
+  protected _getDisplayMonths(): MonthsCount {
+    const { displayMonthsCount } = this._config
+    return displayMonthsCount > 1 && !this._isInline && window.matchMedia('(width < 576px)').matches ? 1 : displayMonthsCount
+  }
+
+  protected _syncDisplayMonths(): void {
+    const calendar = this._calendar
+    const count = this._getDisplayMonths()
+    if (!calendar || calendar.displayMonthsCount === count) {
+      return
+    }
+
+    const root = this._popup!.getRootNode() as Document | ShadowRoot
+    const hadFocus = this._popup!.contains(root.activeElement)
+    calendar.set({
+      type: count > 1 ? 'multiple' : 'default',
+      displayMonthsCount: count,
+      selectedDates: [...calendar.context.selectedDates]
+    }, { month: false, year: false })
+    if (hadFocus) {
+      this._focusCalendarDate()
+    }
+  }
+
   protected _syncPopupState(self: Calendar): void {
+    this._normalizeRangeDates(self)
     const popup = self.context.mainElement
     if (!this._isInline) {
       popup.dataset.vcInput = ''
       popup.role = 'dialog'
+      const label = this._getCalendarLabel()
+      if (label) {
+        popup.setAttribute('aria-label', label)
+      }
+
       popup.toggleAttribute('data-vc-calendar-hidden', !this._isShown)
       popup.inert = !this._isShown
       popup.setAttribute('aria-hidden', String(!this._isShown))
       this._toggleElement?.setAttribute('aria-expanded', String(this._isShown))
     }
 
+    if (this._config.selectionMode === 'multiple-ranged') {
+      this._rangeStatus ??= document.createElement('span')
+      if (!popup.contains(this._rangeStatus)) {
+        this._rangeStatus.className = 'visually-hidden'
+        this._rangeStatus.setAttribute('role', 'status')
+        popup.append(this._rangeStatus)
+      }
+
+      this._updateRangeStatus()
+    }
+
     this._syncThemeAttribute(popup)
+  }
+
+  protected _updateRangeStatus(): void {
+    const message = this._pendingRange ? this._config.rangeEndMessage : ''
+    if (this._rangeStatus && this._rangeStatus.textContent !== message) {
+      this._rangeStatus.textContent = message
+    }
   }
 
   protected _updateDisplayWithSelectedDates(): void {
@@ -680,6 +783,7 @@ class Datepicker extends BaseComponent {
   }
 
   protected _syncSelectedDates(selectedDates: string[]): void {
+    this._setInputError('')
     const formattedDate = this._formatDateForInput(selectedDates)
     if (this._isInput) {
       this._element.value = formattedDate
@@ -690,8 +794,16 @@ class Datepicker extends BaseComponent {
       this._syncBoundInput()
     }
 
+    this._syncDisplay(selectedDates, formattedDate)
+  }
+
+  protected _syncDisplay(selectedDates: string[], formattedDate = this._formatDateForInput(selectedDates)): void {
     if (this._displayElement) {
-      this._displayElement.textContent = formattedDate
+      const endPlaceholder = this._displayElement.dataset.bsDatepickerEndPlaceholder
+      const partialRange = this._config.selectionMode === 'multiple-ranged' && selectedDates.length === 1
+      this._displayElement.textContent = partialRange && endPlaceholder ?
+        `${formattedDate} – ${endPlaceholder}` :
+        (selectedDates.length ? formattedDate : this._displayPlaceholder)
     }
   }
 
@@ -802,6 +914,8 @@ class Datepicker extends BaseComponent {
   }
 
   protected _setupDismiss(): void {
+    this._onKeydown = event => this._handleKeydown(event as KeyboardEvent)
+    this._popup?.addEventListener('keydown', this._onKeydown, true)
     if (this._isInline) {
       return
     }
@@ -838,9 +952,7 @@ class Datepicker extends BaseComponent {
 
     EventHandler.on(document, EVENT_FOCUSIN, this._onOutside)
     EventHandler.on(document, EVENT_POINTERDOWN, this._onOutside)
-    this._onKeydown = event => this._handleKeydown(event as KeyboardEvent)
     EventHandler.on(this._element, EVENT_KEYDOWN, this._onKeydown)
-    EventHandler.on(this._popup!, EVENT_KEYDOWN, this._onKeydown)
     if (this._toggleElement) {
       this._onToggleClick = () => {
         if (!isDisabled(this._toggleElement!) && !this._toggleElement!.matches(':disabled')) {
@@ -877,7 +989,18 @@ class Datepicker extends BaseComponent {
 
   protected _handleKeydown(event: KeyboardEvent): void {
     const { target } = event
-    if (!this._isShown || !(target instanceof Node) || (!this._containsTrigger(target) && !this._popup?.contains(target))) {
+    if ((!this._isShown && !this._isInline) || !(target instanceof Node) || (!this._containsTrigger(target) && !this._popup?.contains(target))) {
+      return
+    }
+
+    if (this._handleCalendarNavigation(event)) {
+      event.preventDefault()
+      event.stopPropagation()
+      return
+    }
+
+    if (this._isInline) {
+      this._handleInlineEscape(event)
       return
     }
 
@@ -924,12 +1047,135 @@ class Datepicker extends BaseComponent {
     }
   }
 
+  protected _handleInlineEscape(event: KeyboardEvent): void {
+    if (event.key !== 'Escape' || !this._pendingRange) {
+      return
+    }
+
+    event.preventDefault()
+    event.stopPropagation()
+    const date = (event.target as HTMLElement).closest<HTMLElement>('[data-vc-date]')?.dataset.vcDate
+    this._cancelPendingRange()
+    const control = date && this._findCalendarDay(date)
+    if (control) {
+      this._focusDay(control)
+    } else {
+      this._focusCalendarDate()
+    }
+  }
+
+  protected _findCalendarDay(date: string): HTMLElement | null {
+    return this._popup?.querySelector<HTMLElement>(`[data-vc-date="${date}"][data-vc-date-month="current"] [data-vc-date-btn]:not(:disabled)`) ?? null
+  }
+
+  protected _focusDay(day: HTMLElement): void {
+    const grid = day.closest('[role="grid"]')
+    grid?.querySelectorAll<HTMLElement>('[data-vc-date-btn][tabindex="0"]').forEach(control => {
+      control.tabIndex = -1
+    })
+    day.tabIndex = 0
+    day.focus()
+  }
+
+  protected _handleCalendarNavigation(event: KeyboardEvent): boolean {
+    const { target } = event
+    if (!this._calendar || !(target instanceof HTMLElement) || !target.matches('[data-vc-date-btn]') || event.altKey || event.ctrlKey || event.metaKey) {
+      return false
+    }
+
+    const day = target.closest<HTMLElement>('[data-vc-date]')
+    const date = this._parseIsoDate(day?.dataset.vcDate || '')
+    if (!date) {
+      return false
+    }
+
+    const { key } = event
+    const page = key === 'PageUp' || key === 'PageDown'
+    const week = key === 'Home' || key === 'End'
+    if (!page && !week && !key.startsWith('Arrow')) {
+      return false
+    }
+
+    const currentMonth = date.getMonth()
+    let direction = 1
+    if (page) {
+      direction = key === 'PageUp' ? -1 : 1
+      const dayOfMonth = date.getDate()
+      date.setDate(1)
+      date.setMonth(currentMonth + ((event.shiftKey ? 12 : 1) * direction))
+      const monthEnd = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
+      date.setDate(Math.min(dayOfMonth, monthEnd))
+    } else if (week) {
+      const weekday = (date.getDay() - this._config.firstWeekday + 7) % 7
+      date.setDate(date.getDate() + (key === 'Home' ? -weekday : 6 - weekday))
+      direction = key === 'Home' ? 1 : -1
+    } else {
+      const rtl = this._popup?.dir === 'rtl'
+      const step = {
+        ArrowLeft: rtl ? 1 : -1,
+        ArrowRight: rtl ? -1 : 1,
+        ArrowUp: -7,
+        ArrowDown: 7
+      }[key]
+      if (!step) {
+        return false
+      }
+
+      date.setDate(date.getDate() + step)
+      if (date.getMonth() === currentMonth && day?.dataset.vcDateMonth === 'current') {
+        return false
+      }
+
+      direction = Math.sign(step)
+    }
+
+    this._focusNavigationDate(date, direction, target)
+    return true
+  }
+
+  protected _focusNavigationDate(date: Date, direction: number, target: HTMLElement): void {
+    const calendar = this._calendar!
+    const { displayDateMin, displayDateMax } = calendar.context
+    let iso = this._toIsoDate(date)
+    if (iso < displayDateMin) {
+      iso = displayDateMin
+    } else if (iso > displayDateMax) {
+      iso = displayDateMax
+    }
+
+    date = this._parseIsoDate(iso) || date
+    const month = date.getMonth()
+    if (!this._findCalendarDay(iso) && (month !== calendar.context.selectedMonth || date.getFullYear() !== calendar.context.selectedYear)) {
+      calendar.set({
+        selectedMonth: month as Range<12>,
+        selectedYear: date.getFullYear(),
+        selectedDates: [...calendar.context.selectedDates]
+      })
+    }
+
+    let control = this._findCalendarDay(iso)
+    // Skip disabled days within the destination month.
+    while (!control && date.getMonth() === month) {
+      date.setDate(date.getDate() + direction)
+      if (date.getMonth() === month) {
+        control = this._findCalendarDay(this._toIsoDate(date))
+      }
+    }
+
+    if (control) {
+      this._focusDay(control)
+    } else if (!target.isConnected) {
+      this._focusCalendarDate()
+    }
+  }
+
   protected _buildCalendarOptions(): Options {
     // Get theme for VCP - use 'system' for auto-detection if no explicit theme
     const theme = this._getEffectiveTheme()
     // VCP uses 'system' for auto, Bootstrap uses 'auto'
     const vcpTheme = !theme || theme === 'auto' ? 'system' : theme
 
+    const displayMonthsCount = this._getDisplayMonths()
     const calendarOptions: Options = {
       ...this._config.vcpOptions,
       // Vanilla Calendar Pro v3.4+ ships optional features as extensions. Bootstrap
@@ -941,8 +1187,8 @@ class Datepicker extends BaseComponent {
       locale: this._config.locale,
       selectionDatesMode: this._config.selectionMode,
       selectedDates: this._config.selectedDates,
-      displayMonthsCount: this._config.displayMonthsCount,
-      type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
+      displayMonthsCount,
+      type: displayMonthsCount > 1 ? 'multiple' : 'default',
       selectedTheme: vcpTheme,
       themeAttrDetect: '[data-bs-theme]',
       onClickDate: (self, event) => this._handleDateClick(self, event),
@@ -973,8 +1219,44 @@ class Datepicker extends BaseComponent {
     return calendarOptions
   }
 
+  protected _normalizeRangeDates(self: Calendar): void {
+    // VCP can represent a cleared range as two undefined entries.
+    if (this._config.selectionMode === 'multiple-ranged' && self.context.selectedDates.length && !self.context.selectedDates[0]) {
+      self.context.selectedDates.length = 0
+    }
+  }
+
+  protected _cancelPendingRange(): void {
+    if (!this._pendingRange || !this._calendar) {
+      return
+    }
+
+    this._pendingRange = false
+    this._calendar.set({ selectedDates: this._rangeDates }, { month: false, year: false })
+    this._syncDisplay(this._rangeDates)
+  }
+
   protected _handleDateClick(self: Calendar, event: MouseEvent): void {
+    this._normalizeRangeDates(self)
     const selectedDates = [...self.context.selectedDates]
+    if (this._config.selectionMode === 'multiple-ranged') {
+      if (selectedDates.length === 1) {
+        this._pendingRange = true
+        this._updateRangeStatus()
+        this._syncDisplay(selectedDates)
+        return
+      }
+
+      if (this._pendingRange && selectedDates.length === 0) {
+        this._cancelPendingRange()
+        return
+      }
+
+      this._pendingRange = false
+      this._rangeDates = selectedDates
+      this._updateRangeStatus()
+    }
+
     this._syncSelectedDates(selectedDates)
 
     EventHandler.trigger(this._element, EVENT_CHANGE, {
@@ -1062,7 +1344,57 @@ class Datepicker extends BaseComponent {
     return dates.map(d => this._formatDate(d)).join(separator)
   }
 
+  protected _setInputError(message: string): void {
+    if (!this._isInput) {
+      return
+    }
+
+    const input = this._element as HTMLInputElement
+    // Preserve custom validity supplied by the application.
+    if (!input.validity.customError || input.validationMessage === this._inputErrorMessage) {
+      input.setCustomValidity(message)
+    }
+
+    this._inputErrorMessage = message
+    if (!message && this._inputError) {
+      const descriptions = (input.getAttribute('aria-describedby') || '').split(/\s+/).filter(id => id && id !== this._inputError!.id)
+      if (descriptions.length) {
+        input.setAttribute('aria-describedby', descriptions.join(' '))
+      } else {
+        input.removeAttribute('aria-describedby')
+      }
+
+      if (this._originalInvalid === null) {
+        input.removeAttribute('aria-invalid')
+      } else {
+        input.setAttribute('aria-invalid', this._originalInvalid)
+      }
+
+      this._inputError.remove()
+      this._inputError = null
+    }
+  }
+
+  protected _showInputError(): void {
+    if (!this._inputErrorMessage || this._inputError) {
+      return
+    }
+
+    const error = document.createElement('div')
+    error.id = getUID('bs-datepicker-error-')
+    error.className = 'form-text fg-danger'
+    error.setAttribute('role', 'status')
+    this._positionElement.after(error)
+    error.textContent = this._inputErrorMessage
+    this._inputError = error
+    this._originalInvalid = this._element.getAttribute('aria-invalid')
+    this._element.setAttribute('aria-invalid', 'true')
+    const describedBy = this._element.getAttribute('aria-describedby')
+    this._element.setAttribute('aria-describedby', describedBy ? `${describedBy} ${error.id}` : error.id)
+  }
+
   protected _parseInputValue(): void {
+    this._pendingRange = false
     const value = this._element.value.trim()
     let date = this._parseIsoDate(value)
     // Only recognize numeric strings that round-trip through our own formatter.
@@ -1085,18 +1417,20 @@ class Datepicker extends BaseComponent {
       }
     }
 
-    const dates = date ? [this._toIsoDate(date)] : []
+    const dates = date && this._config.selectionMode !== 'multiple-ranged' ? [this._toIsoDate(date)] : []
     this._calendar?.set({
       selectedDates: dates,
       ...(date ? { selectedMonth: date.getMonth() as Range<12>, selectedYear: date.getFullYear() } : {})
     })
-    if (date && this._calendar) {
+    if (dates.length && this._calendar) {
       const button = this._popup?.querySelector<HTMLButtonElement>(`[data-vc-date="${dates[0]}"] [data-vc-date-btn]`)
       if (!button || isDisabled(button)) {
         this._calendar.set({ selectedDates: [] })
       }
     }
 
+    this._rangeDates = [...(this._calendar?.context.selectedDates || [])]
+    this._setInputError(this._element.value && this.getSelectedDates().length === 0 ? this._config.invalidDateMessage : '')
     this._syncBoundInput()
   }
 }

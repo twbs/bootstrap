@@ -123,7 +123,7 @@ describe('Datepicker calendar button', () => {
     expect(rect.bottom).toBeLessThanOrEqual(window.innerHeight - 7)
   })
 
-  it('keeps an adorned calendar button within the normal control height', () => {
+  it('insets the calendar button without increasing the control height', () => {
     const wrapper = document.createElement('div')
     wrapper.className = 'form-control form-adorn'
     input.before(wrapper)
@@ -133,8 +133,19 @@ describe('Datepicker calendar button', () => {
     wrapper.append(input, button)
     const reference = host.querySelector('#nextField')
     reference.className = 'form-control'
-    expect(wrapper.getBoundingClientRect().height).toBe(reference.getBoundingClientRect().height)
-    expect(button.getBoundingClientRect().height).toBeLessThan(wrapper.getBoundingClientRect().height)
+    const control = wrapper.getBoundingClientRect()
+    const icon = button.getBoundingClientRect()
+    const border = Number.parseFloat(getComputedStyle(wrapper).borderTopWidth)
+    expect(control.height).toBe(reference.getBoundingClientRect().height)
+    expect(icon.top - control.top).toBeGreaterThanOrEqual(border + 4)
+    expect(control.bottom - icon.bottom).toBeGreaterThanOrEqual(border + 4)
+    expect(control.right - icon.right).toBeGreaterThanOrEqual(border + 4)
+
+    const radius = Number.parseFloat(getComputedStyle(wrapper).borderTopRightRadius)
+    expect(Number.parseFloat(getComputedStyle(button).borderTopRightRadius)).toBe(Math.max(0, radius - border - 4))
+
+    wrapper.dir = 'rtl'
+    expect(button.getBoundingClientRect().left - wrapper.getBoundingClientRect().left).toBeGreaterThanOrEqual(border + 4)
   })
 
   it('closes on a second button click, including inside a form adorn', async () => {

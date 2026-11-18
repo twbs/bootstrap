@@ -43,6 +43,35 @@ export default () => {
   }
   // js-docs-end datepicker-presets
 
+  // js-docs-start datepicker-actions
+  const actionsTrigger = document.getElementById('datepickerActions')
+  if (actionsTrigger) {
+    const picker = Datepicker.getOrCreateInstance(actionsTrigger)
+    const popup = document.getElementById(actionsTrigger.getAttribute('aria-controls'))
+    const template = document.getElementById('datepickerActionsTemplate')
+    const actions = template.content.firstElementChild.cloneNode(true)
+
+    const mountActions = () => {
+      if (!popup.contains(actions)) {
+        popup.append(actions)
+      }
+    }
+
+    mountActions()
+    // The calendar can replace its contents when its view changes.
+    new MutationObserver(mountActions).observe(popup, { childList: true })
+
+    actions.addEventListener('click', event => {
+      const button = event.target.closest('[data-datepicker-action]')
+      if (button) {
+        picker.setSelectedDates(button.dataset.datepickerAction === 'today' ? [new Date()] : [])
+        picker.hide()
+        actionsTrigger.focus()
+      }
+    })
+  }
+  // js-docs-end datepicker-actions
+
   // --------
   // Tooltips
   // --------

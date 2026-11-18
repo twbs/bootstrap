@@ -1282,6 +1282,7 @@ describe('Datepicker', () => {
 
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl, {
+        inline: true,
         displayMonthsCount: 2
       })
 

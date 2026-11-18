@@ -15,17 +15,18 @@ deps:
 
 Use Datepicker for single dates, ranges, or multiple dates. It combines [Vanilla Calendar Pro](https://vanilla-calendar.pro/) with Bootstrap’s popup positioning, focus, and events.
 
-Start with a button to open the calendar without showing a mobile keyboard. Add `data-bs-datepicker-display` to the text so updates preserve the icon.
+Start with a button to open the calendar without showing a mobile keyboard. Put the button label in a span with `data-bs-datepicker-display`. Datepicker updates that span and restores the label when you clear the selection.
 
-<Example code={`<button type="button" class="btn-solid theme-primary justify-content-start" id="datepicker1" data-bs-toggle="datepicker">
+<Example code={`<button type="button" class="btn-solid theme-primary justify-content-start" id="datepicker1" aria-labelledby="datepicker1Label datepicker1Value" data-bs-locale="en-US" data-bs-date-format='{"month":"2-digit","day":"2-digit","year":"numeric"}' data-bs-toggle="datepicker">
+    <span class="visually-hidden" id="datepicker1Label">Appointment date</span>
     <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#calendar-week" /></svg>
-    <span data-bs-datepicker-display>Choose date…</span>
+    <span id="datepicker1Value" data-bs-datepicker-display>Choose a date…</span>
   </button>`} />
 
 ## How it works
 
 - Add `data-bs-toggle="datepicker"` to a button or text input.
-- A single date or completed range closes the popup. Multiple-date selection keeps it open.
+- A single date or completed range closes the popup. Multiple-date selection keeps it open. Closing a popup with an unfinished range restores the previous selection.
 - Click outside or press <kbd>Escape</kbd> to close it.
 - Use an [input with a calendar button](#input-with-calendar-button) for typing. See [Form submission](#form-submission) for ISO values and reset behavior.
 
@@ -33,29 +34,32 @@ Start with a button to open the calendar without showing a mobile keyboard. Add 
 
 ### Date range
 
-Use `data-bs-selection-mode="multiple-ranged"` to choose a start and end date. Add `data-bs-selected-dates` to set an initial range.
+Use `data-bs-selection-mode="multiple-ranged"` to choose a start and end date. Add `data-bs-selected-dates` to set an initial range. Set `data-bs-datepicker-end-placeholder` on the display span to show a hint while the end date is empty. Only completed ranges update the submitted value.
 
-<Example code={`<button type="button" class="btn-outline theme-secondary w-16 mw-100 justify-content-start" id="datepicker4" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-selected-dates='["2026-06-10", "2026-06-18"]'>
+<Example code={`<button type="button" class="btn-outline theme-secondary max-w-100 justify-content-start" style="inline-size: 17rem;" id="datepicker4" aria-labelledby="datepicker4Label datepicker4Value" data-bs-locale="en-US" data-bs-date-format='{"month":"2-digit","day":"2-digit","year":"numeric"}' data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-selected-dates='["2026-06-10", "2026-06-18"]'>
+    <span class="visually-hidden" id="datepicker4Label">Date range</span>
     <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#calendar-week" /></svg>
-    <span data-bs-datepicker-display>Choose date range</span>
+    <span id="datepicker4Value" data-bs-datepicker-display data-bs-datepicker-end-placeholder="MM/DD/YYYY">MM/DD/YYYY – MM/DD/YYYY</span>
   </button>`} />
 
 ### Multiple dates
 
 Use `data-bs-selection-mode="multiple"` to keep the calendar open while choosing separate dates.
 
-<Example code={`<button type="button" class="btn-outline theme-secondary w-16 mw-100 justify-content-start" id="datepicker3" data-bs-toggle="datepicker" data-bs-selection-mode="multiple">
+<Example code={`<button type="button" class="btn-outline theme-secondary max-w-100 justify-content-start" style="inline-size: 16rem;" id="datepicker3" aria-labelledby="datepicker3Label datepicker3Value" data-bs-locale="en-US" data-bs-date-format='{"month":"2-digit","day":"2-digit","year":"numeric"}' data-bs-toggle="datepicker" data-bs-selection-mode="multiple">
+    <span class="visually-hidden" id="datepicker3Label">Selected dates</span>
     <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#calendar-week" /></svg>
-    <span data-bs-datepicker-display>Choose multiple dates</span>
+    <span id="datepicker3Value" data-bs-datepicker-display>Choose dates</span>
   </button>`} />
 
 ### Multiple months
 
-Set `data-bs-display-months-count="2"` to show two months. The months wrap on narrow screens.
+Set `data-bs-display-months-count="2"` to show two months. The popup shows one month below 576px. Inline calendars can still wrap.
 
-<Example code={`<button type="button" class="btn-outline theme-secondary w-16 mw-100 justify-content-start" id="datepickerMultiMonth" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-display-months-count="2">
+<Example code={`<button type="button" class="btn-outline theme-secondary max-w-100 justify-content-start" style="inline-size: 17rem;" id="datepickerMultiMonth" aria-labelledby="datepickerMultiMonthLabel datepickerMultiMonthValue" data-bs-locale="en-US" data-bs-date-format='{"month":"2-digit","day":"2-digit","year":"numeric"}' data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-display-months-count="2">
+    <span class="visually-hidden" id="datepickerMultiMonthLabel">Travel dates</span>
     <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#calendar-week" /></svg>
-    <span data-bs-datepicker-display>Choose date range</span>
+    <span id="datepickerMultiMonthValue" data-bs-datepicker-display data-bs-datepicker-end-placeholder="MM/DD/YYYY">MM/DD/YYYY – MM/DD/YYYY</span>
   </button>`} />
 
 ### Date presets
@@ -64,9 +68,9 @@ Use `setSelectedDates()` to apply common ranges. This example calculates dates i
 
 <Example addStackblitzJs code={`<div class="d-flex flex-column align-items-start gap-2" id="datepickerPresets">
     <span class="form-label mb-0" id="datepickerPresetLabel">Report dates</span>
-    <button type="button" class="btn-outline theme-secondary w-16 mw-100 justify-content-start" id="datepickerPresetTrigger" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" aria-labelledby="datepickerPresetLabel datepickerPresetDisplay">
+    <button type="button" class="btn-outline theme-secondary max-w-100 justify-content-start" style="inline-size: 17rem;" id="datepickerPresetTrigger" data-bs-locale="en-US" data-bs-date-format='{"month":"2-digit","day":"2-digit","year":"numeric"}' data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" aria-labelledby="datepickerPresetLabel datepickerPresetDisplay">
       <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#calendar-week" /></svg>
-      <span id="datepickerPresetDisplay" data-bs-datepicker-display>Choose report dates</span>
+      <span id="datepickerPresetDisplay" data-bs-datepicker-display>MM/DD/YYYY – MM/DD/YYYY</span>
     </button>
     <div class="d-flex flex-wrap gap-2" role="group" aria-label="Report date presets">
       <button type="button" class="btn-outline btn-sm theme-secondary" data-datepicker-preset="1">Today</button>
@@ -83,7 +87,7 @@ Use [Form adorn]([[docsref:/forms/form-adorn]]) for an editable input with a cal
 
 <Example code={`<div class="form-field">
     <label for="datepickerToggleInput" class="form-label">Departure date</label>
-    <div class="form-control form-adorn w-16 mw-100">
+    <div class="form-control form-adorn max-w-100" style="inline-size: 16rem;">
       <input type="text" class="form-ghost" id="datepickerToggleInput" name="departure" data-bs-toggle="datepicker" data-bs-toggle-element="#datepickerToggleButton" data-bs-show-on-focus="false" data-bs-locale="en-GB" aria-describedby="datepickerToggleHelp" autocomplete="off" placeholder="DD/MM/YYYY">
       <button type="button" class="btn-icon" id="datepickerToggleButton" aria-label="Choose departure date">
         <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#calendar-week" /></svg>
@@ -100,7 +104,7 @@ Use the calendar heading to choose a month or year. Set a minimum date and disab
 
 <Example code={`<div class="form-field">
     <label for="datepickerBirthday" class="form-label">Date of birth</label>
-    <div class="form-control form-adorn w-16 mw-100">
+    <div class="form-control form-adorn max-w-100" style="inline-size: 16rem;">
       <input type="text" class="form-ghost" id="datepickerBirthday" name="birthday" value="1990-06-15" data-bs-toggle="datepicker" data-bs-toggle-element="#datepickerBirthdayButton" data-bs-show-on-focus="false" data-bs-locale="en-GB" data-bs-date-min="1900-01-01" data-bs-vcp-options='{"disableDatesFuture": true}' aria-describedby="datepickerBirthdayHelp" autocomplete="bday" placeholder="DD/MM/YYYY">
       <button type="button" class="btn-icon" id="datepickerBirthdayButton" aria-label="Choose date of birth">
         <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#calendar-week" /></svg>
@@ -115,7 +119,7 @@ A text input can open the calendar on focus. Use [Form field]([[docsref:/forms/f
 
 <Example code={`<div class="form-field">
     <label for="datepicker2" class="form-label">Appointment date</label>
-    <input type="text" class="form-control w-12" id="datepicker2" aria-describedby="datepicker2Help" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">
+    <input type="text" class="form-control w-12" id="datepicker2" data-bs-locale="en-US" data-bs-date-format='{"month":"2-digit","day":"2-digit","year":"numeric"}' aria-describedby="datepicker2Help" data-bs-toggle="datepicker" autocomplete="off" placeholder="MM/DD/YYYY">
     <div class="form-text" id="datepicker2Help">Enter a date or choose one from the calendar.</div>
   </div>`} />
 
@@ -126,7 +130,7 @@ A text input can open the calendar on focus. Use [Form field]([[docsref:/forms/f
 Restrict the selectable range with `data-bs-date-min` and `data-bs-date-max`.
 
 <Example code={`<button type="button" class="btn-outline theme-secondary" id="datepickerMinMax" data-bs-toggle="datepicker" data-bs-date-min="2026-01-01" data-bs-date-max="2026-12-31">
-    <span data-bs-datepicker-display>Choose a date in 2026</span>
+    <span data-bs-datepicker-display>Choose a date in 2026…</span>
   </button>`} />
 
 ### First day of week
@@ -134,7 +138,7 @@ Restrict the selectable range with `data-bs-date-min` and `data-bs-date-max`.
 Set the first day of the week (0 = Sunday, 1 = Monday, etc.) with `data-bs-first-weekday`.
 
 <Example code={`<label for="datepicker6" class="form-label">Week starts on Sunday</label>
-  <input type="text" class="form-control w-12" id="datepicker6" data-bs-toggle="datepicker" autocomplete="off" data-bs-first-weekday="0" placeholder="Select a date">`} />
+  <input type="text" class="form-control w-12" id="datepicker6" data-bs-toggle="datepicker" autocomplete="off" data-bs-first-weekday="0" placeholder="Select a date…">`} />
 
 ### Placement
 
@@ -244,6 +248,8 @@ Give each input an associated label. Give icon-only calendar buttons an accessib
 
 When an input opens the popup, <kbd>Tab</kbd> enters its controls. After the last control, <kbd>Tab</kbd> closes the popup and continues after the opening control. <kbd>Shift</kbd>+<kbd>Tab</kbd> from the first control returns to the opening control. <kbd>Escape</kbd> and date selection also return focus there. Hidden calendars do not receive keyboard focus.
 
+Use arrow keys to move by day or week. Use <kbd>Home</kbd> and <kbd>End</kbd> to go to the start or end of a week. <kbd>Page Up</kbd> and <kbd>Page Down</kbd> move by month. Hold <kbd>Shift</kbd> to move by year. The popup uses the field’s label, and the calendar announces when the next step is to choose an end date.
+
 The popup fades and scales like Menu. It skips motion when reduced motion is enabled.
 
 The popup uses the browser’s top layer, including inside dialogs. It stays within the viewport and scrolls its own content when needed. Opening it does not lock page scrolling or change the page width.
@@ -258,7 +264,7 @@ The popup uses the browser’s top layer, including inside dialogs. It stays wit
 
 ### Form submission
 
-Give the input a `name` and an ISO initial value. The input displays a localized date and submits `YYYY-MM-DD`. Reset restores the initial selection.
+Give the input a `name` and an ISO initial value. Try typing an invalid date and submitting the form. The input displays a localized date and submits `YYYY-MM-DD`. Reset restores the initial selection.
 
 <Example code={`<form>
     <div class="form-field w-12">
@@ -278,7 +284,7 @@ Button triggers do not submit dates. Use a named input, or copy `getSelectedDate
 <details>
   <summary>Input parsing and form behavior</summary>
 
-  Manual input accepts ISO dates and numeric dates that match the picker’s locale format, with ASCII digits and a four-digit year. Month names, custom formatter output, and multiple-date text are not parsed. Invalid input and disabled dates clear the selection and submitted value. The typed text remains visible. Use a read-only field or button for ranges and multiple dates.
+  Manual input accepts ISO dates and numeric dates that match the picker’s locale format, with ASCII digits and a four-digit year. Month names, custom formatter output, and multiple-date text are not parsed. Invalid input and unavailable dates clear the selection. The typed text stays visible and blocks form submission until you correct it. Datepicker shows an error when the field loses focus or fails form validation. Use a read-only field or button for ranges and multiple dates.
 
   Prefilled inputs initialize on page load. Empty inputs initialize on focus, or on page load when they have a separate calendar button. Initialize an empty field explicitly if you need its form binding before focus.
 
@@ -304,6 +310,8 @@ Add `data-bs-toggle="datepicker"` to a button or text input.
 | `data-bs-first-weekday` | First weekday, from `0` (Sunday) to `6` (Saturday). |
 | `data-bs-date-min` | Minimum date in `YYYY-MM-DD` format. |
 | `data-bs-date-max` | Maximum date in `YYYY-MM-DD` format. |
+| `data-bs-invalid-date-message` | Error message for invalid or unavailable typed dates. |
+| `data-bs-range-end-message` | Screen reader announcement after choosing a range start. |
 | `data-bs-locale` | Locale used for displayed dates. |
 | `data-bs-date-format` | JSON object of `Intl.DateTimeFormat` options. Functions require JavaScript. |
 | `data-bs-display-element` | Display target selector, or `false` to disable it. |
@@ -340,9 +348,11 @@ const datepicker = new bootstrap.Datepicker(datepickerEl, {
 | --- | --- | --- | --- |
 | `dateMin` | string, number, Date | `null` | Minimum selectable date. Format: `YYYY-MM-DD` |
 | `dateMax` | string, number, Date | `null` | Maximum selectable date. Format: `YYYY-MM-DD` |
+| `invalidDateMessage` | string | `'Enter a valid date available in the calendar.'` | Error message for invalid or unavailable typed dates. |
+| `rangeEndMessage` | string | `'Choose an end date.'` | Screen reader announcement after choosing a range start. |
 | `dateFormat` | object, function | `null` | Date formatting. Pass `Intl.DateTimeFormat` options or a `function(date, locale)`. |
 | `displayElement` | string, element, boolean | `null` | Element to show formatted date. For buttons, defaults to the button itself. Set to `false` to disable. |
-| `displayMonthsCount` | number | `1` | Number of months to display side-by-side in the calendar. |
+| `displayMonthsCount` | number | `1` | Number of months to display. Popups show one month below 576px. |
 | `firstWeekday` | number | `1` | First day of week (0 = Sunday, 1 = Monday, etc.) |
 | `toggleElement` | string, element | `null` | Separate calendar button for an input Datepicker. |
 | `showOnFocus` | boolean | `true` | Open when the input receives focus or a click. Explicit `show()` calls still work. |
@@ -376,6 +386,24 @@ See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/r
 Vanilla Calendar Pro templates, including `layouts`, contain trusted HTML. Do not populate them with untrusted content or user-supplied JSON. This also applies to templates inside `data-bs-vcp-options`. Bootstrap does not sanitize these templates. Use formatter functions for plain text.
 
 Vanilla Calendar Pro ships its optional features as extensions. Bootstrap uses only the `months` extension, which `displayMonthsCount` needs. Options from other extensions are not supported, and Vanilla Calendar Pro throws an error when you set them. These include `animation`, `enableSwipe`, `selectionTimeMode`, `popups`, and the week view options.
+
+#### Calendar actions
+
+Add a row inside the calendar for actions such as **Today** and **Clear**. Both update the selection, close the popup, and return focus to the date button.
+
+<Example stackblitz={false} code={`<button type="button" class="btn-outline theme-secondary" id="datepickerActions" data-bs-toggle="datepicker" aria-labelledby="datepickerActionsLabel datepickerActionsValue">
+    <span class="visually-hidden" id="datepickerActionsLabel">Appointment date</span>
+    <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#calendar-week" /></svg>
+    <span id="datepickerActionsValue" data-bs-datepicker-display>Choose a date…</span>
+  </button>
+  <template id="datepickerActionsTemplate">
+    <div class="d-grid grid-cols-2 gap-2 mt-3">
+      <button type="button" class="btn-solid theme-secondary btn-sm" data-datepicker-action="today">Today</button>
+      <button type="button" class="btn-text theme-secondary btn-sm" data-datepicker-action="clear">Clear</button>
+    </div>
+  </template>`} />
+
+<JsDocs name="datepicker-actions" file="site/src/assets/partials/snippets.js" />
 
 ### Methods
 
