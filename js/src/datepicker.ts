@@ -1097,7 +1097,7 @@ class Datepicker extends BaseComponent {
     }
 
     const currentMonth = date.getMonth()
-    let direction = 1
+    let direction: number
     if (page) {
       direction = key === 'PageUp' ? -1 : 1
       const dayOfMonth = date.getDate()
