@@ -52,7 +52,7 @@ $chip-tokens: defaults(
     @include border-radius(var(--chip-border-radius));
 
     &:focus-visible {
-      @include focus-ring();
+      @include focus-ring(false, var(--theme-focus-ring, var(--focus-ring-color)));
     }
 
     &.active {
@@ -138,7 +138,7 @@ $chip-tokens: defaults(
     &:focus-visible {
       outline: 0;
       opacity: 1;
-      @include focus-ring();
+      @include focus-ring(false, var(--theme-focus-ring, var(--focus-ring-color)));
     }
 
     > svg {
