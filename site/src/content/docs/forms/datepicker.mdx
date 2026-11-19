@@ -123,6 +123,19 @@ A text input can open the calendar on focus. Use [Form field]([[docsref:/forms/f
     <div class="form-text" id="datepicker2Help">Enter a date or choose one from the calendar.</div>
   </div>`} />
 
+## Sizing
+
+Use `.form-control-sm` or `.form-control-lg` to change the input size.
+
+<Example code={`<label for="datepickerSmall" class="form-label">Small</label>
+  <input type="text" class="form-control form-control-sm w-12" id="datepickerSmall" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">
+
+  <label for="datepickerDefault" class="form-label mt-3">Default</label>
+  <input type="text" class="form-control w-12" id="datepickerDefault" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">
+
+  <label for="datepickerLarge" class="form-label mt-3">Large</label>
+  <input type="text" class="form-control form-control-lg w-12" id="datepickerLarge" data-bs-toggle="datepicker" autocomplete="off" placeholder="Choose date…">`} />
+
 ## Options
 
 ### Min & Max dates
