@@ -4,7 +4,7 @@
 
 $badge-tokens: () !default;
 
-// stylelint-disable custom-property-no-missing-var-function, scss/dollar-variable-default
+// stylelint-disable scss/dollar-variable-default
 
 // scss-docs-start badge-tokens
 $badge-tokens: defaults(
@@ -43,7 +43,7 @@ $badge-variants: defaults(
 );
 // scss-docs-end badge-variants
 
-// stylelint-enable custom-property-no-missing-var-function, scss/dollar-variable-default
+// stylelint-enable scss/dollar-variable-default
 
 @layer components {
   .badge {
@@ -100,9 +100,4 @@ $badge-variants: defaults(
     }
   }
   // scss-docs-end badge-variant-loop
-
-  .badge-lg {
-    --badge-padding-x: 1rem;
-    --badge-padding-y: .5rem;
-  }
 }
