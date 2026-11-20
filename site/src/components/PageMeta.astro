@@ -7,11 +7,10 @@ import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
 
 interface Props {
   frontmatter: CollectionEntry<'docs'>['data']
-  id: CollectionEntry<'docs'>['id']
-  parentDirectory: string
+  filePath?: string
 }
 
-const { frontmatter, id, parentDirectory } = Astro.props
+const { frontmatter, filePath } = Astro.props
 
 const layerLabels: Record<string, string> = {
   reboot: 'Reboot',
@@ -138,13 +137,21 @@ const depsTitles = deps.map((dep) => dep.title).join(', ')
       </div>
     )
   }
-  <div class="d-flex align-items-center gap-2">
-    <svg class="bi fg-2" aria-hidden="true"><use href="#github"></use></svg>
-    <a
-      class="fg-2 text-decoration-none"
-      href={`${getConfig().repo}/blob/main/site/src/content/docs/${id}.mdx`}
-      target="_blank"
-      rel="noopener">View & Edit</a
-    >
-  </div>
+  {
+    filePath && (
+      <div class="d-flex align-items-center gap-2">
+        <svg class="bi fg-2" aria-hidden="true">
+          <use href="#github" />
+        </svg>
+        <a
+          class="fg-2 text-decoration-none"
+          href={`${getConfig().repo}/blob/main/site/${filePath}`}
+          target="_blank"
+          rel="noopener"
+        >
+          View & Edit
+        </a>
+      </div>
+    )
+  }
 </div>
