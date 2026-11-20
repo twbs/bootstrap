@@ -143,7 +143,12 @@ $drawer-backdrop-tokens: defaults(
           &:where(.drawer-start) {
             transform: translateX(calc(-100% - var(--drawer-inset)));
 
-            :root:dir(rtl) & {
+            // Wrap :root:dir(rtl) in :where() so this rule stays at the same
+            // specificity as the LTR off-canvas transform. A bare :root:dir(rtl)
+            // ancestor out-specs `[open] { transform: none }`, which keeps the
+            // drawer translated off-screen in RTL while the backdrop still shows.
+            // See https://github.com/twbs/bootstrap/issues/43340
+            :where(:root:dir(rtl)) & {
               transform: translateX(calc(100% + var(--drawer-inset)));
             }
           }
@@ -151,7 +156,7 @@ $drawer-backdrop-tokens: defaults(
           &:where(.drawer-end) {
             transform: translateX(calc(100% + var(--drawer-inset)));
 
-            :root:dir(rtl) & {
+            :where(:root:dir(rtl)) & {
               transform: translateX(calc(-100% - var(--drawer-inset)));
             }
           }
