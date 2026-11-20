@@ -50,7 +50,7 @@ export const DefaultAllowlist: SanitizerAllowList = {
 
 // js-docs-start icon-allow-list
 /**
- * Allowlist for icon HTML options (Chips `dismissIcon`, NavOverflow `moreIcon`,
+ * Allowlist for icon HTML options (NavOverflow `moreIcon`,
  * and markup supplied via `[data-bs-overflow-icon]`). Covers the default SVG
  * icons plus common inline-icon markup. Event-handler attributes and tags not
  * listed here are stripped by `sanitizeHtml`.

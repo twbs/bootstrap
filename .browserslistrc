@@ -14,13 +14,12 @@
 
 last 2 major versions
 not dead
-unreleased versions
 
-Chrome >= 130
-Edge >= 130
-Firefox >= 132
-iOS >= 18.0
-Safari >= 18.0
+Chrome >= 138
+Edge >= 138
+Firefox >= 147
+iOS >= 26
+Safari >= 26
 
 not and_uc > 0
 not and_qq > 0

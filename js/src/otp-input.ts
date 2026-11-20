@@ -288,7 +288,7 @@ class OtpInput extends BaseComponent {
 
   protected _handlePaste(event: BootstrapEvent): void {
     const pastedValue = event.clipboardData?.getData('text')
-    if (!pastedValue || this._input.readOnly) {
+    if (!pastedValue || !this._isEditable()) {
       return
     }
 
@@ -314,10 +314,15 @@ class OtpInput extends BaseComponent {
     this._afterValueChange()
   }
 
-  // Intercept single-character typing and backspace so each slot is overwritten
-  // in place rather than inserting and shifting the rest of the value. Autofill
-  // and IME composition fall through to `_handleInput`.
+  // Intercept single-character typing, backspace and delete so each slot is
+  // overwritten in place rather than inserting and shifting the rest of the
+  // value. Autofill and IME composition fall through to `_handleInput`.
   protected _handleBeforeInput(event: BootstrapEvent): void {
+    // Chromium fires `beforeinput` for typed text even in a readonly input
+    if (!this._isEditable()) {
+      return
+    }
+
     const { inputType, data } = event
 
     if (inputType === 'insertText' && data && data.length === 1) {
@@ -338,30 +343,43 @@ class OtpInput extends BaseComponent {
       return
     }
 
-    if (inputType === 'deleteContentBackward') {
+    if (inputType === 'deleteContentBackward' || inputType === 'deleteContentForward') {
       event.preventDefault()
 
-      const start = this._input.selectionStart ?? 0
-      const end = this._input.selectionEnd ?? start
-      const chars = [...this._input.value]
-
-      if (end > start) {
-        // A filled slot is selected: clear it and keep the caret in place
-        chars.splice(start, end - start)
-        this._input.value = chars.join('')
-        this._selectSlot(start)
-      } else if (start > 0) {
-        // Collapsed caret: remove the previous character and step back
-        chars.splice(start - 1, 1)
-        this._input.value = chars.join('')
-        this._selectSlot(start - 1)
+      // A filled slot is selected: clear it and keep the caret in place.
+      // Collapsed caret: backspace removes the previous character and steps
+      // back, delete removes the next one and stays.
+      let start = this._input.selectionStart ?? 0
+      let end = this._input.selectionEnd ?? start
+      if (end === start) {
+        if (inputType === 'deleteContentBackward') {
+          start -= 1
+        } else {
+          end += 1
+        }
       }
 
+      const chars = [...this._input.value]
+      // Nothing to delete before the first character or after the last one:
+      // the value doesn't change, so no `input` or `complete` event either
+      if (start < 0 || end > chars.length) {
+        return
+      }
+
+      chars.splice(start, end - start)
+      this._input.value = chars.join('')
+      this._selectSlot(start)
       this._afterValueChange()
     }
   }
 
   protected _handlePointerDown(event: BootstrapEvent): void {
+    // A disabled input still receives `pointerdown`, but never the focus that
+    // would consume the remembered tap
+    if (this._input.matches(':disabled')) {
+      return
+    }
+
     const index = this._slotIndexFromPoint(event.clientX)
     if (index === null) {
       return
@@ -405,6 +423,12 @@ class OtpInput extends BaseComponent {
 
   protected _firstEmptyIndex(): number {
     return Math.min(this._input.value.length, this._length - 1)
+  }
+
+  // `:disabled` also matches an input inside `<fieldset disabled>`, which the
+  // `disabled` property doesn't
+  protected _isEditable(): boolean {
+    return !this._input.readOnly && !this._input.matches(':disabled')
   }
 
   // Represent the active slot as a selection: a filled slot is selected so the
