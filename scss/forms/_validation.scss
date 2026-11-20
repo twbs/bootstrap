@@ -323,6 +323,25 @@ $validation-states: defaults(
     }
   }
 
+  // Floating labels — feedback lives outside `.form-floating` in the parent
+  // `.form-field`, so use `:has()` to toggle display.
+  .form-field:has(.form-floating .form-control.is-#{$state}) {
+    .#{$state}-feedback,
+    .#{$state}-tooltip { display: block; }
+  }
+
+  @if $state == "invalid" {
+    [data-bs-validate] .form-field:has(.form-floating .form-control:user-invalid) {
+      .invalid-feedback,
+      .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .form-field:has(.form-floating .form-control:user-valid) {
+      .valid-feedback,
+      .valid-tooltip { display: block; }
+    }
+  }
+
   .input-group {
     > .form-control:not(:focus),
     > .form-floating:not(:focus-within) {

@@ -36,6 +36,16 @@ Form validation styles also work as expected.
     <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com">
   </form>`} />
 
+When showing validation feedback, place it outside `.form-floating` in a `.form-field` wrapper.
+
+<Example code={`<div class="form-field">
+    <div class="form-floating">
+      <label for="floatingInputInvalidFeedback">Email address</label>
+      <input type="email" class="form-control is-invalid" id="floatingInputInvalidFeedback" placeholder="name@example.com" value="test@example.com" aria-describedby="floatingInputInvalidFeedbackText">
+    </div>
+    <div id="floatingInputInvalidFeedbackText" class="invalid-feedback">Example invalid floating label feedback</div>
+  </div>`} />
+
 ## Textareas
 
 By default, `<textarea>`s with `.form-control` will be the same height as `<input>`s.
