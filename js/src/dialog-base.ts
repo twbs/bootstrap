@@ -309,7 +309,13 @@ class DialogBase extends BaseComponent {
     // Bound unnamespaced because `cancel` is a real native event, not one of
     // our namespaced custom events. Keep a per-instance handler so dispose()
     // removes only this listener, not a consumer's own `cancel` listener.
+    // The dialog's own `cancel` does not bubble. A `cancel` from a descendant,
+    // such as a file input, is not a close request, so the handler ignores it.
     this._cancelHandler = event => {
+      if (event.target !== this._element) {
+        return
+      }
+
       event.preventDefault()
 
       if (!this._config.keyboard) {

@@ -131,6 +131,29 @@ describe('Drawer', () => {
       })
     })
 
+    it('should not hide if a file input inside the drawer fires cancel', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"><input type="file"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const inputEl = fixtureEl.querySelector('input')
+        const drawer = new Drawer(drawerEl)
+
+        const spy = spyOn(drawer, 'hide')
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          inputEl.dispatchEvent(createEvent('cancel', { bubbles: true }))
+
+          setTimeout(() => {
+            expect(spy).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        })
+
+        drawer.show()
+      })
+    })
+
     it('should not hide if esc is not pressed', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
