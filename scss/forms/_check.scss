@@ -119,7 +119,6 @@ $check-tokens: defaults(
   }
   .check-lg {
     --check-size: 1.5rem;
-    --check-margin-block: .375rem;
 
     + label {
       font-size: var(--font-size-lg);
