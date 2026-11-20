@@ -62,6 +62,9 @@ const nativeEvents = new Set([
   'keypress',
   'keyup',
   'input',
+  'compositionstart',
+  'compositionupdate',
+  'compositionend',
   'paste',
   'orientationchange',
   'touchstart',
@@ -70,6 +73,7 @@ const nativeEvents = new Set([
   'touchcancel',
   'pointerdown',
   'pointermove',
+  'pointerover',
   'pointerup',
   'pointerleave',
   'pointercancel',
@@ -94,7 +98,8 @@ const nativeEvents = new Set([
   'error',
   'abort',
   'scroll',
-  'scrollend'
+  'scrollend',
+  'hashchange'
 ])
 
 /**

@@ -93,9 +93,6 @@
     - title: Form adorn
       meta:
         - added: 6.0.0
-    - title: Chips
-      meta:
-        - added: 6.0.0
     - title: Combobox
       meta:
         - added: 6.0.0
@@ -129,6 +126,9 @@
     - title: Button group
     - title: Card
     - title: Carousel
+      meta:
+        - added: 6.0.0
+    - title: Chips
       meta:
         - added: 6.0.0
     - title: Close button
