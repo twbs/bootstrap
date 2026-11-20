@@ -475,6 +475,28 @@ Responsive fullscreen variants are also available. These make the dialog fullscr
     </div>
   </dialog>`} />
 
+## Theme colors
+
+Apply `.theme-*` classes to a `.dialog`, `.dialog-header`, or an ancestor element to theme the dialog header, border, and close button automatically.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#themedDialog">
+  Launch themed dialog
+</button>
+
+<dialog id="themedDialog" class="dialog theme-primary" aria-labelledby="themedDialogLabel">
+  <div class="dialog-header">
+    <h1 class="dialog-title fs-5" id="themedDialogLabel">Themed dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>The dialog header and close button inherit colors from <code>.theme-primary</code>.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary">Save changes</button>
+  </div>
+</dialog>`} />
+
 ## CSS
 
 ### Variables
