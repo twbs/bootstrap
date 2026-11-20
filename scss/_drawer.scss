@@ -5,7 +5,6 @@
 @use "mixins/box-shadow" as *;
 @use "mixins/dialog-shared" as *;
 @use "mixins/transition" as *;
-@use "layout/breakpoints" as *;
 @use "mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
@@ -31,8 +30,6 @@ $drawer-tokens: defaults(
     --drawer-transition-duration: .3s,
     --drawer-transition-timing: var(--transition-timing-overlay),
     --drawer-title-line-height: 1.5,
-    --drawer-backdrop-bg: color-mix(in oklch, var(--bg-body) 25%, transparent),
-    --drawer-backdrop-blur: 8px,
   ),
   $drawer-tokens
 );
@@ -53,11 +50,11 @@ $drawer-backdrop-tokens: defaults(
 );
 // scss-docs-end drawer-backdrop-tokens
 
-%drawer-css-vars {
-  @include tokens($drawer-tokens);
-}
-
 @layer components {
+  %drawer-css-vars {
+    @include tokens(defaults($drawer-backdrop-tokens, $drawer-tokens));
+  }
+
   // Apply CSS vars to all drawer responsive variants
   @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
     .#{$prefix}drawer {
@@ -68,13 +65,14 @@ $drawer-backdrop-tokens: defaults(
   // Responsive drawer styles
   @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
     .#{$prefix}drawer {
+      --drawer-inline: 0;
+
       @include media-breakpoint-down($next) {
-        // Reset native <dialog> UA defaults (fit-content sizing, inset, margins)
-        // and override display:none so visibility controls the hidden state.
+        // Reset native <dialog> sizing, inset, and margins.
         position: fixed;
         inset: auto;
         z-index: var(--drawer-zindex);
-        display: flex;
+        display: none;
         flex-direction: column;
         width: auto;
         max-width: calc(100% - var(--drawer-inset) * 2);
@@ -127,66 +125,63 @@ $drawer-backdrop-tokens: defaults(
         // Animated variant (default) — transitions + off-screen transforms.
         // Adding .drawer-instant skips all animations.
         &:not(.drawer-instant) {
-          // One transition covers both directions. `visibility` animates with
-          // the transform because it interpolates as a step that stays
-          // `visible` while either end is visible: it flips visible at once on
-          // entry, and only after the slide on exit. Keep it in
-          // --drawer-transition-property when you override the list, or the
-          // exit becomes invisible.
+          --drawer-closed-transform: none;
+
+          // Keep visibility in the property list so the exit stays visible.
           @include transition-props(
             var(--drawer-transition-property),
             var(--drawer-transition-duration),
             var(--drawer-transition-timing)
           );
 
+          transform: var(--drawer-closed-transform);
+
           // Off-screen transforms per placement
           &:where(.drawer-start) {
-            transform: translateX(calc(-100% - var(--drawer-inset)));
+            --drawer-closed-transform: translateX(calc(-100% - var(--drawer-inset)));
 
-            :root:dir(rtl) & {
-              transform: translateX(calc(100% + var(--drawer-inset)));
+            &:where(:dir(rtl)) {
+              --drawer-closed-transform: translateX(calc(100% + var(--drawer-inset)));
             }
           }
 
           &:where(.drawer-end) {
-            transform: translateX(calc(100% + var(--drawer-inset)));
+            --drawer-closed-transform: translateX(calc(100% + var(--drawer-inset)));
 
-            :root:dir(rtl) & {
-              transform: translateX(calc(-100% - var(--drawer-inset)));
+            &:where(:dir(rtl)) {
+              --drawer-closed-transform: translateX(calc(-100% - var(--drawer-inset)));
             }
           }
 
           &:where(.drawer-top) {
-            transform: translateY(calc(-100% - var(--drawer-inset)));
+            --drawer-closed-transform: translateY(calc(-100% - var(--drawer-inset)));
           }
 
-          &:where(.drawer-bottom) {
-            transform: translateY(calc(100% + var(--drawer-inset)));
+          &:where(.drawer-bottom, .drawer-fullscreen) {
+            --drawer-closed-transform: translateY(calc(100% + var(--drawer-inset)));
           }
 
-          &:where(.drawer-fullscreen) {
-            transform: translateY(calc(100% + var(--drawer-inset)));
-          }
-
-          // Open state: slide in with transition.
-          // The :not(.hiding) qualifier lets the exit transition fall back to
-          // the off-screen placement transform while [open] is still present
-          // (the JS keeps the drawer in the top layer during the exit so the
-          // ::backdrop remains rendered).
+          // Start the slide without delaying native focus.
           &[open]:not(.hiding) {
-            visibility: visible;
-            transform: none;
+            @starting-style {
+              visibility: visible;
+              transform: var(--drawer-closed-transform);
+            }
           }
         }
 
-        // Open state base (always applies, regardless of animation mode).
-        // Excluded while .hiding is present so the animated exit (above) can
-        // fall through to the base "exit" state — for instant drawers, .hiding
-        // is added and removed within the same task, so this still applies
-        // normally.
+        // Keep the drawer rendered until JavaScript finishes the exit.
+        &[open] {
+          display: flex;
+        }
+
         &[open]:not(.hiding) {
           visibility: visible;
           transform: none;
+        }
+
+        &[open].drawer-static:not(.hiding, .drawer-instant) {
+          transform: scale(1.02);
         }
       }
 
@@ -196,6 +191,7 @@ $drawer-backdrop-tokens: defaults(
       @if not ($prefix == "") {
         @include media-breakpoint-up($next) {
           // stylelint-disable declaration-no-important
+          --drawer-inline: 1;
           --drawer-height: auto;
           --drawer-border-width: 0;
           // Reset native <dialog> UA styles
@@ -217,7 +213,7 @@ $drawer-backdrop-tokens: defaults(
           @include transition(none !important);
           // stylelint-enable declaration-no-important
 
-          .drawer-header {
+          &:not([open]) > .drawer-header {
             display: none;
           }
 
@@ -240,7 +236,7 @@ $drawer-backdrop-tokens: defaults(
 
   @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
     .#{$prefix}drawer::backdrop {
-      background-color: var(--drawer-backdrop-bg);
+      background-color: color-mix(in oklch, var(--drawer-backdrop-bg) var(--drawer-backdrop-opacity), transparent);
       backdrop-filter: blur(var(--drawer-backdrop-blur));
       @include backdrop-transitions(var(--drawer-transition-duration), var(--drawer-transition-timing));
     }
@@ -265,11 +261,6 @@ $drawer-backdrop-tokens: defaults(
     }
   }
 
-  // Static backdrop transition ("bounce")
-  .drawer-static {
-    transform: scale(1.02);
-  }
-
   .drawer-translucent {
     background-color: color-mix(in oklch, var(--drawer-bg) 80%, transparent);
     backdrop-filter: blur(5px) saturate(180%);
@@ -282,7 +273,9 @@ $drawer-backdrop-tokens: defaults(
     right: 0;
     bottom: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
+    max-width: none;
+    padding-block-end: env(safe-area-inset-bottom);
     margin-inline: auto;
     margin-bottom: calc(-1 * var(--drawer-border-width));
     border-end-start-radius: 0;
@@ -296,11 +289,16 @@ $drawer-backdrop-tokens: defaults(
   // Header with close button
   .drawer-header {
     @include dialog-header(var(--drawer-padding-y) var(--drawer-padding-x));
+    touch-action: pan-y pinch-zoom;
 
     .btn-close {
       margin-block: calc(-.5 * var(--drawer-padding-y));
       margin-inline-start: auto;
     }
+  }
+
+  :where(.drawer-top, .drawer-bottom) > .drawer-header {
+    touch-action: pan-x pinch-zoom;
   }
 
   // Title
