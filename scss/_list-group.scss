@@ -97,7 +97,7 @@
 
 .list-group-item-action {
   width: 100%; // For `<button>`s (anchors become 100% by default though)
-  color: var(--#{$prefix}list-group-action-color);
+  color: var(--#{$prefix}list-group-color);
   text-align: inherit; // For `<button>`s (anchors inherit)
 
   &:not(.active) {
