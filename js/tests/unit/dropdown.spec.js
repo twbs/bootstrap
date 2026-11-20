@@ -1361,7 +1361,7 @@ describe('Dropdown', () => {
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
           expect(btnDropdown).toHaveClass('show')
 
-          const keyup = createEvent('keyup')
+          const keyup = createEvent('keyup', { bubbles: true })
 
           keyup.key = 'Tab'
           document.dispatchEvent(keyup)
@@ -1456,7 +1456,7 @@ describe('Dropdown', () => {
           expect(triggerDropdownFirst).toHaveClass('show')
           expect(fixtureEl.querySelectorAll('.dropdown-menu.show')).toHaveSize(1)
 
-          const keyup = createEvent('keyup')
+          const keyup = createEvent('keyup', { bubbles: true })
           keyup.key = 'Tab'
 
           document.dispatchEvent(keyup)
@@ -1471,7 +1471,7 @@ describe('Dropdown', () => {
           expect(triggerDropdownLast).toHaveClass('show')
           expect(fixtureEl.querySelectorAll('.dropdown-menu.show')).toHaveSize(1)
 
-          const keyup = createEvent('keyup')
+          const keyup = createEvent('keyup', { bubbles: true })
           keyup.key = 'Tab'
 
           document.dispatchEvent(keyup)
@@ -1570,7 +1570,7 @@ describe('Dropdown', () => {
         })
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
-          const keydown = createEvent('keydown')
+          const keydown = createEvent('keydown', { bubbles: true })
 
           keydown.key = 'Escape'
           triggerDropdown.dispatchEvent(keydown)
@@ -1637,7 +1637,7 @@ describe('Dropdown', () => {
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
           input.focus()
-          const keydown = createEvent('keydown')
+          const keydown = createEvent('keydown', { bubbles: true })
 
           keydown.key = 'ArrowUp'
           input.dispatchEvent(keydown)
@@ -1671,7 +1671,7 @@ describe('Dropdown', () => {
         const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
-          const keydown = createEvent('keydown')
+          const keydown = createEvent('keydown', { bubbles: true })
           keydown.key = 'ArrowDown'
 
           triggerDropdown.dispatchEvent(keydown)
@@ -1708,7 +1708,7 @@ describe('Dropdown', () => {
         const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
-          const keydown = createEvent('keydown')
+          const keydown = createEvent('keydown', { bubbles: true })
           keydown.key = 'ArrowDown'
 
           triggerDropdown.dispatchEvent(keydown)
@@ -1741,7 +1741,7 @@ describe('Dropdown', () => {
         const item2 = fixtureEl.querySelector('#item2')
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
-          const keydownArrowDown = createEvent('keydown')
+          const keydownArrowDown = createEvent('keydown', { bubbles: true })
           keydownArrowDown.key = 'ArrowDown'
 
           triggerDropdown.dispatchEvent(keydownArrowDown)
@@ -1750,7 +1750,7 @@ describe('Dropdown', () => {
           document.activeElement.dispatchEvent(keydownArrowDown)
           expect(document.activeElement).toEqual(item2, 'item2 is focused')
 
-          const keydownArrowUp = createEvent('keydown')
+          const keydownArrowUp = createEvent('keydown', { bubbles: true })
           keydownArrowUp.key = 'ArrowUp'
 
           document.activeElement.dispatchEvent(keydownArrowUp)
@@ -1785,7 +1785,7 @@ describe('Dropdown', () => {
           })
         })
 
-        const keydown = createEvent('keydown')
+        const keydown = createEvent('keydown', { bubbles: true })
         keydown.key = 'ArrowUp'
         triggerDropdown.dispatchEvent(keydown)
       })
@@ -1813,7 +1813,7 @@ describe('Dropdown', () => {
           })
         })
 
-        const keydown = createEvent('keydown')
+        const keydown = createEvent('keydown', { bubbles: true })
         keydown.key = 'ArrowDown'
         triggerDropdown.dispatchEvent(keydown)
       })
@@ -1840,7 +1840,7 @@ describe('Dropdown', () => {
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
           expect(triggerDropdown).toHaveClass('show')
-          input.dispatchEvent(createEvent('click'))
+          input.dispatchEvent(createEvent('click', { bubbles: true }))
         })
 
         triggerDropdown.click()
@@ -1868,7 +1868,7 @@ describe('Dropdown', () => {
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
           expect(triggerDropdown).toHaveClass('show')
-          textarea.dispatchEvent(createEvent('click'))
+          textarea.dispatchEvent(createEvent('click', { bubbles: true }))
         })
 
         triggerDropdown.click()
@@ -1895,9 +1895,7 @@ describe('Dropdown', () => {
         })
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
-          input.dispatchEvent(createEvent('click', {
-            bubbles: true
-          }))
+          input.dispatchEvent(createEvent('click', { bubbles: true }))
         })
 
         triggerDropdown.click()
@@ -1922,14 +1920,14 @@ describe('Dropdown', () => {
         const textarea = fixtureEl.querySelector('textarea')
 
         const test = (eventKey, elementToDispatch) => {
-          const event = createEvent('keydown')
+          const event = createEvent('keydown', { bubbles: true })
           event.key = eventKey
           elementToDispatch.focus()
           elementToDispatch.dispatchEvent(event)
           expect(document.activeElement).toEqual(elementToDispatch, `${elementToDispatch.tagName} still focused`)
         }
 
-        const keydownEscape = createEvent('keydown')
+        const keydownEscape = createEvent('keydown', { bubbles: true })
         keydownEscape.key = 'Escape'
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
@@ -1985,7 +1983,7 @@ describe('Dropdown', () => {
         // Key escape
         button.focus()
         // Key escape
-        const keydownEscape = createEvent('keydown')
+        const keydownEscape = createEvent('keydown', { bubbles: true })
         keydownEscape.key = 'Escape'
         button.dispatchEvent(keydownEscape)
 
@@ -2351,10 +2349,10 @@ describe('Dropdown', () => {
       const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
 
-      const keydown = createEvent('keydown')
+      const keydown = createEvent('keydown', { bubbles: true })
       keydown.key = 'ArrowDown'
 
-      const keyup = createEvent('keyup')
+      const keyup = createEvent('keyup', { bubbles: true })
       keyup.key = 'ArrowUp'
 
       const handleArrowDown = () => {
