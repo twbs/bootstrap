@@ -21,6 +21,8 @@ Key features of the native dialog:
 - **Accessibility** — focus is trapped inside modal dialogs and returned to the trigger on close, with native `<dialog>` ARIA semantics.
 - **Animated open and close** — circumvent browser restrictions by using a `.hiding` class to keep dialogs in the top layer during close so the exit transition (including `::backdrop`) are animated properly.
 
+Bootstrap prevents page scrolling while a modal dialog is open. JavaScript compensates for any scrollbar space that disappears and restores the original spacing when the last scroll-locking dialog or drawer closes. Full-width `.fixed-top`, `.fixed-bottom`, and `.is-fixed` elements are compensated too; normal-flow and sticky content follow the root padding.
+
 <Callout name="info-prefersreducedmotion" />
 
 ## Example
@@ -270,7 +272,7 @@ Create a scrollable dialog that scrolls the dialog body while keeping the header
 
 ## Swapping dialogs
 
-When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash. The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog.
+When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash. The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog. A toggle trigger that targets its own open dialog does nothing. Use `data-bs-dismiss="dialog"` to close it.
 
 <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">
     Open first dialog
@@ -340,7 +342,7 @@ dialog.show()
 
 ## Optional sizes
 
-Dialogs have three optional sizes, available via modifier classes to be placed on a `.dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+Dialogs have four optional sizes, available via modifier classes to be placed on a `.dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
 <BsTable>
   | Size | Class | Dialog max-width |
@@ -349,7 +351,18 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   | Default | — | `500px` |
   | Large | `.dialog-lg` | `800px` |
   | Extra large | `.dialog-xl` | `1140px` |
+  | Extra extra large | `.dialog-2xl` | `1440px` |
 </BsTable>
+
+<dialog class="dialog dialog-2xl" id="exampleDialog2xl">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Extra extra large dialog</h1>
+    <CloseButton dismiss="dialog" />
+  </div>
+  <div class="dialog-body">
+    <p>This is an extra extra large dialog using the <code>.dialog-2xl</code> class.</p>
+  </div>
+</dialog>
 
 <dialog class="dialog dialog-xl" id="exampleDialogXl">
   <div class="dialog-header">
@@ -391,7 +404,10 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   </div>
 </dialog>
 
-<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog2xl">
+  Extra extra large dialog
+</button>
+<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
   Extra large dialog
 </button>
 <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogLg">
@@ -402,7 +418,8 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
 </button>
 <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogSm">
   Small dialog
-</button>`} customMarkup={`<dialog class="dialog dialog-xl">…</dialog>
+</button>`} customMarkup={`<dialog class="dialog dialog-2xl">…</dialog>
+  <dialog class="dialog dialog-xl">…</dialog>
   <dialog class="dialog dialog-lg">…</dialog>
   <dialog class="dialog">…</dialog>
   <dialog class="dialog dialog-sm">…</dialog>`} />

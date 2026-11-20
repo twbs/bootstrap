@@ -19,28 +19,12 @@ export default {
 
     const instanceMap = elementMap.get(element)!
 
-    // make it clear we only want one instance per element
-    // can be removed later when multiple key/instances are fine to be used
-    if (!instanceMap.has(key) && instanceMap.size !== 0) {
-      // eslint-disable-next-line no-console
-      console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${[...instanceMap.keys()][0]}.`)
-      return
-    }
-
     instanceMap.set(key, instance)
   },
 
   get(element: Element | null, key: string): any {
     if (element && elementMap.has(element)) {
       return elementMap.get(element)!.get(key) || null
-    }
-
-    return null
-  },
-
-  getAny(element: Element | null): any {
-    if (element && elementMap.has(element)) {
-      return elementMap.get(element)!.values().next().value || null
     }
 
     return null

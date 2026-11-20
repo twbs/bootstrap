@@ -619,8 +619,8 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 
 | Component | Trigger / hook | Purpose |
 | --- | --- | --- |
-| Combobox | `data-bs-toggle="combobox"` | Filterable/autocomplete select built on Menu |
-| Chip / Chip input | `.chip`, `.chip-input` (`data-bs-chips`) | Tags / tokens + interactive entry |
+| Combobox | `data-bs-toggle="combobox"` | Editable single or multiple selection and optional free entry, built on Menu |
+| Chip | `.chip` | Standalone tag / token presentation |
 | Datepicker | `data-bs-toggle="datepicker"` | Date picker (peer dep `vanilla-calendar-pro`) |
 | Range | `.form-range` (+ `data-bs-bubble`, ticks) | Enhanced range slider with a value bubble |
 | Strength | `data-bs-strength` | Password-strength meter |
