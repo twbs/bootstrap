@@ -1,5 +1,6 @@
 import BaseComponent from '../../../src/base-component.js'
-import { enableDismissTrigger } from '../../../src/util/component-functions.js'
+import EventHandler from '../../../src/dom/event-handler.js'
+import { enableDismissTrigger, onDocumentReady } from '../../../src/util/component-functions.js'
 import { clearFixture, createEvent, getFixture } from '../../helpers/fixture.js'
 
 class DummyClass2 extends BaseComponent {
@@ -101,6 +102,42 @@ describe('Plugin functions', () => {
       btnClose.dispatchEvent(event)
 
       expect(spy).toHaveBeenCalled()
+    })
+  })
+
+  describe('onDocumentReady', () => {
+    afterEach(() => {
+      EventHandler.off(document, '.ready-test')
+    })
+
+    it('should run the callback right away when the document is already parsed', () => {
+      const spy = jasmine.createSpy('spy')
+
+      onDocumentReady('DOMContentLoaded.ready-test', spy)
+
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should wait for the event while the document is loading', () => {
+      const spy = jasmine.createSpy('spy')
+      spyOnProperty(document, 'readyState').and.returnValue('loading')
+
+      onDocumentReady('DOMContentLoaded.ready-test', spy)
+
+      expect(spy).not.toHaveBeenCalled()
+
+      document.dispatchEvent(createEvent('DOMContentLoaded'))
+
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should still run the callback on later events', () => {
+      const spy = jasmine.createSpy('spy')
+
+      onDocumentReady('DOMContentLoaded.ready-test', spy)
+      document.dispatchEvent(createEvent('DOMContentLoaded'))
+
+      expect(spy).toHaveBeenCalledTimes(2)
     })
   })
 })

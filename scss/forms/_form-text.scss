@@ -7,7 +7,6 @@ $form-text-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $form-text-tokens: defaults(
   (
-    --form-text-margin-top: .25rem,
     --form-text-font-size: var(--font-size-sm),
     --form-text-font-style: null,
     --form-text-font-weight: null,
@@ -21,7 +20,6 @@ $form-text-tokens: defaults(
   .form-text {
     @include tokens($form-text-tokens);
 
-    // margin-top: var(--form-text-margin-top);
     font-size: var(--form-text-font-size);
     font-style: var(--form-text-font-style);
     font-weight: var(--form-text-font-weight);

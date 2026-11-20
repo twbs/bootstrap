@@ -126,9 +126,12 @@ function getExampleAssetPath(asset: string) {
     {extra_css?.map((extraCss) => <link href={getExampleAssetPath(extraCss)} rel="stylesheet" />)}
   </head>
   <body class:list={body_class}>
-    <Icons />
-
-    <div class="position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <div class="position-fixed bottom-0 end-0 mb-3 me-3 d-flex gap-2 bd-mode-toggle" data-sb-ignore>
+      <Icons />
+      <button type="button" class="btn-solid theme-secondary bd-edit-example" data-sb-example={Astro.url.pathname}>
+        <svg class="bi" aria-hidden="true"><use href="#lightning-charge-fill"></use></svg>
+        Edit in StackBlitz
+      </button>
       <ThemeToggler layout="examples" />
     </div>
 
@@ -151,5 +154,15 @@ function getExampleAssetPath(asset: string) {
         </Fragment>
       )
     }
+
+    <script>
+      // The StackBlitz SDK only loads on the first click
+      const button = document.querySelector<HTMLButtonElement>('.bd-edit-example')
+
+      button?.addEventListener('click', async () => {
+        const { openExample } = await import('../assets/stackblitz.js')
+        await openExample(button)
+      })
+    </script>
   </body>
 </html>

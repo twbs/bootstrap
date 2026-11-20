@@ -150,7 +150,9 @@ For example, you can create a “blue theme” with the selector `data-bs-theme=
 
 <ScssDocs name="custom-color-mode" file="site/src/scss/_content.scss" />
 
-<Example showMarkup={false} code={`<div class="p-5 fg-body bg-body rounded-3" data-bs-theme="blue">
+Set `color-scheme` in your custom mode, as the example above does with `dark`. Every `light-dark()` token your mode doesn’t override follows `color-scheme`, so without it your mode picks up the visitor’s system preference. A dark custom mode should also raise `--bs-shadow-strength`, like the built-in dark mode does.
+
+<Example code={`<div class="p-5 fg-body bg-body rounded-3" data-bs-theme="blue">
       <div class="h4">Example blue theme</div>
       <p>Some paragraph text to show how the blue theme might look with written copy.</p>
 
@@ -169,13 +171,9 @@ For example, you can create a “blue theme” with the selector `data-bs-theme=
           <a class="menu-item" href="#">Separated link</a>
         </div>
       </div>
+  </div>`} customMarkup={`<div data-bs-theme="blue">
+    ...
   </div>`} />
-
-```html
-<div data-bs-theme="blue">
-  ...
-</div>
-```
 
 ## JavaScript
 

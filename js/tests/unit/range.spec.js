@@ -116,6 +116,219 @@ describe('Range', () => {
     })
   })
 
+  describe('explicit refresh', () => {
+    it('should refresh a programmatic value without a native input event', () => {
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble')
+      const wrapper = fixtureEl.querySelector('.form-range')
+      const input = wrapper.querySelector('input')
+      const range = new Range(wrapper)
+      input.value = '75'
+      expect(wrapper.style.getPropertyValue('--bs-range-fill')).toEqual('0.5')
+      range.update()
+      expect(wrapper.style.getPropertyValue('--bs-range-fill')).toEqual('0.75')
+      expect(wrapper.querySelector('.tooltip-inner').textContent).toEqual('75')
+    })
+
+    it('should apply added, false, removed, and bare bubble attributes without duplicates', () => {
+      fixtureEl.innerHTML = getRangeHtml()
+      const wrapper = fixtureEl.querySelector('.form-range')
+      const range = new Range(wrapper)
+      for (const value of ['true', 'false', '', null, 'true']) {
+        if (value === null) {
+          wrapper.removeAttribute('data-bs-bubble')
+        } else {
+          wrapper.setAttribute('data-bs-bubble', value)
+        }
+
+        range.update()
+        range.update()
+        const enabled = value === 'true' || value === ''
+        expect(wrapper.querySelectorAll('.form-range-bubble').length).toEqual(enabled ? 1 : 0)
+        if (enabled) {
+          expect(wrapper.querySelector('.tooltip-inner').textContent).toEqual('50')
+        }
+      }
+    })
+
+    it('should preserve copied JavaScript options over current data configuration', () => {
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble="false"')
+      const wrapper = fixtureEl.querySelector('.form-range')
+      const options = { bubble: true, formatter: value => `${value}%` }
+      const range = new Range(wrapper, options)
+      options.bubble = false
+      wrapper.dataset.bsConfig = '{"bubble":false}'
+      range.update()
+      expect(wrapper.querySelector('.tooltip-inner').textContent).toEqual('50%')
+    })
+
+    it('should reread JSON configuration and validate before changing decorations', () => {
+      fixtureEl.innerHTML = getRangeHtml()
+      const wrapper = fixtureEl.querySelector('.form-range')
+      const range = new Range(wrapper)
+      wrapper.dataset.bsConfig = '{"bubble":true}'
+      range.update()
+      expect(wrapper.querySelector('.form-range-bubble')).not.toBeNull()
+      wrapper.dataset.bsBubble = 'invalid'
+      expect(() => range.update()).toThrowError(TypeError)
+      expect(wrapper.querySelectorAll('.form-range-bubble').length).toEqual(1)
+    })
+
+    it('should not refresh configuration or rebuild ticks during input events', () => {
+      fixtureEl.innerHTML = `
+        ${getRangeHtml('', 'list="live-ticks"')}
+        <datalist id="live-ticks"><option value="25"></option></datalist>
+      `
+      const wrapper = fixtureEl.querySelector('.form-range')
+      const range = new Range(wrapper)
+      const ticks = wrapper.querySelector('.form-range-ticks')
+      wrapper.dataset.bsBubble = 'true'
+      wrapper.querySelector('input').dispatchEvent(createEvent('input'))
+      expect(wrapper.querySelector('.form-range-bubble')).toBeNull()
+      expect(wrapper.querySelector('.form-range-ticks')).toEqual(ticks)
+      range.dispose()
+    })
+
+    it('should tolerate an instance without an input', () => {
+      fixtureEl.innerHTML = '<div class="form-range"></div>'
+      const range = new Range(fixtureEl.firstElementChild)
+      expect(() => range.update()).not.toThrow()
+      expect(() => range.dispose()).not.toThrow()
+    })
+
+    it('should rebuild current tick values, labels, bounds, and list association', () => {
+      fixtureEl.innerHTML = `
+        ${getRangeHtml('', 'list="first-list"')}
+        <datalist id="first-list"><option value="0"></option><option value="100"></option></datalist>
+        <datalist id="second-list"><option value="50" label="Center"></option></datalist>
+      `
+      const wrapper = fixtureEl.querySelector('.form-range')
+      const input = wrapper.querySelector('input')
+      const range = new Range(wrapper)
+      const option = fixtureEl.querySelector('#second-list option')
+      input.setAttribute('list', 'second-list')
+      input.max = '200'
+      range.update()
+      expect(wrapper.querySelector('.form-range-ticks').style.gridTemplateColumns).toEqual('0.25fr 0.75fr')
+      expect(wrapper.querySelector('.form-range-tick-label').textContent).toEqual('Center')
+      option.value = '100'
+      option.label = 'New label'
+      input.min = '50'
+      range.update()
+      range.update()
+      expect(wrapper.querySelectorAll('.form-range-ticks').length).toEqual(1)
+      expect(wrapper.querySelectorAll('.form-range-tick').length).toEqual(1)
+      expect(wrapper.querySelector('.form-range-tick-label').textContent).toEqual('New label')
+      fixtureEl.querySelector('#second-list').replaceChildren()
+      range.update()
+      expect(wrapper.querySelector('.form-range-ticks')).toBeNull()
+      fixtureEl.querySelector('#second-list').append(option)
+      range.update()
+      input.removeAttribute('list')
+      range.update()
+      expect(wrapper.querySelector('.form-range-ticks')).toBeNull()
+    })
+  })
+
+  describe('native reset', () => {
+    const settle = () => new Promise(resolve => {
+      setTimeout(resolve, 10)
+    })
+    const prepare = (external = false) => {
+      const control = getRangeHtml('data-bs-bubble', external ? 'form="range-form"' : '')
+      fixtureEl.innerHTML = `
+        <form id="range-form">${external ? '' : control}<button type="reset">Reset</button></form>
+        ${external ? control : ''}
+      `
+      const wrapper = fixtureEl.querySelector('.form-range')
+      const input = wrapper.querySelector('input')
+      const form = fixtureEl.querySelector('form')
+      const range = new Range(wrapper)
+      input.value = '80'
+      range.update()
+      return {
+        wrapper, input, form, range
+      }
+    }
+
+    for (const external of [false, true]) {
+      it(`should refresh after a real reset button restores an ${external ? 'externally associated' : 'enclosed'} input`, async () => {
+        const { wrapper, form, range } = prepare(external)
+        form.querySelector('button').click()
+        await settle()
+        expect(wrapper.style.getPropertyValue('--bs-range-fill')).toEqual('0.5')
+        expect(wrapper.querySelector('.tooltip-inner').textContent).toEqual('50')
+        expect(wrapper.querySelector('.tooltip-arrow')).not.toBeNull()
+        expect(wrapper.querySelector('.form-range-bubble').tagName).toEqual('DIV')
+        range.dispose()
+      })
+    }
+
+    it('should respect reset cancellation by a later listener', async () => {
+      const { wrapper, input, form, range } = prepare()
+      let events = 0
+      input.addEventListener('changed.bs.range', () => events++)
+      form.addEventListener('reset', event => event.preventDefault())
+      form.reset()
+      await settle()
+      expect(input.value).toEqual('80')
+      expect(wrapper.style.getPropertyValue('--bs-range-fill')).toEqual('0.8')
+      expect(events).toEqual(0)
+      range.dispose()
+    })
+
+    it('should keep a completed reset when a subsequent reset is canceled', async () => {
+      const { wrapper, form, range } = prepare()
+      form.reset()
+      form.addEventListener('reset', event => event.preventDefault(), { once: true })
+      form.reset()
+      await settle()
+      expect(wrapper.querySelector('.tooltip-inner').textContent).toEqual('50')
+      range.dispose()
+    })
+
+    it('should cancel pending resets and release the listener on disposal', async () => {
+      const { input, form, range } = prepare()
+      let events = 0
+      input.addEventListener('changed.bs.range', () => events++)
+      form.reset()
+      range.dispose()
+      await settle()
+      form.reset()
+      await settle()
+      expect(events).toEqual(0)
+    })
+
+    it('should preserve other Range listeners when one instance is disposed', async () => {
+      const { wrapper, form, range } = prepare()
+      form.insertAdjacentHTML('beforeend', getRangeHtml('data-bs-bubble'))
+      const second = form.querySelectorAll('.form-range')[1]
+      const other = new Range(second)
+      second.querySelector('input').value = '90'
+      other.update()
+      range.dispose()
+      form.reset()
+      await settle()
+      expect(second.querySelector('.tooltip-inner').textContent).toEqual('50')
+      expect(wrapper.querySelector('.form-range-bubble')).toBeNull()
+      other.dispose()
+    })
+
+    it('should rebind the form association on explicit update', async () => {
+      const { wrapper, input, form, range } = prepare(true)
+      form.insertAdjacentHTML('afterend', '<form id="other-form"></form>')
+      input.setAttribute('form', 'other-form')
+      range.update()
+      input.value = '70'
+      form.reset()
+      await settle()
+      expect(wrapper.querySelector('.tooltip-inner').textContent).toEqual('80')
+      fixtureEl.querySelector('#other-form').reset()
+      await settle()
+      expect(wrapper.querySelector('.tooltip-inner').textContent).toEqual('50')
+      range.dispose()
+    })
+  })
+
   describe('bubble', () => {
     it('should create a tooltip-based value bubble when enabled', () => {
       fixtureEl.innerHTML = getRangeHtml('data-bs-bubble')
@@ -299,6 +512,27 @@ describe('Range', () => {
 
       expect(Range.getInstance(rangeEl)).toBeNull()
       expect(Range.getOrCreateInstance(rangeEl)).toBeInstanceOf(Range)
+    })
+  })
+
+  describe('data API', () => {
+    it('should start ranges when Bootstrap loads after the page', async () => {
+      fixtureEl.innerHTML = getRangeHtml()
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const inputEl = rangeEl.querySelector('input')
+
+      // `DOMContentLoaded` has long fired: load a second copy of the plugin, as a playground
+      // that runs its script once the page is rendered does
+      await import('../../src/range.js?late')
+
+      expect(Range.getInstance(rangeEl)).not.toBeNull()
+      expect(rangeEl.style.getPropertyValue('--bs-range-fill')).toEqual('0.5')
+
+      inputEl.value = '80'
+      inputEl.dispatchEvent(createEvent('input'))
+
+      expect(rangeEl.style.getPropertyValue('--bs-range-fill')).toEqual('0.8')
     })
   })
 })

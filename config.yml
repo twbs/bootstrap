@@ -29,7 +29,7 @@ download:
   dist_examples:        "https://github.com/twbs/bootstrap/releases/download/v6.0.0-alpha.1/bootstrap-6.0.0-alpha.1-examples.zip"
 
 cdn:
-  # See https://www.srihash.org for info on how to generate the hashes
+  # See https://srihash.org for info on how to generate the hashes
   css:                  "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
   css_hash:             "sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
   js:                   "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.min.js"

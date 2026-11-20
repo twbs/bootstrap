@@ -236,6 +236,17 @@ Utility classes—single, immutable property-value pairings like `.d-block` for 
 
 [Code Guide](https://codeguide.co/) documents how we write HTML and CSS—covering formatting, defaults, property orders, and more. We enforce these standards with [Stylelint](https://stylelint.io/) using [our open source config](https://github.com/twbs/stylelint-config-twbs-bootstrap).
 
+## Looking ahead to v7
+
+For v7, we’re considering the following changes:
+
+- **Reconsider Sass.** Evaluate how much of our build still needs Sass as native CSS grows. Any replacement needs a clear path for component configuration, variant generation, and the utilities API.
+- **Continue to raise browser minimums.** Set the v7 browser floor around the platform features we need. See [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the current v6 requirements.
+- **Replace Floating UI with CSS anchor positioning.** Move menu, tooltip, and popover positioning to CSS once our supported browsers can handle the required placement and overflow behavior.
+- **Ship stable Bootstrap web components.** Define supported APIs for custom elements, including attributes, events, styling, and integration with JavaScript frameworks.
+
+These are directions for the next major release, not features available in v6. The details may change as we develop v7 and test browser support.
+
 ## Community
 
 Stay up-to-date on the development of Bootstrap and reach out to the community with these helpful resources.

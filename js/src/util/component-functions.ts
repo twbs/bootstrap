@@ -18,6 +18,7 @@ interface EventActionData {
 const enableDismissTrigger = (component: typeof BaseComponent, method = 'hide'): void => {
   const clickEvent = `click.dismiss${component.EVENT_KEY}`
   const name = component.NAME
+  const usesNativeDialog = name === 'dialog' || name === 'drawer'
 
   EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
     if (['A', 'AREA'].includes(this.tagName)) {
@@ -32,6 +33,10 @@ const enableDismissTrigger = (component: typeof BaseComponent, method = 'hide'):
     // as `lg:drawer`, which `.${name}` cannot match
     const target = SelectorEngine.getElementFromSelector(this) ||
       this.closest(`.${name}, [class*=":${name}"]`)
+    if (!target || (usesNativeDialog && !(target instanceof HTMLDialogElement))) {
+      return
+    }
+
     const instance: any = component.getOrCreateInstance(target)
 
     // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method
@@ -68,7 +73,20 @@ const eventAction = (onEvent: string, stringSelector: string, callback: (data: E
   })
 }
 
+// Data APIs start on `DOMContentLoaded`, which has already fired when Bootstrap loads after the
+// page (an `import()` once the page is shown, a playground like StackBlitz that runs its script
+// last), so the callback also runs right away once the document is parsed. A script deferred to
+// the end of parsing runs it both times: the callback must be safe to repeat.
+const onDocumentReady = (eventName: string, callback: () => void): void => {
+  EventHandler.on(document, eventName, callback)
+
+  if (document.readyState !== 'loading') {
+    callback()
+  }
+}
+
 export {
   enableDismissTrigger,
-  eventActionOnPlugin
+  eventActionOnPlugin,
+  onDocumentReady
 }

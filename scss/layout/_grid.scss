@@ -2,8 +2,6 @@
 @use "breakpoints" as *;
 @use "../mixins/grid" as *;
 
-// TODO: check gap utilities as replacement for gutter classes from v5
-
 @layer layout {
   @if $enable-grid-classes {
     .row {
