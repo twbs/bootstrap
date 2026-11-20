@@ -54,12 +54,14 @@ export const body_class = 'bg-body-tertiary'
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#button-group">Button group</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#card">Card</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#carousel">Carousel</a></li>
+          <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#collapse">Collapse</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#dropdowns">Dropdowns</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#list-group">List group</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#modal">Modal</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navs">Navs</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navbar">Navbar</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#pagination">Pagination</a></li>
+          <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#placeholders">Placeholders</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#popovers">Popovers</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#progress">Progress</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#scrollspy">Scrollspy</a></li>
@@ -879,6 +881,30 @@ export const body_class = 'bg-body-tertiary'
         `} />
       </div>
     </article>
+    <article class="my-3" id="collapse">
+      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <h3>Collapse</h3>
+        <a class="d-flex align-items-center" href={getVersionedDocsPath('components/collapse')}>Documentation</a>
+      </div>
+
+      <div>
+        <Example showMarkup={false} code={`
+        <p class="d-inline-flex gap-1">
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Link with href
+          </a>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-bs-target
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+        `} />
+      </div>
+    </article>
     <article class="my-3" id="dropdowns">
       <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
         <h3>Dropdowns</h3>
@@ -1319,6 +1345,36 @@ export const body_class = 'bg-body-tertiary'
             </li>
           </ul>
         </nav>
+        `} />
+      </div>
+    </article>
+    <article class="my-3" id="placeholders">
+      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <h3>Placeholders</h3>
+        <a class="d-flex align-items-center" href={getVersionedDocsPath('components/placeholders')}>Documentation</a>
+      </div>
+
+      <div>
+        <Example showMarkup={false} code={`
+        <div class="card" aria-hidden="true">
+          <svg aria-label="Placeholder" class="bd-placeholder-img card-img-top" height="180" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#868e96"></rect>
+          </svg>
+          <div class="card-body">
+            <div class="h5 card-title placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </div>
+            <p class="card-text placeholder-glow">
+              <span class="placeholder col-7"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-6"></span>
+              <span class="placeholder col-8"></span>
+            </p>
+            <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+          </div>
+        </div>
         `} />
       </div>
     </article>
