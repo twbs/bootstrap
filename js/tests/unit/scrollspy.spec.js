@@ -451,6 +451,55 @@ describe('ScrollSpy', () => {
       })
     })
 
+    it('should add the active class to a menu toggle button, and remove it when a link outside the menu is activated', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<nav class="navbar">',
+          '  <ul class="nav">',
+          '    <li class="nav-item"><a class="nav-link" id="a-1" href="#div-1">div 1</a></li>',
+          '    <li class="nav-item">',
+          '      <button class="nav-link" id="menu-toggle" type="button" data-bs-toggle="menu">Menu</button>',
+          '      <div class="menu">',
+          '        <a class="menu-item" id="a-2" href="#div-2">div 2</a>',
+          '      </div>',
+          '    </li>',
+          '  </ul>',
+          '</nav>',
+          '<div class="content" style="overflow: auto; height: 50px">',
+          '  <div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>',
+          '  <div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>',
+          '</div>'
+        ].join('')
+
+        const contentEl = fixtureEl.querySelector('.content')
+        const menuToggle = fixtureEl.querySelector('#menu-toggle')
+        const scrollSpy = new ScrollSpy(contentEl, {
+          target: '.navbar'
+        })
+
+        testElementIsActiveAfterScroll({
+          elementSelector: '#a-2',
+          targetSelector: '#div-2',
+          contentEl,
+          scrollSpy,
+          cb() {
+            expect(menuToggle).toHaveClass('active')
+
+            testElementIsActiveAfterScroll({
+              elementSelector: '#a-1',
+              targetSelector: '#div-1',
+              contentEl,
+              scrollSpy,
+              cb() {
+                expect(menuToggle).not.toHaveClass('active')
+                resolve()
+              }
+            })
+          }
+        })
+      })
+    })
+
     it('should keep the first section active when scrolled above the first section', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
