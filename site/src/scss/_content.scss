@@ -1,4 +1,5 @@
 @use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
 
 //
 // Bootstrap docs content theming
@@ -98,6 +99,24 @@
       td:first-child > code { // stylelint-disable-line selector-max-compound-selectors
         white-space: nowrap;
       }
+    }
+  }
+
+  .bd-example-prose {
+    padding: var(--bs-spacer-3);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    @include border-radius(var(--bs-radius-3));
+
+    @include media-breakpoint-up(lg) {
+      padding: var(--bs-spacer-5);
+    }
+
+    @include media-breakpoint-down(md) {
+      padding-block: 2rem;
+      padding-inline: calc(var(--bs-gutter-x) * .5);
+      margin-inline: calc(var(--bs-gutter-x) * -.5);
+      border-inline-width: 0;
+      @include border-radius(0);
     }
   }
 
