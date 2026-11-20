@@ -496,6 +496,7 @@ Hidden inputs do not participate in native constraint validation. Preserving att
 | `data-bs-name` | `name` of the automatically created fields for form submission. |
 | `data-bs-input` | Selector of a provided hidden input to reuse. |
 | `data-bs-placeholder` | Placeholder text shown in the toggle when nothing is selected. |
+| `data-bs-selected-text` | Template string or phrase for multi-selection display (supports `{count}`). |
 </BsTable>
 
 ### Dependencies
@@ -519,6 +520,7 @@ Options can be passed via data attributes on the wrapper or button (e.g., `data-
 | `placeholder` | string | `''` | Placeholder text for the button. Also settable via `data-bs-placeholder`. |
 | `search` | boolean | `false` | Enable search input in a button’s menu. Also settable via `data-bs-search`. |
 | `searchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
+| `selectedText` | string \| function | `'{count} selected'` | Template string or callback function `(count: number) => string` for the toggle text when multiple items are selected. Also settable via `data-bs-selected-text`. |
 | `placement` | string | `'bottom-start'` | Menu placement (uses Floating UI). |
 | `offset` | array | `[0, 2]` | Offset from the toggle `[skidding, distance]`. |
 | `boundary` | string \| element | `'clippingParents'` | Overflow boundary for the menu. |

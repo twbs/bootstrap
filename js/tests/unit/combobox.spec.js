@@ -320,6 +320,59 @@ describe('Combobox', () => {
       expect([...fixtureEl.querySelectorAll('input[type="hidden"]')].map(input => input.value)).toEqual(['us', 'uk'])
     })
 
+    it('should format multiple selections using a custom selectedText template or function', () => {
+      const { valueEl: valueTemplate, items: itemsTemplate } = makeCombobox({
+        multiple: true,
+        selectedText: 'Selected items: {count}'
+      })
+      itemsTemplate[0].click()
+      itemsTemplate[1].click()
+      expect(valueTemplate.textContent).toEqual('Selected items: 2')
+
+      const { valueEl: valuePreceding, items: itemsPreceding } = makeCombobox({
+        multiple: true,
+        selectedText: '{count} éléments sélectionnés'
+      })
+      itemsPreceding[0].click()
+      itemsPreceding[1].click()
+      itemsPreceding[2].click()
+      expect(valuePreceding.textContent).toEqual('3 éléments sélectionnés')
+
+      const { valueEl: valueFn, items: itemsFn } = makeCombobox({
+        multiple: true,
+        selectedText: count => `Count: ${count}`
+      })
+      itemsFn[0].click()
+      itemsFn[1].click()
+      expect(valueFn.textContent).toEqual('Count: 2')
+    })
+
+    it('should format multiple selections using data-bs-selected-text attribute', () => {
+      fixtureEl.innerHTML = [
+        '<div class="combobox">',
+        '  <button class="btn combobox-toggle" type="button" data-bs-toggle="combobox" data-bs-multiple="true" data-bs-selected-text="{count} items chosen">',
+        '    <span class="combobox-value"></span>',
+        '  </button>',
+        '  <div class="menu">',
+        '    <button class="menu-item" type="button" data-bs-value="us">United States</button>',
+        '    <button class="menu-item" type="button" data-bs-value="uk">United Kingdom</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toggleEl = fixtureEl.querySelector('.combobox-toggle')
+      const valueEl = fixtureEl.querySelector('.combobox-value')
+      const combobox = new Combobox(toggleEl)
+      expect(combobox).toBeDefined()
+      const items = fixtureEl.querySelectorAll('.menu-item')
+
+      items[0].click()
+      expect(valueEl.textContent).toEqual('United States')
+
+      items[1].click()
+      expect(valueEl.textContent).toEqual('2 items chosen')
+    })
+
     it('should fire change with every selected value', () => {
       const { toggleEl, items } = makeCombobox({ multiple: true })
       const changeSpy = jasmine.createSpy('change')
