@@ -1297,6 +1297,30 @@ describe('Carousel', () => {
       expect(prevSpy).toHaveBeenCalled()
     })
 
+    it('should go to the next item on left arrow and previous on right arrow in RTL', () => {
+      fixtureEl.innerHTML = basicMarkup()
+      document.documentElement.dir = 'rtl'
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carousel = new Carousel(carouselEl)
+      const nextSpy = spyOn(carousel, 'next')
+      const prevSpy = spyOn(carousel, 'prev')
+
+      const left = createEvent('keydown')
+      left.key = 'ArrowLeft'
+      carouselEl.dispatchEvent(left)
+
+      expect(nextSpy).toHaveBeenCalledTimes(1)
+      expect(prevSpy).not.toHaveBeenCalled()
+
+      const right = createEvent('keydown')
+      right.key = 'ArrowRight'
+      carouselEl.dispatchEvent(right)
+
+      expect(nextSpy).toHaveBeenCalledTimes(1)
+      expect(prevSpy).toHaveBeenCalledTimes(1)
+    })
+
     it('should ignore keystrokes from inputs and textareas', () => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="carousel slide">',

@@ -345,10 +345,12 @@ class Carousel extends BaseComponent {
     if (direction) {
       event.preventDefault()
       this._pauseFromInteraction()
-      if (direction === DIRECTION_RIGHT) {
-        this.prev()
-      } else {
+      // Slides run right to left in RTL, so there the left arrow goes to the next slide
+      const isNext = isRTL() ? direction === DIRECTION_RIGHT : direction === DIRECTION_LEFT
+      if (isNext) {
         this.next()
+      } else {
+        this.prev()
       }
     }
   }
