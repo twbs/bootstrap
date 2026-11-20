@@ -70,7 +70,7 @@ Because border color utilities set the non-inheriting `--bs-bc` variable, parent
 
 ## Opacity
 
-Change the opacity of a border color by using any of the `.border-<percentage>` utilities which use `color-mix()` to mix the border color with `transparent` thanks to the CSS variable approach mentioned above. Because `--bs-bc` is scoped to the element, pair these opacity utilities with a `.border-{color}` utility on the same element—they no longer inherit a border color from an ancestor.
+Change the opacity of a border color by using any of the `.border-opacity-{n}` utilities which use `color-mix()` to mix the border color with `transparent` thanks to the CSS variable approach mentioned above. Because `--bs-bc` is scoped to the element, pair these opacity utilities with a `.border-{color}` utility on the same element—they no longer inherit a border color from an ancestor.
 
 <Example code={`<div class="border border-5 border-primary p-2 mb-2">Default border</div>
 <div class="border border-5 border-primary border-opacity-90 p-2 mb-2">90% opacity</div>

@@ -121,6 +121,12 @@ Token names below use the unprefixed Sass source names. In Bootstrap’s compile
 - **Existing tokens now affect rendering.** Review overrides of `--card-subtitle-color`, `--nav-tabs-border-radius`, `--check-indeterminate-bg`, `--check-indeterminate-border-color`, and `--switch-checked-indicator-bg`. The components now read these tokens. Indeterminate checkbox colors default to the checked colors.
 - **Password strength label colors.** `.strength-text` now uses emphasis colors for each strength level. Replace label overrides of `--strength-color` with the `$strength-text-colors` Sass map, or style `.strength-text[data-bs-strength="weak"]` and the other strength levels directly. The meter still uses its `--strength-*-color` tokens. See [Password strength]([[docsref:/forms/password-strength]]).
 
+### Color opacity utilities
+
+Add `-opacity-` to the class name when it sets color opacity. For example, replace `.bg-20` with `.bg-opacity-20`. Apply the same change to `.fg-20`, `.border-20`, and `.underline-20`. Keep any state prefix, as in `.hover:underline-opacity-20`.
+
+Continue to use `.bg-2` and `.fg-2` for theme colors and `.border-2` for border width.
+
 ### Datepicker
 
 - Prefilled inputs now initialize on page load. Their visible dates use the selected locale, and forms submit ISO dates before focus.
@@ -684,12 +690,12 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 | `.bg-dark` | `.bg-black`, or `data-bs-theme="dark"` + `.bg-body` (no exact shade match) |
 | `.bg-body` | `.bg-body` (unchanged) |
 </BsTable>
-- **Link utilities are now part of text decoration utilities.** The v5 `link-*` utility family has been replaced by `underline-*` utilities documented under [Text decoration]([[docsref:/utilities/text-decoration]]). Update class names accordingly:
+- **Link utility renames.** Use [Link]([[docsref:/utilities/link]]) utilities for link text opacity. Use [Text decoration]([[docsref:/utilities/text-decoration]]) utilities for underlines.
 
 <BsTable>
 | Category | Before (v5) | After (v6) |
 |---|---|---|
-| Link text opacity | `.link-opacity-*`, `.link-opacity-*-hover` | Removed (no dedicated `link-opacity-*` utility in v6) |
+| Link text opacity | `.link-opacity-*`, `.link-opacity-*-hover` | `.link-*`, `.hover:link-*` (10 through 100 in steps of 10) |
 | Underline offset | `.link-offset-1`, `.link-offset-2`, `.link-offset-3` | `.underline-offset-1`, `.underline-offset-2`, `.underline-offset-3` |
 | Underline color | `.link-underline-primary`, `.link-underline-secondary` | `.underline-primary`, `.underline-secondary` |
 | Underline opacity | `.link-underline-opacity-*` | `.underline-opacity-*` (10-step scale from `10` to `100`) |
