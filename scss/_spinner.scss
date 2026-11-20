@@ -42,6 +42,15 @@ $spinner-grow-tokens: defaults(
 // Rotating border
 //
 
+// The border spinner animates this angle. It does not rotate its box.
+// A rotated box wobbles when the browser zoom is not 100%.
+@property --spinner-angle {
+  syntax: "<angle>";
+  // The ring is a pseudo-element. It must inherit the angle.
+  inherits: true;
+  initial-value: 0deg;
+}
+
 @layer components {
   // Assumes a flex parent
   .spinner-grow,
@@ -57,15 +66,34 @@ $spinner-grow-tokens: defaults(
 
   // scss-docs-start spinner-border-keyframes
   @keyframes spinner-border {
-    to { transform: rotate(360deg); }
+    to { --spinner-angle: 360deg; }
   }
   // scss-docs-end spinner-border-keyframes
+
+  // scss-docs-start spinner-rotate-keyframes
+  @keyframes spinner-rotate {
+    to { transform: rotate(360deg); }
+  }
+  // scss-docs-end spinner-rotate-keyframes
 
   .spinner-border {
     @include tokens($spinner-border-tokens);
 
-    border: var(--spinner-border-width) solid currentcolor;
-    border-inline-end-color: transparent;
+    position: relative;
+
+    // The gradient paints three quarters of the disc. The mask cuts the ring.
+    // The pseudo-element is 1px larger than the spinner on each side.
+    // The browser snaps box edges to device pixels, and that must not clip the ring.
+    &::before {
+      --spinner-ring-outer: calc(100% - 1px);
+      --spinner-ring-inner: calc(100% - 1px - var(--spinner-border-width));
+
+      position: absolute;
+      inset: -1px;
+      content: "";
+      background-image: conic-gradient(from calc(135deg + var(--spinner-angle)), currentcolor 75%, transparent 0);
+      mask-image: radial-gradient(farthest-side, transparent calc(var(--spinner-ring-inner) - .5px), #000 var(--spinner-ring-inner), #000 calc(var(--spinner-ring-outer) - .5px), transparent var(--spinner-ring-outer));
+    }
   }
 
   .spinner-sm {
@@ -100,7 +128,7 @@ $spinner-grow-tokens: defaults(
 
   // Generic class for rotating custom spinners
   .spinner-rotate {
-    animation: 1s linear infinite spinner-border;
+    animation: 1s linear infinite spinner-rotate;
   }
 
   @if $enable-reduced-motion {
