@@ -381,7 +381,7 @@ const datepicker = new bootstrap.Datepicker(datepickerEl, {
 
 ### Advanced configuration
 
-For supported settings not exposed by Bootstrap’s options, use `vcpOptions`:
+Use `vcpOptions` for calendar settings that Bootstrap does not expose. Set `vcpOptions.locale` to customize the calendar labels. Bootstrap still uses its `locale` option to format dates.
 
 ```js
 const datepicker = new bootstrap.Datepicker(element, {

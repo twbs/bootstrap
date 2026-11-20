@@ -1268,6 +1268,27 @@ describe('Datepicker', () => {
       expect(datepicker._config.vcpOptions.jumpMonths).toEqual(2)
     })
 
+    it('should use custom calendar labels and keep Bootstrap date formatting', () => {
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
+      const inputEl = fixtureEl.querySelector('input')
+      const locale = {
+        months: { long: Array.from({ length: 12 }, () => 'Custom month'), short: Array.from({ length: 12 }, () => 'Month') },
+        weekdays: { long: Array.from({ length: 7 }, () => 'Custom weekday'), short: Array.from({ length: 7 }, () => 'Day') }
+      }
+      const datepicker = new Datepicker(inputEl, {
+        locale: 'en-US',
+        dateFormat: { year: 'numeric', month: 'short', day: 'numeric' },
+        selectedDates: ['2026-01-15'],
+        vcpOptions: { locale }
+      })
+
+      datepicker.show()
+
+      expect(datepicker._calendar.context.mainElement.textContent).toContain('Custom month')
+      expect(inputEl.value).toEqual('Jan 15, 2026')
+      datepicker.dispose()
+    })
+
     it('should default to the single-month calendar type', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
 

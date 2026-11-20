@@ -1184,7 +1184,7 @@ class Datepicker extends BaseComponent {
       inputMode: false,
       positionToInput: this._config.placement,
       firstWeekday: this._config.firstWeekday,
-      locale: this._config.locale,
+      locale: this._config.vcpOptions.locale ?? this._config.locale,
       selectionDatesMode: this._config.selectionMode,
       selectedDates: this._config.selectedDates,
       displayMonthsCount,
