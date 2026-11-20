@@ -413,6 +413,65 @@ describe('Dialog', () => {
         dialog.show()
       })
     })
+
+    it('should remove dialog-open when a form with method="dialog" closes the dialog', async () => {
+      fixtureEl.innerHTML = [
+        '<dialog class="dialog">',
+        '  <form method="dialog"><button value="delete">Delete</button></form>',
+        '</dialog>'
+      ].join('')
+
+      const dialogEl = fixtureEl.querySelector('.dialog')
+      const dialog = new Dialog(dialogEl)
+
+      await dialog.show()
+      const closed = new Promise(resolve => {
+        dialogEl.addEventListener('close', resolve, { once: true })
+      })
+      dialogEl.querySelector('form').requestSubmit(dialogEl.querySelector('button'))
+      await closed
+
+      expect(dialogEl.returnValue).toEqual('delete')
+      expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+    })
+
+    it('should remove dialog-open when app code closes the dialog', async () => {
+      fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+      const dialogEl = fixtureEl.querySelector('.dialog')
+      const dialog = new Dialog(dialogEl)
+
+      await dialog.show()
+      const closed = new Promise(resolve => {
+        dialogEl.addEventListener('close', resolve, { once: true })
+      })
+      dialogEl.close()
+      await closed
+
+      expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+    })
+
+    it('should show and hide again after a native close', async () => {
+      fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+      const dialogEl = fixtureEl.querySelector('.dialog')
+      const dialog = new Dialog(dialogEl)
+
+      await dialog.show()
+      const closed = new Promise(resolve => {
+        dialogEl.addEventListener('close', resolve, { once: true })
+      })
+      dialogEl.close()
+      await closed
+
+      await dialog.show()
+      expect(dialogEl.open).toBeTrue()
+      expect(document.documentElement.classList.contains('dialog-open')).toBeTrue()
+
+      await dialog.hide()
+      expect(dialogEl.open).toBeFalse()
+      expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+    })
   })
 
   describe('backdrop static', () => {

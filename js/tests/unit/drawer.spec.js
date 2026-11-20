@@ -744,6 +744,27 @@ describe('Drawer', () => {
         drawer.show()
       })
     })
+
+    it('should remove dialog-open when an Invoker Command closes the drawer', async () => {
+      fixtureEl.innerHTML = [
+        '<dialog class="drawer" id="invokerDrawer">',
+        '  <button type="button" commandfor="invokerDrawer" command="close">Close</button>',
+        '</dialog>'
+      ].join('')
+
+      const drawerEl = fixtureEl.querySelector('.drawer')
+      const drawer = new Drawer(drawerEl)
+
+      await drawer.show()
+      const closed = new Promise(resolve => {
+        drawerEl.addEventListener('close', resolve, { once: true })
+      })
+      drawerEl.querySelector('button').click()
+      await closed
+
+      expect(drawerEl.open).toBeFalse()
+      expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
+    })
   })
 
   describe('dispose', () => {
