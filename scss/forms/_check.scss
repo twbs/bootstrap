@@ -1,4 +1,5 @@
 @use "../functions" as *;
+@use "../mixins/border-radius" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/mask-icon" as *;
 @use "../mixins/tokens" as *;
@@ -47,8 +48,7 @@ $check-tokens: defaults(
     // later: maybe set a tertiary bg color?
     background-color: var(--theme-bg, var(--check-bg));
     border: 1px solid var(--theme-bg, var(--check-border-color));
-    // stylelint-disable-next-line property-disallowed-list
-    border-radius: 33%;
+    @include border-radius(var(--check-border-radius));
     @include transition(
       background-color var(--control-transition-duration) var(--control-transition-timing),
       border-color var(--control-transition-duration) var(--control-transition-timing)
