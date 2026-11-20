@@ -114,6 +114,15 @@ describe('Base Component', () => {
 
         expect(spy).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY)
       })
+
+      it('should call dispose automatically when an component is reinitialized', () => {
+        instance = new DummyClass(element)
+        const spy = spyOn(instance, 'dispose')
+
+        instance = new DummyClass(element)
+
+        expect(spy).toHaveBeenCalled()
+      })
     })
 
     describe('getInstance', () => {
