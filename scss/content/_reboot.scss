@@ -146,6 +146,7 @@ $reboot-mark-tokens: defaults(
     font-weight: var(--heading-font-weight, var(--font-weight-medium));
     line-height: var(--heading-line-height);
     color: var(--heading-color);
+    text-transform: var(--heading-text-transform);
   }
 
   h1,
