@@ -19,7 +19,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 const htmlProps: HTMLAttributes<'html'> = direction === 'rtl' ? { lang: 'ar', dir: 'rtl' } : { lang: 'en' }
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html {...htmlProps} class:list={html_class} data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
@@ -57,7 +57,9 @@ const htmlProps: HTMLAttributes<'html'> = direction === 'rtl' ? { lang: 'ar', di
         background-color: rgba(0, 0, 0, 0.1);
         border: solid rgba(0, 0, 0, 0.15);
         border-width: 1px 0;
-        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1), inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+        box-shadow:
+          inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
       }
 
       .b-example-vr {

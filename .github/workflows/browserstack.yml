@@ -9,7 +9,6 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE: 22
 
 permissions:
   contents: read
@@ -22,14 +21,14 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "${{ env.NODE }}"
+          node-version-file: ".nvmrc"
           cache: npm
 
       - name: Install npm dependencies

@@ -105,7 +105,7 @@ const DefaultType = {
 class Tooltip extends BaseComponent {
   constructor(element, config) {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)')
+      throw new TypeError('Bootstrap\'s tooltips require Popper (https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md)')
     }
 
     super(element, config)
@@ -538,6 +538,18 @@ class Tooltip extends BaseComponent {
 
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
+
+    // Read text attributes without coercing their values.
+    const title = this._element.getAttribute('data-bs-title')
+    const content = this._element.getAttribute('data-bs-content')
+
+    if (title !== null) {
+      dataAttributes.title = title
+    }
+
+    if (content !== null) {
+      dataAttributes.content = content
+    }
 
     for (const dataAttribute of Object.keys(dataAttributes)) {
       if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {
