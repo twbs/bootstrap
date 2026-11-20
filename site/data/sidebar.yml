@@ -2,7 +2,7 @@
 # Each group has a `section` field that determines which sub-navbar tab it belongs to.
 
 - title: Getting started
-  section: Getting Started
+  section: Getting started
   icon: book-half
   icon_color: indigo
   pages:
