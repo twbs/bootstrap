@@ -158,6 +158,10 @@ class Offcanvas extends BaseComponent {
   }
 
   dispose() {
+    if (this._isShown && !this._config.scroll) {
+      new ScrollBarHelper().reset()
+    }
+
     this._backdrop.dispose()
     this._focustrap.deactivate()
     super.dispose()
