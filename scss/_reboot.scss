@@ -610,8 +610,8 @@ progress {
 
 // Hidden attribute
 //
-// Always hide an element with the `hidden` HTML attribute.
+// Always hide an element with the `hidden` HTML attribute, unless until-found is used.
 
-[hidden] {
+[hidden]:not([hidden="until-found"]) {
   display: none !important;
 }
