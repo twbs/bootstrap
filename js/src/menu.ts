@@ -162,6 +162,7 @@ class Menu extends BaseComponent {
   protected declare _openSubmenus: Map<HTMLElement, () => void>
   protected declare _submenuCloseTimeouts: Map<HTMLElement, number>
   protected declare _hoverIntentData: { x: number, y: number, timestamp: number } | null
+  protected declare _lastPointerType: string | null
   protected declare _menu: HTMLElement
   protected declare _isSubmenu: boolean
   protected declare _menuOriginalParent: ParentNode | null
@@ -180,6 +181,7 @@ class Menu extends BaseComponent {
     this._openSubmenus = new Map()
     this._submenuCloseTimeouts = new Map()
     this._hoverIntentData = null
+    this._lastPointerType = null
 
     this._menu = (this._config.menu || this._findMenu()) as HTMLElement
 
@@ -628,6 +630,10 @@ class Menu extends BaseComponent {
       EventHandler.on(this._menu, 'mousemove', event => {
         this._trackMousePosition(event)
       })
+
+      EventHandler.on(this._menu, 'pointerover', event => {
+        this._lastPointerType = event.pointerType
+      })
     }
 
     if (this._config.submenuTrigger === 'click' || this._config.submenuTrigger === 'both') {
@@ -638,6 +644,11 @@ class Menu extends BaseComponent {
   }
 
   protected _onSubmenuTriggerEnter(event: BootstrapEvent): void {
+    // A tap fires an emulated `mouseenter` before `click`, so let the click open the submenu
+    if (this._config.submenuTrigger === 'both' && this._lastPointerType && this._lastPointerType !== 'mouse') {
+      return
+    }
+
     const trigger = (event.target as Element).closest<HTMLElement>(SELECTOR_SUBMENU_TOGGLE)
     if (!trigger) {
       return
