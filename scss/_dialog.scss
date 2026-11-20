@@ -67,6 +67,14 @@ $dialog-sizes: defaults(
     overflow: hidden;
   }
 
+  // Keep the modal hit area while hiding its backdrop.
+  .dialog-no-backdrop::backdrop {
+    // stylelint-disable-next-line declaration-no-important
+    background-color: transparent !important;
+    // stylelint-disable-next-line declaration-no-important
+    backdrop-filter: none !important;
+  }
+
   .dialog {
     @include tokens($dialog-tokens);
 
