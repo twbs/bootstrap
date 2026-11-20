@@ -222,6 +222,21 @@ describe('Strength', () => {
       expect(strength.getStrength()).toEqual('good')
     })
 
+    it('should count any symbol or space as a special character', () => {
+      fixtureEl.innerHTML = getStrengthHtml()
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const strength = new Strength(strengthEl)
+
+      for (const value of ['Password1-_', 'Password1+=', 'Password1/~', 'Pass word1;']) {
+        passwordInput.value = value // length+lower+upper+number+special+multipleSpecial = score 6
+        passwordInput.dispatchEvent(createEvent('input'))
+
+        expect(strength.getStrength()).toEqual('good')
+      }
+    })
+
     it('should return strong for very strong passwords', () => {
       fixtureEl.innerHTML = getStrengthHtml()
 
