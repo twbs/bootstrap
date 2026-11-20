@@ -26,15 +26,16 @@ interface Props {
   frontmatter: CollectionEntry<'docs'>['data']
   headings?: MarkdownHeading[]
   id: CollectionEntry<'docs'>['id']
+  filePath?: string
 }
 
 // Get sidebar data using the data library
 const sidebar = getData('sidebar')
 
-const { frontmatter, headings, id } = Astro.props
+const { frontmatter, headings, id, filePath } = Astro.props
 const { slug } = Astro.params
 
-// Extract the directory/section from the ID (format: "directory/filename.mdx")
+// Extract the directory from the ID.
 const parentDirectory = id.includes('/') ? id.split('/')[0] : ''
 
 const bodyProps: LayoutOverridesHTMLAttributes<'body'> = {}
@@ -114,7 +115,7 @@ if (currentPageIndex < allPages.length - 1) {
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
         </div>
         <div class="mb-3 md:mb-0 d-flex gap-2 text-nowrap">
-          <PageMeta frontmatter={frontmatter} id={id} parentDirectory={parentDirectory} />
+          <PageMeta frontmatter={frontmatter} filePath={filePath} />
         </div>
       </div>
 
