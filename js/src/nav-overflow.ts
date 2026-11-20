@@ -298,12 +298,12 @@ class NavOverflow extends BaseComponent {
     this._resizeObserver.observe(this._element)
   }
 
-  // Space the nav has to work with, taken from the wrapper's content box
+  // Space the nav has to work with, taken from the nav's content box
   protected _availableWidth(): number {
-    const { paddingInlineStart, paddingInlineEnd } = getComputedStyle(this._element)
+    const { paddingInlineStart, paddingInlineEnd } = getComputedStyle(this._nav)
     const padding = (Number.parseFloat(paddingInlineStart) || 0) + (Number.parseFloat(paddingInlineEnd) || 0)
 
-    return this._element.clientWidth - padding
+    return this._nav.clientWidth - padding
   }
 
   protected _navGap(): number {
