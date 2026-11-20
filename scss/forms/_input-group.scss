@@ -111,18 +111,19 @@ $input-group-sizes: defaults(
 
   // stylelint-disable-next-line no-duplicate-selectors
   .input-group {
-    > :not(:last-child, .menu-toggle-split, .menu, .input-group-ignore, .form-floating, :has(+ :is(.menu, .input-group-ignore):last-child)),
+    > :not(:last-child, .menu-toggle-split, .menu, .input-group-ignore, [type="hidden"], .form-floating, :has(+ :is(.menu, .input-group-ignore, [type="hidden"]):last-child)),
     > .menu-toggle-split:nth-last-child(n + 3),
     > .form-floating:not(:last-child) > .form-control {
       @include border-end-radius(0);
     }
 
-    > :not(:first-child, .menu, .input-group-ignore) {
+    > :not(:first-child, .menu, .input-group-ignore, [type="hidden"]) {
       margin-inline-start: calc(-1 * var(--border-width));
       @include border-start-radius(0);
     }
 
-    > :first-child:is(.input-group-ignore) + :not(.menu, .input-group-ignore) {
+    > :first-child:is(.input-group-ignore, [type="hidden"]) + :not(.menu, .input-group-ignore, [type="hidden"]) {
+      margin-inline-start: 0;
       @include border-start-radius(var(--btn-input-border-radius));
     }
 
