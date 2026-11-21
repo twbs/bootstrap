@@ -299,6 +299,8 @@ $validation-states: defaults(
   // the .form-range wrapper, so we use :has() to toggle it.
   .form-range-input {
     @include form-validation-state-selector($state) {
+      --range-track-fill-bg: var(--#{$theme}-bg);
+
       &::-webkit-slider-thumb { background: var(--#{$theme}-bg); }
       &::-moz-range-thumb { background: var(--#{$theme}-bg); }
 
