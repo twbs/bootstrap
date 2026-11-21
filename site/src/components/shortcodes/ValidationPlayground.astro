@@ -21,7 +21,8 @@ const groups = [
     name: 'validation-playground-feedback',
     choices: [
       { value: 'inline', label: 'Inline' },
-      { value: 'tooltip', label: 'Tooltip' }
+      { value: 'tooltip', label: 'Tooltip' },
+      { value: 'none', label: 'None' }
     ]
   }
 ]
@@ -68,10 +69,10 @@ const groups = [
       invalidText: element.textContent
     }))
 
-    return (state: string, showTooltips: boolean) => {
+    return (state: string, feedback: string) => {
       const invalid = state === 'invalid'
       const valid = state === 'valid'
-      const active = invalid || valid
+      const showFeedback = (invalid || valid) && feedback !== 'none'
 
       for (const target of targets) {
         target.classList.toggle('is-invalid', invalid)
@@ -79,7 +80,7 @@ const groups = [
       }
 
       for (const { element, description } of controls) {
-        if (active) {
+        if (showFeedback) {
           element.setAttribute('aria-describedby', description)
         } else {
           element.removeAttribute('aria-describedby')
@@ -93,16 +94,16 @@ const groups = [
       }
 
       for (const { element, field, inlineOnly, floating, invalidText } of messages) {
-        const tooltip = active && showTooltips && !inlineOnly
+        const tooltip = showFeedback && feedback === 'tooltip' && !inlineOnly
         field.classList.toggle('position-relative', tooltip)
         field.classList.toggle('mb-4', tooltip)
         element.classList.toggle('tooltip', tooltip)
-        element.classList.toggle('valid-feedback', valid && !tooltip)
-        element.classList.toggle('invalid-feedback', invalid && !tooltip)
+        element.classList.toggle('valid-feedback', showFeedback && valid && !tooltip)
+        element.classList.toggle('invalid-feedback', showFeedback && invalid && !tooltip)
         element.classList.toggle('valid-tooltip', valid && tooltip)
         element.classList.toggle('invalid-tooltip', invalid && tooltip)
-        element.classList.toggle('d-block', active && floating)
-        element.hidden = !active
+        element.classList.toggle('d-block', showFeedback && floating)
+        element.hidden = !showFeedback
         element.textContent = valid ? 'Looks good.' : invalidText
       }
     }
@@ -121,11 +122,9 @@ const groups = [
     const update = async () => {
       const currentRevision = ++revision
       const state = options.querySelector<HTMLInputElement>('[name="validation-playground-state"]:checked')!.value
-      const showTooltips = Boolean(
-        options.querySelector('[name="validation-playground-feedback"][value="tooltip"]:checked')
-      )
-      updatePreview(state, showTooltips)
-      updateSource(state, showTooltips)
+      const feedback = options.querySelector<HTMLInputElement>('[name="validation-playground-feedback"]:checked')!.value
+      updatePreview(state, feedback)
+      updateSource(state, feedback)
       const markup = source.outerHTML
       template.innerHTML = markup
 
