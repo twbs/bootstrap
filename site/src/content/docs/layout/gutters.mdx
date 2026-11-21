@@ -16,7 +16,7 @@ toc: true
 
 Use `.gx-*` to control horizontal gaps. The row stays inside its parent, so you do not need extra container padding or an overflow wrapper to contain the gutters:
 
-<Example class="bd-example-cols" code={`<div class="row gx-5">
+<Example class="bd-example-cols" code={`<div class="row gx-5"><!-- [!code highlight] -->
     <div class="col">
       <div class="p-3">Custom column padding</div>
     </div>
@@ -29,7 +29,7 @@ Use `.gx-*` to control horizontal gaps. The row stays inside its parent, so you 
 
 Use `.gy-*` to control the gap between wrapped lines. Vertical gaps appear only between lines, without adding space before the first line or after the last:
 
-<Example class="bd-example-cols" code={`<div class="row gy-5">
+<Example class="bd-example-cols" code={`<div class="row gy-5"><!-- [!code highlight] -->
     <div class="col-6">
       <div class="p-3">Custom column padding</div>
     </div>
@@ -48,7 +48,7 @@ Use `.gy-*` to control the gap between wrapped lines. Vertical gaps appear only 
 
 Use `.g-*` classes to control horizontal and vertical gaps together.
 
-<Example class="bd-example-cols" code={`<div class="row g-2">
+<Example class="bd-example-cols" code={`<div class="row g-2"><!-- [!code highlight] -->
     <div class="col-6">
       <div class="p-3">Custom column padding</div>
     </div>
@@ -67,7 +67,7 @@ Use `.g-*` classes to control horizontal and vertical gaps together.
 
 Gutter classes can also be added to [row columns]([[docsref:/layout/grid#row-columns]]). In the following example, we use responsive row columns and responsive gutter classes.
 
-<Example class="bd-example-cols" code={`<div class="row row-cols-2 lg:row-cols-5 g-2 lg:g-3">
+<Example class="bd-example-cols" code={`<div class="row row-cols-2 lg:row-cols-5 g-2 lg:g-3"><!-- [!code highlight] -->
     <div class="col">
       <div class="p-3">Row column</div>
     </div>
@@ -108,7 +108,7 @@ Use `.g-0` to remove horizontal and vertical gaps. Column widths and offsets upd
 
 In practice, here’s how it looks. Note that you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
 
-<Example class="bd-example-row" code={`<div class="row g-0">
+<Example class="bd-example-row" code={`<div class="row g-0"><!-- [!code highlight] -->
     <div class="sm:col-6 md:col-8">.sm:col-6 .md:col-8</div>
     <div class="col-6 md:col-4">.col-6 .md:col-4</div>
   </div>`} />

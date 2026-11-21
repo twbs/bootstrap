@@ -47,7 +47,7 @@ Set the input's `maxlength` to control the number of slots—use fewer for short
 
 Use `data-bs-groups` to split a code such as `123-456` into groups. Combine it with `.otp-connected` to join slots within each group. The separator is decorative.
 
-<Example code={`<div class="otp otp-connected" data-bs-otp data-bs-groups="[3,3]">
+<Example code={`<div class="otp otp-connected" data-bs-otp data-bs-groups="[3,3]"><!-- [!code highlight] -->
     <input type="text" class="otp-input" maxlength="6" aria-label="Verification code">
   </div>`} />
 
@@ -55,7 +55,7 @@ Use `data-bs-groups` to split a code such as `123-456` into groups. Combine it w
 
 OTP inputs accept digits by default. Set `data-bs-type="alphanumeric"` to accept letters and digits, or `data-bs-type="alpha"` to accept letters only.
 
-<Example code={`<div class="otp otp-connected" data-bs-otp data-bs-type="alphanumeric">
+<Example code={`<div class="otp otp-connected" data-bs-otp data-bs-type="alphanumeric"><!-- [!code highlight] -->
     <input type="text" class="otp-input" maxlength="6" aria-label="Alphanumeric code">
   </div>`} />
 
@@ -63,7 +63,7 @@ OTP inputs accept digits by default. Set `data-bs-type="alphanumeric"` to accept
 
 Set `data-bs-mask="true"` to display a dot for each character. The text input still supports the numeric keyboard and autofill.
 
-<Example code={`<div class="otp otp-connected" data-bs-otp data-bs-mask="true">
+<Example code={`<div class="otp otp-connected" data-bs-otp data-bs-mask="true"><!-- [!code highlight] -->
     <input type="text" class="otp-input" maxlength="6" aria-label="Masked code">
   </div>`} />
 

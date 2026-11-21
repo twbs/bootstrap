@@ -60,7 +60,7 @@ By default, range inputs “snap” to integer values. To change this, you can s
 Add `data-bs-bubble` to the wrapper to show a value bubble that follows the thumb. The bubble reuses our [tooltip](/docs/[[config:docs_version]]/components/tooltips/) styles.
 
 <Example code={`<label for="rangeBubble" class="form-label">Brightness</label>
-<div class="form-range" data-bs-bubble>
+<div class="form-range" data-bs-bubble><!-- [!code highlight] -->
     <input type="range" class="form-range-input" min="0" max="100" value="60" id="rangeBubble">
   </div>`} />
 
@@ -78,9 +78,9 @@ Link a `<datalist>` to the input with the `list` attribute and the plugin render
 
 <Example code={`<label for="rangeTicks" class="form-label">Temperature</label>
 <div class="form-range">
-    <input type="range" class="form-range-input" min="0" max="100" step="25" value="50" list="rangeTicksList" id="rangeTicks">
+    <input type="range" class="form-range-input" min="0" max="100" step="25" value="50" list="rangeTicksList" id="rangeTicks"><!-- [!code highlight] -->
   </div>
-  <datalist id="rangeTicksList">
+  <datalist id="rangeTicksList"><!-- [!code highlight] -->
     <option value="0" label="Cold"></option>
     <option value="25"></option>
     <option value="50" label="Mild"></option>

@@ -92,12 +92,12 @@ Hash links also work when Bootstrap loads after the page. A later fragment chang
 Add `data-bs-hash` to a collapsible target to open it when the URL fragment matches its `id`. Use a normal in-page link (without `data-bs-toggle`) to try it. You may need to use `scroll-margin-block-start` for some viewport offsetting if using a stickied or fixed navbar.
 
 <Example code={`<p class="d-inline-flex gap-1">
-    <a class="btn-outline theme-primary" href="#collapseHashExample">Open via hash link</a>
+    <a class="btn-outline theme-primary" href="#collapseHashExample">Open via hash link</a><!-- [!code highlight] -->
     <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHashExample" aria-expanded="false" aria-controls="collapseHashExample">
       Toggle
     </button>
   </p>
-  <div class="collapse" id="collapseHashExample" data-bs-hash>
+  <div class="collapse" id="collapseHashExample" data-bs-hash><!-- [!code highlight] -->
     <div class="card card-body">
       <p>Some placeholder content for a hash-linked collapse. Visiting <code>#collapseHashExample</code> opens this panel and scrolls it into view.</p>
     </div>
