@@ -12,10 +12,66 @@ import {
   Tooltip,
   Popover,
   Toast,
-  Carousel
+  Carousel,
+  Datepicker
 } from '@bootstrap'
 
 export default () => {
+  // js-docs-start datepicker-presets
+  const presets = document.getElementById('datepickerPresets')
+  if (presets) {
+    const trigger = document.getElementById('datepickerPresetTrigger')
+    const picker = Datepicker.getOrCreateInstance(trigger)
+    const iso = date => {
+      const month = String(date.getMonth() + 1).padStart(2, '0')
+      const day = String(date.getDate()).padStart(2, '0')
+      return `${date.getFullYear()}-${month}-${day}`
+    }
+
+    const applyPreset = days => {
+      const end = new Date()
+      const start = new Date(end)
+      start.setDate(end.getDate() - days + 1)
+      picker.setSelectedDates(days === 1 ? [iso(end)] : [iso(start), iso(end)])
+    }
+
+    for (const button of presets.querySelectorAll('[data-datepicker-preset]')) {
+      button.addEventListener('click', () => applyPreset(Number(button.dataset.datepickerPreset)))
+    }
+
+    applyPreset(7)
+  }
+  // js-docs-end datepicker-presets
+
+  // js-docs-start datepicker-actions
+  const actionsTrigger = document.getElementById('datepickerActions')
+  if (actionsTrigger) {
+    const picker = Datepicker.getOrCreateInstance(actionsTrigger)
+    const popup = document.getElementById(actionsTrigger.getAttribute('aria-controls'))
+    const template = document.getElementById('datepickerActionsTemplate')
+    const actions = template.content.firstElementChild.cloneNode(true)
+
+    const mountActions = () => {
+      if (!popup.contains(actions)) {
+        popup.append(actions)
+      }
+    }
+
+    mountActions()
+    // The calendar can replace its contents when its view changes.
+    new MutationObserver(mountActions).observe(popup, { childList: true })
+
+    actions.addEventListener('click', event => {
+      const button = event.target.closest('[data-datepicker-action]')
+      if (button) {
+        picker.setSelectedDates(button.dataset.datepickerAction === 'today' ? [new Date()] : [])
+        picker.hide()
+        actionsTrigger.focus()
+      }
+    })
+  }
+  // js-docs-end datepicker-actions
+
   // --------
   // Tooltips
   // --------

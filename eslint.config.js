@@ -2,7 +2,7 @@ import eslintConfigXo from 'eslint-config-xo'
 import unicorn from 'eslint-plugin-unicorn'
 import importXPlugin from 'eslint-plugin-import-x'
 import html from 'eslint-plugin-html'
-import markdown from 'eslint-plugin-markdown'
+import markdown from '@eslint/markdown'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
@@ -413,7 +413,7 @@ const eslintConfig = [
   },
 
   // Markdown files — use processor
-  ...markdown.configs.recommended,
+  ...markdown.configs.processor,
 
   // Markdown code blocks
   {

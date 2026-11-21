@@ -52,7 +52,8 @@
       background-color: var(--bg-1);
     }
 
-    &:has(:checked) {
+    &:has(:checked),
+    &:has([type="checkbox"]:indeterminate) {
       background-color: var(--bg-1);
       border-color: var(--border-color);
     }

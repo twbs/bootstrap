@@ -209,19 +209,13 @@ Highlight a table row or cell by adding a `.table-active` class.
 
 For the accented tables ([striped rows](#striped-rows), [striped columns](#striped-columns), [hoverable rows](#hoverable-rows), and [active tables](#active-tables)), we used some techniques to make these effects work for all our [table variants](#variants):
 
-- We start by setting the background of a table cell with the `--bs-table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don’t get into trouble if semi-transparent colors are used as table backgrounds.
+- We start by setting the background of a table cell to `var(--bs-theme-bg-subtle, var(--bs-table-bg))`. The [table variants](#variants) are the `.theme-*` classes: each one sets `--bs-theme-bg-subtle` and `--bs-theme-fg` on the table, row or cell it is added to, and the cells inside pick them up. This way, we don’t get into trouble if semi-transparent colors are used as table backgrounds.
 
-- Then we add an inset box shadow on the table cells with `box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state, var(--bs-table-bg-type, var(--bs-table-accent-bg)));` to layer on top of any specified `background-color`. It uses custom cascade to override the `box-shadow`, regardless the CSS specificity. Because we use a huge spread and no blur, the color will be monotone. Since `--bs-table-accent-bg` is set to `transparent` by default, we don’t have a default box shadow.
+- Then we add an inset box shadow on the table cells with `box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state, var(--bs-table-bg-type, var(--bs-theme-bg-subtle, var(--bs-table-accent-bg))));` to layer on top of any specified `background-color`. It uses custom cascade to override the `box-shadow`, regardless the CSS specificity. Because we use a huge spread and no blur, the color will be monotone. Since `--bs-table-accent-bg` is set to `transparent` by default, we don’t have a default box shadow.
 
-- When either `.table-striped`, `.table-striped-columns`, `.table-hover` or `.table-active` classes are added, either `--bs-table-bg-type` or `--bs-table-bg-state` (by default set to `initial`) are set to a semitransparent color (`--bs-table-striped-bg`, `--bs-table-active-bg` or `--bs-table-hover-bg`) to colorize the background and override default `--bs-table-accent-bg`.
+- When either `.table-striped`, `.table-striped-columns`, `.table-hover` or `.table-active` classes are added, either `--bs-table-bg-type` or `--bs-table-bg-state` (by default set to `initial`) are set to a semitransparent color to colorize the background and override default `--bs-table-accent-bg`. That color is `--bs-theme-fg` when a theme class sets it, or `--bs-table-color` otherwise, mixed with `transparent` by `--bs-table-striped-bg-factor`, `--bs-table-active-bg-factor` or `--bs-table-hover-bg-factor`. The mix is done on each cell, so a theme class on a row or a cell tints its own stripes and hover state.
 
-- For each table variant, we set `--bs-table-bg-type` or `--bs-table-bg-state` to a semi-transparent color derived from the current theme color. Those values are layered in the inset box shadow, while `--bs-table-accent-bg` remains a transparent fallback.
-
-- Text and border colors are generated the same way, and their colors are inherited by default.
-
-Behind the scenes it looks like this:
-
-{/* <ScssDocs name="table-variants-loop" file="scss/content/_tables.scss" /> */}
+- Text colors are generated the same way, and their colors are inherited by default. Borders use `--bs-theme-border` when a theme class sets it, or `--bs-table-border-color` otherwise.
 
 ## Table borders
 
@@ -576,7 +570,7 @@ Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be
 
 ## Footer
 
-<Example showMarkup={false} code={`
+<Example code={`
 <table class="table">
   <thead>
     <tr>
@@ -615,21 +609,17 @@ Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be
     </tr>
   </tfoot>
 </table>
-`} />
-
-```html
-<table class="table">
-  <thead>
-    ...
-  </thead>
-  <tbody>
-    ...
-  </tbody>
-  <tfoot>
-    ...
-  </tfoot>
-</table>
-```
+`} customMarkup={`<table class="table">
+    <thead>
+      ...
+    </thead>
+    <tbody>
+      ...
+    </tbody>
+    <tfoot>
+      ...
+    </tfoot>
+  </table>`} />
 
 ## Caption
 
@@ -922,4 +912,3 @@ Use `.{sm|md|lg|xl|2xl}:table-responsive` as needed to create responsive tables 
 ### Customizing
 
 - The factor variables (`--table-striped-bg-factor`, `--table-active-bg-factor` & `--table-hover-bg-factor`) are used to determine the contrast in table variants.
-- Apart from the light & dark table variants, theme colors are lightened by the `--table-bg-scale` variable.

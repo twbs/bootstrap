@@ -99,6 +99,7 @@ $card-tokens: defaults(
 
   .card-subtitle {
     margin-top: calc(var(--card-body-gap) * -.5);
+    color: var(--card-subtitle-color);
   }
 
   .card-header {

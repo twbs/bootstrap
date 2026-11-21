@@ -21,6 +21,8 @@ Key features of the native dialog:
 - **Accessibility** — focus is trapped inside modal dialogs and returned to the trigger on close, with native `<dialog>` ARIA semantics.
 - **Animated open and close** — circumvent browser restrictions by using a `.hiding` class to keep dialogs in the top layer during close so the exit transition (including `::backdrop`) are animated properly.
 
+Bootstrap prevents page scrolling while a modal dialog is open. JavaScript compensates for any scrollbar space that disappears and restores the original spacing when the last scroll-locking dialog or drawer closes. Full-width `.fixed-top`, `.fixed-bottom`, and `.is-fixed` elements are compensated too; normal-flow and sticky content follow the root padding.
+
 <Callout name="info-prefersreducedmotion" />
 
 ## Example
@@ -31,9 +33,9 @@ Toggle a dialog by clicking the button below. The dialog uses the native `showMo
     Open dialog
   </button>
 
-  <dialog class="dialog" id="exampleDialog">
+  <dialog class="dialog" id="exampleDialog" aria-labelledby="exampleDialogLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Dialog title</h1>
+      <h1 class="dialog-title" id="exampleDialogLabel">Dialog title</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -57,9 +59,9 @@ The Invoker Commands API is not supported in all browsers. For guaranteed suppor
     Open dialog
   </button>
 
-  <dialog class="dialog" id="invokerDialog">
+  <dialog class="dialog" id="invokerDialog" aria-labelledby="invokerDialogLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Invoker Commands</h1>
+      <h1 class="dialog-title" id="invokerDialogLabel">Invoker Commands</h1>
       <button type="button" class="btn-close" commandfor="invokerDialog" command="close" aria-label="Close"></button>
     </div>
     <div class="dialog-body">
@@ -78,9 +80,9 @@ To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
     Open dark dialog
   </button>
 
-  <dialog class="dialog" id="exampleDialogDark" data-bs-theme="dark"><!-- [!code highlight] -->
+  <dialog class="dialog" id="exampleDialogDark" aria-labelledby="exampleDialogDarkLabel" data-bs-theme="dark"><!-- [!code highlight] -->
     <div class="dialog-header">
-      <h1 class="dialog-title">Dark dialog title</h1>
+      <h1 class="dialog-title" id="exampleDialogDarkLabel">Dark dialog title</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -100,9 +102,9 @@ When `backdrop` is set to `static`, the dialog will not close when clicking outs
     Open static backdrop dialog
   </button>
 
-  <dialog class="dialog" id="staticBackdropDialog">
+  <dialog class="dialog" id="staticBackdropDialog" aria-labelledby="staticBackdropDialogLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Static backdrop</h1>
+      <h1 class="dialog-title" id="staticBackdropDialogLabel">Static backdrop</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -119,13 +121,13 @@ Tooltips, popovers, and toasts all work inside dialogs, but require some extra c
 
 Tooltips, popovers, toasts, and menus all work inside modal dialogs. Modal dialogs use `showModal()`, which promotes the dialog to the browser’s top layer -- a special rendering layer above everything else on the page.
 
-<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialogWithComponents">
+<Example addStackblitzJs code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialogWithComponents">
     Open dialog
   </button>
 
-  <dialog class="dialog not-prose" id="dialogWithComponents">
+  <dialog class="dialog not-prose" id="dialogWithComponents" aria-labelledby="dialogWithComponentsLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Overlays inside dialogs</h1>
+      <h1 class="dialog-title" id="dialogWithComponentsLabel">Overlays inside dialogs</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -181,9 +183,9 @@ By default, dialogs animate with a fade on open and close. To disable animations
     Instant dialog
   </button>
 
-  <dialog class="dialog dialog-instant" id="instantDialog">
+  <dialog class="dialog dialog-instant" id="instantDialog" aria-labelledby="instantDialogLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Instant dialog</h1>
+      <h1 class="dialog-title" id="instantDialogLabel">Instant dialog</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -203,9 +205,9 @@ Add `.dialog-slide-down` to the `<dialog>` and it will slide **down** from the t
     Slide down dialog
   </button>
 
-  <dialog class="dialog dialog-slide-down" id="slideDownDialog">
+  <dialog class="dialog dialog-slide-down" id="slideDownDialog" aria-labelledby="slideDownDialogLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Slide down dialog</h1>
+      <h1 class="dialog-title" id="slideDownDialogLabel">Slide down dialog</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -225,9 +227,9 @@ Add `.dialog-slide-up` to the `<dialog>` and it will slide **up** from the botto
     Slide up dialog
   </button>
 
-  <dialog class="dialog dialog-slide-up" id="slideUpDialog">
+  <dialog class="dialog dialog-slide-up" id="slideUpDialog" aria-labelledby="slideUpDialogLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Slide up dialog</h1>
+      <h1 class="dialog-title" id="slideUpDialogLabel">Slide up dialog</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -247,9 +249,9 @@ Create a scrollable dialog that scrolls the dialog body while keeping the header
     Launch scrollable body dialog
   </button>
 
-  <dialog class="dialog dialog-scrollable" id="scrollableBodyDialog"><!-- [!code highlight] -->
+  <dialog class="dialog dialog-scrollable" id="scrollableBodyDialog" aria-labelledby="scrollableBodyDialogLabel"><!-- [!code highlight] -->
     <div class="dialog-header">
-      <h1 class="dialog-title">Scrollable body</h1>
+      <h1 class="dialog-title" id="scrollableBodyDialogLabel" tabindex="-1" autofocus>Scrollable body</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -270,15 +272,15 @@ Create a scrollable dialog that scrolls the dialog body while keeping the header
 
 ## Swapping dialogs
 
-When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash. The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog.
+When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash. The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog. A toggle trigger that targets its own open dialog does nothing. Use `data-bs-dismiss="dialog"` to close it.
 
 <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">
     Open first dialog
   </button>
 
-  <dialog class="dialog" id="swapDialog1">
+  <dialog class="dialog" id="swapDialog1" aria-labelledby="swapDialog1Label">
     <div class="dialog-header">
-      <h1 class="dialog-title">First dialog</h1>
+      <h1 class="dialog-title" id="swapDialog1Label">First dialog</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -290,9 +292,9 @@ When a toggle trigger is inside an open dialog, clicking it will **swap** dialog
     </div>
   </dialog>
 
-  <dialog class="dialog" id="swapDialog2">
+  <dialog class="dialog" id="swapDialog2" aria-labelledby="swapDialog2Label">
     <div class="dialog-header">
-      <h1 class="dialog-title">Second dialog</h1>
+      <h1 class="dialog-title" id="swapDialog2Label">Second dialog</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -318,9 +320,9 @@ By default, dialogs open as modals using the browser-native `showModal()` method
     Open non-modal dialog
   </button>
 
-  <dialog class="dialog" id="nonModalDialog">
+  <dialog class="dialog" id="nonModalDialog" aria-labelledby="nonModalDialogLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Non-modal dialog</h1>
+      <h1 class="dialog-title" id="nonModalDialogLabel">Non-modal dialog</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -340,7 +342,7 @@ dialog.show()
 
 ## Optional sizes
 
-Dialogs have three optional sizes, available via modifier classes to be placed on a `.dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+Dialogs have four optional sizes, available via modifier classes to be placed on a `.dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
 <BsTable>
   | Size | Class | Dialog max-width |
@@ -349,11 +351,22 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   | Default | — | `500px` |
   | Large | `.dialog-lg` | `800px` |
   | Extra large | `.dialog-xl` | `1140px` |
+  | Extra extra large | `.dialog-2xl` | `1440px` |
 </BsTable>
 
-<dialog class="dialog dialog-xl" id="exampleDialogXl">
+<dialog class="dialog dialog-2xl" id="exampleDialog2xl" aria-labelledby="exampleDialog2xlLabel">
   <div class="dialog-header">
-    <h1 class="dialog-title">Extra large dialog</h1>
+    <h1 class="dialog-title" id="exampleDialog2xlLabel">Extra extra large dialog</h1>
+    <CloseButton dismiss="dialog" />
+  </div>
+  <div class="dialog-body">
+    <p>This is an extra extra large dialog using the <code>.dialog-2xl</code> class.</p>
+  </div>
+</dialog>
+
+<dialog class="dialog dialog-xl" id="exampleDialogXl" aria-labelledby="exampleDialogXlLabel">
+  <div class="dialog-header">
+    <h1 class="dialog-title" id="exampleDialogXlLabel">Extra large dialog</h1>
     <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
@@ -361,9 +374,9 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   </div>
 </dialog>
 
-<dialog class="dialog dialog-lg" id="exampleDialogLg">
+<dialog class="dialog dialog-lg" id="exampleDialogLg" aria-labelledby="exampleDialogLgLabel">
   <div class="dialog-header">
-    <h1 class="dialog-title">Large dialog</h1>
+    <h1 class="dialog-title" id="exampleDialogLgLabel">Large dialog</h1>
     <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
@@ -371,9 +384,9 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   </div>
 </dialog>
 
-<dialog class="dialog" id="exampleDialogMd">
+<dialog class="dialog" id="exampleDialogMd" aria-labelledby="exampleDialogMdLabel">
   <div class="dialog-header">
-    <h1 class="dialog-title">Medium (default) dialog</h1>
+    <h1 class="dialog-title" id="exampleDialogMdLabel">Medium (default) dialog</h1>
     <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
@@ -381,9 +394,9 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   </div>
 </dialog>
 
-<dialog class="dialog dialog-sm" id="exampleDialogSm">
+<dialog class="dialog dialog-sm" id="exampleDialogSm" aria-labelledby="exampleDialogSmLabel">
   <div class="dialog-header">
-    <h1 class="dialog-title">Small dialog</h1>
+    <h1 class="dialog-title" id="exampleDialogSmLabel">Small dialog</h1>
     <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
@@ -391,7 +404,10 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog2xl">
+  Extra extra large dialog
+</button>
+<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
   Extra large dialog
 </button>
 <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogLg">
@@ -402,14 +418,11 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
 </button>
 <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogSm">
   Small dialog
-</button>`} />
-
-```html
-<dialog class="dialog dialog-xl">…</dialog>
-<dialog class="dialog dialog-lg">…</dialog>
-<dialog class="dialog">…</dialog>
-<dialog class="dialog dialog-sm">…</dialog>
-```
+</button>`} customMarkup={`<dialog class="dialog dialog-2xl">…</dialog>
+  <dialog class="dialog dialog-xl">…</dialog>
+  <dialog class="dialog dialog-lg">…</dialog>
+  <dialog class="dialog">…</dialog>
+  <dialog class="dialog dialog-sm">…</dialog>`} />
 
 ## Fullscreen dialog
 
@@ -419,9 +432,9 @@ Use `.dialog-fullscreen` to make the dialog cover the entire viewport.
     Fullscreen dialog
   </button>
 
-  <dialog class="dialog dialog-fullscreen" id="exampleDialogFullscreen">
+  <dialog class="dialog dialog-fullscreen" id="exampleDialogFullscreen" aria-labelledby="exampleDialogFullscreenLabel">
     <div class="dialog-header">
-      <h1 class="dialog-title">Fullscreen dialog</h1>
+      <h1 class="dialog-title" id="exampleDialogFullscreenLabel">Fullscreen dialog</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -449,9 +462,9 @@ Responsive fullscreen variants are also available. These make the dialog fullscr
     Fullscreen below lg
   </button>
 
-  <dialog class="dialog lg-down:dialog-fullscreen" id="exampleDialogFullscreenLg"><!-- [!code highlight] -->
+  <dialog class="dialog lg-down:dialog-fullscreen" id="exampleDialogFullscreenLg" aria-labelledby="exampleDialogFullscreenLgLabel"><!-- [!code highlight] -->
     <div class="dialog-header">
-      <h1 class="dialog-title">Fullscreen below lg</h1>
+      <h1 class="dialog-title" id="exampleDialogFullscreenLgLabel">Fullscreen below lg</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
@@ -461,6 +474,12 @@ Responsive fullscreen variants are also available. These make the dialog fullscr
       <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
     </div>
   </dialog>`} />
+
+## Accessibility
+
+Give every dialog an accessible name. Set `aria-labelledby` to the ID of its visible title. Use `aria-label` when the dialog has no visible title.
+
+Keep a visible close button in the dialog. For a destructive action, use `autofocus` on the safer choice, such as Cancel. For long content, consider a heading with `tabindex="-1"` and `autofocus`.
 
 ## CSS
 
@@ -553,6 +572,8 @@ const myDialog = new bootstrap.Dialog('#myDialog', {
 
 ### Events
 
+Bootstrap uses its backdrop and keyboard options while it manages an open dialog. It restores the author’s `closedby` value when the dialog closes. The native `close()` method and a form with `method="dialog"` can close the dialog immediately. Listen for `hide.bs.dialog` to prevent a Bootstrap hide.
+
 Bootstrap’s dialog class exposes a few events for hooking into dialog functionality.
 
 <BsTable>
@@ -561,9 +582,9 @@ Bootstrap’s dialog class exposes a few events for hooking into dialog function
 | `show.bs.dialog` | Fires immediately when the `show` instance method is called. |
 | `shown.bs.dialog` | Fired when the dialog has been made visible to the user (will wait for CSS transitions to complete). |
 | `hide.bs.dialog` | Fires immediately when the `hide` instance method is called. |
-| `hidden.bs.dialog` | Fired when the dialog has finished being hidden from the user (will wait for CSS transitions to complete). |
+| `hidden.bs.dialog` | Fires after a Bootstrap hide finishes or after the browser closes an initialized dialog. |
 | `hidePrevented.bs.dialog` | Fired when the dialog is shown, its backdrop is `static`, and a click outside the dialog or an escape key press is performed (with `keyboard` set to `false`). |
-| `cancel.bs.dialog` | Fired when the user presses Escape and the dialog is about to close. |
+| `cancel.bs.dialog` | Fires when Bootstrap handles a native close request or Escape in a non-modal dialog. Use `hide.bs.dialog` to prevent a Bootstrap hide. |
 </BsTable>
 
 ```js

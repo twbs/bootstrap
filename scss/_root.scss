@@ -38,7 +38,7 @@ $root-tokens: defaults(
     --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
 
     --font-mono: "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace",
-    --code-font-size: 95%,
+    --code-font-size: .875em,
     --code-color: var(--fg-2),
 
     // scss-docs-start root-border-var
@@ -206,9 +206,6 @@ $root-tokens: defaults(
   @include tokens($root-tokens);
 
   color-scheme: light dark;
-  // Always reserve the viewport scrollbar gutter so layout doesn't shift
-  // when overflow: hidden is applied (e.g. when a dialog opens on Windows).
-  scrollbar-gutter: stable;
 }
 
 // Deepen shadows in dark mode. The shadow-strength token is a plain number, so it

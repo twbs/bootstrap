@@ -9,6 +9,7 @@ import {
   computePosition,
   flip,
   shift,
+  size,
   offset,
   autoUpdate,
   type Boundary,
@@ -65,6 +66,7 @@ const HOME_KEY = 'Home'
 const END_KEY = 'End'
 const ENTER_KEY = 'Enter'
 const SPACE_KEY = ' '
+const ITEM_NAVIGATION_KEYS = new Set([ARROW_UP_KEY, ARROW_DOWN_KEY, ARROW_LEFT_KEY, ARROW_RIGHT_KEY, HOME_KEY, END_KEY])
 const RIGHT_MOUSE_BUTTON = 2
 
 const SUBMENU_CLOSE_DELAY = 100
@@ -76,8 +78,10 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_TOUCH_MOUSEOVER = `mouseover${EVENT_KEY}`
 
 const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_MENU_BACK = 'menu-back'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="menu"]:not(.disabled):not(:disabled)'
 
@@ -86,6 +90,7 @@ const SELECTOR_SUBMENU = '.submenu'
 const SELECTOR_SUBMENU_TOGGLE = '.submenu > .menu-item'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.menu-item:not(.disabled):not(:disabled)'
+const SELECTOR_TAB_STOPS = ':is(a[href], button, input, select, textarea, summary, [tabindex], [contenteditable]):not(:disabled, .disabled)'
 
 const DEFAULT_PLACEMENT = 'bottom-start'
 const SUBMENU_PLACEMENT = 'end-start'
@@ -162,9 +167,13 @@ class Menu extends BaseComponent {
   protected declare _openSubmenus: Map<HTMLElement, () => void>
   protected declare _submenuCloseTimeouts: Map<HTMLElement, number>
   protected declare _hoverIntentData: { x: number, y: number, timestamp: number } | null
+  protected declare _submenuPointerType: string
+  protected declare _touchMouseover: () => void
+  protected declare _touchMouseoverTargets: Set<Element>
   protected declare _menu: HTMLElement
   protected declare _isSubmenu: boolean
   protected declare _menuOriginalParent: ParentNode | null
+  protected declare _menuOriginalNextSibling: ChildNode | null
 
   constructor(element?: string | Element | null, config?: Partial<MenuConfig> | null) {
     if (typeof computePosition === 'undefined') {
@@ -180,6 +189,9 @@ class Menu extends BaseComponent {
     this._openSubmenus = new Map()
     this._submenuCloseTimeouts = new Map()
     this._hoverIntentData = null
+    this._submenuPointerType = 'mouse'
+    this._touchMouseover = () => noop()
+    this._touchMouseoverTargets = new Set()
 
     this._menu = (this._config.menu || this._findMenu()) as HTMLElement
 
@@ -194,6 +206,7 @@ class Menu extends BaseComponent {
     this._isSubmenu = this._parent.classList?.contains('submenu')
 
     this._menuOriginalParent = this._menu?.parentNode
+    this._menuOriginalNextSibling = null
 
     this._parseResponsivePlacements()
     this._setupSubmenuListeners()
@@ -218,7 +231,11 @@ class Menu extends BaseComponent {
     return this._isShown() ? this.hide() : this.show()
   }
 
-  async show(): Promise<void> {
+  show(): Promise<void> {
+    return this._show()
+  }
+
+  protected async _show(focus?: () => void): Promise<void> {
     if (isDisabled(this._element) || this._isShown()) {
       return
     }
@@ -234,15 +251,16 @@ class Menu extends BaseComponent {
     }
 
     this._moveMenuToContainer()
-    this._createFloating()
+    this._disposeFloating()
+    this._submenuPointerType = 'mouse'
 
     if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
       for (const element of document.body.children) {
-        EventHandler.on(element, 'mouseover', noop)
+        EventHandler.on(element, EVENT_TOUCH_MOUSEOVER, this._touchMouseover)
+        this._touchMouseoverTargets.add(element)
       }
     }
 
-    this._element.focus({ focusVisible: false })
     this._element.setAttribute('aria-expanded', 'true')
 
     this._menu.classList.add(CLASS_NAME_SHOW)
@@ -252,13 +270,24 @@ class Menu extends BaseComponent {
       this._parent.classList.add(CLASS_NAME_SHOW)
     }
 
+    this._syncSubmenuLayout()
+    this._createFloating()
     Menu._openInstances.add(this)
+    if (focus) {
+      focus()
+    } else {
+      this._element.focus({ focusVisible: false })
+    }
+
+    if (!this._element || !this._isShown()) {
+      return
+    }
 
     // Wait for the CSS entry transition (opacity/transform) to finish before
     // announcing `shown`, so listeners run against the settled menu.
     await this._queueCallback(() => {
       // Bail if the menu was hidden again mid-transition.
-      if (this._isShown()) {
+      if (this._menu && this._isShown()) {
         EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
       }
     }, this._menu, this._isAnimated())
@@ -277,7 +306,10 @@ class Menu extends BaseComponent {
   }
 
   override dispose(): void {
+    this._removeTouchMouseoverListeners()
+    EventHandler.off(this._menu, EVENT_KEY)
     this._disposeFloating()
+    this._clearSize()
     this._restoreMenuToOriginalParent()
     this._disposeMediaQueryListeners()
     this._closeAllSubmenus()
@@ -319,11 +351,7 @@ class Menu extends BaseComponent {
 
     this._closeAllSubmenus()
 
-    if ('ontouchstart' in document.documentElement) {
-      for (const element of document.body.children) {
-        EventHandler.off(element, 'mouseover', noop)
-      }
-    }
+    this._removeTouchMouseoverListeners()
 
     // Start the exit transition by removing `.show`. Keep Floating UI active and
     // the menu in its current DOM location so it animates out in place; the
@@ -342,16 +370,25 @@ class Menu extends BaseComponent {
 
     await this._queueCallback(() => {
       // Bail if the menu was reopened during the exit transition.
-      if (this._isShown()) {
+      if (!this._menu || this._isShown()) {
         return
       }
 
       this._disposeFloating()
+      this._clearSize()
       this._restoreMenuToOriginalParent()
       Manipulator.removeDataAttribute(this._menu, 'placement')
       Manipulator.removeDataAttribute(this._menu, 'display')
       EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
     }, this._menu, this._isAnimated())
+  }
+
+  protected _removeTouchMouseoverListeners(): void {
+    for (const element of this._touchMouseoverTargets) {
+      EventHandler.off(element, EVENT_TOUCH_MOUSEOVER, this._touchMouseover)
+    }
+
+    this._touchMouseoverTargets.clear()
   }
 
   protected override _getConfig(config?: ComponentConfig | null): ComponentConfig {
@@ -381,8 +418,6 @@ class Menu extends BaseComponent {
     } else if (typeof this._config.reference === 'object') {
       referenceElement = this._config.reference as ReferenceElement
     }
-
-    this._updateFloatingPosition(referenceElement)
 
     this._floatingCleanup = autoUpdate(
       referenceElement,
@@ -481,6 +516,7 @@ class Menu extends BaseComponent {
 
   protected _getFloatingMiddleware(): Middleware[] {
     const offsetValue = this._getOffset()
+    const boundary = (this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary) as Boundary
 
     const middleware = [
       offset(
@@ -489,17 +525,46 @@ class Menu extends BaseComponent {
           toFloatingOffset(offsetValue)
       ),
       flip({
-        fallbackPlacements: this._getFallbackPlacements(),
-        // When no placement fits, keep the initial one. Overflow below can be
-        // scrolled to; overflow above the scroll origin can never be reached.
-        fallbackStrategy: 'initialPlacement'
+        boundary,
+        fallbackPlacements: this._getFallbackPlacements()
       }),
-      shift({
-        boundary: (this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary) as Boundary
+      shift({ boundary }),
+      size({
+        boundary,
+        apply: ({ availableWidth, availableHeight, elements }) => {
+          if (this._menu !== elements.floating || !this._isShown() || getComputedStyle(this._menu).position === 'static') {
+            return
+          }
+
+          this._menu.style.setProperty('--bs-menu-available-width', `${Math.max(0, Math.floor(availableWidth))}px`)
+          this._menu.style.setProperty('--bs-menu-available-height', `${Math.max(0, Math.floor(availableHeight))}px`)
+          this._syncSubmenuLayout()
+        }
       })
     ]
 
     return middleware
+  }
+
+  protected _syncSubmenuLayout(): void {
+    if (!this._openSubmenus.size) {
+      this._menu.toggleAttribute('data-bs-menu-constrained', this._menu.scrollHeight > this._menu.clientHeight)
+    } else if (this._usesStackedSubmenus() && this._menu.scrollHeight > this._menu.clientHeight) {
+      // An open stacked panel can need more room than its parent.
+      this._menu.setAttribute('data-bs-menu-constrained', '')
+    }
+
+    const { overflowX, overflowY } = getComputedStyle(this._menu)
+    this._menu.toggleAttribute('data-bs-menu-stacked', overflowX !== 'visible' || overflowY !== 'visible')
+  }
+
+  protected _clearSize(): void {
+    if (this._menu) {
+      this._menu.style.removeProperty('--bs-menu-available-width')
+      this._menu.style.removeProperty('--bs-menu-available-height')
+      this._menu.removeAttribute('data-bs-menu-constrained')
+      this._menu.removeAttribute('data-bs-menu-stacked')
+    }
   }
 
   protected _getFallbackPlacements(): Placement[] {
@@ -559,6 +624,7 @@ class Menu extends BaseComponent {
     }
 
     if (this._menu.parentNode !== container) {
+      this._menuOriginalNextSibling = this._menu.nextSibling
       container.append(this._menu)
     }
   }
@@ -569,7 +635,8 @@ class Menu extends BaseComponent {
     }
 
     if (this._menu.parentNode !== this._menuOriginalParent) {
-      this._menuOriginalParent.append(this._menu)
+      const nextSibling = this._menuOriginalNextSibling
+      this._menuOriginalParent.insertBefore(this._menu, nextSibling?.parentNode === this._menuOriginalParent ? nextSibling : null)
     }
   }
 
@@ -605,27 +672,44 @@ class Menu extends BaseComponent {
 
   protected _setupSubmenuListeners(): void {
     if (this._config.submenuTrigger === 'hover' || this._config.submenuTrigger === 'both') {
-      EventHandler.on(this._menu, 'mouseenter', SELECTOR_SUBMENU_TOGGLE, event => {
+      EventHandler.on(this._menu, `mouseenter${EVENT_KEY}`, SELECTOR_SUBMENU_TOGGLE, event => {
         this._onSubmenuTriggerEnter(event)
       })
 
-      EventHandler.on(this._menu, 'mouseleave', SELECTOR_SUBMENU, event => {
+      EventHandler.on(this._menu, `mouseleave${EVENT_KEY}`, SELECTOR_SUBMENU, event => {
         this._onSubmenuLeave(event)
       })
 
-      EventHandler.on(this._menu, 'mousemove', event => {
+      EventHandler.on(this._menu, `mousemove${EVENT_KEY}`, event => {
         this._trackMousePosition(event)
       })
     }
 
-    if (this._config.submenuTrigger === 'click' || this._config.submenuTrigger === 'both') {
-      EventHandler.on(this._menu, 'click', SELECTOR_SUBMENU_TOGGLE, event => {
-        this._onSubmenuTriggerClick(event)
+    if (this._config.submenuTrigger === 'both') {
+      // A touch tap can send mouseover before click.
+      EventHandler.on(this._menu, `pointerover${EVENT_KEY}`, event => {
+        this._submenuPointerType = event.pointerType
+      })
+    }
+
+    if (['click', 'hover', 'both'].includes(this._config.submenuTrigger)) {
+      EventHandler.on(this._menu, `click${EVENT_KEY}`, SELECTOR_SUBMENU_TOGGLE, event => {
+        if (this._config.submenuTrigger !== 'hover' || this._usesStackedSubmenus()) {
+          this._onSubmenuTriggerClick(event)
+        }
       })
     }
   }
 
+  protected _usesStackedSubmenus(): boolean {
+    return getComputedStyle(this._menu).getPropertyValue('--bs-menu-stack-submenus') === '1'
+  }
+
   protected _onSubmenuTriggerEnter(event: BootstrapEvent): void {
+    if (this._submenuPointerType !== 'mouse' || this._usesStackedSubmenus()) {
+      return
+    }
+
     const trigger = (event.target as Element).closest<HTMLElement>(SELECTOR_SUBMENU_TOGGLE)
     if (!trigger) {
       return
@@ -643,6 +727,10 @@ class Menu extends BaseComponent {
   }
 
   protected _onSubmenuLeave(event: BootstrapEvent): void {
+    if (this._submenuPointerType !== 'mouse' || this._usesStackedSubmenus()) {
+      return
+    }
+
     const submenuWrapper = (event.target as Element).closest(SELECTOR_SUBMENU)!
     const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
     if (!submenu || !this._openSubmenus.has(submenu)) {
@@ -676,6 +764,9 @@ class Menu extends BaseComponent {
     } else {
       this._closeSiblingSubmenus(submenuWrapper)
       this._openSubmenu(trigger, submenu, submenuWrapper)
+      if (this._usesStackedSubmenus()) {
+        this._getItemsInMenu(submenu)[0]?.focus()
+      }
     }
   }
 
@@ -715,10 +806,27 @@ class Menu extends BaseComponent {
     submenu.classList.add(CLASS_NAME_SHOW)
     submenuWrapper.classList.add(CLASS_NAME_SHOW)
 
-    const cleanup = this._createSubmenuFloating(trigger, submenu, submenuWrapper)
-    this._openSubmenus.set(submenu, cleanup)
+    const backItem = document.createElement(submenu.matches('ul, ol, menu') ? 'li' : 'div')
+    backItem.className = CLASS_NAME_MENU_BACK
+    const backButton = document.createElement('button')
+    backButton.type = 'button'
+    backButton.className = 'menu-item'
+    backButton.textContent = 'Back'
+    backButton.addEventListener('click', event => {
+      event.stopPropagation()
+      this._closeSubmenu(submenu, submenuWrapper)
+      trigger.focus()
+    })
+    backItem.append(backButton)
+    submenu.prepend(backItem)
 
-    EventHandler.on(submenu, 'mouseenter', () => {
+    const cleanup = this._createSubmenuFloating(submenu, submenuWrapper)
+    this._openSubmenus.set(submenu, () => {
+      cleanup()
+      backItem.remove()
+    })
+
+    EventHandler.on(submenu, `mouseenter${EVENT_KEY}`, () => {
       this._cancelSubmenuCloseTimeout(submenu)
     })
   }
@@ -742,7 +850,8 @@ class Menu extends BaseComponent {
     }
 
     this._openSubmenus.delete(submenu)
-    EventHandler.off(submenu, 'mouseenter')
+    EventHandler.off(submenu, `mouseenter${EVENT_KEY}`)
+    this._cancelSubmenuCloseTimeout(submenu)
 
     if (trigger) {
       trigger.setAttribute('aria-expanded', 'false')
@@ -778,7 +887,7 @@ class Menu extends BaseComponent {
     }
   }
 
-  protected _createSubmenuFloating(trigger: HTMLElement, submenu: HTMLElement, submenuWrapper: Element): () => void {
+  protected _createSubmenuFloating(submenu: HTMLElement, submenuWrapper: Element): () => void {
     const referenceElement = submenuWrapper
     const placement = resolveLogicalPlacement(SUBMENU_PLACEMENT) as Placement
     const middleware = [
@@ -793,15 +902,16 @@ class Menu extends BaseComponent {
       shift({ padding: 8 })
     ]
 
-    const updatePosition = () => this._applyFloatingPosition(referenceElement, submenu, placement, middleware)
-      .then(finalPlacement => {
-        // Reveal the submenu now that it has been positioned (see `_openSubmenu`);
-        // clearing the inline opacity lets the CSS fade-in transition take over.
+    const updatePosition = async () => {
+      if (this._usesStackedSubmenus()) {
         submenu.style.opacity = ''
-        return finalPlacement
-      })
+        return
+      }
 
-    updatePosition()
+      await this._applyFloatingPosition(referenceElement, submenu, placement, middleware)
+      submenu.style.opacity = ''
+    }
+
     return autoUpdate(referenceElement, submenu, updatePosition)
   }
 
@@ -879,8 +989,9 @@ class Menu extends BaseComponent {
   // Items sit either directly in `.menu`, or as a submenu trigger one level deeper
   // (`.menu > .submenu > .menu-item`). Both are navigable at the same level.
   protected _getItemsInMenu(menu: Element): HTMLElement[] {
+    const backSelector = this._usesStackedSubmenus() ? `, :scope > .${CLASS_NAME_MENU_BACK} > ${SELECTOR_VISIBLE_ITEMS}` : ''
     return SelectorEngine.find(
-      `:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS}`,
+      `:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS}${backSelector}`,
       menu
     ).filter(element => isVisible(element))
   }
@@ -896,6 +1007,31 @@ class Menu extends BaseComponent {
     const nextItem = getNextActiveElement(items, target as HTMLElement, key === ARROW_DOWN_KEY, !items.includes(target as HTMLElement))
     nextItem.focus()
     this._closeUnrelatedSubmenus(currentMenu, nextItem)
+  }
+
+  protected _handlePortaledTab(event: BootstrapEvent): void {
+    if (!this._isShown() || this._menu.parentNode === this._menuOriginalParent || event.defaultPrevented) {
+      return
+    }
+
+    const stops = SelectorEngine.find(SELECTOR_TAB_STOPS, this._menu).filter(element =>
+      (element.tabIndex >= 0 || (element.isContentEditable && !element.hasAttribute('tabindex'))) &&
+      !element.closest('[inert]') && isVisible(element)
+    )
+    const first = stops[0]
+    if (event.target === this._element && !event.shiftKey && first) {
+      event.preventDefault()
+      first.focus()
+      return
+    }
+
+    if (event.shiftKey && event.target === first) {
+      event.preventDefault()
+      this._element.focus()
+    } else if (!event.shiftKey && event.target === stops.at(-1)) {
+      // Let the browser continue from the toggle in the page's tab order.
+      this._element.focus()
+    }
   }
 
   // Moving focus along one level closes the submenus focus left behind, matching
@@ -933,9 +1069,11 @@ class Menu extends BaseComponent {
         this._closeSiblingSubmenus(submenuWrapper)
         this._openSubmenu(target as HTMLElement, submenu, submenuWrapper)
         requestAnimationFrame(() => {
-          const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
-          if (firstItem) {
-            firstItem.focus()
+          if (this._openSubmenus?.has(submenu)) {
+            const firstItem = this._usesStackedSubmenus() ?
+              this._getItemsInMenu(submenu)[0] :
+              SelectorEngine.findOne(`${SELECTOR_VISIBLE_ITEMS}:not(.${CLASS_NAME_MENU_BACK} > *)`, submenu)
+            firstItem?.focus()
           }
         })
       }
@@ -962,10 +1100,14 @@ class Menu extends BaseComponent {
     }
 
     if (key === HOME_KEY || key === END_KEY) {
+      const currentMenu = (target as Element).closest(SELECTOR_MENU)
+      if (!currentMenu) {
+        return false
+      }
+
       event.preventDefault()
       event.stopPropagation()
 
-      const currentMenu = (target as Element).closest(SELECTOR_MENU)!
       const items = this._getItemsInMenu(currentMenu)
 
       if (items.length) {
@@ -978,6 +1120,27 @@ class Menu extends BaseComponent {
     }
 
     return false
+  }
+
+  protected _handleEscape(event: BootstrapEvent): void {
+    if (!this._isShown()) {
+      return
+    }
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    const currentMenu = (event.target as Element).closest<HTMLElement>(SELECTOR_MENU)
+    const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
+
+    if (currentMenu && parentSubmenuWrapper && this._openSubmenus.has(currentMenu)) {
+      this._closeSubmenu(currentMenu, parentSubmenuWrapper)
+      SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)?.focus()
+      return
+    }
+
+    this.hide()
+    this._element.focus()
   }
 
   static clearMenus(event: BootstrapEvent): void {
@@ -1041,24 +1204,18 @@ class Menu extends BaseComponent {
   }
 
   static dataApiKeydownHandler(this: HTMLElement, event: BootstrapEvent): void {
-    // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
-    // menu doesn't hijack their arrow keys.
-    const isInput = /input|textarea/i.test((event.target as HTMLElement).tagName) || (event.target as HTMLElement).isContentEditable
-    const isEscapeEvent = event.key === ESCAPE_KEY
-    const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
-    const isLeftOrRightEvent = [ARROW_LEFT_KEY, ARROW_RIGHT_KEY].includes(event.key)
-    const isHomeOrEndEvent = [HOME_KEY, END_KEY].includes(event.key)
-    const isEnterOrSpaceEvent = [ENTER_KEY, SPACE_KEY].includes(event.key)
-
-    const isSubmenuTrigger = (event.target as Element).matches(SELECTOR_SUBMENU_TOGGLE)
-
-    if (!isUpOrDownEvent && !isEscapeEvent && !isLeftOrRightEvent && !isHomeOrEndEvent &&
-        !(isEnterOrSpaceEvent && isSubmenuTrigger)) {
+    if (event.isComposing || event.keyCode === 229) {
       return
     }
 
-    if (isInput && !isEscapeEvent) {
-      return
+    const { key, target } = event as KeyboardEvent & { target: HTMLElement }
+    if (key !== ESCAPE_KEY && key !== TAB_KEY) {
+      const activatesSubmenu = (key === ENTER_KEY || key === SPACE_KEY) && target.matches(SELECTOR_SUBMENU_TOGGLE)
+      const isMenuItemOrToggle = target.matches(`${SELECTOR_DATA_TOGGLE}, .menu-item`)
+      if (!(ITEM_NAVIGATION_KEYS.has(key) || activatesSubmenu) || !isMenuItemOrToggle ||
+          target.isContentEditable || target.matches('input, select, textarea')) {
+        return
+      }
     }
 
     const getToggleButton = Menu._getToggleFromKeydownContext(this, event)
@@ -1067,39 +1224,22 @@ class Menu extends BaseComponent {
       return
     }
 
-    const instance = Menu.getOrCreateInstance(getToggleButton)
-
-    if ((isLeftOrRightEvent || isHomeOrEndEvent || (isEnterOrSpaceEvent && isSubmenuTrigger)) && instance._handleSubmenuKeydown(event)) {
+    if (key === TAB_KEY) {
+      Menu.getInstance(getToggleButton)?._handlePortaledTab(event)
       return
     }
 
-    if (isUpOrDownEvent) {
+    const instance = Menu.getOrCreateInstance(getToggleButton)
+
+    if (key === ESCAPE_KEY) {
+      instance._handleEscape(event)
+    } else if (key === ARROW_UP_KEY || key === ARROW_DOWN_KEY) {
       event.preventDefault()
       event.stopPropagation()
       instance.show()
       instance._selectMenuItem(event)
-      return
-    }
-
-    if (isEscapeEvent && instance._isShown()) {
-      event.preventDefault()
-      event.stopPropagation()
-
-      const currentMenu = (event.target as Element).closest(SELECTOR_MENU)
-      const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
-
-      if (parentSubmenuWrapper && instance._openSubmenus.size > 0) {
-        const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)
-        instance._closeSubmenu(currentMenu as HTMLElement, parentSubmenuWrapper)
-        if (parentTrigger) {
-          parentTrigger.focus()
-        }
-
-        return
-      }
-
-      instance.hide()
-      getToggleButton.focus()
+    } else {
+      instance._handleSubmenuKeydown(event)
     }
   }
 }

@@ -17,10 +17,10 @@ export async function getStaticPaths() {
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
-const { id, data } = Astro.props
+const { id, data, filePath } = Astro.props
 const { Content, headings, remarkPluginFrontmatter } = await render(Astro.props)
 ---
 
-<DocsLayout frontmatter={remarkPluginFrontmatter as typeof data} headings={headings} id={id}>
+<DocsLayout frontmatter={remarkPluginFrontmatter as typeof data} headings={headings} id={id} filePath={filePath}>
   <Content components={{ ...shortcodes, pre: shortcodes.Code }} />
 </DocsLayout>
