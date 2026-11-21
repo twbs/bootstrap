@@ -1,3 +1,5 @@
+import { userEvent } from 'vitest/browser'
+import otpStyles from '../../../scss/forms/_otp-input.scss?inline'
 import OtpInput from '../../src/otp-input.js'
 import { clearFixture, createEvent, getFixture } from '../helpers/fixture.js'
 
@@ -55,7 +57,7 @@ describe('OtpInput', () => {
       const end = input.selectionEnd ?? start
       const available = Math.max(0, input.maxLength - (input.value.length - (end - start)))
       input.setRangeText(value.slice(0, available), start, end, 'end')
-      input.dispatchEvent(createEvent('input'))
+      input.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertFromPaste' }))
     }
 
     return event
@@ -153,6 +155,75 @@ describe('OtpInput', () => {
       const input = otpEl.querySelector('input')
       expect(input.getAttribute('inputmode')).toEqual('text')
       expect(input.getAttribute('pattern')).toEqual('[A-Za-z0-9]*')
+    })
+
+    it('should set a text inputmode and pattern for the alpha type and strip digits', () => {
+      fixtureEl.innerHTML = getOtpHtml('data-bs-type="alpha"')
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+
+      const input = otpEl.querySelector('input')
+      expect(input.getAttribute('inputmode')).toEqual('text')
+      expect(input.getAttribute('pattern')).toEqual('[A-Za-z]*')
+
+      otp.setValue('a1B2c3')
+      expect(otp.getValue()).toEqual('aBc')
+    })
+
+    it('should fall back to the numeric type for an unknown type', () => {
+      fixtureEl.innerHTML = getOtpHtml('data-bs-type="hex"')
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+
+      const input = otpEl.querySelector('input')
+      expect(input.getAttribute('inputmode')).toEqual('numeric')
+      expect(input.getAttribute('pattern')).toEqual('[0-9]*')
+
+      otp.setValue('1a2b3c')
+      expect(otp.getValue()).toEqual('123')
+    })
+
+    for (const maxlength of ['0', '-2', 'abc']) {
+      it(`should fall back to six slots for the maxlength attribute ${JSON.stringify(maxlength)}`, () => {
+        fixtureEl.innerHTML = getOtpHtml('', maxlength)
+
+        const otpEl = fixtureEl.querySelector('.otp')
+        new OtpInput(otpEl) // eslint-disable-line no-new
+
+        expect(otpEl.querySelector('input').getAttribute('maxlength')).toEqual('6')
+        expect(otpEl.querySelectorAll('.otp-slot').length).toEqual(6)
+      })
+    }
+
+    for (const type of ['number', 'password']) {
+      it(`should change a ${type} input to a text input`, () => {
+        fixtureEl.innerHTML = `<div class="otp"><input type="${type}" maxlength="6"></div>`
+
+        const otpEl = fixtureEl.querySelector('.otp')
+        new OtpInput(otpEl) // eslint-disable-line no-new
+
+        expect(otpEl.querySelector('input').type).toEqual('text')
+      })
+    }
+
+    it('should keep an existing autocomplete attribute', () => {
+      fixtureEl.innerHTML = '<div class="otp"><input type="text" maxlength="6" autocomplete="off"></div>'
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+
+      expect(otpEl.querySelector('input').getAttribute('autocomplete')).toEqual('off')
+    })
+
+    it('should sanitize a pre-filled value', () => {
+      fixtureEl.innerHTML = '<div class="otp"><input type="text" maxlength="4" value="1a2-3 45"></div>'
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+
+      expect(otp.getValue()).toEqual('1234')
     })
   })
 
@@ -257,6 +328,36 @@ describe('OtpInput', () => {
       pasteInto(input, '123-456')
 
       expect(input.value).toEqual('123456')
+    })
+
+    it('should keep a short formatted paste invalid and allow undo and redo', async () => {
+      fixtureEl.innerHTML = getOtpHtml()
+      const otpEl = fixtureEl.querySelector('.otp')
+      const input = otpEl.querySelector('input')
+      input.minLength = 6
+      input.required = true
+      const otp = new OtpInput(otpEl)
+      const slots = otpEl.querySelector('.otp-slots')
+      input.focus()
+
+      pasteInto(input, '1-2')
+
+      expect(otp.getValue()).toEqual('12')
+      expect(input.checkValidity()).toBeFalse()
+      expect(slots.textContent).toEqual('12')
+
+      const modifier = /Mac/.test(navigator.platform) ? 'Meta' : 'Control'
+      await userEvent.keyboard(`{${modifier}>}z{/${modifier}}`)
+      expect(otp.getValue()).toEqual('')
+      expect(slots.textContent).toEqual('')
+
+      await userEvent.keyboard(`{${modifier}>}{Shift>}z{/Shift}{/${modifier}}`)
+      expect(otp.getValue()).toEqual('12')
+      expect(input.checkValidity()).toBeFalse()
+
+      pasteInto(input, '123-456')
+      expect(otp.getValue()).toEqual('123456')
+      expect(input.checkValidity()).toBeTrue()
     })
 
     it('should replace the selected range with a partial pasted value', () => {
@@ -367,7 +468,7 @@ describe('OtpInput', () => {
       expect(slots[0]).toHaveClass('otp-slot-active')
     })
 
-    it('should overwrite the active slot instead of inserting', () => {
+    it('should overwrite the active slot instead of inserting', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -377,16 +478,14 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(2, 3)
-      input.dispatchEvent(new InputEvent('beforeinput', {
-        inputType: 'insertText', data: '9', bubbles: true, cancelable: true
-      }))
+      await userEvent.keyboard('9')
 
       expect(input.value).toEqual('129456')
       // Caret advances to the next slot
       expect(input.selectionStart).toEqual(3)
     })
 
-    it('should delete the previous character on backspace', () => {
+    it('should delete the previous character on backspace', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -396,7 +495,7 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(3, 3)
-      input.dispatchEvent(new InputEvent('beforeinput', { inputType: 'deleteContentBackward', bubbles: true, cancelable: true }))
+      await userEvent.keyboard('{Backspace}')
 
       expect(input.value).toEqual('12')
       expect(input.selectionStart).toEqual(2)
@@ -480,7 +579,7 @@ describe('OtpInput', () => {
       expect(slots[2]).toHaveClass('otp-slot-active')
     })
 
-    it('should clear the selected slot and keep the caret on backspace', () => {
+    it('should clear the selected slot and keep the caret on backspace', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -491,13 +590,30 @@ describe('OtpInput', () => {
       input.focus()
       // A filled slot is selected (as the active slot always is)
       input.setSelectionRange(2, 3)
-      beforeInput(input, { inputType: 'deleteContentBackward' })
+      await userEvent.keyboard('{Backspace}')
 
       expect(input.value).toEqual('12456')
       expect(input.selectionStart).toEqual(2)
     })
 
-    it('should do nothing on backspace at the start of an empty field', () => {
+    it('should replace a multi-slot selection with the typed character', async () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      input.focus()
+      // Select all, then type over it
+      input.setSelectionRange(0, 6)
+      await userEvent.keyboard('9')
+
+      expect(input.value).toEqual('9')
+      expect(input.selectionStart).toEqual(1)
+    })
+
+    it('should do nothing on backspace at the start of an empty field', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -506,16 +622,12 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(0, 0)
-      const event = new InputEvent('beforeinput', {
-        inputType: 'deleteContentBackward', bubbles: true, cancelable: true
-      })
-      input.dispatchEvent(event)
+      await userEvent.keyboard('{Backspace}')
 
       expect(input.value).toEqual('')
-      expect(event.defaultPrevented).toBeTrue()
     })
 
-    it('should delete the next character on delete and keep the caret', () => {
+    it('should delete the next character on delete and keep the caret', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -525,13 +637,13 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(1, 1)
-      beforeInput(input, { inputType: 'deleteContentForward' })
+      await userEvent.keyboard('{Delete}')
 
       expect(input.value).toEqual('13')
       expect(input.selectionStart).toEqual(1)
     })
 
-    it('should clear the selected slot and keep the caret on delete', () => {
+    it('should clear the selected slot and keep the caret on delete', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -541,13 +653,13 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(2, 3)
-      beforeInput(input, { inputType: 'deleteContentForward' })
+      await userEvent.keyboard('{Delete}')
 
       expect(input.value).toEqual('12456')
       expect(input.selectionStart).toEqual(2)
     })
 
-    it('should do nothing on delete at the end of the value', () => {
+    it('should do nothing on delete at the end of the value', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -557,7 +669,7 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(3, 3)
-      beforeInput(input, { inputType: 'deleteContentForward' })
+      await userEvent.keyboard('{Delete}')
 
       expect(input.value).toEqual('123')
     })
@@ -596,7 +708,7 @@ describe('OtpInput', () => {
       expect(input.value).toEqual('123456')
     })
 
-    it('should append into an empty slot when typing at the caret', () => {
+    it('should append into an empty slot when typing at the caret', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -606,7 +718,7 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(2, 2)
-      beforeInput(input, { inputType: 'insertText', data: '3' })
+      await userEvent.keyboard('3')
 
       expect(input.value).toEqual('123')
       expect(input.selectionStart).toEqual(3)
@@ -626,6 +738,132 @@ describe('OtpInput', () => {
       expect(input.value).toEqual('123')
       expect(input.selectionStart).toEqual(3)
       expect(input.selectionEnd).toEqual(3)
+    })
+
+    it('should highlight each slot in the selection and remove the highlight after collapse', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      input.focus()
+      input.setSelectionRange(1, 4, 'backward')
+      document.dispatchEvent(new Event('selectionchange'))
+
+      const selected = () => [...otpEl.querySelectorAll('.otp-slot-selected')].map(slot => slot.textContent).join('')
+      expect(selected()).toEqual('234')
+
+      input.setSelectionRange(2, 2)
+      document.dispatchEvent(new Event('selectionchange'))
+
+      expect(selected()).toEqual('')
+    })
+
+    it('should replace the slot at a collapsed caret and keep native undo and input events', async () => {
+      fixtureEl.innerHTML = getOtpHtml()
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      const values = []
+      input.addEventListener('input', () => values.push(input.value))
+      otp.setValue('123456')
+      input.focus()
+      input.setSelectionRange(2, 2)
+
+      await userEvent.keyboard('9')
+
+      expect(input.value).toEqual('129456')
+
+      const modifier = /Mac/.test(navigator.platform) ? 'Meta' : 'Control'
+      await userEvent.keyboard(`{${modifier}>}z{/${modifier}}`)
+
+      expect(input.value).toEqual('123456')
+      expect(values).toEqual(['129456', '123456'])
+      expect(otpEl.querySelector('.otp-slots').textContent).toEqual('123456')
+    })
+
+    it('should map a tap to the correct slot in RTL', () => {
+      fixtureEl.innerHTML = `<div dir="rtl">${getOtpHtml()}</div>`
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      const slots = otpEl.querySelectorAll('.otp-slot')
+      otp.setValue('123456')
+      layoutSlotsHorizontally(otpEl)
+      input.focus()
+
+      pointerDownOnSlot(input, slots[3])
+
+      expect(input.selectionStart).toEqual(3)
+      expect(input.selectionEnd).toEqual(4)
+    })
+
+    for (const [type, code] of [['numeric', '123'], ['alphanumeric', 'A1B']]) {
+      it(`should move one slot per arrow in RTL for ${type} codes`, async () => {
+        fixtureEl.innerHTML = `<div dir="rtl">${getOtpHtml(`data-bs-type="${type}"`)}</div>`
+        const otpEl = fixtureEl.querySelector('.otp')
+        const otp = new OtpInput(otpEl)
+        const input = otpEl.querySelector('input')
+        otp.setValue(code)
+        input.focus()
+
+        const pressArrow = async (key, slot) => {
+          await userEvent.keyboard(`{${key}}`)
+          expect(input.selectionStart).toEqual(slot)
+          expect(otpEl.querySelectorAll('.otp-slot')[slot]).toHaveClass('otp-slot-active')
+        }
+
+        await pressArrow('ArrowRight', 2)
+        await pressArrow('ArrowRight', 1)
+        await pressArrow('ArrowLeft', 2)
+        await pressArrow('ArrowLeft', 3)
+        await pressArrow('ArrowLeft', 3)
+        expect(input.value).toEqual(code)
+      })
+    }
+
+    it('should collapse an RTL selection in the arrow direction', async () => {
+      fixtureEl.innerHTML = `<div dir="rtl">${getOtpHtml()}</div>`
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+      input.focus()
+
+      input.setSelectionRange(1, 4)
+      await userEvent.keyboard('{ArrowRight}')
+      expect(input.selectionStart).toEqual(1)
+      expect(input.selectionEnd).toEqual(2)
+
+      input.setSelectionRange(1, 4)
+      await userEvent.keyboard('{ArrowLeft}')
+      expect(input.selectionStart).toEqual(4)
+      expect(input.selectionEnd).toEqual(5)
+    })
+
+    it('should leave touch pointerdown to the browser and place the caret on click', async () => {
+      fixtureEl.innerHTML = getOtpHtml()
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      const slot = otpEl.querySelectorAll('.otp-slot')[2]
+      otp.setValue('123456')
+      layoutSlotsHorizontally(otpEl)
+      input.focus()
+      const { left, width } = slot.getBoundingClientRect()
+      const options = {
+        bubbles: true,
+        cancelable: true,
+        pointerType: 'touch',
+        clientX: left + (width / 2)
+      }
+
+      expect(input.dispatchEvent(new PointerEvent('pointerdown', options))).toBeTrue()
+      expect(input.selectionStart).toEqual(5)
+
+      input.dispatchEvent(new MouseEvent('click', options))
+      await expect.poll(() => input.selectionStart).toEqual(2)
     })
 
     it('should keep the active slot in sync on selectionchange', () => {
@@ -752,6 +990,120 @@ describe('OtpInput', () => {
       expect(otpEl.querySelectorAll('.otp-separator').length).toEqual(1)
       expect(otpEl.querySelectorAll('.otp-slot').length).toEqual(6)
     })
+
+    it('should repeat the last group size and not add a trailing separator', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      new OtpInput(otpEl, { groups: [2] }) // eslint-disable-line no-new
+
+      const classes = [...otpEl.querySelector('.otp-slots').children].map(child => child.className)
+      expect(classes).toEqual([
+        'otp-slot',
+        'otp-slot',
+        'otp-separator',
+        'otp-slot',
+        'otp-slot',
+        'otp-separator',
+        'otp-slot',
+        'otp-slot'
+      ])
+    })
+
+    it('should render the separator option as the separator text', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      new OtpInput(otpEl, { groups: [3, 3], separator: '-' }) // eslint-disable-line no-new
+
+      expect(otpEl.querySelector('.otp-separator').textContent).toEqual('-')
+    })
+  })
+
+  it('should keep large groups and badge space within a narrow container', () => {
+    fixtureEl.innerHTML = `<div style="width: 260px">${getOtpHtml()}</div>`
+    const style = document.createElement('style')
+    style.textContent = otpStyles
+    fixtureEl.append(style)
+    const otpEl = fixtureEl.querySelector('.otp')
+    otpEl.classList.add('otp-lg', 'otp-connected', 'otp-badge-space')
+    otpEl.style.setProperty('--btn-input-lg-min-height', '44px')
+    otpEl.style.setProperty('--border-width', '1px')
+    otpEl.style.setProperty('--radius-5', '5px')
+    otpEl.style.setProperty('--font-weight-medium', '600')
+    new OtpInput(otpEl, { groups: [3, 3] }) // eslint-disable-line no-new
+
+    const wrapper = otpEl.getBoundingClientRect()
+    const slots = otpEl.querySelectorAll('.otp-slot')
+    const lastSlot = slots[5].getBoundingClientRect()
+    expect(wrapper.width).toBeLessThanOrEqual(260)
+    expect(lastSlot.right).toBeLessThan(wrapper.right)
+    expect(lastSlot.height).toBeGreaterThanOrEqual(44)
+    expect(getComputedStyle(slots[3]).borderStartStartRadius).toEqual('5px')
+    expect(getComputedStyle(slots[2]).borderStartEndRadius).toEqual('5px')
+    expect(getComputedStyle(slots[0]).fontWeight).toEqual('600')
+  })
+
+  describe('form integration', () => {
+    it('should synchronize slots with the reset value and honor a canceled reset', async () => {
+      fixtureEl.innerHTML = `<form>${getOtpHtml()}<button type="reset">Reset</button></form>`
+      const form = fixtureEl.querySelector('form')
+      const reset = form.querySelector('button')
+      const otpEl = form.querySelector('.otp')
+      const input = otpEl.querySelector('input')
+      input.name = 'otp'
+      input.defaultValue = '12'
+      const otp = new OtpInput(otpEl)
+      otp.setValue('654321')
+      form.addEventListener('reset', event => event.preventDefault(), { once: true })
+
+      reset.focus()
+      await userEvent.keyboard('{Enter}')
+      expect(otpEl.querySelector('.otp-slots').textContent).toEqual('654321')
+
+      await userEvent.keyboard('{Enter}')
+      await expect.poll(() => otpEl.querySelector('.otp-slots').textContent).toEqual('12')
+      expect(new FormData(form).get('otp')).toEqual('12')
+    })
+
+    it('should retain native validation and input attributes and show a decorative placeholder', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+      const otpEl = fixtureEl.querySelector('.otp')
+      const input = otpEl.querySelector('input')
+      input.pattern = '[A-Z]{6}'
+      input.inputMode = 'text'
+      input.placeholder = 'AAAAAA'
+      input.required = true
+      const otp = new OtpInput(otpEl, { type: 'alpha' })
+
+      expect(input.inputMode).toEqual('text')
+      expect(input.checkValidity()).toBeFalse()
+      expect(input.value).toEqual('')
+      expect(otpEl.querySelector('.otp-slots').textContent).toEqual('AAAAAA')
+      expect(otpEl.querySelector('.otp-slots').getAttribute('aria-hidden')).toEqual('true')
+
+      otp.setValue('abc')
+      expect(input.validity.patternMismatch).toBeTrue()
+      expect(otpEl.querySelector('.otp-slots').textContent).toEqual('abc')
+
+      otp.setValue('ABCDEF')
+      expect(input.checkValidity()).toBeTrue()
+    })
+
+    it('should transform formatted paste and emit one native input event', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+      const otpEl = fixtureEl.querySelector('.otp')
+      const input = otpEl.querySelector('input')
+      const values = []
+      input.addEventListener('input', () => values.push(input.value))
+      const otp = new OtpInput(otpEl, { pasteTransformer: text => text.split(':')[1] })
+
+      input.focus()
+      pasteInto(input, '1:123-456')
+
+      expect(otp.getValue()).toEqual('123456')
+      expect(values).toEqual(['123456'])
+    })
   })
 
   describe('events', () => {
@@ -769,6 +1121,42 @@ describe('OtpInput', () => {
 
         otp.setValue('123456')
       })
+    })
+
+    it('should only emit complete for a new full code', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const codes = []
+      otpEl.addEventListener('complete.bs.otpInput', event => codes.push(event.value))
+
+      otp.setValue('123456')
+      otp.setValue('123456')
+      otp.setValue('123459')
+      otp.clear()
+      otp.setValue('123459')
+
+      expect(codes).toEqual(['123456', '123459', '123459'])
+    })
+
+    it('should stop after an input listener disposes the instance', async () => {
+      fixtureEl.innerHTML = getOtpHtml('', 1)
+      const otpEl = fixtureEl.querySelector('.otp')
+      const input = otpEl.querySelector('input')
+      const otp = new OtpInput(otpEl)
+      const events = []
+      otpEl.addEventListener('input.bs.otpInput', () => {
+        events.push('input')
+        otp.dispose()
+      }, { once: true })
+      otpEl.addEventListener('complete.bs.otpInput', () => events.push('complete'))
+
+      input.focus()
+      await userEvent.keyboard('5')
+
+      expect(input.value).toEqual('5')
+      expect(events).toEqual(['input'])
+      expect(OtpInput.getInstance(otpEl)).toBeNull()
     })
 
     it('should trigger input event with the current value on each change', () => {
@@ -795,7 +1183,7 @@ describe('OtpInput', () => {
       return counts
     }
 
-    it('should not trigger input or complete events on delete after the last character', () => {
+    it('should not trigger input or complete events on delete after the last character', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -806,14 +1194,13 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(6, 6)
-      const event = beforeInput(input, { inputType: 'deleteContentForward' })
+      await userEvent.keyboard('{Delete}')
 
-      expect(event).toBeFalse()
       expect(input.value).toEqual('123456')
       expect(counts).toEqual({ input: 0, complete: 0 })
     })
 
-    it('should not trigger an input event on backspace before the first character', () => {
+    it('should not trigger an input event on backspace before the first character', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -824,13 +1211,13 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(0, 0)
-      beforeInput(input, { inputType: 'deleteContentBackward' })
+      await userEvent.keyboard('{Backspace}')
 
       expect(input.value).toEqual('123')
       expect(counts).toEqual({ input: 0, complete: 0 })
     })
 
-    it('should trigger one input event when delete removes a character', () => {
+    it('should trigger one input event when delete removes a character', async () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -841,7 +1228,7 @@ describe('OtpInput', () => {
 
       input.focus()
       input.setSelectionRange(2, 3)
-      beforeInput(input, { inputType: 'deleteContentForward' })
+      await userEvent.keyboard('{Delete}')
 
       expect(input.value).toEqual('12456')
       expect(counts).toEqual({ input: 1, complete: 0 })
@@ -862,6 +1249,24 @@ describe('OtpInput', () => {
       expect(OtpInput.getInstance(otpEl)).toBeNull()
       expect(fixtureEl.querySelector('.otp-slots')).toBeNull()
       expect(fixtureEl.querySelector('.otp').classList.contains('otp-rendered')).toBeFalse()
+    })
+
+    it('should update defaults on reinitialization and preserve author values', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+      const otpEl = fixtureEl.querySelector('.otp')
+      const input = otpEl.querySelector('input')
+      input.setAttribute('spellcheck', 'true')
+      const otp = new OtpInput(otpEl)
+      expect(input.inputMode).toEqual('numeric')
+
+      input.pattern = '[A-Z]{6}'
+      otp.dispose()
+      const alphaOtp = new OtpInput(otpEl, { type: 'alpha' })
+
+      expect(input.inputMode).toEqual('text')
+      expect(input.pattern).toEqual('[A-Z]{6}')
+      expect(input.getAttribute('spellcheck')).toEqual('true')
+      alphaOtp.dispose()
     })
 
     it('should stop intercepting paste after dispose', () => {

@@ -29,7 +29,7 @@ Drawer builds on the native `<dialog>` element and our Dialog component to manag
 
 Below is a drawer example that is shown by default (via `open` and `.show` on the `<dialog>`). Drawer includes support for a header with a close button and an optional body class for some initial `padding`. We suggest that you include drawer headers with dismiss actions whenever possible, or provide an explicit dismiss action.
 
-<Example class="bd-example-drawer p-0 bg-1 overflow-hidden" code={`<dialog class="drawer drawer-start show" open tabindex="-1" id="drawer" aria-labelledby="drawerLabel">
+<Example class="bd-example-drawer p-0 bg-1 overflow-hidden" code={`<dialog class="drawer drawer-start show" open id="drawer" aria-labelledby="drawerLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerLabel">Drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -43,14 +43,11 @@ Below is a drawer example that is shown by default (via `open` and `.show` on th
 
 Use the buttons below to show and hide a drawer element via JavaScript. You can use a link with the `href` attribute, or a button with the `data-bs-target` attribute. In both cases, the `data-bs-toggle="drawer"` is required.
 
-<Example code={`<a class="btn-solid theme-primary" data-bs-toggle="drawer" href="#drawerExample" role="button" aria-controls="drawerExample">
-    Link with href
-  </a>
-  <button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerExample" aria-controls="drawerExample">
-    Button with data-bs-target
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerExample" aria-controls="drawerExample">
+    Toggle drawer
   </button>
 
-  <dialog class="drawer drawer-start" tabindex="-1" id="drawerExample" aria-labelledby="drawerExampleLabel">
+  <dialog class="drawer drawer-start" id="drawerExample" aria-labelledby="drawerExampleLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerExampleLabel">Drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -76,6 +73,8 @@ Use the buttons below to show and hide a drawer element via JavaScript. You can 
 
 Supported browsers can open and close a drawer with the [Invoker Commands API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)—no Bootstrap JavaScript required. Set `commandfor` to the drawer’s `id`, use `command="show-modal"` to open, and `command="close"` to dismiss.
 
+The native close command dismisses the drawer immediately. Use the Drawer plugin to play the exit transition. An already-open drawer keeps its native modal or non-modal mode when Bootstrap initializes it. Bootstrap applies its scroll lock when the plugin opens the drawer.
+
 <Callout type="warning">
 The Invoker Commands API is not supported in all browsers. For guaranteed support, use the `data-bs-toggle` examples above when you need our plugin options, events, swipe to dismiss, or animated close.
 </Callout>
@@ -84,7 +83,7 @@ The Invoker Commands API is not supported in all browsers. For guaranteed suppor
     Open drawer
   </button>
 
-  <dialog class="drawer drawer-start" tabindex="-1" id="invokerDrawer" aria-labelledby="invokerDrawerLabel">
+  <dialog class="drawer drawer-start" id="invokerDrawer" aria-labelledby="invokerDrawerLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="invokerDrawerLabel">Invoker Commands</h5>
       <button type="button" class="btn-close" commandfor="invokerDrawer" command="close" aria-label="Close"></button>
@@ -100,7 +99,7 @@ Scrolling the `<body>` element is disabled when a drawer opens modally. Use `dat
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerScrolling" aria-controls="drawerScrolling">Enable body scrolling</button>
 
-  <dialog class="drawer drawer-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="drawerScrolling" aria-labelledby="drawerScrollingLabel">
+  <dialog class="drawer drawer-start" data-bs-scroll="true" data-bs-backdrop="false" id="drawerScrolling" aria-labelledby="drawerScrollingLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerScrollingLabel">Drawer with body scrolling</h5>
       <CloseButton dismiss="drawer" />
@@ -116,7 +115,7 @@ You can also allow `<body>` scrolling while keeping a backdrop. With a backdrop 
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerWithBothOptions" aria-controls="drawerWithBothOptions">Enable both scrolling & backdrop</button>
 
-  <dialog class="drawer drawer-start" data-bs-scroll="true" tabindex="-1" id="drawerWithBothOptions" aria-labelledby="drawerWithBothOptionsLabel">
+  <dialog class="drawer drawer-start" data-bs-scroll="true" id="drawerWithBothOptions" aria-labelledby="drawerWithBothOptionsLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerWithBothOptionsLabel">Backdrop with scrolling</h5>
       <CloseButton dismiss="drawer" />
@@ -134,7 +133,7 @@ When backdrop is set to static, the drawer will not close when clicking outside 
     Toggle static drawer
   </button>
 
-  <dialog class="drawer drawer-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <dialog class="drawer drawer-start" data-bs-backdrop="static" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="staticBackdropLabel">Drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -154,7 +153,7 @@ By default, drawers animate with a slide on open and close. To disable animation
     Toggle instant drawer
   </button>
 
-  <dialog class="drawer drawer-start drawer-instant" tabindex="-1" id="instantDrawer" aria-labelledby="instantDrawerLabel">
+  <dialog class="drawer drawer-start drawer-instant" id="instantDrawer" aria-labelledby="instantDrawerLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="instantDrawerLabel">Instant drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -168,7 +167,7 @@ By default, drawers animate with a slide on open and close. To disable animation
 
 Change the appearance of drawers with utilities to better match them to different contexts like dark navbars. Here we add `data-bs-theme="dark"` to the `.drawer`, and it makes all nested elements within use dark mode.
 
-<Example class="bd-example-drawer p-0 bg-1 overflow-hidden" code={`<dialog class="drawer drawer-start show" open tabindex="-1" id="drawerDark" aria-labelledby="drawerDarkLabel" data-bs-theme="dark">
+<Example class="bd-example-drawer p-0 bg-1 overflow-hidden" code={`<dialog class="drawer drawer-start show" open id="drawerDark" aria-labelledby="drawerDarkLabel" data-bs-theme="dark">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerDarkLabel">Drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -186,7 +185,7 @@ Add `.drawer-translucent` to the drawer panel to blur and saturate the backgroun
     Toggle translucent drawer
   </button>
 
-  <dialog class="drawer drawer-start drawer-translucent" tabindex="-1" id="drawerTranslucent" aria-labelledby="drawerTranslucentLabel">
+  <dialog class="drawer drawer-start drawer-translucent" id="drawerTranslucent" aria-labelledby="drawerTranslucentLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerTranslucentLabel">Translucent drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -206,7 +205,7 @@ Use `.drawer-start` or `.drawer-end` without `.drawer-sheet` when you need a sid
     Toggle sheet drawer
   </button>
 
-  <dialog class="drawer drawer-bottom drawer-sheet" tabindex="-1" id="drawerSheet" aria-labelledby="drawerSheetLabel">
+  <dialog class="drawer drawer-bottom drawer-sheet" id="drawerSheet" aria-labelledby="drawerSheetLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerSheetLabel">Sheet drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -226,7 +225,7 @@ To make a responsive drawer, replace the `.drawer` base class with a responsive 
 
   <div class="alert theme-info d-none lg:d-block mb-3"><p>Resize your browser to show the responsive drawer toggle.</p></div>
 
-  <dialog class="lg:drawer drawer-end" tabindex="-1" id="drawerResponsive" aria-labelledby="drawerResponsiveLabel">
+  <dialog class="lg:drawer drawer-end" id="drawerResponsive" aria-labelledby="drawerResponsiveLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerResponsiveLabel">Responsive drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -250,7 +249,7 @@ Try the top, right, bottom, and fullscreen examples out below.
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerTop" aria-controls="drawerTop">Toggle top drawer</button>
 
-  <dialog class="drawer drawer-top" tabindex="-1" id="drawerTop" aria-labelledby="drawerTopLabel">
+  <dialog class="drawer drawer-top" id="drawerTop" aria-labelledby="drawerTopLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerTopLabel">Drawer top</h5>
       <CloseButton dismiss="drawer" />
@@ -262,7 +261,7 @@ Try the top, right, bottom, and fullscreen examples out below.
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerRight" aria-controls="drawerRight">Toggle right drawer</button>
 
-  <dialog class="drawer drawer-end" tabindex="-1" id="drawerRight" aria-labelledby="drawerRightLabel">
+  <dialog class="drawer drawer-end" id="drawerRight" aria-labelledby="drawerRightLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerRightLabel">Drawer right</h5>
       <CloseButton dismiss="drawer" />
@@ -274,7 +273,7 @@ Try the top, right, bottom, and fullscreen examples out below.
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerBottom" aria-controls="drawerBottom">Toggle bottom drawer</button>
 
-  <dialog class="drawer drawer-bottom" tabindex="-1" id="drawerBottom" aria-labelledby="drawerBottomLabel">
+  <dialog class="drawer drawer-bottom" id="drawerBottom" aria-labelledby="drawerBottomLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerBottomLabel">Drawer bottom</h5>
       <CloseButton dismiss="drawer" />
@@ -286,7 +285,7 @@ Try the top, right, bottom, and fullscreen examples out below.
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="drawer" data-bs-target="#drawerFullscreen" aria-controls="drawerFullscreen">Toggle fullscreen drawer</button>
 
-  <dialog class="drawer drawer-fullscreen" tabindex="-1" id="drawerFullscreen" aria-labelledby="drawerFullscreenLabel">
+  <dialog class="drawer drawer-fullscreen" id="drawerFullscreen" aria-labelledby="drawerFullscreenLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerFullscreenLabel">Fullscreen drawer</h5>
       <CloseButton dismiss="drawer" />
@@ -300,7 +299,7 @@ Try the top, right, bottom, and fullscreen examples out below.
 
 Add an optional `.drawer-footer` for action buttons or other content at the bottom of the drawer.
 
-<Example class="bd-example-drawer p-0 bg-1 overflow-hidden" code={`<dialog class="drawer drawer-start show" open tabindex="-1" id="drawerFooter" aria-labelledby="drawerFooterLabel">
+<Example class="bd-example-drawer p-0 bg-1 overflow-hidden" code={`<dialog class="drawer drawer-start show" open id="drawerFooter" aria-labelledby="drawerFooterLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="drawerFooterLabel">Drawer with footer</h5>
       <CloseButton dismiss="drawer" />
@@ -316,7 +315,7 @@ Add an optional `.drawer-footer` for action buttons or other content at the bott
 
 ## Accessibility
 
-Since the drawer is a native `<dialog>`, it gets the correct `dialog` role. Modal drawers also get modal semantics and focus trapping from `showModal()`. Non-modal drawers (`scroll: true` and `backdrop: false`) use `show()` instead, so they do not trap focus or mark the rest of the page as inert. Add `aria-labelledby` that points at the drawer title.
+Since the drawer is a native `<dialog>`, it gets the correct `dialog` role. Modal drawers also get modal semantics and focus trapping from `showModal()`. Non-modal drawers (`scroll: true` and `backdrop: false`) use `show()` instead, so they do not trap focus or mark the rest of the page as inert. Set `aria-labelledby` to the ID of the drawer title. Include a visible close button. On touch devices, users can swipe the header toward the edge of the drawer to dismiss it.
 
 ## CSS
 
@@ -413,6 +412,8 @@ const bsDrawer = new bootstrap.Drawer('#myDrawer')
 </BsTable>
 
 ### Events
+
+Bootstrap uses its backdrop and keyboard options while it manages an open drawer. It restores the author’s `closedby` value when the drawer closes. If a breakpoint changes while the drawer is open, Bootstrap requests a hide. If the app cancels the hide, the drawer keeps its dismiss button and stays open.
 
 Bootstrap’s drawer class exposes a few events for hooking into drawer functionality.
 

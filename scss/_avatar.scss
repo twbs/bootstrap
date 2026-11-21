@@ -70,6 +70,7 @@ $avatar-sizes: defaults(
     font-weight: var(--avatar-font-weight, var(--font-weight-medium));
     line-height: 1;
     color: var(--theme-contrast, var(--avatar-color));
+    text-decoration: none;
     text-transform: uppercase;
     vertical-align: middle;
     background-color: var(--theme-bg, var(--avatar-bg));
