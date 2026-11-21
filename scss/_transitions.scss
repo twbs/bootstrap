@@ -49,29 +49,10 @@ $collapse-tokens: defaults(
   @include tokens($collapse-tokens);
 
   overflow-y: clip;
-  @include transition-props(
-    var(--transition-collapse-property),
-    var(--transition-collapse-duration),
-    var(--transition-collapse-timing),
-    allow-discrete
-  );
-
-  // Browsers without `interpolate-size` open and close the element at once.
-  @media (prefers-reduced-motion: no-preference) {
-    interpolate-size: allow-keywords;
-  }
 
   &:not(.show) {
     display: none;
     block-size: 0;
-  }
-
-  // A closed collapse is not rendered, so the open side needs a start value of
-  // its own. Without it the element appears at full size at once.
-  &.show {
-    @starting-style {
-      block-size: 0;
-    }
   }
 
   // Horizontal collapses animate the inline size instead. The open size is
@@ -88,11 +69,33 @@ $collapse-tokens: defaults(
       inline-size: 0;
       block-size: auto;
     }
+  }
+}
 
-    &.show {
-      @starting-style {
-        inline-size: 0;
-      }
+.collapsing {
+  @include transition-props(
+    var(--transition-collapse-property),
+    var(--transition-collapse-duration),
+    var(--transition-collapse-timing),
+    allow-discrete
+  );
+
+  // Browsers without `interpolate-size` open and close the element at once.
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords;
+  }
+
+  // A closed collapse is not rendered, so the open side needs a start value of
+  // its own. Without it the element appears at full size at once.
+  &.show {
+    @starting-style {
+      block-size: 0;
+    }
+  }
+
+  &.collapse-horizontal.show {
+    @starting-style {
+      inline-size: 0;
     }
   }
 }
