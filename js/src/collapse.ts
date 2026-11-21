@@ -13,6 +13,7 @@ import { enableHashTarget } from './util/hash-target.js'
 import {
   getElement,
   getTransitionDurationFromElement,
+  isDisabled,
   setAriaAttribute
 } from './util/index.js'
 
@@ -69,10 +70,8 @@ class Collapse extends BaseComponent {
 
     for (const elem of toggleList) {
       const selector = SelectorEngine.getSelectorFromElement(elem)
-      const filterElement = SelectorEngine.find(selector!)
-        .filter(foundElement => foundElement === this._element)
 
-      if (selector !== null && filterElement.length) {
+      if (selector && SelectorEngine.find(selector).includes(this._element)) {
         this._triggerArray.push(elem)
       }
     }
@@ -239,6 +238,10 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
   if ((event.target as Element).tagName === 'A' || (event.delegateTarget && event.delegateTarget.tagName === 'A')) {
     event.preventDefault()
+  }
+
+  if (isDisabled(this)) {
+    return
   }
 
   for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) {

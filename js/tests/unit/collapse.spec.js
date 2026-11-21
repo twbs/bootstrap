@@ -1,5 +1,6 @@
 import Collapse from '../../src/collapse.js'
 import EventHandler from '../../src/dom/event-handler.js'
+import SelectorEngine from '../../src/dom/selector-engine.js'
 import { clearFixture, createEvent, getFixture } from '../helpers/fixture.js'
 
 const setHash = hash => {
@@ -840,6 +841,50 @@ describe('Collapse', () => {
         collapseOne.addEventListener('shown.bs.collapse', handlerCollapseOne)
         trigger.click()
       })
+    })
+
+    it('should not call toggle on disabled elements', () => {
+      fixtureEl.innerHTML = [
+        '<a href="#collapse1" data-bs-toggle="collapse" class="disabled">Toggle</a>',
+        '<div id="collapse1" class="collapse">Content</div>'
+      ].join('')
+
+      const target = fixtureEl.querySelector('a')
+      const spy = spyOn(Collapse.prototype, 'toggle')
+
+      target.click()
+
+      expect(spy).not.toHaveBeenCalled()
+    })
+
+    it('should not call toggle on disabled button elements', () => {
+      fixtureEl.innerHTML = [
+        '<button type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" disabled>Toggle</button>',
+        '<div id="collapse1" class="collapse">Content</div>'
+      ].join('')
+
+      const target = fixtureEl.querySelector('button')
+      const spy = spyOn(Collapse.prototype, 'toggle')
+
+      target.click()
+
+      expect(spy).not.toHaveBeenCalled()
+    })
+
+    it('should not query selector for null when toggle has no selector', () => {
+      fixtureEl.innerHTML = [
+        '<button type="button" data-bs-toggle="collapse">Toggle without target</button>',
+        '<div id="collapse1" class="collapse">Content</div>'
+      ].join('')
+
+      const spy = spyOn(SelectorEngine, 'find').and.callThrough()
+
+      const collapseEl = fixtureEl.querySelector('#collapse1')
+      const collapse = new Collapse(collapseEl)
+
+      expect(collapse).toBeInstanceOf(Collapse)
+      expect(spy).not.toHaveBeenCalledWith('null')
+      expect(spy).not.toHaveBeenCalledWith(null)
     })
 
     it('should set aria-expanded on triggers only when all the targeted collapse are hidden', () => {
