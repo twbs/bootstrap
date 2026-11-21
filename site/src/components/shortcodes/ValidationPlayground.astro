@@ -6,25 +6,46 @@ interface Props {
 }
 
 const { code } = Astro.props
+const groups = [
+  {
+    label: 'State',
+    name: 'validation-playground-state',
+    choices: [
+      { value: 'invalid', label: 'Invalid' },
+      { value: 'valid', label: 'Valid' },
+      { value: 'none', label: 'Neutral' }
+    ]
+  },
+  {
+    label: 'Feedback',
+    name: 'validation-playground-feedback',
+    choices: [
+      { value: 'inline', label: 'Inline' },
+      { value: 'tooltip', label: 'Tooltip' }
+    ]
+  }
+]
 ---
 
 <div data-validation-playground>
-  <div class="hstack flex-wrap gap-3 bg-1 p-3 mb-3 rounded-3">
-    <div class="form-field">
-      <label class="form-label" for="validation-playground-state">State</label>
-      <select class="form-control" id="validation-playground-state">
-        <option value="invalid">Invalid</option>
-        <option value="valid">Valid</option>
-        <option value="none">No validation</option>
-      </select>
-    </div>
-    <div class="form-field">
-      <label class="form-label" for="validation-playground-feedback">Feedback</label>
-      <select class="form-control" id="validation-playground-feedback">
-        <option value="inline">Inline</option>
-        <option value="tooltip">Tooltip</option>
-      </select>
-    </div>
+  <div class="hstack flex-wrap gap-3 bg-1 p-3 mb-3 rounded-3" data-validation-options>
+    {
+      groups.map(({ label, name, choices }) => (
+        <div class="d-flex flex-column align-items-start gap-1">
+          <span class="form-label mb-0" id={name}>
+            {label}
+          </span>
+          <div class="btn-group btn-group-sm" role="group" aria-labelledby={name}>
+            {choices.map((choice, index) => (
+              <label class="btn-check btn-outline theme-secondary">
+                <input type="radio" name={name} value={choice.value} checked={index === 0} />
+                {choice.label}
+              </label>
+            ))}
+          </div>
+        </div>
+      ))
+    }
   </div>
 
   <Example {code} id="validation-playground-preview" addStackblitzJs />
@@ -89,8 +110,7 @@ const { code } = Astro.props
 
   const playground = document.querySelector('[data-validation-playground]')
   if (playground) {
-    const state = playground.querySelector<HTMLSelectElement>('#validation-playground-state')!
-    const feedback = playground.querySelector<HTMLSelectElement>('#validation-playground-feedback')!
+    const options = playground.querySelector('[data-validation-options]')!
     const preview = playground.querySelector<HTMLFormElement>('#validation-playground-preview form')!
     const template = playground.querySelector<HTMLTemplateElement>('.bd-example-source')!
     const source = template.content.querySelector('form')!.cloneNode(true) as HTMLFormElement
@@ -100,9 +120,12 @@ const { code } = Astro.props
 
     const update = async () => {
       const currentRevision = ++revision
-      const showTooltips = feedback.value === 'tooltip'
-      updatePreview(state.value, showTooltips)
-      updateSource(state.value, showTooltips)
+      const state = options.querySelector<HTMLInputElement>('[name="validation-playground-state"]:checked')!.value
+      const showTooltips = Boolean(
+        options.querySelector('[name="validation-playground-feedback"][value="tooltip"]:checked')
+      )
+      updatePreview(state, showTooltips)
+      updateSource(state, showTooltips)
       const markup = source.outerHTML
       template.innerHTML = markup
 
@@ -115,7 +138,6 @@ const { code } = Astro.props
       }
     }
 
-    state.addEventListener('change', update)
-    feedback.addEventListener('change', update)
+    options.addEventListener('change', update)
   }
 </script>
