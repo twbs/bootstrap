@@ -10,6 +10,7 @@ import Data from './dom/data.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import { lockScroll, unlockScroll } from './util/scroll-lock.js'
+import { executeAfterTransition, isVisible } from './util/index.js'
 
 type DialogBaseConfig = {
   backdrop: boolean | string
@@ -36,14 +37,27 @@ class DialogBase extends BaseComponent {
   protected declare _config: DialogBaseConfig
   protected declare _isTransitioning: boolean
   protected declare _openedAsModal: boolean
+  protected declare _opening: boolean
+  protected declare _active: boolean
+  protected declare _operation: number
+  protected declare _returnFocus: HTMLElement | null
+  protected declare _closedBy: string | null | undefined
+  protected declare _cancelTransition: (() => void) | null
   protected declare _closeHandler: () => void
+  protected declare _toggleHandler: () => void
   protected declare _cancelHandler: (event: BootstrapEvent) => void
 
   constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null) {
     super(element, config)
 
     this._isTransitioning = false
-    this._openedAsModal = false
+    this._opening = false
+    this._active = Boolean(this._element?.open)
+    this._openedAsModal = Boolean(this._element?.matches(':modal'))
+    this._operation = 0
+    this._returnFocus = null
+    this._closedBy = undefined
+    this._cancelTransition = null
     this._addDialogListeners()
   }
 
@@ -55,7 +69,7 @@ class DialogBase extends BaseComponent {
   // Public — shared lifecycle methods
 
   toggle(relatedTarget?: HTMLElement): Promise<void> {
-    return this._element.open ? this.hide() : this.show(relatedTarget)
+    return this._element?.open ? this.hide() : this.show(relatedTarget)
   }
 
   async show(relatedTarget?: HTMLElement): Promise<void> {
@@ -77,7 +91,12 @@ class DialogBase extends BaseComponent {
   // Protected — lifecycle stages
 
   protected _canShow(relatedTarget?: HTMLElement): boolean {
-    if (this._element.open || this._isTransitioning) {
+    if (this._active && this._element?.isConnected && !this._element.open) {
+      unlockScroll(this._element)
+      this._finishHide()
+    }
+
+    if (!this._element?.isConnected || this._element.open || this._isTransitioning) {
       return false
     }
 
@@ -90,25 +109,51 @@ class DialogBase extends BaseComponent {
     return !showEvent.defaultPrevented
   }
 
-  protected async _show(relatedTarget?: HTMLElement): Promise<void> {
+  protected async _show(relatedTarget?: HTMLElement, returnFocus: HTMLElement | null | undefined = relatedTarget): Promise<void> {
+    if (!this._element?.isConnected || this._element.open || this._isTransitioning) {
+      return
+    }
+
+    const operation = ++this._operation
     this._isTransitioning = true
+    this._opening = true
+    this._active = true
+    const previousFocus = this._element.ownerDocument.activeElement
+    this._returnFocus = returnFocus === undefined && previousFocus instanceof HTMLElement ? previousFocus : returnFocus ?? null
     this._onBeforeShow()
 
     const { modal, preventBodyScroll } = this._getShowOptions()
     this._showElement({ modal, preventBodyScroll })
+    if (!this._element || this._operation !== operation) {
+      return
+    }
 
-    await this._queueCallback(() => {
+    if (!this._element.open) {
+      this._clearOpenState()
+      this._active = false
+      this._returnFocus = null
       this._isTransitioning = false
+      this._opening = false
+      return
+    }
+
+    await this._queueLifecycle(() => {
+      if (this._operation !== operation || !this._element.open || !this._element.isConnected) {
+        return
+      }
+
+      this._isTransitioning = false
+      this._opening = false
       EventHandler.trigger(
         this._element,
         this.constructor.eventName('shown'),
         { relatedTarget }
       )
-    }, this._element, this._isAnimated())
+    }, this._isAnimated())
   }
 
   protected _canHide(): boolean {
-    if (!this._element.open || this._isTransitioning) {
+    if (!this._element?.open || (this._isTransitioning && !this._opening)) {
       return false
     }
 
@@ -120,51 +165,60 @@ class DialogBase extends BaseComponent {
     return !hideEvent.defaultPrevented
   }
 
-  protected async _hide(): Promise<void> {
+  protected async _hide(restoreFocus = true): Promise<void> {
+    if (!this._element?.open || (this._isTransitioning && !this._opening)) {
+      return
+    }
+
+    const operation = ++this._operation
+    this._cancelTransition?.()
     this._isTransitioning = true
+    this._opening = false
+    if (!restoreFocus) {
+      this._returnFocus = null
+    }
+
     this._hideElement()
 
-    await this._queueCallback(() => {
-      // For subclasses that defer close() until the exit transition ends
-      // (so the dialog stays in the top layer with its ::backdrop), close()
-      // happens here instead of in _hideElement(). It runs unconditionally:
-      // _closeAndCleanup() is a no-op on an already-closed dialog, and skipping
-      // it when something else closed the dialog during the exit (app code,
-      // a <form method="dialog"> submit) would leave scroll prevention
-      // (dialog-open) stuck on the root element.
-      this._closeAndCleanup()
-
-      this._element.classList.remove('hiding')
-      this._onAfterHide()
-      this._isTransitioning = false
-      EventHandler.trigger(
-        this._element,
-        this.constructor.eventName('hidden')
-      )
-    }, this._element, this._isAnimated())
+    await this._queueLifecycle(() => {
+      if (this._operation === operation) {
+        this._closeAndCleanup()
+        if (this._element && !this._element.open && this._operation === operation) {
+          this._finishHide()
+        }
+      }
+    }, this._shouldDeferClose())
   }
 
   override dispose(): void {
+    if (!this._element) {
+      return
+    }
+
+    this._cancelTransition?.()
+
     // If disposed while still open, close the native <dialog> and restore body
     // scroll. Otherwise `dialog-open` (overflow: hidden) would stay stuck on the
     // root — e.g. when an SPA tears the component down mid-navigation.
-    if (this._element.open) {
+    const element = this._element
+    if (element.open) {
+      this._hideChildComponents()
       this._closeAndCleanup()
+    }
+
+    if (!this._element) {
+      return
     }
 
     // Native close queues its event; dispose must also release an already-closed dialog.
     unlockScroll(this._element)
-
-    // `_queueCallback` skips its completion callback once the instance is
-    // disposed, so nothing else would clear the exit state. A stranded
-    // `.hiding` suppresses the `[open]:not(.hiding)` open state, which would
-    // leave a later instance on the same element showing an invisible dialog.
-    this._element.classList.remove('hiding')
+    this._clearOpenState()
 
     // The `cancel` listener is unnamespaced, so super.dispose()'s EVENT_KEY
     // teardown misses it — remove this instance's own handler here.
     EventHandler.off(this._element, 'cancel', this._cancelHandler)
     EventHandler.off(this._element, 'close', this._closeHandler)
+    EventHandler.off(this._element, 'toggle', this._toggleHandler)
 
     super.dispose()
   }
@@ -203,6 +257,9 @@ class DialogBase extends BaseComponent {
 
   protected _showElement({ modal = true, preventBodyScroll = true }: { modal?: boolean, preventBodyScroll?: boolean } = {}): void {
     this._openedAsModal = modal
+    this._closedBy = this._element.getAttribute('closedby')
+    this._element.setAttribute('closedby', modal && this._config.keyboard ? 'closerequest' : 'none')
+    this._element.classList.toggle('dialog-no-backdrop', !this._config.backdrop)
 
     if (modal) {
       this._element.showModal()
@@ -210,8 +267,15 @@ class DialogBase extends BaseComponent {
       this._element.show()
     }
 
-    if (preventBodyScroll) {
-      lockScroll(this._element)
+    if (preventBodyScroll && this._element?.open) {
+      const element = this._element
+      lockScroll(element, () => {
+        if (this._element === element && this._active && !element.isConnected) {
+          this._hideChildComponents()
+          this._closeAndCleanup()
+          this._finishHide()
+        }
+      })
     }
   }
 
@@ -222,24 +286,66 @@ class DialogBase extends BaseComponent {
     // Without this, the navbar's `:not([open])` transition-kill rule
     // would prevent the slide-out animation.
     this._element.classList.add('hiding')
-
-    // Subclasses can defer close() until after the exit transition by
-    // returning true from _shouldDeferClose(). This is needed for the
-    // native modal <dialog> centered case: close() removes the dialog
-    // from the top layer immediately, which strips its auto-centering
-    // and the ::backdrop, breaking the exit animation.
-    if (!this._shouldDeferClose()) {
-      this._closeAndCleanup()
-    }
   }
 
   // Closes the native <dialog> and tears down scroll prevention.
   // Safe to call multiple times — close() is a no-op on a closed dialog.
   protected _closeAndCleanup(): void {
-    this._element.close()
-    this._openedAsModal = false
+    const element = this._element
+    element.close()
+    unlockScroll(element)
+  }
 
-    unlockScroll(this._element)
+  protected _clearOpenState(): void {
+    this._openedAsModal = false
+    this._element.classList.remove('hiding', 'dialog-no-backdrop', this._getStaticClassName())
+    if (this._closedBy === null) {
+      this._element.removeAttribute('closedby')
+    } else if (this._closedBy !== undefined) {
+      this._element.setAttribute('closedby', this._closedBy)
+    }
+
+    this._closedBy = undefined
+    this._onAfterHide()
+  }
+
+  protected _finishHide(): void {
+    const element = this._element
+    const trigger = this._returnFocus
+    const { activeElement, body } = element.ownerDocument
+    const restoreFocus = activeElement === body || element.contains(activeElement)
+    this._cancelTransition?.()
+    this._clearOpenState()
+    this._active = false
+    this._returnFocus = null
+    this._isTransitioning = false
+    this._opening = false
+    this._operation++
+    if (trigger && restoreFocus && isVisible(trigger)) {
+      trigger.focus({ preventScroll: true })
+    }
+
+    EventHandler.trigger(element, this.constructor.eventName('hidden'))
+  }
+
+  protected _queueLifecycle(callback: () => void, animated: boolean): Promise<void> {
+    if (!animated) {
+      callback()
+      return Promise.resolve()
+    }
+
+    return new Promise(resolve => {
+      const cancel = executeAfterTransition(() => {
+        this._cancelTransition = null
+        callback()
+        resolve()
+      }, this._element)
+      this._cancelTransition = () => {
+        cancel?.()
+        this._cancelTransition = null
+        resolve()
+      }
+    })
   }
 
   // Hook: return true to keep the dialog in the top layer (i.e., delay
@@ -292,24 +398,43 @@ class DialogBase extends BaseComponent {
   // Private
 
   protected _addDialogListeners(): void {
+    if (!this._element) {
+      return
+    }
+
     const eventKey = this.constructor.EVENT_KEY
 
     // Native close() and <form method="dialog"> bypass hide(). A queued close
     // event from an earlier opening must not unlock a reopened dialog.
     this._closeHandler = () => {
       if (!this._element.open) {
-        this._openedAsModal = false
         unlockScroll(this._element)
+        if (this._active) {
+          this._hideChildComponents()
+          this._finishHide()
+        }
       }
     }
 
     EventHandler.on(this._element, 'close', this._closeHandler)
+    this._toggleHandler = () => {
+      if (this._element.open && !this._active) {
+        this._active = true
+        this._openedAsModal = this._element.matches(':modal')
+      }
+    }
+
+    EventHandler.on(this._element, 'toggle', this._toggleHandler)
 
     // Handle native cancel event (Escape key) — only fires for modal dialogs.
     // Bound unnamespaced because `cancel` is a real native event, not one of
     // our namespaced custom events. Keep a per-instance handler so dispose()
     // removes only this listener, not a consumer's own `cancel` listener.
     this._cancelHandler = event => {
+      if (event.target !== this._element) {
+        return
+      }
+
       event.preventDefault()
 
       if (!this._config.keyboard) {
@@ -323,15 +448,25 @@ class DialogBase extends BaseComponent {
 
     EventHandler.on(this._element, 'cancel', this._cancelHandler)
 
-    // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
     EventHandler.on(this._element, `keydown${eventKey}`, event => {
-      if (event.key !== 'Escape' || this._openedAsModal) {
+      if (event.key !== 'Escape' || event.defaultPrevented || !this._element.open ||
+          (event.target as Element).closest('dialog') !== this._element) {
         return
       }
 
+      if (this._openedAsModal && this._config.keyboard) {
+        return
+      }
+
+      // The browser can dispatch a native cancel event that cannot be prevented.
+      // Prevent the keydown to stop that close request when keyboard is false.
       event.preventDefault()
 
       if (!this._config.keyboard) {
+        if (this._openedAsModal) {
+          this._triggerBackdropTransition()
+        }
+
         return
       }
 
@@ -339,9 +474,24 @@ class DialogBase extends BaseComponent {
       this.hide()
     })
 
-    // Handle backdrop clicks — only applies to modal dialogs
+    // The browser targets backdrop clicks at the dialog itself.
+    const isOutside = (event: BootstrapEvent): boolean => {
+      const { left, right, top, bottom } = this._element.getBoundingClientRect()
+      return event.clientX < left || event.clientX >= right || event.clientY < top || event.clientY >= bottom
+    }
+
+    let backdropPress = false
+    EventHandler.on(this._element, `pointerdown${eventKey}`, event => {
+      backdropPress = event.button === 0 && event.target === this._element && isOutside(event)
+    })
+    EventHandler.on(this._element, `pointercancel${eventKey}`, () => {
+      backdropPress = false
+    })
+
     EventHandler.on(this._element, `click${eventKey}`, event => {
-      if (event.target !== this._element || !this._openedAsModal) {
+      const startedOutside = backdropPress
+      backdropPress = false
+      if (!startedOutside || !event.detail || event.target !== this._element || !this._openedAsModal || !isOutside(event)) {
         return
       }
 
