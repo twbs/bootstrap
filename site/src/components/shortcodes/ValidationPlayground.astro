@@ -1,0 +1,142 @@
+---
+import Example from './Example.astro'
+
+interface Props {
+  code: string
+}
+
+const { code } = Astro.props
+const groups = [
+  {
+    label: 'State',
+    name: 'validation-playground-state',
+    choices: [
+      { value: 'invalid', label: 'Invalid' },
+      { value: 'valid', label: 'Valid' },
+      { value: 'none', label: 'Neutral' }
+    ]
+  },
+  {
+    label: 'Feedback',
+    name: 'validation-playground-feedback',
+    choices: [
+      { value: 'inline', label: 'Inline' },
+      { value: 'tooltip', label: 'Tooltip' },
+      { value: 'none', label: 'None' }
+    ]
+  }
+]
+---
+
+<div data-validation-playground>
+  <div class="hstack flex-wrap gap-3 bg-1 p-3 mb-3 rounded-3" data-validation-options>
+    {
+      groups.map(({ label, name, choices }) => (
+        <div class="d-flex flex-column align-items-start gap-1">
+          <span class="form-label mb-0" id={name}>
+            {label}
+          </span>
+          <div class="btn-group btn-group-sm" role="group" aria-labelledby={name}>
+            {choices.map((choice, index) => (
+              <label class="btn-check btn-outline theme-secondary">
+                <input type="radio" name={name} value={choice.value} checked={index === 0} />
+                {choice.label}
+              </label>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <Example {code} id="validation-playground-preview" addStackblitzJs />
+</div>
+
+<script>
+  import { highlightCode } from '@twbs/bui/shiki'
+
+  function validationExample(form: HTMLFormElement) {
+    const targets = form.querySelectorAll('.is-invalid')
+    const controls = Array.from(form.querySelectorAll('[aria-describedby]'), (element) => ({
+      element,
+      description: element.getAttribute('aria-describedby')!
+    }))
+    const messages = Array.from(form.querySelectorAll<HTMLElement>('.invalid-feedback'), (element) => ({
+      element,
+      field: element.closest('.form-field')!,
+      inlineOnly: Boolean(element.closest('.form-group')),
+      floating: element.classList.contains('d-block'),
+      invalidText: element.textContent
+    }))
+
+    return (state: string, feedback: string) => {
+      const invalid = state === 'invalid'
+      const valid = state === 'valid'
+      const showFeedback = (invalid || valid) && feedback !== 'none'
+
+      for (const target of targets) {
+        target.classList.toggle('is-invalid', invalid)
+        target.classList.toggle('is-valid', valid)
+      }
+
+      for (const { element, description } of controls) {
+        if (showFeedback) {
+          element.setAttribute('aria-describedby', description)
+        } else {
+          element.removeAttribute('aria-describedby')
+        }
+
+        if (invalid) {
+          element.setAttribute('aria-invalid', 'true')
+        } else {
+          element.removeAttribute('aria-invalid')
+        }
+      }
+
+      for (const { element, field, inlineOnly, floating, invalidText } of messages) {
+        const tooltip = showFeedback && feedback === 'tooltip' && !inlineOnly
+        field.classList.toggle('position-relative', tooltip)
+        field.classList.toggle('mb-4', tooltip)
+        element.classList.toggle('tooltip', tooltip)
+        element.classList.toggle('valid-feedback', showFeedback && valid && !tooltip)
+        element.classList.toggle('invalid-feedback', showFeedback && invalid && !tooltip)
+        element.classList.toggle('valid-tooltip', valid && tooltip)
+        element.classList.toggle('invalid-tooltip', invalid && tooltip)
+        element.classList.toggle('d-block', showFeedback && floating)
+        element.hidden = !showFeedback
+        element.textContent = valid ? 'Looks good.' : invalidText
+      }
+    }
+  }
+
+  const playground = document.querySelector('[data-validation-playground]')
+  if (playground) {
+    const options = playground.querySelector('[data-validation-options]')!
+    const preview = playground.querySelector<HTMLFormElement>('#validation-playground-preview form')!
+    const template = playground.querySelector<HTMLTemplateElement>('.bd-example-source')!
+    const source = template.content.querySelector('form')!.cloneNode(true) as HTMLFormElement
+    const updatePreview = validationExample(preview)
+    const updateSource = validationExample(source)
+    let revision = 0
+
+    const update = async () => {
+      const currentRevision = ++revision
+      const state = options.querySelector<HTMLInputElement>('[name="validation-playground-state"]:checked')!.value
+      const feedback = options.querySelector<HTMLInputElement>('[name="validation-playground-feedback"]:checked')!.value
+      updatePreview(state, feedback)
+      updateSource(state, feedback)
+      const markup = source.outerHTML
+      template.innerHTML = markup
+
+      const highlighted = await highlightCode(markup, 'html')
+      if (currentRevision === revision) {
+        const code = new DOMParser().parseFromString(highlighted, 'text/html').querySelector('pre')
+        if (code) {
+          playground.querySelector('.astro-code')?.replaceWith(code)
+        }
+      }
+    }
+
+    options.addEventListener('change', update)
+  }
+</script>
