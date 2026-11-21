@@ -449,7 +449,7 @@ class NavOverflow extends BaseComponent {
 
     if (submenu) {
       for (const name of clonedLink.getAttributeNames()) {
-        if (name.startsWith('data-bs-') && name !== 'data-bs-theme') {
+        if (name.startsWith('data-bs-') && name !== 'data-bs-color-scheme') {
           clonedLink.removeAttribute(name)
         }
       }

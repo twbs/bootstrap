@@ -50,7 +50,7 @@ for (const file of cssFiles) {
       inputSourceMap: inputMap ? JSON.stringify(inputMap) : undefined,
       targets,
       // Never lower `light-dark()`: its custom-property polyfill breaks our
-      // `data-bs-theme` dark mode. We bumped browser support to versions with
+      // `data-bs-color-scheme` dark mode. We bumped browser support to versions with
       // native support to fix this, but this guards against a regression.
       exclude: Features.LightDark
     })

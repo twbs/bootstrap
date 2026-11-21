@@ -120,7 +120,7 @@ Unlike `$theme-colors`, these are flat maps, which makes them easy to extend wit
 Bootstrap 6 does not redeclare variables per mode. Every adaptive token is a `light-dark()` pair, and CSS resolves it from the inherited `color-scheme`:
 
 - `:root, :host` sets `color-scheme: light dark`, so the default is whatever the OS prefers.
-- `[data-bs-theme="dark"]` and `[data-bs-theme="light"]` set `color-scheme` on that subtree, forcing a mode. It works on any element, nests, and needs no JavaScript.
+- `[data-bs-color-scheme="dark"]` and `[data-bs-color-scheme="light"]` set `color-scheme` on that subtree, forcing a mode. It works on any element, nests, and needs no JavaScript.
 
 So switching modes is a matter of setting one attribute, and authoring adaptive colors is a matter of using `light-dark()` instead of writing a dark-mode override block.
 
@@ -133,9 +133,9 @@ Two mixins exist for the cases `light-dark()` can't cover:
 }
 ```
 
-`color-mode($mode, $root)` honors the `$color-mode-type` config, which defaults to `"media-query"` (emitting `@media (prefers-color-scheme: …)`); set it to `"data"` to emit `[data-bs-theme="…"]` selectors instead. `color-scheme($name)` is the plain media-query wrapper when you always want the query.
+`color-mode($mode, $root)` honors the `$color-mode-type` config, which defaults to `"media-query"` (emitting `@media (prefers-color-scheme: …)`); set it to `"data"` to emit `[data-bs-color-scheme="…"]` selectors instead. `color-scheme($name)` is the plain media-query wrapper when you always want the query.
 
-Custom modes work the same way: add your own `[data-bs-theme="blue"]` selector and override tokens inside it.
+Custom modes work the same way: add your own `[data-bs-color-scheme="blue"]` selector and override tokens inside it.
 
 ---
 
@@ -236,6 +236,6 @@ Reach for `.theme-*` instead when you want a whole element themed rather than on
 
 1. `npm run css-lint`, then `npm run css`.
 2. Grep the compiled `dist/css/bootstrap.css` for the tokens you expected (`--bs-primary-bg-subtle`, `--bs-slate-500`) to confirm they were emitted.
-3. Check both color modes: OS preference, `data-bs-theme="dark"`, and a nested `data-bs-theme="light"` inside it.
+3. Check both color modes: OS preference, `data-bs-color-scheme="dark"`, and a nested `data-bs-color-scheme="light"` inside it.
 4. Verify contrast for any new theme color — at minimum `contrast` on `bg`, and `fg` on `bg-subtle`, in both modes.
 5. If you added or removed entries in `$colors` or `$theme-colors`, confirm the generated utilities and `.theme-*` classes changed accordingly, and that `npm run docs-build` still passes (the docs render swatches from these maps).

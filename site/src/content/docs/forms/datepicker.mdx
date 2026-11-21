@@ -219,13 +219,13 @@ Formatter results are inserted as text, including strings that contain HTML. For
 
 ## Dark mode
 
-The datepicker automatically adapts to Bootstrap’s color modes. When `data-bs-theme="dark"` is set on a parent element or the `<html>` tag, the calendar popup inherits that theme.
+The datepicker automatically adapts to Bootstrap’s color modes. When `data-bs-color-scheme="dark"` is set on a parent element or the `<html>` tag, the calendar popup inherits that theme.
 
 ### Inherited from parent
 
 When a parent element has a theme, both the input and calendar popup inherit it:
 
-<Example code={`<div data-bs-theme="dark" class="p-3 bg-body fg-body rounded">
+<Example code={`<div data-bs-color-scheme="dark" class="p-3 bg-body fg-body rounded">
     <label for="datepickerDark" class="form-label">Dark mode datepicker</label>
     <input type="text" class="form-control" id="datepickerDark" data-bs-toggle="datepicker" autocomplete="off" placeholder="Select a date">
   </div>`} />
@@ -375,7 +375,7 @@ const datepicker = new bootstrap.Datepicker(datepickerEl, {
 | `selectedDates` | array | `[]` | Pre-selected dates in `YYYY-MM-DD` format |
 | `selectionMode` | string | `'single'` | Selection mode: `'single'`, `'multiple'`, or `'multiple-ranged'` |
 | `placement` | string | `'left'` | Calendar position relative to input: `'left'`, `'center'`, `'right'`, `'auto'` |
-| `datepickerTheme` | string | `null` | Force datepicker popup theme: `'light'`, `'dark'`, `'auto'`, or `null` to inherit from ancestor `[data-bs-theme]` |
+| `datepickerTheme` | string | `null` | Force datepicker popup theme: `'light'`, `'dark'`, `'auto'`, or `null` to inherit from ancestor `[data-bs-color-scheme]` |
 | `vcpOptions` | object | `{}` | Pass-through object for supported [Vanilla Calendar Pro options](https://vanilla-calendar.pro/docs/reference/settings). JavaScript only. |
 </BsTable>
 

@@ -30,8 +30,8 @@
   const setTheme = theme => {
     const resolved = resolveTheme(theme)
 
-    if (document.documentElement.getAttribute('data-bs-theme') !== resolved) {
-      document.documentElement.setAttribute('data-bs-theme', resolved)
+    if (document.documentElement.getAttribute('data-bs-color-scheme') !== resolved) {
+      document.documentElement.setAttribute('data-bs-color-scheme', resolved)
     }
   }
 

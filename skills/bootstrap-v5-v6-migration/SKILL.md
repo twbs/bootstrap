@@ -155,6 +155,10 @@ Use `.theme-reset` on a nested subtree to drop inherited `--theme-*` tokens and 
 
 There are no `.theme-light` or `.theme-dark` classes. Review v5 light and dark variants manually. Use neutral surface utilities, color modes, or `.theme-inverse` as appropriate.
 
+### Color mode attribute
+
+Rename `data-bs-theme` to `data-bs-color-scheme` in markup, CSS selectors, and scripts. The values stay the same: `data-bs-theme="dark"` becomes `data-bs-color-scheme="dark"`.
+
 ### Placeholder animations
 
 Use `.placeholder-wave` for the standard loading animation. Replace `.placeholder-glow` with `.placeholder-pulse` when you want the old opacity animation. `.placeholder-glow` remains as a compatibility alias.
@@ -604,7 +608,7 @@ The markup (`.carousel` → `.carousel-inner` → `.carousel-item`) and the JS A
 
 - **`ride` → `autoplay` (boolean, opt-in).** `data-bs-ride="carousel"` becomes `data-bs-autoplay="true"`; `{ ride: 'carousel' }` becomes `{ autoplay: true }`. Default is `autoplay: false`, so a v5 carousel that auto-advanced now sits still until you opt in. Interacting with an autoplaying carousel now **permanently stops** it (WCAG 2.2.2).
 - **`wrap` → `ends`.** `wrap: true` → `ends: "wrap"` (or the new default `"loop"`); `wrap: false` → `ends: "stop"`. Set via `data-bs-ends`. The `touch` option is removed (native scroll handles it).
-- **Removed classes:** `.carousel-control-prev/next` (compose a `.btn-icon` + `data-bs-slide` + `.carousel-icon-prev/next`), `.carousel-caption` (use your own markup), `.carousel-dark` (use `data-bs-theme="dark"`), `.carousel-stacked` (now the default), and the transitional `.carousel-item-start/end/next/prev`. Overlaid controls now require `.carousel-overlay`. Control-icon classes renamed `.carousel-control-prev-icon` → `.carousel-icon-prev` (and `-next`).
+- **Removed classes:** `.carousel-control-prev/next` (compose a `.btn-icon` + `data-bs-slide` + `.carousel-icon-prev/next`), `.carousel-caption` (use your own markup), `.carousel-dark` (use `data-bs-color-scheme="dark"`), `.carousel-stacked` (now the default), and the transitional `.carousel-item-start/end/next/prev`. Overlaid controls now require `.carousel-overlay`. Control-icon classes renamed `.carousel-control-prev-icon` → `.carousel-icon-prev` (and `-next`).
 
 ### ScrollSpy — rebuilt on IntersectionObserver
 

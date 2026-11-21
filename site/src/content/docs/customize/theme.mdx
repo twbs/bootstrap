@@ -188,14 +188,14 @@ Here are some examples showing them together. Note
 
 ## Color modes
 
-Bootstrap’s theme and layer colors are **color mode adaptive** thanks to our use of CSS’s `light-dark()` function. This lets us specify two colors at once for a component, one for light and one for dark mode. These colors are switched by using the `data-bs-theme` attribute to set the `color-scheme` property to `light` or `dark`.
+Bootstrap’s theme and layer colors are **color mode adaptive** thanks to our use of CSS’s `light-dark()` function. This lets us specify two colors at once for a component, one for light and one for dark mode. These colors are switched by using the `data-bs-color-scheme` attribute to set the `color-scheme` property to `light` or `dark`.
 
-By default, `color-scheme: light dark` is set on the `:root` element, meaning Bootstrap respects the user’s system preference. You can override this at any level by setting `data-bs-theme="light"` or `data-bs-theme="dark"` on any element to force a specific mode for that subtree. Depending on the element, you may need to include `.bg-body`, `.fg-body`, or similar utilities to ensure correct color application.
+By default, `color-scheme: light dark` is set on the `:root` element, meaning Bootstrap respects the user’s system preference. You can override this at any level by setting `data-bs-color-scheme="light"` or `data-bs-color-scheme="dark"` on any element to force a specific mode for that subtree. Depending on the element, you may need to include `.bg-body`, `.fg-body`, or similar utilities to ensure correct color application.
 
 Here’s the same set of components rendered in both light and dark modes side by side. Note the use of `.bg-body` for the backgrounds. Without it, the light mode demo wouldn’t have a white background—just light mode components on a dark background.
 
 <Example class="p-0 overflow-hidden" code={`<div class="row g-0">
-    <div class="md:col-6 vstack gap-3 p-4 bg-body fg-body" data-bs-theme="light"><!-- [!code highlight] -->
+    <div class="md:col-6 vstack gap-3 p-4 bg-body fg-body" data-bs-color-scheme="light"><!-- [!code highlight] -->
       <h6 class="fw-semibold">Light mode</h6>
       <div class="card">
         <div class="card-body">
@@ -214,7 +214,7 @@ Here’s the same set of components rendered in both light and dark modes side b
         <button type="button" class="btn-subtle theme-secondary">Secondary</button>
       </div>
     </div>
-    <div class="md:col-6 vstack gap-3 p-4 bg-body fg-body" data-bs-theme="dark"><!-- [!code highlight] -->
+    <div class="md:col-6 vstack gap-3 p-4 bg-body fg-body" data-bs-color-scheme="dark"><!-- [!code highlight] -->
       <h6 class="fw-semibold">Dark mode</h6>
       <div class="card">
         <div class="card-body">
@@ -241,7 +241,7 @@ Under the hood, token values like `--bs-primary-fg` resolve differently dependin
 "fg": light-dark(var(--blue-600), var(--blue-400)),
 ```
 
-When `data-bs-theme="light"` is active (or the user’s system preference is light), this resolves to `var(--blue-600)`. In dark mode, it resolves to `var(--blue-400)`—a lighter shade that maintains readability against dark backgrounds. The same pattern applies to backgrounds, borders, and all other adaptive tokens.
+When `data-bs-color-scheme="light"` is active (or the user’s system preference is light), this resolves to `var(--blue-600)`. In dark mode, it resolves to `var(--blue-400)`—a lighter shade that maintains readability against dark backgrounds. The same pattern applies to backgrounds, borders, and all other adaptive tokens.
 
 For more details on toggling color modes globally, building custom modes, and JavaScript toggler examples, see the [color modes documentation]([[docsref:/customize/color-modes/]]).
 

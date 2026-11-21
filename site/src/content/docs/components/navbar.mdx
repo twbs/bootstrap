@@ -328,9 +328,9 @@ Mix and match with other components and utilities as needed.
 
 ## Dark navbar
 
-To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
+To make a navbar dark, add `data-bs-color-scheme="dark"` to the `.navbar` element.
 
-<ResizableExample code={`<nav class="navbar md:navbar-expand bg-1" data-bs-theme="dark">
+<ResizableExample code={`<nav class="navbar md:navbar-expand bg-1" data-bs-color-scheme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Dark navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDarkDrawer" aria-controls="navbarDarkDrawer" aria-label="Toggle navigation">
@@ -379,7 +379,7 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
 
 Add `.navbar-translucent` to blur and saturate the background of a navbar. This works well for navbars positioned over content, such as fixed or sticky navbars.
 
-<Example code={`<nav class="navbar navbar-translucent md:navbar-expand" data-bs-theme="dark">
+<Example code={`<nav class="navbar navbar-translucent md:navbar-expand" data-bs-color-scheme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <ul class="navbar-nav">
@@ -398,10 +398,10 @@ Add `.navbar-translucent` to blur and saturate the background of a navbar. This 
 
 ## Color schemes
 
-Navbar themes are easier than ever thanks to Bootstrap’s combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `data-bs-theme="dark"` to the `.navbar` parent for dark background colors. Then, customize with `.bg-*` and additional utilities.
+Navbar themes are easier than ever thanks to Bootstrap’s combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `data-bs-color-scheme="dark"` to the `.navbar` parent for dark background colors. Then, customize with `.bg-*` and additional utilities.
 
 <ResizableExample className="d-flex flex-column gap-2" showMarkup={false} code={`
-<nav class="navbar md:navbar-expand" data-bs-theme="dark">
+<nav class="navbar md:navbar-expand" data-bs-color-scheme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-label="Toggle navigation">
@@ -436,7 +436,7 @@ Navbar themes are easier than ever thanks to Bootstrap’s combination of Sass a
   </div>
 </nav>
 
-<nav class="navbar md:navbar-expand bg-primary" data-bs-theme="dark">
+<nav class="navbar md:navbar-expand bg-primary" data-bs-color-scheme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-label="Toggle navigation">
@@ -463,7 +463,7 @@ Navbar themes are easier than ever thanks to Bootstrap’s combination of Sass a
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" data-bs-theme="light" type="search" placeholder="Search" aria-label="Search"/>
+          <input class="form-control me-2" data-bs-color-scheme="light" type="search" placeholder="Search" aria-label="Search"/>
           <button class="btn-solid theme-inverse" type="submit">Search</button>
         </form>
       </div>
@@ -471,7 +471,7 @@ Navbar themes are easier than ever thanks to Bootstrap’s combination of Sass a
   </div>
 </nav>
 
-<nav class="navbar md:navbar-expand bg-1" data-bs-theme="light">
+<nav class="navbar md:navbar-expand bg-1" data-bs-color-scheme="light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-label="Toggle navigation">
@@ -508,15 +508,15 @@ Navbar themes are easier than ever thanks to Bootstrap’s combination of Sass a
 `} />
 
 ```html
-<nav class="navbar" data-bs-theme="dark">
+<nav class="navbar" data-bs-color-scheme="dark">
   <!-- Navbar content -->
 </nav>
 
-<nav class="navbar bg-primary" data-bs-theme="dark">
+<nav class="navbar bg-primary" data-bs-color-scheme="dark">
   <!-- Navbar content -->
 </nav>
 
-<nav class="navbar bg-1" data-bs-theme="light">
+<nav class="navbar bg-1" data-bs-color-scheme="light">
   <!-- Navbar content -->
 </nav>
 ```
@@ -708,7 +708,7 @@ With a toggler on the left and brand name on the right:
 
 Sometimes you want to use the drawer plugin to trigger a container element for content that structurally sits outside of the `.navbar`. Because our plugin works on the `id` and `data-bs-target` matching, that’s easily done!
 
-<ResizableExample code={`<dialog class="drawer drawer-top" id="navbarToggleExternalContent" data-bs-theme="dark" aria-labelledby="navbarToggleExternalContentLabel">
+<ResizableExample code={`<dialog class="drawer drawer-top" id="navbarToggleExternalContent" data-bs-color-scheme="dark" aria-labelledby="navbarToggleExternalContentLabel">
     <div class="drawer-header">
       <h5 class="drawer-title" id="navbarToggleExternalContentLabel">Collapsed content</h5>
       <CloseButton dismiss="drawer" />
@@ -717,7 +717,7 @@ Sometimes you want to use the drawer plugin to trigger a container element for c
       <span class="fg-2">Toggleable via the navbar toggler.</span>
     </div>
   </dialog>
-  <nav class="navbar bg-body" data-bs-theme="dark">
+  <nav class="navbar bg-body" data-bs-color-scheme="dark">
     <div class="container-fluid">
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" aria-hidden="true"></span>

@@ -69,11 +69,11 @@ const displayCssVar = bg
   }
 
   /* Show dark contrast in dark mode */
-  :global([data-bs-theme='dark']) .contrast-light {
+  :global([data-bs-color-scheme='dark']) .contrast-light {
     display: none;
   }
 
-  :global([data-bs-theme='dark']) .contrast-dark {
+  :global([data-bs-color-scheme='dark']) .contrast-dark {
     display: inline;
   }
 
@@ -92,11 +92,11 @@ const displayCssVar = bg
   }
 
   /* Show dark value in dark mode */
-  :global([data-bs-theme='dark']) .css-var-light {
+  :global([data-bs-color-scheme='dark']) .css-var-light {
     display: none;
   }
 
-  :global([data-bs-theme='dark']) .css-var-dark {
+  :global([data-bs-color-scheme='dark']) .css-var-dark {
     display: inline;
   }
 </style>
