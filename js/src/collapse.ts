@@ -33,6 +33,7 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
+const CLASS_NAME_COLLAPSING = 'collapsing'
 const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`
 
 const SELECTOR_ACTIVES = '.collapse.show'
@@ -131,12 +132,13 @@ class Collapse extends BaseComponent {
 
     // The CSS owns the animation: .show is the only state, and the browser
     // interpolates the size from 0 to the shown size on its own.
-    this._element.classList.add(CLASS_NAME_SHOW)
+    this._element.classList.add(CLASS_NAME_COLLAPSING, CLASS_NAME_SHOW)
 
     this._setAriaExpanded(this._triggerArray, true)
     this._isTransitioning = true
 
     const complete = () => {
+      this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._isTransitioning = false
       EventHandler.trigger(this._element, EVENT_SHOWN)
     }
@@ -154,6 +156,7 @@ class Collapse extends BaseComponent {
       return
     }
 
+    this._element.classList.add(CLASS_NAME_COLLAPSING)
     this._element.classList.remove(CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
@@ -167,6 +170,7 @@ class Collapse extends BaseComponent {
     this._isTransitioning = true
 
     const complete = () => {
+      this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._isTransitioning = false
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
