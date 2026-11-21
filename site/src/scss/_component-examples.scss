@@ -14,17 +14,18 @@
   }
 
   .bd-example-rounded-utils {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(9rem, calc((100% - 1rem) / 2)));
     gap: 1rem;
+    align-items: start;
 
     > div {
       display: grid;
       place-items: center;
-      inline-size: min(100%, 9rem);
       min-block-size: 4.75rem;
       padding-inline: .75rem;
       font-size: .875rem;
+      overflow-wrap: anywhere;
     }
 
     > .rounded-circle {
