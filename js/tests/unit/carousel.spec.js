@@ -1277,49 +1277,24 @@ describe('Carousel', () => {
   })
 
   describe('keyboard', () => {
-    it('should go to the next item on right arrow and previous on left arrow', () => {
-      fixtureEl.innerHTML = basicMarkup()
+    for (const [direction, nextKey, prevKey] of [
+      ['ltr', 'ArrowRight', 'ArrowLeft'],
+      ['rtl', 'ArrowLeft', 'ArrowRight']
+    ]) {
+      it(`should move to the next and previous slides with the arrow keys in ${direction}`, () => {
+        fixtureEl.innerHTML = basicMarkup({ classes: 'carousel slide carousel-fade' })
+        document.documentElement.dir = direction
 
-      const carouselEl = fixtureEl.querySelector('#myCarousel')
-      const carousel = new Carousel(carouselEl)
-      const nextSpy = spyOn(carousel, 'next')
-      const prevSpy = spyOn(carousel, 'prev')
+        const carouselEl = fixtureEl.querySelector('#myCarousel')
+        Carousel.getOrCreateInstance(carouselEl, { ends: 'stop' })
 
-      const right = createEvent('keydown')
-      right.key = 'ArrowRight'
-      carouselEl.dispatchEvent(right)
+        carouselEl.dispatchEvent(new KeyboardEvent('keydown', { key: nextKey }))
+        expect(carouselEl.querySelector('.carousel-item.active').id).toEqual('item2')
 
-      const left = createEvent('keydown')
-      left.key = 'ArrowLeft'
-      carouselEl.dispatchEvent(left)
-
-      expect(nextSpy).toHaveBeenCalled()
-      expect(prevSpy).toHaveBeenCalled()
-    })
-
-    it('should go to the next item on left arrow and previous on right arrow in RTL', () => {
-      fixtureEl.innerHTML = basicMarkup()
-      document.documentElement.dir = 'rtl'
-
-      const carouselEl = fixtureEl.querySelector('#myCarousel')
-      const carousel = new Carousel(carouselEl)
-      const nextSpy = spyOn(carousel, 'next')
-      const prevSpy = spyOn(carousel, 'prev')
-
-      const left = createEvent('keydown')
-      left.key = 'ArrowLeft'
-      carouselEl.dispatchEvent(left)
-
-      expect(nextSpy).toHaveBeenCalledTimes(1)
-      expect(prevSpy).not.toHaveBeenCalled()
-
-      const right = createEvent('keydown')
-      right.key = 'ArrowRight'
-      carouselEl.dispatchEvent(right)
-
-      expect(nextSpy).toHaveBeenCalledTimes(1)
-      expect(prevSpy).toHaveBeenCalledTimes(1)
-    })
+        carouselEl.dispatchEvent(new KeyboardEvent('keydown', { key: prevKey }))
+        expect(carouselEl.querySelector('.carousel-item.active').id).toEqual('item1')
+      })
+    }
 
     it('should ignore keystrokes from inputs and textareas', () => {
       fixtureEl.innerHTML = [
