@@ -1,0 +1,121 @@
+---
+import Example from './Example.astro'
+
+interface Props {
+  code: string
+}
+
+const { code } = Astro.props
+---
+
+<div data-validation-playground>
+  <div class="hstack flex-wrap gap-3 bg-1 p-3 mb-3 rounded-3">
+    <div class="form-field">
+      <label class="form-label" for="validation-playground-state">State</label>
+      <select class="form-control" id="validation-playground-state">
+        <option value="invalid">Invalid</option>
+        <option value="valid">Valid</option>
+        <option value="none">No validation</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label class="form-label" for="validation-playground-feedback">Feedback</label>
+      <select class="form-control" id="validation-playground-feedback">
+        <option value="inline">Inline</option>
+        <option value="tooltip">Tooltip</option>
+      </select>
+    </div>
+  </div>
+
+  <Example {code} id="validation-playground-preview" addStackblitzJs />
+</div>
+
+<script>
+  import { highlightCode } from '@twbs/bui/shiki'
+
+  function validationExample(form: HTMLFormElement) {
+    const targets = form.querySelectorAll('.is-invalid')
+    const controls = Array.from(form.querySelectorAll('[aria-describedby]'), (element) => ({
+      element,
+      description: element.getAttribute('aria-describedby')!
+    }))
+    const messages = Array.from(form.querySelectorAll<HTMLElement>('.invalid-feedback'), (element) => ({
+      element,
+      field: element.closest('.form-field')!,
+      inlineOnly: Boolean(element.closest('.form-group')),
+      floating: element.classList.contains('d-block'),
+      invalidText: element.textContent
+    }))
+
+    return (state: string, showTooltips: boolean) => {
+      const invalid = state === 'invalid'
+      const valid = state === 'valid'
+      const active = invalid || valid
+
+      for (const target of targets) {
+        target.classList.toggle('is-invalid', invalid)
+        target.classList.toggle('is-valid', valid)
+      }
+
+      for (const { element, description } of controls) {
+        if (active) {
+          element.setAttribute('aria-describedby', description)
+        } else {
+          element.removeAttribute('aria-describedby')
+        }
+
+        if (invalid) {
+          element.setAttribute('aria-invalid', 'true')
+        } else {
+          element.removeAttribute('aria-invalid')
+        }
+      }
+
+      for (const { element, field, inlineOnly, floating, invalidText } of messages) {
+        const tooltip = active && showTooltips && !inlineOnly
+        field.classList.toggle('position-relative', tooltip)
+        field.classList.toggle('mb-4', tooltip)
+        element.classList.toggle('tooltip', tooltip)
+        element.classList.toggle('valid-feedback', valid && !tooltip)
+        element.classList.toggle('invalid-feedback', invalid && !tooltip)
+        element.classList.toggle('valid-tooltip', valid && tooltip)
+        element.classList.toggle('invalid-tooltip', invalid && tooltip)
+        element.classList.toggle('d-block', active && floating)
+        element.hidden = !active
+        element.textContent = valid ? 'Looks good.' : invalidText
+      }
+    }
+  }
+
+  const playground = document.querySelector('[data-validation-playground]')
+  if (playground) {
+    const state = playground.querySelector<HTMLSelectElement>('#validation-playground-state')!
+    const feedback = playground.querySelector<HTMLSelectElement>('#validation-playground-feedback')!
+    const preview = playground.querySelector<HTMLFormElement>('#validation-playground-preview form')!
+    const template = playground.querySelector<HTMLTemplateElement>('.bd-example-source')!
+    const source = template.content.querySelector('form')!.cloneNode(true) as HTMLFormElement
+    const updatePreview = validationExample(preview)
+    const updateSource = validationExample(source)
+    let revision = 0
+
+    const update = async () => {
+      const currentRevision = ++revision
+      const showTooltips = feedback.value === 'tooltip'
+      updatePreview(state.value, showTooltips)
+      updateSource(state.value, showTooltips)
+      const markup = source.outerHTML
+      template.innerHTML = markup
+
+      const highlighted = await highlightCode(markup, 'html')
+      if (currentRevision === revision) {
+        const code = new DOMParser().parseFromString(highlighted, 'text/html').querySelector('pre')
+        if (code) {
+          playground.querySelector('.astro-code')?.replaceWith(code)
+        }
+      }
+    }
+
+    state.addEventListener('change', update)
+    feedback.addEventListener('change', update)
+  }
+</script>
