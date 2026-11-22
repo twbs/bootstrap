@@ -42,7 +42,7 @@ describe('Promise-returning API', () => {
 
   describe('resolves after the lifecycle event', () => {
     it('Collapse show, hide, and toggle', async () => {
-      fixtureEl.innerHTML = '<div class="collapse"><div>content</div></div>'
+      fixtureEl.innerHTML = '<details class="collapse"><summary>Toggle</summary><div>content</div></details>'
 
       const collapseEl = fixtureEl.querySelector('.collapse')
       const collapse = new Collapse(collapseEl)
@@ -142,7 +142,7 @@ describe('Promise-returning API', () => {
 
   describe('resolves without hanging when the call does nothing', () => {
     it('a prevented show event still settles', async () => {
-      fixtureEl.innerHTML = '<div class="collapse"><div>content</div></div>'
+      fixtureEl.innerHTML = '<details class="collapse"><summary>Toggle</summary><div>content</div></details>'
 
       const collapseEl = fixtureEl.querySelector('.collapse')
       const collapse = new Collapse(collapseEl)
@@ -156,11 +156,11 @@ describe('Promise-returning API', () => {
       await collapse.show()
 
       expect(shownSpy).not.toHaveBeenCalled()
-      expect(collapseEl).not.toHaveClass('show')
+      expect(collapseEl.open).toBeFalse()
     })
 
     it('showing an already shown component settles', async () => {
-      fixtureEl.innerHTML = '<div class="collapse"><div>content</div></div>'
+      fixtureEl.innerHTML = '<details class="collapse"><summary>Toggle</summary><div>content</div></details>'
 
       const collapseEl = fixtureEl.querySelector('.collapse')
       const collapse = new Collapse(collapseEl)
@@ -173,13 +173,15 @@ describe('Promise-returning API', () => {
       await collapse.show()
 
       expect(shownSpy).not.toHaveBeenCalled()
-      expect(collapseEl).toHaveClass('show')
+      expect(collapseEl.open).toBeTrue()
     })
 
     it('disposing mid-transition settles the pending promise', async () => {
       // The specs run without the stylesheet, so the fixture declares the
       // transition the collapse waits on
-      fixtureEl.innerHTML = '<div class="collapse" style="transition: block-size .1s"><div>content</div></div>'
+      fixtureEl.innerHTML = `
+        <style>#dispose-panel::details-content { transition: block-size .1s; }</style>
+        <details class="collapse" id="dispose-panel"><summary>Toggle</summary><div>content</div></details>`
 
       const collapseEl = fixtureEl.querySelector('.collapse')
       const collapse = new Collapse(collapseEl)
@@ -215,16 +217,16 @@ describe('Promise-returning API', () => {
 
   describe('sequencing', () => {
     it('awaits a full show and hide cycle without listeners', async () => {
-      fixtureEl.innerHTML = '<div class="collapse"><div>content</div></div>'
+      fixtureEl.innerHTML = '<details class="collapse"><summary>Toggle</summary><div>content</div></details>'
 
       const collapseEl = fixtureEl.querySelector('.collapse')
       const collapse = new Collapse(collapseEl)
 
       await collapse.show()
-      expect(collapseEl).toHaveClass('show')
+      expect(collapseEl.open).toBeTrue()
 
       await collapse.hide()
-      expect(collapseEl).not.toHaveClass('show')
+      expect(collapseEl.open).toBeFalse()
     })
   })
 })

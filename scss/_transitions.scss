@@ -20,7 +20,7 @@ $fade-tokens: defaults(
 // stylelint-disable custom-property-no-missing-var-function
 $collapse-tokens: defaults(
   (
-    --transition-collapse-property: "block-size, display",
+    --transition-collapse-property: "block-size, content-visibility",
     --transition-collapse-duration: .35s,
     --transition-collapse-timing: ease,
   ),
@@ -41,65 +41,57 @@ $collapse-tokens: defaults(
 }
 
 // scss-docs-start collapse-classes
-// The browser animates the size itself. `interpolate-size` lets the `0` of the
-// closed state interpolate to the `auto` of the open one, and `display`
-// transitions discretely, so the element stays laid out until the size reaches
-// `0`. The animated axis is clipped, so the content cannot spill while it moves.
-// Adding .collapse-instant skips all animations.
-.collapse {
+// The summary stays visible. Only the content takes part in the transition.
+.collapse:where(details) {
   @include tokens($collapse-tokens);
 
-  overflow-y: clip;
-
-  // Browsers without `interpolate-size` open and close the element at once.
-  @media (prefers-reduced-motion: no-preference) {
-    interpolate-size: allow-keywords;
-  }
-
-  &:not(.show) {
-    display: none;
-    block-size: 0;
-  }
-
-  // A closed collapse is not rendered, so the open side needs a start value of
-  // its own. Without it the element appears at full size at once.
-  &.show:not(.collapse-instant) {
-    @starting-style {
-      block-size: 0;
-    }
-  }
-
-  // Horizontal collapses animate the inline size instead. The open size is
-  // `fit-content`, so the element is as wide as its content, not as wide as its
-  // container.
-  &.collapse-horizontal {
-    --transition-collapse-property: inline-size, display;
-
-    inline-size: fit-content;
-    overflow-x: clip;
-    overflow-y: visible;
-
-    &:not(.show) {
-      inline-size: 0;
-      block-size: auto;
-    }
-
-    &.show:not(.collapse-instant) {
-      @starting-style {
-        inline-size: 0;
-      }
-    }
-  }
-}
-// Put motion in a layer so the transition-none utility can override it.
-@layer components {
-  .collapse:not(.collapse-instant) {
+  &:not(.collapse-instant, .transition-none)::details-content {
     @include transition-props(
       var(--transition-collapse-property),
       var(--transition-collapse-duration),
       var(--transition-collapse-timing),
       allow-discrete
     );
+  }
+
+  &.collapse-horizontal {
+    --transition-collapse-property: grid-template-columns;
+
+    inline-size: fit-content;
+
+    &::details-content {
+      display: grid;
+      grid-template-columns: minmax(0, 0fr);
+      align-items: start;
+      overflow-x: clip;
+    }
+
+    &[open]:not(.collapse-closing)::details-content {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  &:not(.collapse-horizontal) {
+    @supports (interpolate-size: allow-keywords) {
+      @media (prefers-reduced-motion: no-preference) {
+        interpolate-size: allow-keywords;
+      }
+
+      &::details-content {
+        block-size: 0;
+        overflow-y: clip;
+      }
+
+      &[open]::details-content {
+        block-size: auto;
+      }
+    }
+
+    @supports not (interpolate-size: allow-keywords) {
+      &::details-content {
+        @include transition(none);
+      }
+    }
   }
 }
 // scss-docs-end collapse-classes

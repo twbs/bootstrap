@@ -34,31 +34,33 @@ function setActiveItem() {
     return
   }
 
-  const link = document.querySelector(`.bd-aside a[href="${hash}"]`)
+  const link = [...document.querySelectorAll('.bd-aside a')].find(anchor => anchor.hash === hash)
 
   if (!link) {
     return
   }
 
   const active = document.querySelector('.bd-aside .active')
-  const parent = link.parentNode.parentNode.previousElementSibling
+  const parent = link.closest('details.collapse')
+
+  parent.open = true
+
+  if (active === link) {
+    return
+  }
 
   link.classList.add('active')
-
-  if (parent.getAttribute('aria-expanded') === 'false') {
-    parent.click()
-  }
 
   if (!active) {
     return
   }
 
-  const expanded = active.parentNode.parentNode.previousElementSibling
+  const expanded = active.closest('details.collapse')
 
   active.classList.remove('active')
 
   if (expanded && parent !== expanded) {
-    expanded.click()
+    expanded.open = false
   }
 }
 

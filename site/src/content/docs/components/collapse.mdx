@@ -3,25 +3,22 @@ title: Collapse
 description: Toggle the visibility of content across your project with a few classes and our JavaScript plugins.
 toc: true
 css_layer: components
-js: required
+js: optional
 ---
 
 ## How it works
 
-The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. The plugin only adds and removes `.show`—the CSS animates the size from `0` to the content size. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+Collapse uses `<details class="collapse">` to show and hide content. A visible `<summary>` works with the keyboard without JavaScript. Add `open` to show the content on first paint. Put any padding on the content inside the disclosure.
 
-The animation needs [`interpolate-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size). Browsers without it open and close the element at once. See [Transitions]([[docsref:/customize/transitions]]) to change the timing or to remove it.
+Bootstrap’s JavaScript adds external controls, hash links, and the Collapse methods and events.
+
+Vertical animation needs [`interpolate-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size). Browsers without it open and close vertical panels at once. See [Transitions]([[docsref:/customize/transitions]]) to change the timing or to remove it.
 
 <Callout name="info-prefersreducedmotion" />
 
 ## Example
 
-Click the buttons below to show and hide another element via class changes:
-
-- `.collapse` hides content
-- `.collapse.show` shows content
-
-Generally, we recommend using a `<button>` with the `data-bs-target` attribute. While not recommended from a semantic point of view, you can also use an `<a>` link with the `href` attribute (and a `role="button"`). In both cases, the `data-bs-toggle="collapse"` is required.
+External controls use `data-bs-toggle="collapse"` and a selector in `data-bs-target` or `href`. Add `hidden` to the summary when the external controls provide the only way to toggle the panel.
 
 <Example code={`<p class="d-inline-flex gap-1">
     <a class="btn-solid theme-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -31,18 +28,30 @@ Generally, we recommend using a `<button>` with the `data-bs-target` attribute. 
       Button with data-bs-target
     </button>
   </p>
-  <div class="collapse" id="collapseExample">
+  <details class="collapse" id="collapseExample">
+    <summary hidden>More information</summary>
     <div class="card card-body">
       Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
     </div>
-  </div>`} />
+  </details>`} />
+
+Leave the summary visible to toggle the content without JavaScript.
+
+<Example code={`<details class="collapse">
+    <summary>More information</summary>
+    <div class="card card-body">The summary stays visible while the content is closed.</div>
+  </details>`} />
 
 ## Horizontal
 
-The collapse plugin supports horizontal collapsing. Add the `.collapse-horizontal` modifier class to transition the inline size instead of the block size, and set a `width` on the immediate child element. Feel free to write your own custom Sass, use inline styles, or use our [width utilities]([[docsref:/utilities/width]]).
+Add `.collapse-horizontal` to animate the width of the content. Set a width on the content so it keeps its layout as the grid track expands. A visible summary sets the minimum width of the disclosure. Use a style or one of our [width utilities]([[docsref:/utilities/width]]).
+
+The plugin keeps the `open` attribute until a horizontal close transition ends. External controls update their expanded state when the transition starts.
 
 <Callout>
-Please note that while the example below has a `min-height` set to avoid excessive repaints in our docs, this is not explicitly required. **Only the `width` on the child element is required.**
+Please note that while the example below has a `min-height` set to avoid excessive repaints in our docs, this is not explicitly required. **Only the width on the content is required.**
+
+WebKit can shrink a vertical disclosure to its closed height before the content transition ends.
 </Callout>
 
 <Example code={`<p>
@@ -51,12 +60,17 @@ Please note that while the example below has a `min-height` set to avoid excessi
     </button>
   </p>
   <div style="min-height: 140px;">
-    <div class="collapse collapse-horizontal" id="collapseWidthExample">
+    <details class="collapse collapse-horizontal" id="collapseWidthExample">
+      <summary hidden>Horizontal panel</summary>
       <div class="card card-body" style="width: 300px;">
         This is some placeholder content for a horizontal collapse. It’s hidden by default and shown when triggered.
       </div>
-    </div>
+    </details>
   </div>`} />
+
+## Groups
+
+Use `name` for browser-managed groups that work without JavaScript. The browser closes a named peer and emits a native `toggle` event. Use `data-bs-parent` for groups that need cancellable Bootstrap events or shared triggers.
 
 ## Multiple toggles and targets
 
@@ -70,18 +84,20 @@ Conversely, multiple `<button>` or `<a>` elements can show and hide the same ele
   </p>
   <div class="row">
     <div class="col">
-      <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <details class="collapse multi-collapse" id="multiCollapseExample1">
+        <summary hidden>First panel</summary>
         <div class="card card-body">
           Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
         </div>
-      </div>
+      </details>
     </div>
     <div class="col">
-      <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <details class="collapse multi-collapse" id="multiCollapseExample2">
+        <summary hidden>Second panel</summary>
         <div class="card card-body">
           Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
         </div>
-      </div>
+      </details>
     </div>
   </div>`} />
 
@@ -97,19 +113,16 @@ Add `data-bs-hash` to a collapsible target to open it when the URL fragment matc
       Toggle
     </button>
   </p>
-  <div class="collapse" id="collapseHashExample" data-bs-hash>
+  <details class="collapse" id="collapseHashExample" data-bs-hash>
+    <summary hidden>Hash-linked panel</summary>
     <div class="card card-body">
       <p>Some placeholder content for a hash-linked collapse. Visiting <code>#collapseHashExample</code> opens this panel and scrolls it into view.</p>
     </div>
-  </div>`} />
+  </details>`} />
 
 ## Accessibility
 
-Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you’ve set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element’s HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
-
-Collapse trigger state is represented by `aria-expanded`.
-
-If your control element is targeting a single collapsible element – i.e. the `data-bs-target` attribute is pointing to an `id` selector – you should add the `aria-controls` attribute to the control element, containing the `id` of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.
+The browser exposes the summary’s expanded state. For an external control, set `aria-expanded` to match the initial state of its targets. The plugin keeps this value in sync. Set `aria-controls` to the target IDs. If you use a link as a control, add `role="button"`.
 
 Note that Bootstrap’s current implementation does not cover the various *optional* keyboard interactions described in the [ARIA Authoring Practices Guide accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) - you will need to include these yourself with custom JavaScript.
 
@@ -121,24 +134,17 @@ Note that Bootstrap’s current implementation does not cover the various *optio
 
 ### Classes
 
-Collapse transition classes can be found in `scss/_transitions.scss` as these are shared across multiple components (collapse and accordion).
+Collapse uses `::details-content` to animate the content without moving the summary.
 
 <ScssDocs name="collapse-classes" file="scss/_transitions.scss" />
 
 ## Usage
 
-The collapse plugin utilizes two classes to handle the heavy lifting:
-
-- `.collapse` hides the content
-- `.collapse.show` shows the content
-
-These classes can be found in `_transitions.scss`. The plugin toggles `.show` and then waits for the CSS transition to finish before it fires `shown.bs.collapse` or `hidden.bs.collapse`. Add `.collapse-instant` to the collapsible element to skip all transitions and expand or collapse immediately.
+Add `.collapse-instant` or `.transition-none` to open and close at once. The plugin uses the computed CSS transition timing before it fires `shown.bs.collapse` or `hidden.bs.collapse`.
 
 ### Via data attributes
 
-Just add `data-bs-toggle="collapse"` and a `data-bs-target` to the element to automatically assign control of one or more collapsible elements. The `data-bs-target` attribute accepts a CSS selector to apply the collapse to. Be sure to add the class `collapse` to the collapsible element. If you’d like it to default open, add the additional class `show`.
-
-To add accordion-like group management to a collapsible area, add the data attribute `data-bs-parent="#selector"`. Refer to the [accordion page]([[docsref:/components/accordion]]) for more information.
+Add `data-bs-toggle="collapse"` and a `data-bs-target` selector to an external control. The selector can match one or more `<details class="collapse">` elements.
 
 <BsTable>
 | Attribute | Description |
@@ -154,7 +160,7 @@ To add accordion-like group management to a collapsible area, add the data attri
 Enable manually with:
 
 ```js
-const collapseElementList = document.querySelectorAll('.collapse')
+const collapseElementList = document.querySelectorAll('details.collapse')
 const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl))
 ```
 
@@ -178,7 +184,7 @@ const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Co
 
 Activates your content as a collapsible element. Accepts an optional options `object`.
 
-The constructor keeps the state that your markup declares. Add `.show` to open the element, and leave it off to keep the element closed. Call `show()`, `hide()`, or `toggle()` to change the state.
+The constructor keeps the state that your markup declares. Add `open` to start open. Call `show()`, `hide()`, or `toggle()` to change the state.
 
 ```js
 const bsCollapse = new bootstrap.Collapse('#myCollapse')
