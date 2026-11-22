@@ -315,9 +315,9 @@ Add an optional `.drawer-footer` for action buttons or other content at the bott
 
 ## Overlays
 
-Like [dialogs]([[docsref:/components/dialog#overlays]]), modal drawers render in the browser’s top layer. Tooltips and popovers appended to `<body>` will appear behind an open drawer—set `data-bs-container` to the drawer element so they render inside it. Place `.toast-container` (and its toasts) **inside** the drawer markup so notifications triggered from drawer content stay visible. Raising toast z-index alone cannot stack above the top layer.
+Modal drawers render in the browser’s top layer. Put the `.toast-container` and its toasts inside the drawer to keep them visible. Increasing the toast z-index cannot bring a page-level toast above the top layer.
 
-See the [Dialog overlays]([[docsref:/components/dialog#overlays]]) example for a working pattern that also applies to drawers.
+Tooltips and popovers use the open drawer as their container by default. If you set a custom `container`, choose an element inside the drawer. See the [Dialog overlays example]([[docsref:/components/dialog#overlays]]).
 
 ## Accessibility
 
