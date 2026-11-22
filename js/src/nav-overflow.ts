@@ -328,13 +328,25 @@ class NavOverflow extends BaseComponent {
 
     const gap = this._navGap()
 
-    // Keep items and the toggle are always visible, so their widths come off
-    // the space left for the rest
-    const keepWidth = this._items
-      .filter(item => item.classList.contains(CLASS_NAME_KEEP))
-      .reduce((sum, item) => sum + item.offsetWidth + gap, 0)
+    // Each width below counts the gap after its item. The last visible item
+    // has no gap after it, so the space gets that one gap back.
+    const widthOf = (items: HTMLElement[]): number => items.reduce((sum, item) => sum + item.offsetWidth + gap, 0)
+
+    // Keep items are always visible, so their widths come off the space left
+    // for the rest
+    const keepWidth = widthOf(this._items.filter(item => item.classList.contains(CLASS_NAME_KEEP)))
+    const space = availableWidth - keepWidth + gap
+
+    // When every item fits on its own, the toggle stays hidden and takes no
+    // space. Allow a pixel of slack for sub-pixel layout rounding.
+    if (widthOf(candidates) <= space + 1) {
+      this._applyOverflow([], overflowItem)
+      return
+    }
+
+    // Some items must move, so the toggle shows and its width comes off too
     const overflowWidth = overflowItem ? overflowItem.offsetWidth + gap : 0
-    const limit = availableWidth - keepWidth - overflowWidth
+    const limit = space - overflowWidth
 
     let usedWidth = 0
     let itemsToOverflow = []

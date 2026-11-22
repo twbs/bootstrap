@@ -10,7 +10,8 @@
     h2,
     h3,
     h4,
-    [tabindex="0"] {
+    [tabindex="0"],
+    [data-bs-hash] {
       scroll-margin-block-start: var(--bd-navbar-offset);
       scroll-margin-block-end: 100px;
     }

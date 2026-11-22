@@ -4,7 +4,7 @@ import Drawer from '../../src/drawer.js'
 import Swipe from '../../src/util/swipe.js'
 import { isVisible, noop } from '../../src/util/index.js'
 import {
-  clearBodyAndDocument, clearFixture, createEvent, getFixture
+  clearBodyAndDocument, clearFixture, clickBackdrop, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Drawer', () => {
@@ -195,9 +195,7 @@ describe('Drawer', () => {
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
           // Click on dialog element itself (backdrop area)
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: drawerEl })
-          drawerEl.dispatchEvent(clickEvent)
+          clickBackdrop(drawerEl)
 
           setTimeout(() => {
             expect(hidePreventedSpy).toHaveBeenCalled()
@@ -392,9 +390,7 @@ describe('Drawer', () => {
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
           // Click on dialog element itself (backdrop area)
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: drawerEl })
-          drawerEl.dispatchEvent(clickEvent)
+          clickBackdrop(drawerEl)
         })
 
         drawerEl.addEventListener('hidden.bs.drawer', () => {
@@ -420,9 +416,7 @@ describe('Drawer', () => {
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
           // Click on dialog element itself
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: drawerEl })
-          drawerEl.dispatchEvent(clickEvent)
+          clickBackdrop(drawerEl)
 
           setTimeout(() => {
             expect(spy).not.toHaveBeenCalled()
@@ -446,9 +440,7 @@ describe('Drawer', () => {
         const hideSpy = spyOn(drawer, 'hide')
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: drawerEl })
-          drawerEl.dispatchEvent(clickEvent)
+          clickBackdrop(drawerEl)
 
           setTimeout(() => {
             expect(drawer._openedAsModal).toBeTrue()
@@ -576,7 +568,7 @@ describe('Drawer', () => {
       })
     })
 
-    it('on window load, should call show on a drawer element, if its markup contains open attribute', () => {
+    it('on window load, should initialize an open drawer in its native mode', () => {
       fixtureEl.innerHTML = '<dialog class="drawer" open></dialog>'
 
       const drawerEl = fixtureEl.querySelector('dialog')
@@ -586,7 +578,9 @@ describe('Drawer', () => {
 
       const instance = Drawer.getInstance(drawerEl)
       expect(instance).not.toBeNull()
-      expect(spy).toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
+      expect(drawerEl.open).toBeTrue()
+      expect(drawerEl.matches(':modal')).toBeFalse()
     })
   })
 
@@ -1302,9 +1296,7 @@ describe('Drawer', () => {
         })
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: drawerEl })
-          drawerEl.dispatchEvent(clickEvent)
+          clickBackdrop(drawerEl)
 
           expect(drawerEl.classList.contains('drawer-static')).toBeTrue()
           expect(drawerEl.classList.contains('dialog-static')).toBeFalse()

@@ -35,3 +35,10 @@ export const clearBodyAndDocument = () => {
     document.body.removeAttribute(attribute)
   }
 }
+
+export const clickBackdrop = element => {
+  const { top } = element.getBoundingClientRect()
+  const position = { clientY: Math.floor(top) - 10, detail: 1 }
+  element.dispatchEvent(new PointerEvent('pointerdown', position))
+  element.dispatchEvent(new MouseEvent('click', position))
+}

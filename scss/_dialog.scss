@@ -27,6 +27,7 @@ $dialog-tokens: defaults(
     --dialog-border-color: var(--border-color-translucent),
     --dialog-border-width: var(--border-width),
     --dialog-border-radius: var(--radius-7),
+    --dialog-inner-border-radius: calc(var(--dialog-border-radius) - var(--dialog-border-width)),
     --dialog-box-shadow: var(--box-shadow-xl),
     --dialog-transition-property: "opacity, transform, visibility",
     --dialog-transition-duration: .3s,
@@ -54,18 +55,25 @@ $dialog-sizes: defaults(
     sm: 280px,
     lg: 800px,
     xl: 1140px,
+    2xl: 1440px,
   ),
   $dialog-sizes
 );
 // scss-docs-end dialog-sizes
 
 @layer components {
-  // Prevent page scroll when a dialog is open. Applied to the root element so
-  // `overflow: hidden` sits on the same element as `scrollbar-gutter: stable`
-  // (see _root.scss): the gutter stays reserved while the scrollbar is hidden,
-  // so the page doesn't shift when a dialog opens.
+  // Prevent page scroll while the JavaScript scroll lock compensates for
+  // the scrollbar space released on the root element.
   :root.dialog-open {
     overflow: hidden;
+  }
+
+  // Keep the modal hit area while hiding its backdrop.
+  .dialog-no-backdrop::backdrop {
+    // stylelint-disable-next-line declaration-no-important
+    background-color: transparent !important;
+    // stylelint-disable-next-line declaration-no-important
+    backdrop-filter: none !important;
   }
 
   .dialog {
@@ -279,6 +287,9 @@ $dialog-sizes: defaults(
   // Dialog header
   .dialog-header {
     @include dialog-header(var(--dialog-header-padding));
+    // Keep custom header backgrounds inside the dialog's rounded corners
+    // (the dialog uses `overflow: visible`, so it doesn't clip them itself).
+    @include border-top-radius(var(--dialog-inner-border-radius));
     border-block-end: var(--dialog-header-border-width) solid var(--dialog-header-border-color);
 
     .btn-close {
@@ -301,5 +312,8 @@ $dialog-sizes: defaults(
   // Dialog footer
   .dialog-footer {
     @include dialog-footer(var(--dialog-footer-padding), var(--dialog-footer-gap), var(--dialog-footer-border-width), var(--dialog-footer-border-color));
+    // Keep custom footer backgrounds inside the dialog's rounded corners
+    // (the dialog uses `overflow: visible`, so it doesn't clip them itself).
+    @include border-bottom-radius(var(--dialog-inner-border-radius));
   }
 }

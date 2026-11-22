@@ -100,6 +100,40 @@ describe('Tooltip', () => {
       expect(tooltip._config.content).toEqual('false')
     })
 
+    it('should preserve raw strings without reformatting numbers or throwing on empty title/content', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="9.90" data-bs-content=""></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      expect(tooltip._config.title).toEqual('9.90')
+      expect(tooltip._config.content).toEqual('')
+    })
+
+    for (const title of ['9.90', '', '[1,2]', 'null']) {
+      it(`should preserve the literal title attribute ${JSON.stringify(title)}`, () => {
+        const element = document.createElement('button')
+        element.setAttribute('data-bs-title', title)
+        fixtureEl.append(element)
+
+        const tooltip = new Tooltip(element)
+
+        expect(tooltip._config.title).toEqual(title)
+        tooltip.dispose()
+      })
+    }
+
+    it('should prefer an explicit title option over the raw attribute', () => {
+      const element = document.createElement('button')
+      element.setAttribute('data-bs-title', '9.90')
+      fixtureEl.append(element)
+
+      const tooltip = new Tooltip(element, { title: 'Explicit title' })
+
+      expect(tooltip._config.title).toEqual('Explicit title')
+      tooltip.dispose()
+    })
+
     it('should enable selector delegation', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div></div>'
@@ -1396,31 +1430,26 @@ describe('Tooltip', () => {
       expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Another tooltip')
     })
 
-    it('should re-show tip if it was already shown', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="Another tooltip"></a>'
+    it('should keep a manually shown tip open after setContent', async () => {
+      fixtureEl.innerHTML = '<button type="button" data-bs-title="Original tooltip">Help</button>'
 
-        const tooltipEl = fixtureEl.querySelector('a')
-        const tooltip = new Tooltip(tooltipEl)
-        const tip = () => tooltip._getTipElement()
+      const tooltipEl = fixtureEl.querySelector('button')
+      const tooltip = new Tooltip(tooltipEl, { animation: false, trigger: 'manual' })
+      await tooltip.show()
 
-        tooltipEl.addEventListener('shown.bs.tooltip', function handler() {
-          tooltipEl.removeEventListener('shown.bs.tooltip', handler)
-
-          expect(tip()).toHaveClass('show')
-
-          // Listen for the re-show after setContent
-          tooltipEl.addEventListener('shown.bs.tooltip', () => {
-            expect(tip()).toHaveClass('show')
-            expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
-            resolve()
-          })
-
-          tooltip.setContent({ '.tooltip-inner': 'foo' })
-        })
-
-        tooltip.show()
+      const shown = new Promise(resolve => {
+        tooltipEl.addEventListener('shown.bs.tooltip', resolve, { once: true })
       })
+      tooltip.setContent({ '.tooltip-inner': 'Updated tooltip' })
+      await shown
+      // Let any hide queued by the show handler run.
+      await new Promise(resolve => {
+        setTimeout(resolve, 0)
+      })
+
+      const tip = document.getElementById(tooltipEl.getAttribute('aria-describedby'))
+      expect(tip).toHaveClass('show')
+      expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Updated tooltip')
     })
 
     it('should keep tip hidden, if it was already hidden before', () => {

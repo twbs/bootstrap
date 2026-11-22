@@ -57,6 +57,73 @@ describe('Popover', () => {
     })
   })
 
+  describe('raw content attributes', () => {
+    it('should display the literal decimal content', async () => {
+      const element = document.createElement('button')
+      element.setAttribute('data-bs-content', '9.90')
+      fixtureEl.append(element)
+
+      const popover = new Popover(element, { animation: false, trigger: 'manual' })
+      await popover.show()
+
+      expect(document.querySelector('.popover-body').textContent).toEqual('9.90')
+      popover.dispose()
+    })
+
+    it('should show content when the title attribute is empty', async () => {
+      const element = document.createElement('button')
+      element.setAttribute('data-bs-title', '')
+      element.setAttribute('data-bs-content', 'Body without a heading')
+      fixtureEl.append(element)
+
+      const popover = new Popover(element, { animation: false, trigger: 'manual' })
+      await popover.show()
+
+      expect(document.querySelector('.popover-header')).toBeNull()
+      expect(document.querySelector('.popover-body').textContent).toEqual('Body without a heading')
+      popover.dispose()
+    })
+
+    it('should prefer an explicit content option over the raw attribute', () => {
+      const element = document.createElement('button')
+      element.setAttribute('data-bs-content', '9.90')
+      fixtureEl.append(element)
+
+      const popover = new Popover(element, { content: 'Explicit content' })
+
+      expect(popover._config.content).toEqual('Explicit content')
+      popover.dispose()
+    })
+
+    for (const html of [false, true]) {
+      it(`should retain the HTML security boundary with html: ${html}`, () => {
+        const element = document.createElement('button')
+        const content = '<b onclick="window.__unexpected = true">Text</b><script>window.__unexpected = true</script>'
+        element.setAttribute('data-bs-content', content)
+        element.setAttribute('data-bs-sanitize', 'false')
+        element.setAttribute('data-bs-allow-list', '{}')
+        element.setAttribute('data-bs-sanitize-fn', 'ignored')
+        fixtureEl.append(element)
+
+        const popover = new Popover(element, { html })
+        const tip = popover._getTemplateFactory(popover._getContentForTemplate()).toHtml()
+        const body = tip.querySelector('.popover-body')
+
+        expect(popover._config.sanitize).toBeTrue()
+        expect(popover._config.sanitizeFn).toBeNull()
+        if (html) {
+          expect(body.querySelector('b').textContent).toEqual('Text')
+          expect(body.querySelector('[onclick], script')).toBeNull()
+        } else {
+          expect(body.textContent).toEqual(content)
+          expect(body.children.length).toEqual(0)
+        }
+
+        popover.dispose()
+      })
+    }
+  })
+
   describe('show', () => {
     it('should toggle a popover after show', () => {
       return new Promise(resolve => {
@@ -690,6 +757,46 @@ describe('Popover', () => {
       popoverEl.dispatchEvent(clickEvent)
 
       expect(preventDefaultSpy).toHaveBeenCalled()
+    })
+
+    it('should not prevent default on click via data-api for a hover or focus popover', () => {
+      fixtureEl.innerHTML = '<a href="#test" data-bs-toggle="popover" data-bs-trigger="hover focus" title="Popover Title" data-bs-content="Popover content">Profile</a>'
+
+      const popoverEl = fixtureEl.querySelector('[data-bs-toggle="popover"]')
+      const clickEvent = createEvent('click')
+      const preventDefaultSpy = spyOn(clickEvent, 'preventDefault').and.callThrough()
+
+      popoverEl.dispatchEvent(clickEvent)
+
+      expect(preventDefaultSpy).not.toHaveBeenCalled()
+      expect(Popover.getInstance(popoverEl)).not.toBeNull()
+    })
+
+    it('should let a checkbox with a hover popover change state via data-api', () => {
+      fixtureEl.innerHTML = '<input type="checkbox" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="One email per month">'
+
+      const checkboxEl = fixtureEl.querySelector('input')
+      checkboxEl.click()
+
+      expect(checkboxEl.checked).toBeTrue()
+    })
+
+    it('should let a submit button in a hover popover wrapper submit its form via data-api', () => {
+      fixtureEl.innerHTML = [
+        '<form>',
+        '  <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Popover content">',
+        '    <button type="submit">Save</button>',
+        '  </span>',
+        '</form>'
+      ].join('')
+
+      const formEl = fixtureEl.querySelector('form')
+      const submitSpy = jasmine.createSpy('submit').and.callFake(event => event.preventDefault())
+      formEl.addEventListener('submit', submitSpy)
+
+      formEl.querySelector('button').click()
+
+      expect(submitSpy).toHaveBeenCalled()
     })
   })
 })

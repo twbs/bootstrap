@@ -208,7 +208,7 @@ const execute = <T = any>(possibleCallback: T | ((...functionArgs: any[]) => T),
   return typeof possibleCallback === 'function' ? (possibleCallback as any).call(...args) : (defaultValue as T)
 }
 
-const executeAfterTransition = (callback: () => void, transitionElement: Element, waitForTransition = true): void => {
+const executeAfterTransition = (callback: () => void, transitionElement: Element, waitForTransition = true): (() => void) | undefined => {
   if (!waitForTransition) {
     execute(callback)
     return
@@ -217,24 +217,23 @@ const executeAfterTransition = (callback: () => void, transitionElement: Element
   const durationPadding = 5
   const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding
 
-  let called = false
-
   const handler = ({ target }: Event): void => {
     if (target !== transitionElement) {
       return
     }
 
-    called = true
-    transitionElement.removeEventListener(TRANSITION_END, handler)
+    cancel()
     execute(callback)
   }
 
   transitionElement.addEventListener(TRANSITION_END, handler)
-  setTimeout(() => {
-    if (!called) {
-      triggerTransitionEnd(transitionElement)
-    }
-  }, emulatedDuration)
+  const timeout = setTimeout(() => triggerTransitionEnd(transitionElement), emulatedDuration)
+  const cancel = () => {
+    clearTimeout(timeout)
+    transitionElement.removeEventListener(TRANSITION_END, handler)
+  }
+
+  return cancel
 }
 
 /**

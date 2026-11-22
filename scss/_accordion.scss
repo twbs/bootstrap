@@ -24,7 +24,7 @@ $accordion-tokens: defaults(
     --accordion-border-color: var(--border-color),
     --accordion-border-width: var(--border-width),
     --accordion-border-radius: var(--accordion-radius, var(--radius-7)),
-    --accordion-gap: 0,
+    --accordion-gap: var(--spacer-2),
     --accordion-btn-color: var(--fg-2),
     --accordion-btn-bg: var(--bg-body),
     --accordion-btn-icon-width: 1rem,
@@ -125,6 +125,11 @@ $accordion-tokens: defaults(
     &:last-of-type {
       @include border-bottom-radius(var(--accordion-border-radius));
 
+      &::details-content {
+        overflow: clip;
+        @include border-bottom-radius(calc(var(--accordion-border-radius) - var(--accordion-border-width)));
+      }
+
       > .accordion-header {
         @include border-bottom-radius(calc(var(--accordion-border-radius) - var(--accordion-border-width)));
       }
@@ -187,10 +192,6 @@ $accordion-tokens: defaults(
   // radius on every item, so corners do not retarget while the panel opens.
 
   .accordion-gap {
-    // scss-docs-start accordion-gap-css-vars
-    --accordion-gap: var(--spacer-2);
-    // scss-docs-end accordion-gap-css-vars
-
     display: flex;
     flex-direction: column;
     gap: var(--accordion-gap);
@@ -216,6 +217,10 @@ $accordion-tokens: defaults(
     > .accordion-item {
       border-inline: 0;
       @include border-radius(0);
+
+      &::details-content {
+        @include border-radius(0);
+      }
 
       &:first-child {
         border-block-start: 0;
