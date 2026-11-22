@@ -72,8 +72,8 @@ $range-tokens: defaults(
   background-image:
     linear-gradient(
       var(--range-track-fill-direction),
-      var(--range-track-fill-bg) calc(var(--range-fill, 0) * 100%),
-      transparent calc(var(--range-fill, 0) * 100%)
+      var(--range-track-fill-bg) calc((var(--range-thumb-width) * .5) + var(--range-fill, 0) * (100% - var(--range-thumb-width))),
+      transparent calc((var(--range-thumb-width) * .5) + var(--range-fill, 0) * (100% - var(--range-thumb-width)))
     );
   border-color: transparent;
   @include border-radius(var(--range-track-border-radius));
