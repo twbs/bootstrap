@@ -62,6 +62,7 @@ $switch-tokens: defaults(
       background-color: var(--theme-contrast, var(--switch-indicator-bg));
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 10rem;
+      outline: 1px solid transparent;
       box-shadow: 0 1px 2px rgb(0 0 0 / .1);
       translate: 0 -50%;
       @include transition(inset-inline-start var(--switch-transition-duration) var(--switch-transition-timing));

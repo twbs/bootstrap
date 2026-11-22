@@ -37,6 +37,7 @@ $btn-close-tokens: defaults(
     color: var(--btn-close-color);
     background-color: currentcolor;
     border: 0; // for button elements
+    forced-color-adjust: preserve-parent-color;
     @include border-radius(var(--radius-4));
     opacity: var(--btn-close-opacity);
     @include mask-icon(var(--btn-close-icon));
