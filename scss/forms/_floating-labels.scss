@@ -1,5 +1,6 @@
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -61,6 +62,10 @@ $form-floating-tokens: defaults(
         var(--form-floating-transition-duration),
         var(--form-floating-transition-timing)
       );
+
+      @include forced-colors() {
+        border: 0;
+      }
     }
 
     // Anchor the label to the top for textareas so it floats correctly at any height
