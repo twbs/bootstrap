@@ -54,6 +54,7 @@ $radio-tokens: defaults(
       background-color: currentcolor;
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 50%;
+      outline: 2px solid transparent;
       opacity: 0;
       transform: scale(0);
       @include transition(

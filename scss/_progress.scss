@@ -46,6 +46,7 @@ $progress-tokens: defaults(
     overflow: hidden;
     font-size: var(--progress-font-size);
     background-color: var(--progress-bg);
+    outline: 1px solid transparent;
     @include border-radius(var(--progress-border-radius));
     @include box-shadow(var(--progress-box-shadow));
   }
@@ -60,6 +61,13 @@ $progress-tokens: defaults(
     white-space: nowrap;
     background-color: var(--theme-bg, var(--progress-bar-bg));
     @include transition(var(--progress-bar-transition));
+
+    // Forced colors mode removes background colors, so the bar disappears.
+    // Paint the bar with system colors to keep it visible.
+    @media (forced-colors: active) {
+      color: HighlightText;
+      background-color: Highlight;
+    }
   }
 
   .progress-bar-striped {

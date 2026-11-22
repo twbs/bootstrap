@@ -95,6 +95,7 @@ $spinner-grow-tokens: defaults(
     @include tokens($spinner-grow-tokens);
 
     background-color: currentcolor;
+    outline: 1px solid transparent;
     opacity: 0;
   }
 

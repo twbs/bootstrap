@@ -74,6 +74,7 @@ $avatar-sizes: defaults(
     text-transform: uppercase;
     vertical-align: middle;
     background-color: var(--theme-bg, var(--avatar-bg));
+    outline: 1px solid transparent;
     @include border-radius(var(--avatar-border-radius));
 
     > .avatar-img {

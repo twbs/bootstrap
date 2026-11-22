@@ -147,6 +147,7 @@ $tooltip-tokens: defaults(
     color: var(--tooltip-color);
     text-align: center;
     background-color: var(--tooltip-bg);
+    outline: 1px solid transparent;
     @include border-radius(var(--tooltip-border-radius));
   }
 }
