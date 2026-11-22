@@ -117,9 +117,7 @@ When `backdrop` is set to `static`, the dialog will not close when clicking outs
 
 ## Overlays
 
-Tooltips, popovers, and toasts all work inside dialogs, but require some extra care. Since dialogs render in the browser’s top layer, overlays appended to `<body>` will appear behind the dialog. Set `data-bs-container` to the dialog element so tooltips and popovers render inside it. Toasts already work as long as they’re placed in the dialog markup.
-
-Tooltips, popovers, toasts, and menus all work inside modal dialogs. Modal dialogs use `showModal()`, which promotes the dialog to the browser’s top layer -- a special rendering layer above everything else on the page.
+Modal dialogs use the browser’s top layer. Place the toast container and its toasts inside the dialog so they stay visible. Tooltips and popovers use the open dialog as their container by default. If you set a custom `container`, choose an element inside the dialog.
 
 <Example addStackblitzJs code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialogWithComponents">
     Open dialog
