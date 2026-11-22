@@ -9,12 +9,12 @@ css_layer: forms
 
 Apply both `.form-control` and `.form-adorn` to a wrapper element. `.form-control` provides the border, background, padding, and focus states; `.form-adorn` uses flexbox to position adornments alongside a "ghost input," a form control that has virtually no visual styling. The `.form-ghost` input inside is transparent and inherits styles from the wrapper.
 
-Use a `<label>` for the wrapper. The wrapper looks like an input, so people click the icon, the text, or the padding around them and expect the field to take focus. A `<label>` gives you that for free, because clicking a label focuses the control it labels. No JavaScript is involved.
+Use a `<label>` for the wrapper when the adornments are decorative. The wrapper looks like an input, so people click the icon, the text, or the padding around them and expect the field to take focus. A `<label>` gives you that for free, because clicking a label focuses the control it labels. No JavaScript is involved.
 
-Mark the adornments with `aria-hidden="true"`. A wrapping `<label>` labels the input, so without it an adornment such as `$` joins the accessible name and a screen reader announces "Amount $" instead of "Amount". An adornment is decorative, so keep it out of the accessibility tree and put anything meaningful in the visible label or in a `.form-text` description.
+Mark decorative adornments with `aria-hidden="true"`. A wrapping `<label>` labels the input, so without it an adornment such as `$` joins the accessible name and a screen reader announces "Amount $" instead of "Amount". An adornment is decorative, so keep it out of the accessibility tree and put anything meaningful in the visible label or in a `.form-text` description.
 
 <Callout>
-An element can have more than one label, so the wrapping `<label>` and a separate `<label for="…">` work together. Do not put a button or another interactive control inside the wrapper — a `<label>` must not contain interactive content.
+An element can have more than one label, so the wrapping `<label>` and a separate `<label for="…">` work together. Do not put a button or another interactive control inside a `<label>` wrapper. Use a `<div>` wrapper and a separate `<label for="…">` for interactive adornments. See the [Datepicker calendar button]([[docsref:/forms/datepicker#input-with-calendar-button]]) for an example.
 </Callout>
 
 See the [form control]([[docsref:/forms/form-control]]) documentation for more information on the `.form-control` and `.form-ghost` classes.

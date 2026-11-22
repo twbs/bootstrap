@@ -67,6 +67,22 @@
       </div>
       <div id="customContainer"></div>
 
+      <p>Open the dialog. The tooltip should stay in one position.</p>
+      <button type="button" class="btn-solid theme-primary" id="open-edge-dialog">Open dialog</button>
+      <dialog class="dialog dialog-scrollable" id="edge-dialog" aria-labelledby="edge-dialog-title">
+        <div class="dialog-header">
+          <h2 class="dialog-title" id="edge-dialog-title">Tooltip at the dialog edge</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+        </div>
+        <div class="dialog-body" style="min-block-size: 0">
+          <div style="min-block-size: 36rem">
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn-solid theme-primary" id="edge-tooltip" title="This tooltip has enough text to wrap onto several lines. It should keep the same width and stay in one position at the edge of the dialog.">Tooltip button</button>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
       <div class="row mt-4 border-top">
         <hr>
         <div class="h4">Test Selector triggered tooltips</div>
@@ -93,7 +109,7 @@
     </script>
 
     <script type="module">
-      import { Tooltip } from '../../../dist/js/bootstrap.bundle.js'
+      import { Dialog, Tooltip } from '../../../dist/js/bootstrap.bundle.js'
 
       if (typeof document.body.attachShadow === 'function') {
         const shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
@@ -114,6 +130,14 @@
       new Tooltip('#tooltipElement', {
         container: '#customContainer'
       })
+
+      const edgeDialog = new Dialog('#edge-dialog')
+      const edgeTooltip = new Tooltip('#edge-tooltip', { trigger: 'manual', animation: false })
+      document.querySelector('#open-edge-dialog').addEventListener('click', async () => {
+        await edgeDialog.show()
+        edgeTooltip.show()
+      })
+      document.querySelector('#edge-dialog').addEventListener('hide.bs.dialog', () => edgeTooltip.hide())
 
       const targetTooltip = new Tooltip('#target', {
         placement: 'top',

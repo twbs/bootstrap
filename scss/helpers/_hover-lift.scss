@@ -27,7 +27,8 @@ $hover-lift-tokens: defaults(
     );
 
     &:hover,
-    &:focus-visible {
+    &:focus-visible,
+    &.show {
       transform: var(--hover-lift-transform);
       @include box-shadow(var(--hover-lift-box-shadow));
     }
