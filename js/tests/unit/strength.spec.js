@@ -222,19 +222,27 @@ describe('Strength', () => {
       expect(strength.getStrength()).toEqual('good')
     })
 
-    it('should count any symbol or space as a special character', () => {
+    it('should count punctuation, symbols, and spaces as special characters', () => {
       fixtureEl.innerHTML = getStrengthHtml()
 
       const strengthEl = fixtureEl.querySelector('.strength')
       const passwordInput = fixtureEl.querySelector('input[type="password"]')
-      const strength = new Strength(strengthEl)
+      const strength = new Strength(strengthEl, { thresholds: [0, 1, 2] })
 
-      for (const value of ['Password1-_', 'Password1+=', 'Password1/~', 'Pass word1;']) {
-        passwordInput.value = value // length+lower+upper+number+special+multipleSpecial = score 6
+      for (const value of ['-', '=', ' ', '£']) {
+        passwordInput.value = value
         passwordInput.dispatchEvent(createEvent('input'))
 
-        expect(strength.getStrength()).toEqual('good')
+        expect(strength.getStrength()).toEqual('fair')
       }
+
+      passwordInput.value = '_ '
+      passwordInput.dispatchEvent(createEvent('input'))
+      expect(strength.getStrength()).toEqual('good')
+
+      passwordInput.value = '\u0301\u200B'
+      passwordInput.dispatchEvent(createEvent('input'))
+      expect(strength.getStrength()).toBeNull()
     })
 
     it('should return strong for very strong passwords', () => {

@@ -189,8 +189,8 @@ class Strength extends BaseComponent {
       score += weights.numbers
     }
 
-    // Special characters: anything that is not a letter or a number
-    const specialCount = password.match(/[^\p{L}\p{N}]/gu)?.length ?? 0
+    // Count punctuation, symbols, and ordinary spaces for the special-character score
+    const specialCount = password.match(/[ \p{P}\p{S}]/gu)?.length ?? 0
 
     if (specialCount >= 1) {
       score += weights.special
