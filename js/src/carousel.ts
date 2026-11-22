@@ -80,11 +80,6 @@ const SELECTOR_DATA_SLIDE_PREV = '[data-bs-slide="prev"]'
 const SELECTOR_DATA_SLIDE_NEXT = '[data-bs-slide="next"]'
 const SELECTOR_DATA_AUTOPLAY = '[data-bs-autoplay="true"]'
 
-const KEY_TO_DIRECTION: Record<string, string> = {
-  [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
-  [ARROW_RIGHT_KEY]: DIRECTION_LEFT
-}
-
 const ENDS_STOP = 'stop'
 const ENDS_WRAP = 'wrap'
 const ENDS_LOOP = 'loop'
@@ -341,15 +336,18 @@ class Carousel extends BaseComponent {
       return
     }
 
-    const direction = KEY_TO_DIRECTION[event.key]
-    if (direction) {
-      event.preventDefault()
-      this._pauseFromInteraction()
-      if (direction === DIRECTION_RIGHT) {
-        this.prev()
-      } else {
-        this.next()
-      }
+    const { key } = event
+    if (key !== ARROW_LEFT_KEY && key !== ARROW_RIGHT_KEY) {
+      return
+    }
+
+    event.preventDefault()
+    this._pauseFromInteraction()
+
+    if (key === (isRTL() ? ARROW_LEFT_KEY : ARROW_RIGHT_KEY)) {
+      this.next()
+    } else {
+      this.prev()
     }
   }
 

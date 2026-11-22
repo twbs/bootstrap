@@ -20,7 +20,7 @@
 }
 .list-group-item-check {
   position: absolute;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
 }
 .list-group-item-check:hover + .list-group-item {
   background-color: var(--bs-secondary-bg);

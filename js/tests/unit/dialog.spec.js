@@ -2,7 +2,7 @@ import Data from '../../src/dom/data.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import Dialog from '../../src/dialog.js'
 import {
-  clearBodyAndDocument, clearFixture, createEvent, getFixture
+  clearBodyAndDocument, clearFixture, clickBackdrop, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Dialog', () => {
@@ -325,9 +325,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
           // Click directly on the dialog element (backdrop area)
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
-          dialogEl.dispatchEvent(clickEvent)
+          clickBackdrop(dialogEl)
         })
 
         dialogEl.addEventListener('hidden.bs.dialog', () => {
@@ -348,9 +346,7 @@ describe('Dialog', () => {
         const hideSpy = spyOn(dialog, 'hide')
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
-          dialogEl.dispatchEvent(clickEvent)
+          clickBackdrop(dialogEl)
 
           setTimeout(() => {
             expect(dialogEl.open).toBeTrue()
@@ -428,9 +424,7 @@ describe('Dialog', () => {
         const spy = spyOn(dialog, 'hide')
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
-          dialogEl.dispatchEvent(clickEvent)
+          clickBackdrop(dialogEl)
 
           setTimeout(() => {
             expect(spy).not.toHaveBeenCalled()
@@ -453,9 +447,7 @@ describe('Dialog', () => {
         })
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
-          dialogEl.dispatchEvent(clickEvent)
+          clickBackdrop(dialogEl)
 
           expect(dialogEl.classList.contains('dialog-static')).toBeTrue()
 
@@ -479,9 +471,7 @@ describe('Dialog', () => {
         })
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
-          dialogEl.dispatchEvent(clickEvent)
+          clickBackdrop(dialogEl)
         })
 
         dialogEl.addEventListener('hidePrevented.bs.dialog', () => {
@@ -550,9 +540,7 @@ describe('Dialog', () => {
         const spy = spyOn(dialog, 'hide')
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
-          dialogEl.dispatchEvent(clickEvent)
+          clickBackdrop(dialogEl)
 
           setTimeout(() => {
             expect(spy).not.toHaveBeenCalled()
@@ -1447,9 +1435,7 @@ describe('Dialog', () => {
             }, 10)
           })
 
-          const clickEvent = createEvent('click')
-          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
-          dialogEl.dispatchEvent(clickEvent)
+          clickBackdrop(dialogEl)
         })
 
         dialog.show()
