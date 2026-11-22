@@ -2,6 +2,7 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/reset-text" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
@@ -90,6 +91,20 @@ $popover-tokens: defaults(
         border-style: solid;
         border-width: 0;
       }
+
+      // Forced colors mode paints the transparent borders, so the arrow shows as
+      // a rectangle. Keep only the outer triangle, drawn with system colors.
+      &::before {
+        @include forced-colors() {
+          border-color: Canvas;
+        }
+      }
+
+      &::after {
+        @include forced-colors() {
+          display: none;
+        }
+      }
     }
   }
 
@@ -111,6 +126,10 @@ $popover-tokens: defaults(
       &::before {
         bottom: 0;
         border-block-start-color: var(--popover-arrow-border);
+
+        @include forced-colors() {
+          border-block-start-color: CanvasText;
+        }
       }
 
       &::after {
@@ -134,6 +153,10 @@ $popover-tokens: defaults(
       &::before {
         left: 0;
         border-inline-end-color: var(--popover-arrow-border);
+
+        @include forced-colors() {
+          border-inline-end-color: CanvasText;
+        }
       }
 
       &::after {
@@ -155,6 +178,10 @@ $popover-tokens: defaults(
       &::before {
         top: 0;
         border-block-end-color: var(--popover-arrow-border);
+
+        @include forced-colors() {
+          border-block-end-color: CanvasText;
+        }
       }
 
       &::after {
@@ -196,6 +223,10 @@ $popover-tokens: defaults(
       &::before {
         right: 0;
         border-inline-start-color: var(--popover-arrow-border);
+
+        @include forced-colors() {
+          border-inline-start-color: CanvasText;
+        }
       }
 
       &::after {
