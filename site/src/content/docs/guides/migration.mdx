@@ -107,7 +107,14 @@ The minimum browser versions have increased from Chrome and Edge 130 to 138, Fir
 
 - Bootstrap no longer applies `scrollbar-gutter: stable` globally. Dialog and Drawer now use JavaScript to compensate for disappearing scrollbar space while page scrolling is locked. Full-width fixed elements with `.fixed-top`, `.fixed-bottom`, or `.is-fixed` are compensated too. Review any custom scrollbar compensation you added for alpha 1. See [Dialog]([[docsref:/components/dialog]]).
 - Animated drawers now keep their native `open` attribute until the exit transition ends, so their backdrop can fade out. Wait for `hidden.bs.drawer` or `await drawer.hide()` before reading the closed state or removing the element.
+- When a Drawer has a `.drawer-header`, swipe to dismiss from the header. This leaves scroll gestures in the body available.
 - Added `.dialog-2xl` for dialogs up to `1440px` wide. See [Optional sizes]([[docsref:/components/dialog#optional-sizes]]).
+
+### Menu and Popover
+
+- Submenus open in place below `576px` or inside a scrolling Menu. Select **Back** to return to the parent. In this layout, taps open submenus even with `submenuTrigger: 'hover'`. See [Menu]([[docsref:/components/menu#submenus]]).
+- Moving a Menu into another container preserves its Tab order. Native form controls in a Menu keep their arrow key behavior.
+- Popovers with only hover or focus triggers now preserve native click actions, including link navigation and form submission. Include the `click` trigger if a click should toggle the Popover.
 
 ### CSS customization
 
@@ -152,6 +159,11 @@ Continue to use `.bg-2` and `.fg-2` for theme colors and `.border-2` for border 
 - Selection changes dispatch bubbling `input` and `change` events before `change.bs.combobox`. The first field remains a stable event target, including when the last option is deselected.
 - Form reset restores the initial selected markup. Call `update()` after changing selected classes or before a synchronous `FormData` read following attribute changes.
 - Combobox lifecycle events follow its Menu transitions, including outside-click dismissal. Search inputs retain their native <kbd>Home</kbd> and <kbd>End</kbd> editing behavior.
+
+### OTP input
+
+- When the input has `minlength`, the generated default `pattern` also enforces that length. An explicit `pattern` takes precedence.
+- Form reset refreshes the visible slots. Typing over selected slots replaces the selection, and formatted pastes support undo. See [OTP input]([[docsref:/forms/otp-input]]).
 
 ### JavaScript component instances
 
