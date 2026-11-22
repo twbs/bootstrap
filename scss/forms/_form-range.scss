@@ -2,6 +2,7 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/transition" as *;
 @use "../mixins/gradients" as *;
 @use "../mixins/tokens" as *;
@@ -104,7 +105,7 @@ $range-tokens: defaults(
 
     // Forced colors mode sets the track and thumb backgrounds to `Canvas` and drops the
     // fill gradient, so the slider disappears. Paint the parts with system colors instead.
-    @media (forced-colors: active) {
+    @include forced-colors() {
       --range-track-bg: Canvas;
       --range-track-fill-bg: Highlight;
       --range-track-disabled-bg: GrayText;
