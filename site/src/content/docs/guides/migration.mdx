@@ -161,6 +161,10 @@ Continue to use `.bg-2` and `.fg-2` for theme colors and `.border-2` for border 
 - Form reset restores the initial selected markup. Call `update()` after changing selected classes or before a synchronous `FormData` read following attribute changes.
 - Combobox lifecycle events follow its Menu transitions, including outside-click dismissal. Search inputs retain their native <kbd>Home</kbd> and <kbd>End</kbd> editing behavior.
 
+### Collapse motion
+
+- Add `.collapse-instant` to the collapsible element to open and close it without a transition. The `.transition-none` utility also disables Collapse transitions. See [Collapse]([[docsref:/components/collapse]]).
+
 ### OTP input
 
 - When the input has `minlength`, the generated default `pattern` also enforces that length. An explicit `pattern` takes precedence.

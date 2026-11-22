@@ -45,16 +45,11 @@ $collapse-tokens: defaults(
 // closed state interpolate to the `auto` of the open one, and `display`
 // transitions discretely, so the element stays laid out until the size reaches
 // `0`. The animated axis is clipped, so the content cannot spill while it moves.
+// Adding .collapse-instant skips all animations.
 .collapse {
   @include tokens($collapse-tokens);
 
   overflow-y: clip;
-  @include transition-props(
-    var(--transition-collapse-property),
-    var(--transition-collapse-duration),
-    var(--transition-collapse-timing),
-    allow-discrete
-  );
 
   // Browsers without `interpolate-size` open and close the element at once.
   @media (prefers-reduced-motion: no-preference) {
@@ -68,7 +63,7 @@ $collapse-tokens: defaults(
 
   // A closed collapse is not rendered, so the open side needs a start value of
   // its own. Without it the element appears at full size at once.
-  &.show {
+  &.show:not(.collapse-instant) {
     @starting-style {
       block-size: 0;
     }
@@ -89,11 +84,22 @@ $collapse-tokens: defaults(
       block-size: auto;
     }
 
-    &.show {
+    &.show:not(.collapse-instant) {
       @starting-style {
         inline-size: 0;
       }
     }
+  }
+}
+// Put motion in a layer so the transition-none utility can override it.
+@layer components {
+  .collapse:not(.collapse-instant) {
+    @include transition-props(
+      var(--transition-collapse-property),
+      var(--transition-collapse-duration),
+      var(--transition-collapse-timing),
+      allow-discrete
+    );
   }
 }
 // scss-docs-end collapse-classes
