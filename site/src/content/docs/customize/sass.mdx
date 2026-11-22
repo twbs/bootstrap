@@ -574,6 +574,20 @@ A shorthand mixin for the `prefers-color-scheme` media query is available with s
 }
 ```
 
+### Forced colors
+
+A shorthand mixin for the `forced-colors: active` media query is available. Its styles apply when the browser replaces page colors with system colors (for instance, Windows high contrast themes). The mixin outputs nothing when `$enable-forced-colors` is `false`.
+
+<ScssDocs name="mixin-forced-colors" file="scss/mixins/_forced-colors.scss" />
+
+```scss
+.custom-element {
+  @include forced-colors() {
+    // Insert forced colors styles here
+  }
+}
+```
+
 ### Theme classes
 
 The `generate-theme-classes()` mixin loops over the `$theme-colors` map and outputs a `.theme-*` class for each color. Each class maps generic `--theme-*` custom properties to the color’s specific values, so components can reference `--theme-base`, `--theme-bg`, etc., and pick up the right palette from a parent `.theme-*` class. It also emits `.theme-reset`, which sets those tokens to `initial` so nested components use their own defaults again:
