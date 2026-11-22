@@ -136,6 +136,7 @@ Continue to use `.bg-2` and `.fg-2` for theme colors and `.border-2` for border 
 
 ### Datepicker
 
+- If you load the Datepicker Sass partial directly, change the import path from `bootstrap/scss/datepicker` to `bootstrap/scss/forms/datepicker`. The main Bootstrap Sass entry point still includes Datepicker.
 - Prefilled inputs now initialize on page load. Their visible dates use the selected locale, and forms submit ISO dates before focus.
 - Popup calendars use the browser’s top layer. The original input and its application listeners survive initialization and disposal.
 - Native form reset restores the initial selection. A canceled reset does not change it or cancel an earlier completed reset.
