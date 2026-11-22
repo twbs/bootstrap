@@ -51,15 +51,6 @@ $collapse-tokens: defaults(
 
   overflow-y: clip;
 
-  &:not(.collapse-instant) {
-    @include transition-props(
-      var(--transition-collapse-property),
-      var(--transition-collapse-duration),
-      var(--transition-collapse-timing),
-      allow-discrete
-    );
-  }
-
   // Browsers without `interpolate-size` open and close the element at once.
   @media (prefers-reduced-motion: no-preference) {
     interpolate-size: allow-keywords;
@@ -98,6 +89,17 @@ $collapse-tokens: defaults(
         inline-size: 0;
       }
     }
+  }
+}
+// Put motion in a layer so the transition-none utility can override it.
+@layer components {
+  .collapse:not(.collapse-instant) {
+    @include transition-props(
+      var(--transition-collapse-property),
+      var(--transition-collapse-duration),
+      var(--transition-collapse-timing),
+      allow-discrete
+    );
   }
 }
 // scss-docs-end collapse-classes

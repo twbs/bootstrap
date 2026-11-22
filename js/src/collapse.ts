@@ -33,7 +33,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
-const CLASS_NAME_INSTANT = 'collapse-instant'
 const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`
 
 const SELECTOR_ACTIVES = '.collapse.show'
@@ -180,11 +179,10 @@ class Collapse extends BaseComponent {
     return element.classList.contains(CLASS_NAME_SHOW)
   }
 
-  // The collapse declares its transition in CSS, so .collapse-instant,
-  // reduced motion, .transition-none, or transitions disabled means no wait.
+  // The collapse declares its transition in CSS, so a zero computed duration
+  // (reduced motion, .transition-none, or transitions disabled) means no wait.
   protected _isAnimated(): boolean {
-    return !this._element.classList.contains(CLASS_NAME_INSTANT) &&
-      getTransitionDurationFromElement(this._element) > 0
+    return getTransitionDurationFromElement(this._element) > 0
   }
 
   // One trigger can target more than one collapse. Those collapses open
