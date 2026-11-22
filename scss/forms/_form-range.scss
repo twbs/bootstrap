@@ -102,6 +102,27 @@ $range-tokens: defaults(
     appearance: none;
     background-color: transparent;
 
+    // Forced colors mode sets the track and thumb backgrounds to `Canvas` and drops the
+    // fill gradient, so the slider disappears. Paint the parts with system colors instead.
+    @media (forced-colors: active) {
+      --range-track-bg: Canvas;
+      --range-track-fill-bg: Highlight;
+      --range-track-disabled-bg: GrayText;
+      --range-thumb-bg: ButtonText;
+      --range-thumb-active-bg: Highlight;
+      --range-thumb-disabled-bg: GrayText;
+      forced-color-adjust: none;
+
+      // Outline instead of border, so the track height and thumb offset stay the same.
+      &::-webkit-slider-runnable-track {
+        outline: 1px solid CanvasText;
+      }
+
+      &::-moz-range-track {
+        outline: 1px solid CanvasText;
+      }
+    }
+
     &:hover {
       &::-webkit-slider-thumb {
         @include focus-ring(false, color-mix(in oklch, var(--theme-focus-ring, var(--primary-focus-ring)), transparent));
