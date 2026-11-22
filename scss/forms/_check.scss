@@ -1,6 +1,7 @@
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/mask-icon" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
@@ -71,6 +72,11 @@ $check-tokens: defaults(
         opacity var(--control-transition-duration) var(--control-transition-timing),
         transform var(--control-transition-duration) var(--control-transition-timing)
       );
+
+      // Forced colors mode removes the background color that paints the mark.
+      @include forced-colors() {
+        background-color: CanvasText;
+      }
     }
 
     &:checked {
