@@ -67,7 +67,7 @@ Click the button below to show a toast (positioned with our utilities in the low
       <img src="..." class="rounded me-2" alt="...">
       <strong class="me-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <CloseButton dismiss="toast" />
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -328,6 +328,10 @@ You can also get fancy with flexbox utilities to align toasts horizontally and/o
       </div>
     </div>
   </div>`} />
+
+### Drawers and dialogs
+
+Modal [drawers]([[docsref:/components/drawer]]) and [dialogs]([[docsref:/components/dialog]]) render in the browser’s top layer. Put the toast container and its toasts inside the open drawer or dialog. Increasing the toast z-index cannot bring a page-level toast above it. See the [Dialog overlays example]([[docsref:/components/dialog#overlays]]).
 
 ## Accessibility
 

@@ -31,8 +31,8 @@ $utilities: map.merge(
     // scss-docs-start utils-aspect-ratio
     "aspect-ratio-attr": (
       selector: "attr-includes",
-      class: "ratio-",
       property: aspect-ratio,
+      class: "ratio-",
       values: var(--ratio),
     ),
     "aspect-ratio": (
@@ -43,8 +43,8 @@ $utilities: map.merge(
     // scss-docs-end utils-aspect-ratio
     // scss-docs-start utils-float
     "float": (
-      property: float,
       responsive: true,
+      property: float,
       values: (
         start: inline-start,
         end: inline-end,
@@ -195,8 +195,8 @@ $utilities: map.merge(
       )
     ),
     "border-top": (
-      class: border-top,
       property: border-block-start,
+      class: border-top,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
         0: 0,
@@ -227,16 +227,16 @@ $utilities: map.merge(
       )
     ),
     "border-y": (
-      class: border-y,
       property: border-block,
+      class: border-y,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
         0: 0,
       )
     ),
     "border-x": (
-      class: border-x,
       property: border-inline,
+      class: border-x,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
         0: 0,
@@ -266,8 +266,8 @@ $utilities: map.merge(
       values: map.merge($border-widths, (keyline: var(--border-width-keyline)))
     ),
     "border-opacity": (
-      class: border,
       property: border-color,
+      class: border-opacity,
       values: theme-opacity-values(--bc)
     ),
     // scss-docs-end utils-border-color
@@ -818,7 +818,7 @@ $utilities: map.merge(
       values: theme-color-refs("contrast"),
     ),
     "fg-opacity": (
-      class: fg,
+      class: fg-opacity,
       property: color,
       values: theme-opacity-values(--fg)
     ),
@@ -853,7 +853,7 @@ $utilities: map.merge(
     ),
     "underline-opacity": (
       property: text-decoration-color,
-      class: underline,
+      class: underline-opacity,
       state: hover,
       values: theme-opacity-values(--underline-color, currentcolor)
     ),
@@ -896,8 +896,8 @@ $utilities: map.merge(
       values: theme-color-refs("bg-muted"),
     ),
     "bg-opacity": (
-      class: bg,
       property: background-color,
+      class: bg-opacity,
       values: theme-opacity-values(--bg)
     ),
     // scss-docs-end utils-bg-color

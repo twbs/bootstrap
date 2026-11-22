@@ -37,3 +37,12 @@ jobs:
 
       - name: Run CSS tests
         run: npm run css-test
+
+      - name: Install grid test browsers
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Test grid layout in Chromium, Firefox, and WebKit
+        run: |
+          npm run css-test-grid
+          GRID_TEST_BROWSER=firefox npm run css-test-grid
+          GRID_TEST_BROWSER=webkit npm run css-test-grid

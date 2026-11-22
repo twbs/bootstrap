@@ -126,37 +126,36 @@ describe('Swipe', () => {
       return new Promise(resolve => {
         clearPointerEvents()
         defineDocumentElementOntouchstart()
-        let isFirstTime = true
-
-        const callback = () => {
-          if (isFirstTime) {
-            isFirstTime = false
-            return
-          }
-
-          expect().nothing()
-          restorePointerEvents()
-          resolve()
-        }
-
         // eslint-disable-next-line no-new
         new Swipe(swipeEl, {
-          endCallback: callback
+          endCallback() {
+            expect().nothing()
+            restorePointerEvents()
+            resolve()
+          }
         })
         mockSwipeGesture(swipeEl, {
           pos: [10, 10],
           deltaX: 300
-        })
-
-        mockSwipeGesture(swipeEl, {
-          pos: [300, 10],
-          deltaX: -300
         })
       })
     })
   })
 
   describe('Functionality on PointerEvents', () => {
+    it('should ignore the end of a canceled pointer gesture', () => {
+      defineDocumentElementOntouchstart()
+      const leftCallback = jasmine.createSpy('leftCallback')
+      const swipe = new Swipe(swipeEl, { leftCallback })
+      const pointer = { pointerType: 'touch', pointerId: 1 }
+      swipeEl.dispatchEvent(new PointerEvent('pointerdown', { ...pointer, clientX: 100 }))
+      swipeEl.dispatchEvent(new PointerEvent('pointercancel', pointer))
+      swipeEl.dispatchEvent(new PointerEvent('pointerup', pointer))
+
+      expect(leftCallback).not.toHaveBeenCalled()
+      swipe.dispose()
+    })
+
     it('should not allow pinch with touch events', () => {
       Simulator.setType('touch')
       clearPointerEvents()
@@ -251,12 +250,14 @@ describe('Swipe', () => {
         swipe._supportPointerEvents ?
           [
             ['pointerdown', jasmine.any(Function), jasmine.any(Boolean)],
-            ['pointerup', jasmine.any(Function), jasmine.any(Boolean)]
+            ['pointerup', jasmine.any(Function), jasmine.any(Boolean)],
+            ['pointercancel', jasmine.any(Function), jasmine.any(Boolean)]
           ] :
           [
             ['touchstart', jasmine.any(Function), jasmine.any(Boolean)],
             ['touchmove', jasmine.any(Function), jasmine.any(Boolean)],
-            ['touchend', jasmine.any(Function), jasmine.any(Boolean)]
+            ['touchend', jasmine.any(Function), jasmine.any(Boolean)],
+            ['touchcancel', jasmine.any(Function), jasmine.any(Boolean)]
           ]
 
       expect(addEventSpy.calls.allArgs()).toEqual(expectedArgs)
