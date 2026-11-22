@@ -96,26 +96,24 @@ To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
 
 ## Theme colors
 
-Add a theme class to the dialog or a parent element to set the header background and text colors. The close button follows the header text color.
+Add a theme class to the dialog to give the header a subtle background. The title and close button use the theme text color.
 
-<Example addStackblitzJs code={`<div class="theme-primary"><!-- [!code highlight] -->
-    <button type="button" class="btn-solid" data-bs-toggle="dialog" data-bs-target="#exampleDialogTheme">
-      Open themed dialog
-    </button>
+<Example addStackblitzJs code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogTheme">
+    Open themed dialog
+  </button>
 
-    <dialog class="dialog" id="exampleDialogTheme" aria-labelledby="exampleDialogThemeLabel">
-      <div class="dialog-header">
-        <h1 class="dialog-title" id="exampleDialogThemeLabel">Review changes</h1>
-        <CloseButton dismiss="dialog" />
-      </div>
-      <div class="dialog-body">
-        <p>Your changes are ready for review.</p>
-      </div>
-      <div class="dialog-footer">
-        <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-      </div>
-    </dialog>
-  </div>`} />
+  <dialog class="dialog theme-primary" id="exampleDialogTheme" aria-labelledby="exampleDialogThemeLabel"><!-- [!code highlight] -->
+    <div class="dialog-header">
+      <h1 class="dialog-title" id="exampleDialogThemeLabel">Review changes</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>Your changes are ready for review.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    </div>
+  </dialog>`} />
 
 ## Static backdrop
 
