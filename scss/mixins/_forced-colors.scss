@@ -1,0 +1,14 @@
+@use "../config" as *;
+
+// Wrap styles for forced colors mode, such as Windows high contrast themes.
+// The browser then replaces author colors with system colors. Set
+// `$enable-forced-colors: false` to remove these styles from the build.
+// scss-docs-start mixin-forced-colors
+@mixin forced-colors {
+  @if $enable-forced-colors {
+    @media (forced-colors: active) {
+      @content;
+    }
+  }
+}
+// scss-docs-end mixin-forced-colors

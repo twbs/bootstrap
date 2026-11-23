@@ -1,6 +1,7 @@
 @use "config" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/reset-text" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
@@ -66,11 +67,21 @@ $tooltip-tokens: defaults(
       width: var(--tooltip-arrow-width);
       height: var(--tooltip-arrow-height);
 
+      // Forced colors mode paints the transparent borders, so the arrow shows as
+      // a rectangle. Hide them with `Canvas` and draw only the triangle side.
+      @include forced-colors() {
+        border-block-start-color: Canvas;
+      }
+
       &::before {
         position: absolute;
         content: "";
         border-color: transparent;
         border-style: solid;
+
+        @include forced-colors() {
+          border-color: Canvas;
+        }
       }
     }
   }
@@ -88,6 +99,10 @@ $tooltip-tokens: defaults(
       top: -1px;
       border-width: var(--tooltip-arrow-height) calc(var(--tooltip-arrow-width) * .5) 0;
       border-block-start-color: var(--tooltip-bg);
+
+      @include forced-colors() {
+        border-block-start-color: CanvasText;
+      }
     }
   }
 
@@ -100,6 +115,10 @@ $tooltip-tokens: defaults(
       right: -1px;
       border-width: calc(var(--tooltip-arrow-width) * .5) var(--tooltip-arrow-height) calc(var(--tooltip-arrow-width) * .5) 0;
       border-inline-end-color: var(--tooltip-bg);
+
+      @include forced-colors() {
+        border-inline-end-color: CanvasText;
+      }
     }
   }
 
@@ -110,6 +129,10 @@ $tooltip-tokens: defaults(
       bottom: -1px;
       border-width: 0 calc(var(--tooltip-arrow-width) * .5) var(--tooltip-arrow-height);
       border-block-end-color: var(--tooltip-bg);
+
+      @include forced-colors() {
+        border-block-end-color: CanvasText;
+      }
     }
   }
 
@@ -122,6 +145,10 @@ $tooltip-tokens: defaults(
       left: -1px;
       border-width: calc(var(--tooltip-arrow-width) * .5) 0 calc(var(--tooltip-arrow-width) * .5) var(--tooltip-arrow-height);
       border-inline-start-color: var(--tooltip-bg);
+
+      @include forced-colors() {
+        border-inline-start-color: CanvasText;
+      }
     }
   }
 
@@ -148,5 +175,10 @@ $tooltip-tokens: defaults(
     text-align: center;
     background-color: var(--tooltip-bg);
     @include border-radius(var(--tooltip-border-radius));
+
+    // Forced colors mode removes the background color. Show the edge with an outline.
+    @include forced-colors() {
+      outline: 1px solid transparent;
+    }
   }
 }

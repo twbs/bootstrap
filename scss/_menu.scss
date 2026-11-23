@@ -3,6 +3,7 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
@@ -239,7 +240,8 @@ $menu-tokens: defaults(
       color: var(--menu-item-focus-color);
       background-color: var(--menu-item-focus-bg);
 
-      @media (forced-colors: active) {
+      // Show the focused item with the system highlight colors.
+      @include forced-colors() {
         color: HighlightText;
         background-color: Highlight;
         forced-color-adjust: none;
