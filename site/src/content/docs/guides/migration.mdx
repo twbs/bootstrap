@@ -25,7 +25,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
    }
    ```
 
-   Replace `@popperjs/core` with `@floating-ui/dom`. If you use Datepicker, add `vanilla-calendar-pro`. The bundled JavaScript includes both peer dependencies. The standalone JavaScript requires installed packages or an import map.
+   Remove `@popperjs/core`. If you use Datepicker, add `vanilla-calendar-pro`. The bundled JavaScript includes it. For the standalone JavaScript, install it or use an import map.
 
 2. If using all of Bootstrap’s Sass files, include it in your Sass using `@use`:
 
@@ -252,7 +252,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Theme and config maps now merge via `defaults()`.** `$theme-colors`, `$theme-bgs`, `$theme-fgs`, `$theme-borders`, `$badge-variants`, and the other global maps accept a partial `@use ... with ()` override. v5 required a full map replacement. Set a key to `null` to drop it. Nested theme-color maps merge one level deep—pass the whole sub-map to change one role. See [Sass]([[docsref:/customize/sass]]).
 - **Added `$enable-forced-colors` and the `forced-colors()` mixin.** Components include styles for forced colors mode (for example, Windows high contrast themes), so parts drawn only with a background color stay visible. Set `$enable-forced-colors: false` to remove these styles from the build. In your own Sass, use `@include forced-colors()` instead of a bare `@media (forced-colors: active)` query, so your styles follow the same option. See [Forced colors]([[docsref:/getting-started/accessibility#forced-colors]]).
 - **Removed `$enable-dark-mode`.** Dark mode support is always compiled; control it at runtime with `data-bs-theme` (or the `color-mode()` mixin) instead of toggling a Sass flag.
-- **Removed `$enable-caret` and the caret mixins.** Menu toggles lost their automatic caret when menus moved to Floating UI, so the flag had no effect. The `caret()`, `caret-down()`, `caret-up()`, `caret-end()`, and `caret-start()` mixins, the `scss/mixins/_caret.scss` file, and the `$caret-width`, `$caret-vertical-align`, and `$caret-spacing` variables are gone too. Add an icon to the toggle markup if you want a caret.
+- **Removed `$enable-caret` and the caret mixins.** Menu toggles lost their automatic caret when the Menu component changed, so the flag had no effect. The `caret()`, `caret-down()`, `caret-up()`, `caret-end()`, and `caret-start()` mixins, the `scss/mixins/_caret.scss` file, and the `$caret-width`, `$caret-vertical-align`, and `$caret-spacing` variables are gone too. Add an icon to the toggle markup if you want a caret.
 - **Removed `$enable-negative-margins`.** Negative margin utilities are always generated now, from the `$negative-spacers` map in `scss/_config.scss`. Override that map to change their values, or set a key to `null` to drop it. See [negative margins limited](#utilities) under Utilities.
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.
@@ -314,8 +314,8 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
     const tooltip = Tooltip.getOrCreateInstance(el)
     ```
   - **Data API initialization still runs automatically.** Add `type="module"` to the script tag. You must also apply the component and data attribute renames in this guide.
-  - For modern ESM-based bundlers (Vite, Webpack 5, Parcel 2, Rolldown, etc.), `import { Tooltip } from 'bootstrap'` still works and supports tree shaking. Install `@floating-ui/dom` for positioned components and `vanilla-calendar-pro` for Datepicker. Projects that use CommonJS `require()` calls must change to ESM `import` syntax.
-  - The `bootstrap.bundle.js` files include Floating UI and Vanilla Calendar Pro. The standalone `bootstrap.js` files leave these peer dependencies external, so direct browser loading requires an import map.
+  - For modern ESM-based bundlers (Vite, Webpack 5, Parcel 2, Rolldown, etc.), `import { Tooltip } from 'bootstrap'` still works and supports tree shaking. Install `vanilla-calendar-pro` for Datepicker. Projects that use CommonJS `require()` calls must change to ESM `import` syntax.
+  - The `bootstrap.bundle.js` files include Vanilla Calendar Pro. The standalone `bootstrap.js` files leave that peer dependency external, so direct browser loading requires an import map.
 - **Bootstrap’s JavaScript source is now TypeScript.** The `js/src` files use the `.ts` extension. The package ships built-in type declarations in `js/dist/*.d.ts`, so you no longer need `@types/bootstrap`. Deep `.js` imports still work: `bootstrap/js/src/alert.js` now resolves to the compiled file in `js/dist`. To import the raw TypeScript source, use `bootstrap/js/src/alert.ts`.
 - **We now build with Rolldown instead of Rollup and Babel.** This only affects you if you build Bootstrap from source. Rolldown strips the TypeScript types and lowers the syntax itself, so Babel is gone, along with `.babelrc.mjs` and the `@rollup/plugin-*` packages. The published files in `dist/` and `js/dist/` are unchanged in format. If you bundle Bootstrap in your own project, keep using whatever bundler you prefer — Rollup is still a fine choice, and `import { Tooltip } from 'bootstrap'` works the same way. See the [contribute guide]([[docsref:/guides/contribute]]) for details.
 - **Tab now throws when its element has no tab-panel ancestor.** In v5 the constructor returned early and gave you an inert instance, which hid the markup error. Wrap your tab triggers in a `.list-group`, `.nav`, or `[role="tablist"]` container, as the [Nav docs]([[docsref:/components/nav]]) show.
@@ -335,7 +335,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
   - Renamed events: `show.bs.dropdown` to `show.bs.menu`, `shown.bs.dropdown` to `shown.bs.menu`, `hide.bs.dropdown` to `hide.bs.menu`, `hidden.bs.dropdown` to `hidden.bs.menu`.
   - Renamed the data key from `bs.dropdown` to `bs.menu` (affects `Menu.getInstance()` and `Menu.getOrCreateInstance()`).
 - **Added new Combobox component.** A searchable select built on top of Menu, with single and multi-select support. See the [Combobox docs]([[docsref:/forms/combobox]]).
-- Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for menu, tooltip, and popover positioning. The `popperConfig` option on Tooltip, Popover, and Menu (formerly Dropdown) has been renamed to `floatingConfig`. Update any custom positioning configuration accordingly.
+- Bootstrap positions menus, tooltips, and popovers with CSS anchors and a JavaScript fallback. For these components, rename `popperConfig` to `floatingConfig` and update custom middleware.
 - Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component. Popup datepickers close on outside interaction, on <kbd>Escape</kbd>, or when focus leaves the input and calendar.
 - Initialized named Datepicker inputs submit ISO dates through an internal form binding. The visible text remains localized. Use `getSelectedDates()` to read dates. Disposal restores the input’s name and removes the binding. Bootstrap owns popup focus and positioning; `vcpOptions` cannot override its lifecycle callbacks.
 - Removed the `jspm` configuration from `package.json`.

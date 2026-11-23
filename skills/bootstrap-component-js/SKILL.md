@@ -1,6 +1,6 @@
 ---
 name: bootstrap-component-js
-description: Add JavaScript behavior to a Bootstrap 6 component. Use when writing a component's TypeScript source, extending BaseComponent, wiring the data API, adding events or config options, or integrating Floating UI or a third-party library.
+description: Add JavaScript behavior to a Bootstrap 6 component. Use when writing a component's TypeScript source, extending BaseComponent, wiring the data API, adding events or config options, or positioning overlays or integrating a third-party library.
 guide: /getting-started/javascript
 ---
 
@@ -18,7 +18,7 @@ For the component's styles, see the `bootstrap-component` skill.
 - [ ] Step 2: Define config options
 - [ ] Step 3: Implement behavior and events
 - [ ] Step 4: Wire the data API
-- [ ] Step 5: Position with Floating UI (optional)
+- [ ] Step 5: Position overlays (optional)
 - [ ] Step 6: Wrap a third-party library (optional)
 - [ ] Step 7: Clean up in dispose()
 - [ ] Step 8: Register and test
@@ -190,26 +190,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 
 ---
 
-## Step 5: Position with Floating UI (optional)
+## Step 5: Position overlays (optional)
 
-Menus, tooltips, and popovers position with `@floating-ui/dom`, an optional peer dependency. Guard for it in the constructor before calling `super()` — legal here because the class declares its fields instead of initializing them:
-
-```ts
-import { autoUpdate, computePosition } from '@floating-ui/dom'
-
-class Widget extends BaseComponent {
-  protected declare _floatingCleanup: (() => void) | null
-
-  constructor(element?: string | Element | null, config?: Partial<WidgetConfig> | null) {
-    if (typeof computePosition === 'undefined') {
-      throw new TypeError('Bootstrap\'s widgets require Floating UI (https://floating-ui.com)')
-    }
-
-    super(element, config)
-    this._floatingCleanup = null
-  }
-}
-```
+Menu, Tooltip, Popover, and Datepicker use the shared positioner. Use `startAnchoring()` for compatible configurations. Run the JavaScript positioner when CSS anchors cannot reproduce the placement.
 
 Create the positioner when the element is shown and keep the cleanup function so it can be cancelled:
 
@@ -263,7 +246,7 @@ class Widget extends BaseComponent {
 }
 ```
 
-`super.dispose()` removes the `Data` entry, removes every listener bound on `this._element` under `EVENT_KEY`, and nulls the instance's own properties. Everything else is yours to undo first: timers, `MutationObserver` / `ResizeObserver` instances, listeners bound on `document` or `window`, Floating UI cleanups, and third-party instances. Leaks here show up as failing "should dispose" specs.
+`super.dispose()` removes the `Data` entry, removes every listener bound on `this._element` under `EVENT_KEY`, and nulls the instance's own properties. Everything else is yours to undo first: timers, `MutationObserver` / `ResizeObserver` instances, listeners bound on `document` or `window`, positioning cleanups, and third-party instances. Leaks here show up as failing "should dispose" specs.
 
 ---
 

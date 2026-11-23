@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import type { MiddlewareState } from '@floating-ui/dom'
+import type { MiddlewareState } from './util/positioning.js'
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'

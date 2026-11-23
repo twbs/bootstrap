@@ -31,7 +31,7 @@
   link: components/drawer/
 
 - name: Popover
-  description: Create custom overlays. Built on Floating UI.
+  description: Create custom overlays.
   link: components/popovers/
 
 - name: Scrollspy
@@ -51,5 +51,5 @@
   link: components/toggler/
 
 - name: Tooltip
-  description: Replace browser tooltips with custom ones. Built on Floating UI.
+  description: Replace browser tooltips with custom ones.
   link: components/tooltips/

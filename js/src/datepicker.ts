@@ -18,10 +18,11 @@ import {
   type WeekDayID
 } from 'vanilla-calendar-pro'
 import {
-  autoUpdate, computePosition, flip, offset, shift, size
-} from '@floating-ui/dom'
+  autoUpdate, computePosition, flip, offset, shift, size, type Placement
+} from './util/positioning.js'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
+import { canAnchor, startAnchoring } from './util/anchor-positioning.js'
 import { onDocumentReady } from './util/component-functions.js'
 import type { ComponentConfig } from './util/config.js'
 import {
@@ -298,16 +299,22 @@ class Datepicker extends BaseComponent {
     }
 
     this._element.setAttribute('aria-expanded', 'true')
-    await this._updatePosition()
-    if (!this._isCurrentOpening(generation)) {
-      return
+    this._floatingCleanup?.()
+    const positioner = this._tryAnchorPosition(popup)
+    if (positioner) {
+      this._floatingCleanup = positioner.dispose
+    } else {
+      await this._updatePosition()
+      if (!this._isCurrentOpening(generation)) {
+        return
+      }
+
+      this._floatingCleanup = autoUpdate(this._positionElement, popup, () => {
+        this._syncDisplayMonths()
+        this._updatePosition()
+      })
     }
 
-    this._floatingCleanup?.()
-    this._floatingCleanup = autoUpdate(this._positionElement, popup, () => {
-      this._syncDisplayMonths()
-      this._updatePosition()
-    })
     if (!this._isInput || (relatedTarget && relatedTarget !== this._element)) {
       this._focusCalendarDate()
     }
@@ -664,6 +671,35 @@ class Datepicker extends BaseComponent {
     }
   }
 
+  protected _tryAnchorPosition(popup: HTMLElement) {
+    if (!canAnchor(this._positionElement) || !popup.matches(':popover-open')) {
+      return null
+    }
+
+    const alignment = this._getPositionAlignment(popup)
+    const reverse = alignment === '-start' ? '-end' : '-start'
+    const candidates: Placement[] = alignment ?
+      [`bottom${alignment}`, `bottom${reverse}`, `top${alignment}`, `top${reverse}`] :
+      ['bottom', 'top']
+    return startAnchoring(this._positionElement, popup, {
+      candidates,
+      gap: 4,
+      padding: 8,
+      scales: true,
+      fallback: () => this._updatePosition(),
+      onUpdate: () => this._syncDisplayMonths(),
+      onPlacement(placement) {
+        popup.dataset.vcPosition = placement.startsWith('top') ? 'top' : 'bottom'
+      }
+    })
+  }
+
+  protected _getPositionAlignment(popup: HTMLElement): '' | '-start' | '-end' {
+    const left = popup.dir === 'rtl' ? '-end' : '-start'
+    const right = popup.dir === 'rtl' ? '-start' : '-end'
+    return this._config.placement === 'center' ? '' : (this._config.placement === 'right' ? right : left)
+  }
+
   protected async _updatePosition(): Promise<void> {
     const popup = this._popup
     if (!popup || (!this._isShown && !popup.hasAttribute('data-vc-calendar-closing'))) {
@@ -671,11 +707,8 @@ class Datepicker extends BaseComponent {
     }
 
     const generation = ++this._positionGeneration
-    const left = popup.dir === 'rtl' ? '-end' : '-start'
-    const right = popup.dir === 'rtl' ? '-start' : '-end'
-    const alignment = this._config.placement === 'center' ? '' : (this._config.placement === 'right' ? right : left)
     const result = await computePosition(this._positionElement, popup, {
-      placement: `bottom${alignment}` as 'bottom' | 'bottom-start' | 'bottom-end',
+      placement: `bottom${this._getPositionAlignment(popup)}`,
       strategy: 'fixed',
       middleware: [
         offset(4),

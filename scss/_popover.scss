@@ -152,16 +152,16 @@ $popover-tokens: defaults(
 
       &::before {
         left: 0;
-        border-inline-end-color: var(--popover-arrow-border);
+        border-right-color: var(--popover-arrow-border);
 
         @include forced-colors() {
-          border-inline-end-color: CanvasText;
+          border-right-color: CanvasText;
         }
       }
 
       &::after {
         left: var(--popover-border-width);
-        border-inline-end-color: var(--popover-bg);
+        border-right-color: var(--popover-bg);
       }
     }
   }
@@ -222,16 +222,16 @@ $popover-tokens: defaults(
 
       &::before {
         right: 0;
-        border-inline-start-color: var(--popover-arrow-border);
+        border-left-color: var(--popover-arrow-border);
 
         @include forced-colors() {
-          border-inline-start-color: CanvasText;
+          border-left-color: CanvasText;
         }
       }
 
       &::after {
         right: var(--popover-border-width);
-        border-inline-start-color: var(--popover-bg);
+        border-left-color: var(--popover-bg);
       }
     }
   }

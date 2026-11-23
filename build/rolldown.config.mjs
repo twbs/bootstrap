@@ -10,12 +10,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const BUNDLE = process.env.BUNDLE === 'true'
 
 let destinationFile = 'bootstrap'
-const external = ['@floating-ui/dom', 'vanilla-calendar-pro']
+const external = ['vanilla-calendar-pro']
 const define = {}
 
 if (BUNDLE) {
   destinationFile += '.bundle'
-  // Bundle all dependencies (Floating UI, Vanilla Calendar Pro, etc.)
+  // Bundle Vanilla Calendar Pro.
   external.length = 0
   define['process.env.NODE_ENV'] = '"production"'
 }

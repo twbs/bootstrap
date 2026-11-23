@@ -25,14 +25,13 @@ This skill sets up Bootstrap 6 in a user's project. Pick the path that matches t
 
 Bootstrap 6 depends on two optional peer packages:
 
-- `@floating-ui/dom` — positioning for menus, popovers, and tooltips. Omit if you don't use them.
 - `vanilla-calendar-pro` — the datepicker. Omit if you don't use it.
 
 ---
 
 ## Step 2 & 3 (CDN): Include via CDN
 
-Add Bootstrap's CSS in `<head>` and the JS bundle before the closing `</body>`. The bundle includes Floating UI and Vanilla Calendar Pro.
+Add Bootstrap's CSS in `<head>` and the JS bundle before the closing `</body>`. The bundle includes Vanilla Calendar Pro.
 
 ```html
 <!doctype html>
@@ -55,7 +54,7 @@ Add Bootstrap's CSS in `<head>` and the JS bundle before the closing `</body>`. 
 
 Copy the exact URLs and hashes from the Install docs when you use a different version. Never guess an SRI hash. The `crossorigin="anonymous"` attribute is required for SRI to work.
 
-To load Floating UI and Vanilla Calendar Pro separately (smaller payload), use the non-bundle JS with an import map:
+The published standalone build uses an import map for its dependencies:
 
 ```html
 <script type="importmap">
@@ -125,7 +124,7 @@ import { Tooltip, Toast, Popover } from 'bootstrap'
 
 You can also import a single plugin directly from its file under `bootstrap/js/dist/`.
 
-Floating UI and Vanilla Calendar Pro are imported automatically through Bootstrap when a bundler is used.
+Vanilla Calendar Pro is imported automatically through Bootstrap when a bundler is used.
 
 ---
 

@@ -13,12 +13,13 @@ import {
   offset,
   autoUpdate,
   type Boundary,
+  type ComputeOptions,
   type Middleware,
   type MiddlewareState,
   type Placement,
-  type ReferenceElement,
-  type Strategy
-} from '@floating-ui/dom'
+  type ReferenceElement
+} from './util/positioning.js'
+import { canAnchor, hasClippingAncestor, startAnchoring } from './util/anchor-positioning.js'
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
@@ -160,6 +161,7 @@ const DefaultType = {
 class Menu extends BaseComponent {
   static _openInstances = new Set<Menu>()
   protected declare _config: MenuConfig
+  protected declare _anchorUpdate: (() => void) | null
   protected declare _floatingCleanup: (() => void) | null
   protected declare _mediaQueryListeners: BreakpointListener[]
   protected declare _responsivePlacements: ResponsivePlacements | null
@@ -176,12 +178,9 @@ class Menu extends BaseComponent {
   protected declare _menuOriginalNextSibling: ChildNode | null
 
   constructor(element?: string | Element | null, config?: Partial<MenuConfig> | null) {
-    if (typeof computePosition === 'undefined') {
-      throw new TypeError('Bootstrap\'s menus require Floating UI (https://floating-ui.com)')
-    }
-
     super(element, config)
 
+    this._anchorUpdate = null
     this._floatingCleanup = null
     this._mediaQueryListeners = []
     this._responsivePlacements = null
@@ -319,6 +318,11 @@ class Menu extends BaseComponent {
   }
 
   update(): void {
+    if (this._anchorUpdate) {
+      this._anchorUpdate()
+      return
+    }
+
     if (this._floatingCleanup) {
       this._updateFloatingPosition()
     }
@@ -353,7 +357,7 @@ class Menu extends BaseComponent {
 
     this._removeTouchMouseoverListeners()
 
-    // Start the exit transition by removing `.show`. Keep Floating UI active and
+    // Start the exit transition by removing `.show`. Keep positioning active and
     // the menu in its current DOM location so it animates out in place; the
     // teardown (dispose floating, restore original parent) is deferred until the
     // transition ends. Doing it now would move/reposition the menu mid-fade and
@@ -409,6 +413,10 @@ class Menu extends BaseComponent {
       return
     }
 
+    if (this._tryAnchorPosition()) {
+      return
+    }
+
     let referenceElement: ReferenceElement = this._element
 
     if (this._config.reference === 'parent') {
@@ -424,6 +432,31 @@ class Menu extends BaseComponent {
       this._menu,
       () => this._updateFloatingPosition(referenceElement)
     )
+  }
+
+  protected _tryAnchorPosition(): boolean {
+    const { boundary, container, floatingConfig, offset, placement, reference, strategy } = this._config
+    if (!canAnchor(this._element) || this._isSubmenu || floatingConfig || boundary !== Default.boundary ||
+        container !== false || reference !== 'toggle' || strategy !== 'absolute' ||
+        !Array.isArray(offset) || offset.length !== 2 || offset[0] !== 0 || offset[1] !== (Default.offset as number[])[1] ||
+        !/^(top|bottom)-(start|end)$/.test(placement) ||
+        getComputedStyle(this._menu).position === 'static' || hasClippingAncestor(this._menu)) {
+      return false
+    }
+
+    const positioner = startAnchoring(this._element, this._menu, {
+      candidates: [placement as Placement, ...this._getFallbackPlacements()],
+      gap: offset[1],
+      scales: true,
+      fallback: () => this._updateFloatingPosition()
+    })
+    if (!positioner) {
+      return false
+    }
+
+    this._anchorUpdate = positioner.schedule
+    this._floatingCleanup = positioner.dispose
+    return true
   }
 
   protected async _updateFloatingPosition(referenceElement: ReferenceElement | null = null): Promise<void> {
@@ -450,9 +483,7 @@ class Menu extends BaseComponent {
     await this._applyFloatingPosition(
       referenceElement!,
       this._menu,
-      floatingConfig.placement,
-      floatingConfig.middleware,
-      floatingConfig.strategy
+      floatingConfig
     )
   }
 
@@ -602,6 +633,7 @@ class Menu extends BaseComponent {
   }
 
   protected _disposeFloating(): void {
+    this._anchorUpdate = null
     if (this._floatingCleanup) {
       this._floatingCleanup()
       this._floatingCleanup = null
@@ -640,16 +672,12 @@ class Menu extends BaseComponent {
     }
   }
 
-  protected async _applyFloatingPosition(reference: ReferenceElement, floating: HTMLElement, placement: Placement, middleware: Middleware[], strategy: Strategy = 'absolute'): Promise<string | null> {
+  protected async _applyFloatingPosition(reference: ReferenceElement, floating: HTMLElement, options: ComputeOptions): Promise<string | null> {
     if (!floating.isConnected) {
       return null
     }
 
-    const { x, y, placement: finalPlacement } = await computePosition(
-      reference,
-      floating,
-      { placement, middleware, strategy }
-    )
+    const { x, y, placement: finalPlacement, strategy } = await computePosition(reference, floating, options)
 
     if (!floating.isConnected) {
       return null
@@ -798,7 +826,7 @@ class Menu extends BaseComponent {
     trigger.setAttribute('aria-expanded', 'true')
     trigger.setAttribute('aria-haspopup', 'true')
 
-    // Keep the submenu transparent until Floating UI applies the first position, so
+    // Keep the submenu transparent until the positioner applies the first position, so
     // it doesn't flash at its CSS fallback position (top: 0, over the parent menu)
     // before being moved into place. `opacity` (unlike `visibility`/`display`) keeps
     // the submenu measurable for flip/shift and focusable for keyboard navigation.
@@ -860,7 +888,7 @@ class Menu extends BaseComponent {
     submenu.classList.remove(CLASS_NAME_SHOW)
     submenuWrapper.classList.remove(CLASS_NAME_SHOW)
 
-    // Keep the Floating UI position styles in place while the submenu fades out.
+    // Keep the position styles in place while the submenu fades out.
     // Clearing them here would let the submenu snap back to its CSS fallback
     // (`top: 0`, over the parent menu) for the duration of the close transition,
     // causing it to flash over the parent. They get recomputed on the next open
@@ -908,7 +936,7 @@ class Menu extends BaseComponent {
         return
       }
 
-      await this._applyFloatingPosition(referenceElement, submenu, placement, middleware)
+      await this._applyFloatingPosition(referenceElement, submenu, { placement, middleware })
       submenu.style.opacity = ''
     }
 

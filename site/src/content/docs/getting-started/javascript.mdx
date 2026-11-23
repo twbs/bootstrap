@@ -6,7 +6,7 @@ toc: true
 
 ## JS components
 
-Curious which components explicitly require our JavaScript and Floating UI or Vanilla Calendar Pro?
+Curious which components explicitly require our JavaScript or Vanilla Calendar Pro?
 
 - Alerts for dismissing
 - Buttons for toggling states and checkbox/radio functionality
@@ -14,13 +14,13 @@ Curious which components explicitly require our JavaScript and Floating UI or Va
 - Collapse for toggling visibility of content
 - Datepicker for date selection (also requires [Vanilla Calendar Pro](https://vanilla-calendar.pro/))
 - [Dialog]([[docsref:/components/dialog]]) for displaying, positioning, and scroll behavior
-- Menus for displaying and positioning (also requires [Floating UI](https://floating-ui.com/))
+- Menus for displaying and positioning
 - Navbar for extending our Collapse and Drawer plugins to implement responsive behaviors
 - [Nav]([[docsref:/components/nav]]) for navigation markup and styles; [Tab]([[docsref:/components/tab]]) plugin for toggling tab panes
 - Drawers for displaying, positioning, and scroll behavior
 - Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
-- Tooltips and popovers for displaying and positioning (also requires [Floating UI](https://floating-ui.com/))
+- Tooltips and popovers for displaying and positioning
 
 ## Individual or compiled
 
@@ -62,7 +62,7 @@ A better alternative for those using this type of frameworks is to use a framewo
 **Try it yourself!** Download the source code and working demo for using Bootstrap as an ES module from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/sass-js-esm). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/sass-js-esm?file=index.html).
 </Callout>
 
-Bootstrap’s JavaScript is built as native ES modules. The bundle includes Floating UI and Vanilla Calendar Pro. You can load it directly in the browser:
+Bootstrap’s JavaScript is built as native ES modules. The bundle includes Vanilla Calendar Pro. You can load it directly in the browser:
 
 ```html
 <script type="module">
@@ -73,7 +73,7 @@ Bootstrap’s JavaScript is built as native ES modules. The bundle includes Floa
 </script>
 ```
 
-The non-bundle files (`bootstrap.js` and `bootstrap.min.js`) reference `@floating-ui/dom` and `vanilla-calendar-pro`. A browser must resolve both bare module specifiers before Bootstrap runs. Use an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) when you load the non-bundle files directly:
+The standalone build from this branch requires `vanilla-calendar-pro`. The published CDN version in this example also requires `@floating-ui/dom`. Use an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) when you load the non-bundle files directly:
 
 ```html
 <!doctype html>
@@ -106,7 +106,7 @@ The non-bundle files (`bootstrap.js` and `bootstrap.min.js`) reference `@floatin
 </html>
 ```
 
-Components that don’t depend on Floating UI (like Toast, Alert, Collapse, etc.) can be imported individually without any import map:
+Components other than Datepicker can be imported individually without any import map:
 
 ```html
 <script type="module">
@@ -121,7 +121,7 @@ Components that don’t depend on Floating UI (like Toast, Alert, Collapse, etc.
 
 Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
-Our menus, popovers, and tooltips also depend on [Floating UI](https://floating-ui.com/). Our datepicker also depends on [Vanilla Calendar Pro](https://vanilla-calendar.pro/).
+Our datepicker also depends on [Vanilla Calendar Pro](https://vanilla-calendar.pro/).
 
 ## Data attributes
 

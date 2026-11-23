@@ -198,7 +198,7 @@ Once the project builds and renders on Bootstrap 5, switch to the **`bootstrap-v
 That stage covers, among other things:
 
 - `@import` to `@use`, and the move from Sass scalars to CSS token maps (`defaults()` merges theme maps again in v6)
-- Popper to Floating UI, plus Vanilla Calendar Pro for Datepicker. The bundled build includes both peers; the standalone build leaves them external.
+- Bootstrap positions overlays with CSS anchors and a JavaScript fallback. The bundled build includes Vanilla Calendar Pro for Datepicker.
 - The `md:` responsive prefix syntax replacing `-md-` infixes
 - Modal to Dialog, Offcanvas to Drawer, Dropdown to Menu. Dialog and Drawer use native `<dialog>` elements.
 - `.btn-primary` to `.btn-solid .theme-primary`, and `.text-*` to `.fg-*`

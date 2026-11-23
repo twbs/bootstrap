@@ -1,0 +1,73 @@
+@layer components {
+  [data-bs-anchor-position] {
+    --bs-anchor-center: max(0px, calc(2 * anchor(center) - 100%));
+
+    .tooltip-arrow,
+    .popover-arrow {
+      position: absolute;
+    }
+  }
+
+  /* Trim the farther edge to center the available area on the anchor.
+     A candidate that needs a cross-axis shift will then overflow. */
+  @position-try --bs-overlay-top {
+    position-area: top;
+    inset: auto var(--bs-anchor-center);
+    justify-self: unsafe center;
+    margin: 0 0 var(--bs-anchor-gap, 6px);
+  }
+
+  @position-try --bs-overlay-right {
+    position-area: right;
+    inset: var(--bs-anchor-center) auto;
+    align-self: unsafe center;
+    margin: 0 0 0 var(--bs-anchor-gap, 6px);
+  }
+
+  @position-try --bs-overlay-bottom {
+    position-area: bottom;
+    inset: auto var(--bs-anchor-center);
+    justify-self: unsafe center;
+    margin: var(--bs-anchor-gap, 6px) 0 0;
+  }
+
+  @position-try --bs-overlay-left {
+    position-area: left;
+    inset: var(--bs-anchor-center) auto;
+    align-self: unsafe center;
+    margin: 0 var(--bs-anchor-gap, 6px) 0 0;
+  }
+
+  .menu[data-bs-anchor-position],
+  .popover[data-bs-anchor-position] {
+    width: max-content;
+  }
+
+  @position-try --bs-overlay-bottom-start {
+    position-area: block-end span-inline-end;
+    inset: auto;
+    justify-self: start;
+    margin: var(--bs-anchor-gap) 0 0;
+  }
+
+  @position-try --bs-overlay-bottom-end {
+    position-area: block-end span-inline-start;
+    inset: auto;
+    justify-self: end;
+    margin: var(--bs-anchor-gap) 0 0;
+  }
+
+  @position-try --bs-overlay-top-start {
+    position-area: block-start span-inline-end;
+    inset: auto;
+    justify-self: start;
+    margin: 0 0 var(--bs-anchor-gap);
+  }
+
+  @position-try --bs-overlay-top-end {
+    position-area: block-start span-inline-start;
+    inset: auto;
+    justify-self: end;
+    margin: 0 0 var(--bs-anchor-gap);
+  }
+}

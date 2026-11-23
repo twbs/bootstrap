@@ -34,7 +34,7 @@ Set up a Bootstrap 6 project bundled with Webpack, including the loaders needed 
    npm i --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin
    ```
 
-3. Install Bootstrap and its optional peer dependencies (omit `@floating-ui/dom` if not using menus/popovers/tooltips; omit `vanilla-calendar-pro` if not using the datepicker):
+3. Install the published Bootstrap release and the peer dependencies it requires:
 
    ```sh
    npm i --save bootstrap@6.0.0-alpha.2 @floating-ui/dom vanilla-calendar-pro
@@ -199,7 +199,7 @@ my-project/
 
    To customize, override Bootstrap's CSS token maps (`$root-tokens`, `$*-tokens`) — see [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written unprefixed in Sass; Bootstrap's dist/CDN CSS adds the `--bs-` prefix via PostCSS, so compiling the source yourself keeps them unprefixed.
 
-3. `src/js/main.js` — load the CSS and import Bootstrap's JS. Floating UI and Vanilla Calendar Pro are imported automatically through Bootstrap:
+3. `src/js/main.js` — load the CSS and import Bootstrap's JS. Vanilla Calendar Pro is imported automatically through Bootstrap:
 
    ```js
    // Import our custom CSS, then all of Bootstrap’s JS
