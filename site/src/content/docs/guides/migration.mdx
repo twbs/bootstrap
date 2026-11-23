@@ -86,6 +86,7 @@ Review these changes when you upgrade from v6.0.0-alpha.1 to alpha 2.
 - **Form control fixes.** [Range]([[docsref:/forms/range]]) updates refresh its display and tick marks. [Datepicker]([[docsref:/forms/datepicker]]) displays local dates, submits ISO dates, and preserves the original input.
 - **Dialog and Drawer updates.** Scroll locking compensates for scrollbar space. Drawer backdrops fade during closing, and `.dialog-2xl` supports larger content. See [Dialog and Drawer](#dialog-and-drawer).
 - **CSS token fixes.** Several overrides now affect rendering, while unused tokens are removed. Review the [CSS customization changes](#css-customization) before copying alpha 1 customizations.
+- **Forced colors support.** Components stay visible when the operating system replaces page colors with system colors, for example with Windows high contrast themes. Set `$enable-forced-colors: false` to remove these styles. See [Forced colors]([[docsref:/getting-started/accessibility#forced-colors]]).
 - **Hash links for tabs and collapses.** Add `data-bs-hash` to open a matching tab pane or collapse from a URL fragment. See [Tab]([[docsref:/components/tab]]) and [Collapse]([[docsref:/components/collapse]]).
 
 ### Grid gutters
