@@ -283,6 +283,12 @@ var Datepicker = class extends BaseComponent {
 			this._syncSelectedDates(this.getSelectedDates());
 		}
 	}
+	_getConfig(config) {
+		return super._getConfig({
+			vcpOptions: Default.vcpOptions,
+			...config
+		});
+	}
 	_isCurrentOpening(generation) {
 		return Boolean(this._calendar) && this._isShown && generation === this._showGeneration;
 	}

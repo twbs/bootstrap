@@ -6,6 +6,7 @@
  */
 import { Calendar, type DateAny, type DateMode, type DatesArr, type MonthsCount, type Options, type PositionToInput, type WeekDayID } from 'vanilla-calendar-pro';
 import BaseComponent from './base-component.js';
+import type { ComponentConfig } from './util/config.js';
 type DatepickerConfig = {
     datepickerTheme: string | null;
     dateMin: DateAny | null;
@@ -86,6 +87,7 @@ declare class Datepicker extends BaseComponent {
     dispose(): void;
     getSelectedDates(): string[];
     setSelectedDates(dates: DatesArr): void;
+    protected _getConfig(config?: ComponentConfig | null): ComponentConfig;
     protected _isCurrentOpening(generation: number): boolean;
     protected _skipFocusTrigger(relatedTarget?: HTMLElement): boolean;
     protected _containsTrigger(target: Node): boolean;

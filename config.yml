@@ -33,9 +33,9 @@ cdn:
   css:                  "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.2/dist/css/bootstrap.min.css"
   css_hash:             "sha384-MKn5NWVBEuQXJE7TSKSgPUmMiSCmVTfCsR+VSSeQpHnoyJQZZFn/kBn+Ht5jZDPQ"
   js:                   "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.2/dist/js/bootstrap.min.js"
-  js_hash:              "sha384-wGZcuA/a1tAECVtTlosaRE/NJbXzzkIgFwA3gIghQGd9C3ENH3UQtKHseJPjUa2w"
+  js_hash:              "sha384-3Yo3YCoxUQZoPH8he5dQIEAZ/k/vBTLYf1CFU5hE7GYPzQZu3dYpWvBwWKxN+HJZ"
   js_bundle:            "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.2/dist/js/bootstrap.bundle.min.js"
-  js_bundle_hash:       "sha384-nvTESlo+YEEQtV+0niyh4qcsYAnwWHXQnIVFwYe7SwYQQyxkTkdWxkcGkhyraa5E"
+  js_bundle_hash:       "sha384-+PW0IDVGGwmpaBQvcXY+W0BcpHpITFB3dSfSoGvDdHtLbrLpSbpGcvtQRM/BJpz+"
   floating_ui_esm:      "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.8.0/dist/floating-ui.dom.esm.min.js"
   vanilla_calendar_pro_esm: "https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.4.0/index.mjs"
 

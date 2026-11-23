@@ -6175,6 +6175,12 @@ var Datepicker = class extends BaseComponent {
 			this._syncSelectedDates(this.getSelectedDates());
 		}
 	}
+	_getConfig(config) {
+		return super._getConfig({
+			vcpOptions: Default$13.vcpOptions,
+			...config
+		});
+	}
 	_isCurrentOpening(generation) {
 		return Boolean(this._calendar) && this._isShown && generation === this._showGeneration;
 	}
@@ -8816,7 +8822,7 @@ var TemplateFactory = class extends Config {
 * Constants
 */
 const NAME$6 = "tooltip";
-const DISALLOWED_ATTRIBUTES = /* @__PURE__ */ new Set([
+const DISALLOWED_ATTRIBUTES$1 = /* @__PURE__ */ new Set([
 	"sanitize",
 	"allowList",
 	"sanitizeFn"
@@ -9305,7 +9311,7 @@ var Tooltip = class extends BaseComponent {
 	}
 	_getConfig(config) {
 		const dataAttributes = Manipulator.getDataAttributes(this._element);
-		for (const dataAttribute of Object.keys(dataAttributes)) if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) delete dataAttributes[dataAttribute];
+		for (const dataAttribute of Object.keys(dataAttributes)) if (DISALLOWED_ATTRIBUTES$1.has(dataAttribute)) delete dataAttributes[dataAttribute];
 		if (this._element.getAttribute("data-bs-title") !== null) dataAttributes.title = this._element.getAttribute("data-bs-title");
 		if (this._element.getAttribute("data-bs-content") !== null) dataAttributes.content = this._element.getAttribute("data-bs-content");
 		config = {
@@ -10312,6 +10318,21 @@ const EVENT_TOGGLE = `toggle${EVENT_KEY}`;
 const EVENT_TOGGLED = `toggled${EVENT_KEY}`;
 const EVENT_CLICK = "click";
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"toggler\"]";
+const EVENT_HANDLER_PATTERN = /^on/i;
+const DISALLOWED_ATTRIBUTES = /* @__PURE__ */ new Set([
+	"action",
+	"background",
+	"data",
+	"formaction",
+	"href",
+	"id",
+	"poster",
+	"src",
+	"srcdoc",
+	"srcset",
+	"style",
+	"xlink:href"
+]);
 const DefaultType = {
 	attribute: "string",
 	value: "(string|number|boolean|null)"
@@ -10340,7 +10361,7 @@ var Toggler = class extends BaseComponent {
 	}
 	_execute() {
 		const { attribute, value } = this._config;
-		if (attribute === "id") return;
+		if (EVENT_HANDLER_PATTERN.test(attribute) || DISALLOWED_ATTRIBUTES.has(attribute.toLowerCase())) return;
 		if (value === null || value === void 0) return;
 		if (attribute === "class") {
 			this._element.classList.toggle(value);
