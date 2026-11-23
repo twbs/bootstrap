@@ -105,6 +105,7 @@ $stepper-tokens: defaults(
       height: calc(100% + var(--stepper-gap));
       content: "";
       background-color: var(--stepper-bg);
+      // Forced colors mode removes the background color. Show the line with a transparent outline.
       outline: 1px solid transparent;
     }
 

@@ -63,6 +63,7 @@ $form-floating-tokens: defaults(
         var(--form-floating-transition-timing)
       );
 
+      // Forced colors mode paints the transparent border around the label.
       @include forced-colors() {
         border: 0;
       }
@@ -83,6 +84,7 @@ $form-floating-tokens: defaults(
       &::placeholder {
         color: transparent;
 
+        // Forced colors mode ignores the transparent color, so the placeholder shows under the label.
         @include forced-colors() {
           opacity: 0;
         }

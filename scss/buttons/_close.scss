@@ -42,6 +42,7 @@ $btn-close-tokens: defaults(
     opacity: var(--btn-close-opacity);
     @include mask-icon(var(--btn-close-icon));
 
+    // Forced colors mode removes the background color that paints the icon.
     @include forced-colors() {
       background-color: CanvasText;
     }

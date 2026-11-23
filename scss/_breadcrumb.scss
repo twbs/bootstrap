@@ -65,6 +65,7 @@ $breadcrumb-tokens: defaults(
       background-color: currentcolor;
       @include mask-icon(var(--breadcrumb-divider-icon));
 
+      // Forced colors mode removes the background color that paints the divider icon.
       @include forced-colors() {
         background-color: CanvasText;
       }

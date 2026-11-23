@@ -74,6 +74,7 @@ $avatar-sizes: defaults(
     text-transform: uppercase;
     vertical-align: middle;
     background-color: var(--theme-bg, var(--avatar-bg));
+    // Forced colors mode removes the background color. Show the edge with a transparent outline.
     outline: 1px solid transparent;
     @include border-radius(var(--avatar-border-radius));
 
@@ -100,6 +101,7 @@ $avatar-sizes: defaults(
     width: var(--avatar-status-size);
     height: var(--avatar-status-size);
     background-color: var(--gray-400);
+    // Forced colors mode removes the status color. Keep the author colors, because the color tells the status.
     forced-color-adjust: none;
     border: var(--avatar-status-border-width) solid var(--avatar-status-border-color);
     @include border-radius(50%);

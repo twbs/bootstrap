@@ -68,6 +68,7 @@ $spinner-grow-tokens: defaults(
     border: var(--spinner-border-width) solid currentcolor;
     border-inline-end-color: transparent;
 
+    // Forced colors mode paints the transparent border, so the gap disappears and the ring does not seem to turn.
     @include forced-colors() {
       border-inline-end-color: Canvas;
     }
@@ -100,6 +101,7 @@ $spinner-grow-tokens: defaults(
     @include tokens($spinner-grow-tokens);
 
     background-color: currentcolor;
+    // Forced colors mode removes the background color. Show the circle with a transparent outline.
     outline: 1px solid transparent;
     opacity: 0;
   }

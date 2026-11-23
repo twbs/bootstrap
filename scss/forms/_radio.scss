@@ -54,6 +54,7 @@ $radio-tokens: defaults(
       background-color: currentcolor;
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 50%;
+      // Forced colors mode removes the background color. Show the dot with a transparent outline.
       outline: 2px solid transparent;
       opacity: 0;
       transform: scale(0);
