@@ -771,6 +771,7 @@ pagefind-modal-trigger {
 :is(*, #\#):is(*, #\#):is(*, #\#) .pf-checkbox-input {
     width: 16px;
     height: 16px;
+    flex-shrink: 0;
     margin: 0;
     accent-color: var(--pf-text);
     cursor: pointer;
@@ -1482,8 +1483,15 @@ pagefind-modal-trigger {
     :is(*, #\#):is(*, #\#):is(*, #\#) pagefind-keyboard-hints,
     :is(*, #\#):is(*, #\#):is(*, #\#) .pf-keyboard-hints,
     :is(*, #\#):is(*, #\#):is(*, #\#) .pf-searchbox-footer,
-    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-footer-hint {
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-modal-footer-hint,
+    :is(*, #\#):is(*, #\#):is(*, #\#) .pf-trigger-shortcut {
         display: none;
+    }
+
+    :is(*, #\#):is(*, #\#):is(*, #\#)
+        .pf-searchbox-input-wrapper:has(.pf-trigger-shortcut)
+        .pf-searchbox-input {
+        padding-inline-end: 12px;
     }
 }
 

@@ -1,0 +1,2 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["docs/6.0/assets/stackblitz.DuZC-vH9.js","docs/6.0/assets/rolldown-runtime.XKyaHtl9.js"])))=>i.map(i=>d[i]);
+import{t as e}from"./preload-helper.DygEbaNj.js";var t=document.querySelector(`.bd-edit-example`);t?.addEventListener(`click`,async()=>{let{openExample:n}=await e(async()=>{let{openExample:e}=await import(`./stackblitz.DuZC-vH9.js`).then(e=>e.n);return{openExample:e}},__vite__mapDeps([0,1]));await n(t)});

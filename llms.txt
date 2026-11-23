@@ -43,10 +43,10 @@ The full text of the documentation is available at [https://getbootstrap.com/llm
 - [Containers](https://getbootstrap.com/docs/6.0/layout/containers): Containers are a fundamental building block of Bootstrap that contain, pad, and align your content within a given device or viewport.
 - [Grid system](https://getbootstrap.com/docs/6.0/layout/grid): Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined classes.
 - [Columns](https://getbootstrap.com/docs/6.0/layout/columns): Learn how to modify columns with a handful of options for alignment, ordering, and offsetting thanks to our flexbox grid system. Plus, see how to use column classes to manage widths of non-grid elements.
-- [Gutters](https://getbootstrap.com/docs/6.0/layout/gutters): Gutters are the padding between your columns, used to responsively space and align content in the Bootstrap grid system.
+- [Gutters](https://getbootstrap.com/docs/6.0/layout/gutters): Gutters are the gaps between your columns, used to responsively space and align content in the Bootstrap grid system.
 - [Utilities for layout](https://getbootstrap.com/docs/6.0/layout/utilities): For faster mobile-friendly and responsive development, Bootstrap includes dozens of utility classes for showing, hiding, aligning, and spacing content.
 - [Z-index](https://getbootstrap.com/docs/6.0/layout/z-index): While not a part of Bootstrap’s grid system, z-indexes play an important part in how our components overlay and interact with one another.
-- [CSS Grid](https://getbootstrap.com/docs/6.0/layout/css-grid): Learn how to enable, use, and customize our alternate layout system built on CSS Grid with examples and code snippets.
+- [CSS Grid](https://getbootstrap.com/docs/6.0/layout/css-grid): Learn how to use and customize Bootstrap’s CSS Grid layout with examples and code snippets.
 
 ## Content
 
@@ -68,8 +68,7 @@ The full text of the documentation is available at [https://getbootstrap.com/llm
 - [Input group](https://getbootstrap.com/docs/6.0/forms/input-group): Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.
 - [Floating labels](https://getbootstrap.com/docs/6.0/forms/floating-labels): Create beautifully simple form labels that float over your input fields.
 - [Form adorn](https://getbootstrap.com/docs/6.0/forms/form-adorn): Decorate inputs with icons, text, and more using a custom wrapper that easily handles styling and positioning.
-- [Chips](https://getbootstrap.com/docs/6.0/forms/chips): Small interactive elements representing entities like people, places, tags, or values. Combine with inputs for multi-value fields like skills, categories, or email recipients using themed chips.
-- [Combobox](https://getbootstrap.com/docs/6.0/forms/combobox): A customizable select-like component built with markup-first HTML, powered by the Menu component for positioning and keyboard navigation.
+- [Combobox](https://getbootstrap.com/docs/6.0/forms/combobox): Search and select one or more values from a customizable menu.
 - [Datepicker](https://getbootstrap.com/docs/6.0/forms/datepicker): A flexible calendar and date picker popover with support for input or button toggles, range selection, multiple months, and more.
 - [OTP input](https://getbootstrap.com/docs/6.0/forms/otp-input): Collect one-time passwords, PIN codes, and verification codes with a single accessible input rendered as separate digit slots.
 - [Password strength](https://getbootstrap.com/docs/6.0/forms/password-strength): Provide visual feedback on password strength with segmented meters or progress bars that update as users type.
@@ -87,6 +86,7 @@ The full text of the documentation is available at [https://getbootstrap.com/llm
 - [Button group](https://getbootstrap.com/docs/6.0/components/button-group): Group a series of buttons together on a single line or stack them in a vertical column.
 - [Cards](https://getbootstrap.com/docs/6.0/components/card): Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
 - [Carousel](https://getbootstrap.com/docs/6.0/components/carousel): A slider or slideshow component for cycling through series of content, ranging from products to images and more, one at a time.
+- [Chips](https://getbootstrap.com/docs/6.0/components/chips): Small elements for people, places, tags, and values, with optional icons, avatars, and dismiss buttons.
 - [Close button](https://getbootstrap.com/docs/6.0/components/close-button): A generic close button for dismissing content like modals and alerts.
 - [Collapse](https://getbootstrap.com/docs/6.0/components/collapse): Toggle the visibility of content across your project with a few classes and our JavaScript plugins.
 - [Dialog](https://getbootstrap.com/docs/6.0/components/dialog): A modern component built on the native `<dialog>` element with built-in accessibility and backdrop support that replaces the old Modal component.
@@ -105,13 +105,13 @@ The full text of the documentation is available at [https://getbootstrap.com/llm
 - [Stepper](https://getbootstrap.com/docs/6.0/components/stepper): Create timelines, wizards, or step-by-step progress bars. Ideal for shopping carts, sign-up forms, and more.
 - [Tab](https://getbootstrap.com/docs/6.0/components/tab): Create toggleable content panes using any of our navigation or list group components with this JavaScript plugin.
 - [Toasts](https://getbootstrap.com/docs/6.0/components/toasts): Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.
-- [Toggler](https://getbootstrap.com/docs/6.0/components/toggler): Toggle attributes or classes on click using only data attributes and our JavaScript plugin. Works with any attribute except `id`.
+- [Toggler](https://getbootstrap.com/docs/6.0/components/toggler): Toggle attributes or classes on click using only data attributes and our JavaScript plugin. Works with any attribute except `id`, event handlers, `style` and attributes that take a URL.
 - [Tooltips](https://getbootstrap.com/docs/6.0/components/tooltip): Custom replacement for browser tooltips—themed with CSS variables and powered by [Floating UI](https://floating-ui.com/).
 
 ## Helpers
 
 - [Focus ring](https://getbootstrap.com/docs/6.0/helpers/focus-ring): Utility classes that allows you to add and modify custom focus ring styles to elements and components.
-- [Hover lift](https://getbootstrap.com/docs/6.0/helpers/hover-lift): Raise an element with a subtle transform and shadow on hover and keyboard focus.
+- [Hover lift](https://getbootstrap.com/docs/6.0/helpers/hover-lift): Raise an element with a subtle transform and shadow on hover, keyboard focus, and open states.
 - [Icon link](https://getbootstrap.com/docs/6.0/helpers/icon-link): Quickly create stylized hyperlinks with Bootstrap Icons or other icons.
 - [Position](https://getbootstrap.com/docs/6.0/helpers/position): Use these helpers for quickly configuring the position of an element.
 - [Stacks](https://getbootstrap.com/docs/6.0/helpers/stacks): Shorthand helpers that build on top of our flexbox utilities to make component layout faster and easier than ever.
@@ -153,6 +153,7 @@ The full text of the documentation is available at [https://getbootstrap.com/llm
 - [Font family](https://getbootstrap.com/docs/6.0/utilities/font-family): Utilities for controlling font family including monospace font stack.
 - [Font size](https://getbootstrap.com/docs/6.0/utilities/font-size): Utilities for controlling text size, or `font-size` and `line-height` together, with responsive font sizing using `clamp()`.
 - [Font style](https://getbootstrap.com/docs/6.0/utilities/font-style): Utilities for controlling font style including italic and normal styles.
+- [Font variant numeric](https://getbootstrap.com/docs/6.0/utilities/font-variant-numeric): Utilities for controlling numeric glyphs, including tabular numbers that line up in columns.
 - [Font weight](https://getbootstrap.com/docs/6.0/utilities/font-weight): Utilities for controlling font weight including bold, semibold, medium, normal, and light weights.
 - [Line height](https://getbootstrap.com/docs/6.0/utilities/line-height): Utilities for controlling line height including tight, normal, and loose spacing.
 - [Link](https://getbootstrap.com/docs/6.0/utilities/link): Link utilities are used to stylize your anchors to adjust their color and opacity.
