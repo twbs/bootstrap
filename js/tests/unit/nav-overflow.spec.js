@@ -330,6 +330,31 @@ describe('NavOverflow', () => {
       navOverflow.dispose()
     })
 
+    it('should measure the wrapper, not the nav, when the nav sizes to its content', () => {
+      // An inline-flex nav is as wide as its items, so measuring the nav would
+      // never report an overflow. The wrapper is the only honest measurement.
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: inline-flex;">',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 2</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 3</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 4</a></li>',
+        '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 5</a></li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navEl = wrapperEl.querySelector('.nav')
+      const navOverflow = new NavOverflow(wrapperEl)
+
+      expect(navEl.offsetWidth).toBeGreaterThan(wrapperEl.clientWidth)
+      expect(wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]').length).toBeGreaterThan(0)
+
+      navOverflow.dispose()
+    })
+
     it('should observe the wrapper so its own collapsing cannot retrigger it', async () => {
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 250px;" data-bs-toggle="nav-overflow">',
@@ -424,6 +449,39 @@ describe('NavOverflow', () => {
 
       expect(wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]').length).toBeGreaterThan(0)
       expect(overflowItem).not.toHaveClass('d-none')
+
+      navOverflow.dispose()
+    })
+
+    it('should account for nav pills padding when deciding which items fit', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" dir="rtl" style="box-sizing: border-box; width: 450px; padding-inline: 14px 8px;">',
+        '  <ul class="nav nav-pills" style="display: flex; column-gap: 10px; border: 3px solid; padding-inline: var(--bs-nav-pills-padding) 20px; --bs-nav-pills-padding: 12px;">',
+        ...Array.from({ length: 4 }, (_, index) =>
+          `    <li class="nav-item" style="flex: 0 0 90px;"><a class="nav-link" href="#">Link ${index + 1}</a></li>`
+        ),
+        '    <li class="nav-item nav-overflow-item" style="flex: 0 0 60px;">',
+        '      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu">More</button>',
+        '      <div class="nav-overflow-menu menu"></div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('.nav-overflow')
+      const navEl = wrapperEl.querySelector('.nav')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const hiddenItems = () => Array.from(navEl.querySelectorAll('[data-bs-nav-overflow="true"]'), item => item.textContent)
+
+      expect(hiddenItems()).toEqual([])
+
+      navEl.style.setProperty('--bs-nav-pills-padding', '16px')
+      navOverflow.update()
+      expect(hiddenItems()).toEqual(['Link 4'])
+
+      wrapperEl.style.width = '454px'
+      navOverflow.update()
+      expect(hiddenItems()).toEqual([])
 
       navOverflow.dispose()
     })
@@ -1027,8 +1085,8 @@ describe('NavOverflow', () => {
 
     it('should not collapse items when the wrapper width is above collapseBelow (number)', () => {
       fixtureEl.innerHTML = [
-        '<div class="nav-overflow" style="width: 5000px;" data-bs-toggle="nav-overflow">',
-        '  <ul class="nav" style="display: flex;">',
+        '<div class="nav-overflow" style="width: 520px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex; padding-inline: 20px;">',
         '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
         '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
         '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 3</a></li>',
