@@ -102,6 +102,8 @@ const datepicker: Datepicker = new Datepicker(element, {
   displayMonthsCount: 2,
   firstWeekday: 1,
   selectionMode: 'multiple-ranged',
+  showOnFocus: false,
+  toggleElement: '#dateToggle',
   placement: 'center',
   dateMin: '2026-01-01'
 })

@@ -189,13 +189,15 @@ class Strength extends BaseComponent {
       score += weights.numbers
     }
 
-    // Special characters
-    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    // Count punctuation, symbols, and ordinary spaces for the special-character score
+    const specialCount = password.match(/[ \p{P}\p{S}]/gu)?.length ?? 0
+
+    if (specialCount >= 1) {
       score += weights.special
     }
 
     // Extra points for more special chars or length
-    if (/[!@#$%^&*(),.?":{}|<>].*[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    if (specialCount >= 2) {
       score += weights.multipleSpecial
     }
 

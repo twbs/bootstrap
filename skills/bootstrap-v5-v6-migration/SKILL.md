@@ -584,6 +584,14 @@ Removed `css-var`, `css-variable-name`, and `local-vars` options. Use `property`
 
 Root tokens emit on `:root, :host`. Repeat `:root` overrides on `:host` if you use shadow DOM.
 
+### Forced colors
+
+v6 includes styles for forced colors mode (for example, Windows high contrast themes), behind the new `$enable-forced-colors` option (`true` by default) and the `forced-colors()` mixin.
+
+- Remove any separate stylesheet that added forced colors fixes to v5 components. Its rules can conflict with the v6 ones.
+- Wrap your own `@media (forced-colors: active)` rules in `@include forced-colors() { … }`, so they follow `$enable-forced-colors`.
+- To remove these styles from the build, set `$enable-forced-colors: false` in `config`.
+
 ---
 
 ## Rebuilt behavior & new components

@@ -261,7 +261,7 @@ describe('Menu', () => {
         btnMenu.addEventListener('shown.bs.menu', () => {
           expect(btnMenu).toHaveClass('show')
           expect(btnMenu.getAttribute('aria-expanded')).toEqual('true')
-          expect(spy).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
+          expect(spy).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover.bs.menu', menu._touchMouseover)
 
           menu.toggle()
         })
@@ -269,7 +269,7 @@ describe('Menu', () => {
         btnMenu.addEventListener('hidden.bs.menu', () => {
           expect(btnMenu).not.toHaveClass('show')
           expect(btnMenu.getAttribute('aria-expanded')).toEqual('false')
-          expect(spyOff).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover', noop)
+          expect(spyOff).toHaveBeenCalledWith(jasmine.any(Object), 'mouseover.bs.menu', menu._touchMouseover)
 
           document.documentElement.ontouchstart = defaultValueOnTouchStart
           resolve()
@@ -2778,6 +2778,84 @@ describe('Menu', () => {
   })
 
   describe('submenu', () => {
+    it('should open on the first tap and still support mouse hover', async () => {
+      fixtureEl.innerHTML = `
+        <button data-bs-toggle="menu" type="button">Menu</button>
+        <div class="menu">
+          <div class="submenu">
+            <button class="menu-item" type="button">More options</button>
+            <div class="menu"><button class="menu-item" type="button">Action</button></div>
+          </div>
+        </div>`
+
+      const menu = new Menu(fixtureEl.querySelector('[data-bs-toggle="menu"]'))
+      const trigger = fixtureEl.querySelector('.submenu > .menu-item')
+      const submenu = fixtureEl.querySelector('.submenu > .menu')
+      await menu.show()
+
+      trigger.dispatchEvent(new PointerEvent('pointerover', { bubbles: true, pointerType: 'touch' }))
+      trigger.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }))
+      expect(submenu).not.toHaveClass('show')
+      trigger.click()
+      expect(submenu).toHaveClass('show')
+      trigger.click()
+      expect(submenu).not.toHaveClass('show')
+
+      trigger.dispatchEvent(new PointerEvent('pointerover', { bubbles: true, pointerType: 'mouse' }))
+      trigger.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }))
+      expect(submenu).toHaveClass('show')
+      menu.dispose()
+    })
+
+    it('should remove its listeners on dispose and preserve other handlers', async () => {
+      fixtureEl.innerHTML = `
+        <div id="first-menu">
+          <button data-bs-toggle="menu" type="button">Menu</button>
+          <div class="menu">
+            <div class="submenu">
+              <button class="menu-item" type="button">More options</button>
+              <div class="menu"><button class="menu-item" type="button">Action</button></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button data-bs-toggle="menu" type="button">Other menu</button>
+          <div class="menu"></div>
+        </div>`
+
+      const [firstToggle, secondToggle] = fixtureEl.querySelectorAll('[data-bs-toggle="menu"]')
+      const first = new Menu(firstToggle)
+      const second = new Menu(secondToggle)
+      const submenu = fixtureEl.querySelector('.submenu > .menu')
+      const trigger = fixtureEl.querySelector('.submenu > .menu-item')
+      const externalHandler = jasmine.createSpy('mouseenter')
+      EventHandler.on(submenu, 'mouseenter', externalHandler)
+      const originalTouchstart = document.documentElement.ontouchstart
+      document.documentElement.ontouchstart = noop
+      const removeListener = spyOn(EventHandler, 'off').and.callThrough()
+
+      try {
+        await first.show()
+        await second.show()
+        trigger.click()
+        const firstMouseover = first._touchMouseover
+        first.dispose()
+
+        expect(removeListener).toHaveBeenCalledWith(fixtureEl, 'mouseover.bs.menu', firstMouseover)
+        expect(removeListener).not.toHaveBeenCalledWith(fixtureEl, 'mouseover.bs.menu', second._touchMouseover)
+        expect(submenu).not.toHaveClass('show')
+
+        submenu.dispatchEvent(new MouseEvent('mouseover'))
+        expect(externalHandler).toHaveBeenCalled()
+        trigger.click()
+        expect(submenu).not.toHaveClass('show')
+      } finally {
+        EventHandler.off(submenu, 'mouseenter', externalHandler)
+        second.dispose()
+        document.documentElement.ontouchstart = originalTouchstart
+      }
+    })
+
     // `_openSubmenu()` adds a `mouseenter` listener and `_closeSubmenu()` drops it again.
     // A failed removal used to leave one live listener behind per open and close cycle.
     it('should not accumulate mouseenter listeners across open and close cycles', () => {
@@ -4394,6 +4472,24 @@ describe('Menu', () => {
   })
 
   describe('Home and End key navigation', () => {
+    it('should leave Home and End to the browser on the toggle', async () => {
+      fixtureEl.innerHTML = `
+        <button data-bs-toggle="menu" type="button">Menu</button>
+        <div class="menu"><button class="menu-item" type="button">Action</button></div>`
+
+      const toggle = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const menu = new Menu(toggle)
+      const press = key => toggle.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }))
+
+      expect(press('Home')).toBeTrue()
+      expect(press('End')).toBeTrue()
+      await menu.show()
+      expect(press('Home')).toBeTrue()
+      expect(press('End')).toBeTrue()
+      expect(document.activeElement).toEqual(toggle)
+      menu.dispose()
+    })
+
     it('should focus the first item when Home key is pressed', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [

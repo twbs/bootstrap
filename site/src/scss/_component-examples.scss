@@ -5,10 +5,32 @@
 @layer custom {
   .bd-example-row :is([class~="col"], [class*="col-"], [class*=":col"]),
   .bd-example-cols :is([class~="col"], [class*="col-"], [class*=":col"]) > *,
-  .bd-example-cssgrid [class*="grid"] > * {
+  .bd-example-cssgrid [class*="grid"] > *,
+  .bd-example-rounded-utils > div {
     padding-block: .75rem;
     text-align: center;
     background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
     border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
+  }
+
+  .bd-example-rounded-utils {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(9rem, calc((100% - 1rem) / 2)));
+    gap: 1rem;
+    align-items: start;
+
+    > div {
+      display: grid;
+      place-items: center;
+      min-block-size: 4.75rem;
+      padding-inline: .75rem;
+      font-size: .875rem;
+      overflow-wrap: anywhere;
+    }
+
+    > .rounded-circle {
+      inline-size: min(100%, 6.25rem);
+      aspect-ratio: 1;
+    }
   }
 }

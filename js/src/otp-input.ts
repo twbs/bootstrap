@@ -32,6 +32,7 @@ const CLASS_NAME_SLOTS = 'otp-slots'
 const CLASS_NAME_SLOT = 'otp-slot'
 const CLASS_NAME_SLOT_FILLED = 'otp-slot-filled'
 const CLASS_NAME_SLOT_ACTIVE = 'otp-slot-active'
+const CLASS_NAME_SLOT_SELECTED = 'otp-slot-selected'
 const CLASS_NAME_SEPARATOR = 'otp-separator'
 
 const MASK_CHARACTER = '•'
@@ -47,6 +48,7 @@ type OtpInputConfig = {
   groups: number[] | null
   length: number | null
   mask: boolean
+  pasteTransformer?: ((text: string) => string) | null
   separator: string
   type: string
 }
@@ -55,6 +57,7 @@ const Default: OtpInputConfig = {
   groups: null,
   length: null,
   mask: false,
+  pasteTransformer: null,
   separator: '·',
   type: 'numeric'
 }
@@ -63,6 +66,7 @@ const DefaultType = {
   groups: '(array|null)',
   length: '(number|null)',
   mask: 'boolean',
+  pasteTransformer: '(function|null)',
   separator: 'string',
   type: 'string'
 }
@@ -79,9 +83,13 @@ class OtpInput extends BaseComponent {
   protected declare _slots: HTMLElement[]
   protected declare _pointerActive: boolean
   protected declare _pointerIndex: number
+  protected declare _touchPointer: boolean
   protected declare _slotsContainer: HTMLElement
+  protected declare _inputDefaults: Map<string, string>
   protected declare _inputListeners: Record<string, (event: BootstrapEvent) => void>
   protected declare _onSelectionChange: () => void
+  protected declare _onReset: (event: Event) => void
+  protected declare _lastCompleteValue: string | null
 
   constructor(element?: string | Element | null, config?: Partial<OtpInputConfig> | null) {
     super(element, config)
@@ -101,8 +109,10 @@ class OtpInput extends BaseComponent {
     this._pointerActive = false
     // Slot index from the most recent tap, applied once focus settles
     this._pointerIndex = 0
+    this._touchPointer = false
 
     this._setupInput()
+    this._lastCompleteValue = null
     this._renderSlots()
     this._addEventListeners()
     this._render()
@@ -134,6 +144,7 @@ class OtpInput extends BaseComponent {
 
   clear(): void {
     this._input.value = ''
+    this._lastCompleteValue = null
     this._render()
     this._input.focus()
   }
@@ -151,6 +162,13 @@ class OtpInput extends BaseComponent {
     }
 
     EventHandler.off(document, 'selectionchange', this._onSelectionChange)
+    document.removeEventListener('reset', this._onReset, true)
+
+    for (const [attribute, value] of this._inputDefaults ?? []) {
+      if (this._input.getAttribute(attribute) === value) {
+        this._input.removeAttribute(attribute)
+      }
+    }
 
     this._slotsContainer?.remove()
     this._element.classList.remove(CLASS_NAME_RENDERED)
@@ -178,8 +196,21 @@ class OtpInput extends BaseComponent {
 
     input.classList.add(CLASS_NAME_INPUT)
     input.setAttribute('maxlength', String(this._length))
-    input.setAttribute('inputmode', this._type.inputmode)
-    input.setAttribute('pattern', this._type.pattern)
+    this._inputDefaults = new Map()
+    // Chromium applies the pattern after a formatted paste even when it skips minlength.
+    const pattern = input.minLength > 0 ? `${this._type.pattern.slice(0, -1)}{${input.minLength},}` : this._type.pattern
+    const defaults = {
+      inputmode: this._type.inputmode,
+      pattern,
+      spellcheck: 'false'
+    }
+
+    for (const [attribute, value] of Object.entries(defaults)) {
+      if (!input.hasAttribute(attribute)) {
+        input.setAttribute(attribute, value)
+        this._inputDefaults.set(attribute, value)
+      }
+    }
 
     if (!input.getAttribute('autocomplete')) {
       input.setAttribute('autocomplete', 'one-time-code')
@@ -230,10 +261,16 @@ class OtpInput extends BaseComponent {
     // `input`, `beforeinput`, `paste`, and `selectionchange` are not in
     // EventHandler's native-events list. Keep references to remove on dispose.
     this._inputListeners = {
-      input: () => this._handleInput(),
+      input: event => this._handleInput(event as InputEvent),
+      compositionend: () => this._handleInput(),
       beforeinput: event => this._handleBeforeInput(event),
+      keydown: event => this._handleKeydown(event as KeyboardEvent),
       paste: event => this._handlePaste(event),
-      pointerdown: event => this._handlePointerDown(event)
+      pointerdown: event => this._handlePointerDown(event),
+      pointercancel: () => {
+        this._touchPointer = false
+      },
+      click: event => this._handleClick(event)
     }
     this._inputListeners.focus = () => {
       if (this._pointerActive) {
@@ -267,20 +304,50 @@ class OtpInput extends BaseComponent {
     }
 
     EventHandler.on(document, 'selectionchange', this._onSelectionChange)
+    this._onReset = event => {
+      if (event.target !== this._input.form) {
+        return
+      }
+
+      // Wait for the browser to restore the default value.
+      setTimeout(() => {
+        if (event.defaultPrevented || event.target !== this._input?.form) {
+          return
+        }
+
+        const sanitized = this._sanitize(this._input.value)
+        if (sanitized !== this._input.value) {
+          this._input.value = sanitized
+        }
+
+        this._lastCompleteValue = null
+        this._render()
+      })
+    }
+
+    document.addEventListener('reset', this._onReset, true)
   }
 
-  // Bulk path: SMS autofill or a programmatic value change lands here as a
-  // single multi-character `input` event. Single keystrokes are handled by
-  // `_handleBeforeInput` (overwrite semantics) and never reach this method.
-  protected _handleInput(): void {
-    const sanitized = this._sanitize(this._input.value)
-    if (sanitized !== this._input.value) {
+  protected _handleInput(event?: InputEvent): void {
+    if (event?.isComposing) {
+      return
+    }
+
+    const { value, selectionStart } = this._input
+    const sanitized = this._sanitize(value)
+
+    if (sanitized !== value) {
       this._input.value = sanitized
     }
 
-    // Place the caret on the first empty slot after a paste/autofill
     if (document.activeElement === this._input) {
-      this._selectSlot(this._firstEmptyIndex())
+      const inputType = event?.inputType
+      if (inputType === 'insertText' || inputType?.startsWith('delete')) {
+        const caret = selectionStart ?? sanitized.length
+        this._selectSlot(this._sanitize(value.slice(0, caret)).length)
+      } else if (!inputType || inputType === 'insertReplacementText') {
+        this._selectSlot(this._firstEmptyIndex())
+      }
     }
 
     this._afterValueChange()
@@ -292,7 +359,8 @@ class OtpInput extends BaseComponent {
       return
     }
 
-    const sanitized = this._sanitize(pastedValue)
+    const transformed = this._config.pasteTransformer?.(pastedValue) ?? pastedValue
+    const sanitized = this._sanitize(transformed)
     // Sanitize before applying the length limit. The browser applies maxlength
     // to raw clipboard text before the input event, which can discard valid
     // characters that follow separators or whitespace.
@@ -305,81 +373,101 @@ class OtpInput extends BaseComponent {
 
     const inserted = sanitized.slice(0, this._length - this._input.value.length + end - start)
 
+    if (start === this._input.selectionStart && end === this._input.selectionEnd && inserted === pastedValue) {
+      return
+    }
+
     event.preventDefault()
     if (!inserted) {
       return
     }
 
-    this._input.setRangeText(inserted, start, end, 'end')
-    this._afterValueChange()
+    const input = this._input
+    if (input.matches(':focus')) {
+      input.setSelectionRange(start, end)
+      // Use the browser's editing command to keep this paste in its undo history.
+      if (input.ownerDocument.execCommand('insertText', false, inserted)) {
+        return
+      }
+    }
+
+    input.setRangeText(inserted, start, end, 'end')
+    input.dispatchEvent(new InputEvent('input', {
+      bubbles: true,
+      composed: true,
+      inputType: 'insertFromPaste',
+      data: inserted
+    }))
   }
 
-  // Intercept single-character typing, backspace and delete so each slot is
-  // overwritten in place rather than inserting and shifting the rest of the
-  // value. Autofill and IME composition fall through to `_handleInput`.
   protected _handleBeforeInput(event: BootstrapEvent): void {
-    // Chromium fires `beforeinput` for typed text even in a readonly input
-    if (!this._isEditable()) {
+    const { inputType, data, isComposing } = event as InputEvent
+    if (inputType !== 'insertText' || isComposing || data?.length !== 1 || !this._isEditable()) {
       return
     }
 
-    const { inputType, data } = event
-
-    if (inputType === 'insertText' && data && data.length === 1) {
+    if (!this._sanitize(data)) {
       event.preventDefault()
-
-      const char = this._sanitize(data)
-      if (!char) {
-        return
-      }
-
-      const index = Math.min(this._input.selectionStart ?? 0, this._length - 1)
-      const chars = [...this._input.value]
-      chars[index] = char
-      this._input.value = chars.join('').slice(0, this._length)
-
-      this._selectSlot(index + 1)
-      this._afterValueChange()
       return
     }
 
-    if (inputType === 'deleteContentBackward' || inputType === 'deleteContentForward') {
-      event.preventDefault()
-
-      // A filled slot is selected: clear it and keep the caret in place.
-      // Collapsed caret: backspace removes the previous character and steps
-      // back, delete removes the next one and stays.
-      let start = this._input.selectionStart ?? 0
-      let end = this._input.selectionEnd ?? start
-      if (end === start) {
-        if (inputType === 'deleteContentBackward') {
-          start -= 1
-        } else {
-          end += 1
-        }
-      }
-
-      const chars = [...this._input.value]
-      // Nothing to delete before the first character or after the last one:
-      // the value doesn't change, so no `input` or `complete` event either
-      if (start < 0 || end > chars.length) {
-        return
-      }
-
-      chars.splice(start, end - start)
-      this._input.value = chars.join('')
-      this._selectSlot(start)
-      this._afterValueChange()
+    // Let the browser replace the selection so edits keep native undo and input events.
+    if (this._input.selectionStart === this._input.selectionEnd) {
+      this._selectSlot(this._input.selectionStart ?? 0)
     }
+  }
+
+  protected _handleKeydown(event: KeyboardEvent): void {
+    const { key, altKey, ctrlKey, metaKey, shiftKey, isComposing, defaultPrevented } = event
+    if (defaultPrevented || isComposing || altKey || ctrlKey || metaKey || shiftKey || (key !== 'ArrowLeft' && key !== 'ArrowRight')) {
+      return
+    }
+
+    if (getComputedStyle(this._slotsContainer).direction !== 'rtl') {
+      return
+    }
+
+    // The visible slots run right to left, even when the code reads left to right.
+    const start = this._input.selectionStart ?? 0
+    const end = this._input.selectionEnd ?? start
+    const isMovingRight = key === 'ArrowRight'
+    const rangeEdge = isMovingRight ? start : end
+    const nextSlot = start + (isMovingRight ? -1 : 1)
+    const index = end - start > 1 ? rangeEdge : nextSlot
+
+    event.preventDefault()
+    this._selectSlot(Math.min(index, this._firstEmptyIndex()))
+    this._render()
+  }
+
+  protected _handleClick(event: BootstrapEvent): void {
+    if (!this._touchPointer) {
+      return
+    }
+
+    this._touchPointer = false
+    const index = this._slotIndexFromPoint(event.clientX)
+    if (index === null) {
+      return
+    }
+
+    // WebKit reports a mouse click after a tap and updates the caret after the click.
+    requestAnimationFrame(() => {
+      if (this._input && document.activeElement === this._input) {
+        this._selectSlot(Math.min(index, this._firstEmptyIndex()))
+        this._render()
+      }
+    })
   }
 
   protected _handlePointerDown(event: BootstrapEvent): void {
     // A disabled input still receives `pointerdown`, but never the focus that
     // would consume the remembered tap
-    if (this._input.matches(':disabled')) {
+    if (event.button !== 0 || this._input.matches(':disabled')) {
       return
     }
 
+    this._touchPointer = event.pointerType === 'touch'
     const index = this._slotIndexFromPoint(event.clientX)
     if (index === null) {
       return
@@ -389,11 +477,13 @@ class OtpInput extends BaseComponent {
     const target = Math.min(index, this._firstEmptyIndex())
 
     if (document.activeElement === this._input) {
-      // Already focused (keyboard is up): take over caret placement from the
-      // browser. Safe to preventDefault here — it won't dismiss the keyboard.
-      event.preventDefault()
-      this._selectSlot(target)
-      this._render()
+      // A touch click places the caret. Leave a long press to the browser.
+      if (!this._touchPointer) {
+        event.preventDefault()
+        this._selectSlot(target)
+        this._render()
+      }
+
       return
     }
 
@@ -406,8 +496,10 @@ class OtpInput extends BaseComponent {
 
   // Map a viewport x-coordinate to the slot under it, clamped to the last slot
   protected _slotIndexFromPoint(x: number): number | null {
+    const rtl = getComputedStyle(this._slotsContainer).direction === 'rtl'
     for (const [index, slot] of this._slots.entries()) {
-      if (x <= slot.getBoundingClientRect().right || index === this._slots.length - 1) {
+      const { left, right } = slot.getBoundingClientRect()
+      if ((rtl ? x >= left : x <= right) || index === this._slots.length - 1) {
         return index
       }
     }
@@ -418,7 +510,10 @@ class OtpInput extends BaseComponent {
   protected _afterValueChange(): void {
     this._render()
     EventHandler.trigger(this._element, EVENT_INPUT, { value: this._input.value })
-    this._checkComplete()
+
+    if (this._input) {
+      this._checkComplete()
+    }
   }
 
   protected _firstEmptyIndex(): number {
@@ -446,20 +541,31 @@ class OtpInput extends BaseComponent {
   protected _render(): void {
     const { value } = this._input
     const isFocused = document.activeElement === this._input
-    // The active slot follows the caret, clamped to the last slot when the value is full
-    const caret = Math.min(this._input.selectionStart ?? value.length, this._length - 1)
+    const start = this._input.selectionStart ?? value.length
+    const end = this._input.selectionEnd ?? start
+    const caret = Math.min(start, this._length - 1)
 
     for (const [index, slot] of this._slots.entries()) {
       const char = value[index] ?? ''
-      slot.textContent = char && this._config.mask ? MASK_CHARACTER : char
+      const placeholder = value ? '' : this._input.placeholder[index] ?? ''
+      const text = char && this._config.mask ? MASK_CHARACTER : char || placeholder
+      if (slot.textContent !== text) {
+        slot.textContent = text
+      }
+
       slot.classList.toggle(CLASS_NAME_SLOT_FILLED, Boolean(char))
       slot.classList.toggle(CLASS_NAME_SLOT_ACTIVE, isFocused && index === caret)
+      slot.classList.toggle(CLASS_NAME_SLOT_SELECTED, isFocused && end - start > 1 && index >= start && index < end)
     }
   }
 
   protected _checkComplete(): void {
     const { value } = this._input
-    if (value.length === this._length) {
+    const completeValue = value.length === this._length ? value : null
+    const changed = completeValue !== this._lastCompleteValue
+    this._lastCompleteValue = completeValue
+
+    if (completeValue && changed) {
       EventHandler.trigger(this._element, EVENT_COMPLETE, { value })
     }
   }

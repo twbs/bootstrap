@@ -32,6 +32,9 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Generate utilities metadata
+        run: npm run css-docs
+
       - name: Build docs
         run: npm run docs-build
 
