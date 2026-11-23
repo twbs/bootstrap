@@ -54,8 +54,10 @@ Static chips have no hover effect. A dismiss button has its own hover state with
 
 Use a button for an action or a link for navigation. Chips on or inside interactive elements have a pointer cursor and hover feedback. Combobox also provides these states for its selectable chips.
 
-<Example class="d-flex flex-wrap gap-2" code={`<button type="button" class="chip">Action chip</button>
-  <a class="chip" href="#multiple-value-inputs">Link chip</a>`} />
+Keyboard focus uses the chip’s theme color, including on dismiss buttons. Chips without a theme use the default focus color.
+
+<Example class="d-flex flex-wrap gap-2" code={`<button type="button" class="chip theme-success">Action chip</button>
+  <a class="chip theme-danger" href="#multiple-value-inputs">Link chip</a>`} />
 
 ### Themed chips
 

@@ -84,6 +84,7 @@ const nativeEvents = new Set([
   'touchcancel',
   'pointerdown',
   'pointermove',
+  'pointerover',
   'pointerup',
   'pointerleave',
   'pointercancel',

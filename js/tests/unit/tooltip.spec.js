@@ -1430,31 +1430,26 @@ describe('Tooltip', () => {
       expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Another tooltip')
     })
 
-    it('should re-show tip if it was already shown', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="Another tooltip"></a>'
+    it('should keep a manually shown tip open after setContent', async () => {
+      fixtureEl.innerHTML = '<button type="button" data-bs-title="Original tooltip">Help</button>'
 
-        const tooltipEl = fixtureEl.querySelector('a')
-        const tooltip = new Tooltip(tooltipEl)
-        const tip = () => tooltip._getTipElement()
+      const tooltipEl = fixtureEl.querySelector('button')
+      const tooltip = new Tooltip(tooltipEl, { animation: false, trigger: 'manual' })
+      await tooltip.show()
 
-        tooltipEl.addEventListener('shown.bs.tooltip', function handler() {
-          tooltipEl.removeEventListener('shown.bs.tooltip', handler)
-
-          expect(tip()).toHaveClass('show')
-
-          // Listen for the re-show after setContent
-          tooltipEl.addEventListener('shown.bs.tooltip', () => {
-            expect(tip()).toHaveClass('show')
-            expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
-            resolve()
-          })
-
-          tooltip.setContent({ '.tooltip-inner': 'foo' })
-        })
-
-        tooltip.show()
+      const shown = new Promise(resolve => {
+        tooltipEl.addEventListener('shown.bs.tooltip', resolve, { once: true })
       })
+      tooltip.setContent({ '.tooltip-inner': 'Updated tooltip' })
+      await shown
+      // Let any hide queued by the show handler run.
+      await new Promise(resolve => {
+        setTimeout(resolve, 0)
+      })
+
+      const tip = document.getElementById(tooltipEl.getAttribute('aria-describedby'))
+      expect(tip).toHaveClass('show')
+      expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Updated tooltip')
     })
 
     it('should keep tip hidden, if it was already hidden before', () => {

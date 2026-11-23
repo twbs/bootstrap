@@ -139,6 +139,21 @@ By design, radio toggle button groups can only have one button checked at a time
     </label>
   </div>`} />
 
+#### Disabled radio group
+
+A disabled radio group still shows which option is selected.
+
+<Example code={`<div class="btn-group" role="group" aria-label="Disabled radio toggle button group">
+    <label class="btn-check btn-outline theme-secondary">
+      <input type="radio" name="btnradio-disabled" autocomplete="off" disabled checked>
+      Radio 1
+    </label>
+    <label class="btn-check btn-outline theme-secondary">
+      <input type="radio" name="btnradio-disabled" autocomplete="off" disabled>
+      Radio 2
+    </label>
+  </div>`} />
+
 ## Button toolbar
 
 Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.
