@@ -313,6 +313,12 @@ Add an optional `.drawer-footer` for action buttons or other content at the bott
     </div>
   </dialog>`} />
 
+## Overlays
+
+Modal drawers render in the browser’s top layer. Put the `.toast-container` and its toasts inside the drawer to keep them visible. Increasing the toast z-index cannot bring a page-level toast above the top layer.
+
+Tooltips and popovers use the open drawer as their container by default. If you set a custom `container`, choose an element inside the drawer. See the [Dialog overlays example]([[docsref:/components/dialog#overlays]]).
+
 ## Accessibility
 
 Since the drawer is a native `<dialog>`, it gets the correct `dialog` role. Modal drawers also get modal semantics and focus trapping from `showModal()`. Non-modal drawers (`scroll: true` and `backdrop: false`) use `show()` instead, so they do not trap focus or mark the rest of the page as inert. Set `aria-labelledby` to the ID of the drawer title. Include a visible close button. On touch devices, users can swipe the header toward the edge of the drawer to dismiss it.

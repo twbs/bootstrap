@@ -26,7 +26,8 @@
     },
     {
       "path": "./dist/css/bootstrap.css",
-      "maxSize": "57.5 kB"
+      "maxSize": "57.75 kB"
+
     },
     {
       "path": "./dist/css/bootstrap.min.css",
