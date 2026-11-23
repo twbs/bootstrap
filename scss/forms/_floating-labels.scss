@@ -82,11 +82,19 @@ $form-floating-tokens: defaults(
 
       &::placeholder {
         color: transparent;
+
+        @include forced-colors() {
+          opacity: 0;
+        }
       }
 
       // Show the placeholder once focused so the floated label has a hint.
       &:focus::placeholder {
         color: var(--control-placeholder-color);
+
+        @include forced-colors() {
+          opacity: 1;
+        }
       }
 
       &:focus,
