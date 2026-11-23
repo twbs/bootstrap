@@ -143,7 +143,7 @@ $reboot-mark-tokens: defaults(
     margin-bottom: var(--heading-margin-bottom);
     font-family: var(--heading-font-family);
     font-style: var(--heading-font-style);
-    font-weight: var(--heading-font-weight, var(--font-weight-medium));
+    font-weight: var(--heading-font-weight, var(--font-weight-semibold));
     line-height: var(--heading-line-height);
     color: var(--heading-color);
   }
