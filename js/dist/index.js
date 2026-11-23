@@ -1,5 +1,5 @@
 /*!
-* Bootstrap index.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap index.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -15,7 +15,6 @@ import NavOverflow from "./nav-overflow.js";
 import Drawer from "./drawer.js";
 import Strength from "./strength.js";
 import OtpInput from "./otp-input.js";
-import Chips from "./chips.js";
 import Popover from "./popover.js";
 import Range from "./range.js";
 import ScrollSpy from "./scrollspy.js";
@@ -23,4 +22,4 @@ import Tab from "./tab.js";
 import Toast from "./toast.js";
 import Toggler from "./toggler.js";
 import Tooltip from "./tooltip.js";
-export { Alert, Button, Carousel, Chips, Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, NavOverflow, OtpInput, Popover, Range, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
+export { Alert, Button, Carousel, Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, NavOverflow, OtpInput, Popover, Range, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };

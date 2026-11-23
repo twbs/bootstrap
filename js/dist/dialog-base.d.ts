@@ -29,6 +29,14 @@ declare class DialogBase extends BaseComponent {
     protected _config: DialogBaseConfig;
     protected _isTransitioning: boolean;
     protected _openedAsModal: boolean;
+    protected _opening: boolean;
+    protected _active: boolean;
+    protected _operation: number;
+    protected _returnFocus: HTMLElement | null;
+    protected _closedBy: string | null | undefined;
+    protected _cancelTransition: (() => void) | null;
+    protected _closeHandler: () => void;
+    protected _toggleHandler: () => void;
     protected _cancelHandler: (event: BootstrapEvent) => void;
     constructor(element?: string | Element | null, config?: Partial<DialogBaseConfig> | null);
     static get NAME(): string;
@@ -36,9 +44,9 @@ declare class DialogBase extends BaseComponent {
     show(relatedTarget?: HTMLElement): Promise<void>;
     hide(): Promise<void>;
     protected _canShow(relatedTarget?: HTMLElement): boolean;
-    protected _show(relatedTarget?: HTMLElement): Promise<void>;
+    protected _show(relatedTarget?: HTMLElement, returnFocus?: HTMLElement | null | undefined): Promise<void>;
     protected _canHide(): boolean;
-    protected _hide(): Promise<void>;
+    protected _hide(restoreFocus?: boolean): Promise<void>;
     dispose(): void;
     protected _getShowOptions(): {
         modal: boolean;
@@ -56,6 +64,9 @@ declare class DialogBase extends BaseComponent {
     }): void;
     protected _hideElement(): void;
     protected _closeAndCleanup(): void;
+    protected _clearOpenState(): void;
+    protected _finishHide(): void;
+    protected _queueLifecycle(callback: () => void, animated: boolean): Promise<void>;
     protected _shouldDeferClose(): boolean;
     protected _triggerBackdropTransition(): void;
     protected _hideChildComponents(): void;

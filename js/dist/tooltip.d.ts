@@ -54,7 +54,6 @@ declare class Tooltip extends BaseComponent {
     protected _newContent: Record<string, TemplateContentEntry> | null;
     protected _mediaQueryListeners: BreakpointListener[];
     protected _responsivePlacements: ResponsivePlacements | null;
-    protected _hideModalHandler: () => void;
     tip: HTMLElement | null;
     constructor(element?: string | Element | null, config?: Partial<TooltipConfig> | null);
     static get Default(): TooltipConfig;

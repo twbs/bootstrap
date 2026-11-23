@@ -1,5 +1,5 @@
 /*!
-* Bootstrap data.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap data.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -17,19 +17,10 @@ const elementMap = /* @__PURE__ */ new Map();
 var data_default = {
 	set(element, key, instance) {
 		if (!elementMap.has(element)) elementMap.set(element, /* @__PURE__ */ new Map());
-		const instanceMap = elementMap.get(element);
-		if (!instanceMap.has(key) && instanceMap.size !== 0) {
-			console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${[...instanceMap.keys()][0]}.`);
-			return;
-		}
-		instanceMap.set(key, instance);
+		elementMap.get(element).set(key, instance);
 	},
 	get(element, key) {
 		if (element && elementMap.has(element)) return elementMap.get(element).get(key) || null;
-		return null;
-	},
-	getAny(element) {
-		if (element && elementMap.has(element)) return elementMap.get(element).values().next().value || null;
 		return null;
 	},
 	remove(element, key) {

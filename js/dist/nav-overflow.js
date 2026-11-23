@@ -1,5 +1,5 @@
 /*!
-* Bootstrap nav-overflow.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap nav-overflow.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -7,6 +7,7 @@ import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
 import Menu from "./menu.js";
+import { onDocumentReady } from "./util/component-functions.js";
 import { DefaultIconAllowlist, sanitizeHtml } from "./util/sanitizer.js";
 //#region js/src/nav-overflow.ts
 /**
@@ -194,9 +195,13 @@ var NavOverflow = class extends BaseComponent {
 			return;
 		}
 		const gap = this._navGap();
-		const keepWidth = this._items.filter((item) => item.classList.contains(CLASS_NAME_KEEP)).reduce((sum, item) => sum + item.offsetWidth + gap, 0);
-		const overflowWidth = overflowItem ? overflowItem.offsetWidth + gap : 0;
-		const limit = availableWidth - keepWidth - overflowWidth;
+		const widthOf = (items) => items.reduce((sum, item) => sum + item.offsetWidth + gap, 0);
+		const space = availableWidth - widthOf(this._items.filter((item) => item.classList.contains(CLASS_NAME_KEEP))) + gap;
+		if (widthOf(candidates) <= space + 1) {
+			this._applyOverflow([], overflowItem);
+			return;
+		}
+		const limit = space - (overflowItem ? overflowItem.offsetWidth + gap : 0);
 		let usedWidth = 0;
 		let itemsToOverflow = [];
 		for (const item of candidates) {
@@ -306,7 +311,7 @@ var NavOverflow = class extends BaseComponent {
 /**
 * Data API implementation
 */
-EventHandler.on(document, "DOMContentLoaded", () => {
+onDocumentReady("DOMContentLoaded", () => {
 	for (const element of SelectorEngine.find("[data-bs-toggle=\"nav-overflow\"]")) NavOverflow.getOrCreateInstance(element);
 });
 //#endregion

@@ -319,19 +319,19 @@
       ]
     },
     "border-opacity": {
-      "class": "border",
+      "class": "border-opacity",
       "property": "border-color",
       "classes": [
-        "border-10",
-        "border-20",
-        "border-30",
-        "border-40",
-        "border-50",
-        "border-60",
-        "border-70",
-        "border-80",
-        "border-90",
-        "border-100"
+        "border-opacity-10",
+        "border-opacity-20",
+        "border-opacity-30",
+        "border-opacity-40",
+        "border-opacity-50",
+        "border-opacity-60",
+        "border-opacity-70",
+        "border-opacity-80",
+        "border-opacity-90",
+        "border-opacity-100"
       ]
     },
     "width": {
@@ -1055,6 +1055,13 @@
         "fst-normal"
       ]
     },
+    "font-variant-numeric": {
+      "class": "font",
+      "property": "font-variant-numeric",
+      "classes": [
+        "font-tabular-nums"
+      ]
+    },
     "font-weight": {
       "class": "fw",
       "property": "font-weight",
@@ -1171,19 +1178,19 @@
       ]
     },
     "fg-opacity": {
-      "class": "fg",
+      "class": "fg-opacity",
       "property": "color",
       "classes": [
-        "fg-10",
-        "fg-20",
-        "fg-30",
-        "fg-40",
-        "fg-50",
-        "fg-60",
-        "fg-70",
-        "fg-80",
-        "fg-90",
-        "fg-100"
+        "fg-opacity-10",
+        "fg-opacity-20",
+        "fg-opacity-30",
+        "fg-opacity-40",
+        "fg-opacity-50",
+        "fg-opacity-60",
+        "fg-opacity-70",
+        "fg-opacity-80",
+        "fg-opacity-90",
+        "fg-opacity-100"
       ]
     },
     "link-opacity": {
@@ -1225,19 +1232,19 @@
       ]
     },
     "underline-opacity": {
-      "class": "underline",
+      "class": "underline-opacity",
       "property": "text-decoration-color",
       "classes": [
-        "underline-10",
-        "underline-20",
-        "underline-30",
-        "underline-40",
-        "underline-50",
-        "underline-60",
-        "underline-70",
-        "underline-80",
-        "underline-90",
-        "underline-100"
+        "underline-opacity-10",
+        "underline-opacity-20",
+        "underline-opacity-30",
+        "underline-opacity-40",
+        "underline-opacity-50",
+        "underline-opacity-60",
+        "underline-opacity-70",
+        "underline-opacity-80",
+        "underline-opacity-90",
+        "underline-opacity-100"
       ]
     },
     "underline-thickness": {
@@ -1300,19 +1307,19 @@
       ]
     },
     "bg-opacity": {
-      "class": "bg",
+      "class": "bg-opacity",
       "property": "background-color",
       "classes": [
-        "bg-10",
-        "bg-20",
-        "bg-30",
-        "bg-40",
-        "bg-50",
-        "bg-60",
-        "bg-70",
-        "bg-80",
-        "bg-90",
-        "bg-100"
+        "bg-opacity-10",
+        "bg-opacity-20",
+        "bg-opacity-30",
+        "bg-opacity-40",
+        "bg-opacity-50",
+        "bg-opacity-60",
+        "bg-opacity-70",
+        "bg-opacity-80",
+        "bg-opacity-90",
+        "bg-opacity-100"
       ]
     },
     "theme-contrast": {
