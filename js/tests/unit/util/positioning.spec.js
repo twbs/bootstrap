@@ -86,6 +86,16 @@ describe('positioning', () => {
     expect(result.middlewareData.custom).toEqual({ ran: true })
   })
 
+  it('stores middleware data as an own property', async () => {
+    const result = await computePosition(reference(100, 160), floating, {
+      middleware: [{ name: 'constructor', fn: () => ({ data: { ran: true } }) }]
+    })
+
+    expect(Object.hasOwn(result.middlewareData, 'constructor')).toBeTrue()
+    expect(result.middlewareData.constructor).toEqual({ ran: true })
+    expect(Object.getPrototypeOf(result.middlewareData)).toBe(Object.prototype)
+  })
+
   it('moves an aligned box to center its arrow on a small reference', async () => {
     floating.innerHTML = '<div style="position: absolute; width: 16px; height: 8px"></div>'
     const result = await computePosition(reference(90, 100, 8, 8), floating, {

@@ -85,6 +85,9 @@ const elementNode = (value: unknown): value is Element => {
   return Boolean(view && value instanceof view.Element)
 }
 
+const htmlElement = (element: Element): element is HTMLElement =>
+  element instanceof (element.ownerDocument?.defaultView?.HTMLElement || HTMLElement)
+
 const referenceNode = (value: ReferenceElement) => elementNode(value) ? value : value.contextElement
 const clientRect = ({ x, y, width, height }: Rect) => ({
   x, y, width, height, left: x, top: y, right: x + width, bottom: y + height
@@ -125,7 +128,7 @@ function offsetParent(element: HTMLElement, strategy: Strategy): Element | Windo
 }
 
 function dimensions(element: Element) {
-  if (element instanceof HTMLElement) {
+  if (htmlElement(element)) {
     const { width, height } = getComputedStyle(element)
     const styledWidth = Number.parseFloat(width)
     const styledHeight = Number.parseFloat(height)
@@ -198,7 +201,7 @@ function clippingAncestors(element: Element, strategy: Strategy): Element[] {
   const { body, documentElement } = element.ownerDocument
   const ancestors: Element[] = []
   // Absolute and fixed boxes can escape overflow between them and their containing block.
-  let parent = element instanceof HTMLElement && strategy === getComputedStyle(element).position ?
+  let parent = htmlElement(element) && strategy === getComputedStyle(element).position ?
     offsetParent(element, strategy) :
     parentElement(element)
   while (elementNode(parent) && parent !== body && parent !== documentElement) {
@@ -275,20 +278,19 @@ function platformFor(strategy: Strategy): PositioningPlatform {
   }
 }
 
-function coordinates(rects: ElementRects, placement: Placement, rtl: boolean) {
-  const { reference, floating } = rects
+function placementCoordinates({ reference, floating }: { reference: Rect, floating: Pick<Rect, 'width' | 'height'> }, placement: Placement, rtl: boolean, gap = 0) {
   const side = sideOf(placement)
   const alignment = alignmentOf(placement)
   const vertical = isVertical(side)
   let x = reference.x + ((reference.width - floating.width) / 2)
   let y = reference.y + ((reference.height - floating.height) / 2)
   if (vertical) {
-    y = side === 'top' ? reference.y - floating.height : reference.y + reference.height
+    y = side === 'top' ? reference.y - floating.height - gap : reference.y + reference.height + gap
     if (alignment) {
       x = reference.x + (alignment === (rtl ? 'end' : 'start') ? 0 : reference.width - floating.width)
     }
   } else {
-    x = side === 'left' ? reference.x - floating.width : reference.x + reference.width
+    x = side === 'left' ? reference.x - floating.width - gap : reference.x + reference.width + gap
     if (alignment) {
       y = reference.y + (alignment === 'start' ? 0 : reference.height - floating.height)
     }
@@ -305,7 +307,7 @@ async function computePosition(reference: ReferenceElement, floating: HTMLElemen
   let rects = await platform.getElementRects({ ...elements, strategy })
   const rtl = await platform.isRTL(floating)
   let placement = initialPlacement
-  let { x, y } = coordinates(rects, placement, rtl)
+  let { x, y } = placementCoordinates(rects, placement, rtl)
   const middlewareData: MiddlewareState['middlewareData'] = {}
   const middleware = (options.middleware || []).filter(Boolean) as Middleware[]
   let resets = 0
@@ -318,7 +320,13 @@ async function computePosition(reference: ReferenceElement, floating: HTMLElemen
     })
     x = result.x ?? x
     y = result.y ?? y
-    middlewareData[name] = { ...middlewareData[name], ...result.data }
+    const previousData = Object.hasOwn(middlewareData, name) ? middlewareData[name] : undefined
+    Object.defineProperty(middlewareData, name, {
+      value: { ...previousData, ...result.data },
+      configurable: true,
+      enumerable: true,
+      writable: true
+    })
 
     if (result.reset && resets++ < 50) {
       if (typeof result.reset !== 'boolean') {
@@ -327,7 +335,7 @@ async function computePosition(reference: ReferenceElement, floating: HTMLElemen
           rects = result.reset.rects === true ? await platform.getElementRects({ ...elements, strategy }) : result.reset.rects
         }
 
-        ({ x, y } = coordinates(rects, placement, rtl))
+        ({ x, y } = placementCoordinates(rects, placement, rtl))
       }
 
       index = -1
@@ -625,7 +633,7 @@ function autoUpdate(reference: ReferenceElement, floating: HTMLElement, update: 
 }
 
 export {
-  arrow, autoUpdate, computePosition, detectOverflow, flip, offset, shift, size
+  arrow, autoUpdate, computePosition, detectOverflow, flip, offset, placementCoordinates, shift, size
 }
 export type {
   Boundary, ComputeOptions, Middleware, MiddlewareState, Placement, ReferenceElement, Strategy

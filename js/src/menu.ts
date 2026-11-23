@@ -162,6 +162,7 @@ class Menu extends BaseComponent {
   static _openInstances = new Set<Menu>()
   protected declare _config: MenuConfig
   protected declare _anchorUpdate: (() => void) | null
+  protected declare _positionGeneration: number
   protected declare _floatingCleanup: (() => void) | null
   protected declare _mediaQueryListeners: BreakpointListener[]
   protected declare _responsivePlacements: ResponsivePlacements | null
@@ -181,6 +182,7 @@ class Menu extends BaseComponent {
     super(element, config)
 
     this._anchorUpdate = null
+    this._positionGeneration = 0
     this._floatingCleanup = null
     this._mediaQueryListeners = []
     this._responsivePlacements = null
@@ -633,6 +635,7 @@ class Menu extends BaseComponent {
   }
 
   protected _disposeFloating(): void {
+    this._positionGeneration++
     this._anchorUpdate = null
     if (this._floatingCleanup) {
       this._floatingCleanup()
@@ -677,9 +680,10 @@ class Menu extends BaseComponent {
       return null
     }
 
+    const generation = this._positionGeneration
     const { x, y, placement: finalPlacement, strategy } = await computePosition(reference, floating, options)
 
-    if (!floating.isConnected) {
+    if (this._positionGeneration !== generation || !floating.isConnected) {
       return null
     }
 

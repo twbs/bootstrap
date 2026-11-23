@@ -247,6 +247,10 @@ class Tooltip extends BaseComponent {
       this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title')!)
     }
 
+    if (this.tip?.id === this._element.getAttribute('aria-describedby')) {
+      this._element.removeAttribute('aria-describedby')
+    }
+
     this._disposeFloating()
     this._disposeMediaQueryListeners()
     super.dispose()
@@ -293,6 +297,9 @@ class Tooltip extends BaseComponent {
     }
 
     await this._createFloating(tip)
+    if (this.tip !== tip) {
+      return
+    }
 
     tip.classList.add(CLASS_NAME_SHOW)
 
@@ -524,6 +531,9 @@ class Tooltip extends BaseComponent {
 
     // Initial position update
     await this._updateFloatingPosition(tip, placement, arrowElement)
+    if (this.tip !== tip) {
+      return
+    }
 
     // Set up auto-update for scroll/resize
     this._floatingCleanup = autoUpdate(
@@ -591,6 +601,10 @@ class Tooltip extends BaseComponent {
       tip,
       floatingConfig
     )
+
+    if (this.tip !== tip) {
+      return
+    }
 
     // Apply position to tooltip
     Object.assign(tip.style, {

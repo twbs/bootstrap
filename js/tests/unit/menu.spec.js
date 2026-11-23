@@ -1147,6 +1147,37 @@ describe('Menu', () => {
   })
 
   describe('dispose', () => {
+    it('ignores a pending position after the menu closes', async () => {
+      fixtureEl.innerHTML = '<div><button type="button">Menu</button><div class="menu"></div></div>'
+      const toggle = fixtureEl.querySelector('button')
+      const panel = fixtureEl.querySelector('.menu')
+      const started = Promise.withResolvers()
+      const pending = Promise.withResolvers()
+      const menu = new Menu(toggle, {
+        floatingConfig: {
+          middleware: [{
+            name: 'wait',
+            async fn() {
+              started.resolve()
+              await pending.promise
+              return {}
+            }
+          }]
+        }
+      })
+
+      await menu.show()
+      await started.promise
+      await menu.hide()
+      pending.resolve()
+      await new Promise(resolve => {
+        requestAnimationFrame(resolve)
+      })
+
+      expect(panel.hasAttribute('data-bs-placement')).toBeFalse()
+      menu.dispose()
+    })
+
     it('should dispose menu', () => {
       fixtureEl.innerHTML = [
         '<div>',

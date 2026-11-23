@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { autoUpdate, type Placement } from './positioning.js'
+import { autoUpdate, placementCoordinates, type Placement } from './positioning.js'
 
 const supportsAnchors = globalThis.CSS?.supports('anchor-name', '--bs-probe') &&
   CSS.supports('position-anchor', '--bs-probe') &&
@@ -17,8 +17,9 @@ let nextAnchorId = 0
 const visibilitySupport = new WeakMap<Document, boolean>()
 
 function supportsVisibleFallbacks(doc: Document) {
-  if (visibilitySupport.has(doc)) {
-    return visibilitySupport.get(doc)!
+  const cached = visibilitySupport.get(doc)
+  if (cached !== undefined) {
+    return cached
   }
 
   const anchor = doc.createElement('div')
@@ -60,6 +61,10 @@ function getBox(floating: HTMLElement, scales: boolean) {
   }
 
   const matrix = new DOMMatrixReadOnly(transform)
+  if (!matrix.is2D || matrix.b || matrix.c || matrix.e || matrix.f || matrix.a <= 0 || matrix.d <= 0) {
+    return null
+  }
+
   const [originX, originY] = transformOrigin.split(' ').map(Number.parseFloat)
   return {
     left: box.left - (originX * (1 - matrix.a)),
@@ -67,25 +72,6 @@ function getBox(floating: HTMLElement, scales: boolean) {
     width: box.width / matrix.a,
     height: box.height / matrix.d
   }
-}
-
-function expectedBox(placement: Placement, anchor: DOMRect, box: Pick<DOMRect, 'width' | 'height'>, gap: number, rtl: boolean) {
-  const [side, alignment] = placement.split('-')
-  const vertical = side === 'top' || side === 'bottom'
-  let left = anchor.left + ((anchor.width - box.width) / 2)
-  let top = anchor.top + ((anchor.height - box.height) / 2)
-
-  if (vertical) {
-    top = side === 'top' ? anchor.top - box.height - gap : anchor.bottom + gap
-    if (alignment) {
-      const alignLeft = alignment === (rtl ? 'end' : 'start')
-      left = alignLeft ? anchor.left : anchor.right - box.width
-    }
-  } else {
-    left = side === 'left' ? anchor.left - box.width - gap : anchor.right + gap
-  }
-
-  return { left, top }
 }
 
 function aimArrow(arrow: HTMLElement, floating: HTMLElement, side: Placement, anchor: DOMRect, box: Pick<DOMRect, 'left' | 'top'>) {
@@ -115,7 +101,7 @@ function startAnchoring(reference: HTMLElement, floating: HTMLElement, {
   candidates, gap, arrow, scales = false, padding = 0, fallback, onPlacement, onUpdate
 }: AnchorOptions) {
   const doc = reference.ownerDocument
-  if (!supportsVisibleFallbacks(doc)) {
+  if (floating.ownerDocument !== doc || !supportsVisibleFallbacks(doc)) {
     return null
   }
 
@@ -126,18 +112,20 @@ function startAnchoring(reference: HTMLElement, floating: HTMLElement, {
   const properties = ['position', 'top', 'right', 'bottom', 'left', 'position-anchor', 'position-try-fallbacks', '--bs-anchor-gap']
   const previousStyles = properties.map(property => [property, floating.style.getPropertyValue(property), floating.style.getPropertyPriority(property)] as const)
   reference.style.setProperty('anchor-name', name)
-  floating.dataset.bsAnchorPosition = floating.closest('dialog[open]') ? 'dialog' : 'viewport'
+  floating.setAttribute('data-bs-anchor-position', '')
   floating.style.setProperty('position', 'fixed')
   floating.style.setProperty('inset', '50%')
   floating.style.setProperty('position-anchor', name)
   floating.style.setProperty('--bs-anchor-gap', `${gap}px`)
   floating.style.setProperty('position-try-fallbacks', candidates.map(option => `--bs-overlay-${option}`).join(', '))
 
+  let usingAnchors = true
   const clear = () => {
-    if (!floating.hasAttribute('data-bs-anchor-position')) {
+    if (!usingAnchors) {
       return
     }
 
+    usingAnchors = false
     if (reference.style.getPropertyValue('anchor-name') === name) {
       reference.style.removeProperty('anchor-name')
     }
@@ -155,31 +143,38 @@ function startAnchoring(reference: HTMLElement, floating: HTMLElement, {
 
     const anchor = reference.getBoundingClientRect()
     const box = getBox(floating, scales)
-    // Match the first candidate that fits without shifting.
-    const placement = candidates.find(candidate => {
-      const { left, top } = expectedBox(candidate, anchor, box, gap, rtl)
-      return left >= padding - 0.1 && top >= padding - 0.1 &&
-        left + box.width <= root.clientWidth - padding + 0.1 && top + box.height <= root.clientHeight - padding + 0.1
-    })
-    if (!placement) {
+    if (!box) {
       return false
     }
 
-    const { left, top } = expectedBox(placement, anchor, box, gap, rtl)
-    if (Math.abs(left - box.left) > 1 || Math.abs(top - box.top) > 1) {
-      return false
+    const edge = padding - 0.1
+    const right = root.clientWidth - edge
+    const bottom = root.clientHeight - edge
+    const rects = { reference: anchor, floating: box }
+    // Confirm the first placement that fits without shifting.
+    for (const placement of candidates) {
+      const { x, y } = placementCoordinates(rects, placement, rtl, gap)
+      if (!(x >= edge && y >= edge && x + box.width <= right && y + box.height <= bottom)) {
+        continue
+      }
+
+      if (Math.abs(x - box.left) > 1 || Math.abs(y - box.top) > 1) {
+        return false
+      }
+
+      if (floating.dataset.bsPlacement !== placement) {
+        floating.dataset.bsPlacement = placement
+      }
+
+      onPlacement?.(placement)
+      if (arrow) {
+        aimArrow(arrow, floating, placement, anchor, box)
+      }
+
+      return true
     }
 
-    if (floating.dataset.bsPlacement !== placement) {
-      floating.dataset.bsPlacement = placement
-    }
-
-    onPlacement?.(placement)
-    if (arrow) {
-      aimArrow(arrow, floating, placement, anchor, box)
-    }
-
-    return true
+    return false
   }
 
   if (!update()) {
@@ -188,20 +183,18 @@ function startAnchoring(reference: HTMLElement, floating: HTMLElement, {
   }
 
   let frame: number | null = null
-  let usingAnchors = true
   const run = () => {
     onUpdate?.()
     if (usingAnchors && update()) {
       return
     }
 
-    usingAnchors = false
     clear()
     fallback()
   }
 
   const schedule = () => {
-    frame ??= requestAnimationFrame(() => {
+    frame ??= win.requestAnimationFrame(() => {
       frame = null
       run()
     })
@@ -213,7 +206,7 @@ function startAnchoring(reference: HTMLElement, floating: HTMLElement, {
     dispose() {
       stop()
       if (frame !== null) {
-        cancelAnimationFrame(frame)
+        win.cancelAnimationFrame(frame)
       }
 
       clear()
