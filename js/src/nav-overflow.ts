@@ -345,8 +345,8 @@ class NavOverflow extends BaseComponent {
     const space = availableWidth - keepWidth + gap
 
     // When every item fits on its own, the toggle stays hidden and takes no
-    // space. Allow a pixel of slack for sub-pixel layout rounding.
-    if (widthOf(candidates) <= space + 1) {
+    // space.
+    if (widthOf(candidates) <= space) {
       this._applyOverflow([], overflowItem)
       return
     }
@@ -361,8 +361,7 @@ class NavOverflow extends BaseComponent {
     for (const item of candidates) {
       usedWidth += item.offsetWidth + gap
 
-      // Allow a pixel of slack for sub-pixel layout rounding
-      if (usedWidth > limit + 1) {
+      if (usedWidth > limit) {
         itemsToOverflow.push(item)
       }
     }

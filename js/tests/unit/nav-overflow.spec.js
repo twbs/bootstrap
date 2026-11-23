@@ -456,7 +456,7 @@ describe('NavOverflow', () => {
     it('should account for nav pills padding when deciding which items fit', () => {
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" dir="rtl" style="box-sizing: border-box; width: 450px; padding-inline: 14px 8px;">',
-        '  <ul class="nav nav-pills" style="display: flex; column-gap: 10px; border: 3px solid; padding-inline: var(--bs-nav-pills-padding) 20px; --bs-nav-pills-padding: 12px;">',
+        '  <ul class="nav nav-pills" style="display: flex; column-gap: 10px; border: 3px solid; padding-inline: var(--bs-nav-pills-padding); --bs-nav-pills-padding: 16px;">',
         ...Array.from({ length: 4 }, (_, index) =>
           `    <li class="nav-item" style="flex: 0 0 90px;"><a class="nav-link" href="#">Link ${index + 1}</a></li>`
         ),
@@ -475,11 +475,17 @@ describe('NavOverflow', () => {
 
       expect(hiddenItems()).toEqual([])
 
-      navEl.style.setProperty('--bs-nav-pills-padding', '16px')
+      const navRect = navEl.getBoundingClientRect()
+      const firstItem = navEl.children[0].getBoundingClientRect()
+      const lastItem = navEl.children[3].getBoundingClientRect()
+      expect(navRect.right - firstItem.right).toEqual(19)
+      expect(lastItem.left - navRect.left).toEqual(19)
+
+      navEl.style.setProperty('--bs-nav-pills-padding', '16.5px')
       navOverflow.update()
       expect(hiddenItems()).toEqual(['Link 4'])
 
-      wrapperEl.style.width = '454px'
+      wrapperEl.style.width = '451px'
       navOverflow.update()
       expect(hiddenItems()).toEqual([])
 
@@ -531,6 +537,12 @@ describe('NavOverflow', () => {
 
       expect(hiddenItems.length).toEqual(1)
       expect(hiddenItems[0].textContent).toEqual('Link 4')
+
+      wrapperEl.style.width = '359px'
+      navOverflow.update()
+
+      const hiddenText = Array.from(wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]'), item => item.textContent)
+      expect(hiddenText).toEqual(['Link 3', 'Link 4'])
 
       navOverflow.dispose()
     })
