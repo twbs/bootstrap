@@ -1,5 +1,6 @@
 @use "config" as *;
 @use "functions" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
@@ -66,6 +67,10 @@ $spinner-grow-tokens: defaults(
 
     border: var(--spinner-border-width) solid currentcolor;
     border-inline-end-color: transparent;
+
+    @include forced-colors() {
+      border-inline-end-color: Canvas;
+    }
   }
 
   .spinner-sm {

@@ -100,6 +100,7 @@ $avatar-sizes: defaults(
     width: var(--avatar-status-size);
     height: var(--avatar-status-size);
     background-color: var(--gray-400);
+    forced-color-adjust: none;
     border: var(--avatar-status-border-width) solid var(--avatar-status-border-color);
     @include border-radius(50%);
 
