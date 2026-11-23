@@ -47,10 +47,13 @@ $progress-tokens: defaults(
     overflow: hidden;
     font-size: var(--progress-font-size);
     background-color: var(--progress-bg);
-    // Forced colors mode removes the background color. Show the track with a transparent outline.
-    outline: 1px solid transparent;
     @include border-radius(var(--progress-border-radius));
     @include box-shadow(var(--progress-box-shadow));
+
+    // Forced colors mode removes the background color. Show the track with an outline.
+    @include forced-colors() {
+      outline: 1px solid transparent;
+    }
   }
 
   .progress-bar {

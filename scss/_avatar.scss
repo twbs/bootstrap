@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "functions" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/transition" as *;
 @use "mixins/tokens" as *;
 
@@ -74,9 +75,12 @@ $avatar-sizes: defaults(
     text-transform: uppercase;
     vertical-align: middle;
     background-color: var(--theme-bg, var(--avatar-bg));
-    // Forced colors mode removes the background color. Show the edge with a transparent outline.
-    outline: 1px solid transparent;
     @include border-radius(var(--avatar-border-radius));
+
+    // Forced colors mode removes the background color. Show the edge with an outline.
+    @include forced-colors() {
+      outline: 1px solid transparent;
+    }
 
     > .avatar-img {
       width: 100%;
@@ -101,10 +105,13 @@ $avatar-sizes: defaults(
     width: var(--avatar-status-size);
     height: var(--avatar-status-size);
     background-color: var(--gray-400);
-    // Forced colors mode removes the status color. Keep the author colors, because the color tells the status.
-    forced-color-adjust: none;
     border: var(--avatar-status-border-width) solid var(--avatar-status-border-color);
     @include border-radius(50%);
+
+    // Forced colors mode removes the status color. Keep the author colors, because the color tells the status.
+    @include forced-colors() {
+      forced-color-adjust: none;
+    }
 
     &.status-online {
       background-color: var(--green-500);

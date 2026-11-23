@@ -174,8 +174,11 @@ $tooltip-tokens: defaults(
     color: var(--tooltip-color);
     text-align: center;
     background-color: var(--tooltip-bg);
-    // Forced colors mode removes the background color. Show the edge with a transparent outline.
-    outline: 1px solid transparent;
     @include border-radius(var(--tooltip-border-radius));
+
+    // Forced colors mode removes the background color. Show the edge with an outline.
+    @include forced-colors() {
+      outline: 1px solid transparent;
+    }
   }
 }

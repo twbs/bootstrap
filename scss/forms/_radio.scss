@@ -1,5 +1,6 @@
 @use "../functions" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -54,14 +55,17 @@ $radio-tokens: defaults(
       background-color: currentcolor;
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 50%;
-      // Forced colors mode removes the background color. Show the dot with a transparent outline.
-      outline: 2px solid transparent;
       opacity: 0;
       transform: scale(0);
       @include transition(
         opacity var(--control-transition-duration) var(--control-transition-timing),
         transform var(--control-transition-duration) var(--control-transition-timing)
       );
+
+      // Forced colors mode removes the background color. Show the dot with an outline.
+      @include forced-colors() {
+        outline: 2px solid transparent;
+      }
     }
 
     &:checked {

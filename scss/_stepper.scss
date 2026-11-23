@@ -2,6 +2,7 @@
 @use "functions" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/tokens" as *;
 
 $stepper-tokens: () !default;
@@ -105,8 +106,11 @@ $stepper-tokens: defaults(
       height: calc(100% + var(--stepper-gap));
       content: "";
       background-color: var(--stepper-bg);
-      // Forced colors mode removes the background color. Show the line with a transparent outline.
-      outline: 1px solid transparent;
+
+      // Forced colors mode removes the background color. Show the line with an outline.
+      @include forced-colors() {
+        outline: 1px solid transparent;
+      }
     }
 
     // Avoid sibling selector for easier CSS overrides

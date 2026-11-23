@@ -101,9 +101,12 @@ $spinner-grow-tokens: defaults(
     @include tokens($spinner-grow-tokens);
 
     background-color: currentcolor;
-    // Forced colors mode removes the background color. Show the circle with a transparent outline.
-    outline: 1px solid transparent;
     opacity: 0;
+
+    // Forced colors mode removes the background color. Show the circle with an outline.
+    @include forced-colors() {
+      outline: 1px solid transparent;
+    }
   }
 
   // Generic class for rotating custom spinners
