@@ -376,7 +376,7 @@ const datepicker = new bootstrap.Datepicker(datepickerEl, {
 | `selectionMode` | string | `'single'` | Selection mode: `'single'`, `'multiple'`, or `'multiple-ranged'` |
 | `placement` | string | `'left'` | Calendar position relative to input: `'left'`, `'center'`, `'right'`, `'auto'` |
 | `datepickerTheme` | string | `null` | Force datepicker popup theme: `'light'`, `'dark'`, `'auto'`, or `null` to inherit from ancestor `[data-bs-theme]` |
-| `vcpOptions` | object | `{}` | Pass-through object for supported [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings) |
+| `vcpOptions` | object | `{}` | Pass-through object for supported [Vanilla Calendar Pro options](https://vanilla-calendar.pro/docs/reference/settings). JavaScript only. |
 </BsTable>
 
 ### Advanced configuration
@@ -396,7 +396,9 @@ const datepicker = new bootstrap.Datepicker(element, {
 
 See the [Vanilla Calendar Pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for available settings. Bootstrap overrides input mode, placement, themes, extensions, and its initialization, update, and date-click callbacks to keep its public behavior consistent.
 
-Vanilla Calendar Pro templates, including `layouts`, contain trusted HTML. Do not populate them with untrusted content or user-supplied JSON. This also applies to templates inside `data-bs-vcp-options`. Bootstrap does not sanitize these templates. Use formatter functions for plain text.
+Vanilla Calendar Pro templates, including `layouts`, contain trusted HTML. Do not populate them with untrusted content or user-supplied JSON. Bootstrap does not sanitize these templates. Use formatter functions for plain text.
+
+`vcpOptions` is read from JavaScript only. Some Vanilla Calendar Pro options, like `layouts`, are rendered as HTML, so a `data-bs-vcp-options` attribute, or a `vcpOptions` key in `data-bs-config`, is ignored.
 
 Vanilla Calendar Pro ships its optional features as extensions. Bootstrap uses only the `months` extension, which `displayMonthsCount` needs. Options from other extensions are not supported, and Vanilla Calendar Pro throws an error when you set them. These include `animation`, `enableSwipe`, `selectionTimeMode`, `popups`, and the week view options.
 

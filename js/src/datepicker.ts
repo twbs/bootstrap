@@ -23,6 +23,7 @@ import {
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import { onDocumentReady } from './util/component-functions.js'
+import type { ComponentConfig } from './util/config.js'
 import {
   getTransitionDurationFromElement, getUID, isDisabled, isVisible
 } from './util/index.js'
@@ -456,6 +457,13 @@ class Datepicker extends BaseComponent {
   }
 
   // Private
+  protected override _getConfig(config?: ComponentConfig | null): ComponentConfig {
+    // `vcpOptions` goes to Vanilla Calendar Pro as is, and some of its options
+    // (`layouts`) are rendered as HTML. Read it from JavaScript only, so that
+    // `data-bs-vcp-options` and `data-bs-config` never reach it.
+    return super._getConfig({ vcpOptions: Default.vcpOptions, ...config })
+  }
+
   protected _isCurrentOpening(generation: number): boolean {
     return Boolean(this._calendar) && this._isShown && generation === this._showGeneration
   }

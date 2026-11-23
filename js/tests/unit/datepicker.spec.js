@@ -1289,6 +1289,44 @@ describe('Datepicker', () => {
       datepicker.dispose()
     })
 
+    it('should ignore vcpOptions from data-bs-vcp-options', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options=\'{"jumpMonths":2,"layouts":{"default":"<span class=from-data></span><#Dates />"}}\'></div>'
+
+      const divEl = fixtureEl.querySelector('div')
+      const datepicker = new Datepicker(divEl)
+
+      expect(datepicker._config.vcpOptions).toEqual({})
+      expect(divEl.querySelector('.from-data')).toBeNull()
+      expect(divEl.querySelector('[data-vc="dates"]')).not.toBeNull()
+    })
+
+    it('should ignore vcpOptions from data-bs-config', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-config=\'{"inline":true,"vcpOptions":{"layouts":{"default":"<span class=from-data></span><#Dates />"}}}\'></div>'
+
+      const divEl = fixtureEl.querySelector('div')
+      const datepicker = new Datepicker(divEl)
+
+      expect(datepicker._config.inline).toBeTrue()
+      expect(datepicker._config.vcpOptions).toEqual({})
+      expect(divEl.querySelector('.from-data')).toBeNull()
+    })
+
+    it('should use vcpOptions from JavaScript over data attributes', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="datepicker" data-bs-inline="true" data-bs-vcp-options=\'{"layouts":{"default":"<span class=from-data></span><#Dates />"}}\'></div>'
+
+      const divEl = fixtureEl.querySelector('div')
+      Datepicker.getOrCreateInstance(divEl, {
+        vcpOptions: {
+          layouts: {
+            default: '<span class="from-js"></span><#Dates />'
+          }
+        }
+      })
+
+      expect(divEl.querySelector('.from-js')).not.toBeNull()
+      expect(divEl.querySelector('.from-data')).toBeNull()
+    })
+
     it('should default to the single-month calendar type', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
 
