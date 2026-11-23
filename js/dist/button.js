@@ -1,11 +1,12 @@
 /*!
-* Bootstrap button.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap button.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
+import { onDocumentReady } from "./util/component-functions.js";
 import { setAriaAttribute } from "./util/index.js";
 //#region js/src/button.ts
 /**
@@ -43,7 +44,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, (event) =>
 	const button = event.target.closest(SELECTOR_DATA_TOGGLE);
 	Button.getOrCreateInstance(button).toggle();
 });
-EventHandler.on(document, EVENT_DOM_CONTENT_LOADED, () => {
+onDocumentReady(EVENT_DOM_CONTENT_LOADED, () => {
 	for (const element of SelectorEngine.find(SELECTOR_DATA_TOGGLE)) if (!element.hasAttribute("aria-pressed")) setAriaAttribute(element, "aria-pressed", element.classList.contains(CLASS_NAME_ACTIVE));
 });
 //#endregion

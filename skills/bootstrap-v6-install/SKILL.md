@@ -41,14 +41,14 @@ Add Bootstrap's CSS in `<head>` and the JS bundle before the closing `</body>`. 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MKn5NWVBEuQXJE7TSKSgPUmMiSCmVTfCsR+VSSeQpHnoyJQZZFn/kBn+Ht5jZDPQ" crossorigin="anonymous">
   </head>
   <body>
     <div class="container py-4 px-3 mx-auto">
       <h1>Hello, Bootstrap!</h1>
       <button class="btn-solid theme-primary">Primary button</button>
     </div>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-nvTESlo+YEEQtV+0niyh4qcsYAnwWHXQnIVFwYe7SwYQQyxkTkdWxkcGkhyraa5E" crossorigin="anonymous"></script>
   </body>
 </html>
 ```
@@ -66,7 +66,7 @@ To load Floating UI and Vanilla Calendar Pro separately (smaller payload), use t
   }
 }
 </script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.min.js" integrity="sha384-BJf/nQgxZJU68GxBse97Vdlc8Rh+z9PzzXiS3/BjV+1nQPR7IKn+iJnD3DJvCMaU" crossorigin="anonymous"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.2/dist/js/bootstrap.min.js" integrity="sha384-wGZcuA/a1tAECVtTlosaRE/NJbXzzkIgFwA3gIghQGd9C3ENH3UQtKHseJPjUa2w" crossorigin="anonymous"></script>
 ```
 
 For a CDN setup you're done — skip to **Step 5: Verify**.
@@ -76,7 +76,7 @@ For a CDN setup you're done — skip to **Step 5: Verify**.
 ## Step 2 (npm): Install
 
 ```sh
-npm install bootstrap@6.0.0-alpha.1 @floating-ui/dom vanilla-calendar-pro
+npm install bootstrap@6.0.0-alpha.2 @floating-ui/dom vanilla-calendar-pro
 ```
 
 Bootstrap 6 requires a **Sass compiler** (Dart Sass) and **PostCSS/Autoprefixer** to match the official compiled output. Node Sass is not supported. Install the build tooling your setup needs, e.g.:

@@ -1,5 +1,5 @@
 /*!
-* Bootstrap tooltip.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap tooltip.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -28,12 +28,9 @@ const DISALLOWED_ATTRIBUTES = /* @__PURE__ */ new Set([
 	"sanitizeFn"
 ]);
 const ESCAPE_KEY = "Escape";
-const CLASS_NAME_MODAL = "modal";
 const CLASS_NAME_SHOW = "show";
 const SELECTOR_TOOLTIP_INNER = ".tooltip-inner";
-const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"tooltip\"]";
-const EVENT_MODAL_HIDE = "hide.bs.modal";
 const TRIGGER_HOVER = "hover";
 const TRIGGER_FOCUS = "focus";
 const TRIGGER_CLICK = "click";
@@ -154,7 +151,6 @@ var Tooltip = class extends BaseComponent {
 		this._clearTimeout();
 		this._removeEscapeListener();
 		this._removeFocusOutsideListener();
-		EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
 		if (this._element.getAttribute("data-bs-original-title")) this._element.setAttribute("title", this._element.getAttribute("data-bs-original-title"));
 		this._disposeFloating();
 		this._disposeMediaQueryListeners();
@@ -188,7 +184,7 @@ var Tooltip = class extends BaseComponent {
 		const complete = () => {
 			EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN));
 			if (this._isHovered === false) this._leave();
-			this._isHovered = false;
+			this._isHovered = null;
 		};
 		await this._queueCallback(complete, this.tip, this._isAnimated());
 	}
@@ -385,10 +381,6 @@ var Tooltip = class extends BaseComponent {
 				context._leave();
 			});
 		}
-		this._hideModalHandler = () => {
-			if (this._element) this.hide();
-		};
-		EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
 	}
 	_setTipListeners(tip) {
 		const trigger = this._getTrigger();
@@ -520,6 +512,8 @@ var Tooltip = class extends BaseComponent {
 	_getConfig(config) {
 		const dataAttributes = Manipulator.getDataAttributes(this._element);
 		for (const dataAttribute of Object.keys(dataAttributes)) if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) delete dataAttributes[dataAttribute];
+		if (this._element.getAttribute("data-bs-title") !== null) dataAttributes.title = this._element.getAttribute("data-bs-title");
+		if (this._element.getAttribute("data-bs-content") !== null) dataAttributes.content = this._element.getAttribute("data-bs-content");
 		config = {
 			...dataAttributes,
 			...typeof config === "object" && config ? config : {}
@@ -536,8 +530,10 @@ var Tooltip = class extends BaseComponent {
 			show: config.delay,
 			hide: config.delay
 		};
-		if (typeof config.title === "number" || typeof config.title === "boolean") config.title = config.title.toString();
-		if (typeof config.content === "number" || typeof config.content === "boolean") config.content = config.content.toString();
+		if (config.title === null) config.title = "";
+		else if (typeof config.title === "number" || typeof config.title === "boolean") config.title = config.title.toString();
+		if (config.content === null) config.content = "";
+		else if (typeof config.content === "number" || typeof config.content === "boolean") config.content = config.content.toString();
 		return config;
 	}
 	_getDelegateConfig() {
