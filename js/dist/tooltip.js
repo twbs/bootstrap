@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap tooltip.js v5.3.8 (https://getbootstrap.com/)
-  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap tooltip.js v5.3.9 (https://getbootstrap.com/)
+  * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -115,7 +115,7 @@
   class Tooltip extends BaseComponent {
     constructor(element, config) {
       if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)');
+        throw new TypeError('Bootstrap\'s tooltips require Popper (https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md)');
       }
       super(element, config);
 
@@ -463,6 +463,16 @@
     }
     _getConfig(config) {
       const dataAttributes = Manipulator.getDataAttributes(this._element);
+
+      // Read text attributes without coercing their values.
+      const title = this._element.getAttribute('data-bs-title');
+      const content = this._element.getAttribute('data-bs-content');
+      if (title !== null) {
+        dataAttributes.title = title;
+      }
+      if (content !== null) {
+        dataAttributes.content = content;
+      }
       for (const dataAttribute of Object.keys(dataAttributes)) {
         if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {
           delete dataAttributes[dataAttribute];
