@@ -1,4 +1,5 @@
 import Alert from '../../src/alert.js'
+import EventHandler from '../../src/dom/event-handler.js'
 import { getTransitionDurationFromElement } from '../../src/util/index.js'
 import { clearFixture, getFixture } from '../helpers/fixture.js'
 
@@ -114,6 +115,27 @@ describe('Alert', () => {
       await closed
 
       expect(document.querySelectorAll('.alert')).toHaveSize(0)
+    })
+
+    it('should deliver the cancelable Alert close event to EventHandler listeners', async () => {
+      fixtureEl.innerHTML = '<div class="alert"></div>'
+
+      const alertEl = fixtureEl.querySelector('.alert')
+      const alert = new Alert(alertEl)
+      const preventClose = event => event.preventDefault()
+
+      EventHandler.on(alertEl, 'close.bs.alert', preventClose)
+      const nativeClose = new Event('close', { cancelable: true })
+      alertEl.dispatchEvent(nativeClose)
+
+      try {
+        await alert.close()
+        expect(nativeClose.defaultPrevented).toBeFalse()
+        expect(fixtureEl.contains(alertEl)).toBeTrue()
+      } finally {
+        EventHandler.off(alertEl, 'close.bs.alert', preventClose)
+        Alert.getInstance(alertEl)?.dispose()
+      }
     })
 
     it('should not remove alert if close event is prevented', () => {

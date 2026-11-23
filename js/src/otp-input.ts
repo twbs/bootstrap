@@ -257,9 +257,7 @@ class OtpInput extends BaseComponent {
   }
 
   protected _addEventListeners(): void {
-    // Listeners are attached with bare event names (not namespaced) because
-    // `input`, `beforeinput`, `paste`, and `selectionchange` are not in
-    // EventHandler's native-events list. Keep references to remove on dispose.
+    // Keep listener references so dispose() can remove them.
     this._inputListeners = {
       input: event => this._handleInput(event as InputEvent),
       compositionend: () => this._handleInput(),

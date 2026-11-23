@@ -70,28 +70,24 @@ describe('EventHandler', () => {
       })
     })
 
-    it('should add native namespaced event listener for modern DOM events', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = '<input type="text">'
+    it('should register and remove namespaced input and selection listeners', () => {
+      fixtureEl.innerHTML = '<input type="text">'
 
-        const input = fixtureEl.querySelector('input')
-        let cancelFired = false
-        let beforeInputFired = false
+      const input = fixtureEl.querySelector('input')
+      const received = []
+      const record = event => received.push(event.type)
 
-        EventHandler.on(input, 'cancel.namespace', () => {
-          cancelFired = true
-        })
+      EventHandler.on(input, 'beforeinput.namespace', record)
+      EventHandler.on(document, 'selectionchange.namespace', record)
+      input.dispatchEvent(new InputEvent('beforeinput'))
+      document.dispatchEvent(new Event('selectionchange'))
 
-        EventHandler.on(input, 'beforeinput.namespace', () => {
-          beforeInputFired = true
-          expect(cancelFired).toBe(true)
-          expect(beforeInputFired).toBe(true)
-          resolve()
-        })
+      EventHandler.off(input, '.namespace')
+      EventHandler.off(document, '.namespace')
+      input.dispatchEvent(new InputEvent('beforeinput'))
+      document.dispatchEvent(new Event('selectionchange'))
 
-        input.dispatchEvent(new Event('cancel'))
-        input.dispatchEvent(new InputEvent('beforeinput'))
-      })
+      expect(received).toEqual(['beforeinput', 'selectionchange'])
     })
 
     it('should handle event delegation', () => {
