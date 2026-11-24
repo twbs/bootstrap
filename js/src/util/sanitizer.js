@@ -68,60 +68,42 @@ const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))
 
 const isSafeUrl = url => Boolean(SAFE_URL_PATTERN.test(url))
 
-// `srcset` is a comma-separated list of candidates. The first comma in a
-// `data:` URL starts the payload. A later comma starts the next candidate when
-// what follows looks like a URL (scheme, path, or file), with or without spaces.
-const SRCSET_DESCRIPTOR = /\s+[\d.]+[wx]\s*(?:,|$)/i
-const SRCSET_NEXT_CANDIDATE = /\s*,\s*(?=[^\s,]*(?:[a-z][a-z0-9+.-]*:|\/|\.))/i
+// Follow the HTML srcset token boundaries. A comma inside a URL stays
+// part of the URL. A comma inside descriptor parentheses stays in the descriptor.
+const isSafeSrcset = value => {
+  const separators = /[,\t\n\f\r ]*/y
+  const urlToken = /[^\t\n\f\r ]+/y
+  const descriptors = /(?:[^,(]|\([^)]*(?:\)|$))*(?:,|$)/y
+  let position = 0
+  let hasUrl = false
 
-const extractSrcsetUrls = value => {
-  const urls = []
-  let rest = String(value).trim()
+  while (position < value.length) {
+    separators.lastIndex = position
+    separators.test(value)
+    position = separators.lastIndex
 
-  while (rest) {
-    if (/^data:/i.test(rest)) {
-      const headerComma = rest.indexOf(',')
-
-      if (headerComma === -1) {
-        urls.push(rest)
-        break
-      }
-
-      const payload = rest.slice(headerComma + 1)
-      const descriptor = payload.match(SRCSET_DESCRIPTOR)
-      const nextCandidate = payload.match(SRCSET_NEXT_CANDIDATE)
-      const descriptorAt = descriptor ? descriptor.index : Number.POSITIVE_INFINITY
-      const nextAt = nextCandidate ? nextCandidate.index : Number.POSITIVE_INFINITY
-
-      if (nextAt !== Number.POSITIVE_INFINITY && nextAt <= descriptorAt) {
-        urls.push(rest.slice(0, headerComma + 1 + nextAt).trim())
-        rest = payload.slice(nextAt).replace(/^,/, '').trim()
-        continue
-      }
-
-      if (descriptor) {
-        urls.push(rest.slice(0, headerComma + 1 + descriptor.index).trim())
-        rest = payload.slice(descriptor.index + descriptor[0].length).replace(/^,/, '').trim()
-        continue
-      }
-
-      urls.push(rest)
-      rest = ''
-      continue
+    if (position === value.length) {
+      break
     }
 
-    const commaIndex = rest.indexOf(',')
-    const candidate = (commaIndex === -1 ? rest : rest.slice(0, commaIndex)).trim()
-    const url = candidate.split(/\s+/, 1)[0]
+    urlToken.lastIndex = position
+    const [url] = urlToken.exec(value)
+    position = urlToken.lastIndex
 
-    if (url) {
-      urls.push(url)
+    if (!isSafeUrl(url.replace(/,+$/, ''))) {
+      return false
     }
 
-    rest = commaIndex === -1 ? '' : rest.slice(commaIndex + 1).trim()
+    hasUrl = true
+
+    if (!url.endsWith(',')) {
+      descriptors.lastIndex = position
+      descriptors.test(value)
+      position = descriptors.lastIndex
+    }
   }
 
-  return urls
+  return hasUrl
 }
 
 const allowedAttribute = (attribute, allowedAttributeList) => {
@@ -129,8 +111,7 @@ const allowedAttribute = (attribute, allowedAttributeList) => {
 
   if (allowedAttributeList.includes(attributeName)) {
     if (attributeName === 'srcset') {
-      const urls = extractSrcsetUrls(attribute.nodeValue)
-      return urls.length > 0 && urls.every(url => isSafeUrl(url))
+      return isSafeSrcset(attribute.nodeValue)
     }
 
     if (uriAttributes.has(attributeName)) {

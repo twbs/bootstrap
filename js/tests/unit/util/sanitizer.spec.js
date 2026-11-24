@@ -200,14 +200,20 @@ describe('Sanitizer', () => {
       expect(result).not.toContain('srcset')
     })
 
-    it('should drop srcset when the next candidate follows a data: URL with no space', () => {
-      // eslint-disable-next-line no-script-url
-      const unsafeSrcset = 'javascript:alert(1)'
-      const template = `<img src="safe.jpg" srcset="data:image/png;base64,AAAA,${unsafeSrcset} 2x">`
+    it('should keep an image URL with an internal comma', () => {
+      const template = '<img srcset="/photos/a,b&amp;c:d.jpg 1x, /photos/two.jpg 2x">'
 
       const result = sanitizeHtml(template, DefaultAllowlist, null)
 
-      expect(result).not.toContain('srcset')
+      expect(result).toEqual(template)
+    })
+
+    it('should keep commas inside descriptor parentheses with the descriptor', () => {
+      const template = '<img srcset="/one.jpg descriptor(a,b&amp;c:d.jpg), /two.jpg 2x">'
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).toEqual(template)
     })
 
     it('should keep a data-URI srcset whose commas belong to the payload', () => {
