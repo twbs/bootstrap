@@ -173,10 +173,10 @@ You can adjust the width of your block buttons with grid column width classes. F
     <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
 
-Additional utilities can be used to adjust the alignment of buttons when horizontal. Here we’ve taken our previous responsive example and added some flex utilities and a margin utility on the button to right-align the buttons when they’re no longer stacked.
+At the `md` breakpoint, use flex utilities to align both buttons to the end. Use `.md:column-gap-4` to set the horizontal gap.
 
-<Example code={`<div class="d-grid gap-2 md:d-flex md:justify-content-end">
-    <button class="btn-solid theme-primary md:me-2" type="button">Button</button>
+<Example code={`<div class="d-grid gap-2 md:d-flex md:justify-content-end md:column-gap-4">
+    <button class="btn-solid theme-primary" type="button">Button</button>
     <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
 
