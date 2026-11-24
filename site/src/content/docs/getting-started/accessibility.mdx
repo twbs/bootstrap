@@ -47,6 +47,12 @@ Bootstrap includes support for the [`prefers-reduced-motion` media feature](http
 
 On browsers that support `prefers-reduced-motion`, and where the user has *not* explicitly signaled that they’d prefer reduced motion (i.e. where `prefers-reduced-motion: no-preference`), Bootstrap enables smooth scrolling using the `scroll-behavior` property.
 
+### Forced colors
+
+Bootstrap includes support for the [`forced-colors` media feature](https://www.w3.org/TR/mediaqueries-5/#forced-colors). Some operating systems and browsers let the user replace page colors with a small palette of system colors (for instance, Windows high contrast themes). Bootstrap then uses system colors and transparent outlines so that parts drawn only with a background color, such as progress bars, range sliders, and close buttons, stay visible.
+
+To remove these styles from the compiled CSS, set `$enable-forced-colors` to `false`. See [the Sass options]([[docsref:/customize/options]]) for more.
+
 ## Additional resources
 
 - [Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG/)

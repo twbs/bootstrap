@@ -2,6 +2,7 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -84,7 +85,7 @@ $otp-sizes: defaults(
     }
 
     // Keep the overlay transparent when the OS overrides text colors.
-    @media (forced-colors: active) {
+    @include forced-colors() {
       forced-color-adjust: none;
     }
 
@@ -144,7 +145,7 @@ $otp-sizes: defaults(
     z-index: 1;
     @include focus-ring(true);
 
-    @media (forced-colors: active) {
+    @include forced-colors() {
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }

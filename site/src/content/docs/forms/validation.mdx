@@ -274,118 +274,140 @@ Validation styles are available for the following form controls and components:
 - `.form-range-input` range inputs
 - `.form-floating` floating labels
 - `.form-adorn` adorned inputs
-- `.chip-input` chip inputs
+- `.combobox-control` editable comboboxes
 - `.combobox-toggle` comboboxes (class-based only)
 - Input groups (with feedback in a parent `.form-field`)
 
-<Example code={`<form class="vstack gap-5">
-    <div class="form-field">
+Choose a state and feedback style. Focus the adorned input to see its border and focus ring. Tooltip mode keeps inline feedback for checkboxes, radios, and switches.
+
+<ValidationPlayground code={`<form class="grid align-items-start gap-5">
+    <div class="form-field g-col-12 sm:g-col-6">
+      <label for="validationTextInput" class="form-label">Name</label>
+      <input type="text" class="form-control is-invalid" id="validationTextInput" required aria-invalid="true" aria-describedby="validationTextInputFeedback">
+      <div id="validationTextInputFeedback" class="invalid-feedback">Enter your name.</div>
+    </div>
+
+    <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationTextarea" class="form-label">Textarea</label>
-      <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required aria-describedby="validationTextareaFeedback"></textarea>
+      <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required aria-invalid="true" aria-describedby="validationTextareaFeedback"></textarea>
       <div id="validationTextareaFeedback" class="invalid-feedback">
         Please enter a message in the textarea.
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group g-col-12 sm:g-col-6">
       <label class="form-label">Checkbox</label>
       <div class="form-field">
-        <input type="checkbox" class="check is-invalid" id="validationFormCheck1" required aria-describedby="validationFormCheck1Feedback">
+        <input type="checkbox" class="check is-invalid" id="validationFormCheck1" required aria-invalid="true" aria-describedby="validationFormCheck1Feedback">
         <div class="form-field-content">
           <label for="validationFormCheck1">Check this checkbox</label>
-          <div id="validationFormCheck1Feedback" class="invalid-feedback">Example invalid feedback text</div>
+          <div id="validationFormCheck1Feedback" class="invalid-feedback">Check the box to continue.</div>
         </div>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group g-col-12 sm:g-col-6">
       <label class="form-label">Radio</label>
       <div class="form-field">
-        <input type="radio" class="radio is-invalid" id="validationFormCheck2" name="radio-stacked" required aria-describedby="validationFormRadioFeedback">
+        <input type="radio" class="radio is-invalid" id="validationFormCheck2" name="radio-stacked" required aria-invalid="true" aria-describedby="validationFormRadioFeedback">
         <label for="validationFormCheck2">Toggle this radio</label>
       </div>
       <div class="form-field">
-        <input type="radio" class="radio is-invalid" id="validationFormCheck3" name="radio-stacked" required aria-describedby="validationFormRadioFeedback">
+        <input type="radio" class="radio is-invalid" id="validationFormCheck3" name="radio-stacked" required aria-invalid="true" aria-describedby="validationFormRadioFeedback">
         <div class="form-field-content">
           <label for="validationFormCheck3">Or toggle this other radio</label>
-          <div id="validationFormRadioFeedback" class="invalid-feedback">More example invalid feedback text</div>
+          <div id="validationFormRadioFeedback" class="invalid-feedback">Select one option.</div>
         </div>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group g-col-12 sm:g-col-6">
       <label class="form-label">Switch</label>
       <div class="form-field">
         <div class="switch">
-          <input type="checkbox" id="validationFormSwitch" role="switch" switch class="is-invalid" aria-describedby="validationFormSwitchFeedback">
+          <input type="checkbox" id="validationFormSwitch" role="switch" switch class="is-invalid" aria-invalid="true" aria-describedby="validationFormSwitchFeedback">
         </div>
         <div class="form-field-content">
           <label for="validationFormSwitch">Toggle this switch</label>
-          <div id="validationFormSwitchFeedback" class="invalid-feedback">Example invalid switch feedback</div>
+          <div id="validationFormSwitchFeedback" class="invalid-feedback">Turn on the switch to continue.</div>
         </div>
       </div>
     </div>
 
-    <div class="form-field">
+    <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationSelect" class="form-label">Select</label>
-      <select class="form-control is-invalid" id="validationSelect" required aria-describedby="validationSelectFeedback">
+      <select class="form-control is-invalid" id="validationSelect" required aria-invalid="true" aria-describedby="validationSelectFeedback">
         <option value="">Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
       </select>
-      <div id="validationSelectFeedback" class="invalid-feedback">Example invalid select feedback</div>
+      <div id="validationSelectFeedback" class="invalid-feedback">Select an item from the list.</div>
     </div>
 
-    <div class="form-field">
+    <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationFile" class="form-label">File input</label>
-      <input type="file" class="form-control is-invalid" id="validationFile" required aria-describedby="validationFileFeedback">
-      <div id="validationFileFeedback" class="invalid-feedback">Example invalid form file feedback</div>
+      <input type="file" class="form-control is-invalid" id="validationFile" required aria-invalid="true" aria-describedby="validationFileFeedback">
+      <div id="validationFileFeedback" class="invalid-feedback">Choose a file to upload.</div>
     </div>
 
-    <div class="form-field">
+    <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationRange" class="form-label">Range</label>
       <div class="form-range">
-        <input type="range" class="form-range-input is-invalid" id="validationRange" min="0" max="5" required aria-describedby="validationRangeFeedback">
+        <input type="range" class="form-range-input is-invalid" id="validationRange" min="0" max="100" value="60" aria-invalid="true" aria-describedby="validationRangeFeedback">
       </div>
-      <div id="validationRangeFeedback" class="invalid-feedback">Example invalid range feedback</div>
+      <div id="validationRangeFeedback" class="invalid-feedback">Move the slider to a higher value.</div>
     </div>
 
-    <div class="form-field">
+    <div class="form-field g-col-12 sm:g-col-6" role="group" aria-labelledby="validationFloatingLabel">
+      <span class="form-label" id="validationFloatingLabel">Floating label</span>
       <div class="form-floating">
         <label for="validationFloating">Email address</label>
-        <input type="email" class="form-control is-invalid" id="validationFloating" placeholder="name@example.com" value="test@example.com" aria-describedby="validationFloatingFeedback">
+        <input type="email" class="form-control is-invalid" id="validationFloating" placeholder="name@example.com" value="test@" aria-invalid="true" aria-describedby="validationFloatingFeedback">
       </div>
-      <div id="validationFloatingFeedback" class="invalid-feedback d-block">Example invalid floating label feedback</div>
+      <div id="validationFloatingFeedback" class="invalid-feedback">Enter a valid email address.</div>
     </div>
 
-    <div class="form-field">
+    <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationAdorn" class="form-label">Adorned input</label>
       <label class="form-control form-adorn is-invalid">
-        <div class="form-adorn-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
-        </div>
-        <input type="text" class="form-ghost" id="validationAdorn" placeholder="Search..." aria-describedby="validationAdornFeedback">
+        <span class="form-adorn-text" aria-hidden="true">$</span>
+        <input type="text" class="form-ghost" id="validationAdorn" inputmode="decimal" placeholder="0.00" aria-invalid="true" aria-describedby="validationAdornFeedback">
       </label>
-      <div id="validationAdornFeedback" class="invalid-feedback">Example invalid adorned input feedback</div>
+      <div id="validationAdornFeedback" class="invalid-feedback">Enter a dollar amount.</div>
     </div>
 
-    <div class="form-field">
+    <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationInputGroup" class="form-label">Input group</label>
       <div class="input-group">
         <span class="input-group-text">@</span>
-        <input type="text" class="form-control is-invalid" id="validationInputGroup" placeholder="Username" aria-describedby="validationInputGroupFeedback">
+        <input type="text" class="form-control is-invalid" id="validationInputGroup" placeholder="Username" aria-invalid="true" aria-describedby="validationInputGroupFeedback">
       </div>
       <div id="validationInputGroupFeedback" class="invalid-feedback">Please choose a username</div>
     </div>
 
-    <div class="form-field">
+    <div class="form-field g-col-12 sm:g-col-6">
       <label class="form-label" for="validationChipInput">Tags</label>
-      <div class="chip-input">
-        <span class="chip">Example</span>
-        <input type="text" class="form-ghost is-invalid" id="validationChipInput" placeholder="Add tag..." aria-describedby="validationChipInputFeedback">
+      <div class="combobox-control" data-bs-toggle="combobox" data-bs-multiple="true" data-bs-allow-custom="true">
+        <input type="text" class="form-ghost combobox-input is-invalid" id="validationChipInput" placeholder="Type a tag and press Enter" aria-invalid="true" aria-describedby="validationChipInputFeedback">
       </div>
       <div id="validationChipInputFeedback" class="invalid-feedback">Please add at least one tag</div>
+    </div>
+
+    <div class="form-field g-col-12 sm:g-col-6">
+      <span class="form-label" id="validationComboboxLabel">Combobox button</span>
+      <button type="button" class="form-control combobox-toggle is-invalid" data-bs-toggle="combobox"
+              data-bs-placeholder="Select a country…" aria-haspopup="listbox" aria-expanded="false"
+              aria-controls="validationComboboxOptions" aria-labelledby="validationComboboxLabel validationComboboxValue"
+              aria-invalid="true" aria-describedby="validationComboboxFeedback">
+        <span class="combobox-value" id="validationComboboxValue">Select a country…</span>
+        <svg class="combobox-caret" aria-hidden="true" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
+      </button>
+      <div class="menu" id="validationComboboxOptions" role="listbox" aria-label="Countries">
+        <button class="menu-item" type="button" data-bs-value="ca" role="option" aria-selected="false">Canada</button>
+        <button class="menu-item" type="button" data-bs-value="jp" role="option" aria-selected="false">Japan</button>
+      </div>
+      <div id="validationComboboxFeedback" class="invalid-feedback">Select a country.</div>
     </div>
   </form>`} />
 

@@ -18,7 +18,6 @@ declare class Dialog extends DialogBase {
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
     protected static _handleDataApiClick(trigger: HTMLElement, event: Event): void;
-    protected static _registerFocusRestoration(target: HTMLElement, trigger: HTMLElement): void;
     handleUpdate(): void;
     protected _getShowOptions(): {
         modal: boolean;

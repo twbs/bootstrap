@@ -1,5 +1,6 @@
 @use "../functions" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -65,6 +66,11 @@ $switch-tokens: defaults(
       box-shadow: 0 1px 2px rgb(0 0 0 / .1);
       translate: 0 -50%;
       @include transition(inset-inline-start var(--switch-transition-duration) var(--switch-transition-timing));
+
+      // Forced colors mode removes the background color. Show the indicator with an outline.
+      @include forced-colors() {
+        outline: 1px solid transparent;
+      }
     }
 
     input {

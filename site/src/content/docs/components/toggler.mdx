@@ -1,6 +1,6 @@
 ---
 title: Toggler
-description: Toggle attributes or classes on click using only data attributes and our JavaScript plugin. Works with any attribute except `id`.
+description: Toggle attributes or classes on click using only data attributes and our JavaScript plugin. Works with any attribute except `id`, event handlers, `style` and attributes that take a URL.
 toc: true
 js: required
 ---
@@ -72,6 +72,10 @@ Toggle attributes by using the `data-bs-toggle` attribute with the `data-bs-attr
   </div>`} />
 
 You could also use this to toggle the `disabled` attribute on a `fieldset` element to disable all the controls within. Or any other ideas you can think of with attributes.
+
+### Refused attributes
+
+Toggler never sets an attribute that can run script or load a URL, since its options come from `data-bs-*` attributes that HTML sanitizers usually keep. It does nothing for `id`, `style`, any event handler (`onclick`, `onmouseover` and every other `on*` attribute), and the URL attributes `action`, `background`, `data`, `formaction`, `href`, `poster`, `src`, `srcdoc`, `srcset` and `xlink:href`. Toggle a class instead of `style`.
 
 ## Usage
 

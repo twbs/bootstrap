@@ -724,6 +724,15 @@ $utilities: map.merge(
       values: italic normal
     ),
     // scss-docs-end utils-font-style
+    // scss-docs-start utils-font-variant-numeric
+    "font-variant-numeric": (
+      property: font-variant-numeric,
+      class: font,
+      values: (
+        tabular-nums: tabular-nums,
+      )
+    ),
+    // scss-docs-end utils-font-variant-numeric
     // scss-docs-start utils-font-weight
     "font-weight": (
       property: font-weight,
