@@ -2,6 +2,7 @@
 @use "functions" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
@@ -186,6 +187,11 @@ $navbar-nav-tokens: defaults(
     height: var(--navbar-toggler-icon-size);
     background-color: currentcolor;
     @include mask-icon(var(--navbar-toggler-icon));
+
+    // Forced colors mode removes the background color that paints the icon.
+    @include forced-colors() {
+      background-color: CanvasText;
+    }
   }
 
   // scss-docs-start navbar-expand-loop

@@ -68,10 +68,13 @@ $progress-tokens: defaults(
     @include transition(var(--progress-bar-transition));
 
     // Forced colors mode removes background colors, so the bar disappears.
-    // Paint the bar with system colors to keep it visible.
+    // Paint it with a system color. Its label sits on the browser's Canvas backplate,
+    // so it uses CanvasText, and the outline keeps the bar's edge visible when a
+    // .bg-* utility overrides the color.
     @include forced-colors() {
-      color: HighlightText;
+      color: CanvasText;
       background-color: Highlight;
+      outline: 1px solid transparent;
     }
   }
 
