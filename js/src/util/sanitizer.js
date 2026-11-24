@@ -64,9 +64,18 @@ const uriAttributes = new Set([
  *
  * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
  */
-const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i
+const SAFE_URL_PATTERN = /^(?!(?:javascript|data|vbscript):)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i
 
-const isSafeUrl = url => Boolean(SAFE_URL_PATTERN.test(url))
+/**
+ * A pattern that matches safe data URLs. Only matches base64-encoded image,
+ * video and audio types — notably NOT `data:text/html`, and not non-base64
+ * media payloads (e.g. `data:image/png,...` without `;base64,`).
+ *
+ * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L49
+ */
+const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|mpeg|oga|ogg|opus));base64,[\d+/a-z=]+$/i
+
+const isSafeUrl = url => Boolean(SAFE_URL_PATTERN.test(url) || DATA_URL_PATTERN.test(url))
 
 // Follow the HTML srcset token boundaries. A comma inside a URL stays
 // part of the URL. A comma inside descriptor parentheses stays in the descriptor.
