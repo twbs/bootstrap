@@ -67,6 +67,7 @@ class Offcanvas extends BaseComponent {
     super(element, config)
 
     this._isShown = false
+    this._scrollBar = null
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
     this._addEventListeners()
@@ -104,8 +105,9 @@ class Offcanvas extends BaseComponent {
     this._isShown = true
     this._backdrop.show()
 
-    if (!this._config.scroll) {
-      new ScrollBarHelper().hide()
+    if (!this._config.scroll && !this._scrollBar) {
+      this._scrollBar = new ScrollBarHelper()
+      this._scrollBar.hide()
     }
 
     this._element.setAttribute('aria-modal', true)
@@ -113,6 +115,10 @@ class Offcanvas extends BaseComponent {
     this._element.classList.add(CLASS_NAME_SHOWING)
 
     const completeCallBack = () => {
+      if (!this._element) {
+        return
+      }
+
       if (!this._config.scroll || this._config.backdrop) {
         this._focustrap.activate()
       }
@@ -143,13 +149,12 @@ class Offcanvas extends BaseComponent {
     this._backdrop.hide()
 
     const completeCallback = () => {
-      this._element.classList.remove(CLASS_NAME_SHOW, CLASS_NAME_HIDING)
-      this._element.removeAttribute('aria-modal')
-      this._element.removeAttribute('role')
-
-      if (!this._config.scroll) {
-        new ScrollBarHelper().reset()
+      if (!this._element) {
+        return
       }
+
+      this._resetElement()
+      this._resetScrollBar()
 
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
@@ -158,12 +163,30 @@ class Offcanvas extends BaseComponent {
   }
 
   dispose() {
+    if (this._isShown || this._element.classList.contains(CLASS_NAME_HIDING)) {
+      this._resetElement()
+    }
+
+    this._resetScrollBar()
     this._backdrop.dispose()
     this._focustrap.deactivate()
     super.dispose()
   }
 
   // Private
+  _resetElement() {
+    this._element.classList.remove(CLASS_NAME_SHOW, CLASS_NAME_SHOWING, CLASS_NAME_HIDING)
+    this._element.removeAttribute('aria-modal')
+    this._element.removeAttribute('role')
+  }
+
+  _resetScrollBar() {
+    if (this._scrollBar) {
+      this._scrollBar.reset()
+      this._scrollBar = null
+    }
+  }
+
   _initializeBackDrop() {
     const clickCallback = () => {
       if (this._config.backdrop === 'static') {
