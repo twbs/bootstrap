@@ -1,0 +1,1363 @@
+---
+title: Sass migration
+description: Find the v6 option, token, or map key that replaces each Bootstrap 5 Sass variable, or learn that it was removed.
+toc: true
+---
+
+Most Bootstrap 5 themes override Sass variables before they import Bootstrap. Most of those variables are gone in v6. Components read CSS custom properties (tokens) instead, and Sass maps that you can configure declare them. This page lists every `!default` variable from v5.3.9 and what replaces it. The [migration guide]([[docsref:/guides/migration]]) explains the reasons for these changes.
+
+## Reading the tables
+
+The **v6** column has one of these forms:
+
+- **`$name`**: still a Sass variable. Pass it through `@use … with ()`. Some defaults changed, so read the notes.
+- **`--name` in `$map`**: a token. Set it through that token map or in your own CSS.
+- **`--name` (set on `.selector`)**: a token that a modifier class sets. Override it on that class.
+- **`--name` (not declared)**: a token that no map declares. Set it in your own CSS. The note gives the value used when it is not set.
+- **`$map: key`**: a key of a Sass map, such as `$theme-colors`, `$font-sizes` or `$zindex-levels`.
+- **Removed**: no direct replacement. When something is close, the column names it. The notes say how it is different.
+
+Token maps and most other maps merge your keys over the defaults. See [Token defaults]([[docsref:/customize/sass#token-defaults]]). The notes tell you when you must pass the whole map.
+
+Token names have no prefix in the Sass source. Bootstrap’s compiled CSS adds the `--bs-` prefix with PostCSS. When you compile the source yourself, the names keep no prefix unless you add the same step.
+
+```scss
+@use "bootstrap/scss/bootstrap" with (
+  // v5: $btn-font-weight: 600;
+  $button-tokens: (
+    --btn-font-weight: 600,
+  ),
+  // v5: $input-btn-padding-y: .5rem;
+  $root-tokens: (
+    --btn-input-padding-y: .5rem,
+  ),
+);
+```
+
+You can also set a token at runtime. Set a component token on the component class, not on `:root`, because the class declares its own value. See [Runtime overrides]([[docsref:/customize/sass#runtime-overrides]]).
+
+```css
+/* Your own build from the Sass source */
+.checkout .btn {
+  --btn-font-weight: 600;
+}
+
+/* Bootstrap’s compiled CSS */
+.checkout .btn {
+  --bs-btn-font-weight: 600;
+}
+```
+
+## Dark mode variables
+
+The v5 `*-dark` variables are gone. Most colors are now one `light-dark()` value: the light value first, the dark value second. See [Color modes]([[docsref:/customize/color-modes]]). To change only the dark value, write the full `light-dark()` value again with your dark color.
+
+## Brand colors
+
+In v5, `$primary: #0057c2` was enough. Sass derived the subtle backgrounds, borders and emphasis colors from it. In v6, each theme color is a map of roles: `base`, `fg`, `fg-emphasis`, `bg`, `bg-subtle`, `bg-muted`, `border`, `focus-ring` and `contrast`. The roles use the palette steps of one hue. Add your brand as a palette color to generate its steps. Then point the roles of the theme color at them:
+
+```scss
+@use "bootstrap/scss/bootstrap" with (
+  $colors: (
+    "brand": #0057c2,
+  ),
+  $theme-colors: (
+    "primary": (
+      "base": var(--brand-500),
+      "fg": light-dark(var(--brand-600), var(--brand-400)),
+      "fg-emphasis": light-dark(var(--brand-800), var(--brand-200)),
+      "bg": var(--brand-500),
+      "bg-subtle": light-dark(var(--brand-100), var(--brand-900)),
+      "bg-muted": light-dark(var(--brand-200), var(--brand-800)),
+      "border": light-dark(var(--brand-300), var(--brand-600)),
+      "focus-ring": light-dark(color-mix(in oklch, var(--brand-500) 50%, var(--bg-body)), color-mix(in oklch, var(--brand-500) 75%, var(--bg-body))),
+      "contrast": var(--white),
+    ),
+  ),
+);
+```
+
+`$colors` generates the steps from `--brand-025` to `--brand-975`. See [Color]([[docsref:/customize/color#customizing]]). Pass every role of `"primary"`, because a partial map drops the other roles. See [Theme color map]([[docsref:/customize/sass#theme-color-map]]). An override of `$blue` also changes `primary`, but it changes every blue utility too.
+
+## Variables by component
+
+### Options
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$escaped-characters` | `$escaped-characters` |  |
+| `$enable-caret` | Removed | Add an icon to the toggle markup. |
+| `$enable-rounded` | `$enable-rounded` |  |
+| `$enable-shadows` | `$enable-shadows` | Default is now true (v5: false). |
+| `$enable-gradients` | `$enable-gradients` | Default is now true (v5: false). It now only adds `--gradient` to the active nav pill and the range thumb (v5 also buttons, badges, menu items, navbar, pagination and the file button); `.btn-styled` draws its own gradient whatever the setting. |
+| `$enable-transitions` | `$enable-transitions` |  |
+| `$enable-reduced-motion` | `$enable-reduced-motion` |  |
+| `$enable-smooth-scroll` | `$enable-smooth-scroll` | Default is now false (v5: true). |
+| `$enable-grid-classes` | `$enable-grid-classes` |  |
+| `$enable-container-classes` | `$enable-container-classes` |  |
+| `$enable-cssgrid` | `$enable-cssgrid` | Default is now true (v5: false). |
+| `$enable-button-pointers` | `$enable-button-pointers` |  |
+| `$enable-rfs` | Removed | Font sizes use `clamp()` in `$font-sizes`. |
+| `$enable-validation-icons` | Removed |  |
+| `$enable-negative-margins` | Removed, use `$negative-spacers` | Negative margins are always generated, but only for `.ms-*` and `.me-*` (`.ms`--1, `.me`--2); v5’s `.m-n1`, `.mt-n3` and the other sides are gone. |
+| `$enable-deprecation-messages` | `$enable-deprecation-messages` |  |
+| `$enable-important-utilities` | Removed, use important: true on a utility in `$utilities` | Utilities sit in `@layer utilities` and no longer use `!important` by default. |
+| `$enable-dark-mode` | Removed | Dark mode is always compiled, and `:root` sets `color-scheme: light dark`, so pages follow the OS setting by default. Add `data-bs-theme="light"` to `<html>` to keep a site light-only. |
+| `$color-mode-type` | `$color-mode-type` | Default is now `"media-query"` (v5: `data`). Only the `color-mode()` mixin reads it and Bootstrap’s own CSS never calls it, so it changes nothing in Bootstrap’s output: `data-bs-theme` works with either value. Pages follow the OS setting by default; add `data-bs-theme="light"` to `<html>` to keep a site light-only. |
+| `$variable-prefix` | Removed | Set the prefix in PostCSS (postcss-prefix-custom-properties). |
+| `$prefix` | Removed | Set the prefix in PostCSS (postcss-prefix-custom-properties). |
+| `$include-column-box-sizing` | Removed | Columns always get box-sizing: border-box now. |
+</BsTable>
+
+### Colors
+
+Each hue’s steps are generated with `color-mix()` from its base color: tints from `$color-tints`, shades from `$color-shades`. The base hues are new `oklch()` values, so most steps differ from v5. To keep a v5 value, set that step in `$color-tokens`.
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$white` | `$white` | Also emitted as `--white`. |
+| `$gray-100` | `--gray-100` in `$color-tokens` | v6 grays come from one hue (`$gray`) and run darker: `--gray-100` is oklch L 92% (v5: 98%). The closest to v5’s value is `--gray-025`. |
+| `$gray-200` | `--gray-200` in `$color-tokens` | v6 grays come from one hue (`$gray`) and run darker: `--gray-200` is oklch L 84% (v5: 94%). v5’s value sits between `--gray-050` and `--gray-100`. |
+| `$gray-300` | `--gray-300` in `$color-tokens` | v6 grays come from one hue (`$gray`) and run darker: `--gray-300` is oklch L 76% (v5: 91%). The closest to v5’s value is `--gray-100`. |
+| `$gray-400` | `--gray-400` in `$color-tokens` | v6 grays come from one hue (`$gray`) and run darker: `--gray-400` is oklch L 68% (v5: 87%). The closest to v5’s value is `--gray-200`. |
+| `$gray-500` | `--gray-500` in `$color-tokens` | v6 grays come from one hue (`$gray`) and run darker: `--gray-500` equals `$gray`, oklch L 60% (v5: 77%). The closest to v5’s value is `--gray-300`. |
+| `$gray-600` | `--gray-600` in `$color-tokens` | v6 grays come from one hue (`$gray`) and run darker: `--gray-600` is oklch L 50% (v5: 56%). The closest to v5’s value is `--gray-500`. |
+| `$gray-700` | `--gray-700` in `$color-tokens` | v6 grays come from one hue (`$gray`): `--gray-700` is oklch L 41%, close to v5 (43%). |
+| `$gray-800` | `--gray-800` in `$color-tokens` | v6 grays come from one hue (`$gray`) and run darker: `--gray-800` is oklch L 31% (v5: 35%). v5’s value sits between `--gray-700` and `--gray-800`. |
+| `$gray-900` | `--gray-900` in `$color-tokens` | v6 grays come from one hue (`$gray`) and run darker: `--gray-900` is oklch L 22% (v5: 26%). v6 adds two darker steps, `--gray-950` and `--gray-975`. |
+| `$black` | `$black` | Also emitted as `--black`. |
+| `$grays` | Removed, use `$colors: "gray"` + `$color-tokens` | Gray is now a palette hue; its steps come from `$color-tints`/`$color-shades`. |
+| `$blue` | `$blue` | Now an `oklch()` value; it drives every `--blue-*` step. |
+| `$indigo` | `$indigo` | Now an `oklch()` value; it drives every `--indigo-*` step. |
+| `$purple` | `$purple` | Now an `oklch()` value; it drives every `--purple-*` step. |
+| `$pink` | `$pink` | Now an `oklch()` value; it drives every `--pink-*` step. |
+| `$red` | `$red` | Now an `oklch()` value; it drives every `--red-*` step. |
+| `$orange` | `$orange` | Now an `oklch()` value; it drives every `--orange-*` step. |
+| `$yellow` | `$yellow` | Now an `oklch()` value; it drives every `--yellow-*` step. |
+| `$green` | `$green` | Now an `oklch()` value; it drives every `--green-*` step. |
+| `$teal` | `$teal` | Now an `oklch()` value; it drives every `--teal-*` step. |
+| `$cyan` | `$cyan` | Now an `oklch()` value; it drives every `--cyan-*` step. |
+| `$colors` | `$colors` | Base hues only. Adds violet, amber, lime, brown and pewter; black, white and gray-dark are gone. Every key generates a 025 to 975 scale, so do not copy a v5 map: its gray key changes every `--gray-*` step (body text, borders, surfaces). Use `--blue-500` where v5 used `--blue`. |
+| `$min-contrast-ratio` | `$min-contrast-ratio` | Only read by `color-contrast()`, which Bootstrap no longer calls; the `contrast` role of `$theme-colors` does that job. |
+| `$color-contrast-dark` | `$color-contrast-dark` | Only read by `color-contrast()`, which Bootstrap no longer calls; the `contrast` role of `$theme-colors` does that job. |
+| `$color-contrast-light` | `$color-contrast-light` | Only read by `color-contrast()`, which Bootstrap no longer calls; the `contrast` role of `$theme-colors` does that job. |
+| `$blue-100` | `--blue-100` in `$color-tokens` |  |
+| `$blue-200` | `--blue-200` in `$color-tokens` |  |
+| `$blue-300` | `--blue-300` in `$color-tokens` |  |
+| `$blue-400` | `--blue-400` in `$color-tokens` |  |
+| `$blue-500` | `--blue-500` in `$color-tokens` | Equals `$blue`. |
+| `$blue-600` | `--blue-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$blue-700` | `--blue-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$blue-800` | `--blue-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$blue-900` | `--blue-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$indigo-100` | `--indigo-100` in `$color-tokens` |  |
+| `$indigo-200` | `--indigo-200` in `$color-tokens` |  |
+| `$indigo-300` | `--indigo-300` in `$color-tokens` |  |
+| `$indigo-400` | `--indigo-400` in `$color-tokens` |  |
+| `$indigo-500` | `--indigo-500` in `$color-tokens` | Equals `$indigo`. |
+| `$indigo-600` | `--indigo-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$indigo-700` | `--indigo-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$indigo-800` | `--indigo-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$indigo-900` | `--indigo-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$purple-100` | `--purple-100` in `$color-tokens` |  |
+| `$purple-200` | `--purple-200` in `$color-tokens` |  |
+| `$purple-300` | `--purple-300` in `$color-tokens` |  |
+| `$purple-400` | `--purple-400` in `$color-tokens` |  |
+| `$purple-500` | `--purple-500` in `$color-tokens` | Equals `$purple`. |
+| `$purple-600` | `--purple-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$purple-700` | `--purple-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$purple-800` | `--purple-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$purple-900` | `--purple-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$pink-100` | `--pink-100` in `$color-tokens` |  |
+| `$pink-200` | `--pink-200` in `$color-tokens` |  |
+| `$pink-300` | `--pink-300` in `$color-tokens` |  |
+| `$pink-400` | `--pink-400` in `$color-tokens` |  |
+| `$pink-500` | `--pink-500` in `$color-tokens` | Equals `$pink`. |
+| `$pink-600` | `--pink-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$pink-700` | `--pink-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$pink-800` | `--pink-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$pink-900` | `--pink-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$red-100` | `--red-100` in `$color-tokens` |  |
+| `$red-200` | `--red-200` in `$color-tokens` |  |
+| `$red-300` | `--red-300` in `$color-tokens` |  |
+| `$red-400` | `--red-400` in `$color-tokens` |  |
+| `$red-500` | `--red-500` in `$color-tokens` | Equals `$red`. |
+| `$red-600` | `--red-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$red-700` | `--red-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$red-800` | `--red-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$red-900` | `--red-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$orange-100` | `--orange-100` in `$color-tokens` |  |
+| `$orange-200` | `--orange-200` in `$color-tokens` |  |
+| `$orange-300` | `--orange-300` in `$color-tokens` |  |
+| `$orange-400` | `--orange-400` in `$color-tokens` |  |
+| `$orange-500` | `--orange-500` in `$color-tokens` | Equals `$orange`. |
+| `$orange-600` | `--orange-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$orange-700` | `--orange-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$orange-800` | `--orange-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$orange-900` | `--orange-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$yellow-100` | `--yellow-100` in `$color-tokens` |  |
+| `$yellow-200` | `--yellow-200` in `$color-tokens` |  |
+| `$yellow-300` | `--yellow-300` in `$color-tokens` |  |
+| `$yellow-400` | `--yellow-400` in `$color-tokens` |  |
+| `$yellow-500` | `--yellow-500` in `$color-tokens` | Equals `$yellow`. |
+| `$yellow-600` | `--yellow-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$yellow-700` | `--yellow-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$yellow-800` | `--yellow-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$yellow-900` | `--yellow-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$green-100` | `--green-100` in `$color-tokens` |  |
+| `$green-200` | `--green-200` in `$color-tokens` |  |
+| `$green-300` | `--green-300` in `$color-tokens` |  |
+| `$green-400` | `--green-400` in `$color-tokens` |  |
+| `$green-500` | `--green-500` in `$color-tokens` | Equals `$green`. |
+| `$green-600` | `--green-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$green-700` | `--green-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$green-800` | `--green-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$green-900` | `--green-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$teal-100` | `--teal-100` in `$color-tokens` |  |
+| `$teal-200` | `--teal-200` in `$color-tokens` |  |
+| `$teal-300` | `--teal-300` in `$color-tokens` |  |
+| `$teal-400` | `--teal-400` in `$color-tokens` |  |
+| `$teal-500` | `--teal-500` in `$color-tokens` | Equals `$teal`. |
+| `$teal-600` | `--teal-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$teal-700` | `--teal-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$teal-800` | `--teal-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$teal-900` | `--teal-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$cyan-100` | `--cyan-100` in `$color-tokens` |  |
+| `$cyan-200` | `--cyan-200` in `$color-tokens` |  |
+| `$cyan-300` | `--cyan-300` in `$color-tokens` |  |
+| `$cyan-400` | `--cyan-400` in `$color-tokens` |  |
+| `$cyan-500` | `--cyan-500` in `$color-tokens` | Equals `$cyan`. |
+| `$cyan-600` | `--cyan-600` in `$color-tokens` | Mixed in oklch with 16% black (v5: 20% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$cyan-700` | `--cyan-700` in `$color-tokens` | Mixed in oklch with 32% black (v5: 40% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$cyan-800` | `--cyan-800` in `$color-tokens` | Mixed in oklch with 48% black (v5: 60% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$cyan-900` | `--cyan-900` in `$color-tokens` | Mixed in oklch with 64% black (v5: 80% in sRGB): about the same lightness for a given base, but the base hue itself changed. |
+| `$blues` | Removed, use `$color-tokens` |  |
+| `$indigos` | Removed, use `$color-tokens` |  |
+| `$purples` | Removed, use `$color-tokens` |  |
+| `$pinks` | Removed, use `$color-tokens` |  |
+| `$reds` | Removed, use `$color-tokens` |  |
+| `$oranges` | Removed, use `$color-tokens` |  |
+| `$yellows` | Removed, use `$color-tokens` |  |
+| `$greens` | Removed, use `$color-tokens` |  |
+| `$teals` | Removed, use `$color-tokens` |  |
+| `$cyans` | Removed, use `$color-tokens` |  |
+| `$gradient` | `$gradient` | Emitted as `--gradient`; override the token at runtime. |
+</BsTable>
+
+### Theme colors
+
+Each `$theme-colors` entry is a map of roles. Nested theme maps merge one level deep, so pass every role of a color you change, as in [Brand colors](#brand-colors). v6 has no `light` and `dark` theme colors: use the neutral `$theme-bgs` and `$theme-fgs` steps, color modes, or `inverse`.
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$theme-colors-rgb` | Removed, use `$theme-colors` | `*-rgb` values are gone; use `color-mix()` for transparency. |
+| `$theme-colors-text` | Removed, use `$theme-colors: <color> → fg-emphasis` | Each theme color’s map now holds its own roles. |
+| `$theme-colors-bg-subtle` | Removed, use `$theme-colors: <color> → bg-subtle` | Each theme color’s map now holds its own roles. |
+| `$theme-colors-border-subtle` | Removed, use `$theme-colors: <color> → border` | Each theme color’s map now holds its own roles. |
+| `$theme-colors-text-dark` | Removed, use `$theme-colors: <color> → fg-emphasis` | Dark value (second argument of `light-dark()`). |
+| `$theme-colors-bg-subtle-dark` | Removed, use `$theme-colors: <color> → bg-subtle` | Dark value (second argument of `light-dark()`). |
+| `$theme-colors-border-subtle-dark` | Removed, use `$theme-colors: <color> → border` | Dark value (second argument of `light-dark()`). |
+| `$utilities-colors` | Removed, use `$theme-colors` | Color utilities are generated from the `$theme-colors` keys. |
+| `$utilities-text` | Removed, use `$utilities: "fg"` (values from `$theme-colors` fg + `$theme-fgs`) | `.text-*` became `.fg-*`; add a color by adding a key to `$theme-fgs` or `$theme-colors`. |
+| `$utilities-text-colors` | Removed, use `$utilities: "fg"` (values from `$theme-colors` fg + `$theme-fgs`) | Values are now `var()` references, no `rgba-css-var()`. |
+| `$utilities-text-emphasis-colors` | Removed, use `$utilities: "fg-emphasis"` (values from `$theme-colors` fg-emphasis) | `.text-{color}-emphasis` became `.fg-emphasis-{color}`. |
+| `$utilities-bg` | Removed, use `$utilities: "bg-color"` (values from `$theme-colors` bg + `$theme-bgs`) | Add a background by adding a key to `$theme-bgs` or `$theme-colors`. |
+| `$utilities-bg-colors` | Removed, use `$utilities: "bg-color"` (values from `$theme-colors` bg + `$theme-bgs`) | Values are now `var()` references, no `rgba-css-var()`. |
+| `$utilities-bg-subtle` | Removed, use `$utilities: "bg-color-subtle"` (values from `$theme-colors` bg-subtle) | `.bg-{color}-subtle` became `.bg-subtle-{color}`. |
+| `$utilities-border` | Removed, use `$utilities: "border-color"` (values from `$theme-colors` bg + `$theme-borders`) | Add a border color by adding a key to `$theme-borders` or `$theme-colors`. |
+| `$utilities-border-colors` | Removed, use `$utilities: "border-color"` (values from `$theme-colors` bg + `$theme-borders`) | Values are now `var()` references, no `rgba-css-var()`. |
+| `$utilities-border-subtle` | Removed, use `$utilities: "border-color-subtle"` (values from `$theme-colors` border) | `.border-{color}-subtle` became `.border-subtle-{color}`. |
+| `$utilities-links-underline` | Removed, use `$utilities: "underline-color"` (values from `$theme-colors` fg) | `.link-underline-{color}` became `.underline-{color}`. |
+| `$utilities` | `$utilities` | A key you pass replaces that whole utility. |
+| `$primary-text-emphasis-dark` | `$theme-colors: primary → fg-emphasis` | Dark value (second argument of `light-dark()`). |
+| `$secondary-text-emphasis-dark` | `$theme-colors: secondary → fg-emphasis` | Dark value (second argument of `light-dark()`). |
+| `$success-text-emphasis-dark` | `$theme-colors: success → fg-emphasis` | Dark value (second argument of `light-dark()`). |
+| `$info-text-emphasis-dark` | `$theme-colors: info → fg-emphasis` | Dark value (second argument of `light-dark()`). |
+| `$warning-text-emphasis-dark` | `$theme-colors: warning → fg-emphasis` | Dark value (second argument of `light-dark()`). |
+| `$danger-text-emphasis-dark` | `$theme-colors: danger → fg-emphasis` | Dark value (second argument of `light-dark()`). |
+| `$light-text-emphasis-dark` | Removed |  |
+| `$dark-text-emphasis-dark` | Removed, use `$theme-colors: inverse → fg-emphasis` | Dark value (second argument of `light-dark()`); v6 uses white where v5 used `$gray-300`. `inverse` replaces the v5 `dark` theme color, and its bg flips with the color mode. |
+| `$primary-bg-subtle-dark` | `$theme-colors: primary → bg-subtle` | Dark value (second argument of `light-dark()`). |
+| `$secondary-bg-subtle-dark` | `$theme-colors: secondary → bg-subtle` | Dark value (second argument of `light-dark()`). |
+| `$success-bg-subtle-dark` | `$theme-colors: success → bg-subtle` | Dark value (second argument of `light-dark()`). |
+| `$info-bg-subtle-dark` | `$theme-colors: info → bg-subtle` | Dark value (second argument of `light-dark()`). |
+| `$warning-bg-subtle-dark` | `$theme-colors: warning → bg-subtle` | Dark value (second argument of `light-dark()`). |
+| `$danger-bg-subtle-dark` | `$theme-colors: danger → bg-subtle` | Dark value (second argument of `light-dark()`). |
+| `$light-bg-subtle-dark` | Removed |  |
+| `$dark-bg-subtle-dark` | Removed, use `$theme-colors: inverse → bg-subtle` | Dark value (second argument of `light-dark()`). `inverse` replaces the v5 `dark` theme color, and its bg flips with the color mode. |
+| `$primary-border-subtle-dark` | `$theme-colors: primary → border` | Dark value (second argument of `light-dark()`). |
+| `$secondary-border-subtle-dark` | `$theme-colors: secondary → border` | Dark value (second argument of `light-dark()`). |
+| `$success-border-subtle-dark` | `$theme-colors: success → border` | Dark value (second argument of `light-dark()`). |
+| `$info-border-subtle-dark` | `$theme-colors: info → border` | Dark value (second argument of `light-dark()`). |
+| `$warning-border-subtle-dark` | `$theme-colors: warning → border` | Dark value (second argument of `light-dark()`). |
+| `$danger-border-subtle-dark` | `$theme-colors: danger → border` | Dark value (second argument of `light-dark()`). |
+| `$light-border-subtle-dark` | Removed |  |
+| `$dark-border-subtle-dark` | Removed, use `$theme-colors: inverse → border` | Dark value (second argument of `light-dark()`); v6 uses a light gray (`--gray-100`) where v5 used `$gray-800`. `inverse` replaces the v5 `dark` theme color, and its bg flips with the color mode. |
+| `$primary` | `$theme-colors: primary` | Set base, bg and the `light-dark()` roles together. |
+| `$secondary` | `$theme-colors: secondary` | Set base, bg and the `light-dark()` roles together; v6 secondary is a light gray (v5: `$gray-600`). |
+| `$success` | `$theme-colors: success` | Set base, bg and the `light-dark()` roles together. |
+| `$info` | `$theme-colors: info` | Set base, bg and the `light-dark()` roles together. |
+| `$warning` | `$theme-colors: warning` | Set base, bg and the `light-dark()` roles together. |
+| `$danger` | `$theme-colors: danger` | Set base, bg and the `light-dark()` roles together. |
+| `$light` | Removed, use `$theme-bgs: 1` | No light/dark theme colors in v6. Use the neutral surfaces (`--bg-1`, `--bg-2`), color modes or inverse. |
+| `$dark` | Removed, use `$theme-colors: inverse` | No light/dark theme colors in v6; use neutral surfaces, color modes or `inverse`. |
+| `$theme-colors` | `$theme-colors` | Each entry is now a map of roles (base, fg, fg-emphasis, bg, bg-subtle, bg-muted, border, focus-ring, contrast). Colors merge via `defaults()`, roles do not: a color you pass replaces all of its roles, so pass every role. |
+| `$primary-text-emphasis` | `$theme-colors: primary → fg-emphasis` | Light value (first argument of `light-dark()`). |
+| `$secondary-text-emphasis` | `$theme-colors: secondary → fg-emphasis` | Light value (first argument of `light-dark()`). |
+| `$success-text-emphasis` | `$theme-colors: success → fg-emphasis` | Light value (first argument of `light-dark()`). |
+| `$info-text-emphasis` | `$theme-colors: info → fg-emphasis` | Light value (first argument of `light-dark()`). |
+| `$warning-text-emphasis` | `$theme-colors: warning → fg-emphasis` | Light value (first argument of `light-dark()`). |
+| `$danger-text-emphasis` | `$theme-colors: danger → fg-emphasis` | Light value (first argument of `light-dark()`). |
+| `$light-text-emphasis` | Removed |  |
+| `$dark-text-emphasis` | Removed, use `$theme-colors: inverse → fg-emphasis` | Light value (first argument of `light-dark()`). `inverse` replaces the v5 `dark` theme color, and its bg flips with the color mode. |
+| `$primary-bg-subtle` | `$theme-colors: primary → bg-subtle` | Light value (first argument of `light-dark()`). |
+| `$secondary-bg-subtle` | `$theme-colors: secondary → bg-subtle` | Light value (first argument of `light-dark()`). |
+| `$success-bg-subtle` | `$theme-colors: success → bg-subtle` | Light value (first argument of `light-dark()`). |
+| `$info-bg-subtle` | `$theme-colors: info → bg-subtle` | Light value (first argument of `light-dark()`). |
+| `$warning-bg-subtle` | `$theme-colors: warning → bg-subtle` | Light value (first argument of `light-dark()`). |
+| `$danger-bg-subtle` | `$theme-colors: danger → bg-subtle` | Light value (first argument of `light-dark()`). |
+| `$light-bg-subtle` | Removed |  |
+| `$dark-bg-subtle` | Removed, use `$theme-colors: inverse → bg-subtle` | Light value (first argument of `light-dark()`). `inverse` replaces the v5 `dark` theme color, and its bg flips with the color mode. |
+| `$primary-border-subtle` | `$theme-colors: primary → border` | Light value (first argument of `light-dark()`). |
+| `$secondary-border-subtle` | `$theme-colors: secondary → border` | Light value (first argument of `light-dark()`). |
+| `$success-border-subtle` | `$theme-colors: success → border` | Light value (first argument of `light-dark()`). |
+| `$info-border-subtle` | `$theme-colors: info → border` | Light value (first argument of `light-dark()`). |
+| `$warning-border-subtle` | `$theme-colors: warning → border` | Light value (first argument of `light-dark()`). |
+| `$danger-border-subtle` | `$theme-colors: danger → border` | Light value (first argument of `light-dark()`). |
+| `$light-border-subtle` | Removed |  |
+| `$dark-border-subtle` | Removed, use `$theme-colors: inverse → border` | Light value (first argument of `light-dark()`). `inverse` replaces the v5 `dark` theme color, and its bg flips with the color mode. |
+</BsTable>
+
+### Spacing and positions
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$negative-spacers` | `$negative-spacers` | Now its own map (-1: -.25rem, -2: -.5rem), merged over the defaults and no longer derived from `$spacers`. Always generated, but only for `.ms-*` and `.me-*` (`.ms`--1, `.me`--2); v5 generated `.m-n1` to `.m-n5` for every margin utility (m, mx, my, mt, me, mb, ms). |
+| `$gutters` | `$gutters` | Not merged: pass the whole map. Keys follow the new `$spacers` scale, so `.g-3` is now .5rem (v5: 1rem); v5 3, 4 and 5 are v6 5, 7 and 12. |
+| `$spacer` | `$spacer` | Also emitted as `--spacer`. |
+| `$spacers` | `$spacers` | Now 13 steps (0-12): keys no longer match v5 values (v5 3 = v6 5, v5 5 = v6 12). Partial overrides merge. |
+| `$position-values` | `$position-values` |  |
+</BsTable>
+
+### Body and links
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$body-color-dark` | `$theme-fgs: body` | Dark value (second argument of `light-dark()`). |
+| `$body-bg-dark` | `$theme-bgs: body` | Dark value (second argument of `light-dark()`). |
+| `$body-secondary-color-dark` | `$theme-fgs: 3` (`--fg-3`) | Dark value (second argument of `light-dark()`). |
+| `$body-secondary-bg-dark` | `$theme-bgs: 2` | Second argument of `light-dark()`; `.bg-body-secondary` became `.bg-2`. |
+| `$body-tertiary-color-dark` | `$theme-fgs: 4` (`--fg-4`) | Dark value (second argument of `light-dark()`). |
+| `$body-tertiary-bg-dark` | `$theme-bgs: 1` | Second argument of `light-dark()`; `.bg-body-tertiary` became `.bg-1`. |
+| `$body-emphasis-color-dark` | Removed, use `--fg-body` | No neutral step stronger than body text; v6 reads `--fg-body` where v5 read the emphasis color (list group active item). v5 used white in dark mode; `.fg-emphasis-inverse` (`light-dark(var(--gray-975), var(--white))`) is the closest. |
+| `$link-color-dark` | `--link-color` in `$root-tokens` | Dark value (second argument of `light-dark()`). |
+| `$link-hover-color-dark` | `--link-hover-color` in `$root-tokens` | Derived from `--link-color` by mixing in 10% black in both modes; v5 lightened the link on hover in dark mode. |
+| `$code-color-dark` | `--code-color` in `$root-tokens` | Defaults to `--fg-2`, which follows the color mode. |
+| `$mark-color-dark` | `--mark-color` in `$reboot-mark-tokens` | Defaults to `--fg-body`, which follows the color mode. |
+| `$mark-bg-dark` | `--mark-bg` in `$reboot-mark-tokens` | Dark value (second argument of `light-dark()`). |
+| `$body-text-align` | `--body-text-align` (not declared) | No map declares it and the rule has no fallback; set it yourself. |
+| `$body-color` | `$theme-fgs: body` (`--fg-body`) | Light and dark values both live here as `light-dark()`. |
+| `$body-bg` | `$theme-bgs: body` (`--bg-body`) | Light and dark values both live here as `light-dark()`. |
+| `$body-secondary-color` | `$theme-fgs: 3` (`--fg-3`) | v6 uses `--fg-3` where v5 used `--bs-secondary-color` (captions). `.text-body-secondary` → `.fg-3`. |
+| `$body-secondary-bg` | `$theme-bgs: 2` (`--bg-2`) | `.bg-body-secondary` → `.bg-2` (lighter than v5 gray-200). |
+| `$body-tertiary-color` | `$theme-fgs: 4` (`--fg-4`) | `.text-body-tertiary` → `.fg-4`. |
+| `$body-tertiary-bg` | `$theme-bgs: 1` (`--bg-1`) | `.bg-body-tertiary` → `.bg-1`. |
+| `$body-emphasis-color` | Removed, use `--inverse-fg-emphasis` | Closest is the inverse theme color’s emphasis foreground, gray-975 in light mode and white in dark (`.fg-emphasis-inverse`). `.fg-black` is pure black like v5’s light value but does not switch in dark mode. |
+| `$link-color` | `--link-color` in `$root-tokens` | Light value (first argument of `light-dark()`). |
+| `$link-decoration` | `--link-decoration` in `$root-tokens` |  |
+| `$link-shade-percentage` | Removed, use `--link-hover-color` | Hover color is now `color-mix(in oklch, var(--link-color) 90%, #000)`. |
+| `$link-hover-color` | `--link-hover-color` in `$root-tokens` | Now derived with `color-mix()` from `--link-color`. |
+| `$link-hover-decoration` | `--link-hover-decoration` (not declared) | Falls back to `--link-decoration`. |
+| `$stretched-link-pseudo-element` | `$stretched-link-pseudo-element` |  |
+| `$stretched-link-z-index` | `--stretched-link-z-index` in `$stretched-link-tokens` |  |
+| `$icon-link-gap` | `--icon-link-gap` in `$icon-link-tokens` |  |
+| `$icon-link-underline-offset` | `--icon-link-underline-offset` in `$icon-link-tokens` |  |
+| `$icon-link-icon-size` | `--icon-link-icon-size` in `$icon-link-tokens` |  |
+| `$icon-link-icon-transition` | `--icon-link-icon-transition` in `$icon-link-tokens` |  |
+| `$icon-link-icon-transform` | `--icon-link-icon-transform` in `$icon-link-tokens` |  |
+| `$paragraph-margin-bottom` | `--paragraph-margin-bottom` in `$type-tokens` |  |
+| `$component-active-color` | Removed, use `--primary-contrast` | Each component now has its own active tokens, driven by the primary theme color. |
+| `$component-active-bg` | Removed, use `--control-checked-bg` | Checks, radios and switches read `--control-checked-bg`; other components use `$theme-colors` primary. |
+| `$lead-font-size` | Removed, use `.fs-lg` | `.lead` removed; use `.fs-lg` `.fw-light`. |
+| `$lead-font-weight` | Removed, use `.fw-light` | `.lead` removed. |
+| `$small-font-size` | `--small-font-size` (not declared) | Falls back to 87.5%. |
+| `$sub-sup-font-size` | `--sub-sup-font-size` (not declared) | Falls back to .75em. |
+| `$text-muted` | Removed, use `--fg-3` | Already read by nothing in v5.3 (deprecated; `.text-muted` read `--bs-secondary-color` directly), so setting it had no effect. For muted text use `.fg-3`. |
+| `$initialism-font-size` | `--initialism-font-size` (not declared) | Falls back to `--font-size-xs`. |
+| `$blockquote-margin-y` | `--blockquote-margin-y` in `$blockquote-tokens` |  |
+| `$blockquote-font-size` | `--blockquote-font-size` in `$blockquote-tokens` | Default is now `var(--font-size-md)`, 1rem (v5: 1.25rem). |
+| `$blockquote-footer-color` | `--blockquote-footer-color` in `$blockquote-tokens` | Declared on `.blockquote`: with a figcaption, put `.blockquote` on the `<figure>` (v5 put it on `<blockquote>`), or the footer never sees the token. |
+| `$blockquote-footer-font-size` | `--blockquote-footer-font-size` in `$blockquote-tokens` | Declared on `.blockquote`: with a figcaption, put `.blockquote` on the `<figure>` (v5 put it on `<blockquote>`), or the footer never sees the token. |
+| `$hr-margin-y` | `--hr-margin-y` (not declared) | Falls back to `--spacer`. |
+| `$hr-color` | Removed, use `--hr-border-color` | `<hr>` is drawn by its border color only. |
+| `$hr-bg-color` | Removed, use `--hr-border-color` | Already read by nothing in v5.3 (deprecated in v5.2). `<hr>` is drawn by its border color only. |
+| `$hr-height` | Removed, use `--border-width` | Already read by nothing in v5.3 (deprecated in v5.2). `<hr>` uses the global `--border-width`; set `border-block-start-width` on `<hr>` to change rules only. |
+| `$hr-border-color` | `--hr-border-color` in `$root-tokens` |  |
+| `$hr-border-width` | Removed, use `--border-width` | `<hr>` uses the global `--border-width`; set `border-block-start-width` on `<hr>` to change rules only. |
+| `$hr-opacity` | Removed | In v5 it faded both `<hr>` and `.vr`; neither is faded now. Pick a lighter `--hr-border-color` for `<hr>`; `.vr` paints with `--border-color`. |
+| `$vr-border-width` | `--vr-border-width` (not declared) | Falls back to `--border-width`. |
+| `$legend-margin-bottom` | `--legend-margin-bottom` in `$type-tokens` | Default is now `var(--spacer-2)`, .375rem (v5: .5rem). |
+| `$legend-font-size` | `--legend-font-size` in `$type-tokens` |  |
+| `$legend-font-weight` | `--legend-font-weight` in `$type-tokens` |  |
+| `$dt-font-weight` | `--dt-font-weight` (not declared) | Falls back to `--font-weight-bold`. |
+| `$list-inline-padding` | `--list-inline-padding` (not declared) | Falls back to `calc(var(--spacer) / 2)`. |
+| `$mark-padding` | `--mark-padding` in `$reboot-mark-tokens` |  |
+| `$mark-color` | `--mark-color` in `$reboot-mark-tokens` |  |
+| `$mark-bg` | `--mark-bg` in `$reboot-mark-tokens` | Light value (first argument of `light-dark()`). |
+| `$code-font-size` | `--code-font-size` in `$root-tokens` |  |
+| `$code-color` | `--code-color` in `$root-tokens` | Also colors pre now. |
+| `$kbd-padding-y` | `--kbd-padding-y` in `$reboot-kbd-tokens` |  |
+| `$kbd-padding-x` | `--kbd-padding-x` in `$reboot-kbd-tokens` |  |
+| `$kbd-font-size` | `--kbd-font-size` in `$reboot-kbd-tokens` |  |
+| `$kbd-color` | `--kbd-color` in `$reboot-kbd-tokens` |  |
+| `$kbd-bg` | `--kbd-bg` in `$reboot-kbd-tokens` |  |
+| `$nested-kbd-font-weight` | Removed | No replacement (per the migration guide). |
+| `$pre-color` | `--code-color` in `$root-tokens` | Pre reads `var(--code-color, inherit)`; set `--code-color` on pre to differ from inline code. |
+</BsTable>
+
+### Grid and containers
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$grid-breakpoints` | `$breakpoints` | Renamed. xxl is now 2xl; lg, xl and 2xl values changed (1024, 1280, 1536px). Plain !default map: pass the whole map. |
+| `$container-max-widths` | `$container-max-widths` | Key xxl is now 2xl; xl and 2xl values changed (1200, 1440px). Partial overrides merge. |
+| `$grid-columns` | `$grid-columns` |  |
+| `$grid-gutter-width` | `$grid-gutter-x` | Renamed; rows now use CSS gap, set at runtime through `--gutter-x`. |
+| `$grid-row-columns` | `$grid-row-columns` |  |
+| `$container-padding-x` | `$container-padding-x` | Defaults to `$grid-gutter-x`. |
+</BsTable>
+
+### Borders and shadows
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$border-color-dark` | `--border-color` in `$root-tokens` | Dark value (second argument of `light-dark()`). |
+| `$border-color-translucent-dark` | `--border-color-translucent` in `$root-tokens` | Now mixed from `--fg-body`, so it follows the color mode. |
+| `$border-width` | `$border-width` | Emitted as `--border-width`. |
+| `$border-widths` | `$border-widths` | Adds a keyline (.5px) key. |
+| `$border-style` | `$border-style` | Emitted as `--border-style`. |
+| `$border-color` | `--border-color` in `$root-tokens` | The Sass `$border-color` still exists but nothing reads it: set the token. |
+| `$border-color-translucent` | `--border-color-translucent` in `$root-tokens` |  |
+| `$border-radius` | `$radii: 4` (`--radius-4`) | Same .375rem. Components mostly use `--radius-5`; change `$radius` to scale every step. |
+| `$border-radius-sm` | `$radii: 3` (`--radius-3`) |  |
+| `$border-radius-lg` | `$radii: 5` (`--radius-5`) |  |
+| `$border-radius-xl` | `$radii: 9` (`--radius-9`) |  |
+| `$border-radius-xxl` | Removed, use `--radius-9` | No 2rem step; closest is `--radius-9` (1rem), or add a `$radii` key. |
+| `$border-radius-pill` | `--radius-pill` in `$root-tokens` | Not a `$radii` step: pass `--radius-pill` through `$root-tokens` or set it in CSS. |
+| `$border-radius-2xl` | Removed, use `--radius-9` | Alias of `$border-radius-xxl`; same as above. |
+| `$box-shadow` | `$shadows: null` (`--box-shadow`) | Now a layered shadow; tint and depth via `--shadow-color` and `--shadow-strength`. `$shadows` is not merged: pass the whole map. |
+| `$box-shadow-sm` | `$shadows: sm` (`--box-shadow-sm`) | `$shadows` is not merged: pass the whole map. |
+| `$box-shadow-lg` | `$shadows: lg` (`--box-shadow-lg`) | `$shadows` is not merged: pass the whole map. |
+| `$box-shadow-inset` | `$shadows: inset` (`--box-shadow-inset`) | `$shadows` is not merged: pass the whole map. |
+| `$focus-ring-width` | `--focus-ring-width` in `$root-tokens` | Now an outline width (3px default). |
+| `$focus-ring-opacity` | Removed, use `$theme-colors: primary → focus-ring` | Ring color is now a `color-mix()` with the body background per theme color. |
+| `$focus-ring-color` | `--focus-ring-color` in `$root-tokens` | Defaults to `var(--primary-focus-ring)`. |
+| `$focus-ring-blur` | Removed | Focus ring is an outline, no blur. |
+| `$focus-ring-box-shadow` | `--focus-ring` in `$root-tokens` | Now an outline shorthand, not a box-shadow; offset via `--focus-ring-offset`. |
+</BsTable>
+
+### Transitions
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$caret-width` | Removed | Caret mixins removed; add an icon to the toggle markup. |
+| `$caret-vertical-align` | Removed | Caret mixins removed. |
+| `$caret-spacing` | Removed | Caret mixins removed. |
+| `$transition-base` | Removed | The variable still exists in `scss/mixins/_transition.scss`, but the main entrypoint does not forward it, so `@use … with ()` cannot set it. Only `@include transition()` without arguments reads it, and Bootstrap never calls it that way. |
+| `$transition-fade` | `--transition-fade-duration` and `--transition-fade-timing` in `$fade-tokens` | Split into duration and timing. Only the generic `.fade` class reads them, and no v6 component uses `.fade`: dialogs, toasts, tooltips, popovers and tab panes have their own transitions. |
+| `$transition-collapse` | `--transition-collapse-duration` and `--transition-collapse-timing` in `$collapse-tokens` | Split into duration and timing. |
+| `$transition-collapse-width` | `--transition-collapse-duration` and `--transition-collapse-timing` in `$collapse-tokens` | `.collapse-horizontal` shares the collapse tokens; set them on `.collapse-horizontal` to differ. |
+</BsTable>
+
+### Typography
+
+Each `$font-sizes` step is a map of `font-size` and `line-height`, merged one level deep: pass both for any step you change, or its line height is dropped.
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$headings-color-dark` | `--heading-color` in `$root-tokens` | One value for both modes (inherit); use `light-dark()` for a dark-only color. |
+| `$aspect-ratios` | `$aspect-ratios` | Values are now `aspect-ratio` values (`16 / 9`), not padding percentages. |
+| `$font-family-sans-serif` | `--body-font-family` in `$root-tokens` | No separate sans-serif token; set the body font stack. |
+| `$font-family-monospace` | `--font-mono` in `$root-tokens` |  |
+| `$font-family-base` | `--body-font-family` in `$root-tokens` |  |
+| `$font-family-code` | `--font-mono` in `$root-tokens` | Code, kbd, pre and samp read `--font-mono`. |
+| `$font-size-root` | Removed | Set font-size on :root yourself. |
+| `$font-size-base` | `--body-font-size` in `$root-tokens` | Sets the body (and button/input) size only: `$font-sizes` steps and headings no longer derive from it as v5 sizes did. |
+| `$font-size-sm` | `$font-sizes: sm → font-size` | Emitted as `--font-size-sm`. |
+| `$font-size-lg` | `$font-sizes: lg → font-size` | Now `clamp(1.125rem, …, 1.25rem)`. |
+| `$font-weight-lighter` | `$font-weights: lighter` | Emitted as `--font-weight-lighter`. |
+| `$font-weight-light` | `$font-weights: light` |  |
+| `$font-weight-normal` | `$font-weights: normal` |  |
+| `$font-weight-medium` | `$font-weights: medium` |  |
+| `$font-weight-semibold` | `$font-weights: semibold` |  |
+| `$font-weight-bold` | `$font-weights: bold` |  |
+| `$font-weight-bolder` | `$font-weights: bolder` |  |
+| `$font-weight-base` | `--body-font-weight` in `$root-tokens` |  |
+| `$line-height-base` | `--body-line-height` in `$root-tokens` |  |
+| `$line-height-sm` | `$font-sizes: sm → line-height` | Emitted as `--line-height-sm` (1.5 now), used by `.lh-sm`. |
+| `$line-height-lg` | `$font-sizes: lg → line-height` | Emitted as `--line-height-lg` (1.5 now), used by `.lh-lg`. |
+| `$h1-font-size` | `$font-sizes: 3xl → font-size` | h1 reads `--font-size-3xl`; changing the step also changes `.fs-3xl`. |
+| `$h2-font-size` | `$font-sizes: 2xl → font-size` | h2 reads `--font-size-2xl`. |
+| `$h3-font-size` | `$font-sizes: xl → font-size` | h3 reads `--font-size-xl` (1.5rem to 1.75rem; v5: 1.75rem). |
+| `$h4-font-size` | `$font-sizes: lg → font-size` | h4 reads `--font-size-lg` (1.125rem to 1.25rem; v5: 1.5rem). |
+| `$h5-font-size` | `$font-sizes: md → font-size` | h5 reads `--font-size-md` (1rem; v5: 1.25rem). |
+| `$h6-font-size` | `$font-sizes: sm → font-size` | h6 reads `--font-size-sm` (.875rem, v5 1rem). |
+| `$font-sizes` | `$font-sizes` | Keys are now xs-6xl, each a map of font-size and line-height; `.fs-1-6` become `.fs-md-4xl`. |
+| `$headings-margin-bottom` | `--heading-margin-bottom` in `$type-tokens` | Default is now `var(--spacer-2)`, .375rem (v5: .5rem). |
+| `$headings-font-family` | `--heading-font-family` in `$type-tokens` |  |
+| `$headings-font-style` | `--heading-font-style` in `$type-tokens` |  |
+| `$headings-font-weight` | `--heading-font-weight` (not declared) | Falls back to `--font-weight-medium`. |
+| `$headings-line-height` | `--heading-line-height` in `$type-tokens` |  |
+| `$headings-color` | `--heading-color` in `$root-tokens` |  |
+| `$display-font-sizes` | Removed, use `.fs-3xl` to `.fs-6xl` | `.display-*` classes removed; use `.fs-*` with `.fw-light`. |
+| `$display-font-family` | Removed | `.display-*` classes were removed. |
+| `$display-font-style` | Removed | `.display-*` classes were removed. |
+| `$display-font-weight` | Removed, use `.fw-light` | `.display-*` classes were removed. |
+| `$display-line-height` | Removed | `.display-*` classes were removed. |
+| `$rfs-base-value` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-unit` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-breakpoint` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-breakpoint-unit` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-two-dimensional` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-factor` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-mode` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-class` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-rem-value` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+| `$rfs-safari-iframe-resize-bug-fix` | Removed, use `$font-sizes` | RFS was removed; font sizes use `clamp()` in `$font-sizes`. |
+</BsTable>
+
+### Tables
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$table-cell-padding-y` | `--table-cell-padding-y` in `$table-tokens` |  |
+| `$table-cell-padding-x` | `--table-cell-padding-x` in `$table-tokens` |  |
+| `$table-cell-padding-y-sm` | `--table-cell-padding-y` (set on `.table-sm` cells) | Hardcoded .25rem on `.table-sm` cells; override that rule. |
+| `$table-cell-padding-x-sm` | `--table-cell-padding-x` (set on `.table-sm` cells) | Hardcoded .25rem on `.table-sm` cells; override that rule. |
+| `$table-cell-vertical-align` | `--table-cell-vertical-align` in `$table-tokens` |  |
+| `$table-color` | `--table-color` in `$table-tokens` | Defaults to `--fg-body` (v5: emphasis color). |
+| `$table-bg` | `--table-bg` in `$table-tokens` |  |
+| `$table-accent-bg` | `--table-accent-bg` in `$table-tokens` |  |
+| `$table-th-font-weight` | Removed | Style th yourself. |
+| `$table-striped-color` | `--table-striped-color` in `$table-tokens` |  |
+| `$table-striped-bg-factor` | `--table-striped-bg-factor` in `$table-tokens` | Now a percentage (5%) for `color-mix()`. |
+| `$table-striped-bg` | Removed, use `--table-striped-bg-factor` | Computed with `color-mix()` from `--table-color` and the factor. |
+| `$table-active-color` | `--table-active-color` in `$table-tokens` |  |
+| `$table-active-bg-factor` | `--table-active-bg-factor` in `$table-tokens` | Now a percentage (10%) for `color-mix()`. |
+| `$table-active-bg` | Removed, use `--table-active-bg-factor` | Computed with `color-mix()` from `--table-color` and the factor. |
+| `$table-hover-color` | `--table-hover-color` in `$table-tokens` |  |
+| `$table-hover-bg-factor` | `--table-hover-bg-factor` in `$table-tokens` | Now a percentage (7.5%) for `color-mix()`. |
+| `$table-hover-bg` | Removed, use `--table-hover-bg-factor` | Computed with `color-mix()` from `--table-color` and the factor. |
+| `$table-border-factor` | Removed | Themed tables use `--theme-border`. |
+| `$table-border-width` | `--table-border-width` in `$table-tokens` |  |
+| `$table-border-color` | `--table-border-color` in `$table-tokens` |  |
+| `$table-striped-order` | `$table-striped-order` |  |
+| `$table-striped-columns-order` | `$table-striped-columns-order` |  |
+| `$table-group-separator-color` | `--table-group-separator-color` in `$table-tokens` |  |
+| `$table-caption-color` | Removed, use `--fg-3` | Caption color is `var(--fg-3)` in Reboot. |
+| `$table-bg-scale` | Removed | Themed tables use `--theme-bg-subtle`. |
+| `$table-variants` | Removed, use `$theme-colors` | `.table-primary` etc. become `.theme-primary` on the table. |
+</BsTable>
+
+### Buttons
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$input-btn-padding-y` | `--btn-input-padding-y` in `$root-tokens` | Shared by buttons, form controls and input group addons. |
+| `$input-btn-padding-x` | `--btn-input-padding-x` in `$root-tokens` | Shared by buttons, form controls and input group addons. |
+| `$input-btn-font-family` | Removed | Controls and buttons inherit the font. |
+| `$input-btn-font-size` | `--btn-input-font-size` in `$root-tokens` |  |
+| `$input-btn-line-height` | `--btn-input-line-height` in `$root-tokens` | Default size only: `.btn-sm`/`.btn-lg` and `.form-control-sm`/`.form-control-lg` read `--btn-input-sm-line-height` and `--btn-input-lg-line-height` (`scss/_root.scss`:109, 117). |
+| `$input-btn-focus-width` | `--focus-ring-width` in `$root-tokens` | Focus is now an outline, default 3px. |
+| `$input-btn-focus-color-opacity` | Removed, use `$theme-colors: <color> → focus-ring` | Each theme color sets its own focus-ring color (a color-mix with the body background). |
+| `$input-btn-focus-color` | `--focus-ring-color` in `$root-tokens` | Defaults to `var(--primary-focus-ring)`. |
+| `$input-btn-focus-blur` | Removed | Focus is an outline, no blur. |
+| `$input-btn-focus-box-shadow` | Removed, use `--focus-ring` in `$root-tokens` | Focus is an outline built from `--focus-ring-width` and `--focus-ring-color`. |
+| `$input-btn-padding-y-sm` | `--btn-input-sm-padding-y` in `$root-tokens` |  |
+| `$input-btn-padding-x-sm` | `--btn-input-sm-padding-x` in `$root-tokens` | Default now .625rem. |
+| `$input-btn-font-size-sm` | `--btn-input-sm-font-size` in `$root-tokens` |  |
+| `$input-btn-padding-y-lg` | `--btn-input-lg-padding-y` in `$root-tokens` |  |
+| `$input-btn-padding-x-lg` | `--btn-input-lg-padding-x` in `$root-tokens` |  |
+| `$input-btn-font-size-lg` | `--btn-input-lg-font-size` in `$root-tokens` | Default is now `var(--font-size-md)`, 1rem. |
+| `$input-btn-border-width` | `--border-width` in `$root-tokens` | Global; for one component use `--btn-border-width` or `--control-border-width`. |
+| `$btn-color` | `--btn-color` in `$button-tokens` | Variant classes (`.btn-solid` etc.) override it with a color from the `.theme-*` class; `.btn-link` reads `--theme-fg` first. |
+| `$btn-padding-y` | `--btn-padding-y` in `$button-tokens` | Defaults to `var(--btn-input-padding-y)`. |
+| `$btn-padding-x` | `--btn-padding-x` in `$button-tokens` | Defaults to `var(--btn-input-padding-x)`. |
+| `$btn-font-family` | Removed | Buttons inherit the font. |
+| `$btn-font-size` | `--btn-font-size` in `$button-tokens` |  |
+| `$btn-line-height` | `--btn-line-height` in `$button-tokens` | Default size only: `.btn-sm` and `.btn-lg` set it from `--btn-input-sm-line-height` and `--btn-input-lg-line-height`. |
+| `$btn-white-space` | `--btn-white-space` in `$button-tokens` | Default is now nowrap. |
+| `$btn-padding-y-sm` | `--btn-input-sm-padding-y` in `$root-tokens` | `.btn-sm` reads it into `--btn-padding-y`; shared with `.form-control-sm`; for buttons only, set `--btn-padding-y` on `.btn-sm`. |
+| `$btn-padding-x-sm` | `--btn-input-sm-padding-x` in `$root-tokens` | `.btn-sm` reads it into `--btn-padding-x`; shared with `.form-control-sm`. |
+| `$btn-font-size-sm` | `--btn-input-sm-font-size` in `$root-tokens` | `.btn-sm` reads it into `--btn-font-size`; shared with `.form-control-sm`. |
+| `$btn-padding-y-lg` | `--btn-input-lg-padding-y` in `$root-tokens` | `.btn-lg` reads it into `--btn-padding-y`; shared with `.form-control-lg`. |
+| `$btn-padding-x-lg` | `--btn-input-lg-padding-x` in `$root-tokens` | `.btn-lg` reads it into `--btn-padding-x`; shared with `.form-control-lg`. |
+| `$btn-font-size-lg` | `--btn-input-lg-font-size` in `$root-tokens` | `.btn-lg` reads it into `--btn-font-size`; shared with `.form-control-lg`. |
+| `$btn-border-width` | `--btn-border-width` in `$button-tokens` |  |
+| `$btn-font-weight` | `--btn-font-weight` in `$button-tokens` | Defaults to `var(--btn-input-font-weight)`. |
+| `$btn-box-shadow` | `--btn-shadow` in `$button-styled-tokens` | Only `.btn-styled` buttons get a shadow. |
+| `$btn-focus-width` | `--focus-ring-width` in `$root-tokens` | Focus is now a shared outline. |
+| `$btn-focus-box-shadow` | Removed, use `--focus-ring` in `$root-tokens` | Listed as removed in the migration guide; the focus ring color follows the button’s `.theme-*` class. |
+| `$btn-disabled-opacity` | `--btn-disabled-opacity` in `$button-tokens` |  |
+| `$btn-active-box-shadow` | `--btn-active-shadow` in `$button-styled-tokens` | Only `.btn-styled` defines it, so other buttons, checked `.btn-check` included, get no active shadow. |
+| `$btn-link-color` | `--btn-color` in `$button-link-tokens` | Set it on `.btn-link`; defaults to `var(--link-color)`. |
+| `$btn-link-hover-color` | `--btn-hover-color` in `$button-link-tokens` | Set it on `.btn-link`; defaults to `var(--link-hover-color)`. |
+| `$btn-link-disabled-color` | `--btn-disabled-color` in `$button-link-tokens` | Set it on `.btn-link`. |
+| `$btn-link-focus-shadow-rgb` | Removed, use `--focus-ring-color` in `$root-tokens` | Focus is a shared outline. |
+| `$btn-border-radius` | `--btn-border-radius` in `$button-tokens` |  |
+| `$btn-border-radius-sm` | `--btn-input-sm-border-radius` in `$root-tokens` | `.btn-sm` reads it into `--btn-border-radius`; shared with `.form-control-sm`. |
+| `$btn-border-radius-lg` | `--btn-input-lg-border-radius` in `$root-tokens` | `.btn-lg` reads it into `--btn-border-radius`; shared with `.form-control-lg`. |
+| `$btn-transition` | `--btn-transition-property`, `--btn-transition-duration`, `--btn-transition-timing` in `$button-tokens` | The shorthand is split into three tokens. |
+| `$btn-hover-bg-shade-amount` | Removed | Hover colors are computed with `oklch()` in the variant loop; set `--btn-hover-bg` on a selector to override. |
+| `$btn-hover-bg-tint-amount` | Removed | Hover colors are computed with `oklch()` in the variant loop; set `--btn-hover-bg` on a selector to override. |
+| `$btn-hover-border-shade-amount` | Removed, use `--btn-border-hover-mix-amount` in `$button-styled-tokens` | The token only applies to `.btn-styled`; otherwise set `--btn-hover-border-color`. |
+| `$btn-hover-border-tint-amount` | Removed, use `--btn-border-hover-mix-amount` in `$button-styled-tokens` | The token only applies to `.btn-styled`; otherwise set `--btn-hover-border-color`. |
+| `$btn-active-bg-shade-amount` | Removed | Active colors are computed with `oklch()` in the variant loop; set `--btn-active-bg` on a selector to override. |
+| `$btn-active-bg-tint-amount` | Removed | Active colors are computed with `oklch()` in the variant loop; set `--btn-active-bg` on a selector to override. |
+| `$btn-active-border-shade-amount` | Removed, use `--btn-border-active-mix-amount` in `$button-styled-tokens` | The token only applies to `.btn-styled`; otherwise set `--btn-active-border-color`. |
+| `$btn-active-border-tint-amount` | Removed, use `--btn-border-active-mix-amount` in `$button-styled-tokens` | The token only applies to `.btn-styled`; otherwise set `--btn-active-border-color`. |
+</BsTable>
+
+### Forms
+
+Validation icons were removed, so their variables have no replacement.
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$form-select-indicator-color-dark` | `--control-select-bg-dark` in `$form-control-tokens` | The color is written inside the SVG; edit its stroke. |
+| `$form-select-indicator-dark` | `--control-select-bg-dark` in `$form-control-tokens` | Applied only under `[data-bs-theme="dark"]`, not when the page follows a dark OS setting (the light arrow stays). |
+| `$form-switch-color-dark` | `--switch-indicator-bg` in `$switch-tokens` | One value for both modes; use `light-dark()` in `$switch-tokens` for a different dark color. |
+| `$form-switch-bg-image-dark` | Removed, use `--switch-indicator-bg` in `$switch-tokens` | The switch thumb is no longer an SVG image. |
+| `$form-valid-color-dark` | `$theme-colors: success → fg` | Via `$validation-states` (valid → success); dark value (second argument of `light-dark()`). |
+| `$form-valid-border-color-dark` | `$theme-colors: success → border` | Via `$validation-states` (valid → success); dark value (second argument of `light-dark()`). |
+| `$form-invalid-color-dark` | `$theme-colors: danger → fg` | Via `$validation-states` (invalid → danger); dark value (second argument of `light-dark()`). |
+| `$form-invalid-border-color-dark` | `$theme-colors: danger → border` | Via `$validation-states` (invalid → danger); dark value (second argument of `light-dark()`). |
+| `$form-text-margin-top` | Removed | Wrap control and help text in `.form-field`, or add a margin utility. |
+| `$form-text-font-size` | `--form-text-font-size` in `$form-text-tokens` |  |
+| `$form-text-font-style` | `--form-text-font-style` in `$form-text-tokens` |  |
+| `$form-text-font-weight` | `--form-text-font-weight` in `$form-text-tokens` |  |
+| `$form-text-color` | `--form-text-color` in `$form-text-tokens` | Default is now `var(--fg-2)`. |
+| `$form-label-margin-bottom` | `--label-margin-bottom` in `$form-label-tokens` | Ignored inside `.form-field`, which uses its grid gap. |
+| `$form-label-font-size` | `--label-font-size` in `$form-label-tokens` |  |
+| `$form-label-font-style` | `--label-font-style` in `$form-label-tokens` |  |
+| `$form-label-font-weight` | `--label-font-weight` in `$form-label-tokens` | Null falls back to 500. |
+| `$form-label-color` | `--label-color` in `$form-label-tokens` | Null falls back to `var(--fg-body)`. |
+| `$input-padding-y` | `--control-padding-y` in `$form-control-tokens` | Defaults to `var(--btn-input-padding-y)`. |
+| `$input-padding-x` | `--control-padding-x` in `$form-control-tokens` | Defaults to `var(--btn-input-padding-x)`. |
+| `$input-font-family` | Removed | Inputs inherit the font. |
+| `$input-font-size` | `--control-font-size` in `$form-control-tokens` |  |
+| `$input-font-weight` | Removed | Set font-weight on `.form-control` yourself. |
+| `$input-line-height` | `--control-line-height` in `$form-control-tokens` | Default size only: `.form-control-sm` and `.form-control-lg` set it from `--btn-input-sm-line-height` and `--btn-input-lg-line-height`. |
+| `$input-padding-y-sm` | `--btn-input-sm-padding-y` in `$root-tokens` | `.form-control-sm` reads it into `--control-padding-y`; shared with `.btn-sm`. |
+| `$input-padding-x-sm` | `--btn-input-sm-padding-x` in `$root-tokens` | `.form-control-sm` reads it into `--control-padding-x`; shared with `.btn-sm`. |
+| `$input-font-size-sm` | `--btn-input-sm-font-size` in `$root-tokens` | `.form-control-sm` reads it into `--control-font-size`; shared with `.btn-sm`. |
+| `$input-padding-y-lg` | `--btn-input-lg-padding-y` in `$root-tokens` | `.form-control-lg` reads it into `--control-padding-y`; shared with `.btn-lg`. |
+| `$input-padding-x-lg` | `--btn-input-lg-padding-x` in `$root-tokens` | `.form-control-lg` reads it into `--control-padding-x`; shared with `.btn-lg`. |
+| `$input-font-size-lg` | `--btn-input-lg-font-size` in `$root-tokens` | `.form-control-lg` reads it into `--control-font-size`; shared with `.btn-lg`. |
+| `$input-bg` | `--control-bg` in `$form-control-tokens` | Defaults to `var(--btn-input-bg)`. |
+| `$input-disabled-color` | `--control-disabled-color` in `$form-control-tokens` |  |
+| `$input-disabled-bg` | `--control-disabled-bg` in `$form-control-tokens` |  |
+| `$input-disabled-border-color` | `--control-disabled-border-color` in `$form-control-tokens` |  |
+| `$input-color` | `--control-fg` in `$form-control-tokens` | Defaults to `var(--btn-input-fg)`. |
+| `$input-border-color` | `--control-border-color` in `$form-control-tokens` |  |
+| `$input-border-width` | `--control-border-width` in `$form-control-tokens` |  |
+| `$input-box-shadow` | `--control-box-shadow` in `$form-control-tokens` | Rendered only with `$enable-shadows`. |
+| `$input-border-radius` | `--control-border-radius` in `$form-control-tokens` |  |
+| `$input-border-radius-sm` | `--btn-input-sm-border-radius` in `$root-tokens` | `.form-control-sm` reads it into `--control-border-radius`; shared with `.btn-sm`. |
+| `$input-border-radius-lg` | `--btn-input-lg-border-radius` in `$root-tokens` | `.form-control-lg` reads it into `--control-border-radius`; shared with `.btn-lg`. |
+| `$input-focus-bg` | Removed | Focus only adds an outline. |
+| `$input-focus-border-color` | Removed, use `--focus-ring-color` in `$root-tokens` | Focus only adds an outline; the border keeps `--control-border-color`. |
+| `$input-focus-color` | Removed | Focus only adds an outline. |
+| `$input-focus-width` | `--focus-ring-width` in `$root-tokens` |  |
+| `$input-focus-box-shadow` | Removed, use `--focus-ring` in `$root-tokens` |  |
+| `$input-placeholder-color` | `--control-placeholder-color` in `$form-control-tokens` |  |
+| `$input-plaintext-color` | `--control-fg` in `$form-control-tokens` | Set it on `.form-control-plaintext`. |
+| `$input-height-border` | Removed |  |
+| `$input-height-inner` | Removed |  |
+| `$input-height-inner-half` | Removed |  |
+| `$input-height-inner-quarter` | Removed |  |
+| `$input-height` | `--control-min-height` in `$form-control-tokens` | Now a min-height on every control; defaults to `var(--btn-input-min-height)`. |
+| `$input-height-sm` | `--btn-input-sm-min-height` in `$root-tokens` | `.form-control-sm` reads it into `--control-min-height`; shared with `.btn-sm`. |
+| `$input-height-lg` | `--btn-input-lg-min-height` in `$root-tokens` | `.form-control-lg` reads it into `--control-min-height`; shared with `.btn-lg`. |
+| `$input-transition` | `--control-transition-property`, `--control-transition-duration`, `--control-transition-timing` in `$form-control-tokens` | The shorthand is split into three tokens. |
+| `$form-color-width` | Removed | `.form-control-color` width now equals `--control-min-height`. |
+| `$form-check-input-width` | `--check-size` in `$check-tokens` | Default is now 1.25rem; radios: `--radio-size`; switches: `--switch-height`. |
+| `$form-check-min-height` | Removed | Checks are laid out by `.form-field`. |
+| `$form-check-padding-start` | Removed | Checks are laid out by `.form-field` (column gap .5rem). |
+| `$form-check-margin-bottom` | Removed | Checks are laid out by `.form-field`; `--check-margin-block` aligns the box with its label. |
+| `$form-check-label-color` | Removed | Style the label element yourself. |
+| `$form-check-label-cursor` | Removed |  |
+| `$form-check-transition` | `--control-transition-duration`, `--control-transition-timing` in `$root-tokens` | Shared by checks, radios and switches. |
+| `$form-check-input-active-filter` | Removed |  |
+| `$form-check-input-bg` | `--check-bg` in `$check-tokens` | Radios: `--radio-bg`; switches: `--switch-bg`. |
+| `$form-check-input-border` | `--check-border-color` in `$check-tokens` | Border width is fixed at 1px; radios: `--radio-border-color`; switches: `--switch-border-color` (width `--switch-border-width`). |
+| `$form-check-input-border-radius` | `--check-border-radius` in `$check-tokens` | Default is now 33%. |
+| `$form-check-radio-border-radius` | Removed | Radios are fixed at border-radius: 50%. |
+| `$form-check-input-focus-border` | Removed, use `--focus-ring-color` in `$root-tokens` | Focus only adds an outline. |
+| `$form-check-input-focus-box-shadow` | Removed, use `--focus-ring` in `$root-tokens` |  |
+| `$form-check-input-checked-color` | Removed, use `$theme-colors: primary → contrast` | The mark uses `var(--theme-contrast, var(--primary-contrast))`; add a `.theme-*` class to recolor one check. |
+| `$form-check-input-checked-bg-color` | `--check-checked-bg` in `$check-tokens` | Radios: `--radio-checked-bg`; switches: `--switch-checked-bg`; all three default to `--control-checked-bg`. |
+| `$form-check-input-checked-border-color` | `--check-checked-border-color` in `$check-tokens` | Radios: `--radio-checked-border-color`; switches: `--switch-checked-border-color`. |
+| `$form-check-input-checked-bg-image` | `--check-icon-checked` in `$check-tokens` | Now a mask image; the SVG color is ignored. |
+| `$form-check-radio-checked-bg-image` | Removed | The radio dot is a `::before` pseudo-element. |
+| `$form-check-input-indeterminate-color` | Removed, use `$theme-colors: primary → contrast` | The mark uses `var(--theme-contrast, var(--primary-contrast))`. |
+| `$form-check-input-indeterminate-bg-color` | `--check-indeterminate-bg` in `$check-tokens` | Defaults to `--check-checked-bg`. |
+| `$form-check-input-indeterminate-border-color` | `--check-indeterminate-border-color` in `$check-tokens` |  |
+| `$form-check-input-indeterminate-bg-image` | `--check-icon-indeterminate` in `$check-tokens` | Now a mask image; the SVG color is ignored. |
+| `$form-check-input-disabled-opacity` | `--check-disabled-opacity` in `$check-tokens` | Applies to disabled checked boxes; radios: `--radio-disabled-opacity`; both default to `--control-disabled-opacity` (.65); switches are fixed at .65. |
+| `$form-check-label-disabled-opacity` | Removed | Disabled labels use a color instead of opacity: `var(--fg-3)` for checks and switches, `var(--secondary-fg)` for radios. |
+| `$form-check-btn-check-disabled-opacity` | `--btn-disabled-opacity` in `$button-tokens` | `.btn-check` reads it. |
+| `$form-check-inline-margin-end` | Removed | `.form-check-inline` is gone; use flex and gap utilities. |
+| `$form-switch-color` | `--switch-indicator-bg` in `$switch-tokens` | The thumb is a `::before` with a background color. |
+| `$form-switch-width` | `--switch-width` in `$switch-tokens` | Defaults to `calc(var(--switch-height) * 1.75)`. |
+| `$form-switch-padding-start` | Removed | Switches are laid out by `.form-field`. |
+| `$form-switch-bg-image` | Removed, use `--switch-indicator-bg` in `$switch-tokens` | The thumb is a `::before` with a background color. |
+| `$form-switch-border-radius` | Removed | Fixed at border-radius: 10rem. |
+| `$form-switch-transition` | `--switch-transition-duration`, `--switch-transition-timing` in `$switch-tokens` |  |
+| `$form-switch-focus-color` | Removed, use `--focus-ring-color` in `$root-tokens` | Focus is an outline on `.switch`. |
+| `$form-switch-focus-bg-image` | Removed |  |
+| `$form-switch-checked-color` | `--switch-checked-indicator-bg` in `$switch-tokens` |  |
+| `$form-switch-checked-bg-image` | Removed, use `--switch-checked-indicator-bg` in `$switch-tokens` | The thumb is a `::before` with a background color. |
+| `$form-switch-checked-bg-position` | Removed |  |
+| `$input-group-addon-padding-y` | `--input-group-addon-padding-y` in `$input-group-addon-tokens` |  |
+| `$input-group-addon-padding-x` | `--input-group-addon-padding-x` in `$input-group-addon-tokens` |  |
+| `$input-group-addon-font-weight` | Removed | Set font-weight on `.input-group-text` yourself. |
+| `$input-group-addon-color` | `--input-group-addon-color` in `$input-group-addon-tokens` |  |
+| `$input-group-addon-bg` | `--input-group-addon-bg` in `$input-group-addon-tokens` |  |
+| `$input-group-addon-border-color` | `--input-group-addon-border-color` in `$input-group-addon-tokens` |  |
+| `$form-select-padding-y` | `--control-padding-y` in `$form-control-tokens` | `.form-select` is now `.form-control` on `<select>`. |
+| `$form-select-padding-x` | `--control-padding-x` in `$form-control-tokens` | `.form-select` is now `.form-control` on `<select>`. |
+| `$form-select-font-family` | Removed | Selects inherit the font. |
+| `$form-select-font-size` | `--control-font-size` in `$form-control-tokens` |  |
+| `$form-select-indicator-padding` | Removed | Padding-inline-end is now `calc(var(--control-padding-x) * 3)`. |
+| `$form-select-font-weight` | Removed | Set font-weight on `select.form-control` yourself. |
+| `$form-select-line-height` | `--control-line-height` in `$form-control-tokens` | Default size only: `.form-control-sm` and `.form-control-lg` set it from `--btn-input-sm-line-height` and `--btn-input-lg-line-height`. |
+| `$form-select-color` | `--control-fg` in `$form-control-tokens` |  |
+| `$form-select-bg` | `--control-bg` in `$form-control-tokens` |  |
+| `$form-select-disabled-color` | `--control-disabled-color` in `$form-control-tokens` |  |
+| `$form-select-disabled-bg` | `--control-disabled-bg` in `$form-control-tokens` |  |
+| `$form-select-disabled-border-color` | `--control-disabled-border-color` in `$form-control-tokens` |  |
+| `$form-select-bg-position` | `--control-select-bg-position` in `$form-control-tokens` |  |
+| `$form-select-bg-size` | `--control-select-bg-size` in `$form-control-tokens` |  |
+| `$form-select-indicator-color` | Removed, use `--control-select-bg` in `$form-control-tokens` | The color is baked into the SVG; supply a new image (and `--control-select-bg-dark` for dark mode). |
+| `$form-select-indicator` | `--control-select-bg` in `$form-control-tokens` | Dark mode uses `--control-select-bg-dark`, but only under `[data-bs-theme="dark"]`: with a dark OS and no attribute, the light arrow stays. |
+| `$form-select-feedback-icon-padding-end` | Removed |  |
+| `$form-select-feedback-icon-position` | Removed |  |
+| `$form-select-feedback-icon-size` | Removed |  |
+| `$form-select-border-width` | `--control-border-width` in `$form-control-tokens` |  |
+| `$form-select-border-color` | `--control-border-color` in `$form-control-tokens` |  |
+| `$form-select-border-radius` | `--control-border-radius` in `$form-control-tokens` |  |
+| `$form-select-box-shadow` | `--control-box-shadow` in `$form-control-tokens` | Rendered only with `$enable-shadows`. |
+| `$form-select-focus-border-color` | Removed, use `--focus-ring-color` in `$root-tokens` | Focus only adds an outline. |
+| `$form-select-focus-width` | `--focus-ring-width` in `$root-tokens` |  |
+| `$form-select-focus-box-shadow` | Removed, use `--focus-ring` in `$root-tokens` |  |
+| `$form-select-padding-y-sm` | `--btn-input-sm-padding-y` in `$root-tokens` | `.form-control-sm` reads it; shared with `.btn-sm`. |
+| `$form-select-padding-x-sm` | `--btn-input-sm-padding-x` in `$root-tokens` | `.form-control-sm` reads it; shared with `.btn-sm`. |
+| `$form-select-font-size-sm` | `--btn-input-sm-font-size` in `$root-tokens` | `.form-control-sm` reads it; shared with `.btn-sm`. |
+| `$form-select-border-radius-sm` | `--btn-input-sm-border-radius` in `$root-tokens` | `.form-control-sm` reads it; shared with `.btn-sm`. |
+| `$form-select-padding-y-lg` | `--btn-input-lg-padding-y` in `$root-tokens` | `.form-control-lg` reads it; shared with `.btn-lg`. |
+| `$form-select-padding-x-lg` | `--btn-input-lg-padding-x` in `$root-tokens` | `.form-control-lg` reads it; shared with `.btn-lg`. |
+| `$form-select-font-size-lg` | `--btn-input-lg-font-size` in `$root-tokens` | `.form-control-lg` reads it; shared with `.btn-lg`. |
+| `$form-select-border-radius-lg` | `--btn-input-lg-border-radius` in `$root-tokens` | `.form-control-lg` reads it; shared with `.btn-lg`. |
+| `$form-select-transition` | `--control-transition-property`, `--control-transition-duration`, `--control-transition-timing` in `$form-control-tokens` |  |
+| `$form-range-track-width` | `--range-track-width` in `$range-tokens` | `.form-range` is now a wrapper; set tokens on it. |
+| `$form-range-track-height` | `--range-track-height` in `$range-tokens` |  |
+| `$form-range-track-cursor` | `--range-track-cursor` in `$range-tokens` |  |
+| `$form-range-track-bg` | `--range-track-bg` in `$range-tokens` | The filled part uses `--range-track-fill-bg`. |
+| `$form-range-track-border-radius` | `--range-track-border-radius` in `$range-tokens` |  |
+| `$form-range-track-box-shadow` | `--range-track-box-shadow` in `$range-tokens` |  |
+| `$form-range-thumb-width` | `--range-thumb-width` in `$range-tokens` |  |
+| `$form-range-thumb-height` | `--range-thumb-height` in `$range-tokens` |  |
+| `$form-range-thumb-bg` | `--range-thumb-bg` in `$range-tokens` |  |
+| `$form-range-thumb-border` | `--range-thumb-border` in `$range-tokens` |  |
+| `$form-range-thumb-border-radius` | `--range-thumb-border-radius` in `$range-tokens` |  |
+| `$form-range-thumb-box-shadow` | `--range-thumb-box-shadow` in `$range-tokens` | Rendered only with `$enable-shadows`. |
+| `$form-range-thumb-focus-box-shadow` | Removed, use `--focus-ring` in `$root-tokens` | Focus is an outline. |
+| `$form-range-thumb-focus-box-shadow-width` | `--focus-ring-width` in `$root-tokens` |  |
+| `$form-range-thumb-active-bg` | `--range-thumb-active-bg` in `$range-tokens` |  |
+| `$form-range-thumb-disabled-bg` | `--range-thumb-disabled-bg` in `$range-tokens` |  |
+| `$form-range-thumb-transition` | `--range-thumb-transition-property`, `--range-thumb-transition-duration`, `--range-thumb-transition-timing` in `$range-tokens` |  |
+| `$form-file-button-color` | `--control-fg` in `$form-control-tokens` | Shared with the control text. |
+| `$form-file-button-bg` | `--control-action-bg` in `$form-control-tokens` |  |
+| `$form-file-button-hover-bg` | `--control-action-hover-bg` in `$form-control-tokens` |  |
+| `$form-floating-height` | `--form-floating-height` in `$form-floating-tokens` | Default is now `calc(3.75rem + 2 * var(--border-width))`. |
+| `$form-floating-line-height` | `--form-floating-line-height` in `$form-floating-tokens` |  |
+| `$form-floating-padding-x` | `--form-floating-padding-x` in `$form-floating-tokens` | Default is now `calc(var(--btn-input-padding-x) * 1.25)`. |
+| `$form-floating-padding-y` | `--form-floating-padding-y` in `$form-floating-tokens` |  |
+| `$form-floating-input-padding-t` | `--form-floating-input-padding-t` in `$form-floating-tokens` |  |
+| `$form-floating-input-padding-b` | `--form-floating-input-padding-b` in `$form-floating-tokens` |  |
+| `$form-floating-label-height` | `--form-floating-label-height` in `$form-floating-tokens` |  |
+| `$form-floating-label-opacity` | `--form-floating-label-opacity` in `$form-floating-tokens` | Now the share of `--fg-body` in a `color-mix()`, so give a percentage such as `65%`; a bare number like the `.65` default makes the color invalid and the label takes the inherited color. |
+| `$form-floating-label-transform` | `--form-floating-label-transform` in `$form-floating-tokens` |  |
+| `$form-floating-label-disabled-color` | `--form-floating-label-disabled-color` in `$form-floating-tokens` |  |
+| `$form-floating-transition` | `--form-floating-transition-property`, `--form-floating-transition-duration`, `--form-floating-transition-timing` in `$form-floating-tokens` |  |
+| `$form-feedback-margin-top` | Removed | Spacing comes from the `.form-field` grid gap. |
+| `$form-feedback-font-size` | Removed | Fixed at `var(--font-size-sm)`. |
+| `$form-feedback-font-style` | Removed |  |
+| `$form-feedback-valid-color` | `$validation-states: valid` | Names a theme color (default `success`); feedback text uses its fg, borders its border. |
+| `$form-feedback-invalid-color` | `$validation-states: invalid` | Names a theme color (default `danger`); feedback text uses its fg, borders its border. |
+| `$form-feedback-icon-valid-color` | Removed |  |
+| `$form-feedback-icon-valid` | Removed |  |
+| `$form-feedback-icon-invalid-color` | Removed |  |
+| `$form-feedback-icon-invalid` | Removed |  |
+| `$form-valid-color` | `$theme-colors: success → fg` | Used for valid feedback text and check labels (`--success-fg`); checked checks, radios and switches now fill with success → bg; or point `$validation-states`: valid at another theme color. |
+| `$form-valid-border-color` | `$theme-colors: success → border` | `--success-border`; or point `$validation-states`: valid at another theme color. |
+| `$form-invalid-color` | `$theme-colors: danger → fg` | Used for invalid feedback text and check labels (`--danger-fg`); checked checks, radios and switches now fill with danger → bg; or point `$validation-states`: invalid at another theme color. |
+| `$form-invalid-border-color` | `$theme-colors: danger → border` | `--danger-border`; or point `$validation-states`: invalid at another theme color. |
+| `$form-validation-states` | `$validation-states` | Now maps a state name to a theme color key, for example `"invalid": "danger"`. |
+| `$form-feedback-tooltip-padding-y` | `--tooltip-padding-y` in `$tooltip-tokens` | Validation tooltips now use the `.tooltip` tokens. Set it on `.valid-tooltip` or `.invalid-tooltip` to change only those. |
+| `$form-feedback-tooltip-padding-x` | `--tooltip-padding-x` in `$tooltip-tokens` | Validation tooltips now use the `.tooltip` tokens. Set it on `.valid-tooltip` or `.invalid-tooltip` to change only those. |
+| `$form-feedback-tooltip-font-size` | `--tooltip-font-size` in `$tooltip-tokens` | Validation tooltips need the `.tooltip` class and take its font size. Set it on `.valid-tooltip` or `.invalid-tooltip` to change only those. |
+| `$form-feedback-tooltip-line-height` | Removed | Validation tooltips need the `.tooltip` class and take its line-height, `var(--body-line-height)`. Set line-height on `.valid-tooltip` or `.invalid-tooltip` yourself. |
+| `$form-feedback-tooltip-opacity` | Removed | Validation tooltips are always fully opaque. |
+| `$form-feedback-tooltip-border-radius` | `--tooltip-border-radius` in `$tooltip-tokens` | Validation tooltips now use the `.tooltip` tokens. Set it on `.valid-tooltip` or `.invalid-tooltip` to change only those. |
+</BsTable>
+
+### Z-index
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$zindex-dropdown` | `$zindex-levels: menu` (`--z-menu`) | Read by `--menu-zindex` and `--datepicker-zindex`. `$zindex-levels` is not merged: pass the whole map. |
+| `$zindex-sticky` | `$zindex-levels: sticky` (`--z-sticky`) | Default is now 1010. `$zindex-levels` is not merged: pass the whole map. |
+| `$zindex-fixed` | `$zindex-levels: fixed` (`--z-fixed`) | Default is now 1020. `$zindex-levels` is not merged: pass the whole map. |
+| `$zindex-offcanvas-backdrop` | Removed | Drawers use the native `::backdrop`. |
+| `$zindex-offcanvas` | `$zindex-levels: drawer` (`--z-drawer`) | Default is now 1030 (v5: 1045). Read by `--drawer-zindex` (responsive drawers). `$zindex-levels` is not merged: pass the whole map. |
+| `$zindex-modal-backdrop` | Removed | Dialogs use the native `::backdrop`. |
+| `$zindex-modal` | `$zindex-levels: dialog` (`--z-dialog`) | Default is now 1040 (v5: 1055). Only non-modal dialogs use it; modal dialogs sit in the browser top layer. `$zindex-levels` is not merged: pass the whole map. |
+| `$zindex-popover` | `$zindex-levels: popover` (`--z-popover`) | Default is now 1050 (v5: 1070). Read by `--popover-zindex`. `$zindex-levels` is not merged: pass the whole map. |
+| `$zindex-tooltip` | `$zindex-levels: tooltip` (`--z-tooltip`) | Default is now 1060 (v5: 1080). Read by `--tooltip-zindex`. `$zindex-levels` is not merged: pass the whole map. |
+| `$zindex-toast` | `$zindex-levels: toast` (`--z-toast`) | Default is now 1070 (v5: 1090). Read by `--toast-zindex`. `$zindex-levels` is not merged: pass the whole map. |
+| `$zindex-levels` | `$zindex-levels` | Now also holds the component layers (menu to toast). |
+</BsTable>
+
+### Navs and navbar
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$nav-link-padding-y` | `--nav-link-padding-y` in `$nav-tokens` | v5 also applied it to navbar links and `.navbar-text`. In v6, `$navbar-nav-tokens` sets it again inside `.navbar-nav` and `.navbar-text` uses `--navbar-brand-padding-y`: set those too. |
+| `$nav-link-padding-x` | `--nav-link-padding-x` in `$nav-tokens` | Inside `.navbar-nav`, `$navbar-nav-tokens` sets it again. |
+| `$nav-link-font-size` | Removed | `.nav-link` no longer sets a font size; set font-size on `.nav-link` yourself. |
+| `$nav-link-font-weight` | `--nav-link-font-weight` (not declared) | No map declares it and the rule has no fallback: when unset, links inherit the font weight. |
+| `$nav-link-color` | `--nav-link-color` in `$nav-tokens` |  |
+| `$nav-link-hover-color` | `--nav-link-hover-color` in `$nav-tokens` |  |
+| `$nav-link-transition` | `--nav-link-transition-property`, `--nav-link-transition-duration`, `--nav-link-transition-timing` in `$nav-tokens` | The single transition value is split into property, duration and timing tokens. |
+| `$nav-link-disabled-color` | `--nav-link-disabled-color` in `$nav-tokens` |  |
+| `$nav-link-focus-box-shadow` | Removed, use `--focus-ring-width`, `--focus-ring-color` in `$root-tokens` | Focus styles come from the shared focus-ring mixin. |
+| `$nav-tabs-border-color` | `--nav-tabs-border-color` in `$nav-tabs-tokens` |  |
+| `$nav-tabs-border-width` | `--nav-tabs-border-width` in `$nav-tabs-tokens` |  |
+| `$nav-tabs-border-radius` | `--nav-tabs-border-radius` in `$nav-tabs-tokens` |  |
+| `$nav-tabs-link-hover-border-color` | `--nav-tabs-link-hover-border-color` in `$nav-tabs-tokens` | Its bottom color is ignored: a hovered tab keeps `--nav-tabs-border-color` as its bottom border. |
+| `$nav-tabs-link-active-color` | `--nav-tabs-link-active-color` in `$nav-tabs-tokens` |  |
+| `$nav-tabs-link-active-bg` | `--nav-tabs-link-active-bg` in `$nav-tabs-tokens` |  |
+| `$nav-tabs-link-active-border-color` | `--nav-tabs-link-active-border-color` in `$nav-tabs-tokens` | Its bottom color is ignored: the active tab’s bottom border always takes `--nav-tabs-link-active-bg`. |
+| `$nav-pills-border-radius` | `--nav-pills-link-border-radius` in `$nav-pills-tokens` | v5 rounded the links. `--nav-pills-border-radius` now rounds the new pill container. |
+| `$nav-pills-link-active-color` | `--nav-pills-link-active-color` in `$nav-pills-tokens` |  |
+| `$nav-pills-link-active-bg` | `--nav-pills-link-active-bg` in `$nav-pills-tokens` |  |
+| `$nav-underline-gap` | `--nav-gap` in `$nav-underline-tokens` | All navs now use `--nav-gap`. `.nav-underline` sets it to 1rem. |
+| `$nav-underline-border-width` | `--nav-underline-border-width` in `$nav-underline-tokens` |  |
+| `$nav-underline-link-active-color` | `--nav-underline-link-active-color` in `$nav-underline-tokens` |  |
+| `$navbar-padding-y` | `--navbar-padding-y` in `$navbar-tokens` |  |
+| `$navbar-padding-x` | `--navbar-padding-x` in `$navbar-tokens` |  |
+| `$navbar-nav-link-padding-x` | `--navbar-nav-link-padding-x` in `$navbar-tokens` | Applies only once the navbar expands. The collapsed drawer uses `--nav-link-padding-x` from `$navbar-nav-tokens`. |
+| `$navbar-brand-font-size` | `--navbar-brand-font-size` in `$navbar-tokens` |  |
+| `$nav-link-height` | Removed | The navbar no longer computes heights. Use `--navbar-min-height` or `--navbar-padding-y`. |
+| `$navbar-brand-height` | Removed, use `--navbar-min-height` in `$navbar-tokens` | The navbar no longer computes heights. Use `--navbar-min-height` or `--navbar-padding-y`. |
+| `$navbar-brand-padding-y` | `--navbar-brand-padding-y` in `$navbar-tokens` | Now a fixed .375rem instead of a value derived from the nav link height. It also pads `.navbar-text`, which v5 padded with `$nav-link-padding-y`. |
+| `$navbar-brand-margin-end` | `--navbar-brand-margin-end` in `$navbar-tokens` |  |
+| `$navbar-toggler-padding-y` | Removed, use `--btn-min-height` in `$button-tokens` | The toggler is now a square `.btn-icon` with no padding. Set `--btn-min-height` on `.navbar-toggler` to size it. |
+| `$navbar-toggler-padding-x` | Removed, use `--btn-min-height` in `$button-tokens` | The toggler is now a square `.btn-icon` with no padding. Set `--btn-min-height` on `.navbar-toggler` to size it. |
+| `$navbar-toggler-font-size` | Removed, use `--navbar-toggler-icon-size` in `$navbar-tokens` | The icon size is set directly instead of being derived from the toggler font size. |
+| `$navbar-toggler-border-radius` | Removed, use `--btn-border-radius` in `$button-tokens` | Set it on `.navbar-toggler`, which is a `.btn-icon`. |
+| `$navbar-toggler-focus-width` | Removed, use `--focus-ring-width` in `$root-tokens` | Focus styles come from the shared focus-ring mixin. |
+| `$navbar-toggler-transition` | `--navbar-toggler-transition` in `$navbar-tokens` |  |
+| `$navbar-light-color` | `--navbar-color` in `$navbar-tokens` | `.navbar-light` is gone. The default navbar tokens follow color modes. |
+| `$navbar-light-hover-color` | `--navbar-hover-color` in `$navbar-tokens` |  |
+| `$navbar-light-active-color` | `--navbar-active-color` in `$navbar-tokens` |  |
+| `$navbar-light-disabled-color` | `--navbar-disabled-color` in `$navbar-tokens` |  |
+| `$navbar-light-icon-color` | Removed, use `--btn-color` in `$button-tokens` | The toggler icon is a mask painted with `currentcolor`. Set `--btn-color` on `.navbar-toggler` to change its color. On hover the toggler takes `--btn-hover-color`, which no map declares for `.btn-icon`, so the icon falls back to the navbar text color; set `--btn-hover-color` too. |
+| `$navbar-light-toggler-icon-bg` | `--navbar-toggler-icon` in `$navbar-tokens` | Now a mask image painted with `currentcolor`. Give a shape-only SVG; its stroke color does not matter. |
+| `$navbar-light-toggler-border-color` | Removed, use `--btn-border-color` in `$button-tokens` | Set it on `.navbar-toggler`, which is a `.btn-icon`. On hover the border takes `--btn-hover-border-color` (transparent by default); set it too to keep the border. |
+| `$navbar-light-brand-color` | `--navbar-brand-color` in `$navbar-tokens` |  |
+| `$navbar-light-brand-hover-color` | `--navbar-brand-hover-color` in `$navbar-tokens` |  |
+| `$navbar-dark-color` | `--navbar-color` in `$navbar-dark-tokens` | `.navbar-dark` is gone. `$navbar-dark-tokens` apply to `.navbar[data-bs-theme="dark"]`. |
+| `$navbar-dark-hover-color` | `--navbar-hover-color` in `$navbar-dark-tokens` |  |
+| `$navbar-dark-active-color` | `--navbar-active-color` in `$navbar-dark-tokens` |  |
+| `$navbar-dark-disabled-color` | `--navbar-disabled-color` in `$navbar-dark-tokens` |  |
+| `$navbar-dark-icon-color` | Removed, use `--btn-color` in `$button-tokens` | The toggler icon is a mask painted with `currentcolor`. Set `--btn-color` on `.navbar-toggler` to change its color. On hover the toggler takes `--btn-hover-color`, which no map declares for `.btn-icon`, so the icon falls back to the navbar text color; set `--btn-hover-color` too. |
+| `$navbar-dark-toggler-icon-bg` | Removed, use `--navbar-toggler-icon` in `$navbar-tokens` | One mask icon painted with `currentcolor` serves both light and dark navbars. |
+| `$navbar-dark-toggler-border-color` | Removed, use `--btn-border-color` in `$button-tokens` | Set it on `.navbar[data-bs-theme="dark"] .navbar-toggler`. On hover the border takes `--btn-hover-border-color` (transparent by default); set it too to keep the border. |
+| `$navbar-dark-brand-color` | `--navbar-brand-color` in `$navbar-dark-tokens` |  |
+| `$navbar-dark-brand-hover-color` | `--navbar-brand-hover-color` in `$navbar-dark-tokens` |  |
+</BsTable>
+
+### Menu (was dropdown)
+
+`.dropdown-menu-dark` is gone. For the `$dropdown-dark-*` variables, add `data-bs-theme="dark"` to the menu and set the listed token under that selector.
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$dropdown-min-width` | `--menu-min-width` in `$menu-tokens` |  |
+| `$dropdown-padding-x` | `--menu-padding-x` in `$menu-tokens` |  |
+| `$dropdown-padding-y` | `--menu-padding-y` in `$menu-tokens` |  |
+| `$dropdown-spacer` | Removed, use the menu’s `offset` option (default `[0, 2]`) | `--menu-spacer` is declared but has no effect. The gap between toggle and menu comes from the JS offset option. |
+| `$dropdown-font-size` | `--menu-font-size` in `$menu-tokens` |  |
+| `$dropdown-color` | `--menu-color` in `$menu-tokens` | Unlike v5, items follow it: `--menu-item-color` and `--menu-item-hover-color` default to `var(--menu-color, var(--fg-body))`. |
+| `$dropdown-bg` | `--menu-bg` in `$menu-tokens` |  |
+| `$dropdown-border-color` | `--menu-border-color` (not declared) | Commented out in `$menu-tokens`; set it yourself. Fallback: `var(--border-color-translucent)`. |
+| `$dropdown-border-radius` | `--menu-border-radius` (not declared) | Commented out in `$menu-tokens`; set it yourself. Fallback: `var(--radius-7)`. |
+| `$dropdown-border-width` | `--menu-border-width` (not declared) | Commented out in `$menu-tokens`; set it yourself. Fallback: `var(--border-width)`. |
+| `$dropdown-inner-border-radius` | Removed, use `--menu-item-border-radius` in `$menu-tokens` | Each menu item now has its own radius. |
+| `$dropdown-divider-bg` | `--menu-divider-bg` in `$menu-tokens` |  |
+| `$dropdown-divider-margin-y` | `--menu-divider-margin-y` in `$menu-tokens` |  |
+| `$dropdown-box-shadow` | `--menu-box-shadow` in `$menu-tokens` |  |
+| `$dropdown-link-color` | `--menu-item-color` in `$menu-tokens` | v5’s hover color defaulted to this variable; `--menu-item-hover-color` defaults to `var(--menu-color, var(--fg-body))` instead, so set it too. |
+| `$dropdown-link-hover-color` | `--menu-item-hover-color` in `$menu-tokens` |  |
+| `$dropdown-link-hover-bg` | `--menu-item-hover-bg` in `$menu-tokens` | Keyboard focus has its own colors: `--menu-item-focus-color` and `--menu-item-focus-bg`. |
+| `$dropdown-link-active-color` | `--menu-item-active-color` in `$menu-tokens` |  |
+| `$dropdown-link-active-bg` | `--menu-item-active-bg` in `$menu-tokens` |  |
+| `$dropdown-link-disabled-color` | `--menu-item-disabled-color` in `$menu-tokens` |  |
+| `$dropdown-item-padding-y` | `--menu-item-padding-y` in `$menu-tokens` |  |
+| `$dropdown-item-padding-x` | `--menu-item-padding-x` in `$menu-tokens` |  |
+| `$dropdown-header-color` | `--menu-header-color` in `$menu-tokens` |  |
+| `$dropdown-header-padding-x` | `--menu-header-padding-x` in `$menu-tokens` |  |
+| `$dropdown-header-padding-y` | `--menu-header-padding-y` in `$menu-tokens` |  |
+| `$dropdown-header-padding` | Removed, use `--menu-header-padding-y`, `--menu-header-padding-x` in `$menu-tokens` | Was unused in v5. |
+| `$dropdown-dark-color` | Removed, use `--menu-color` in `$menu-tokens` |  |
+| `$dropdown-dark-bg` | Removed, use `--menu-bg` in `$menu-tokens` |  |
+| `$dropdown-dark-border-color` | Removed, use `--menu-border-color` (not declared) |  |
+| `$dropdown-dark-divider-bg` | Removed, use `--menu-divider-bg` in `$menu-tokens` |  |
+| `$dropdown-dark-box-shadow` | Removed, use `--menu-box-shadow` in `$menu-tokens` |  |
+| `$dropdown-dark-link-color` | Removed, use `--menu-item-color` in `$menu-tokens` |  |
+| `$dropdown-dark-link-hover-color` | Removed, use `--menu-item-hover-color` in `$menu-tokens` |  |
+| `$dropdown-dark-link-hover-bg` | Removed, use `--menu-item-hover-bg` in `$menu-tokens` |  |
+| `$dropdown-dark-link-active-color` | Removed, use `--menu-item-active-color` in `$menu-tokens` |  |
+| `$dropdown-dark-link-active-bg` | Removed, use `--menu-item-active-bg` in `$menu-tokens` |  |
+| `$dropdown-dark-link-disabled-color` | Removed, use `--menu-item-disabled-color` in `$menu-tokens` |  |
+| `$dropdown-dark-header-color` | Removed, use `--menu-header-color` in `$menu-tokens` |  |
+</BsTable>
+
+### Pagination
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$pagination-padding-y` | `--pagination-padding-y` in `$pagination-tokens` | Defaults to `var(--btn-input-padding-y)`, which buttons and inputs share. Links also have min-height: `var(--pagination-min-height)` (2.375rem), so a smaller padding-y does not make them shorter: lower `--pagination-min-height` too. |
+| `$pagination-padding-x` | `--pagination-padding-x` in `$pagination-tokens` | Defaults to `var(--btn-input-padding-x)`, which buttons and inputs share. |
+| `$pagination-padding-y-sm` | `--pagination-padding-y` (set on `.pagination-sm`) | Set it on `.pagination-sm`. It defaults to `var(--btn-input-sm-padding-y)` in `$root-tokens`, which buttons and inputs share. `.pagination-sm` also sets `--pagination-min-height`, which floors the height: lower it too to make links shorter. |
+| `$pagination-padding-x-sm` | `--pagination-padding-x` (set on `.pagination-sm`) | Set it on `.pagination-sm`. It defaults to `var(--btn-input-sm-padding-x)` in `$root-tokens`, which buttons and inputs share. |
+| `$pagination-padding-y-lg` | `--pagination-padding-y` (set on `.pagination-lg`) | Set it on `.pagination-lg`. It defaults to `var(--btn-input-lg-padding-y)` in `$root-tokens`, which buttons and inputs share. `.pagination-lg` also sets `--pagination-min-height`, which floors the height: lower it too to make links shorter. |
+| `$pagination-padding-x-lg` | `--pagination-padding-x` (set on `.pagination-lg`) | Set it on `.pagination-lg`. It defaults to `var(--btn-input-lg-padding-x)` in `$root-tokens`, which buttons and inputs share. |
+| `$pagination-font-size` | `--pagination-font-size` in `$pagination-tokens` |  |
+| `$pagination-color` | `--pagination-color` in `$pagination-tokens` |  |
+| `$pagination-bg` | `--pagination-bg` in `$pagination-tokens` |  |
+| `$pagination-border-radius` | `--pagination-border-radius` in `$pagination-tokens` |  |
+| `$pagination-border-width` | `--pagination-border-width` in `$pagination-tokens` |  |
+| `$pagination-margin-start` | Removed | Always minus the border width now. |
+| `$pagination-border-color` | `--pagination-border-color` in `$pagination-tokens` |  |
+| `$pagination-focus-color` | Removed | Focus now draws only the focus ring and keeps the link colors. |
+| `$pagination-focus-bg` | Removed | Focus now draws only the focus ring and keeps the link colors. |
+| `$pagination-focus-box-shadow` | Removed, use `--focus-ring-width`, `--focus-ring-color` in `$root-tokens` | Focus styles come from the shared focus-ring mixin. A `.theme-*` class on `.pagination` sets the ring color. |
+| `$pagination-focus-outline` | Removed | Focus styles come from the shared focus-ring mixin. |
+| `$pagination-hover-color` | `--pagination-hover-color` in `$pagination-tokens` |  |
+| `$pagination-hover-bg` | `--pagination-hover-bg` in `$pagination-tokens` |  |
+| `$pagination-hover-border-color` | `--pagination-hover-border-color` in `$pagination-tokens` |  |
+| `$pagination-active-color` | `--pagination-active-color` in `$pagination-tokens` | A `.theme-*` class on `.pagination` takes precedence. |
+| `$pagination-active-bg` | `--pagination-active-bg` in `$pagination-tokens` | A `.theme-*` class on `.pagination` takes precedence. |
+| `$pagination-active-border-color` | `--pagination-active-border-color` in `$pagination-tokens` | A `.theme-*` class on `.pagination` takes precedence. |
+| `$pagination-disabled-color` | `--pagination-disabled-color` in `$pagination-tokens` |  |
+| `$pagination-disabled-bg` | `--pagination-disabled-bg` in `$pagination-tokens` |  |
+| `$pagination-disabled-border-color` | `--pagination-disabled-border-color` in `$pagination-tokens` |  |
+| `$pagination-transition` | Removed | Hardcoded in `.page-link`; override transition on `.page-link` yourself. |
+| `$pagination-border-radius-sm` | `--pagination-border-radius` (set on `.pagination-sm`) | Set it on `.pagination-sm`. It defaults to `var(--btn-input-sm-border-radius)` in `$root-tokens`. |
+| `$pagination-border-radius-lg` | `--pagination-border-radius` (set on `.pagination-lg`) | Set it on `.pagination-lg`. It defaults to `var(--btn-input-lg-border-radius)` in `$root-tokens`. |
+</BsTable>
+
+### Placeholders
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$placeholder-opacity-max` | `--placeholder-opacity-max` in `$placeholder-tokens` |  |
+| `$placeholder-opacity-min` | `--placeholder-opacity-min` in `$placeholder-tokens` | Only the `.placeholder-pulse` (`.placeholder-glow`) animation uses it now. v5 also derived the `.placeholder-wave` mask from it; the wave has its own `--placeholder-wave-opacity-min` and `--placeholder-wave-opacity-max` in `$placeholder-wave-tokens`. |
+</BsTable>
+
+### Cards
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$card-spacer-y` | `--card-spacer-y` in `$card-tokens` |  |
+| `$card-spacer-x` | `--card-spacer-x` in `$card-tokens` |  |
+| `$card-title-spacer-y` | `--card-body-gap` in `$card-tokens` | `.card-title` no longer has a margin. `.card-body` spaces its children with this gap. |
+| `$card-title-color` | Removed | `.card-title` no longer adds styles; style it yourself. |
+| `$card-subtitle-color` | `--card-subtitle-color` in `$card-tokens` |  |
+| `$card-border-width` | `--card-border-width` in `$card-tokens` |  |
+| `$card-border-color` | `--card-border-color` in `$card-tokens` |  |
+| `$card-border-radius` | `--card-border-radius` in `$card-tokens` |  |
+| `$card-box-shadow` | `--card-box-shadow` in `$card-tokens` |  |
+| `$card-inner-border-radius` | `--card-inner-border-radius` in `$card-tokens` | Default subtracts the global `--border-width`, not `--card-border-width`. |
+| `$card-cap-padding-y` | `--card-cap-padding-y` in `$card-tokens` |  |
+| `$card-cap-padding-x` | `--card-cap-padding-x` in `$card-tokens` |  |
+| `$card-cap-bg` | `--card-cap-bg` in `$card-tokens` |  |
+| `$card-cap-color` | `--card-cap-color` in `$card-tokens` |  |
+| `$card-height` | `--card-height` in `$card-tokens` |  |
+| `$card-color` | `--card-color` in `$card-tokens` | Applies to `.card-body` only; `.card` itself uses `var(--fg-body)`. |
+| `$card-bg` | `--card-bg` in `$card-tokens` |  |
+| `$card-img-overlay-padding` | `--card-img-overlay-padding` in `$card-tokens` |  |
+| `$card-group-margin` | `--card-group-margin` in `$card-tokens` |  |
+</BsTable>
+
+### Accordion
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$accordion-icon-color-dark` | Removed, use `--accordion-btn-color` in `$accordion-tokens` | The icon is markup colored with `currentcolor`, so it takes the header color. |
+| `$accordion-icon-active-color-dark` | Removed, use `--accordion-active-color` in `$accordion-tokens` | The icon is markup colored with `currentcolor`, so it takes the open header color. |
+| `$accordion-button-icon-dark` | Removed | Put your own icon in the `.accordion-icon` markup. |
+| `$accordion-button-active-icon-dark` | Removed | The same icon rotates via `--accordion-btn-icon-transform`. |
+| `$accordion-padding-y` | `--accordion-padding-y` in `$accordion-tokens` |  |
+| `$accordion-padding-x` | `--accordion-padding-x` in `$accordion-tokens` |  |
+| `$accordion-color` | `--accordion-color` in `$accordion-tokens` |  |
+| `$accordion-bg` | `--accordion-bg` in `$accordion-tokens` | v5’s header background defaulted to it; `--accordion-btn-bg` now defaults to `var(--bg-body)`, so set it too. |
+| `$accordion-border-width` | `--accordion-border-width` in `$accordion-tokens` |  |
+| `$accordion-border-color` | `--accordion-border-color` in `$accordion-tokens` |  |
+| `$accordion-border-radius` | `--accordion-border-radius` in `$accordion-tokens` | Defaults to `var(--accordion-radius, var(--radius-7))`, so you can also set `--accordion-radius`. |
+| `$accordion-inner-border-radius` | Removed | Computed from `--accordion-border-radius` and `--accordion-border-width`. |
+| `$accordion-body-padding-y` | `--accordion-body-padding-y` (not declared) | Declared in no map; set it yourself. Fallback: `var(--accordion-padding-y)`. |
+| `$accordion-body-padding-x` | `--accordion-body-padding-x` (not declared) | Declared in no map; set it yourself. Fallback: `var(--accordion-padding-x)`. |
+| `$accordion-button-padding-y` | `--accordion-btn-padding-y` (not declared) | Declared in no map; set it yourself. Fallback: `var(--accordion-padding-y)`. Applies to `.accordion-header` (the `<summary>`). |
+| `$accordion-button-padding-x` | `--accordion-btn-padding-x` (not declared) | Declared in no map; set it yourself. Fallback: `var(--accordion-padding-x)`. Applies to `.accordion-header` (the `<summary>`). |
+| `$accordion-button-color` | `--accordion-btn-color` in `$accordion-tokens` |  |
+| `$accordion-button-bg` | `--accordion-btn-bg` in `$accordion-tokens` |  |
+| `$accordion-transition` | `--accordion-transition-property`, `--accordion-transition-duration`, `--accordion-transition-timing` in `$accordion-tokens` | The single transition value is split into property, duration and timing tokens. The panel has its own `--accordion-panel-transition-*` tokens. |
+| `$accordion-button-active-bg` | `--accordion-active-bg` in `$accordion-tokens` | A `.theme-*` class on `.accordion` takes precedence. |
+| `$accordion-button-active-color` | `--accordion-active-color` in `$accordion-tokens` | A `.theme-*` class on `.accordion` takes precedence. |
+| `$accordion-button-focus-border-color` | Removed | Was unused in v5. |
+| `$accordion-button-focus-box-shadow` | Removed, use `--focus-ring-width`, `--focus-ring-color` in `$root-tokens` | Focus styles come from the shared focus-ring mixin. |
+| `$accordion-icon-width` | `--accordion-btn-icon-width` in `$accordion-tokens` |  |
+| `$accordion-icon-color` | Removed, use `--accordion-btn-color` in `$accordion-tokens` | The `.accordion-icon` SVG uses `currentcolor`, so it follows the header text color. |
+| `$accordion-icon-active-color` | Removed, use `--accordion-active-color` in `$accordion-tokens` | The `.accordion-icon` SVG uses `currentcolor`, so it follows the open header text color. |
+| `$accordion-icon-transition` | `--accordion-btn-icon-transition` in `$accordion-tokens` |  |
+| `$accordion-icon-transform` | `--accordion-btn-icon-transform` in `$accordion-tokens` |  |
+| `$accordion-button-icon` | Removed | The icon is an `.accordion-icon` element (usually an inline SVG) in the `<summary>` markup. |
+| `$accordion-button-active-icon` | Removed | The same `.accordion-icon` element rotates with `--accordion-btn-icon-transform` when open. |
+</BsTable>
+
+### Tooltips
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$tooltip-font-size` | `--tooltip-font-size` in `$tooltip-tokens` |  |
+| `$tooltip-max-width` | `--tooltip-max-width` in `$tooltip-tokens` |  |
+| `$tooltip-color` | `--tooltip-color` in `$tooltip-tokens` |  |
+| `$tooltip-bg` | `--tooltip-bg` in `$tooltip-tokens` | Also colors the arrow. |
+| `$tooltip-border-radius` | `--tooltip-border-radius` in `$tooltip-tokens` |  |
+| `$tooltip-opacity` | `--tooltip-opacity` in `$tooltip-tokens` |  |
+| `$tooltip-padding-y` | `--tooltip-padding-y` in `$tooltip-tokens` |  |
+| `$tooltip-padding-x` | `--tooltip-padding-x` in `$tooltip-tokens` |  |
+| `$tooltip-margin` | Removed, use the tooltip’s `offset` option (default `[0, 6]`) | Use the JS offset option to set the distance from the trigger. |
+| `$tooltip-arrow-width` | `--tooltip-arrow-width` in `$tooltip-tokens` |  |
+| `$tooltip-arrow-height` | `--tooltip-arrow-height` in `$tooltip-tokens` |  |
+| `$tooltip-arrow-color` | Removed, use `--tooltip-bg` in `$tooltip-tokens` | Was unused in v5. The arrow uses `--tooltip-bg`. |
+</BsTable>
+
+### Popovers
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$popover-font-size` | `--popover-font-size` in `$popover-tokens` |  |
+| `$popover-bg` | `--popover-bg` in `$popover-tokens` | Also fills the arrow. |
+| `$popover-max-width` | `--popover-max-width` in `$popover-tokens` |  |
+| `$popover-border-width` | `--popover-border-width` in `$popover-tokens` |  |
+| `$popover-border-color` | `--popover-border-color` in `$popover-tokens` |  |
+| `$popover-border-radius` | `--popover-border-radius` in `$popover-tokens` |  |
+| `$popover-inner-border-radius` | `--popover-inner-border-radius` in `$popover-tokens` | Default is `calc(var(--radius-7) - var(--border-width))`, not derived from `--popover-border-radius`: update both together. |
+| `$popover-box-shadow` | `--popover-box-shadow` in `$popover-tokens` |  |
+| `$popover-header-font-size` | `--popover-header-font-size` in `$popover-tokens` |  |
+| `$popover-header-bg` | `--popover-header-bg` in `$popover-tokens` |  |
+| `$popover-header-color` | `--popover-header-color` in `$popover-tokens` |  |
+| `$popover-header-padding-y` | `--popover-header-padding-y` in `$popover-tokens` |  |
+| `$popover-header-padding-x` | `--popover-header-padding-x` in `$popover-tokens` |  |
+| `$popover-body-color` | `--popover-body-color` in `$popover-tokens` |  |
+| `$popover-body-padding-y` | `--popover-body-padding-y` in `$popover-tokens` |  |
+| `$popover-body-padding-x` | `--popover-body-padding-x` in `$popover-tokens` |  |
+| `$popover-arrow-width` | `--popover-arrow-width` in `$popover-tokens` |  |
+| `$popover-arrow-height` | `--popover-arrow-height` in `$popover-tokens` |  |
+| `$popover-arrow-color` | Removed, use `--popover-bg` in `$popover-tokens` | Was unused in v5. The arrow fill uses `--popover-bg`. |
+| `$popover-arrow-outer-color` | Removed, use `--popover-arrow-border` in `$popover-tokens` | Was unused in v5. The arrow outline uses `--popover-arrow-border`. |
+</BsTable>
+
+### Toasts
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$toast-max-width` | `--toast-max-width` in `$toast-tokens` | Sets the toast width, capped at 100%, as in v5. |
+| `$toast-padding-x` | `--toast-padding-x` in `$toast-tokens` |  |
+| `$toast-padding-y` | `--toast-padding-y` in `$toast-tokens` |  |
+| `$toast-font-size` | `--toast-font-size` in `$toast-tokens` |  |
+| `$toast-color` | `--toast-color` in `$toast-tokens` | Null in the map, so not emitted by default. Fallback: `var(--fg-body)`. |
+| `$toast-background-color` | `--toast-bg` in `$toast-tokens` |  |
+| `$toast-border-width` | `--toast-border-width` in `$toast-tokens` |  |
+| `$toast-border-color` | `--toast-border-color` in `$toast-tokens` |  |
+| `$toast-border-radius` | `--toast-border-radius` in `$toast-tokens` | Null in the map, so not emitted by default. Fallback: `var(--radius-7)`. |
+| `$toast-box-shadow` | `--toast-box-shadow` in `$toast-tokens` |  |
+| `$toast-spacing` | `--toast-spacing` in `$toast-tokens` |  |
+| `$toast-header-color` | `--toast-header-color` in `$toast-tokens` |  |
+| `$toast-header-background-color` | `--toast-header-bg` in `$toast-tokens` |  |
+| `$toast-header-border-color` | `--toast-header-border-color` in `$toast-tokens` |  |
+</BsTable>
+
+### Badges
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$badge-font-size` | `--badge-font-size` in `$badge-tokens` |  |
+| `$badge-font-weight` | `--badge-font-weight` in `$badge-tokens` |  |
+| `$badge-color` | `--badge-color` in `$badge-tokens` | A `.theme-*` class on the badge takes precedence, and `.badge-subtle` and `.badge-outline` set their own `--badge-color`. |
+| `$badge-padding-y` | `--badge-padding-y` in `$badge-tokens` | Badges now have min-height: 1.375rem, so a smaller padding-y does not make them shorter than that. |
+| `$badge-padding-x` | `--badge-padding-x` in `$badge-tokens` |  |
+| `$badge-border-radius` | `--badge-border-radius` in `$badge-tokens` |  |
+</BsTable>
+
+### Dialog (was modal)
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$modal-inner-padding` | `--dialog-padding` in `$dialog-tokens` | Body padding; header and footer have their own `--dialog-header-padding` / `--dialog-footer-padding`. |
+| `$modal-footer-margin-between` | `--dialog-footer-gap` in `$dialog-tokens` |  |
+| `$modal-dialog-margin` | `--dialog-margin` in `$dialog-tokens` | One margin at every width now (1.75rem); v5 used .5rem below sm. |
+| `$modal-dialog-margin-y-sm-up` | `--dialog-margin` in `$dialog-tokens` | Same token as `$modal-dialog-margin`; no separate sm-up value. |
+| `$modal-title-line-height` | Removed | `.dialog-title` line-height is fixed at 1.25 by the `dialog-title()` mixin; set line-height on `.dialog-title` yourself. |
+| `$modal-content-color` | `--dialog-color` in `$dialog-tokens` |  |
+| `$modal-content-bg` | `--dialog-bg` in `$dialog-tokens` |  |
+| `$modal-content-border-color` | `--dialog-border-color` in `$dialog-tokens` |  |
+| `$modal-content-border-width` | `--dialog-border-width` in `$dialog-tokens` |  |
+| `$modal-content-border-radius` | `--dialog-border-radius` in `$dialog-tokens` |  |
+| `$modal-content-inner-border-radius` | `--dialog-inner-border-radius` in `$dialog-tokens` | Default is now `calc(var(--dialog-border-radius) - var(--dialog-border-width))`. |
+| `$modal-content-box-shadow-xs` | `--dialog-box-shadow` in `$dialog-tokens` | One shadow at every width (default `var(--box-shadow-xl)`). |
+| `$modal-content-box-shadow-sm-up` | `--dialog-box-shadow` in `$dialog-tokens` | Same token as `$modal-content-box-shadow-xs`; no separate sm-up value. |
+| `$modal-backdrop-bg` | `--dialog-backdrop-bg` in `$dialog-tokens` | Native `::backdrop`; the color carries its own alpha and a `light-dark()` dark value. |
+| `$modal-backdrop-opacity` | `--dialog-backdrop-bg` in `$dialog-tokens` | No opacity token: put the opacity in the color alpha. Default is `light-dark(rgb(0 0 0 / 50%), rgb(0 0 0 / 65%))`; keep the `light-dark()` to change both modes. |
+| `$modal-header-border-color` | `--dialog-header-border-color` in `$dialog-tokens` |  |
+| `$modal-header-border-width` | `--dialog-header-border-width` in `$dialog-tokens` |  |
+| `$modal-header-padding-y` | `--dialog-header-padding` in `$dialog-tokens` | Single shorthand token: set `<y> <x>`. |
+| `$modal-header-padding-x` | `--dialog-header-padding` in `$dialog-tokens` | Single shorthand token: set `<y> <x>`. |
+| `$modal-header-padding` | `--dialog-header-padding` in `$dialog-tokens` |  |
+| `$modal-footer-bg` | Removed | Set background-color on `.dialog-footer` yourself. |
+| `$modal-footer-border-color` | `--dialog-footer-border-color` in `$dialog-tokens` |  |
+| `$modal-footer-border-width` | `--dialog-footer-border-width` in `$dialog-tokens` |  |
+| `$modal-sm` | `$dialog-sizes: sm` (`--dialog-width`) | Default is now 280px; class `.dialog-sm`. Applies at every width (v5: from sm up). |
+| `$modal-md` | `--dialog-width` in `$dialog-tokens` | Default dialog width (500px). |
+| `$modal-lg` | `$dialog-sizes: lg` (`--dialog-width`) | Class `.dialog-lg`. Applies at every width, capped by the viewport (v5: from lg up, 500px below). |
+| `$modal-xl` | `$dialog-sizes: xl` (`--dialog-width`) | Class `.dialog-xl`. Applies at every width, capped by the viewport (v5: from xl up, `$modal-lg` from lg). |
+| `$modal-xxl` | `$dialog-sizes: 2xl` (`--dialog-width`) | Key renamed to 2xl (class `.dialog-2xl`), default now 1440px. Applies at every width, capped by the viewport (v5: from xxl up). |
+| `$modal-fade-transform` | Removed, use `.dialog-slide-down` | Default is a plain fade; `.dialog-slide-down` / `.dialog-slide-up` add a fixed translateY(∓3rem). |
+| `$modal-show-transform` | Removed | Open state is fixed at transform: none. |
+| `$modal-transition` | `--dialog-transition-duration` in `$dialog-tokens` | Split into `--dialog-transition-property`, `--dialog-transition-duration` and `--dialog-transition-timing`; keep visibility in the property list. |
+| `$modal-scale-transform` | Removed | Static-backdrop bounce on `.dialog-static` is fixed at scale(1.02). |
+</BsTable>
+
+### Alerts
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$alert-padding-y` | `--alert-padding-y` in `$alert-tokens` |  |
+| `$alert-padding-x` | `--alert-padding-x` in `$alert-tokens` |  |
+| `$alert-margin-bottom` | Removed | Alerts have no bottom margin now; add a margin utility (e.g. `.mb-3`). |
+| `$alert-border-radius` | `--alert-border-radius` in `$alert-tokens` |  |
+| `$alert-link-font-weight` | Removed, use `--font-weight-semibold` | `.alert-link` uses `var(--font-weight-semibold)` directly; override font-weight on `.alert-link`. |
+| `$alert-border-width` | `--alert-border-width` in `$alert-tokens` |  |
+| `$alert-dismissible-padding-r` | Removed | `.alert-dismissible` is gone; the close button sits in the alert’s flex layout (gap: `--alert-gap`). |
+| `$alert-bg-scale` | Removed, use `$theme-colors: <color> → bg-subtle` | Variant colors come from `.theme-*` tokens (`--theme-bg-subtle`). |
+| `$alert-border-scale` | Removed, use `$theme-colors: <color> → border` | Variant colors come from `.theme-*` tokens (`--theme-border`). |
+| `$alert-color-scale` | Removed, use `$theme-colors: <color> → fg` | Variant colors come from `.theme-*` tokens (`--theme-fg`). |
+</BsTable>
+
+### Progress
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$progress-height` | `--progress-height` in `$progress-tokens` |  |
+| `$progress-font-size` | `--progress-font-size` in `$progress-tokens` |  |
+| `$progress-bg` | `--progress-bg` in `$progress-tokens` |  |
+| `$progress-border-radius` | `--progress-border-radius` in `$progress-tokens` |  |
+| `$progress-box-shadow` | `--progress-box-shadow` in `$progress-tokens` |  |
+| `$progress-bar-color` | `--progress-bar-color` in `$progress-tokens` | A `.theme-*` class on the bar wins (`--theme-contrast`). |
+| `$progress-bar-bg` | `--progress-bar-bg` in `$progress-tokens` | A `.theme-*` class on the bar wins (`--theme-bg`). |
+| `$progress-bar-animation-timing` | `--progress-bar-animation` in `$progress-tokens` | Full animation shorthand now: progress-bar-stripes 1s linear infinite. |
+| `$progress-bar-transition` | `--progress-bar-transition` in `$progress-tokens` |  |
+</BsTable>
+
+### List group
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$list-group-color` | `--list-group-color` in `$list-group-tokens` |  |
+| `$list-group-bg` | `--list-group-bg` in `$list-group-tokens` |  |
+| `$list-group-border-color` | `--list-group-border-color` in `$list-group-tokens` |  |
+| `$list-group-border-width` | `--list-group-border-width` in `$list-group-tokens` |  |
+| `$list-group-border-radius` | `--list-group-border-radius` in `$list-group-tokens` |  |
+| `$list-group-item-padding-y` | `--list-group-item-padding-y` in `$list-group-tokens` |  |
+| `$list-group-item-padding-x` | `--list-group-item-padding-x` in `$list-group-tokens` |  |
+| `$list-group-item-bg-scale` | Removed, use `$theme-colors: <color> → bg-subtle` | Variant colors come from `.theme-*` tokens (`--theme-bg-subtle`). |
+| `$list-group-item-color-scale` | Removed, use `$theme-colors: <color> → fg` | Variant colors come from `.theme-*` tokens (`--theme-fg`). |
+| `$list-group-hover-bg` | `--list-group-action-hover-bg` in `$list-group-tokens` | Renamed: applies to `.list-group-item-action` hover/focus. |
+| `$list-group-active-color` | `--list-group-active-color` in `$list-group-tokens` |  |
+| `$list-group-active-bg` | `--list-group-active-bg` in `$list-group-tokens` |  |
+| `$list-group-active-border-color` | `--list-group-active-border-color` in `$list-group-tokens` |  |
+| `$list-group-disabled-color` | `--list-group-disabled-color` in `$list-group-tokens` |  |
+| `$list-group-disabled-bg` | `--list-group-disabled-bg` in `$list-group-tokens` |  |
+| `$list-group-action-color` | `--list-group-action-color` in `$list-group-tokens` |  |
+| `$list-group-action-hover-color` | `--list-group-action-hover-color` in `$list-group-tokens` |  |
+| `$list-group-action-active-color` | `--list-group-action-active-color` in `$list-group-tokens` |  |
+| `$list-group-action-active-bg` | `--list-group-action-active-bg` in `$list-group-tokens` |  |
+</BsTable>
+
+### Images and figures
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$thumbnail-padding` | `--thumbnail-padding` in `$thumbnail-tokens` |  |
+| `$thumbnail-bg` | `--thumbnail-bg` in `$thumbnail-tokens` |  |
+| `$thumbnail-border-width` | `--thumbnail-border-width` in `$thumbnail-tokens` |  |
+| `$thumbnail-border-color` | `--thumbnail-border-color` in `$thumbnail-tokens` |  |
+| `$thumbnail-border-radius` | `--thumbnail-border-radius` in `$thumbnail-tokens` |  |
+| `$thumbnail-box-shadow` | `--thumbnail-box-shadow` in `$thumbnail-tokens` |  |
+| `$figure-caption-font-size` | `--figure-caption-font-size` in `$figure-tokens` |  |
+| `$figure-caption-color` | `--figure-caption-color` in `$figure-tokens` |  |
+</BsTable>
+
+### Breadcrumb
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$breadcrumb-font-size` | `--breadcrumb-font-size` in `$breadcrumb-tokens` |  |
+| `$breadcrumb-padding-y` | `--breadcrumb-padding-y` (not declared) | Read as `var(--breadcrumb-padding-y, 0)`; set it yourself on `.breadcrumb`. |
+| `$breadcrumb-padding-x` | `--breadcrumb-padding-x` (not declared) | Read as `var(--breadcrumb-padding-x, 0)`; set it yourself on `.breadcrumb`. |
+| `$breadcrumb-item-padding-x` | `--breadcrumb-divider-margin-x` in `$breadcrumb-tokens` | Space around the explicit `.breadcrumb-divider` element; default `calc(var(--breadcrumb-link-padding-x) / 4)`. Links also have `--breadcrumb-link-padding-x`. |
+| `$breadcrumb-margin-bottom` | Removed | Bottom margin is 0 now; add a margin utility (e.g. `.mb-3`). |
+| `$breadcrumb-bg` | `--breadcrumb-bg` in `$breadcrumb-tokens` |  |
+| `$breadcrumb-divider-color` | `--breadcrumb-divider-color` in `$breadcrumb-tokens` |  |
+| `$breadcrumb-active-color` | `--breadcrumb-link-active-color` in `$breadcrumb-tokens` | Applies to `.breadcrumb-link.active`. |
+| `$breadcrumb-divider` | `--breadcrumb-divider-icon` in `$breadcrumb-tokens` | Now an SVG mask on an empty `.breadcrumb-divider` element, not a content string; for a text divider put the character inside `.breadcrumb-divider`. |
+| `$breadcrumb-divider-flipped` | Removed, use `--breadcrumb-divider-icon` | No RTL-specific divider; put RTL content inside `.breadcrumb-divider` or set `--breadcrumb-divider-icon` under `[dir="rtl"]`. |
+| `$breadcrumb-border-radius` | `--breadcrumb-border-radius` in `$breadcrumb-tokens` |  |
+</BsTable>
+
+### Carousel
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$carousel-indicator-active-bg-dark` | `--carousel-indicator-bg` (set on `.carousel-overlay`) | Dark value (second argument of `light-dark(var(--white), var(--black))`). `.carousel-overlay`, where indicators sit over the slides as in v5, overrides the `$carousel-tokens` value; without it the token defaults to `--fg-3`. |
+| `$carousel-caption-color-dark` | Removed | Carousel captions were removed. |
+| `$carousel-control-icon-filter-dark` | Removed | Control icons are CSS masks in `currentcolor`; use `data-bs-theme="dark"`. |
+| `$carousel-control-color` | Removed | Controls are now buttons (e.g. `.btn-icon`); icons use `currentcolor`, so set the button’s color. |
+| `$carousel-control-width` | Removed | `.carousel-control-prev`/-next hit areas are gone; size the control button yourself. |
+| `$carousel-control-opacity` | Removed | Style the control button instead. |
+| `$carousel-control-hover-opacity` | Removed | Style the control button instead. |
+| `$carousel-control-transition` | Removed | Style the control button instead. |
+| `$carousel-control-icon-filter` | Removed | Icons are masks painted with `currentcolor`; set color on the control. |
+| `$carousel-indicator-width` | `--carousel-indicator-width` in `$carousel-tokens` | Indicators are dots now (default .75rem); the active one is 2.5× wide. |
+| `$carousel-indicator-height` | `--carousel-indicator-height` in `$carousel-tokens` |  |
+| `$carousel-indicator-hit-area-height` | Removed |  |
+| `$carousel-indicator-spacer` | `--carousel-indicator-spacer` in `$carousel-tokens` | Now the gap between indicators (default .25rem); v5 put it as a margin on both sides of each indicator, so double the v5 value for the same spacing. |
+| `$carousel-indicator-opacity` | Removed | Inactive indicators are an outline in `--carousel-indicator-bg` instead of a faded fill. |
+| `$carousel-indicator-active-bg` | `--carousel-indicator-bg` in `$carousel-tokens` | One color for the active fill and the inactive outline. `.carousel-overlay` (the v5-style indicators over the slides) redeclares it as `light-dark(var(--white), var(--black))` and wins over the map value, so for overlay carousels set it on `.carousel-overlay`. |
+| `$carousel-indicator-active-opacity` | Removed |  |
+| `$carousel-indicator-transition` | `--carousel-indicator-opacity-duration` in `$carousel-tokens` | Split into `--carousel-indicator-opacity-duration`/-timing and `--carousel-indicator-width-duration`/-timing. |
+| `$carousel-caption-width` | Removed | `.carousel-caption` is gone; compose slide content with your own markup and utilities. |
+| `$carousel-caption-color` | Removed | `.carousel-caption` is gone; compose slide content with your own markup and utilities. |
+| `$carousel-caption-padding-y` | Removed | `.carousel-caption` is gone; compose slide content with your own markup and utilities. |
+| `$carousel-caption-spacer` | Removed | `.carousel-caption` is gone; compose slide content with your own markup and utilities. |
+| `$carousel-control-icon-width` | `--carousel-control-icon-width` in `$carousel-tokens` | Sizes `.carousel-icon-*` (width and height). Default now 1rem. |
+| `$carousel-control-prev-icon-bg` | `--carousel-control-prev-icon` in `$carousel-tokens` | Now a mask image painted with `currentcolor`; the SVG’s own fill color is ignored. |
+| `$carousel-control-next-icon-bg` | `--carousel-control-next-icon` in `$carousel-tokens` | Now a mask image painted with `currentcolor`; the SVG’s own fill color is ignored. |
+| `$carousel-transition-duration` | `--carousel-fade-duration` in `$carousel-tokens` | Only drives `.carousel-fade`; sliding is native smooth scrolling with no duration setting. |
+| `$carousel-transition` | Removed, use `--carousel-fade-duration`, `--carousel-fade-timing` | Sliding is native scroll-snap smooth scrolling; only `.carousel-fade` has a transition. |
+| `$carousel-dark-indicator-active-bg` | Removed, use `--carousel-indicator-bg` | Use `data-bs-theme="dark"`; the dark value lives in `.carousel-overlay`’s `light-dark(var(--white), var(--black))`. |
+| `$carousel-dark-caption-color` | Removed | Captions were removed. |
+| `$carousel-dark-control-icon-filter` | Removed | Use `data-bs-theme="dark"`; icons use `currentcolor`. |
+</BsTable>
+
+### Spinners
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$spinner-width` | `--spinner-width` in `$spinner-border-tokens` | Also in `$spinner-grow-tokens`. Default now 1em. |
+| `$spinner-height` | `--spinner-height` in `$spinner-border-tokens` | Also in `$spinner-grow-tokens`. Default now 1em. |
+| `$spinner-vertical-align` | Removed | Spinners are inline-flex with no vertical-align; set it on `.spinner-border` / `.spinner-grow` if needed. |
+| `$spinner-border-width` | `--spinner-border-width` in `$spinner-border-tokens` | Default now .125em. |
+| `$spinner-animation-speed` | `--spinner-animation-speed` in `$spinner-border-tokens` | Also in `$spinner-grow-tokens`. Default now 1s. |
+| `$spinner-width-sm` | `--spinner-width` (set on `.spinner-sm`) | Small size is `.spinner-sm` (was `.spinner-border-sm` / `.spinner-grow-sm`), which sets `--spinner-width`: .75em; override it on `.spinner-sm`. On `.spinner-grow` it has no effect: `.spinner-grow` redeclares `--spinner-width` after it at the same specificity, so target `.spinner-grow.spinner-sm`. |
+| `$spinner-height-sm` | `--spinner-height` (set on `.spinner-sm`) | Set by `.spinner-sm` (.75em); override it on `.spinner-sm`. On `.spinner-grow` it has no effect (redeclared later by `.spinner-grow`), so target `.spinner-grow.spinner-sm`. |
+| `$spinner-border-width-sm` | Removed, use `--spinner-border-width` | `.spinner-sm` does not change `--spinner-border-width` (.125em of the font size, so it does not shrink with the spinner); set it on `.spinner-sm` if needed. |
+</BsTable>
+
+### Close button
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$btn-close-filter-dark` | Removed, use `--btn-close-color` in `$btn-close-tokens` | The icon is a mask painted with `--btn-close-color` (defaults to `--fg-body`). |
+| `$btn-close-width` | `--btn-close-size` in `$btn-close-tokens` | One size for width and height (min-width/min-height), default 1.25rem. |
+| `$btn-close-height` | `--btn-close-size` in `$btn-close-tokens` | One size for width and height (min-width/min-height), default 1.25rem. |
+| `$btn-close-padding-x` | Removed | Padding is fixed at 0; the icon fills `--btn-close-size`. |
+| `$btn-close-padding-y` | Removed | Padding is fixed at 0; the icon fills `--btn-close-size`. |
+| `$btn-close-color` | `--btn-close-color` in `$btn-close-tokens` | Paints the icon through a mask + `currentcolor`, so the CSS variable now works at runtime too (v5 baked the Sass value into the SVG fill); default `var(--fg-body)`. |
+| `$btn-close-bg` | `--btn-close-icon` in `$btn-close-tokens` | Now a mask image painted with `--btn-close-color`; the SVG’s own fill color is ignored. |
+| `$btn-close-focus-shadow` | Removed, use `--focus-ring` | Focus is now an outline from the shared `focus-ring()` mixin (no box-shadow, no offset); customize `--focus-ring-width` / `--focus-ring-color`. |
+| `$btn-close-opacity` | `--btn-close-opacity` in `$btn-close-tokens` |  |
+| `$btn-close-hover-opacity` | `--btn-close-hover-opacity` in `$btn-close-tokens` |  |
+| `$btn-close-focus-opacity` | `--btn-close-focus-opacity` in `$btn-close-tokens` | Default is now .85. |
+| `$btn-close-disabled-opacity` | `--btn-close-disabled-opacity` in `$btn-close-tokens` |  |
+| `$btn-close-filter` | Removed, use `--btn-close-color` | No filter; set `--btn-close-color`. |
+| `$btn-close-white-filter` | Removed, use `--btn-close-color` | Use `data-bs-theme="dark"` on the button or a parent (or set `--btn-close-color`). |
+</BsTable>
+
+### Drawer (was offcanvas)
+
+<BsTable>
+| v5 Sass variable | v6 | Notes |
+| --- | --- | --- |
+| `$offcanvas-padding-y` | `--drawer-padding-y` in `$drawer-tokens` |  |
+| `$offcanvas-padding-x` | `--drawer-padding-x` in `$drawer-tokens` |  |
+| `$offcanvas-horizontal-width` | `--drawer-width` in `$drawer-tokens` |  |
+| `$offcanvas-vertical-height` | `--drawer-height` in `$drawer-tokens` |  |
+| `$offcanvas-transition-duration` | `--drawer-transition-duration` in `$drawer-tokens` |  |
+| `$offcanvas-border-color` | `--drawer-border-color` in `$drawer-tokens` |  |
+| `$offcanvas-border-width` | `--drawer-border-width` in `$drawer-tokens` |  |
+| `$offcanvas-title-line-height` | `--drawer-title-line-height` in `$drawer-tokens` |  |
+| `$offcanvas-bg-color` | `--drawer-bg` in `$drawer-tokens` |  |
+| `$offcanvas-color` | `--drawer-color` in `$drawer-tokens` |  |
+| `$offcanvas-box-shadow` | `--drawer-box-shadow` in `$drawer-tokens` |  |
+| `$offcanvas-backdrop-bg` | `--drawer-backdrop-bg` in `$drawer-backdrop-tokens` | Default is now `var(--bg-body)`, mixed with transparent at `--drawer-backdrop-opacity`. |
+| `$offcanvas-backdrop-opacity` | `--drawer-backdrop-opacity` in `$drawer-backdrop-tokens` | Now a percentage used in `color-mix()` (default 25%). |
+</BsTable>
