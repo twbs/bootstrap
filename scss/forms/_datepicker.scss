@@ -192,6 +192,7 @@ $datepicker-tokens: defaults(
       background-color: var(--datepicker-color);
       @include mask-icon(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/></svg>"), $size: null);
 
+      // Forced colors mode removes the background color that paints the arrow.
       @include forced-colors() {
         background-color: CanvasText;
       }

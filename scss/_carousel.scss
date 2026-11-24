@@ -148,6 +148,8 @@ $carousel-tokens: defaults(
     height: var(--carousel-control-icon-width);
     background-color: currentcolor;
     @include mask-icon($size: 100% 100%, $position: 50%);
+
+    // Forced colors mode removes the background color that paints the icons.
     @include forced-colors() {
       background-color: CanvasText;
     }
