@@ -35,8 +35,8 @@ Use `data-bs-validate="valid"` to also show success styling on valid fields. Add
 
 For example, try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you.
 
-<Example code={`<form class="grid grid-cols-1 gap-5" data-bs-validate novalidate><!-- [!code highlight] -->
-    <div class="grid gap-5">
+<Example code={`<form class="grid grid-cols-1 gap-4" data-bs-validate novalidate><!-- [!code highlight] -->
+    <div class="grid gap-4">
       <div class="form-field md:g-col-6">
         <label for="validationCustom01" class="form-label">Name</label>
         <input type="text" class="form-control" id="validationCustom01" value="Mark Otto" required aria-describedby="validationCustom01Feedback"><!-- [!code highlight] -->
@@ -51,14 +51,12 @@ For example, try to submit the form below; our JavaScript will intercept the sub
         <div id="validationCustomUsernameFeedback" class="invalid-feedback">Please enter a donation amount</div><!-- [!code highlight] -->
       </div>
     </div>
-
     <div class="form-field">
       <label for="validationCustomAddress" class="form-label">Address</label>
       <input type="text" class="form-control" id="validationCustomAddress" value="1234 Main St" required aria-describedby="validationCustomAddressFeedback"><!-- [!code highlight] -->
       <div id="validationCustomAddressFeedback" class="invalid-feedback">Please enter a mailing address</div><!-- [!code highlight] -->
     </div>
-
-    <div class="grid gap-5">
+    <div class="grid gap-4">
       <div class="form-field md:g-col-6">
         <label for="validationCustom03" class="form-label">City</label>
         <input type="text" class="form-control" id="validationCustom03" required aria-describedby="validationCustom03Feedback"><!-- [!code highlight] -->
@@ -78,10 +76,9 @@ For example, try to submit the form below; our JavaScript will intercept the sub
         <div id="validationCustom05Feedback" class="invalid-feedback">Required</div><!-- [!code highlight] -->
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-label">Shipping method</label>
-      <div class="form-field mb-1">
+      <div class="form-field">
         <input type="radio" id="validationCustomRadio1" class="radio" name="shipping" required><!-- [!code highlight] -->
         <div class="form-field-content">
           <label for="validationCustomRadio1">Standard</label>
@@ -96,14 +93,12 @@ For example, try to submit the form below; our JavaScript will intercept the sub
         </div>
       </div>
     </div>
-
     <div class="form-field">
       <div class="switch">
         <input type="checkbox" id="validationCustomSwitch" role="switch" switch>
       </div>
       <label for="validationCustomSwitch">Subscribe to newsletter</label>
     </div>
-
     <button class="btn-solid theme-primary justify-self-start" type="submit">Submit form</button>
   </form>`} />
 
@@ -115,8 +110,8 @@ Not interested in custom validation feedback messages or writing JavaScript to c
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
-<Example code={`<form class="grid grid-cols-1 gap-5">
-    <div class="grid gap-5">
+<Example code={`<form class="grid grid-cols-1 gap-4">
+    <div class="grid gap-4">
       <div class="form-field md:g-col-6">
         <label for="validationDefault01" class="form-label">Name</label>
         <input type="text" class="form-control" id="validationDefault01" value="Mark Otto" required>
@@ -129,13 +124,11 @@ While these feedback styles cannot be styled with CSS, you can still customize t
         </div>
       </div>
     </div>
-
     <div class="form-field">
       <label for="validationDefaultAddress" class="form-label">Address</label>
       <input type="text" class="form-control" id="validationDefaultAddress" value="1234 Main St" required>
     </div>
-
-    <div class="grid gap-5">
+    <div class="grid gap-4">
       <div class="form-field md:g-col-6">
         <label for="validationDefault03" class="form-label">City</label>
         <input type="text" class="form-control" id="validationDefault03" required>
@@ -152,10 +145,9 @@ While these feedback styles cannot be styled with CSS, you can still customize t
         <input type="text" class="form-control" id="validationDefault05" required>
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-label">Shipping method</label>
-      <div class="form-field mb-1">
+      <div class="form-field">
         <input type="radio" id="validationDefaultRadio1" class="radio" name="shippingDefault" required>
         <div class="form-field-content">
           <label for="validationDefaultRadio1">Standard</label>
@@ -170,14 +162,12 @@ While these feedback styles cannot be styled with CSS, you can still customize t
         </div>
       </div>
     </div>
-
     <div class="form-field">
       <div class="switch">
         <input type="checkbox" id="validationDefaultSwitch" role="switch" switch>
       </div>
       <label for="validationDefaultSwitch">Subscribe to newsletter</label>
     </div>
-
     <button class="btn-solid theme-primary justify-self-start" type="submit">Submit form</button>
   </form>`} />
 
@@ -187,8 +177,8 @@ We recommend using client-side validation, but in case you require server-side v
 
 For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
-<Example code={`<form class="grid grid-cols-1 gap-5">
-    <div class="grid gap-5">
+<Example code={`<form class="grid grid-cols-1 gap-4">
+    <div class="grid gap-4">
       <div class="form-field md:g-col-6">
         <label for="validationServer01" class="form-label">Name</label>
         <input type="text" class="form-control is-valid" id="validationServer01" value="Mark Otto" aria-describedby="validationServer01Valid validationServer01Invalid"><!-- [!code highlight] -->
@@ -205,15 +195,13 @@ For invalid fields, ensure that the invalid feedback/error message is associated
         <div id="serverDonateFeedbackInvalid" class="invalid-feedback">Please enter a donation amount</div><!-- [!code highlight] -->
       </div>
     </div>
-
     <div class="form-field">
       <label for="validationServerAddress" class="form-label">Address</label>
       <input type="text" class="form-control is-valid" id="validationServerAddress" value="1234 Main St" aria-describedby="validationServerAddressValid validationServerAddressInvalid"><!-- [!code highlight] -->
       <div id="validationServerAddressValid" class="valid-feedback">Looks great!</div><!-- [!code highlight] -->
       <div id="validationServerAddressInvalid" class="invalid-feedback">Please enter a mailing address</div>
     </div>
-
-    <div class="grid gap-5">
+    <div class="grid gap-4">
       <div class="form-field md:g-col-6">
         <label for="validationServer03" class="form-label">City</label>
         <input type="text" class="form-control is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback"><!-- [!code highlight] -->
@@ -233,10 +221,9 @@ For invalid fields, ensure that the invalid feedback/error message is associated
         <div id="validationServer05Feedback" class="invalid-feedback">Required</div>
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-label">Shipping method</label>
-      <div class="form-field mb-1">
+      <div class="form-field">
         <input type="radio" id="validationServerRadio1" class="radio is-invalid" name="shippingServer"><!-- [!code highlight] -->
         <div class="form-field-content">
           <label for="validationServerRadio1">Standard</label>
@@ -251,14 +238,12 @@ For invalid fields, ensure that the invalid feedback/error message is associated
         </div>
       </div>
     </div>
-
     <div class="form-field">
       <div class="switch">
         <input type="checkbox" id="validationServerSwitch" role="switch" switch>
       </div>
       <label for="validationServerSwitch">Subscribe to newsletter</label>
     </div>
-
     <button class="btn-solid theme-primary justify-self-start" type="submit">Submit form</button>
   </form>`} />
 
@@ -280,13 +265,12 @@ Validation styles are available for the following form controls and components:
 
 Choose a state and feedback style. Focus the adorned input to see its border and focus ring. Tooltip mode keeps inline feedback for checkboxes, radios, and switches.
 
-<ValidationPlayground code={`<form class="grid align-items-start gap-5">
+<ValidationPlayground code={`<form class="grid align-items-start gap-4">
     <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationTextInput" class="form-label">Name</label>
       <input type="text" class="form-control is-invalid" id="validationTextInput" required aria-invalid="true" aria-describedby="validationTextInputFeedback">
       <div id="validationTextInputFeedback" class="invalid-feedback">Enter your name.</div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationTextarea" class="form-label">Textarea</label>
       <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required aria-invalid="true" aria-describedby="validationTextareaFeedback"></textarea>
@@ -294,7 +278,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
         Please enter a message in the textarea.
       </div>
     </div>
-
     <div class="form-group g-col-12 sm:g-col-6">
       <label class="form-label">Checkbox</label>
       <div class="form-field">
@@ -305,7 +288,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
         </div>
       </div>
     </div>
-
     <div class="form-group g-col-12 sm:g-col-6">
       <label class="form-label">Radio</label>
       <div class="form-field">
@@ -320,7 +302,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
         </div>
       </div>
     </div>
-
     <div class="form-group g-col-12 sm:g-col-6">
       <label class="form-label">Switch</label>
       <div class="form-field">
@@ -333,7 +314,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
         </div>
       </div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationSelect" class="form-label">Select</label>
       <select class="form-control is-invalid" id="validationSelect" required aria-invalid="true" aria-describedby="validationSelectFeedback">
@@ -344,13 +324,11 @@ Choose a state and feedback style. Focus the adorned input to see its border and
       </select>
       <div id="validationSelectFeedback" class="invalid-feedback">Select an item from the list.</div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationFile" class="form-label">File input</label>
       <input type="file" class="form-control is-invalid" id="validationFile" required aria-invalid="true" aria-describedby="validationFileFeedback">
       <div id="validationFileFeedback" class="invalid-feedback">Choose a file to upload.</div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationRange" class="form-label">Range</label>
       <div class="form-range">
@@ -358,7 +336,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
       </div>
       <div id="validationRangeFeedback" class="invalid-feedback">Move the slider to a higher value.</div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6" role="group" aria-labelledby="validationFloatingLabel">
       <span class="form-label" id="validationFloatingLabel">Floating label</span>
       <div class="form-floating">
@@ -367,7 +344,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
       </div>
       <div id="validationFloatingFeedback" class="invalid-feedback">Enter a valid email address.</div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationAdorn" class="form-label">Adorned input</label>
       <label class="form-control form-adorn is-invalid">
@@ -376,7 +352,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
       </label>
       <div id="validationAdornFeedback" class="invalid-feedback">Enter a dollar amount.</div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6">
       <label for="validationInputGroup" class="form-label">Input group</label>
       <div class="input-group">
@@ -385,7 +360,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
       </div>
       <div id="validationInputGroupFeedback" class="invalid-feedback">Please choose a username</div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6">
       <label class="form-label" for="validationChipInput">Tags</label>
       <div class="combobox-control" data-bs-toggle="combobox" data-bs-multiple="true" data-bs-allow-custom="true">
@@ -393,7 +367,6 @@ Choose a state and feedback style. Focus the adorned input to see its border and
       </div>
       <div id="validationChipInputFeedback" class="invalid-feedback">Please add at least one tag</div>
     </div>
-
     <div class="form-field g-col-12 sm:g-col-6">
       <span class="form-label" id="validationComboboxLabel">Combobox button</span>
       <button type="button" class="form-control combobox-toggle is-invalid" data-bs-toggle="combobox"
@@ -419,8 +392,8 @@ We don’t recommend using tooltips for checkboxes, radios, and switches because
 
 This example functions the same as the [custom styles example](#custom-styles). Click the submit button to see the validation tooltips.
 
-<Example code={`<form class="grid grid-cols-1 gap-5" data-bs-validate novalidate><!-- [!code highlight] -->
-    <div class="grid gap-5">
+<Example code={`<form class="grid grid-cols-1 gap-4" data-bs-validate novalidate><!-- [!code highlight] -->
+    <div class="grid gap-4">
       <div class="form-field md:g-col-6">
         <label for="validationTooltip01" class="form-label">Name</label>
         <input type="text" class="form-control" id="validationTooltip01" value="Mark Otto" required aria-describedby="validationTooltip01Feedback">
@@ -435,14 +408,12 @@ This example functions the same as the [custom styles example](#custom-styles). 
         <div id="validationTooltipDonationFeedback" class="tooltip invalid-tooltip">Please enter a donation amount</div><!-- [!code highlight] -->
       </div>
     </div>
-
     <div class="form-field">
       <label for="validationTooltipAddress" class="form-label">Address</label>
       <input type="text" class="form-control" id="validationTooltipAddress" value="1234 Main St" required aria-describedby="validationTooltipAddressFeedback">
       <div id="validationTooltipAddressFeedback" class="tooltip invalid-tooltip">Please enter a mailing address</div><!-- [!code highlight] -->
     </div>
-
-    <div class="grid gap-5">
+    <div class="grid gap-4">
       <div class="form-field md:g-col-6">
         <label for="validationTooltip03" class="form-label">City</label>
         <input type="text" class="form-control" id="validationTooltip03" required aria-describedby="validationTooltip03Feedback">
@@ -462,10 +433,9 @@ This example functions the same as the [custom styles example](#custom-styles). 
         <div id="validationTooltip05Feedback" class="tooltip invalid-tooltip">Required</div><!-- [!code highlight] -->
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-label">Shipping method</label>
-      <div class="form-field mb-1">
+      <div class="form-field">
         <input type="radio" id="validationTooltipRadio1" class="radio" name="shippingTooltip" required>
         <div class="form-field-content">
           <label for="validationTooltipRadio1">Standard</label>
@@ -481,14 +451,12 @@ This example functions the same as the [custom styles example](#custom-styles). 
         </div>
       </div>
     </div>
-
     <div class="form-field">
       <div class="switch">
         <input type="checkbox" id="validationTooltipSwitch" role="switch" switch>
       </div>
       <label for="validationTooltipSwitch">Subscribe to newsletter</label>
     </div>
-
     <button class="btn-solid theme-primary justify-self-start" type="submit">Submit form</button>
   </form>`} />
 

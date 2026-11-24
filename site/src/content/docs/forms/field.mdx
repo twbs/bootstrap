@@ -168,7 +168,7 @@ When a check, radio, or switch needs a field title above it, add a `.form-label`
 
 Add a `<small class="form-text">` after the label and wrap it in a `.form-field-content` to ensure appropriate spacing and alignment.
 
-<Example class="d-flex flex-column gap-3" code={`<div class="form-field">
+<Example class="d-flex flex-column gap-4" code={`<div class="form-field">
     <input type="checkbox" id="fieldCheckDesc" class="check" />
     <div class="form-field-content">
       <label for="fieldCheckDesc">Subscribe to updates</label>
@@ -196,7 +196,7 @@ Validation feedback (`.invalid-feedback`, `.valid-feedback`) stacks correctly in
 
 Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` styling. These pseudo-classes activate after the user interacts with a control. To also show success styling on valid fields, use `data-bs-validate="valid"`. Add `novalidate` to suppress native browser validation tooltips while keeping the constraint validation API available.
 
-<Example code={`<form class="vstack gap-3" data-bs-validate novalidate><!-- [!code highlight] -->
+<Example code={`<form class="vstack gap-4" data-bs-validate novalidate><!-- [!code highlight] -->
     <div class="form-field flex-1">
       <label for="fieldValidateEmail" class="form-label">Email address</label>
       <input type="email" class="form-control" id="fieldValidateEmail" required>
@@ -217,22 +217,22 @@ Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` styling. Th
 
 Apply `.is-invalid` or `.is-valid` directly to the control for server-side validation. Feedback is visible immediately on page load.
 
-<Example code={`<div class="form-field mb-3">
+<Example code={`<div class="form-field mb-4">
     <label for="fieldServerEmail" class="form-label">Email address</label>
     <input type="email" class="form-control is-invalid" id="fieldServerEmail" value="not-an-email" required>
     <div class="invalid-feedback">Please enter a valid email address.</div>
   </div>
-  <div class="form-field mb-3">
+  <div class="form-field mb-4">
     <label for="fieldServerName" class="form-label">Full name</label>
     <input type="text" class="form-control is-valid" id="fieldServerName" value="Mark Otto" required>
     <div class="valid-feedback">Looks good!</div>
   </div>
-  <div class="form-field mb-3">
+  <div class="form-field mb-4">
     <input type="checkbox" id="fieldServerCheck" class="check is-invalid" required>
     <label for="fieldServerCheck">Agree to terms and conditions</label>
     <div class="invalid-feedback">You must agree before submitting.</div>
   </div>
-  <div class="form-field mb-3">
+  <div class="form-field mb-4">
     <div class="switch">
       <input type="checkbox" id="fieldServerSwitch" role="switch" switch class="is-invalid">
     </div>
