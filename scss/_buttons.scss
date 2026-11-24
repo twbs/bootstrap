@@ -100,6 +100,15 @@
     }
   }
 
+  .btn-check:checked:focus-visible + & {
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
+    } @else {
+      box-shadow: var(--#{$prefix}btn-focus-box-shadow);
+    }
+  }
+
   &:disabled,
   &.disabled,
   fieldset:disabled & {

@@ -39,7 +39,7 @@
   // Prevent double borders when buttons are next to each other
   > :not(.btn-check:first-child) + .btn,
   > .btn-group:not(:first-child) {
-    margin-left: calc(#{$btn-border-width} * -1); // stylelint-disable-line function-disallowed-list
+    margin-left: calc(-1 * #{$btn-border-width}); // stylelint-disable-line function-disallowed-list
   }
 
   // Reset rounded corners
@@ -126,7 +126,7 @@
 
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) {
-    margin-top: calc(#{$btn-border-width} * -1); // stylelint-disable-line function-disallowed-list
+    margin-top: calc(-1 * #{$btn-border-width}); // stylelint-disable-line function-disallowed-list
   }
 
   // Reset rounded corners
@@ -135,7 +135,12 @@
     @include border-bottom-radius(0);
   }
 
-  > .btn ~ .btn,
+  // The top radius should be 0 if the button is:
+  // - the "third or more" child
+  // - the second child and the previous element isn't `.btn-check` (making it the first child visually)
+  // - part of a btn-group which isn't the first child
+  > .btn:nth-child(n + 3),
+  > :not(.btn-check) + .btn,
   > .btn-group:not(:first-child) > .btn {
     @include border-top-radius(0);
   }

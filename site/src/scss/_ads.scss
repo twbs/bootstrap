@@ -1,0 +1,62 @@
+// stylelint-disable declaration-no-important, selector-max-id
+
+//
+// Carbon ads
+//
+
+#carbonads {
+  position: static;
+  max-width: 400px;
+  padding: 15px 15px 15px 160px;
+  margin: 1rem 0;
+  overflow: hidden;
+  @include font-size(.8125rem);
+  line-height: 1.4;
+  text-align: left;
+  background-color: var(--bs-tertiary-bg);
+
+  a {
+    color: var(--bs-body-color);
+    text-decoration: none;
+  }
+
+  @include media-breakpoint-up(sm) {
+    @include border-radius(.5rem);
+  }
+}
+
+.carbon-img {
+  float: left;
+  margin-left: -145px;
+}
+
+@container (max-width: 240px) {
+  #carbonads {
+    padding-left: 15px;
+  }
+
+  .carbon-img {
+    display: block;
+    float: none;
+    margin-left: 0;
+  }
+
+  .carbon-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .carbon-img > img {
+    width: 100%;
+    max-width: 100% !important;
+    height: auto;
+    @include border-radius(var(--bs-border-radius-sm));
+  }
+}
+
+.carbon-poweredby {
+  display: block;
+  margin-top: .75rem;
+  color: var(--bs-fg-3) !important;
+}

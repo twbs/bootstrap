@@ -135,7 +135,6 @@ class Toast extends BaseComponent {
   }
 
   // Private
-
   _maybeScheduleHide() {
     if (!this._config.autohide) {
       return

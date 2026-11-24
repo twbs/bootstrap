@@ -2,7 +2,9 @@ import Carousel from '../../src/carousel.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import { isRTL, noop } from '../../src/util/index.js'
 import Swipe from '../../src/util/swipe.js'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
+import {
+  clearFixture, createEvent, getFixture, jQueryMock
+} from '../helpers/fixture.js'
 
 describe('Carousel', () => {
   const { Simulator, PointerEvent } = window
@@ -872,6 +874,35 @@ describe('Carousel', () => {
         })
 
         carousel.next()
+      })
+    })
+
+    it('should update indicators even if none is active', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="myCarousel" class="carousel slide">',
+          '  <div class="carousel-indicators">',
+          '    <button type="button" data-bs-target="myCarousel" data-bs-slide-to="0" aria-label="Slide 1"></button>',
+          '    <button type="button" id="secondIndicator" data-bs-target="myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>',
+          '  </div>',
+          '  <div class="carousel-inner">',
+          '    <div class="carousel-item active">item 1</div>',
+          '    <div class="carousel-item">item 2</div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const carouselEl = fixtureEl.querySelector('#myCarousel')
+        const secondIndicator = fixtureEl.querySelector('#secondIndicator')
+        const carousel = new Carousel(carouselEl)
+
+        carouselEl.addEventListener('slid.bs.carousel', () => {
+          expect(secondIndicator).toHaveClass('active')
+          expect(secondIndicator.getAttribute('aria-current')).toEqual('true')
+          resolve()
+        })
+
+        expect(() => carousel.next()).not.toThrow()
       })
     })
 

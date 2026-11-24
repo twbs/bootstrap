@@ -143,7 +143,7 @@ class TemplateFactory extends Config {
   }
 
   _resolvePossibleFunction(arg) {
-    return execute(arg, [this])
+    return execute(arg, [undefined, this])
   }
 
   _putElementInTemplate(element, templateElement) {

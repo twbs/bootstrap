@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap tooltip.js v5.3.2 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap tooltip.js v5.3.9 (https://getbootstrap.com/)
+  * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -115,7 +115,7 @@
   class Tooltip extends BaseComponent {
     constructor(element, config) {
       if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
+        throw new TypeError('Bootstrap\'s tooltips require Popper (https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md)');
       }
       super(element, config);
 
@@ -161,7 +161,6 @@
       if (!this._isEnabled) {
         return;
       }
-      this._activeTrigger.click = !this._activeTrigger.click;
       if (this._isShown()) {
         this._leave();
         return;
@@ -349,7 +348,7 @@
       return offset;
     }
     _resolvePossibleFunction(arg) {
-      return index_js.execute(arg, [this._element]);
+      return index_js.execute(arg, [this._element, this._element]);
     }
     _getPopperConfig(attachment) {
       const defaultBsPopperConfig = {
@@ -387,7 +386,7 @@
       };
       return {
         ...defaultBsPopperConfig,
-        ...index_js.execute(this._config.popperConfig, [defaultBsPopperConfig])
+        ...index_js.execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
       };
     }
     _setListeners() {
@@ -396,6 +395,7 @@
         if (trigger === 'click') {
           EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK), this._config.selector, event => {
             const context = this._initializeOnDelegatedTarget(event);
+            context._activeTrigger[TRIGGER_CLICK] = !(context._isShown() && context._activeTrigger[TRIGGER_CLICK]);
             context.toggle();
           });
         } else if (trigger !== TRIGGER_MANUAL) {
@@ -463,6 +463,16 @@
     }
     _getConfig(config) {
       const dataAttributes = Manipulator.getDataAttributes(this._element);
+
+      // Read text attributes without coercing their values.
+      const title = this._element.getAttribute('data-bs-title');
+      const content = this._element.getAttribute('data-bs-content');
+      if (title !== null) {
+        dataAttributes.title = title;
+      }
+      if (content !== null) {
+        dataAttributes.content = content;
+      }
       for (const dataAttribute of Object.keys(dataAttributes)) {
         if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {
           delete dataAttributes[dataAttribute];

@@ -157,7 +157,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 
   @each $color in $foregrounds {
     $contrast-ratio: contrast-ratio($background, $color);
-    @if $contrast-ratio > $min-contrast-ratio {
+    @if $contrast-ratio >= $min-contrast-ratio {
       @return $color;
     } @else if $contrast-ratio > $max-ratio {
       $max-ratio: $contrast-ratio;
@@ -177,7 +177,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
 }
 
-// Return WCAG2.1 relative luminance
+// Return WCAG2.2 relative luminance
 // See https://www.w3.org/TR/WCAG/#dfn-relative-luminance
 // See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
 @function luminance($color) {

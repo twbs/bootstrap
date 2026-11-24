@@ -1,17 +1,23 @@
 @mixin box-shadow($shadow...) {
   @if $enable-shadows {
     $result: ();
+    $has-single-value: false;
+    $single-value: null;
 
     @each $value in $shadow {
       @if $value != null {
-        $result: append($result, $value, "comma");
-      }
-      @if $value == none and length($shadow) > 1 {
-        @warn "The keyword 'none' must be used as a single argument.";
+        @if $value == none or $value == initial or $value == inherit or $value == unset {
+          $has-single-value: true;
+          $single-value: $value;
+        } @else {
+          $result: append($result, $value, "comma");
+        }
       }
     }
 
-    @if (length($result) > 0) {
+    @if $has-single-value {
+      box-shadow: $single-value;
+    } @else if (length($result) > 0) {
       box-shadow: $result;
     }
   }

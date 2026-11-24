@@ -54,6 +54,7 @@ const uriAttributes = new Set([
   'longdesc',
   'poster',
   'src',
+  'srcset',
   'xlink:href'
 ])
 
@@ -63,15 +64,60 @@ const uriAttributes = new Set([
  *
  * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
  */
-// eslint-disable-next-line unicorn/better-regex
 const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i
+
+const isSafeUrl = url => Boolean(SAFE_URL_PATTERN.test(url))
+
+// Follow the HTML srcset token boundaries. A comma inside a URL stays
+// part of the URL. A comma inside descriptor parentheses stays in the descriptor.
+const isSafeSrcset = value => {
+  const separators = /[,\t\n\f\r ]+/y
+  const urlToken = /[^\t\n\f\r ]+/y
+  const descriptors = /(?:[^,(]|\([^)]*(?:\)|$))+/y
+  let position = 0
+  let hasUrl = false
+
+  while (position < value.length) {
+    separators.lastIndex = position
+    if (separators.test(value)) {
+      position = separators.lastIndex
+    }
+
+    if (position === value.length) {
+      break
+    }
+
+    urlToken.lastIndex = position
+    const [url] = urlToken.exec(value)
+    position = urlToken.lastIndex
+
+    if (!isSafeUrl(url.replace(/,+$/, ''))) {
+      return false
+    }
+
+    hasUrl = true
+
+    if (!url.endsWith(',')) {
+      descriptors.lastIndex = position
+      if (descriptors.test(value)) {
+        position = descriptors.lastIndex
+      }
+    }
+  }
+
+  return hasUrl
+}
 
 const allowedAttribute = (attribute, allowedAttributeList) => {
   const attributeName = attribute.nodeName.toLowerCase()
 
   if (allowedAttributeList.includes(attributeName)) {
+    if (attributeName === 'srcset') {
+      return isSafeSrcset(attribute.nodeValue)
+    }
+
     if (uriAttributes.has(attributeName)) {
-      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue))
+      return isSafeUrl(attribute.nodeValue)
     }
 
     return true
@@ -91,8 +137,25 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
     return sanitizeFunction(unsafeHtml)
   }
 
-  const domParser = new window.DOMParser()
-  const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
+  // Fail closed if the parser is missing, clobbered, or throws. Returning the
+  // original string here would skip sanitization (the Bootstrap 3 DOM-clobber
+  // pattern). Returning an empty string drops the HTML instead.
+  let createdDocument
+
+  try {
+    if (typeof window.DOMParser !== 'function') {
+      return ''
+    }
+
+    createdDocument = new window.DOMParser().parseFromString(unsafeHtml, 'text/html')
+
+    if (!createdDocument || !createdDocument.body) {
+      return ''
+    }
+  } catch {
+    return ''
+  }
+
   const elements = [].concat(...createdDocument.body.querySelectorAll('*'))
 
   for (const element of elements) {

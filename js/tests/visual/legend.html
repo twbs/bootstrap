@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Legend</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Legend <small>Bootstrap Visual Test</small></h1>
+
+      <h2>Horizontal form</h2>
+      <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Options</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="options" id="option" checked>
+            <label class="form-check-label" for="option">First option</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <h2>Fieldset border</h2>
+      <fieldset class="border mb-3">
+        <legend class="border-bottom">Legend inside the border</legend>
+        <div class="d-flex">Flex content below the legend</div>
+      </fieldset>
+
+      <h2>Table layout timing</h2>
+      <button id="measure" type="button" class="btn btn-primary">Measure table layout</button>
+      <output id="timing"></output>
+      <div id="table-container" class="overflow-auto"></div>
+    </main>
+
+    <script>
+      function createTable(rowCount, columnCount) {
+        const table = document.createElement('table')
+        const body = table.createTBody()
+
+        for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+          const row = body.insertRow()
+          for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+            row.insertCell().textContent = 'Text'
+          }
+        }
+
+        return table
+      }
+
+      document.querySelector('#table-container').append(createTable(100, 108))
+
+      document.querySelector('#measure').addEventListener('click', () => {
+        const container = document.createElement('div')
+        const table = createTable(100, 1)
+        container.append(table)
+
+        const start = performance.now()
+        for (let i = 0; i < 103; i++) {
+          document.body.prepend(container)
+          table.getBoundingClientRect()
+          container.remove()
+        }
+
+        document.querySelector('#timing').value = `${Math.round(performance.now() - start)} ms`
+      })
+    </script>
+  </body>
+</html>

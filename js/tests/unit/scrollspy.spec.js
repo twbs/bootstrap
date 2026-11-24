@@ -1,6 +1,8 @@
 import EventHandler from '../../src/dom/event-handler.js'
 import ScrollSpy from '../../src/scrollspy.js'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
+import {
+  clearFixture, createEvent, getFixture, jQueryMock
+} from '../helpers/fixture.js'
 
 describe('ScrollSpy', () => {
   let fixtureEl
@@ -939,6 +941,24 @@ describe('ScrollSpy', () => {
         done()
       }, 100)
       link.click()
+    })
+
+    it('should smoothScroll when clicking an element nested in an anchor', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const div = fixtureEl.querySelector('.content')
+      const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
+      const observable = fixtureEl.querySelector('#div-jsm-1')
+      const clickSpy = getElementScrollSpy(div)
+      link.innerHTML = '<span>div 1</span>'
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        offset: 1,
+        smoothScroll: true
+      })
+
+      link.querySelector('span').click()
+      expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
     })
 
     it('should smoothscroll to observable with anchor link that contains a french word as id', done => {

@@ -2,7 +2,9 @@ import EventHandler from '../../src/dom/event-handler.js'
 import Offcanvas from '../../src/offcanvas.js'
 import { isVisible } from '../../src/util/index.js'
 import ScrollBarHelper from '../../src/util/scrollbar.js'
-import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
+import {
+  clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock
+} from '../helpers/fixture.js'
 
 describe('Offcanvas', () => {
   let fixtureEl
@@ -618,6 +620,52 @@ describe('Offcanvas', () => {
       expect(spyDeactivate).toHaveBeenCalled()
       expect(offCanvas._focustrap).toBeNull()
       expect(Offcanvas.getInstance(offCanvasEl)).toBeNull()
+    })
+
+    for (const phase of ['opening', 'open', 'closing']) {
+      it(`should restore scrolling when disposed while ${phase}`, () => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+        document.body.style.overflow = 'auto'
+
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        const hiddenSpy = jasmine.createSpy('hidden')
+
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', hiddenSpy)
+        offCanvas.show()
+
+        if (phase !== 'opening') {
+          offCanvasEl.dispatchEvent(createEvent('transitionend'))
+        }
+
+        if (phase === 'closing') {
+          offCanvas.hide()
+        }
+
+        expect(document.body.style.overflow).toEqual('hidden')
+        offCanvas.dispose()
+        offCanvasEl.dispatchEvent(createEvent('transitionend'))
+
+        expect(document.body.style.overflow).toEqual('auto')
+        expect(offCanvasEl.className).toEqual('offcanvas')
+        expect(offCanvasEl.hasAttribute('aria-modal')).toBeFalse()
+        expect(offCanvasEl.hasAttribute('role')).toBeFalse()
+        expect(hiddenSpy).not.toHaveBeenCalled()
+      })
+    }
+
+    it('should preserve body overflow when disposing with scroll enabled', () => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+      document.body.style.overflow = 'auto'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl, { scroll: true })
+
+      offCanvas.show()
+      offCanvas.dispose()
+      offCanvasEl.dispatchEvent(createEvent('transitionend'))
+
+      expect(document.body.style.overflow).toEqual('auto')
     })
   })
 

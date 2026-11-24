@@ -8,7 +8,9 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-import { defineJQueryPlugin, getElement, isDisabled, isVisible } from './util/index.js'
+import {
+  defineJQueryPlugin, getElement, isDisabled, isVisible
+} from './util/index.js'
 
 /**
  * Constants
@@ -131,7 +133,7 @@ class ScrollSpy extends BaseComponent {
     EventHandler.off(this._config.target, EVENT_CLICK)
 
     EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
-      const observableSection = this._observableSections.get(event.target.hash)
+      const observableSection = this._observableSections.get(event.delegateTarget.hash)
       if (observableSection) {
         event.preventDefault()
         const root = this._rootElement || window

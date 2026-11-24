@@ -1,1 +1,0 @@
-**All API methods are asynchronous and start a transition.** They return to the caller as soon as the transition is started, but before it ends. In addition, a method call on a transitioning component will be ignored. [Learn more in our JavaScript docs.](/docs/{{ .Site.Params.docs_version }}/getting-started/javascript/#asynchronous-functions-and-transitions)

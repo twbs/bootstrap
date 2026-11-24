@@ -51,6 +51,7 @@
         "SwitchCase": 1
       }
     ],
+    "logical-assignment-operators": "off",
     "max-params": [
       "warn",
       5
@@ -75,6 +76,7 @@
       "error",
       "after"
     ],
+    "prefer-object-has-own": "off",
     "prefer-template": "error",
     "semi": [
       "error",
@@ -83,6 +85,7 @@
     "strict": "error",
     "unicorn/explicit-length-check": "off",
     "unicorn/filename-case": "off",
+    "unicorn/no-anonymous-default-export": "off",
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-method-this-argument": "off",
     "unicorn/no-null": "off",
@@ -92,10 +95,13 @@
     "unicorn/prefer-array-flat": "off",
     "unicorn/prefer-at": "off",
     "unicorn/prefer-dom-node-dataset": "off",
+    "unicorn/prefer-global-this": "off",
     "unicorn/prefer-module": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prefer-spread": "off",
+    "unicorn/prefer-string-raw": "off",
     "unicorn/prefer-string-replace-all": "off",
+    "unicorn/prefer-structured-clone": "off",
     "unicorn/prevent-abbreviations": "off"
   },
   "overrides": [
@@ -197,6 +203,20 @@
     },
     {
       "files": [
+        "site/src/assets/application.js",
+        "site/src/assets/partials/*.js",
+        "site/src/assets/search.js",
+        "site/src/assets/snippets.js",
+        "site/src/assets/stackblitz.js",
+        "site/src/plugins/*.js"
+      ],
+      "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2020
+      }
+    },
+    {
+      "files": [
         "**/*.md"
       ],
       "plugins": [
@@ -206,9 +226,10 @@
     },
     {
       "files": [
-        "**/*.md/*.js"
+        "**/*.md/*.js",
+        "**/*.md/*.mjs"
       ],
-      "extends": "plugin:markdown/recommended",
+      "extends": "plugin:markdown/recommended-legacy",
       "parserOptions": {
         "sourceType": "module"
       },

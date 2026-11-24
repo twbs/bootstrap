@@ -489,13 +489,24 @@ fieldset {
   border: 0; // 2
 }
 
+// Float the legend so the fieldset border can wrap around it.
+
 legend {
+  float: left;
   width: 100%;
   padding: 0;
   margin-bottom: $legend-margin-bottom;
-  @include font-size($legend-font-size);
   font-weight: $legend-font-weight;
   line-height: inherit;
+  @include font-size($legend-font-size);
+}
+
+// Clear the float for wide content after the legend.
+// Limit this rule to fieldsets to avoid slow layout after DOM changes.
+// See https://github.com/twbs/bootstrap/issues/29712 and https://github.com/twbs/bootstrap/issues/39428
+
+fieldset > legend + * {
+  clear: left;
 }
 
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
@@ -503,7 +514,7 @@ legend {
 
 ::-webkit-datetime-edit-fields-wrapper,
 ::-webkit-datetime-edit-text,
-::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-minute-field,
 ::-webkit-datetime-edit-hour-field,
 ::-webkit-datetime-edit-day-field,
 ::-webkit-datetime-edit-month-field,
@@ -524,6 +535,12 @@ legend {
 [type="search"] {
   -webkit-appearance: textfield; // 1
   outline-offset: -2px; // 2
+
+  // 3. Better affordance and consistent appearance for search cancel button
+  &::-webkit-search-cancel-button {
+    cursor: pointer;
+    filter: grayscale(1);
+  }
 }
 
 // 1. A few input types should stay LTR

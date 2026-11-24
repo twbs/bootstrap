@@ -19,12 +19,17 @@
   &:not(caption) {
     position: absolute !important;
   }
+
+  // Fix to prevent overflowing children to become focusable
+  * {
+    overflow: hidden !important;
+  }
 }
 
 // Use to only display content when it's focused, or one of its child elements is focused
 // (i.e. when focus is within the element/container that the class was applied to)
 //
-// Useful for "Skip to main content" links; see https://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Useful for "Skip to main content" links; see https://www.w3.org/WAI/WCAG22/Techniques/general/G1.html
 
 @mixin visually-hidden-focusable() {
   &:not(:focus):not(:focus-within) {

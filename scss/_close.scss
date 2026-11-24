@@ -12,7 +12,6 @@
   --#{$prefix}btn-close-focus-shadow: #{$btn-close-focus-shadow};
   --#{$prefix}btn-close-focus-opacity: #{$btn-close-focus-opacity};
   --#{$prefix}btn-close-disabled-opacity: #{$btn-close-disabled-opacity};
-  --#{$prefix}btn-close-white-filter: #{$btn-close-white-filter};
   // scss-docs-end close-css-vars
 
   box-sizing: content-box;
@@ -21,6 +20,7 @@
   padding: $btn-close-padding-y $btn-close-padding-x;
   color: var(--#{$prefix}btn-close-color);
   background: transparent var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat; // include transparent for button elements
+  filter: var(--#{$prefix}btn-close-filter);
   border: 0; // for button elements
   @include border-radius();
   opacity: var(--#{$prefix}btn-close-opacity);
@@ -47,17 +47,20 @@
 }
 
 @mixin btn-close-white() {
-  filter: var(--#{$prefix}btn-close-white-filter);
+  --#{$prefix}btn-close-filter: #{$btn-close-filter-dark};
 }
 
 .btn-close-white {
   @include btn-close-white();
 }
 
+:root,
+[data-bs-theme="light"] {
+  --#{$prefix}btn-close-filter: #{$btn-close-filter};
+}
+
 @if $enable-dark-mode {
-  @include color-mode(dark) {
-    .btn-close {
-      @include btn-close-white();
-    }
+  @include color-mode(dark, true) {
+    @include btn-close-white();
   }
 }
