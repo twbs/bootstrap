@@ -100,7 +100,7 @@ export default {
   output: './css/bootstrap.purged.css',
   // Bootstrap 6 uses ":" in class names (e.g. `md:d-none`, `hover:opacity-50`),
   // so the extractor must keep colons and slashes.
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+  defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
   safelist: {
     // Classes added at runtime by Bootstrap's JS that never appear in your HTML
     standard: ['show', 'active', 'hiding', 'dialog-open'],
