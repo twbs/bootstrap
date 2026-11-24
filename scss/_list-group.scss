@@ -154,9 +154,32 @@
         }
       }
     }
+
+    // Horizontal flush list items
+    //
+    // Remove borders and border-radius to keep horizontal list group items edge-to-edge. Most
+    // useful within other components (e.g., cards).
+
+    .list-group-flush.list-group-horizontal#{$infix} {
+
+      > .list-group-item {
+        border-width: 0 var(--#{$prefix}list-group-border-width) 0 0;
+
+        &:first-child:not(:last-child) {
+          @include border-bottom-start-radius(0);
+        }
+
+        &:last-child:not(:first-child) {
+          @include border-top-end-radius(0);
+        }
+
+        &:last-child {
+          border-right-width: 0;
+        }
+      }
+    }
   }
 }
-
 
 // Flush list items
 //
@@ -174,7 +197,6 @@
     }
   }
 }
-
 
 // scss-docs-start list-group-modifiers
 // List group contextual variants
