@@ -71,16 +71,17 @@ const isSafeUrl = url => Boolean(SAFE_URL_PATTERN.test(url))
 // Follow the HTML srcset token boundaries. A comma inside a URL stays
 // part of the URL. A comma inside descriptor parentheses stays in the descriptor.
 const isSafeSrcset = value => {
-  const separators = /[,\t\n\f\r ]*/y
+  const separators = /[,\t\n\f\r ]+/y
   const urlToken = /[^\t\n\f\r ]+/y
-  const descriptors = /(?:[^,(]|\([^)]*(?:\)|$))*(?:,|$)/y
+  const descriptors = /(?:[^,(]|\([^)]*(?:\)|$))+/y
   let position = 0
   let hasUrl = false
 
   while (position < value.length) {
     separators.lastIndex = position
-    separators.test(value)
-    position = separators.lastIndex
+    if (separators.test(value)) {
+      position = separators.lastIndex
+    }
 
     if (position === value.length) {
       break
@@ -98,8 +99,9 @@ const isSafeSrcset = value => {
 
     if (!url.endsWith(',')) {
       descriptors.lastIndex = position
-      descriptors.test(value)
-      position = descriptors.lastIndex
+      if (descriptors.test(value)) {
+        position = descriptors.lastIndex
+      }
     }
   }
 
