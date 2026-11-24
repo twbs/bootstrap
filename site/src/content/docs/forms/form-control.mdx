@@ -19,7 +19,7 @@ Form control styles are available for most textual inputs (including date and ti
 
 Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your inputs with a label, description, and validation feedback messages in a vertical stack.
 
-<Example class="vstack gap-3" code={`<div class="form-field">
+<Example code={`<div class="form-field">
     <label for="exampleFormControlInput1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
     <div class="form-text">
@@ -112,7 +112,7 @@ And for textareas:
 
 And for selects:
 
-<Example class="vstack gap-3" code={`<div>
+<Example class="vstack gap-4" code={`<div>
     <label for="sizesSelectSmall" class="form-label">Small select</label>
     <select class="form-control form-control-sm" id="sizesSelectSmall">
       <option>Open this select menu</option>
@@ -235,7 +235,7 @@ Nearly all input types are supported, but not all are documented here. Input typ
 
 No additional classes are needed for date and time inputs. Exact functionality and appearance are dependent on the browser and operating system. However, you can also use [our datepicker component]([[docsref:/forms/datepicker]]) to create a more consistent experience across browsers with JavaScript.
 
-<Example class="vstack gap-3" code={`<input type="datetime-local" class="form-control" aria-label="Date and time picker" value="2026-02-24T13:00">
+<Example class="vstack gap-4" code={`<input type="datetime-local" class="form-control" aria-label="Date and time picker" value="2026-02-24T13:00">
 <input type="datetime-local" class="form-control" aria-label="Date and time picker with seconds" value="2026-02-24T13:00:30" step="1">
 <input type="datetime-local" class="form-control" aria-label="Date and time picker with milliseconds" value="2026-02-24T13:00:30.500" step="0.001">
 <input type="date" class="form-control" aria-label="Date picker" value="2026-02-24">
