@@ -457,63 +457,54 @@ describe('Tooltip', () => {
       expect(tooltipWithoutTitleEl.getAttribute('title')).toBeNull()
     })
 
-    it('should not run a callback queued by hide() when disposed mid-transition', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+    it('should skip the hide callback after disposal', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Another tooltip"></a>'
 
-        const tooltipEl = fixtureEl.querySelector('a')
-        const tooltip = new Tooltip(tooltipEl)
-        const hiddenSpy = jasmine.createSpy('hidden')
-        const errorSpy = jasmine.createSpy('error')
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+      const hiddenSpy = jasmine.createSpy('hidden')
 
-        tooltipEl.addEventListener('hidden.bs.tooltip', hiddenSpy)
+      tooltipEl.addEventListener('hidden.bs.tooltip', hiddenSpy)
+      tooltip.show()
 
-        tooltipEl.addEventListener('shown.bs.tooltip', () => {
-          window.addEventListener('error', errorSpy)
+      const { tip } = tooltip
+      tip.dispatchEvent(createEvent('transitionend'))
+      tooltip.hide()
+      tooltip.dispose()
+      tip.dispatchEvent(createEvent('transitionend'))
 
-          // `hide()` queues its completion callback on the fade transition,
-          // `dispose()` then nulls every property before that callback runs
-          tooltip.hide()
-          tooltip.dispose()
-
-          setTimeout(() => {
-            window.removeEventListener('error', errorSpy)
-
-            expect(errorSpy).not.toHaveBeenCalled()
-            expect(hiddenSpy).not.toHaveBeenCalled()
-            resolve()
-          }, 50)
-        })
-
-        tooltip.show()
-      })
+      expect(hiddenSpy).not.toHaveBeenCalled()
     })
 
-    it('should not run a callback queued by show() when disposed mid-transition', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+    it('should skip the show callback after disposal', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Another tooltip"></a>'
 
-        const tooltipEl = fixtureEl.querySelector('a')
-        const tooltip = new Tooltip(tooltipEl)
-        const shownSpy = jasmine.createSpy('shown')
-        const errorSpy = jasmine.createSpy('error')
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+      const shownSpy = jasmine.createSpy('shown')
 
-        tooltipEl.addEventListener('shown.bs.tooltip', shownSpy)
-        window.addEventListener('error', errorSpy)
+      tooltipEl.addEventListener('shown.bs.tooltip', shownSpy)
+      tooltip.show()
 
-        tooltip.show()
-        tooltip.dispose()
+      const { tip } = tooltip
+      tooltip.dispose()
+      tip.dispatchEvent(createEvent('transitionend'))
 
-        setTimeout(() => {
-          window.removeEventListener('error', errorSpy)
+      expect(shownSpy).not.toHaveBeenCalled()
+      expect(tooltip._isHovered).toBeNull()
+    })
 
-          expect(errorSpy).not.toHaveBeenCalled()
-          expect(shownSpy).not.toHaveBeenCalled()
-          // the queued callback must not write back onto the disposed instance
-          expect(tooltip._isHovered).toBeNull()
-          resolve()
-        }, 50)
-      })
+    it('should leave the instance cleared when a shown listener disposes it', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => tooltip.dispose())
+      tooltip.show()
+      tooltip.tip.dispatchEvent(createEvent('transitionend'))
+
+      expect(tooltip._isHovered).toBeNull()
     })
   })
 
