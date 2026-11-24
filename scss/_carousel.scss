@@ -1,6 +1,7 @@
 @use "config" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/transition" as *;
 @use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
@@ -147,6 +148,9 @@ $carousel-tokens: defaults(
     height: var(--carousel-control-icon-width);
     background-color: currentcolor;
     @include mask-icon($size: 100% 100%, $position: 50%);
+    @include forced-colors() {
+      background-color: CanvasText;
+    }
   }
 
   .carousel-icon-prev {
