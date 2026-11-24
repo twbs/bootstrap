@@ -65,6 +65,37 @@ $test-breakpoints: (
   }
 
   @include describe("responsive") {
+    @include it("escapes fractional class suffixes at each breakpoint") {
+      $test-utilities: (
+        padding: (
+          property: padding,
+          class: p,
+          responsive: true,
+          values: (1.5: .375rem)
+        )
+      );
+
+      @include assert() {
+        @include output() {
+          @include generate-utilities-loop($test-utilities, $test-breakpoints);
+        }
+
+        @include expect() {
+          // stylelint-disable-next-line selector-class-pattern -- The decimal point is part of the class name.
+          .p-1\.5 {
+            padding: .375rem;
+          }
+
+          @media (width >= 576px) {
+            // stylelint-disable-next-line selector-class-pattern -- The decimal point is part of the class name.
+            .sm\:p-1\.5 {
+              padding: .375rem;
+            }
+          }
+        }
+      }
+    }
+
     @include it("generates responsive classes only for utilities with responsive: true") {
       $test-utilities: (
         opacity: (

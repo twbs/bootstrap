@@ -2,6 +2,7 @@
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
+@use "../functions" as *;
 @use "../layout/breakpoints" as bp;
 
 // Utility generator
@@ -195,6 +196,7 @@
     // Don't add a dash before value key if value key is null (e.g. with shadow class)
     $custom-class-modifier: "";
     @if $key {
+      $key: escape-numeric-key($key);
       @if $custom-class == "" {
         $custom-class-modifier: $key;
       } @else {

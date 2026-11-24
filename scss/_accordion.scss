@@ -23,8 +23,8 @@ $accordion-tokens: defaults(
     --accordion-panel-transition-timing: ease,
     --accordion-border-color: var(--border-color),
     --accordion-border-width: var(--border-width),
-    --accordion-border-radius: var(--accordion-radius, var(--radius-7)),
-    --accordion-gap: var(--spacer-2),
+    --accordion-border-radius: var(--accordion-radius, var(--radius-6)),
+    --accordion-gap: var(--spacer-1-5),
     --accordion-btn-color: var(--fg-2),
     --accordion-btn-bg: var(--bg-body),
     --accordion-btn-icon-width: 1rem,
@@ -179,7 +179,7 @@ $accordion-tokens: defaults(
     // scss-docs-start accordion-sm-css-vars
     --accordion-padding-x: .875rem;
     --accordion-padding-y: .625rem;
-    --accordion-border-radius: var(--radius-5);
+    --accordion-border-radius: var(--radius-4);
     --accordion-font-size: var(--font-size-sm);
     // scss-docs-end accordion-sm-css-vars
   }

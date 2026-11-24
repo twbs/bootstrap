@@ -2,6 +2,7 @@
 @use "sass:map";
 @use "sass:math";
 @use "../config" as *;
+@use "../functions" as *;
 @use "../layout/breakpoints" as *;
 
 // Grid system
@@ -122,6 +123,7 @@
       //
       // Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
       @each $key, $value in $gutters {
+        $key: escape-numeric-key($key);
         .#{$prefix}g-#{$key},
         .#{$prefix}gx-#{$key} {
           // stylelint-disable-next-line scss/at-function-named-arguments

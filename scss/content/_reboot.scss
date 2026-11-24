@@ -13,15 +13,15 @@ $reboot-mark-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $type-tokens: defaults(
   (
-    --heading-margin-bottom: var(--spacer-2),
+    --heading-margin-bottom: var(--spacer-1-5),
     --heading-font-family: null,
     --heading-font-style: null,
     --heading-line-height: 1.2,
     --paragraph-margin-bottom: var(--spacer),
-    --legend-margin-bottom: var(--spacer-2),
+    --legend-margin-bottom: var(--spacer-1-5),
     --legend-font-size: 1.5rem,
     --legend-font-weight: null,
-    --list-padding-x: var(--spacer-7),
+    --list-padding-x: var(--spacer-6),
   ),
   $type-tokens
 );
@@ -41,7 +41,7 @@ $reboot-kbd-tokens: defaults(
     --kbd-font-size: .75em,
     --kbd-color: var(--bg-body),
     --kbd-bg: var(--fg-2),
-    --kbd-border-radius: var(--radius-3),
+    --kbd-border-radius: var(--radius-2),
   ),
   $reboot-kbd-tokens
 );
@@ -249,7 +249,7 @@ $reboot-mark-tokens: defaults(
 
   dd {
     margin-inline-start: 0; // 1
-    margin-bottom: var(--spacer-2);
+    margin-bottom: var(--spacer-1-5);
   }
 
   // Blockquote
@@ -413,7 +413,7 @@ $reboot-mark-tokens: defaults(
   }
 
   caption {
-    padding-block: var(--spacer-2);
+    padding-block: var(--spacer-1-5);
     color: var(--fg-3);
     text-align: start;
   }

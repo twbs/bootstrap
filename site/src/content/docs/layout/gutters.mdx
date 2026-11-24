@@ -48,7 +48,7 @@ Use `.gy-*` to control the gap between wrapped lines. Vertical gaps appear only 
 
 Use `.g-*` classes to control horizontal and vertical gaps together.
 
-<Example class="bd-example-cols" code={`<div class="row g-2">
+<Example class="bd-example-cols" code={`<div class="row g-1.5">
     <div class="col-6">
       <div class="p-3">Custom column padding</div>
     </div>
@@ -67,7 +67,7 @@ Use `.g-*` classes to control horizontal and vertical gaps together.
 
 Gutter classes can also be added to [row columns]([[docsref:/layout/grid#row-columns]]). In the following example, we use responsive row columns and responsive gutter classes.
 
-<Example class="bd-example-cols" code={`<div class="row row-cols-2 lg:row-cols-5 g-2 lg:g-3">
+<Example class="bd-example-cols" code={`<div class="row row-cols-2 lg:row-cols-5 g-1.5 lg:g-3">
     <div class="col">
       <div class="p-3">Row column</div>
     </div>
@@ -123,7 +123,7 @@ Use `.g-*`, `.gx-*`, and `.gy-*` to change flex grid gaps. Generic `.gap-*` util
 
 ## Change the gutters
 
-Classes are built from the `$gutters` Sass map which is inherited from the `$spacers` Sass map.
+The `$gutters` Sass map uses the `$spacers` scale by default. Use fractional keys such as `.g-1.5` for a `0.375rem` gutter.
 
 Gutter classes use values from the Sass map. A runtime override of `--bs-spacer-*` does not change those classes. To change gaps at runtime, set `--bs-gutter-x` and `--bs-gutter-y` on the row.
 

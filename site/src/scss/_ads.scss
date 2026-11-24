@@ -6,12 +6,12 @@
   #carbon-responsive .carbon-responsive-wrap {
     padding: 1rem !important;
     border: 0 !important;
-    @include border-radius(var(--radius-7) !important);
+    @include border-radius(var(--radius-6) !important);
   }
   .carbon-img {
     position: relative;
     overflow: hidden;
-    @include border-radius(var(--radius-5));
+    @include border-radius(var(--radius-4));
 
     &::after {
       position: absolute;
@@ -19,7 +19,7 @@
       display: block;
       content: "";
       border: 1px solid var(--bs-border-color-translucent);
-      @include border-radius(var(--radius-5));
+      @include border-radius(var(--radius-4));
     }
   }
 }

@@ -65,7 +65,8 @@ function parseCompiledCSS(classNames: string[]): Record<string, string[]> {
 
     classNames.forEach((className) => {
       // Match class selectors, including :where() wrapped child-selector utilities
-      const escapedClass = className.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      const cssClass = className.replaceAll('.', '\\.')
+      const escapedClass = cssClass.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
       const selectorRegex = new RegExp(
         `(?:^|\\n)\\s*(?::where\\()?\\s*\\.${escapedClass}(?:\\s[^{]*)?\\)?\\s*\\{([^}]+)\\}`,
         'gm'

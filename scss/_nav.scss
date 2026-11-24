@@ -41,7 +41,7 @@ $nav-tabs-tokens: defaults(
   (
     --nav-tabs-border-width: var(--border-width),
     --nav-tabs-border-color: var(--border-color),
-    --nav-tabs-border-radius: var(--radius-5),
+    --nav-tabs-border-radius: var(--radius-4),
     --nav-tabs-link-hover-border-color: var(--border-subtle),
     --nav-tabs-link-active-color: var(--fg-body),
     --nav-tabs-link-active-bg: var(--bg-body),
@@ -130,7 +130,7 @@ $tab-pane-tokens: defaults(
     white-space: nowrap;
     background: none;
     border: var(--nav-link-border-width) solid transparent;
-    @include border-radius(var(--radius-5));
+    @include border-radius(var(--radius-4));
     @include transition-props(
       var(--nav-link-transition-property),
       var(--nav-link-transition-duration),
