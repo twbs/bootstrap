@@ -191,6 +191,7 @@ describe('Offcanvas', () => {
       expect(offCanvas._config.backdrop).toBeTrue()
       expect(offCanvas._backdrop._config.isVisible).toBeTrue()
       expect(offCanvas._config.keyboard).toBeTrue()
+      expect(offCanvas._config.preventScroll).toBeFalse()
       expect(offCanvas._config.scroll).toBeFalse()
     })
 
@@ -729,37 +730,37 @@ describe('Offcanvas', () => {
       })
     })
 
-    it('should focus on trigger element after closing offcanvas', () => {
-      return new Promise(resolve => {
+    for (const [description, attribute, preventScroll] of [
+      ['with normal scrolling by default', '', false],
+      ['without scrolling when enabled', ' data-bs-prevent-scroll="true"', true]
+    ]) {
+      it(`should focus the trigger ${description} after closing offcanvas`, async () => {
         fixtureEl.innerHTML = [
           '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></button>',
-          '<div id="offcanvas" class="offcanvas"></div>'
+          `<div id="offcanvas" class="offcanvas"${attribute}></div>`
         ].join('')
 
         const trigger = fixtureEl.querySelector('#btn')
         const offcanvasEl = fixtureEl.querySelector('#offcanvas')
-        const offcanvas = new Offcanvas(offcanvasEl)
         const spy = spyOn(trigger, 'focus')
-
-        offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
-          offcanvas.hide()
-        })
-        offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-          setTimeout(() => {
-            expect(spy).toHaveBeenCalled()
-            resolve()
-          }, 5)
+        const hidden = new Promise(resolve => {
+          offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
+            Offcanvas.getInstance(offcanvasEl).hide()
+          }, { once: true })
+          offcanvasEl.addEventListener('hidden.bs.offcanvas', resolve, { once: true })
         })
 
         trigger.click()
+        await hidden
+        expect(spy).toHaveBeenCalledOnceWith({ preventScroll })
       })
-    })
+    }
 
     it('should not focus on trigger element after closing offcanvas, if it is not visible', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></button>',
-          '<div id="offcanvas" class="offcanvas"></div>'
+          '<div id="offcanvas" class="offcanvas" data-bs-prevent-scroll="true"></div>'
         ].join('')
 
         const trigger = fixtureEl.querySelector('#btn')
