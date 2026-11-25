@@ -2,6 +2,10 @@ import Collapse from '../../src/collapse.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
+const waitForEvent = (element, eventName) => new Promise(resolve => {
+  element.addEventListener(eventName, resolve, { once: true })
+})
+
 describe('Collapse', () => {
   let fixtureEl
 
@@ -973,6 +977,35 @@ describe('Collapse', () => {
 
         triggerFirst.click()
       })
+    })
+
+    it('should restore the shared trigger when a target finishes opening', async () => {
+      fixtureEl.innerHTML = [
+        '<div id="wrapper">',
+        '  <button data-bs-toggle="collapse" data-bs-target="#wrapper .collapse"></button>',
+        '  <div id="first" class="collapse show"></div>',
+        '  <div id="second" class="collapse"></div>',
+        '</div>'
+      ].join('')
+
+      const trigger = fixtureEl.querySelector('button')
+      const first = fixtureEl.querySelector('#first')
+      const second = fixtureEl.querySelector('#second')
+      const firstCollapse = new Collapse(first, { toggle: false })
+      const secondCollapse = new Collapse(second, { toggle: false })
+      const events = [
+        waitForEvent(first, 'hidden.bs.collapse'),
+        waitForEvent(second, 'shown.bs.collapse')
+      ]
+
+      secondCollapse.show()
+      firstCollapse.hide()
+      await Promise.all(events)
+
+      expect(first).not.toHaveClass('show')
+      expect(second).toHaveClass('show')
+      expect(trigger).not.toHaveClass('collapsed')
+      expect(trigger.getAttribute('aria-expanded')).toEqual('true')
     })
 
     it('should set aria-expanded to false when data-bs-target selector includes .collapse', () => {
