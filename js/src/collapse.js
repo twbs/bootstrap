@@ -152,6 +152,7 @@ class Collapse extends BaseComponent {
       this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
       this._element.style[dimension] = ''
+      this._addAriaAndCollapsedClass(this._triggerArray, true)
 
       EventHandler.trigger(this._element, EVENT_SHOWN)
     }
@@ -183,9 +184,11 @@ class Collapse extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
-      const element = SelectorEngine.getElementFromSelector(trigger)
+      const hasOpenTarget = SelectorEngine
+        .getMultipleElementsFromSelector(trigger)
+        .some(element => this._isShown(element))
 
-      if (element && !this._isShown(element)) {
+      if (!hasOpenTarget) {
         this._addAriaAndCollapsedClass([trigger], false)
       }
     }

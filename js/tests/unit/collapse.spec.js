@@ -2,6 +2,10 @@ import Collapse from '../../src/collapse.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
+const waitForEvent = (element, eventName) => new Promise(resolve => {
+  element.addEventListener(eventName, resolve, { once: true })
+})
+
 describe('Collapse', () => {
   let fixtureEl
 
@@ -939,6 +943,90 @@ describe('Collapse', () => {
 
         target2.addEventListener('shown.bs.collapse', target2Shown)
         trigger3.click()
+      })
+    })
+
+    it('should keep multi-target trigger expanded when the first matched target is hidden first', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<a id="triggerMulti" role="button" data-bs-toggle="collapse" href=".multi"></a>',
+          '<a id="triggerFirst" role="button" data-bs-toggle="collapse" href="#first"></a>',
+          '<div id="first" class="collapse multi show"></div>',
+          '<div id="second" class="collapse multi show"></div>'
+        ].join('')
+
+        const triggerMulti = fixtureEl.querySelector('#triggerMulti')
+        const triggerFirst = fixtureEl.querySelector('#triggerFirst')
+        const first = fixtureEl.querySelector('#first')
+        const second = fixtureEl.querySelector('#second')
+
+        // Ensure trigger state is initialized against both open targets
+        Collapse.getOrCreateInstance(first, { toggle: false })
+        Collapse.getOrCreateInstance(second, { toggle: false })
+
+        expect(triggerMulti.getAttribute('aria-expanded')).toEqual('true')
+        expect(triggerMulti).not.toHaveClass('collapsed')
+
+        first.addEventListener('hidden.bs.collapse', () => {
+          expect(first).not.toHaveClass('show')
+          expect(second).toHaveClass('show')
+          expect(triggerMulti.getAttribute('aria-expanded')).toEqual('true')
+          expect(triggerMulti).not.toHaveClass('collapsed')
+          resolve()
+        })
+
+        triggerFirst.click()
+      })
+    })
+
+    it('should restore the shared trigger when a target finishes opening', async () => {
+      fixtureEl.innerHTML = [
+        '<div id="wrapper">',
+        '  <button data-bs-toggle="collapse" data-bs-target="#wrapper .collapse"></button>',
+        '  <div id="first" class="collapse show"></div>',
+        '  <div id="second" class="collapse"></div>',
+        '</div>'
+      ].join('')
+
+      const trigger = fixtureEl.querySelector('button')
+      const first = fixtureEl.querySelector('#first')
+      const second = fixtureEl.querySelector('#second')
+      const firstCollapse = new Collapse(first, { toggle: false })
+      const secondCollapse = new Collapse(second, { toggle: false })
+      const events = [
+        waitForEvent(first, 'hidden.bs.collapse'),
+        waitForEvent(second, 'shown.bs.collapse')
+      ]
+
+      secondCollapse.show()
+      firstCollapse.hide()
+      await Promise.all(events)
+
+      expect(first).not.toHaveClass('show')
+      expect(second).toHaveClass('show')
+      expect(trigger).not.toHaveClass('collapsed')
+      expect(trigger.getAttribute('aria-expanded')).toEqual('true')
+    })
+
+    it('should set aria-expanded to false when data-bs-target selector includes .collapse', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="wrapper">',
+          '  <button type="button" data-bs-toggle="collapse" data-bs-target="#wrapper .collapse" aria-expanded="true">Toggle</button>',
+          '  <div class="collapse show">Content</div>',
+          '</div>'
+        ].join('')
+
+        const trigger = fixtureEl.querySelector('button')
+        const target = fixtureEl.querySelector('.collapse')
+
+        target.addEventListener('hidden.bs.collapse', () => {
+          expect(trigger.getAttribute('aria-expanded')).toEqual('false')
+          expect(trigger).toHaveClass('collapsed')
+          resolve()
+        })
+
+        trigger.click()
       })
     })
   })
