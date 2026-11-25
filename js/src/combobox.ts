@@ -65,6 +65,7 @@ type ComboboxConfig = {
   separator: string | null
   boundary: string | Element
   input: string | HTMLInputElement | null
+  inputFormat: 'repeated' | 'json'
   multiple: boolean
   name: string | null
   offset: FloatingOffsetOption
@@ -81,6 +82,7 @@ const Default: ComboboxConfig = {
   separator: null,
   boundary: 'clippingParents',
   input: null,
+  inputFormat: 'repeated',
   multiple: false,
   name: null,
   offset: [0, 2],
@@ -97,6 +99,7 @@ const DefaultType = {
   separator: '(string|null)',
   boundary: '(string|element)',
   input: '(null|element)',
+  inputFormat: 'string',
   multiple: 'boolean',
   name: '(string|null)',
   offset: '(array|string|function)',
@@ -987,6 +990,10 @@ class Combobox extends BaseComponent {
       throw new TypeError('COMBOBOX: Option "maxItems" must be a positive integer or null.')
     }
 
+    if (!['repeated', 'json'].includes(config.inputFormat)) {
+      throw new TypeError('COMBOBOX: Option "inputFormat" must be "repeated" or "json".')
+    }
+
     if (config.input !== null) {
       const input = getElement(config.input)
       if (!(input instanceof HTMLInputElement) || input.type !== 'hidden') {
@@ -1308,7 +1315,8 @@ class Combobox extends BaseComponent {
     const values = selected
       .filter(item => !isDisabled(item))
       .map(item => item.dataset.bsValue ?? '')
-    const submittedValues = this._config.multiple ? values : [values[0] ?? '']
+    const jsonInput = this._config.multiple && this._config.inputFormat === 'json'
+    const submittedValues = this._config.multiple && !jsonInput ? values : [jsonInput ? JSON.stringify(values) : values[0] ?? '']
     const disabled = this._inputDisabled || this._isDisabled() || (selected.length > 0 && values.length === 0)
 
     if (this._ownsInput) {
@@ -1329,7 +1337,7 @@ class Combobox extends BaseComponent {
     }
 
     input.value = submittedValues[0] ?? ''
-    input.disabled = disabled || submittedValues.length === 0
+    input.disabled = disabled || (this._config.multiple && values.length === 0)
 
     for (let index = 1; index < submittedValues.length; index++) {
       let extra = this._extraInputs[index - 1]

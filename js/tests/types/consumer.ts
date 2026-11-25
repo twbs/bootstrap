@@ -69,6 +69,10 @@ const comboboxInput = document.createElement('input')
 comboboxInput.type = 'hidden'
 new Combobox(element, { input: comboboxInput })
 new Combobox(element, { input: '#combobox-input' })
+new Combobox(element, { input: comboboxInput, multiple: true, inputFormat: 'json' })
+new Combobox(element, { name: 'choices', multiple: true, inputFormat: 'repeated' })
+// @ts-expect-error Only repeated and json formats are supported
+new Combobox(element, { inputFormat: 'csv' })
 combobox.update()
 combobox.add('design')
 combobox.remove('design')

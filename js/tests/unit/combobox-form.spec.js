@@ -121,6 +121,136 @@ describe('Combobox form contract', () => {
     expect(submitted()).toEqual([])
   })
 
+  it('should keep JSON selections separate for rows with the same input name', () => {
+    fixture.innerHTML = `<form>${[1, 2].map(row => `
+      <div>
+        <label for="languageEditor${row}">Languages ${row}</label>
+        <input type="hidden" name="language" id="language${row}" data-validation="preserve">
+        <div class="combobox-control" data-bs-toggle="combobox" data-bs-input="#language${row}"
+             data-bs-multiple="true" data-bs-input-format="json">
+          <input class="form-ghost combobox-input" id="languageEditor${row}">
+        </div>
+        <div class="menu" aria-label="Languages ${row}">
+          <button class="menu-item selected" type="button" data-bs-value="en">English</button>
+          <button class="menu-item" type="button" data-bs-value="fr">French</button>
+        </div>
+      </div>`).join('')}</form>`
+    const controls = [...fixture.querySelectorAll('.combobox-control')].map(root => new Combobox(root))
+    instances.push(...controls)
+    const first = fixture.querySelector('#language1')
+    const second = fixture.querySelector('#language2')
+    controls[0].add('fr')
+    controls[1].remove('en')
+    controls[1].add('fr')
+    expect(JSON.parse(first.value)).toEqual(['en', 'fr'])
+    expect(JSON.parse(second.value)).toEqual(['fr'])
+    expect(fixture.querySelectorAll('input[type="hidden"]').length).toEqual(2)
+    expect(new FormData(fixture.querySelector('form')).getAll('language')).toEqual(['["en","fr"]', '["fr"]'])
+
+    for (const control of controls) {
+      control.dispose()
+    }
+
+    expect(fixture.querySelector('#language1')).toBe(first)
+    expect(fixture.querySelector('#language2')).toBe(second)
+    expect(first.dataset.validation).toEqual('preserve')
+    expect(first.name).toEqual('language')
+    expect(JSON.parse(first.value)).toEqual(['en', 'fr'])
+    expect(JSON.parse(second.value)).toEqual(['fr'])
+  })
+
+  it('should serialize generated JSON fields without losing special or empty values', () => {
+    const optionValues = ['a,b', 'say "hello"', 'line\nslash\\', '', 'same', 'same']
+    const x = make({ multiple: true, inputFormat: 'json' }, { values: optionValues })
+    for (const item of x.items.toReversed()) {
+      item.click()
+    }
+
+    const inputs = x.form.querySelectorAll('input[type="hidden"]')
+    expect(inputs.length).toEqual(1)
+    expect(JSON.parse(inputs[0].value)).toEqual(optionValues)
+    expect(values(x.form)).toEqual([JSON.stringify(optionValues)])
+    x.instance.dispose()
+    expect(x.form.querySelector('input[type="hidden"]')).toBeNull()
+  })
+
+  it('should update JSON before events and omit empty multiple selections', () => {
+    const x = make({ multiple: true, inputFormat: 'json' })
+    const input = x.form.querySelector('input[type="hidden"]')
+    expect(input.value).toEqual('[]')
+    expect(input.disabled).toBeTrue()
+    expect(values(x.form)).toEqual([])
+    const events = []
+    for (const type of ['input', 'change', 'change.bs.combobox']) {
+      x.form.addEventListener(type, event => events.push([type, event.target, input.value, values(x.form), event.value]))
+    }
+
+    x.instance.add('c')
+    expect(events).toEqual([
+      ['input', input, '["c"]', ['["c"]'], undefined],
+      ['change', input, '["c"]', ['["c"]'], undefined],
+      ['change.bs.combobox', x.toggle, '["c"]', ['["c"]'], ['c']]
+    ])
+    x.instance.remove('c')
+    expect(input.value).toEqual('[]')
+    expect(input.disabled).toBeTrue()
+    expect(values(x.form)).toEqual([])
+  })
+
+  it('should restore JSON selection on reset and honor cancellation without emitting changes', async () => {
+    const x = make({ multiple: true, inputFormat: 'json' }, { selected: [0, 2] })
+    const input = x.form.querySelector('input[type="hidden"]')
+    expect(JSON.parse(input.value)).toEqual(['a,b', 'd'])
+    x.instance.remove('a,b')
+    x.instance.add('c')
+    const changed = jasmine.createSpy('change')
+    x.form.addEventListener('change', changed)
+    x.form.addEventListener('reset', event => event.preventDefault(), { once: true })
+    x.form.reset()
+    await tick()
+    expect(JSON.parse(input.value)).toEqual(['c', 'd'])
+    x.form.reset()
+    await tick()
+    expect(JSON.parse(input.value)).toEqual(['a,b', 'd'])
+    expect(changed).not.toHaveBeenCalled()
+  })
+
+  it('should exclude disabled options and omit disabled JSON fields', async () => {
+    const input = field()
+    const x = make({ multiple: true, inputFormat: 'json' }, { input, selected: [0, 1] })
+    x.items[0].disabled = true
+    x.instance.update()
+    expect(JSON.parse(input.value)).toEqual(['c'])
+    x.toggle.disabled = true
+    await tick()
+    expect(new FormData(x.form).getAll(input.name)).toEqual([])
+    x.toggle.disabled = false
+    await tick()
+    expect(new FormData(x.form).getAll(input.name)).toEqual(['["c"]'])
+    input.disabled = true
+    await tick()
+    expect(new FormData(x.form).getAll(input.name)).toEqual([])
+    x.instance.dispose()
+    expect(input.disabled).toBeTrue()
+    expect(JSON.parse(input.value)).toEqual(['c'])
+  })
+
+  it('should keep single selection scalar with the JSON format', () => {
+    const x = make({ inputFormat: 'json' })
+    expect(values(x.form)).toEqual([''])
+    x.instance.add('a,b')
+    expect(values(x.form)).toEqual(['a,b'])
+  })
+
+  it('should accept repeated input format and reject unsupported formats', () => {
+    expect(Combobox.Default.inputFormat).toEqual('repeated')
+    const x = make({ multiple: true, inputFormat: 'repeated' }, { selected: [0, 1] })
+    expect(values(x.form)).toEqual(['a,b', 'c'])
+    for (const inputFormat of ['csv', '', null, true]) {
+      expect(() => new Combobox(x.toggle, { inputFormat })).toThrowError(TypeError)
+    }
+  })
+
   it('should preserve its event field across empty multiple selections', () => {
     const x = make({ multiple: true })
     const input = x.form.querySelector('input[type="hidden"]')
