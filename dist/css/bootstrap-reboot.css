@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap Reboot v6.0.0-alpha.1 (https://getbootstrap.com/)
+  * Bootstrap Reboot v6.0.0-alpha.2 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -232,7 +232,7 @@
   --bs-link-underline-offset: 0.2em;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
   --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;
-  --bs-code-font-size: 95%;
+  --bs-code-font-size: 0.875em;
   --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
   --bs-border-width-keyline: 0.5px;
@@ -461,7 +461,6 @@
   --bs-z-tooltip: 1060;
   --bs-z-toast: 1070;
   color-scheme: light dark;
-  scrollbar-gutter: stable;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -659,7 +658,7 @@
   kbd,
   samp {
     font-family: var(--bs-font-mono);
-    font-size: 1em;
+    font-size: 0.875em;
   }
   pre {
     display: block;
@@ -686,7 +685,7 @@
   kbd {
     --bs-kbd-padding-y: 0.125rem;
     --bs-kbd-padding-x: var(--bs-spacer-1);
-    --bs-kbd-font-size: var(--bs-font-size-xs);
+    --bs-kbd-font-size: 0.75em;
     --bs-kbd-color: var(--bs-bg-body);
     --bs-kbd-bg: var(--bs-fg-2);
     --bs-kbd-border-radius: var(--bs-radius-3);
@@ -749,6 +748,13 @@
     font-size: inherit;
     line-height: inherit;
   }
+  input:is([type=date], [type=datetime-local], [type=month], [type=week], [type=time]) {
+    position: relative;
+  }
+  input:is([type=date], [type=datetime-local], [type=month], [type=week], [type=time])::-webkit-calendar-picker-indicator {
+    position: absolute;
+    inset-inline-end: var(--bs-control-padding-x, 0.75rem);
+  }
   [role=button] {
     cursor: pointer;
   }
@@ -807,6 +813,9 @@
   ::-webkit-datetime-edit-month-field,
   ::-webkit-datetime-edit-year-field {
     padding: 0;
+  }
+  ::-webkit-date-and-time-value {
+    text-align: start;
   }
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {

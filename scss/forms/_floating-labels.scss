@@ -1,5 +1,6 @@
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -61,6 +62,13 @@ $form-floating-tokens: defaults(
         var(--form-floating-transition-duration),
         var(--form-floating-transition-timing)
       );
+
+      // Forced colors mode paints the transparent border around the label. Remove
+      // the border and add its width to the padding, so the text stays aligned.
+      @include forced-colors() {
+        padding: calc(var(--form-floating-padding-y) + var(--border-width)) calc(var(--form-floating-padding-x) + var(--border-width));
+        border: 0;
+      }
     }
 
     // Anchor the label to the top for textareas so it floats correctly at any height
@@ -77,11 +85,20 @@ $form-floating-tokens: defaults(
 
       &::placeholder {
         color: transparent;
+
+        // Forced colors mode ignores the transparent color, so the placeholder shows under the label.
+        @include forced-colors() {
+          opacity: 0;
+        }
       }
 
       // Show the placeholder once focused so the floated label has a hint.
       &:focus::placeholder {
         color: var(--control-placeholder-color);
+
+        @include forced-colors() {
+          opacity: 1;
+        }
       }
 
       &:focus,
@@ -146,7 +163,12 @@ $form-floating-tokens: defaults(
     }
 
     > label:has(~ .form-control-plaintext) {
-      border-width: var(--control-border-width) 0; // Required to properly position label text - as explained above
+      border-width: var(--border-width) 0; // Required to properly position label text - as explained above
+
+      @include forced-colors() {
+        padding: calc(var(--form-floating-padding-y) + var(--border-width)) var(--form-floating-padding-x);
+        border: 0;
+      }
     }
 
     > label:has(~ :disabled),

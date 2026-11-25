@@ -1,6 +1,7 @@
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/mask-icon" as *;
 @use "../mixins/tokens" as *;
 
@@ -40,6 +41,11 @@ $btn-close-tokens: defaults(
     @include border-radius(var(--radius-4));
     opacity: var(--btn-close-opacity);
     @include mask-icon(var(--btn-close-icon));
+
+    // Forced colors mode removes the background color that paints the icon.
+    @include forced-colors() {
+      background-color: CanvasText;
+    }
 
     // Override <a>'s hover style
     &:hover {

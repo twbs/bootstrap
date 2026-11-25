@@ -1,11 +1,12 @@
 /*!
-* Bootstrap collapse.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap collapse.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
+import { enableHashTarget } from "./util/hash-target.js";
 import { getElement, getTransitionDurationFromElement, setAriaAttribute } from "./util/index.js";
 //#region js/src/collapse.ts
 /**
@@ -128,6 +129,29 @@ var Collapse = class Collapse extends BaseComponent {
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function(event) {
 	if (event.target.tagName === "A" || event.delegateTarget && event.delegateTarget.tagName === "A") event.preventDefault();
 	for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) Collapse.getOrCreateInstance(element).toggle();
+});
+/**
+* Find a trigger that targets this collapse.
+*/
+const getCollapseTrigger = (collapseEl) => {
+	for (const trigger of SelectorEngine.find(SELECTOR_DATA_TOGGLE)) if (SelectorEngine.getMultipleElementsFromSelector(trigger).includes(collapseEl)) return trigger;
+	return null;
+};
+/**
+* Open opted-in collapses when the URL fragment matches their id.
+* Put `data-bs-hash` on the collapsible target.
+*/
+enableHashTarget(`${EVENT_KEY}${DATA_API_KEY}`, {
+	matches: (element) => element.classList.contains(CLASS_NAME_COLLAPSE),
+	getAnchor: getCollapseTrigger,
+	async open(element, done) {
+		if (element.classList.contains(CLASS_NAME_SHOW)) {
+			done();
+			return;
+		}
+		await Collapse.getOrCreateInstance(element).show();
+		if (element.classList.contains(CLASS_NAME_SHOW)) done();
+	}
 });
 //#endregion
 export { Collapse as default };

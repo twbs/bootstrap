@@ -22,6 +22,8 @@ declare class Swipe extends Config {
     protected _deltaX: number;
     protected _deltaY: number;
     protected _supportPointerEvents: boolean;
+    protected _pointerId: number | null;
+    protected _touchStart: Touch | null;
     constructor(element: HTMLElement | null, config?: Partial<SwipeConfig> | null);
     static get Default(): SwipeConfig;
     static get DefaultType(): Record<string, string>;

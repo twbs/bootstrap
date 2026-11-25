@@ -1,5 +1,5 @@
 /*!
-* Bootstrap dialog.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap dialog.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -8,7 +8,7 @@ import EventHandler from "./dom/event-handler.js";
 import Manipulator from "./dom/manipulator.js";
 import SelectorEngine from "./dom/selector-engine.js";
 import { enableDismissTrigger } from "./util/component-functions.js";
-import { isVisible } from "./util/index.js";
+import { isDisabled } from "./util/index.js";
 //#region js/src/dialog.ts
 /**
 * --------------------------------------------------------------------------
@@ -22,8 +22,6 @@ import { isVisible } from "./util/index.js";
 const NAME = "dialog";
 const EVENT_KEY = `.bs.dialog`;
 const DATA_API_KEY = ".data-api";
-const EVENT_SHOW = `show${EVENT_KEY}`;
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_CANCEL = `cancel${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const CLASS_NAME_NONMODAL = "dialog-nonmodal";
@@ -63,14 +61,12 @@ var Dialog = class Dialog extends DialogBase {
 	}
 	static _handleDataApiClick(trigger, event) {
 		const target = SelectorEngine.getElementFromSelector(trigger);
-		if (!target) return;
+		if (!(target instanceof HTMLDialogElement) || isDisabled(trigger)) return;
 		if (["A", "AREA"].includes(trigger.tagName)) event.preventDefault();
 		const config = Manipulator.getDataAttributes(trigger);
-		const currentDialog = trigger.closest("dialog[open]");
+		const currentDialog = trigger.closest("dialog.dialog[open]");
+		if (currentDialog === target) return;
 		if (!(currentDialog && currentDialog !== target)) {
-			EventHandler.one(target, EVENT_SHOW, (showEvent) => {
-				if (!showEvent.defaultPrevented) Dialog._registerFocusRestoration(target, trigger);
-			});
 			Dialog.getOrCreateInstance(target, config).toggle(trigger);
 			return;
 		}
@@ -78,22 +74,18 @@ var Dialog = class Dialog extends DialogBase {
 		const newDialog = Dialog.getOrCreateInstance(target, config);
 		const currentInstance = Dialog.getOrCreateInstance(currentDialog);
 		if (!newDialog._canShow(trigger) || !currentInstance._canHide()) return;
-		Dialog._registerFocusRestoration(target, trigger);
+		const returnFocus = currentInstance._returnFocus;
+		const wasInstant = currentDialog.classList.contains(CLASS_NAME_INSTANT);
 		target.classList.add(CLASS_NAME_SWAP_IN);
-		EventHandler.one(target, `shown${EVENT_KEY}`, () => {
+		newDialog._show(trigger, returnFocus).finally(() => {
 			target.classList.remove(CLASS_NAME_SWAP_IN);
 		});
-		newDialog._show(trigger);
-		currentDialog.classList.add(CLASS_NAME_INSTANT);
-		EventHandler.one(currentDialog, EVENT_HIDDEN, () => {
-			currentDialog.classList.remove(CLASS_NAME_INSTANT);
-		});
-		currentInstance._hide();
-	}
-	static _registerFocusRestoration(target, trigger) {
-		EventHandler.one(target, EVENT_HIDDEN, () => {
-			if (isVisible(trigger)) trigger.focus({ preventScroll: true });
-		});
+		if (target.open) {
+			currentDialog.classList.add(CLASS_NAME_INSTANT);
+			currentInstance._hide(false).finally(() => {
+				if (!wasInstant) currentDialog.classList.remove(CLASS_NAME_INSTANT);
+			});
+		}
 	}
 	handleUpdate() {}
 	_getShowOptions() {

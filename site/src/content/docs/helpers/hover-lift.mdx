@@ -1,12 +1,12 @@
 ---
 title: Hover lift
-description: Raise an element with a subtle transform and shadow on hover and keyboard focus.
+description: Raise an element with a subtle transform and shadow on hover, keyboard focus, and open states.
 toc: true
 ---
 
 ## How it works
 
-Add `.hover-lift` to any element to gently raise it—translating it upward and deepening its shadow—when the user hovers over it or focuses it with the keyboard. It’s a lightweight way to signal that cards, tiles, or other surfaces are interactive.
+Add `.hover-lift` to any element to gently raise it—translating it upward and deepening its shadow—when the user hovers over it, focuses it with the keyboard, or when it is open (such as a dropdown or menu toggle with `.show`). It’s a lightweight way to signal that cards, tiles, or other surfaces are interactive.
 
 The effect is driven by CSS custom properties and applied with our `transition()` mixin, so it’s fully customizable and automatically honors the [`prefers-reduced-motion`]([[docsref:/getting-started/accessibility#reduced-motion]]) media feature—users who prefer reduced motion get the raised shadow and offset without the animation.
 
