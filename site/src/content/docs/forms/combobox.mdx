@@ -23,7 +23,7 @@ The combobox component provides a styled select experience using standard HTML m
 - Single and multiple selection, with removable chips for multiple values in the editable field
 - Optional free entry for values outside the menu
 - Keyboard navigation for suggestions, with shortcuts for selecting and removing chips
-- Form submission through generated or provided hidden inputs, with one entry per selected value in multiple mode
+- Form submission through generated or provided hidden inputs, with one entry per selected value by default in multiple mode
 - Bubbling `input` and `change` events when a selection changes
 
 ## Example
@@ -431,7 +431,7 @@ The combobox creates a hidden `<input>` for form submission when `data-bs-name` 
 <input type="hidden" name="country" value="us">
 ```
 
-For multiple selection, each selected option submits a separate field with the same name. For example, selecting `us` and `ca` submits `countries=us&countries=ca`. Values that contain commas remain unchanged. If your server requires brackets, use `data-bs-name="countries[]"`; we copy the name as written.
+By default, each selected option in multiple mode submits a separate field with the same name. For example, selecting `us` and `ca` submits `countries=us&countries=ca`. Values that contain commas remain unchanged. If your server requires brackets, use `data-bs-name="countries[]"`; we copy the name as written.
 
 The first hidden input remains in the DOM so event listeners keep a stable target. It holds the first submitted value. Additional inputs hold the remaining values in menu order. With no multiple selection, the first input is disabled and no values are submitted. Single selection keeps one field, empty when no option is selected.
 
@@ -458,7 +458,53 @@ Set `data-bs-input` to the selector of a hidden input, or pass the element as th
 
 Mark the initial selection with `.selected` on the options. We sync the field from that markup; an existing field value does not select an option. Use an explicit selector for each component, even when several rows use the same field name. We do not infer a binding from neighboring elements or shared names.
 
-Calling `dispose()` keeps a provided input, its current first value, and its application attributes. It removes generated inputs and component listeners. In multiple mode, generated fields for the other values are also removed. One provided input cannot preserve the entire repeated-value payload after disposal.
+Multiple selection also reuses the provided input. By default, it holds the first selected value in menu order. Combobox creates additional inputs with the same name for the remaining values.
+
+### Store multiple values in one input
+
+Set `data-bs-input-format="json"` to store all selected values as a JSON array in one hidden input. This works with provided inputs and inputs created through `data-bs-name`. The default format is `repeated`. Single selection always stores a plain string.
+
+Use JSON when several rows share one field name and your application reads each row by input ID. Commas, quotes, and empty strings remain part of their values. Values follow menu order and exclude disabled options.
+
+```html
+<form id="languagePreferences">
+  <div class="mb-3">
+    <label for="comboboxRow1">Languages for row 1</label>
+    <input type="hidden" id="languageRow1" name="language">
+    <div class="combobox-control" data-bs-toggle="combobox" data-bs-input="#languageRow1"
+         data-bs-multiple="true" data-bs-input-format="json">
+      <input class="form-ghost combobox-input" id="comboboxRow1" placeholder="Choose a language">
+    </div>
+    <div class="menu" aria-label="Languages for row 1">
+      <button class="menu-item selected" type="button" data-bs-value="en">English</button>
+      <button class="menu-item selected" type="button" data-bs-value="fr">French</button>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="comboboxRow2">Languages for row 2</label>
+    <input type="hidden" id="languageRow2" name="language">
+    <div class="combobox-control" data-bs-toggle="combobox" data-bs-input="#languageRow2"
+         data-bs-multiple="true" data-bs-input-format="json">
+      <input class="form-ghost combobox-input" id="comboboxRow2" placeholder="Choose a language">
+    </div>
+    <div class="menu" aria-label="Languages for row 2">
+      <button class="menu-item selected" type="button" data-bs-value="ja">Japanese</button>
+      <button class="menu-item" type="button" data-bs-value="fr">French</button>
+    </div>
+  </div>
+</form>
+```
+
+Read each input by its unique ID after Combobox initializes. `JSON.parse()` converts the stored string into an array.
+
+```js
+const firstRow = JSON.parse(document.querySelector('#languageRow1').value) // ['en', 'fr']
+const secondRow = JSON.parse(document.querySelector('#languageRow2').value) // ['ja']
+```
+
+An empty selection stores `[]`. The input stays disabled until an enabled option is selected, so empty selections submit no field. Submitted JSON values are strings; the server must decode them. Initial selections still come from `.selected` markup, not from existing JSON in the input.
+
+Calling `dispose()` keeps a provided input, its current value, and its application attributes. In JSON mode, the complete array remains available by input ID after disposal. In repeated mode, disposal removes generated fields for additional values; the provided input keeps only the first value. Disposal always removes automatically created inputs and restores a provided input’s own disabled setting.
 
 ### Disabled state, reset, and updates
 
@@ -495,6 +541,7 @@ Hidden inputs do not participate in native constraint validation. Preserving att
 | `data-bs-multiple` | Enables multi-select behavior. |
 | `data-bs-name` | `name` of the automatically created fields for form submission. |
 | `data-bs-input` | Selector of a provided hidden input to reuse. |
+| `data-bs-input-format` | Multiple-value format: `repeated` (default) or `json`. |
 | `data-bs-placeholder` | Placeholder text shown in the toggle when nothing is selected. |
 </BsTable>
 
@@ -516,6 +563,7 @@ Options can be passed via data attributes on the wrapper or button (e.g., `data-
 | `multiple` | boolean | `false` | Enable multi-select mode. Selections toggle and the menu stays open. |
 | `name` | string \| null | `null` | Name for automatically created fields. Also settable via `data-bs-name`. |
 | `input` | string \| element \| null | `null` | Selector or element for a provided hidden input. Its name and form owner are retained. |
+| `inputFormat` | string | `'repeated'` | Multiple-value format: `'repeated'` creates one field per value; `'json'` stores an array in one field. |
 | `placeholder` | string | `''` | Placeholder text for the button. Also settable via `data-bs-placeholder`. |
 | `search` | boolean | `false` | Enable search input in a button’s menu. Also settable via `data-bs-search`. |
 | `searchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
@@ -555,7 +603,7 @@ Combobox owns the Menu instance registered on its input or button. Let Combobox 
 
 Component events fire on the component root: the wrapper for an editable field, or the button. Query input events remain native input events; they do not commit a value. When selection changes, we first update the label and all submitted fields. We then dispatch bubbling `input` and `change` events from the stable hidden input, followed by `change.bs.combobox` on the root. Without a backing field, the plain events also fire on the root.
 
-Selecting the same single option again does not emit a change. Selecting a different option with the same value does. Read all multiple values from `event.value` on the component event or `FormData.getAll(name)`, rather than the first hidden input’s value.
+Selecting the same single option again does not emit a change. Selecting a different option with the same value does. Read all multiple values from `event.value` on the component event or `FormData.getAll(name)`, when using the default repeated format. With JSON format, parse the hidden input’s value to read that component’s submitted values.
 
 <BsTable>
 | Event | Description |
