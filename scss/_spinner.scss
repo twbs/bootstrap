@@ -74,13 +74,6 @@ $spinner-grow-tokens: defaults(
     }
   }
 
-  .spinner-sm {
-    // scss-docs-start spinner-border-sm-css-vars
-    --spinner-width: .75em;
-    --spinner-height: .75em;
-    // scss-docs-end spinner-border-sm-css-vars
-  }
-
   //
   // Growing circle
   //
@@ -107,6 +100,18 @@ $spinner-grow-tokens: defaults(
     @include forced-colors() {
       outline: 1px solid transparent;
     }
+  }
+
+  //
+  // Sizes
+  //
+
+  // Keep after both spinners, so it overrides the size tokens each one declares.
+  .spinner-sm {
+    // scss-docs-start spinner-border-sm-css-vars
+    --spinner-width: .75em;
+    --spinner-height: .75em;
+    // scss-docs-end spinner-border-sm-css-vars
   }
 
   // Generic class for rotating custom spinners
