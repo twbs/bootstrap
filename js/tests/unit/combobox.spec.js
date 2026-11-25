@@ -456,6 +456,39 @@ describe('Combobox', () => {
       expect(menuEl).not.toHaveClass('show')
       expect(document.activeElement).toEqual(toggleEl)
     })
+
+    it('should clear the search query when hiding the menu', () => {
+      const { combobox, menuEl, toggleEl, items } = makeCombobox({ search: true }, searchMarkup())
+      const searchEl = menuEl.querySelector('.combobox-search-input')
+      const noResultsEl = menuEl.querySelector('.combobox-no-results')
+      combobox.show()
+      typeSearch(searchEl, 'nowhere')
+
+      return new Promise(resolve => {
+        EventHandler.one(toggleEl, 'hidden.bs.menu', resolve)
+        combobox.hide()
+      }).then(() => {
+        expect(searchEl.value).toEqual('')
+        expect(items.every(item => item.style.display === '')).toBeTrue()
+        expect(noResultsEl).toHaveClass('d-none')
+      })
+    })
+
+    it('should clear the search query after a click outside', () => {
+      const { menuEl, toggleEl } = makeCombobox({ search: true }, searchMarkup())
+      const searchEl = menuEl.querySelector('.combobox-search-input')
+      const outsideEl = document.createElement('div')
+      fixtureEl.append(outsideEl)
+      Combobox.getInstance(toggleEl).show()
+      typeSearch(searchEl, 'canada')
+
+      return new Promise(resolve => {
+        EventHandler.one(toggleEl, 'hidden.bs.menu', resolve)
+        outsideEl.click()
+      }).then(() => {
+        expect(searchEl.value).toEqual('')
+      })
+    })
   })
 
   describe('keyboard on the toggle', () => {
