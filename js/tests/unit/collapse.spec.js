@@ -2,6 +2,10 @@ import Collapse from '../../src/collapse.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
+const waitForEvent = (element, eventName) => new Promise(resolve => {
+  element.addEventListener(eventName, resolve, { once: true })
+})
+
 describe('Collapse', () => {
   let fixtureEl
 
@@ -206,7 +210,7 @@ describe('Collapse', () => {
       fixtureEl.innerHTML = [
         '<div id="accordion">',
         '  <div id="collapse1" class="collapse show" data-bs-parent="#accordion"></div>',
-        '  <div id="collapse2" class="collapse collapsing" data-bs-parent="#accordion"></div>',
+        '  <div id="collapse2" class="collapsing" data-bs-parent="#accordion"></div>',
         '  <div id="collapse3" class="collapse" data-bs-parent="#accordion"></div>',
         '</div>'
       ].join('')
@@ -774,6 +778,66 @@ describe('Collapse', () => {
       })
     })
 
+    it('should close a sibling when individual buttons share a group trigger', async () => {
+      fixtureEl.innerHTML = [
+        '<div id="accordion">',
+        '  <button data-bs-toggle="collapse" data-bs-target="#first"></button>',
+        '  <button data-bs-toggle="collapse" data-bs-target="#second"></button>',
+        '  <button data-bs-toggle="collapse" data-bs-target=".group"></button>',
+        '  <div id="first" class="collapse group" data-bs-parent="#accordion"></div>',
+        '  <div id="second" class="collapse group" data-bs-parent="#accordion"></div>',
+        '</div>'
+      ].join('')
+
+      const [firstTrigger, secondTrigger] = fixtureEl.querySelectorAll('button')
+      const first = fixtureEl.querySelector('#first')
+      const second = fixtureEl.querySelector('#second')
+
+      const firstShown = waitForEvent(first, 'shown.bs.collapse')
+      firstTrigger.click()
+      await firstShown
+
+      const firstHidden = waitForEvent(first, 'hidden.bs.collapse')
+      const secondShown = waitForEvent(second, 'shown.bs.collapse')
+      secondTrigger.click()
+      await secondShown
+
+      expect(first).not.toHaveClass('show')
+      expect(second).toHaveClass('show')
+      await firstHidden
+    })
+
+    it('should switch outer panels while a nested panel opens', async () => {
+      fixtureEl.innerHTML = [
+        '<div id="accordion">',
+        '  <div id="first" class="collapse show" data-bs-parent="#accordion">',
+        '    <button data-bs-toggle="collapse" data-bs-target="#nested"></button>',
+        '    <div id="nested" class="collapse"></div>',
+        '  </div>',
+        '  <button data-bs-toggle="collapse" data-bs-target="#second"></button>',
+        '  <div id="second" class="collapse" data-bs-parent="#accordion"></div>',
+        '</div>'
+      ].join('')
+
+      const [nestedTrigger, secondTrigger] = fixtureEl.querySelectorAll('button')
+      const first = fixtureEl.querySelector('#first')
+      const nested = fixtureEl.querySelector('#nested')
+      const second = fixtureEl.querySelector('#second')
+      const events = [
+        waitForEvent(nested, 'shown.bs.collapse'),
+        waitForEvent(first, 'hidden.bs.collapse'),
+        waitForEvent(second, 'shown.bs.collapse')
+      ]
+
+      nestedTrigger.click()
+      secondTrigger.click()
+      await Promise.all(events)
+
+      expect(nested).toHaveClass('show')
+      expect(first).not.toHaveClass('show')
+      expect(second).toHaveClass('show')
+    })
+
     it('should allow accordion to target multiple elements', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -1003,6 +1067,8 @@ describe('Collapse', () => {
             const shownCollapses = fixtureEl.querySelectorAll('.collapse.show')
             expect(shownCollapses.length).toEqual(1)
             expect(collapse3).toHaveClass('show')
+            expect(btn3).not.toHaveClass('collapsed')
+            expect(btn3.getAttribute('aria-expanded')).toEqual('true')
             expect(collapse1).not.toHaveClass('show')
             expect(collapse2).not.toHaveClass('show')
             resolve()
