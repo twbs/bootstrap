@@ -1,8 +1,10 @@
+:root {
+  color-scheme: light dark;
+}
+
 :root,
 [data-bs-theme="light"] {
   // Note: Custom variable values only support SassScript inside `#{}`.
-
-  color-scheme: light;
 
   // Colors
   //
@@ -129,6 +131,10 @@
   --#{$prefix}form-invalid-color: #{$form-invalid-color};
   --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
   // scss-docs-end root-form-validation-variables
+}
+
+[data-bs-theme="light"] {
+  color-scheme: light;
 }
 
 @if $enable-dark-mode {
