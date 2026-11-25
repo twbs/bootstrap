@@ -489,23 +489,24 @@ fieldset {
   border: 0; // 2
 }
 
-// 1. By using `float: left`, the legend will behave like a block element.
-//    This way the border of a fieldset wraps around the legend if present.
-// 2. Fix wrapping bug.
-//    See https://github.com/twbs/bootstrap/issues/29712
+// Float the legend so the fieldset border can wrap around it.
 
 legend {
-  float: left; // 1
+  float: left;
   width: 100%;
   padding: 0;
   margin-bottom: $legend-margin-bottom;
   font-weight: $legend-font-weight;
   line-height: inherit;
   @include font-size($legend-font-size);
+}
 
-  + * {
-    clear: left; // 2
-  }
+// Clear the float for wide content after the legend.
+// Limit this rule to fieldsets to avoid slow layout after DOM changes.
+// See https://github.com/twbs/bootstrap/issues/29712 and https://github.com/twbs/bootstrap/issues/39428
+
+fieldset > legend + * {
+  clear: left;
 }
 
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
@@ -513,7 +514,7 @@ legend {
 
 ::-webkit-datetime-edit-fields-wrapper,
 ::-webkit-datetime-edit-text,
-::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-minute-field,
 ::-webkit-datetime-edit-hour-field,
 ::-webkit-datetime-edit-day-field,
 ::-webkit-datetime-edit-month-field,

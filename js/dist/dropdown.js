@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap dropdown.js v5.3.8 (https://getbootstrap.com/)
-  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap dropdown.js v5.3.9 (https://getbootstrap.com/)
+  * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -206,7 +206,7 @@
     }
     _createPopper() {
       if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)');
+        throw new TypeError('Bootstrap\'s dropdowns require Popper (https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md)');
       }
       let referenceElement = this._element;
       if (this._config.reference === 'parent') {

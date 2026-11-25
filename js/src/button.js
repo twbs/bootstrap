@@ -7,6 +7,7 @@
 
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
 import { defineJQueryPlugin } from './util/index.js'
 
 /**
@@ -21,12 +22,37 @@ const DATA_API_KEY = '.data-api'
 const CLASS_NAME_ACTIVE = 'active'
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="button"]'
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_DOM_CONTENT_LOADED_DATA_API = `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`
+
+/**
+ * Private functions
+ */
+
+function initializeAriaPressed(element) {
+  if (!element.hasAttribute('aria-pressed')) {
+    element.setAttribute('aria-pressed', element.classList.contains(CLASS_NAME_ACTIVE))
+  }
+}
+
+function initializeToggleButtons() {
+  for (const button of SelectorEngine.find(SELECTOR_DATA_TOGGLE)) {
+    initializeAriaPressed(button)
+  }
+}
 
 /**
  * Class definition
  */
 
 class Button extends BaseComponent {
+  constructor(element) {
+    super(element)
+
+    if (this._element) {
+      initializeAriaPressed(this._element)
+    }
+  }
+
   // Getters
   static get NAME() {
     return NAME
@@ -53,6 +79,12 @@ class Button extends BaseComponent {
 /**
  * Data API implementation
  */
+
+EventHandler.on(document, EVENT_DOM_CONTENT_LOADED_DATA_API, initializeToggleButtons)
+
+if (document.readyState !== 'loading') {
+  initializeToggleButtons()
+}
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
   event.preventDefault()
