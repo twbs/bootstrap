@@ -249,8 +249,11 @@ $menu-tokens: defaults(
     }
 
     &.selected {
-      font-weight: var(--font-weight-semibold);
-    }
+  color: var(--theme-contrast, var(--menu-item-active-color));
+  background-color: var(--theme-bg, var(--menu-item-active-bg));
+  font-weight: var(--font-weight-semibold);
+}
+
 
     &.disabled,
     &:disabled {
