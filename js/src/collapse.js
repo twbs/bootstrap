@@ -66,13 +66,21 @@ class Collapse extends BaseComponent {
     this._triggerArray = []
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
+    const root = document.documentElement
+    const isDocumentDescendant = this._element !== root && root.contains(this._element)
 
     for (const elem of toggleList) {
       const selector = SelectorEngine.getSelectorFromElement(elem)
-      const filterElement = SelectorEngine.find(selector)
-        .filter(foundElement => foundElement === this._element)
+      if (selector === null || !isDocumentDescendant) {
+        continue
+      }
 
-      if (selector !== null && filterElement.length) {
+      // A selector with a pseudo-class can depend on the query root.
+      const matches = selector.includes(':') ?
+        SelectorEngine.find(selector).includes(this._element) :
+        this._element.matches(selector)
+
+      if (matches) {
         this._triggerArray.push(elem)
       }
     }
