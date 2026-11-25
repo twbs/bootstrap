@@ -2,6 +2,10 @@ import Collapse from '../../src/collapse.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
+const waitForEvent = (element, eventName) => new Promise(resolve => {
+  element.addEventListener(eventName, resolve, { once: true })
+})
+
 describe('Collapse', () => {
   let fixtureEl
 
@@ -41,6 +45,37 @@ describe('Collapse', () => {
 
       expect(collapseBySelector._element).toEqual(collapseEl)
       expect(collapseByElement._element).toEqual(collapseEl)
+    })
+
+    it('should ignore detached targets when it matches a trigger', () => {
+      fixtureEl.innerHTML = [
+        '<button data-bs-toggle="collapse" data-bs-target=".shared" aria-expanded="true"></button>',
+        '<div class="collapse shared show"></div>'
+      ].join('')
+
+      const trigger = fixtureEl.querySelector('button')
+      const detached = document.createElement('div')
+      detached.classList.add('collapse', 'shared')
+      const collapse = new Collapse(detached, { toggle: false })
+
+      expect(trigger.getAttribute('aria-expanded')).toEqual('true')
+      collapse.dispose()
+    })
+
+    it('should ignore the document root when it matches a trigger', () => {
+      fixtureEl.innerHTML = [
+        '<button data-bs-toggle="collapse" data-bs-target=".shared" aria-expanded="true"></button>',
+        '<div class="collapse shared show"></div>'
+      ].join('')
+
+      const trigger = fixtureEl.querySelector('button')
+      const root = document.documentElement
+      root.classList.add('shared')
+      const collapse = new Collapse(root, { toggle: false })
+
+      expect(trigger.getAttribute('aria-expanded')).toEqual('true')
+      collapse.dispose()
+      root.classList.remove('shared')
     })
 
     it('should allow jquery object in parent config', () => {
@@ -536,6 +571,23 @@ describe('Collapse', () => {
 
         nestedTriggerEl.click()
       })
+    })
+
+    it('should keep document scope when it matches a trigger', async () => {
+      fixtureEl.innerHTML = [
+        '<button data-bs-toggle="collapse" data-bs-target=":scope body #panel" aria-expanded="false" class="collapsed"></button>',
+        '<div id="panel" class="collapse"></div>'
+      ].join('')
+
+      const trigger = fixtureEl.querySelector('button')
+      const panel = fixtureEl.querySelector('#panel')
+      const shown = waitForEvent(panel, 'shown.bs.collapse')
+
+      trigger.click()
+      await shown
+
+      expect(trigger).not.toHaveClass('collapsed')
+      expect(trigger.getAttribute('aria-expanded')).toEqual('true')
     })
 
     it('should show multiple collapsed elements', () => {
