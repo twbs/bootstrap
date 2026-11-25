@@ -5,11 +5,6 @@ import { zPrefixedVersionSemver, zVersionMajorMinor, zVersionSemver } from './va
 
 // The config schema used to validate the config file content and ensure all values required by the site are valid.
 const configSchema = z.object({
-  algolia: z.object({
-    api_key: z.string(),
-    app_id: z.string(),
-    index_name: z.string()
-  }),
   analytics: z.object({
     fathom_site: z.string()
   }),

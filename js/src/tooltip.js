@@ -227,7 +227,15 @@ class Tooltip extends BaseComponent {
     }
 
     const complete = () => {
+      if (!this._element) {
+        return
+      }
+
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN))
+
+      if (!this._element) {
+        return
+      }
 
       if (this._isHovered === false) {
         this._leave()
@@ -266,7 +274,7 @@ class Tooltip extends BaseComponent {
     this._isHovered = null // it is a trick to support manual triggering
 
     const complete = () => {
-      if (this._isWithActiveTrigger()) {
+      if (!this._element || this._isWithActiveTrigger()) {
         return
       }
 
@@ -538,6 +546,18 @@ class Tooltip extends BaseComponent {
 
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
+
+    // Read text attributes without coercing their values.
+    const title = this._element.getAttribute('data-bs-title')
+    const content = this._element.getAttribute('data-bs-content')
+
+    if (title !== null) {
+      dataAttributes.title = title
+    }
+
+    if (content !== null) {
+      dataAttributes.content = content
+    }
 
     for (const dataAttribute of Object.keys(dataAttributes)) {
       if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {

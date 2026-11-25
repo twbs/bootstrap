@@ -1,5 +1,7 @@
 import Button from '../../src/button.js'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
+import {
+  clearFixture, createEvent, getFixture, jQueryMock
+} from '../helpers/fixture.js'
 
 describe('Button', () => {
   let fixtureEl
@@ -22,6 +24,23 @@ describe('Button', () => {
     expect(buttonByElement._element).toEqual(buttonEl)
   })
 
+  it('should initialize aria-pressed when missing', () => {
+    fixtureEl.innerHTML = [
+      '<button class="btn" data-bs-toggle="button"></button>',
+      '<button class="btn active" data-bs-toggle="button"></button>',
+      '<button class="btn active" data-bs-toggle="button" aria-pressed="false"></button>'
+    ].join('')
+
+    const buttons = fixtureEl.querySelectorAll('[data-bs-toggle="button"]')
+
+    const buttonInstances = [...buttons].map(button => new Button(button))
+
+    expect(buttonInstances).toHaveSize(3)
+    expect(buttons[0].getAttribute('aria-pressed')).toEqual('false')
+    expect(buttons[1].getAttribute('aria-pressed')).toEqual('true')
+    expect(buttons[2].getAttribute('aria-pressed')).toEqual('false')
+  })
+
   describe('VERSION', () => {
     it('should return plugin version', () => {
       expect(Button.VERSION).toEqual(jasmine.any(String))
@@ -35,6 +54,27 @@ describe('Button', () => {
   })
 
   describe('data-api', () => {
+    it('should initialize aria-pressed on page readiness before the first click', () => {
+      fixtureEl.innerHTML = [
+        '<button class="btn" data-bs-toggle="button"></button>',
+        '<button class="btn active" data-bs-toggle="button"></button>',
+        '<button class="btn" data-bs-toggle="button" aria-pressed="true"></button>'
+      ].join('')
+
+      const [inactive, active, explicit] = fixtureEl.querySelectorAll('[data-bs-toggle="button"]')
+
+      document.dispatchEvent(createEvent('DOMContentLoaded'))
+
+      expect(inactive.getAttribute('aria-pressed')).toEqual('false')
+      expect(active.getAttribute('aria-pressed')).toEqual('true')
+      expect(explicit.getAttribute('aria-pressed')).toEqual('true')
+      expect(Button.getInstance(inactive)).toBeNull()
+
+      inactive.click()
+
+      expect(inactive.getAttribute('aria-pressed')).toEqual('true')
+    })
+
     it('should toggle active class on click', () => {
       fixtureEl.innerHTML = [
         '<button class="btn" data-bs-toggle="button">btn</button>',

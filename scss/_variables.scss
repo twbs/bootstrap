@@ -1069,11 +1069,13 @@ $form-file-button-hover-bg:       var(--#{$prefix}secondary-bg) !default;
 
 // scss-docs-start form-floating-variables
 $form-floating-height:                  add(3.5rem, $input-height-border) !default;
-$form-floating-line-height:             1.25 !default;
+$form-floating-line-height:             1.375 !default;
 $form-floating-padding-x:               $input-padding-x !default;
 $form-floating-padding-y:               1rem !default;
 $form-floating-input-padding-t:         1.625rem !default;
 $form-floating-input-padding-b:         .625rem !default;
+$form-floating-select-padding-t:        1.25rem !default;
+$form-floating-select-padding-b:        .25rem !default;
 $form-floating-label-height:            1.5em !default;
 $form-floating-label-opacity:           .65 !default;
 $form-floating-label-transform:         scale(.85) translateY(-.5rem) translateX(.15rem) !default;
@@ -1533,6 +1535,7 @@ $modal-sm:                          300px !default;
 $modal-md:                          500px !default;
 $modal-lg:                          800px !default;
 $modal-xl:                          1140px !default;
+$modal-xxl:                         1320px !default;
 
 $modal-fade-transform:              translate(0, -50px) !default;
 $modal-show-transform:              none !default;
@@ -1600,7 +1603,7 @@ $list-group-active-border-color:    $list-group-active-bg !default;
 $list-group-disabled-color:         var(--#{$prefix}secondary-color) !default;
 $list-group-disabled-bg:            $list-group-bg !default;
 
-$list-group-action-color:           var(--#{$prefix}secondary-color) !default;
+$list-group-action-color:           $list-group-color !default;
 $list-group-action-hover-color:     var(--#{$prefix}emphasis-color) !default;
 
 $list-group-action-active-color:    var(--#{$prefix}body-color) !default;

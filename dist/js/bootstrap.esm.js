@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap v5.3.8 (https://getbootstrap.com/)
-  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v5.3.9 (https://getbootstrap.com/)
+  * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 import * as Popper from '@popperjs/core';
@@ -65,9 +65,11 @@ const MILLISECONDS_MULTIPLIER = 1000;
 const TRANSITION_END = 'transitionend';
 
 /**
- * Properly escape IDs selectors to handle weird IDs
- * @param {string} selector
- * @returns {string}
+ * Properly escapes ID selectors to handle special characters in IDs
+ * (e.g. forward slashes, periods) so that they work with `document.querySelector`.
+ *
+ * @param {string} selector the selector to escape
+ * @returns {string} the escaped selector
  */
 const parseSelector = selector => {
   if (selector && window.CSS && window.CSS.escape) {
@@ -145,7 +147,7 @@ const isVisible = element => {
     return false;
   }
   const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible';
-  // Handle `details` element as its content may falsie appear visible when it is closed
+  // Handle `details` element as its content may falsely appear visible when it is closed
   const closedDetails = element.closest('details:not([open])');
   if (!closedDetails) {
     return elementIsVisible;
@@ -196,10 +198,10 @@ const findShadowRoot = element => {
 const noop = () => {};
 
 /**
- * Trick to restart an element's animation
+ * Trick to restart an element's animation by forcing a reflow.
  *
- * @param {HTMLElement} element
- * @return void
+ * @param {HTMLElement} element the element whose animation should be restarted
+ * @returns {void}
  *
  * @see https://www.harrytheo.com/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
@@ -277,11 +279,11 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
 /**
  * Return the previous/next element of a list.
  *
- * @param {array} list    The list of elements
- * @param activeElement   The active element
- * @param shouldGetNext   Choose to get next or previous element
- * @param isCycleAllowed
- * @return {Element|elem} The proper element
+ * @param {Element[]} list the list of elements to traverse
+ * @param {Element} activeElement the currently active element
+ * @param {boolean} shouldGetNext whether to return the next element (`true`) or the previous one (`false`)
+ * @param {boolean} isCycleAllowed whether to cycle back to the opposite end of the list when reaching the boundary
+ * @returns {Element} the appropriate previous/next element from the list
  */
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
   const listLength = list.length;
@@ -643,7 +645,7 @@ class Config {
  * Constants
  */
 
-const VERSION = '5.3.8';
+const VERSION = '5.3.9';
 
 /**
  * Class definition
@@ -1001,6 +1003,7 @@ class Swipe extends Config {
       return;
     }
     this._config = this._getConfig(config);
+    this._startX = 0;
     this._deltaX = 0;
     this._supportPointerEvents = Boolean(window.PointerEvent);
     this._initEvents();
@@ -1024,23 +1027,24 @@ class Swipe extends Config {
 
   // Private
   _start(event) {
+    this._deltaX = 0;
     if (!this._supportPointerEvents) {
-      this._deltaX = event.touches[0].clientX;
+      this._startX = event.touches[0].clientX;
       return;
     }
     if (this._eventIsPointerPenTouch(event)) {
-      this._deltaX = event.clientX;
+      this._startX = event.clientX;
     }
   }
   _end(event) {
     if (this._eventIsPointerPenTouch(event)) {
-      this._deltaX = event.clientX - this._deltaX;
+      this._deltaX = event.clientX - this._startX;
     }
     this._handleSwipe();
     execute(this._config.endCallback);
   }
   _move(event) {
-    this._deltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this._deltaX;
+    this._deltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this._startX;
   }
   _handleSwipe() {
     const absDeltaX = Math.abs(this._deltaX);
@@ -1297,8 +1301,10 @@ class Carousel extends BaseComponent {
       return;
     }
     const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement);
-    activeIndicator.classList.remove(CLASS_NAME_ACTIVE$2);
-    activeIndicator.removeAttribute('aria-current');
+    if (activeIndicator) {
+      activeIndicator.classList.remove(CLASS_NAME_ACTIVE$2);
+      activeIndicator.removeAttribute('aria-current');
+    }
     const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement);
     if (newActiveIndicator) {
       newActiveIndicator.classList.add(CLASS_NAME_ACTIVE$2);
@@ -1860,7 +1866,7 @@ class Dropdown extends BaseComponent {
   }
   _createPopper() {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)');
+      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md)');
     }
     let referenceElement = this._element;
     if (this._config.reference === 'parent') {
@@ -3224,7 +3230,7 @@ const DefaultType$3 = {
 class Tooltip extends BaseComponent {
   constructor(element, config) {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)');
+      throw new TypeError('Bootstrap\'s tooltips require Popper (https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md)');
     }
     super(element, config);
 
@@ -3572,6 +3578,16 @@ class Tooltip extends BaseComponent {
   }
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element);
+
+    // Read text attributes without coercing their values.
+    const title = this._element.getAttribute('data-bs-title');
+    const content = this._element.getAttribute('data-bs-content');
+    if (title !== null) {
+      dataAttributes.title = title;
+    }
+    if (content !== null) {
+      dataAttributes.content = content;
+    }
     for (const dataAttribute of Object.keys(dataAttributes)) {
       if (DISALLOWED_ATTRIBUTES.has(dataAttribute)) {
         delete dataAttributes[dataAttribute];
@@ -3847,7 +3863,7 @@ class ScrollSpy extends BaseComponent {
     // unregister any previous listeners
     EventHandler.off(this._config.target, EVENT_CLICK);
     EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
-      const observableSection = this._observableSections.get(event.target.hash);
+      const observableSection = this._observableSections.get(event.delegateTarget.hash);
       if (observableSection) {
         event.preventDefault();
         const root = this._rootElement || window;
