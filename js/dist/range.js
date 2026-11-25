@@ -1,11 +1,12 @@
 /*!
-* Bootstrap range.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap range.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
+import { onDocumentReady } from "./util/component-functions.js";
 //#region js/src/range.ts
 /**
 * --------------------------------------------------------------------------
@@ -23,6 +24,7 @@ const EVENT_CHANGED = `changed${EVENT_KEY}`;
 const EVENT_DOM_CONTENT_LOADED = `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_INPUT = "input";
 const EVENT_CHANGE = "change";
+const EVENT_RESET = "reset";
 const SELECTOR_RANGE = ".form-range";
 const SELECTOR_INPUT = ".form-range-input";
 const CLASS_NAME_BUBBLE = "form-range-bubble";
@@ -51,7 +53,18 @@ var Range = class extends BaseComponent {
 		this._bubbleText = null;
 		this._ticks = null;
 		this._updateHandler = () => this._update();
-		if (this._config.bubble) this._createBubble();
+		this._initialConfig = { ...config };
+		this._form = null;
+		this._resetTimeouts = /* @__PURE__ */ new Set();
+		this._resetHandler = (event) => {
+			const timeout = window.setTimeout(() => {
+				this._resetTimeouts.delete(timeout);
+				if (!event.defaultPrevented) this._update();
+			}, 0);
+			this._resetTimeouts.add(timeout);
+		};
+		this._syncBubble();
+		this._syncForm();
 		this._createTicks();
 		this._addEventListeners();
 		this._update();
@@ -66,11 +79,20 @@ var Range = class extends BaseComponent {
 		return NAME;
 	}
 	update() {
+		if (!this._input) return;
+		this._config = this._getConfig(this._initialConfig);
+		this._syncBubble();
+		this._ticks?.remove();
+		this._ticks = null;
+		this._createTicks();
+		this._syncForm();
 		this._update();
 	}
 	dispose() {
 		EventHandler.off(this._input, EVENT_INPUT, this._updateHandler);
 		EventHandler.off(this._input, EVENT_CHANGE, this._updateHandler);
+		EventHandler.off(this._form, EVENT_RESET, this._resetHandler);
+		this._resetTimeouts?.forEach((timeout) => clearTimeout(timeout));
 		this._bubble?.remove();
 		this._ticks?.remove();
 		super.dispose();
@@ -78,6 +100,24 @@ var Range = class extends BaseComponent {
 	_configAfterMerge(config) {
 		if (config.bubble === null) config.bubble = true;
 		return config;
+	}
+	_syncBubble() {
+		if (this._config.bubble) {
+			if (!this._bubble) this._createBubble();
+		} else {
+			this._bubble?.remove();
+			this._bubble = null;
+			this._bubbleText = null;
+		}
+	}
+	_syncForm() {
+		const { form } = this._input;
+		if (form === this._form) return;
+		EventHandler.off(this._form, EVENT_RESET, this._resetHandler);
+		this._resetTimeouts.forEach((timeout) => clearTimeout(timeout));
+		this._resetTimeouts.clear();
+		this._form = form;
+		EventHandler.on(this._form, EVENT_RESET, this._resetHandler);
 	}
 	_addEventListeners() {
 		EventHandler.on(this._input, EVENT_INPUT, this._updateHandler);
@@ -105,7 +145,7 @@ var Range = class extends BaseComponent {
 		return typeof this._config.formatter === "function" ? this._config.formatter(value) : String(value);
 	}
 	_createBubble() {
-		this._bubble = document.createElement("output");
+		this._bubble = document.createElement("div");
 		this._bubble.className = `${CLASS_NAME_BUBBLE} tooltip bs-tooltip-top show`;
 		this._bubble.setAttribute("aria-hidden", "true");
 		const arrow = document.createElement("div");
@@ -161,7 +201,7 @@ var Range = class extends BaseComponent {
 /**
 * Data API implementation
 */
-EventHandler.on(document, EVENT_DOM_CONTENT_LOADED, () => {
+onDocumentReady(EVENT_DOM_CONTENT_LOADED, () => {
 	for (const element of SelectorEngine.find(SELECTOR_RANGE)) Range.getOrCreateInstance(element);
 });
 //#endregion

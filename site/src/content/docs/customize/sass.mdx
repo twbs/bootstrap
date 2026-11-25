@@ -521,19 +521,19 @@ The [`theme-color-values($key)`]([[docsref:/customize/theme]]) function in `scss
 
 ### Theme opacity values
 
-The [`theme-opacity-values($color-var, $opacities)`]([[docsref:/customize/theme]]) function in `scss/_theme.scss` generates a map of opacity variants for a CSS custom property using `color-mix()`. The `$opacities` argument defaults to `$util-opacity` (10 through 100 in steps of 10). At `100`, it returns the variable directly; for all other steps, it mixes the variable against `transparent`:
+The [`theme-opacity-values($color-var, $fallback, $opacities)`]([[docsref:/customize/theme]]) function in `scss/_theme.scss` generates a map of opacity variants for a CSS custom property using `color-mix()`. The `$opacities` argument defaults to `$util-opacity` (10 through 100 in steps of 10). At `100`, it returns the variable directly; for all other steps, it mixes the variable against `transparent`:
 
 ```scss
-// In _utilities.scss — generate .border-{opacity} classes
+// In _utilities.scss — generate .border-opacity-{n} classes
 "border-opacity": (
-  class: border,
+  class: border-opacity,
   property: border-color,
-  values: theme-opacity-values(--border-color)
+  values: theme-opacity-values(--bc)
 ),
 
-// Generate .fg-{opacity} classes
+// Generate .fg-opacity-{n} classes
 "fg-opacity": (
-  class: fg,
+  class: fg-opacity,
   property: color,
   values: theme-opacity-values(--fg)
 ),
@@ -570,6 +570,20 @@ A shorthand mixin for the `prefers-color-scheme` media query is available with s
 
   @include color-scheme(dark) {
     // Insert dark mode styles here
+  }
+}
+```
+
+### Forced colors
+
+A shorthand mixin for the `forced-colors: active` media query is available. Its styles apply when the browser replaces page colors with system colors (for instance, Windows high contrast themes). The mixin outputs nothing when `$enable-forced-colors` is `false`.
+
+<ScssDocs name="mixin-forced-colors" file="scss/mixins/_forced-colors.scss" />
+
+```scss
+.custom-element {
+  @include forced-colors() {
+    // Insert forced colors styles here
   }
 }
 ```

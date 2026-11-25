@@ -79,6 +79,45 @@ describe('Toggler', () => {
       expect(togglerEl.getAttribute('id')).toBeNull()
     })
 
+    it('should not toggle event handler attributes', () => {
+      fixtureEl.innerHTML = [
+        '<div data-bs-toggle="toggler" data-bs-value="window.togglerSpy()" data-bs-attribute="onclick"></div>',
+        '<div data-bs-toggle="toggler" data-bs-value="window.togglerSpy()" data-bs-attribute="OnMouseOver"></div>'
+      ].join('')
+
+      for (const togglerEl of fixtureEl.querySelectorAll('[data-bs-toggle="toggler"]')) {
+        new Toggler(togglerEl).toggle()
+        expect(togglerEl.hasAttribute(togglerEl.dataset.bsAttribute)).toBeFalse()
+      }
+    })
+
+    it('should not toggle attributes that take a URL or styles', () => {
+      const attributes = ['action', 'background', 'data', 'formaction', 'href', 'poster', 'src', 'srcdoc', 'srcset', 'style', 'xlink:href', 'HREF']
+
+      fixtureEl.innerHTML = attributes
+        .map(attribute => `<div data-bs-toggle="toggler" data-bs-value="javascript:void(0)" data-bs-attribute="${attribute}"></div>`)
+        .join('')
+
+      for (const togglerEl of fixtureEl.querySelectorAll('[data-bs-toggle="toggler"]')) {
+        new Toggler(togglerEl).toggle()
+        expect(togglerEl.hasAttribute(togglerEl.dataset.bsAttribute)).toBeFalse()
+      }
+    })
+
+    it('should toggle aria and data attributes', () => {
+      fixtureEl.innerHTML = [
+        '<div data-bs-toggle="toggler" data-bs-value="true" data-bs-attribute="aria-pressed"></div>',
+        '<div data-bs-toggle="toggler" data-bs-value="dark" data-bs-attribute="data-bs-theme"></div>'
+      ].join('')
+
+      const [ariaEl, themeEl] = fixtureEl.querySelectorAll('[data-bs-toggle="toggler"]')
+
+      new Toggler(ariaEl).toggle()
+      new Toggler(themeEl).toggle()
+      expect(ariaEl.getAttribute('aria-pressed')).toEqual('true')
+      expect(themeEl.getAttribute('data-bs-theme')).toEqual('dark')
+    })
+
     it('should trigger events', () => {
       fixtureEl.innerHTML = '<div data-bs-toggle="toggler" data-bs-value="bg-warning" data-bs-attribute="class"></div>'
 
@@ -201,6 +240,23 @@ describe('Toggler', () => {
 
       togglerEl.click()
       expect(togglerEl.getAttribute('id')).toBeNull()
+    })
+
+    it('should not run script from data attributes on click', () => {
+      window.togglerSpy = jasmine.createSpy('togglerSpy')
+      fixtureEl.innerHTML = [
+        '<button type="button" data-bs-toggle="toggler" data-bs-value="window.togglerSpy()" data-bs-attribute="onclick"></button>',
+        '<button type="button" data-bs-toggle="toggler" data-bs-config=\'{"attribute":"onclick","value":"window.togglerSpy()"}\'></button>'
+      ].join('')
+
+      for (const togglerEl of fixtureEl.querySelectorAll('[data-bs-toggle="toggler"]')) {
+        togglerEl.click()
+        togglerEl.click()
+        expect(togglerEl.hasAttribute('onclick')).toBeFalse()
+      }
+
+      expect(window.togglerSpy).not.toHaveBeenCalled()
+      delete window.togglerSpy
     })
 
     it('should toggle class on target element via data-bs-target with ID selector', () => {

@@ -1,5 +1,5 @@
 /*!
-* Bootstrap component-functions.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap component-functions.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -10,10 +10,12 @@ import { isDisabled } from "./index.js";
 const enableDismissTrigger = (component, method = "hide") => {
 	const clickEvent = `click.dismiss${component.EVENT_KEY}`;
 	const name = component.NAME;
+	const usesNativeDialog = name === "dialog" || name === "drawer";
 	EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function(event) {
 		if (["A", "AREA"].includes(this.tagName)) event.preventDefault();
 		if (isDisabled(this)) return;
 		const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}, [class*=":${name}"]`);
+		if (!target || usesNativeDialog && !(target instanceof HTMLDialogElement)) return;
 		component.getOrCreateInstance(target)[method]();
 	});
 };
@@ -38,7 +40,11 @@ const eventAction = (onEvent, stringSelector, callback) => {
 		});
 	});
 };
+const onDocumentReady = (eventName, callback) => {
+	EventHandler.on(document, eventName, callback);
+	if (document.readyState !== "loading") callback();
+};
 //#endregion
-export { enableDismissTrigger, eventActionOnPlugin };
+export { enableDismissTrigger, eventActionOnPlugin, onDocumentReady };
 
 //# sourceMappingURL=component-functions.js.map

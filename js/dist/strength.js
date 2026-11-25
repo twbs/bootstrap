@@ -1,11 +1,12 @@
 /*!
-* Bootstrap strength.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap strength.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
+import { onDocumentReady } from "./util/component-functions.js";
 //#region js/src/strength.ts
 /**
 * --------------------------------------------------------------------------
@@ -128,8 +129,9 @@ var Strength = class extends BaseComponent {
 		if (/[a-z]/.test(password)) score += weights.lowercase;
 		if (/[A-Z]/.test(password)) score += weights.uppercase;
 		if (/\d/.test(password)) score += weights.numbers;
-		if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) score += weights.special;
-		if (/[!@#$%^&*(),.?":{}|<>].*[!@#$%^&*(),.?":{}|<>]/.test(password)) score += weights.multipleSpecial;
+		const specialCount = password.match(/[ \p{P}\p{S}]/gu)?.length ?? 0;
+		if (specialCount >= 1) score += weights.special;
+		if (specialCount >= 2) score += weights.multipleSpecial;
 		if (password.length >= 16) score += weights.longPassword;
 		return score;
 	}
@@ -150,12 +152,6 @@ var Strength = class extends BaseComponent {
 		if (this._textElement) if (strength && this._config.messages[strength]) {
 			this._textElement.textContent = this._config.messages[strength];
 			this._textElement.dataset.bsStrength = strength;
-			this._textElement.style.setProperty("--strength-color", `var(--${{
-				weak: "danger",
-				fair: "warning",
-				good: "info",
-				strong: "success"
-			}[strength]}-text)`);
 		} else {
 			this._textElement.textContent = "";
 			delete this._textElement.dataset.bsStrength;
@@ -165,7 +161,7 @@ var Strength = class extends BaseComponent {
 /**
 * Data API implementation
 */
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
+onDocumentReady(`DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
 	for (const element of SelectorEngine.find(SELECTOR_DATA_STRENGTH)) Strength.getOrCreateInstance(element);
 });
 //#endregion

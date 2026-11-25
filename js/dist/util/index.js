@@ -1,5 +1,5 @@
 /*!
-* Bootstrap index.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap index.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -119,17 +119,18 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
 		return;
 	}
 	const emulatedDuration = getTransitionDurationFromElement(transitionElement) + 5;
-	let called = false;
 	const handler = ({ target }) => {
 		if (target !== transitionElement) return;
-		called = true;
-		transitionElement.removeEventListener(TRANSITION_END, handler);
+		cancel();
 		execute(callback);
 	};
 	transitionElement.addEventListener(TRANSITION_END, handler);
-	setTimeout(() => {
-		if (!called) triggerTransitionEnd(transitionElement);
-	}, emulatedDuration);
+	const timeout = setTimeout(() => triggerTransitionEnd(transitionElement), emulatedDuration);
+	const cancel = () => {
+		clearTimeout(timeout);
+		transitionElement.removeEventListener(TRANSITION_END, handler);
+	};
+	return cancel;
 };
 /**
 * Return the previous/next element of a list.

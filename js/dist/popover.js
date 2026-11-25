@@ -1,5 +1,5 @@
 /*!
-* Bootstrap popover.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap popover.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -69,8 +69,8 @@ var Popover = class extends Tooltip {
 const initPopover = (event) => {
 	const target = event.target.closest(SELECTOR_DATA_TOGGLE);
 	if (!target) return;
-	if (event.type === "click") event.preventDefault();
-	Popover.getOrCreateInstance(target);
+	const popover = Popover.getOrCreateInstance(target);
+	if (event.type === "click" && popover._getTrigger().split(" ").includes("click")) event.preventDefault();
 };
 EventHandler.on(document, EVENT_CLICK, SELECTOR_DATA_TOGGLE, initPopover);
 EventHandler.on(document, EVENT_FOCUSIN, SELECTOR_DATA_TOGGLE, initPopover);

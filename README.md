@@ -41,12 +41,12 @@ Our default branch is for development of our Bootstrap 6 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v6.0.0-alpha.1.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v6.0.0-alpha.2.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@6.0.0-alpha.1`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@6.0.0-alpha.1`
-- Install with [Bun](https://bun.sh/): `bun add bootstrap@6.0.0-alpha.1`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:6.0.0-alpha.1`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@6.0.0-alpha.2`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@6.0.0-alpha.2`
+- Install with [Bun](https://bun.sh/): `bun add bootstrap@6.0.0-alpha.2`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:6.0.0-alpha.2`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/6.0/getting-started/) for information on the framework contents, templates, examples, and more.
@@ -174,7 +174,7 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 ## Thanks
 
 <a href="https://www.netlify.com/">
-  <img src="https://www.netlify.com/v3/img/components/full-logo-light.svg" alt="Netlify" width="147" height="40">
+  <img src="https://www.netlify.com/assets/logos/full/large/lightmode/logo-netlify-large-fullcolor-lightmode.svg" alt="Netlify" width="147" height="40">
 </a>
 
 Thanks to [Netlify](https://www.netlify.com/) for providing us with Deploy Previews!

@@ -2,6 +2,7 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/forced-colors" as *;
 @use "../mixins/transition" as *;
 @use "../mixins/gradients" as *;
 @use "../mixins/tokens" as *;
@@ -72,8 +73,8 @@ $range-tokens: defaults(
   background-image:
     linear-gradient(
       var(--range-track-fill-direction),
-      var(--range-track-fill-bg) calc(var(--range-fill, 0) * 100%),
-      transparent calc(var(--range-fill, 0) * 100%)
+      var(--range-track-fill-bg) calc((var(--range-thumb-width) * .5) + var(--range-fill, 0) * (100% - var(--range-thumb-width))),
+      transparent calc((var(--range-thumb-width) * .5) + var(--range-fill, 0) * (100% - var(--range-thumb-width)))
     );
   border-color: transparent;
   @include border-radius(var(--range-track-border-radius));
@@ -101,6 +102,27 @@ $range-tokens: defaults(
     padding: 0;
     appearance: none;
     background-color: transparent;
+
+    // Forced colors mode sets the track and thumb backgrounds to `Canvas` and drops the
+    // fill gradient, so the slider disappears. Paint the parts with system colors instead.
+    @include forced-colors() {
+      --range-track-bg: Canvas;
+      --range-track-fill-bg: Highlight;
+      --range-track-disabled-bg: GrayText;
+      --range-thumb-bg: ButtonText;
+      --range-thumb-active-bg: Highlight;
+      --range-thumb-disabled-bg: GrayText;
+      forced-color-adjust: none;
+
+      // Outline instead of border, so the track height and thumb offset stay the same.
+      &::-webkit-slider-runnable-track {
+        outline: 1px solid CanvasText;
+      }
+
+      &::-moz-range-track {
+        outline: 1px solid CanvasText;
+      }
+    }
 
     &:hover {
       &::-webkit-slider-thumb {

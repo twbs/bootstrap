@@ -1,0 +1,30 @@
+---
+title: Font variant numeric
+description: Utilities for controlling numeric glyphs, including tabular numbers that line up in columns.
+toc: true
+utility:
+  - font-variant-numeric
+---
+
+import { getData } from '@libs/data'
+
+## Tabular numbers
+
+Use `.font-tabular-nums` to give every digit the same width, so numbers line up vertically without switching to a monospace font. This is useful for prices, phone numbers, opening hours, timers, or any figures stacked in a list or table. It sets `font-variant-numeric: tabular-nums` and keeps the current font family.
+
+<Example code={`<p class="mb-0">11,111.11</p>
+<p class="mb-0">99,999.99</p>
+<p class="font-tabular-nums mb-0">11,111.11</p>
+<p class="font-tabular-nums mb-0">99,999.99</p>`} />
+
+<Callout type="info">
+The effect depends on the font. Most system UI fonts include tabular figures, but if your font doesn't provide them, the browser falls back to its default digits.
+</Callout>
+
+## CSS
+
+### Sass utilities API
+
+Font variant numeric utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-font-variant-numeric" file="scss/_utilities.scss" />

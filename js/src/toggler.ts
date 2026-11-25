@@ -23,6 +23,26 @@ const EVENT_CLICK = 'click'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="toggler"]'
 
+// Attributes that run script or take a URL to load or navigate to. Toggler reads
+// its options from `data-bs-*` attributes, which HTML sanitizers keep, so toggling
+// one of these would turn sanitized markup into code (`onclick="…"`,
+// `formaction="javascript:…"`). `id` is refused too: it identifies the element.
+const EVENT_HANDLER_PATTERN = /^on/i
+const DISALLOWED_ATTRIBUTES = new Set([
+  'action',
+  'background',
+  'data',
+  'formaction',
+  'href',
+  'id',
+  'poster',
+  'src',
+  'srcdoc',
+  'srcset',
+  'style',
+  'xlink:href'
+])
+
 type TogglerConfig = {
   attribute: string
   value: string | number | boolean
@@ -79,8 +99,8 @@ class Toggler extends BaseComponent {
   protected _execute(): void {
     const { attribute, value } = this._config
 
-    if (attribute === 'id') {
-      return // You have to be kidding
+    if (EVENT_HANDLER_PATTERN.test(attribute) || DISALLOWED_ATTRIBUTES.has(attribute.toLowerCase())) {
+      return
     }
 
     // Nothing to toggle without a value (e.g. missing `data-bs-value`)

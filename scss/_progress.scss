@@ -4,6 +4,7 @@
 @use "mixins/gradients" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/tokens" as *;
 
 $progress-tokens: () !default;
@@ -48,6 +49,11 @@ $progress-tokens: defaults(
     background-color: var(--progress-bg);
     @include border-radius(var(--progress-border-radius));
     @include box-shadow(var(--progress-box-shadow));
+
+    // Forced colors mode removes the background color. Show the track with an outline.
+    @include forced-colors() {
+      outline: 1px solid transparent;
+    }
   }
 
   .progress-bar {
@@ -60,6 +66,16 @@ $progress-tokens: defaults(
     white-space: nowrap;
     background-color: var(--theme-bg, var(--progress-bar-bg));
     @include transition(var(--progress-bar-transition));
+
+    // Forced colors mode removes background colors, so the bar disappears.
+    // Paint it with a system color. Its label sits on the browser's Canvas backplate,
+    // so it uses CanvasText, and the outline keeps the bar's edge visible when a
+    // .bg-* utility overrides the color.
+    @include forced-colors() {
+      color: CanvasText;
+      background-color: Highlight;
+      outline: 1px solid transparent;
+    }
   }
 
   .progress-bar-striped {

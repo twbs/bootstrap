@@ -239,6 +239,7 @@
         - title: Font family
         - title: Font size
         - title: Font style
+        - title: Font variant numeric
         - title: Font weight
         - title: Line height
         - title: Link
