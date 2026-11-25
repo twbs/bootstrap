@@ -6,6 +6,7 @@
     "@babel/preset-env",
     "@docsearch/js",
     "astro",
+    "astro-auto-import",
     "eslint",
     "eslint-config-xo",
     "eslint-plugin-unicorn",
@@ -14,6 +15,7 @@
     "jquery",
     "karma-browserstack-launcher",
     "karma-rollup-preprocessor",
+    "prettier-plugin-astro",
     "sass",
     "stylelint",
     "vnu-jar"

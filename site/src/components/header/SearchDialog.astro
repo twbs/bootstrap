@@ -1,0 +1,38 @@
+---
+import { getConfig } from '@libs/config'
+
+const id = 'bdSearchDialog'
+const placeholder = 'Search docs…'
+const bundlePath = '/docs/' + getConfig().docs_version + '/pagefind/'
+---
+
+<div
+  class="modal bd-search-modal"
+  id={id}
+  tabindex="-1"
+  aria-labelledby={id + '-label'}
+  data-pagefind-bundle={bundlePath}
+>
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <form class="modal-header gap-3 border-0" role="search" autocomplete="off">
+        <label class="visually-hidden" id={id + '-label'} for={id + '-input'}>{placeholder}</label>
+        <bd-search-input class="flex-grow-1">
+          <input
+            id={id + '-input'}
+            type="search"
+            class="form-control"
+            placeholder={placeholder}
+            autocomplete="off"
+            spellcheck="false"
+            enterkeyhint="search"
+          />
+        </bd-search-input>
+        <button type="button" class="btn-close flex-shrink-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </form>
+      <div class="modal-body pt-0">
+        <bd-search-results></bd-search-results>
+      </div>
+    </div>
+  </div>
+</div>

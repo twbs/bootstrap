@@ -44,12 +44,12 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.3.8.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.3.9.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.8`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.8`
-- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.8`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.8`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.9`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.9`
+- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.9`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.9`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
@@ -131,7 +131,7 @@ Within the download you’ll find the following directories and files, logically
   ```
 </details>
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers’ developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/docs/v2/).
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers’ developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://github.com/floating-ui/popper-docs/blob/main/docs/v2/index.md).
 
 
 ## Bugs and feature requests
@@ -143,7 +143,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Bootstrap’s documentation, included in this repo in the root directory, is built with [Astro](https://astro.build/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/).
+Documentation search is powered by [Pagefind](https://pagefind.app/). Run `npm run docs-build` before starting the local dev server to generate the search index.
 
 ### Running documentation locally
 

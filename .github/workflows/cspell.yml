@@ -3,7 +3,7 @@ name: cspell
 on:
   push:
     branches:
-      - main
+      - v5-dev
   pull_request:
   workflow_dispatch:
 
@@ -28,7 +28,7 @@ jobs:
           persist-credentials: false
 
       - name: Run cspell
-        uses: streetsidesoftware/cspell-action@e0668cf020899e887ee8ad4d173c31738a79eae8 # v9.0.1
+        uses: streetsidesoftware/cspell-action@ce1816e4ce36532956ac6e983737392774b6e169 # v9.2.0
         with:
           config: ".cspell.json"
           files: |
