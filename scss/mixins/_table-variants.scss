@@ -11,11 +11,11 @@
     --#{$prefix}table-bg: #{$background};
     --#{$prefix}table-border-color: #{$table-border-color};
     --#{$prefix}table-striped-bg: #{$striped-bg};
-    --#{$prefix}table-striped-color: #{color-contrast($striped-bg)};
+    --#{$prefix}table-striped-color: #{color-contrast($striped-bg)}; // stylelint-disable-line scss/dollar-variable-no-missing-interpolation
     --#{$prefix}table-active-bg: #{$active-bg};
-    --#{$prefix}table-active-color: #{color-contrast($active-bg)};
+    --#{$prefix}table-active-color: #{color-contrast($active-bg)}; // stylelint-disable-line scss/dollar-variable-no-missing-interpolation
     --#{$prefix}table-hover-bg: #{$hover-bg};
-    --#{$prefix}table-hover-color: #{color-contrast($hover-bg)};
+    --#{$prefix}table-hover-color: #{color-contrast($hover-bg)}; // stylelint-disable-line scss/dollar-variable-no-missing-interpolation
 
     color: var(--#{$prefix}table-color);
     border-color: var(--#{$prefix}table-border-color);

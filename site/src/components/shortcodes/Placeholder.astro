@@ -1,0 +1,27 @@
+---
+import { getPlaceholder, type PlaceholderOptions } from '@libs/placeholder'
+
+type Props = Partial<PlaceholderOptions>
+
+const {
+  options: { background, color, showText, showTitle, text, title },
+  props,
+  type
+} = getPlaceholder(Astro.props)
+---
+
+{
+  type === 'img' ? (
+    <img {...props} />
+  ) : (
+    <svg {...props}>
+      {showTitle && <title>{title}</title>}
+      <rect width="100%" height="100%" fill={background} />
+      {showText && (
+        <text x="50%" y="50%" fill={color} dy=".3em">
+          {text}
+        </text>
+      )}
+    </svg>
+  )
+}

@@ -90,6 +90,19 @@ describe('Tooltip', () => {
       expect(tooltip._config.content).toEqual('7')
     })
 
+    for (const title of ['9.90', '', '[1,2]', 'null']) {
+      it(`should preserve the literal data title ${JSON.stringify(title)}`, () => {
+        const element = document.createElement('button')
+        element.setAttribute('data-bs-title', title)
+        fixtureEl.append(element)
+
+        const tooltip = new Tooltip(element)
+
+        expect(tooltip._config.title).toEqual(title)
+        tooltip.dispose()
+      })
+    }
+
     it('should enable selector delegation', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div></div>'
@@ -442,6 +455,56 @@ describe('Tooltip', () => {
       expect(tooltipWithoutTitleEl.getAttribute('title')).toBeNull()
       tooltip2.dispose()
       expect(tooltipWithoutTitleEl.getAttribute('title')).toBeNull()
+    })
+
+    it('should skip the hide callback after disposal', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+      const hiddenSpy = jasmine.createSpy('hidden')
+
+      tooltipEl.addEventListener('hidden.bs.tooltip', hiddenSpy)
+      tooltip.show()
+
+      const { tip } = tooltip
+      tip.dispatchEvent(createEvent('transitionend'))
+      tooltip.hide()
+      tooltip.dispose()
+      tip.dispatchEvent(createEvent('transitionend'))
+
+      expect(hiddenSpy).not.toHaveBeenCalled()
+    })
+
+    it('should skip the show callback after disposal', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+      const shownSpy = jasmine.createSpy('shown')
+
+      tooltipEl.addEventListener('shown.bs.tooltip', shownSpy)
+      tooltip.show()
+
+      const { tip } = tooltip
+      tooltip.dispose()
+      tip.dispatchEvent(createEvent('transitionend'))
+
+      expect(shownSpy).not.toHaveBeenCalled()
+      expect(tooltip._isHovered).toBeNull()
+    })
+
+    it('should leave the instance cleared when a shown listener disposes it', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Another tooltip"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => tooltip.dispose())
+      tooltip.show()
+      tooltip.tip.dispatchEvent(createEvent('transitionend'))
+
+      expect(tooltip._isHovered).toBeNull()
     })
   })
 

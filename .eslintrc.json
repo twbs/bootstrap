@@ -95,6 +95,7 @@
     "unicorn/prefer-array-flat": "off",
     "unicorn/prefer-at": "off",
     "unicorn/prefer-dom-node-dataset": "off",
+    "unicorn/prefer-global-this": "off",
     "unicorn/prefer-module": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prefer-spread": "off",
@@ -202,7 +203,12 @@
     },
     {
       "files": [
-        "site/assets/js/**"
+        "site/src/assets/application.js",
+        "site/src/assets/partials/*.js",
+        "site/src/assets/search.js",
+        "site/src/assets/snippets.js",
+        "site/src/assets/stackblitz.js",
+        "site/src/plugins/*.js"
       ],
       "parserOptions": {
         "sourceType": "module",

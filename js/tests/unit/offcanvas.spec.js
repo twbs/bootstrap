@@ -191,6 +191,7 @@ describe('Offcanvas', () => {
       expect(offCanvas._config.backdrop).toBeTrue()
       expect(offCanvas._backdrop._config.isVisible).toBeTrue()
       expect(offCanvas._config.keyboard).toBeTrue()
+      expect(offCanvas._config.preventScroll).toBeFalse()
       expect(offCanvas._config.scroll).toBeFalse()
     })
 
@@ -621,6 +622,52 @@ describe('Offcanvas', () => {
       expect(offCanvas._focustrap).toBeNull()
       expect(Offcanvas.getInstance(offCanvasEl)).toBeNull()
     })
+
+    for (const phase of ['opening', 'open', 'closing']) {
+      it(`should restore scrolling when disposed while ${phase}`, () => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+        document.body.style.overflow = 'auto'
+
+        const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+        const offCanvas = new Offcanvas(offCanvasEl)
+        const hiddenSpy = jasmine.createSpy('hidden')
+
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', hiddenSpy)
+        offCanvas.show()
+
+        if (phase !== 'opening') {
+          offCanvasEl.dispatchEvent(createEvent('transitionend'))
+        }
+
+        if (phase === 'closing') {
+          offCanvas.hide()
+        }
+
+        expect(document.body.style.overflow).toEqual('hidden')
+        offCanvas.dispose()
+        offCanvasEl.dispatchEvent(createEvent('transitionend'))
+
+        expect(document.body.style.overflow).toEqual('auto')
+        expect(offCanvasEl.className).toEqual('offcanvas')
+        expect(offCanvasEl.hasAttribute('aria-modal')).toBeFalse()
+        expect(offCanvasEl.hasAttribute('role')).toBeFalse()
+        expect(hiddenSpy).not.toHaveBeenCalled()
+      })
+    }
+
+    it('should preserve body overflow when disposing with scroll enabled', () => {
+      fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+      document.body.style.overflow = 'auto'
+
+      const offCanvasEl = fixtureEl.querySelector('.offcanvas')
+      const offCanvas = new Offcanvas(offCanvasEl, { scroll: true })
+
+      offCanvas.show()
+      offCanvas.dispose()
+      offCanvasEl.dispatchEvent(createEvent('transitionend'))
+
+      expect(document.body.style.overflow).toEqual('auto')
+    })
   })
 
   describe('data-api', () => {
@@ -683,37 +730,37 @@ describe('Offcanvas', () => {
       })
     })
 
-    it('should focus on trigger element after closing offcanvas', () => {
-      return new Promise(resolve => {
+    for (const [description, attribute, preventScroll] of [
+      ['with normal scrolling by default', '', false],
+      ['without scrolling when enabled', ' data-bs-prevent-scroll="true"', true]
+    ]) {
+      it(`should focus the trigger ${description} after closing offcanvas`, async () => {
         fixtureEl.innerHTML = [
           '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></button>',
-          '<div id="offcanvas" class="offcanvas"></div>'
+          `<div id="offcanvas" class="offcanvas"${attribute}></div>`
         ].join('')
 
         const trigger = fixtureEl.querySelector('#btn')
         const offcanvasEl = fixtureEl.querySelector('#offcanvas')
-        const offcanvas = new Offcanvas(offcanvasEl)
         const spy = spyOn(trigger, 'focus')
-
-        offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
-          offcanvas.hide()
-        })
-        offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
-          setTimeout(() => {
-            expect(spy).toHaveBeenCalled()
-            resolve()
-          }, 5)
+        const hidden = new Promise(resolve => {
+          offcanvasEl.addEventListener('shown.bs.offcanvas', () => {
+            Offcanvas.getInstance(offcanvasEl).hide()
+          }, { once: true })
+          offcanvasEl.addEventListener('hidden.bs.offcanvas', resolve, { once: true })
         })
 
         trigger.click()
+        await hidden
+        expect(spy).toHaveBeenCalledOnceWith({ preventScroll })
       })
-    })
+    }
 
     it('should not focus on trigger element after closing offcanvas, if it is not visible', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<button id="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></button>',
-          '<div id="offcanvas" class="offcanvas"></div>'
+          '<div id="offcanvas" class="offcanvas" data-bs-prevent-scroll="true"></div>'
         ].join('')
 
         const trigger = fixtureEl.querySelector('#btn')

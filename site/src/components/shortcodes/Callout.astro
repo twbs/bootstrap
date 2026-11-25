@@ -1,0 +1,44 @@
+---
+import { getCalloutByName } from '@libs/content'
+import type { MarkdownInstance } from 'astro'
+
+interface Props {
+  /**
+   * The name of an existing callout to display located in `src/content/callouts`.
+   * This will override any content passed in via the default slot.
+   */
+  name?:
+    | 'danger-async-methods'
+    | 'info-mediaqueries-breakpoints'
+    | 'info-npm-starter'
+    | 'info-prefersreducedmotion'
+    | 'info-sanitizer'
+    | 'warning-color-assistive-technologies'
+    | 'warning-data-bs-title-vs-title'
+    | 'warning-input-support'
+  /**
+   * The type of callout to display. One of `info`, `danger`, or `warning`.
+   * @default 'info'
+   */
+  type?: 'danger' | 'info' | 'warning'
+}
+
+const { name, type = 'info' } = Astro.props
+
+let Content: MarkdownInstance<{}>['Content'] | undefined
+
+if (name) {
+  const callout = await getCalloutByName(name)
+
+  if (!callout) {
+    throw new Error(`Could not find callout with name '${name}'.`)
+  }
+
+  const namedCallout = await callout.render()
+  Content = namedCallout.Content
+}
+---
+
+<div class={`bd-callout bd-callout-${type}`}>
+  {Content ? <Content /> : <slot />}
+</div>

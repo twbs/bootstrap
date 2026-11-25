@@ -1,0 +1,84 @@
+---
+import { getData } from '@libs/data'
+import { getConfig } from '@libs/config'
+import { docsPages } from '@libs/content'
+import { getSlug } from '@libs/utils'
+
+const sidebar = getData('sidebar')
+---
+
+<nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    {
+      sidebar.map((group) => {
+        const groupSlug = getSlug(group.title)
+
+        if (group.pages) {
+          return (
+            <li class="bd-links-group py-2">
+              <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+                {group.icon && (
+                  <svg
+                    class="bi me-2"
+                    style={group.icon_color && `color: var(--bs-${group.icon_color});`}
+                    aria-hidden="true"
+                  >
+                    <use xlink:href={`#${group.icon}`} />
+                  </svg>
+                )}
+                {group.title}
+              </strong>
+              <ul class="list-unstyled fw-normal pb-2 small">
+                {group.pages?.map((page) => {
+                  const docSlug = getSlug(page.title)
+                  const unversionedPageSlug = `${groupSlug}/${docSlug}`
+
+                  const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
+                  const active = Astro.params.slug === unversionedPageSlug
+
+                  const generatedPage = docsPages.find((page) => page.slug === unversionedPageSlug)
+
+                  // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
+                  if (!generatedPage) {
+                    throw new Error(
+                      `The page '${page.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`
+                    )
+                  }
+
+                  return (
+                    <li>
+                      <a
+                        href={url}
+                        class:list={['bd-links-link d-inline-block rounded', { active }]}
+                        aria-current={active ? 'page' : undefined}
+                      >
+                        {page.title}
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </li>
+          )
+        } else {
+          const active = Astro.params.slug === groupSlug
+
+          return (
+            <>
+              <li class="bd-links-span-all mt-1 mb-3 mx-4 border-top" />
+              <li class="bd-links-span-all">
+                <a
+                  href={`/docs/${getConfig().docs_version}/${groupSlug}/`}
+                  class:list={['bd-links-link d-inline-block rounded small', { active }]}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  {group.title}
+                </a>
+              </li>
+            </>
+          )
+        }
+      })
+    }
+  </ul>
+</nav>

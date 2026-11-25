@@ -43,31 +43,6 @@
   }
 }
 
-// Interactive list items
-//
-// Use anchor or button elements instead of `li`s or `div`s to create interactive
-// list items. Includes an extra `.active` modifier class for selected items.
-
-.list-group-item-action {
-  width: 100%; // For `<button>`s (anchors become 100% by default though)
-  color: var(--#{$prefix}list-group-action-color);
-  text-align: inherit; // For `<button>`s (anchors inherit)
-
-  // Hover state
-  &:hover,
-  &:focus {
-    z-index: 1; // Place hover/focus items above their siblings for proper border styling
-    color: var(--#{$prefix}list-group-action-hover-color);
-    text-decoration: none;
-    background-color: var(--#{$prefix}list-group-action-hover-bg);
-  }
-
-  &:active {
-    color: var(--#{$prefix}list-group-action-active-color);
-    background-color: var(--#{$prefix}list-group-action-active-bg);
-  }
-}
-
 // Individual list items
 //
 // Use on `li`s or `div`s within the `.list-group` parent.
@@ -115,6 +90,38 @@
   }
 }
 
+// Interactive list items
+//
+// Use anchor or button elements instead of `li`s or `div`s to create interactive
+// list items. Includes an extra `.active` modifier class for selected items.
+
+.list-group-item-action {
+  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  color: var(--#{$prefix}list-group-action-color);
+  text-align: inherit; // For `<button>`s (anchors inherit)
+
+  &:not(.active) {
+    // Hover state
+    &:hover,
+    &:focus {
+      z-index: 1; // Place hover/focus items above their siblings for proper border styling
+      color: var(--#{$prefix}list-group-action-hover-color);
+      text-decoration: none;
+      background-color: var(--#{$prefix}list-group-action-hover-bg);
+    }
+
+    &:active {
+      color: var(--#{$prefix}list-group-action-active-color);
+      background-color: var(--#{$prefix}list-group-action-active-bg);
+    }
+  }
+
+  &.active {
+    text-decoration: none;
+  }
+}
+
+
 // Horizontal
 //
 // Change the layout of list group items from vertical (default) to horizontal.
@@ -152,9 +159,32 @@
         }
       }
     }
+
+    // Horizontal flush list items
+    //
+    // Remove borders and border-radius to keep horizontal list group items edge-to-edge. Most
+    // useful within other components (e.g., cards).
+
+    .list-group-flush.list-group-horizontal#{$infix} {
+
+      > .list-group-item {
+        border-width: 0 var(--#{$prefix}list-group-border-width) 0 0;
+
+        &:first-child:not(:last-child) {
+          @include border-bottom-start-radius(0);
+        }
+
+        &:last-child:not(:first-child) {
+          @include border-top-end-radius(0);
+        }
+
+        &:last-child {
+          border-right-width: 0;
+        }
+      }
+    }
   }
 }
-
 
 // Flush list items
 //
@@ -172,7 +202,6 @@
     }
   }
 }
-
 
 // scss-docs-start list-group-modifiers
 // List group contextual variants

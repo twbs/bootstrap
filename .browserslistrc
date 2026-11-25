@@ -9,3 +9,4 @@ Firefox ESR
 iOS >= 12
 Safari >= 12
 not Explorer <= 11
+not kaios <= 2.5 # fix floating label issues in Firefox (see https://github.com/postcss/autoprefixer/issues/1533)

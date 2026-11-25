@@ -31,6 +31,7 @@ describe('Sanitizer', () => {
         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/', // Truncated.
         'data:video/webm;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/',
         'data:audio/opus;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/',
+        'data:audio/mpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/',
         'unknown-scheme:abc'
       ]
 
@@ -67,7 +68,13 @@ describe('Sanitizer', () => {
         'jav\u0000ascript:alert();'
       ]
 
-      for (const url of invalidUrls) {
+      const dangerousDataUrls = [
+        'data:text/html,hello',
+        'data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==',
+        'vbscript:msgbox(1)'
+      ]
+
+      for (const url of [...invalidUrls, ...dangerousDataUrls]) {
         const template = [
           '<div>',
           `  <a href="${url}">Click me</a>`,
@@ -158,6 +165,91 @@ describe('Sanitizer', () => {
 
       expect(firstResult).toContain('src')
       expect(secondResult).toContain('src')
+    })
+
+    it('should keep safe srcset candidates', () => {
+      const template = '<img src="safe.jpg" srcset="safe.jpg 1x, /images/two.png 2x">'
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).toContain('srcset=')
+      expect(result).toContain('safe.jpg')
+      expect(result).toContain('/images/two.png')
+    })
+
+    it('should drop srcset when any candidate is a javascript: URL', () => {
+      // eslint-disable-next-line no-script-url
+      const unsafeSrcset = 'javascript:alert(1)'
+      const template = `<img src="safe.jpg" srcset="${unsafeSrcset}">`
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).not.toContain('srcset')
+    })
+
+    it('should drop a mixed srcset if one candidate is unsafe', () => {
+      // eslint-disable-next-line no-script-url
+      const unsafeSrcset = 'javascript:alert(1)'
+      const template = `<img src="safe.jpg" srcset="safe.jpg 1x, ${unsafeSrcset} 2x">`
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).not.toContain('srcset')
+    })
+
+    it('should drop srcset when a data: candidate is followed by an unsafe candidate', () => {
+      // eslint-disable-next-line no-script-url
+      const unsafeSrcset = 'javascript:alert(1)'
+      const template = `<img src="safe.jpg" srcset="data:image/png;base64,AAAA , ${unsafeSrcset} 2x">`
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).not.toContain('srcset')
+    })
+
+    it('should keep an image URL with an internal comma', () => {
+      const template = '<img srcset="/photos/a,b&amp;c:d.jpg 1x, /photos/two.jpg 2x">'
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).toEqual(template)
+    })
+
+    it('should keep commas inside descriptor parentheses with the descriptor', () => {
+      const template = '<img srcset="/one.jpg descriptor(a,b&amp;c:d.jpg), /two.jpg 2x">'
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).toEqual(template)
+    })
+
+    it('should keep a data-URI srcset whose commas belong to the payload', () => {
+      const dataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/'
+      const template = `<img src="safe.jpg" srcset="${dataUrl} 1x">`
+
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+      expect(result).toContain('srcset=')
+      expect(result).toContain('data:image/png;base64,')
+    })
+
+    it('should return an empty string if DOMParser is unavailable', () => {
+      const original = window.DOMParser
+      window.DOMParser = undefined
+
+      const result = sanitizeHtml('<div><a href="https://example.com">x</a></div>', DefaultAllowlist, null)
+
+      window.DOMParser = original
+
+      expect(result).toEqual('')
+    })
+
+    it('should return an empty string if DOMParser throws', () => {
+      spyOn(DOMParser.prototype, 'parseFromString').and.throwError('clobbered')
+
+      const result = sanitizeHtml('<div>content</div>', DefaultAllowlist, null)
+
+      expect(result).toEqual('')
     })
   })
 })

@@ -1,9 +1,0 @@
-{{- /* Outputs message about dark mode component variants being deprecated in v5.3. */ -}}
-
-{{- $component := .Get 0 -}}
-
-<div class="bd-callout bd-callout-warning">
-  <p>
-    <strong>Heads up!</strong> Dark variants for components were deprecated in v5.3.0 with the introduction of color modes. Instead of adding <code>.{{ $component }}-dark</code>, set <code>data-bs-theme="dark"</code> on the root element, a parent wrapper, or the component itself.
-  </p>
-</div>
