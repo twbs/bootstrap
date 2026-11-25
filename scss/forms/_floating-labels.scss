@@ -22,7 +22,7 @@ $form-floating-tokens: defaults(
     // can't inherit the control's own `--control-bg`/`--control-disabled-bg`.
     --form-floating-label-bg: var(--btn-input-bg),
     --form-floating-label-disabled-bg: var(--bg-2),
-    --form-floating-label-opacity: .65,
+    --form-floating-label-opacity: 65%,
     --form-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem),
     --form-floating-label-disabled-color: var(--fg-3),
     --form-floating-transition-property: "opacity, transform",
