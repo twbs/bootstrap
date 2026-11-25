@@ -458,6 +458,30 @@ Set `data-bs-input` to the selector of a hidden input, or pass the element as th
 
 Mark the initial selection with `.selected` on the options. We sync the field from that markup; an existing field value does not select an option. Use an explicit selector for each component, even when several rows use the same field name. We do not infer a binding from neighboring elements or shared names.
 
+Multiple selection also reuses the provided input. It holds the first selected value in menu order. Combobox creates additional inputs with the same name for the remaining values. Values that contain commas stay unchanged; Combobox does not join values with commas.
+
+```html
+<form id="languagePreferences">
+  <label for="comboboxBoundLanguages">Languages</label>
+  <input type="hidden" id="comboboxLanguageValue" name="language">
+  <div class="combobox-control" data-bs-toggle="combobox" data-bs-input="#comboboxLanguageValue" data-bs-multiple="true">
+    <input class="form-ghost combobox-input" id="comboboxBoundLanguages" placeholder="Choose a language">
+  </div>
+  <div class="menu" aria-label="Languages">
+    <button class="menu-item selected" type="button" data-bs-value="en">English</button>
+    <button class="menu-item selected" type="button" data-bs-value="fr">French</button>
+    <button class="menu-item" type="button" data-bs-value="ja">Japanese</button>
+  </div>
+</form>
+```
+
+Read all selected values from the form. In this example, the provided input holds `en`, and a generated input holds `fr`.
+
+```js
+const form = document.querySelector('#languagePreferences')
+const selectedLanguages = new FormData(form).getAll('language') // ['en', 'fr']
+```
+
 Calling `dispose()` keeps a provided input, its current first value, and its application attributes. It removes generated inputs and component listeners. In multiple mode, generated fields for the other values are also removed. One provided input cannot preserve the entire repeated-value payload after disposal.
 
 ### Disabled state, reset, and updates

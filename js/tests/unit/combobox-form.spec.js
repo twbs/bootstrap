@@ -79,6 +79,48 @@ describe('Combobox form contract', () => {
     expect(new URLSearchParams(new FormData(x.form)).toString()).toEqual('choices=a%2Cb&choices=c')
   })
 
+  it('should reuse an explicit input for editable multiple selection through data attributes', () => {
+    fixture.innerHTML = `<form>
+      <label class="form-label" for="editableLanguage">Language</label>
+      <input type="hidden" name="language" id="language1">
+      <div class="combobox-control" data-bs-toggle="combobox" data-bs-input="#language1" data-bs-multiple="true">
+        <input class="form-ghost combobox-input" id="editableLanguage" placeholder="Choose a language">
+      </div>
+      <div class="menu" aria-label="Languages">
+        <button class="menu-item" type="button" data-bs-value="en">English</button>
+        <button class="menu-item" type="button" data-bs-value="fr">French</button>
+        <button class="menu-item" type="button" data-bs-value="ja,zh">Japanese and Chinese</button>
+      </div>
+    </form>`
+    const form = fixture.querySelector('form')
+    const input = fixture.querySelector('#language1')
+    const instance = new Combobox(fixture.querySelector('.combobox-control'))
+    instances.push(instance)
+    const submitted = () => new FormData(form).getAll('language')
+    const fields = () => [...form.querySelectorAll('input[type="hidden"]')]
+
+    instance.add('fr')
+    instance.add('en')
+    instance.add('ja,zh')
+    expect(fields()[0]).toBe(input)
+    expect(fields().map(field => field.name)).toEqual(['language', 'language', 'language'])
+    expect(fields().map(field => field.value)).toEqual(['en', 'fr', 'ja,zh'])
+    expect(submitted()).toEqual(['en', 'fr', 'ja,zh'])
+
+    instance.remove('en')
+    expect(fields()[0]).toBe(input)
+    expect(input.value).toEqual('fr')
+    expect(fields().length).toEqual(2)
+    expect(submitted()).toEqual(['fr', 'ja,zh'])
+
+    instance.remove('fr')
+    instance.remove('ja,zh')
+    expect(fields()).toEqual([input])
+    expect(input.value).toEqual('')
+    expect(input.disabled).toBeTrue()
+    expect(submitted()).toEqual([])
+  })
+
   it('should preserve its event field across empty multiple selections', () => {
     const x = make({ multiple: true })
     const input = x.form.querySelector('input[type="hidden"]')
