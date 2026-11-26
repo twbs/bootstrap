@@ -239,6 +239,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 
 ### Sass
 
+- **Most Sass variables moved to token maps.** [Sass migration]([[docsref:/guides/sass-migration]]) lists the option, token, or map key that replaces each v5.3.9 `!default` variable, with a brand color example.
 - Dropped support for Node Sass, including no longer testing any of our source CSS against it.
   - Rearranged several Sass files in the process.
 - Removed `add()` and `subtract()` functions. Use `calc()` instead.
@@ -249,7 +250,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Renamed Sass files for consistency.** `_placeholders.scss` is now `_placeholder.scss` and `_spinners.scss` is now `_spinner.scss`. Update any individual `@use` imports for these files.
 - **Standardized focus styles with `focus-ring` mixin.** All component-specific `*-focus-box-shadow` Sass variables (e.g., `$btn-focus-box-shadow`, `$input-focus-box-shadow`, `$accordion-button-focus-box-shadow`) have been removed. Focus styles are now handled by a shared `@mixin focus-ring()` using `--focus-ring`, `--focus-ring-width`, `--focus-ring-offset`, and `--focus-ring-color` CSS custom properties. Customize focus styles by overriding these tokens in `_root.scss` instead of individual Sass variables.
 - **Renamed `$grid-breakpoints` to `$breakpoints`.**
-- **Theme and config maps now merge via `defaults()`.** `$theme-colors`, `$theme-bgs`, `$theme-fgs`, `$theme-borders`, `$badge-variants`, and the other global maps accept a partial `@use ... with ()` override. v5 required a full map replacement. Set a key to `null` to drop it. Nested theme-color maps merge one level deep—pass the whole sub-map to change one role. See [Sass]([[docsref:/customize/sass]]).
+- **Theme and config maps now merge via `defaults()`.** `$theme-colors`, `$theme-bgs`, `$theme-fgs`, `$theme-borders`, `$badge-variants`, and most other global maps accept a partial `@use ... with ()` override. v5 required a full map replacement. `$breakpoints`, `$gutters`, `$shadows`, and `$zindex-levels` still need the whole map. Set a key to `null` to drop it. Nested theme-color maps merge one level deep—pass the whole sub-map to change one role. See [Sass]([[docsref:/customize/sass]]).
 - **Added `$enable-forced-colors` and the `forced-colors()` mixin.** Components include styles for forced colors mode (for example, Windows high contrast themes), so parts drawn only with a background color stay visible. Set `$enable-forced-colors: false` to remove these styles from the build. In your own Sass, use `@include forced-colors()` instead of a bare `@media (forced-colors: active)` query, so your styles follow the same option. See [Forced colors]([[docsref:/getting-started/accessibility#forced-colors]]).
 - **Removed `$enable-dark-mode`.** Dark mode support is always compiled; control it at runtime with `data-bs-theme` (or the `color-mode()` mixin) instead of toggling a Sass flag.
 - **Removed `$enable-caret` and the caret mixins.** Menu toggles lost their automatic caret when menus moved to Floating UI, so the flag had no effect. The `caret()`, `caret-down()`, `caret-up()`, `caret-end()`, and `caret-start()` mixins, the `scss/mixins/_caret.scss` file, and the `$caret-width`, `$caret-vertical-align`, and `$caret-spacing` variables are gone too. Add an icon to the toggle markup if you want a caret.
@@ -261,8 +262,8 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
   - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `--btn-close-color`, which defaults to `var(--fg-body)`, so it follows `data-bs-theme` like other components.
   - Removed all `$border-radius-*` variables (`-xs`, `-sm`, default, `-lg`, `-xl`, `-xxl`, `-pill`) in favor of the numeric `$radii` map and `--radius-*` tokens—see [Border radius tokens](#utilities) under Utilities.
   - Removed `$text-muted` for secondary color.
-  - Removed `$hr-bg-color` for `$hr-border-color` and `$hr-height` for `$hr-border-width`.
-  - Renamed `$zindex-dropdown` to `$zindex-menu`.
+  - Removed `$hr-bg-color`, `$hr-height`, `$hr-border-color`, and `$hr-border-width`. Rules use the `--hr-border-color` token and the global `--border-width`.
+  - Replaced `$zindex-dropdown` with the `menu` key of `$zindex-levels` (`--z-menu`). Pass the whole `$zindex-levels` map to change it.
   - Removed unused `$dropdown-header-padding` for the `-x`/`-y` split variables.
   - Removed unused `$accordion-button-focus-border-color`.
   - Removed unused `$tooltip-arrow-color`.
@@ -373,7 +374,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
   - JavaScript: `Offcanvas` &rarr; `Drawer`
   - Events: `show.bs.offcanvas` &rarr; `show.bs.drawer`, `hidePrevented.bs.offcanvas` &rarr; `hidePrevented.bs.drawer`, etc.
   - CSS variables: `--offcanvas-*` &rarr; `--drawer-*`
-  - Sass: `$zindex-offcanvas` &rarr; `$zindex-drawer`
+  - Sass: `$zindex-offcanvas` &rarr; the `drawer` key of `$zindex-levels` (`--z-drawer`); pass the whole map to change it
 - **New `.drawer-sheet` variant** for flush-to-edge panels with no inset, border-radius, or shadow.
 - **Swipe-to-dismiss** gesture support on touch devices for Drawer components. Drawers automatically detect their placement and dismiss on the appropriate swipe direction.
 - **Dialog and Drawer share `DialogBase`** — the show/hide/toggle lifecycle, keyboard handling, backdrop clicks, and static backdrop bounce are consolidated in a shared base class.

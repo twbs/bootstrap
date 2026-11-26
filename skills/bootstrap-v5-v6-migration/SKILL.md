@@ -124,7 +124,7 @@ Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Step 3.
 | JS export | `Offcanvas` | `Drawer` |
 | Events | `*.bs.offcanvas` | `*.bs.drawer` |
 | CSS vars | `--offcanvas-*` | `--drawer-*` |
-| Sass | `$zindex-offcanvas` | `$zindex-drawer` |
+| Sass | `$zindex-offcanvas` | `$zindex-levels: drawer` (`--z-drawer`) |
 
 #### Dropdown -> Menu
 
@@ -134,7 +134,7 @@ Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Step 3.
 | Data attrs | `data-bs-toggle="dropdown"` | `data-bs-toggle="menu"` |
 | JS export | `Dropdown` | `Menu` |
 | Events | `*.bs.dropdown` | `*.bs.menu` |
-| Sass | `$zindex-dropdown` | `$zindex-menu` |
+| Sass | `$zindex-dropdown` | `$zindex-levels: menu` (`--z-menu`) |
 
 Also remove: `.dropdown-toggle` (no longer needed), `.dropdown` wrapper, `.dropdown-toggle-split`. See Step 3 for new markup.
 
@@ -527,15 +527,17 @@ document.querySelectorAll('form[data-bs-validate]')
 
 ### Renamed variables and functions
 
+This table covers the common renames. For any other v5 `!default` variable, see [Sass migration](https://getbootstrap.com/docs/6.0/guides/sass-migration/): it gives the v6 option, token, or map key, or says it was removed.
+
 | v5 | v6 |
 | --- | --- |
 | `$grid-breakpoints` | `$breakpoints` |
 | `$border-radius`, `$border-radius-sm/lg/xl/xxl`, `$border-radius-pill` | Removed — see the radius scale below |
 | `$text-muted` | Use secondary color |
-| `$hr-bg-color` | `$hr-border-color` |
-| `$hr-height` | `$hr-border-width` |
-| `$zindex-dropdown` | `$zindex-menu` |
-| `$zindex-offcanvas` | `$zindex-drawer` |
+| `$hr-bg-color`, `$hr-border-color` | `--hr-border-color` in `$root-tokens` |
+| `$hr-height`, `$hr-border-width` | Removed — use `--border-width` |
+| `$zindex-dropdown` | `$zindex-levels: menu` (`--z-menu`) — pass the whole map |
+| `$zindex-offcanvas` | `$zindex-levels: drawer` (`--z-drawer`) — pass the whole map |
 | `$form-validation-states` | `$validation-states` |
 | `$btn-close-white-filter` | Removed — icon uses `currentcolor` |
 | `$enable-negative-margins` | Removed — negative margins are always generated; customize `$negative-spacers` |
