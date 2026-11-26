@@ -48,13 +48,13 @@ const getUID = (prefix: string): string => {
   return prefix
 }
 
-const getTransitionDurationFromElement = (element: Element | null): number => {
+const getTransitionDurationFromElement = (element: Element | null, pseudoElement?: string): number => {
   if (!element) {
     return 0
   }
 
   // Get transition-duration of the element
-  let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
+  let { transitionDuration, transitionDelay } = window.getComputedStyle(element, pseudoElement)
 
   const floatTransitionDuration = Number.parseFloat(transitionDuration)
   const floatTransitionDelay = Number.parseFloat(transitionDelay)

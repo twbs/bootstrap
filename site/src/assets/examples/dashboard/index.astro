@@ -73,9 +73,11 @@ export const extra_js = [
     </li>
   </ul>
 
-  <div id="navbarSearch" class="navbar-search w-100 collapse">
+  <details id="navbarSearch" class="w-100 collapse md:d-none">
+    <summary class="px-3 py-2 fg-white">Search</summary>
     <input class="form-control w-100 rounded-0 border-0" type="search" placeholder="Search" aria-label="Search">
-  </div>
+  </details>
+  <input class="form-control w-100 rounded-0 border-0 d-none md:d-block" type="search" placeholder="Search" aria-label="Search">
 </header>
 
 <div class="container-fluid">

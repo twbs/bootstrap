@@ -64,7 +64,7 @@ body {
   transform-origin: .5em 50%;
 }
 
-.bd-aside .btn[aria-expanded="true"]::before {
+.bd-aside .collapse[open] > .btn::before {
   transform: rotate(90deg);
 }
 

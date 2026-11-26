@@ -4,87 +4,110 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Collapse</title>
+    <title>Native Collapse prototype</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Collapse <small>Bootstrap Visual Test</small></h1>
+    <main class="container py-4">
+      <h1>Native Collapse prototype</h1>
+      <p><a href="?native">Try without Bootstrap JavaScript</a> · <a href="?">Try with Bootstrap JavaScript</a></p>
 
-      <div id="accordion" role="tablist">
-        <div class="card" role="presentation">
-          <div class="card-header" role="tab" id="headingOne">
-            <h5 class="mb-0">
-              <a data-bs-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Collapsible Group Item #1
-              </a>
-            </h5>
-          </div>
+      <section class="mb-4">
+        <h2>Example</h2>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <a class="btn-solid theme-primary" href="#vertical" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="vertical">Link with href</a>
+          <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#vertical" aria-expanded="false" aria-controls="vertical">Button with data-bs-target</button>
+        </div>
+        <details class="collapse" id="vertical">
+          <summary hidden>Example panel</summary>
+          <div class="card card-body">The link and button both toggle this panel.</div>
+        </details>
+      </section>
 
-          <div id="collapseOne" class="collapse show" data-bs-parent="#accordion" role="tabpanel" aria-labelledby="headingOne">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
+      <section class="mb-4">
+        <h2>Horizontal</h2>
+        <p>
+          <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#horizontal" aria-expanded="false" aria-controls="horizontal">Toggle width collapse</button>
+        </p>
+        <div style="min-block-size: 140px;">
+          <details class="collapse collapse-horizontal" id="horizontal">
+            <summary hidden>Horizontal panel</summary>
+            <div class="card card-body" style="inline-size: 300px;">This panel expands from the inline start edge.</div>
+          </details>
         </div>
-        <div class="card" role="presentation">
-          <div class="card-header" role="tab" id="headingTwo">
-            <h5 class="mb-0">
-              <a data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Collapsible Group Item #2
-              </a>
-            </h5>
-          </div>
-          <div id="collapseTwo" class="collapse" data-bs-parent="#accordion" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-        </div>
-        <div class="card" role="presentation">
-          <div class="card-header" role="tab" id="headingThree">
-            <h5 class="mb-0">
-              <a data-bs-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Collapsible Group Item #3
-              </a>
-            </h5>
-          </div>
-          <div id="collapseThree" class="collapse" data-bs-parent="#accordion" role="tabpanel" aria-labelledby="headingThree">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-        </div>
-        <div class="card" role="presentation">
-          <div class="card-header" role="tab" id="headingFour">
-            <h5 class="mb-0">
-              <a data-bs-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                Collapsible Group Item with XSS in data-bs-parent
-              </a>
-            </h5>
-          </div>
-          <div id="collapseFour" class="collapse" data-bs-parent="<img src=1 onerror=alert(123)>" role="tabpanel" aria-labelledby="headingFour">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
 
-      <h2 class="mt-4">Horizontal</h2>
-      <p>
-        <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHorizontal" aria-expanded="false" aria-controls="collapseHorizontal">
-          Toggle inline size
-        </button>
-      </p>
-      <div style="min-height: 140px;">
-        <div id="collapseHorizontal" class="collapse collapse-horizontal">
-          <div class="card card-body" style="width: 300px;">
-            This collapse animates its inline size, so it ends up as wide as its content.
+      <section class="mb-4">
+        <h2>Multiple toggles and targets</h2>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#first" aria-expanded="false" aria-controls="first">Toggle first element</button>
+          <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#second" aria-expanded="false" aria-controls="second">Toggle second element</button>
+          <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target=".shared-panel" aria-expanded="false" aria-controls="first second">Toggle both elements</button>
+        </div>
+        <div class="row">
+          <div class="col">
+            <details class="collapse shared-panel" id="first">
+              <summary hidden>First panel</summary>
+              <div class="card card-body">First panel content.</div>
+            </details>
+          </div>
+          <div class="col">
+            <details class="collapse shared-panel" id="second">
+              <summary hidden>Second panel</summary>
+              <div class="card card-body">Second panel content.</div>
+            </details>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <script src="../../../dist/js/bootstrap.bundle.js" type="module"></script>
+      <section class="mb-4">
+        <h2>Hash links</h2>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <a class="btn-outline theme-primary" href="#hash-panel">Open via hash link</a>
+          <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#hash-panel" aria-expanded="false" aria-controls="hash-panel">Toggle</button>
+        </div>
+        <details class="collapse" id="hash-panel" data-bs-hash>
+          <summary hidden>Hash-linked panel</summary>
+          <div class="card card-body">Opening this URL fragment expands the panel.</div>
+        </details>
+      </section>
+
+      <section class="mb-4" id="managed">
+        <h2>Bootstrap group</h2>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <button class="btn-outline theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#managed-first" aria-expanded="true" aria-controls="managed-first">Toggle first panel</button>
+          <button class="btn-outline theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#managed-second" aria-expanded="false" aria-controls="managed-second">Toggle second panel</button>
+        </div>
+        <details class="collapse" id="managed-first" data-bs-parent="#managed" open>
+          <summary hidden>First panel</summary>
+          <div class="card card-body">Bootstrap closes this panel when the second opens.</div>
+        </details>
+        <details class="collapse" id="managed-second" data-bs-parent="#managed">
+          <summary hidden>Second panel</summary>
+          <div class="card card-body">Bootstrap emits events for both panels.</div>
+        </details>
+      </section>
+
+      <section class="mb-4">
+        <h2>Browser-managed group</h2>
+        <details class="collapse" id="named-first" name="preview-group" open>
+          <summary>First panel</summary>
+          <div class="card card-body">The browser closes this panel when the second opens.</div>
+        </details>
+        <details class="collapse" id="named-second" name="preview-group">
+          <summary>Second panel</summary>
+          <div class="card card-body">Both panels share the same name.</div>
+        </details>
+      </section>
+
+      <section id="controls" hidden>
+        <h2>Transition controls</h2>
+        <label><input id="cancel" type="checkbox"> Cancel Collapse actions</label>
+        <label><input id="instant" type="checkbox"> Disable transitions</label>
+        <p class="mt-2"><button class="btn-outline" id="interrupt" type="button">Open and interrupt the native disclosure</button></p>
+        <pre id="events" class="border p-2" style="min-block-size: 8rem;"></pre>
+      </section>
+    </main>
+
+    <script type="module" src="collapse.js"></script>
   </body>
 </html>

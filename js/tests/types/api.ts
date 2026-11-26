@@ -51,7 +51,7 @@ declare const element: HTMLElement
 const tooltipFromSelector: Tooltip = new Tooltip('#tip', { animation: false })
 const tooltipFromElement: Tooltip = new Tooltip(element)
 const toast: Toast = new Toast(element, { autohide: false, delay: 5000 })
-const collapse: Collapse = new Collapse(element, { parent: '#accordion' })
+const collapse: Collapse = new Collapse('details.collapse', { parent: '#accordion' })
 const carousel: Carousel = new Carousel(element, { interval: 2000 })
 const dialog: Dialog = new Dialog(element, { modal: true, keyboard: false })
 const drawer: Drawer = new Drawer(element, { scroll: true })
