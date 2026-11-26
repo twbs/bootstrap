@@ -704,11 +704,13 @@ $utilities: map.merge(
     // scss-docs-end utils-font-family
     // scss-docs-start utils-font-size
     "font-size": (
+      responsive: true,
       property: font-size,
       class: fs,
       values: map-get-nested($font-sizes, "font-size")
     ),
     "text-size": (
+      responsive: true,
       property: (
         "font-size": 1rem,
         "line-height": 1.5
