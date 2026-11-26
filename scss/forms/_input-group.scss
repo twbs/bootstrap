@@ -98,6 +98,7 @@ $input-group-sizes: defaults(
         min-height: var(--btn-input-#{$size}-min-height);
         padding: var(--btn-input-#{$size}-padding-y) var(--btn-input-#{$size}-padding-x);
         font-size: var(--btn-input-#{$size}-font-size);
+        line-height: var(--btn-input-#{$size}-line-height);
         @include border-radius(var(--btn-input-#{$size}-border-radius));
       }
     }

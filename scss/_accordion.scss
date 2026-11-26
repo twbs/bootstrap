@@ -13,6 +13,8 @@ $accordion-tokens: defaults(
   (
     --accordion-padding-x: 1.25rem,
     --accordion-padding-y: 1rem,
+    --accordion-font-size: var(--body-font-size),
+    --accordion-line-height: var(--body-line-height),
     --accordion-color: var(--fg-body),
     --accordion-bg: var(--bg-body),
     --accordion-transition-property: "color, background-color, border-radius",
@@ -48,7 +50,8 @@ $accordion-tokens: defaults(
     align-items: center;
     width: 100%;
     padding: var(--accordion-btn-padding-y, var(--accordion-padding-y)) var(--accordion-btn-padding-x, var(--accordion-padding-x));
-    font-size: var(--accordion-font-size, var(--body-font-size));
+    font-size: var(--accordion-font-size);
+    line-height: var(--accordion-line-height);
     color: var(--accordion-btn-color);
     text-align: start;
     list-style: none; // Remove default marker
@@ -167,7 +170,7 @@ $accordion-tokens: defaults(
 
   .accordion-body {
     padding: var(--accordion-body-padding-y, var(--accordion-padding-y)) var(--accordion-body-padding-x, var(--accordion-padding-x));
-    font-size: var(--accordion-font-size, var(--body-font-size));
+    font-size: var(--accordion-font-size);
   }
 
 
@@ -181,6 +184,7 @@ $accordion-tokens: defaults(
     --accordion-padding-y: .625rem;
     --accordion-border-radius: var(--radius-5);
     --accordion-font-size: var(--font-size-sm);
+    --accordion-line-height: var(--line-height-sm);
     // scss-docs-end accordion-sm-css-vars
   }
 

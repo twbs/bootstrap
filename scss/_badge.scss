@@ -12,7 +12,7 @@ $badge-tokens: defaults(
     --badge-gap: .375em,
     --badge-padding-x: .625em,
     --badge-padding-y: .25em,
-    --badge-font-size: clamp(12px, .75em, .75em),
+    --badge-font-size: clamp(var(--font-size-xs), .75em, .75em),
     --badge-font-weight: var(--font-weight-semibold),
     --badge-color: inherit,
     --badge-bg: var(--bg-2),

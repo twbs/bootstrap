@@ -16,6 +16,7 @@ $popover-tokens: defaults(
     --popover-zindex: var(--z-popover),
     --popover-max-width: 280px,
     --popover-font-size: var(--font-size-sm),
+    --popover-line-height: var(--line-height-sm),
     --popover-bg: var(--bg-body),
     --popover-border-width: var(--border-width),
     --popover-border-color: var(--border-color-translucent),
@@ -54,6 +55,7 @@ $popover-tokens: defaults(
     // So reset our font and text properties to avoid inheriting weird values.
     @include reset-text();
     font-size: var(--popover-font-size);
+    line-height: var(--popover-line-height);
     // Allow breaking very long words so they don't overflow the popover's bounds
     word-wrap: break-word;
     background-color: var(--popover-bg);
