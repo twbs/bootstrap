@@ -404,6 +404,44 @@ Customize cards by using our theme color utilities. By default, cards use `bg` f
     </div>
   </div>`)} customMarkup={getData('theme-colors').map((themeColor) => `<div class="card card-subtle theme-${themeColor.name}">…</div>`)} />
 
+### Control inherited theme colors
+
+Cards inherit theme colors from a parent with a `.theme-{color}` class. Add [`.theme-reset`]([[docsref:/customize/theme#reset]]) to a header or footer to use its default colors. The reset also applies to its children. Add a `.theme-{color}` class to a child to give it a theme color again.
+
+<Example code={`<div class="theme-primary">
+    <div class="card">
+      <div class="card-header theme-reset">Default header colors</div>
+      <div class="card-body">
+        <p class="card-text">The card border still uses the primary theme color.</p>
+      </div>
+      <div class="card-footer theme-reset">Default footer colors</div>
+    </div>
+  </div>`} />
+
+Use background utilities to change individual sections. Add `.bg-transparent` for a transparent background. Combine `.bg-primary` with `.bg-10` for a 10% background. Use `.fg-body` to set the text color for this background.
+
+<Example code={`<div class="theme-primary">
+    <div class="card">
+      <div class="card-header theme-reset bg-transparent">Transparent header</div>
+      <div class="card-body">
+        <p class="card-text">Background utilities control each section separately.</p>
+      </div>
+      <div class="card-footer theme-reset bg-primary bg-10 fg-body">Primary footer at 10% opacity</div>
+    </div>
+  </div>`} />
+
+To set a custom background, combine `.theme-reset` with `--bs-card-cap-bg` on the card. This variable controls both the header and footer.
+
+<Example code={`<div class="theme-primary">
+    <div class="card" style="--bs-card-cap-bg: var(--bs-bg-2);">
+      <div class="card-header theme-reset">Custom header background</div>
+      <div class="card-body">
+        <p class="card-text">The header and footer use the card’s custom background.</p>
+      </div>
+      <div class="card-footer theme-reset">Custom footer background</div>
+    </div>
+  </div>`} />
+
 ## Translucent cards
 
 Add `.card-translucent` to blur and saturate the background of a card. Header and footer backgrounds are also adjusted for a consistent look.
