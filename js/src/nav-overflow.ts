@@ -298,16 +298,21 @@ class NavOverflow extends BaseComponent {
     this._resizeObserver.observe(this._element)
   }
 
-  // Space the nav has to work with, taken from the wrapper's content box
-  protected _availableWidth(): number {
+  protected _wrapperWidth(): number {
     const { paddingInlineStart, paddingInlineEnd } = getComputedStyle(this._element)
     const padding = (Number.parseFloat(paddingInlineStart) || 0) + (Number.parseFloat(paddingInlineEnd) || 0)
 
     return this._element.clientWidth - padding
   }
 
-  protected _navGap(): number {
-    return Number.parseFloat(getComputedStyle(this._nav).columnGap) || 0
+  protected _availableWidth(wrapperWidth: number, navStyle: CSSStyleDeclaration): number {
+    const padding = (Number.parseFloat(navStyle.paddingInlineStart) || 0) +
+      (Number.parseFloat(navStyle.paddingInlineEnd) || 0)
+    const navWidth = this._nav.clientWidth
+    const borderAndScrollbar = this._nav.offsetWidth - navWidth
+
+    // An inline nav can size to its items. Cap it at the wrapper's content width.
+    return Math.min(wrapperWidth - borderAndScrollbar, navWidth) - padding
   }
 
   protected _calculateOverflow(): void {
@@ -316,17 +321,19 @@ class NavOverflow extends BaseComponent {
     // it does not notify the observer again.
     this._restoreItems()
 
-    const availableWidth = this._availableWidth()
+    const wrapperWidth = this._wrapperWidth()
     const overflowItem = this._overflowToggle?.closest<HTMLElement>(SELECTOR_NAV_ITEM) ?? null
     const candidates = this._items.filter(item => !item.classList.contains(CLASS_NAME_KEEP))
 
     // Below the collapseBelow threshold, everything goes into the menu
-    if (this._collapseBelow > 0 && availableWidth < this._collapseBelow) {
+    if (this._collapseBelow > 0 && wrapperWidth < this._collapseBelow) {
       this._applyOverflow(candidates, overflowItem)
       return
     }
 
-    const gap = this._navGap()
+    const navStyle = getComputedStyle(this._nav)
+    const availableWidth = this._availableWidth(wrapperWidth, navStyle)
+    const gap = Number.parseFloat(navStyle.columnGap) || 0
 
     // Each width below counts the gap after its item. The last visible item
     // has no gap after it, so the space gets that one gap back.
@@ -338,8 +345,8 @@ class NavOverflow extends BaseComponent {
     const space = availableWidth - keepWidth + gap
 
     // When every item fits on its own, the toggle stays hidden and takes no
-    // space. Allow a pixel of slack for sub-pixel layout rounding.
-    if (widthOf(candidates) <= space + 1) {
+    // space.
+    if (widthOf(candidates) <= space) {
       this._applyOverflow([], overflowItem)
       return
     }
@@ -354,8 +361,7 @@ class NavOverflow extends BaseComponent {
     for (const item of candidates) {
       usedWidth += item.offsetWidth + gap
 
-      // Allow a pixel of slack for sub-pixel layout rounding
-      if (usedWidth > limit + 1) {
+      if (usedWidth > limit) {
         itemsToOverflow.push(item)
       }
     }

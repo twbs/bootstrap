@@ -427,7 +427,7 @@ describe('NavOverflow', () => {
       // The items need 360px. They fit in 370px, but not next to the toggle.
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 370px;" data-bs-toggle="nav-overflow">',
-        '  <ul class="nav" style="display: flex;">',
+        '  <ul class="nav" style="display: flex; padding-inline: 0;">',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
@@ -453,11 +453,50 @@ describe('NavOverflow', () => {
       navOverflow.dispose()
     })
 
+    it('should account for nav pills padding when deciding which items fit', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav-overflow" dir="rtl" style="box-sizing: border-box; width: 450px; padding-inline: 14px 8px;">',
+        '  <ul class="nav nav-pills" style="display: flex; column-gap: 10px; border: 3px solid; padding-inline: var(--bs-nav-pills-padding); --bs-nav-pills-padding: 16px;">',
+        ...Array.from({ length: 4 }, (_, index) =>
+          `    <li class="nav-item" style="flex: 0 0 90px;"><a class="nav-link" href="#">Link ${index + 1}</a></li>`
+        ),
+        '    <li class="nav-item nav-overflow-item" style="flex: 0 0 60px;">',
+        '      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu">More</button>',
+        '      <div class="nav-overflow-menu menu"></div>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const wrapperEl = fixtureEl.querySelector('.nav-overflow')
+      const navEl = wrapperEl.querySelector('.nav')
+      const navOverflow = new NavOverflow(wrapperEl)
+      const hiddenItems = () => Array.from(navEl.querySelectorAll('[data-bs-nav-overflow="true"]'), item => item.textContent)
+
+      expect(hiddenItems()).toEqual([])
+
+      const navRect = navEl.getBoundingClientRect()
+      const firstItem = navEl.children[0].getBoundingClientRect()
+      const lastItem = navEl.children[3].getBoundingClientRect()
+      expect(navRect.right - firstItem.right).toEqual(19)
+      expect(lastItem.left - navRect.left).toEqual(19)
+
+      navEl.style.setProperty('--bs-nav-pills-padding', '16.5px')
+      navOverflow.update()
+      expect(hiddenItems()).toEqual(['Link 4'])
+
+      wrapperEl.style.width = '451px'
+      navOverflow.update()
+      expect(hiddenItems()).toEqual([])
+
+      navOverflow.dispose()
+    })
+
     it('should not count a gap after the last item', () => {
       // Four 90px items and three 10px gaps need exactly 390px
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 390px;" data-bs-toggle="nav-overflow">',
-        '  <ul class="nav" style="display: flex; column-gap: 10px;">',
+        '  <ul class="nav" style="display: flex; column-gap: 10px; padding-inline: 0;">',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
@@ -479,7 +518,7 @@ describe('NavOverflow', () => {
       // Three 90px items, the 60px toggle and three 10px gaps need exactly 360px
       fixtureEl.innerHTML = [
         '<div class="nav-overflow" style="width: 360px;" data-bs-toggle="nav-overflow">',
-        '  <ul class="nav" style="display: flex; column-gap: 10px;">',
+        '  <ul class="nav" style="display: flex; column-gap: 10px; padding-inline: 0;">',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 1</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 2</a></li>',
         '    <li class="nav-item" style="flex: 0 0 90px; width: 90px;"><a class="nav-link" href="#">Link 3</a></li>',
@@ -498,6 +537,12 @@ describe('NavOverflow', () => {
 
       expect(hiddenItems.length).toEqual(1)
       expect(hiddenItems[0].textContent).toEqual('Link 4')
+
+      wrapperEl.style.width = '359px'
+      navOverflow.update()
+
+      const hiddenText = Array.from(wrapperEl.querySelectorAll('.nav-item[data-bs-nav-overflow="true"]'), item => item.textContent)
+      expect(hiddenText).toEqual(['Link 3', 'Link 4'])
 
       navOverflow.dispose()
     })
@@ -1052,8 +1097,8 @@ describe('NavOverflow', () => {
 
     it('should not collapse items when the wrapper width is above collapseBelow (number)', () => {
       fixtureEl.innerHTML = [
-        '<div class="nav-overflow" style="width: 5000px;" data-bs-toggle="nav-overflow">',
-        '  <ul class="nav" style="display: flex;">',
+        '<div class="nav-overflow" style="width: 520px;" data-bs-toggle="nav-overflow">',
+        '  <ul class="nav" style="display: flex; padding-inline: 20px;">',
         '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 1</a></li>',
         '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 2</a></li>',
         '    <li class="nav-item" style="flex: 0 0 50px; width: 50px;"><a class="nav-link" href="#">Link 3</a></li>',
