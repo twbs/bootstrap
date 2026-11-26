@@ -152,6 +152,7 @@
     "Packagist",
     "Pagefind",
     "popperjs",
+    "Pkgbootstrap",
     "prebuild",
     "prefersreducedmotion",
     "prepended",
@@ -212,6 +213,7 @@
     "WCAG",
     "webp",
     "worktrees",
+    "wwwroot",
     "xlink",
     "zindex"
   ],
