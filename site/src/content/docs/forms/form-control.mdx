@@ -19,7 +19,7 @@ Form control styles are available for most textual inputs (including date and ti
 
 Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your inputs with a label, description, and validation feedback messages in a vertical stack.
 
-<Example class="vstack gap-3" code={`<div class="form-field">
+<Example code={`<div class="form-field">
     <label for="exampleFormControlInput1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
     <div class="form-text">
@@ -31,11 +31,10 @@ Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your
 
 Textareas use the same `.form-control` class as inputs. Modify their height by using the `rows` attribute or using custom CSS.
 
-<Example class="vstack gap-3" code={`<div class="form-field">
+<Example class="vstack gap-4" code={`<div class="form-field">
     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
     <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
   </div>
-
   <div class="form-field">
     <label for="exampleFormControlTextarea2" class="form-label">Taller textarea</label>
     <textarea class="form-control" id="exampleFormControlTextarea2" rows="4"></textarea>
@@ -83,7 +82,7 @@ As is the `size` attribute:
 
 Change the size of a form control by using classes like `.form-control-lg` and `.form-control-sm`. This adjusts `height`, `padding`, `font-size`, `line-height`, and `border-radius`.
 
-<Example class="vstack gap-3" code={`<div>
+<Example class="vstack gap-4" code={`<div>
     <label for="sizesInputSmall" class="form-label">Small input</label>
     <input class="form-control form-control-sm" type="text" id="sizesInputSmall" placeholder="Small input" aria-label="Small input example">
   </div>
@@ -98,7 +97,7 @@ Change the size of a form control by using classes like `.form-control-lg` and `
 
 And for textareas:
 
-<Example class="vstack gap-3" code={`<div>
+<Example class="vstack gap-4" code={`<div>
     <label for="sizesTextareaSmall" class="form-label">Small textarea</label>
     <textarea class="form-control form-control-sm" id="sizesTextareaSmall" placeholder="Small textarea" aria-label="Small textarea example"></textarea>
   </div>
@@ -113,7 +112,7 @@ And for textareas:
 
 And for selects:
 
-<Example class="vstack gap-3" code={`<div>
+<Example class="vstack gap-4" code={`<div>
     <label for="sizesSelectSmall" class="form-label">Small select</label>
     <select class="form-control form-control-sm" id="sizesSelectSmall">
       <option>Open this select menu</option>
@@ -181,7 +180,7 @@ Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`
 
 Add the `disabled` boolean attribute on an input to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
-<Example class="vstack gap-3" code={`<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+<Example class="vstack gap-4" code={`<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
   <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
   <select class="form-control" aria-label="Disabled select example" disabled>
     <option selected>Open this select menu</option>
@@ -201,13 +200,13 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 
 If you want to have `<input readonly>` elements in your form styled as plain text, replace `.form-control` with `.form-control-plaintext` to remove the default form field styling and preserve the correct `margin` and `padding`.
 
-<Example code={`<div class="mb-3 row">
+<Example class="vstack gap-4" code={`<div>
     <label for="staticEmail" class="sm:col-2 col-form-label">Email</label>
     <div class="sm:col-10">
       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
     </div>
   </div>
-  <div class="mb-3 row">
+  <div>
     <label for="inputPassword" class="sm:col-2 col-form-label">Password</label>
     <div class="sm:col-10">
       <input type="password" class="form-control" id="inputPassword">
@@ -236,7 +235,7 @@ Nearly all input types are supported, but not all are documented here. Input typ
 
 No additional classes are needed for date and time inputs. Exact functionality and appearance are dependent on the browser and operating system. However, you can also use [our datepicker component]([[docsref:/forms/datepicker]]) to create a more consistent experience across browsers with JavaScript.
 
-<Example class="vstack gap-3" code={`<input type="datetime-local" class="form-control" aria-label="Date and time picker" value="2026-02-24T13:00">
+<Example class="vstack gap-4" code={`<input type="datetime-local" class="form-control" aria-label="Date and time picker" value="2026-02-24T13:00">
 <input type="datetime-local" class="form-control" aria-label="Date and time picker with seconds" value="2026-02-24T13:00:30" step="1">
 <input type="datetime-local" class="form-control" aria-label="Date and time picker with milliseconds" value="2026-02-24T13:00:30.500" step="0.001">
 <input type="date" class="form-control" aria-label="Date picker" value="2026-02-24">
@@ -253,7 +252,7 @@ Set the `type="color"` and add `.form-control-color` to the `<input>` alongside 
 
 Sizes are also supported:
 
-<Example class="vstack gap-3" code={`<div>
+<Example class="vstack gap-4" code={`<div>
     <label for="exampleColorInputLg" class="form-label">Large color picker</label>
     <input type="color" class="form-control form-control-lg form-control-color" id="exampleColorInputLg" value="#631aff" title="Choose your color">
   </div>
@@ -294,7 +293,7 @@ You can also combine with the `.form-control-caret` class to add a caret to inpu
 
 `input[type="file"]` elements are styled with the `::file-selector-button` pseudo element to add a button to the input. You only need to add the `.form-control` class, plus any size modifiers you need.
 
-<Example class="vstack gap-5" code={`<div class="form-field">
+<Example class="vstack gap-4" code={`<div class="form-field">
     <label for="formFile" class="form-label">Default file input example</label>
     <input class="form-control" type="file" id="formFile">
   </div>

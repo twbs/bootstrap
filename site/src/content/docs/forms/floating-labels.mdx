@@ -13,7 +13,7 @@ A non-empty `placeholder` attribute is required on each `<input>` as our CSS-onl
 
 Also note that the `<label>` must come first so that screen readers announce it before the field’s value; our CSS reacts to the control’s state with the `:has()` selector.
 
-<Example class="vstack gap-3" code={`<div class="form-floating">
+<Example class="vstack gap-4" code={`<div class="form-floating">
     <label for="floatingInput">Email address</label>
     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
   </div>
@@ -80,7 +80,7 @@ Select elements work in the same way, but unlike `<input>`s, they’ll always sh
 
 Date, time, datetime-local, month, and week inputs also always show the `<label>` in its floated state. These controls do not support placeholders the way textual inputs do, so a `placeholder` attribute is not required (and is ignored by most browsers on these types).
 
-<Example class="vstack gap-3" code={`<div class="form-floating">
+<Example class="vstack gap-4" code={`<div class="form-floating">
     <label for="floatingDate">Date</label>
     <input type="date" class="form-control" id="floatingDate">
   </div>
@@ -93,7 +93,7 @@ Date, time, datetime-local, month, and week inputs also always show the `<label>
 
 Add the `disabled` boolean attribute on an input, a textarea or a select to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
-<Example class="vstack gap-3" code={`<div class="form-floating">
+<Example class="vstack gap-4" code={`<div class="form-floating">
     <label for="floatingInputDisabled">Email address</label>
     <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
   </div>
@@ -119,7 +119,7 @@ Add the `disabled` boolean attribute on an input, a textarea or a select to give
 
 Floating labels also support `.form-control-plaintext`, which can be helpful for toggling from an editable `<input>` to a plaintext value without affecting the page layout.
 
-<Example class="vstack gap-3" code={`<div class="form-floating">
+<Example class="vstack gap-4" code={`<div class="form-floating">
     <label for="floatingEmptyPlaintextInput">Empty input</label>
     <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput" placeholder="name@example.com">
   </div>
@@ -159,7 +159,7 @@ When using `.input-group` and `.form-floating` along with form validation, place
 
 Add `.form-floating-always` to keep the label floated and show the placeholder. Use it on the `.form-floating` itself or as a wrapper around one.
 
-<Example class="vstack gap-3" code={`<div class="form-floating form-floating-always">
+<Example class="vstack gap-4" code={`<div class="form-floating form-floating-always">
     <label for="alwaysFloatingInput">Email address</label>
     <input type="email" class="form-control" id="alwaysFloatingInput" placeholder="name@example.com">
   </div>

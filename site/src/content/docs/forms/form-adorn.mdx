@@ -43,7 +43,7 @@ Use `.form-adorn-end` to position the adornment on the trailing side (keeps DOM 
 
 Add a second label outside the `.form-adorn` wrapper to name the field. Point it at the input with `for`, so the input keeps its name even if you change the wrapper:
 
-<Example class="vstack gap-3" code={`<div>
+<Example class="vstack gap-4" code={`<div>
     <label for="searchInput" class="form-label">Search</label>
     <label class="form-control form-adorn">
       <div class="form-adorn-icon" aria-hidden="true">
@@ -81,7 +81,7 @@ Wrap a `.form-adorn` in a `.form-field` to pair it with a label and description 
 
 Use `.form-adorn-text` for currency symbols, units, domain suffixes, and other text-based adornments. Text adornments auto-size to their content.
 
-<Example class="vstack gap-3" code={`<label class="form-control form-adorn">
+<Example class="vstack gap-4" code={`<label class="form-control form-adorn">
     <span class="form-adorn-text" aria-hidden="true">$</span>
     <input type="text" class="form-ghost" placeholder="0.00">
   </label>
@@ -102,7 +102,7 @@ Use `.form-adorn-text` for currency symbols, units, domain suffixes, and other t
 
 Use `.form-adorn-sm` or `.form-adorn-lg` on the wrapper to adjust sizing.
 
-<Example class="vstack gap-3" code={`<label class="form-control form-control-sm form-adorn">
+<Example class="vstack gap-4" code={`<label class="form-control form-control-sm form-adorn">
     <div class="form-adorn-icon" aria-hidden="true">
       <svg class="bi" width="16" height="16"><use href="#search" /></svg>
     </div>

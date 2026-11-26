@@ -277,31 +277,35 @@ Use `.form-control-sm` or `.form-control-lg` on the input to change size.
 
 Multiple-selection fields follow the shared `--bs-btn-input-*` sizing tokens. Chips use the height left after vertical padding and borders. Use `--bs-combobox-control-chip-height` for a custom chip height.
 
-<Example code={`<label class="form-label" for="comboboxSmall">Small</label>
-  <div class="combobox" data-bs-toggle="combobox">
-    <input class="form-control form-control-sm combobox-input" id="comboboxSmall" placeholder="Small select…">
+<Example class="vstack gap-4" code={`<div>
+    <label class="form-label" for="comboboxSmall">Small</label>
+    <div class="combobox" data-bs-toggle="combobox">
+      <input class="form-control form-control-sm combobox-input" id="comboboxSmall" placeholder="Small select…">
+    </div>
+    <div class="menu">
+      <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+      <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+    </div>
   </div>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  <div>
+    <label class="form-label" for="comboboxDefault">Default</label>
+    <div class="combobox" data-bs-toggle="combobox">
+      <input class="form-control combobox-input" id="comboboxDefault" placeholder="Default select…">
+    </div>
+    <div class="menu">
+      <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+      <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+    </div>
   </div>
-
-  <label class="form-label mt-3" for="comboboxDefault">Default</label>
-  <div class="combobox" data-bs-toggle="combobox">
-    <input class="form-control combobox-input" id="comboboxDefault" placeholder="Default select…">
-  </div>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
-  </div>
-
-  <label class="form-label mt-3" for="comboboxLarge">Large</label>
-  <div class="combobox" data-bs-toggle="combobox">
-    <input class="form-control form-control-lg combobox-input" id="comboboxLarge" placeholder="Large select…">
-  </div>
-  <div class="menu">
-    <button class="menu-item" type="button" data-bs-value="1">Option one</button>
-    <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+  <div>
+    <label class="form-label" for="comboboxLarge">Large</label>
+    <div class="combobox" data-bs-toggle="combobox">
+      <input class="form-control form-control-lg combobox-input" id="comboboxLarge" placeholder="Large select…">
+    </div>
+    <div class="menu">
+      <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+      <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+    </div>
   </div>`} />
 
 ## Disabled
