@@ -19,7 +19,7 @@
     color: var(--bd-callout-color, var(--bs-body-color));
     background-color: var(--bd-callout-bg, var(--bs-gray-100));
     border: 1px solid var(--bd-callout-border, var(--bs-border-color));
-    @include border-radius(var(--radius-5));
+    @include border-radius(var(--radius-4));
 
     &::before {
       --offset: .5rem;
@@ -28,7 +28,7 @@
       width: .25rem;
       content: "";
       background-color: var(--bd-callout-band, var(--bd-callout-border, var(--bs-gray-300)));
-      @include border-radius(var(--radius-2));
+      @include border-radius(var(--radius-1-5));
     }
 
     h4 {

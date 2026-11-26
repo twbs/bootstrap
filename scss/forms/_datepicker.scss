@@ -22,7 +22,7 @@ $datepicker-tokens: defaults(
     --datepicker-color: var(--fg-body),
     --datepicker-border-color: var(--border-color-translucent),
     --datepicker-border-width: var(--border-width),
-    --datepicker-border-radius: var(--radius-7),
+    --datepicker-border-radius: var(--radius-6),
     --datepicker-box-shadow: var(--box-shadow),
     --datepicker-font-size: var(--font-size-sm),
     --datepicker-transition-property: "opacity, transform",
@@ -183,7 +183,7 @@ $datepicker-tokens: defaults(
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    @include border-radius(var(--radius-5));
+    @include border-radius(var(--radius-4));
 
     &::before {
       position: absolute;
@@ -279,7 +279,7 @@ $datepicker-tokens: defaults(
     // cursor: pointer;
     background-color: transparent;
     border: 0;
-    @include border-radius(var(--radius-5));
+    @include border-radius(var(--radius-4));
 
     &:disabled {
       color: var(--datepicker-day-disabled-color);
@@ -343,7 +343,7 @@ $datepicker-tokens: defaults(
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    @include border-radius(var(--radius-5));
+    @include border-radius(var(--radius-4));
 
     &:disabled {
       color: var(--datepicker-day-disabled-color);
@@ -441,7 +441,7 @@ $datepicker-tokens: defaults(
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    @include border-radius(var(--radius-5), 0);
+    @include border-radius(var(--radius-4), 0);
 
     @media (pointer: coarse) {
       min-height: 2.5rem;
@@ -477,15 +477,15 @@ $datepicker-tokens: defaults(
   }
 
   [data-vc-date-hover="first"] [data-vc-date-btn] {
-    @include border-start-radius(var(--radius-5));
+    @include border-start-radius(var(--radius-4));
   }
 
   [data-vc-date-hover="last"] [data-vc-date-btn] {
-    @include border-end-radius(var(--radius-5));
+    @include border-end-radius(var(--radius-4));
   }
 
   [data-vc-date-hover="first-and-last"] [data-vc-date-btn] {
-    @include border-radius(var(--radius-5), 0);
+    @include border-radius(var(--radius-4), 0);
   }
 
   // Selected
@@ -503,15 +503,15 @@ $datepicker-tokens: defaults(
 
   [data-vc-date-selected="first"] [data-vc-date-btn] {
     border-radius: 0;
-    @include border-start-radius(var(--radius-5));
+    @include border-start-radius(var(--radius-4));
   }
 
   [data-vc-date-selected="last"] [data-vc-date-btn] {
     border-radius: 0;
-    @include border-end-radius(var(--radius-5));
+    @include border-end-radius(var(--radius-4));
   }
 
   [data-vc-date-selected="first-and-last"] [data-vc-date-btn] {
-    @include border-radius(var(--radius-5), 0);
+    @include border-radius(var(--radius-4), 0);
   }
 }

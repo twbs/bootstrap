@@ -51,7 +51,7 @@ $toast-tokens: defaults(
     background-clip: padding-box;
     border: var(--toast-border-width) solid var(--theme-border, var(--toast-border-color));
     box-shadow: var(--toast-box-shadow);
-    @include border-radius(var(--toast-border-radius, var(--radius-7)));
+    @include border-radius(var(--toast-border-radius, var(--radius-6)));
 
     // scss-docs-start toast-transition
     // Animated variant (default). `display` transitions discretely so the toast

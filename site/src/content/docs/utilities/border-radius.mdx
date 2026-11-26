@@ -23,23 +23,26 @@ Add classes to an element to easily round its corners.
 
 ### Sizes
 
-Use the scaling classes for larger or smaller rounded corners. Numeric sizes range from `0` to `9`. The `circle` and `pill` values are also available. Modify the utilities API to change these values.
+Use integers from `0` through `8` or fractional keys `0.5`, `1.5`, `2.5`, and `3.5`. Multiply the key by `0.125rem` to get the default radius. For example, `.rounded-1.5` sets a radius of `0.1875rem`. The unsuffixed `.rounded` uses key `4` (`0.5rem`). Use `.rounded-circle` or `.rounded-pill` for those shapes.
 
 <Example class="bd-example-rounded-utils" stackblitz={false} code={`<div class="rounded-0">rounded-0</div>
+  <div class="rounded-0.5">rounded-0.5</div>
   <div class="rounded-1">rounded-1</div>
+  <div class="rounded-1.5">rounded-1.5</div>
   <div class="rounded-2">rounded-2</div>
+  <div class="rounded-2.5">rounded-2.5</div>
   <div class="rounded-3">rounded-3</div>
+  <div class="rounded-3.5">rounded-3.5</div>
   <div class="rounded-4">rounded-4</div>
   <div class="rounded-5">rounded-5</div>
   <div class="rounded-6">rounded-6</div>
   <div class="rounded-7">rounded-7</div>
   <div class="rounded-8">rounded-8</div>
-  <div class="rounded-9">rounded-9</div>
   <div class="rounded-circle">rounded-circle</div>
   <div class="rounded-pill">rounded-pill</div>`} />
 
 <Example class="bd-example-rounded-utils" stackblitz={false} code={`<div class="rounded-bottom-1">rounded-bottom-1</div>
-  <div class="rounded-start-2">rounded-start-2</div>
+  <div class="rounded-start-1.5">rounded-start-1.5</div>
   <div class="rounded-end-circle">rounded-end-circle</div>
   <div class="rounded-start-pill">rounded-start-pill</div>
   <div class="rounded-5 rounded-top-0">rounded-5 rounded-top-0</div>`} />
@@ -63,6 +66,8 @@ When `.rounded-{n}` is used alongside a side class, the number sets the `--round
 ### Variables
 
 Radius tokens are generated from the `$radii` map in `scss/_config.scss` and emitted as `--radius-*` custom properties in `scss/_root.scss`. [Learn how to use the root tokens.]([[docsref:/utilities/api#using-root-tokens]])
+
+Use a hyphen for the decimal point in a custom property name. For example, use `--bs-radius-1-5` for key `1.5`.
 
 <ScssDocs name="root-radius-loop" file="scss/_root.scss" />
 

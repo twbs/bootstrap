@@ -35,7 +35,7 @@ $placeholder-wave-tokens: defaults(
     vertical-align: middle;
     cursor: wait;
     background-color: currentcolor;
-    @include border-radius(var(--radius-3));
+    @include border-radius(var(--radius-2));
     opacity: var(--placeholder-opacity-max);
 
     &.btn::before {

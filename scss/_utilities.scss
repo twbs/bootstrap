@@ -972,7 +972,7 @@ $utilities: map.merge(
       values: map.merge(
         $radii,
         (
-          null: map.get($radii, 5),
+          null: map.get($radii, 4),
           circle: 50%,
           pill: var(--radius-pill)
         )
@@ -984,7 +984,7 @@ $utilities: map.merge(
       values: map.merge(
         $radii,
         (
-          null: map.get($radii, 5),
+          null: map.get($radii, 4),
           circle: 50%,
           pill: var(--radius-pill)
         )
@@ -996,7 +996,7 @@ $utilities: map.merge(
       values: map.merge(
         $radii,
         (
-          null: var(--rounded-size, var(--radius-5)),
+          null: var(--rounded-size, var(--radius-4)),
           circle: 50%,
           pill: var(--radius-pill)
         )
@@ -1008,7 +1008,7 @@ $utilities: map.merge(
       values: map.merge(
         $radii,
         (
-          null: var(--rounded-size, var(--radius-5)),
+          null: var(--rounded-size, var(--radius-4)),
           circle: 50%,
           pill: var(--radius-pill)
         )
@@ -1020,7 +1020,7 @@ $utilities: map.merge(
       values: map.merge(
         $radii,
         (
-          null: var(--rounded-size, var(--radius-5)),
+          null: var(--rounded-size, var(--radius-4)),
           circle: 50%,
           pill: var(--radius-pill)
         )
@@ -1032,7 +1032,7 @@ $utilities: map.merge(
       values: map.merge(
         $radii,
         (
-          null: var(--rounded-size, var(--radius-5)),
+          null: var(--rounded-size, var(--radius-4)),
           circle: 50%,
           pill: var(--radius-pill)
         )

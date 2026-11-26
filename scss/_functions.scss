@@ -109,6 +109,15 @@
   @return $string;
 }
 
+// Escape the decimal point in a numeric class suffix.
+@function escape-numeric-key($key) {
+  @if meta.type-of($key) == "number" {
+    @return str-replace("#{$key}", ".", "\\.");
+  }
+
+  @return $key;
+}
+
 // See https://codepen.io/kevinweber/pen/dXWoRw
 //
 // Requires the use of quotes around data URIs.

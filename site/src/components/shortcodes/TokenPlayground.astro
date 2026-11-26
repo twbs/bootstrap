@@ -1,11 +1,8 @@
 ---
 import Code from '@components/shortcodes/Code.astro'
 
-// Both menus move two steps of their scale rather than one, which is what
-// changing the Sass base value does: `--radius-7` is `$radius * 1.5` and
-// `--spacer-6` is `$spacer * 1.25` in scss/_config.scss. The components below
-// read `--radius-5` and `--spacer` (button, input, alert) or `--radius-7` and
-// `--spacer-6` (card), so driving both makes the whole group move together.
+// Update the tokens that the example components use.
+// The card uses `--radius-6` at 1.5 times `$radius` and `--spacer-5` at 1.25 times `$spacer`.
 const defaultRadius = '0.5'
 const defaultSpacer = '1'
 const defaultColor = 'blue'
@@ -50,7 +47,7 @@ const demo = `<div class="token-demo vstack gap-5">
 // blue pairing. To move the whole theme you must restate every derived token,
 // which is what this snippet and the script below do.
 const css = `.token-demo {
-  --bs-radius-5: ${defaultRadius}rem;
+  --bs-radius-4: ${defaultRadius}rem;
   --bs-spacer: ${defaultSpacer}rem;
   --bs-primary-base: var(--bs-${defaultColor}-500);
   --bs-primary-bg: var(--bs-primary-base);
@@ -315,10 +312,10 @@ const css = `.token-demo {
       }
 
       const tokens: Record<string, string> = {
-        '--bs-radius-5': `${radius}rem`,
-        '--bs-radius-7': `${radius * 1.5}rem`,
+        '--bs-radius-4': `${radius}rem`,
+        '--bs-radius-6': `${radius * 1.5}rem`,
         '--bs-spacer': `${spacer}rem`,
-        '--bs-spacer-6': `${spacer * 1.25}rem`,
+        '--bs-spacer-5': `${spacer * 1.25}rem`,
         '--bs-primary-base': primary.base,
         '--bs-primary-bg': primary.bg,
         ...(scope === 'all' ? derived : {})
@@ -327,7 +324,7 @@ const css = `.token-demo {
       const declarations = Object.entries(tokens).map(([property, value]) => `  ${property}: ${value};`)
       tokenStyle.textContent = `.token-demo {\n${declarations.join('\n')}\n}`
 
-      setLineValue('--bs-radius-5', `${radius}rem`)
+      setLineValue('--bs-radius-4', `${radius}rem`)
       setLineValue('--bs-spacer', `${spacer}rem`)
       setLineValue('--bs-primary-base', primary.base)
 

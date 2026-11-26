@@ -184,7 +184,7 @@ $table-striped-columns-order: even !default;
     margin-bottom: var(--spacer);
     overflow: hidden;
     border: var(--border-width) solid var(--border-color-translucent);
-    @include border-radius(var(--radius-7));
+    @include border-radius(var(--radius-6));
 
     > .table,
     > [class*="table-responsive"] > .table {

@@ -51,22 +51,6 @@ interface Props {
 const { noun, format, properties, sides, includeAuto = false } = Astro.props
 
 const capitalizedNoun = noun.charAt(0).toUpperCase() + noun.slice(1)
-
-// Multipliers for sizes `1` through `12`, mirroring the default `$spacers` map.
-const sizeValues = [
-  '$spacer * .25',
-  '$spacer * .375',
-  '$spacer * .5',
-  '$spacer * .75',
-  '$spacer * 1',
-  '$spacer * 1.25',
-  '$spacer * 1.5',
-  '$spacer * 1.75',
-  '$spacer * 2',
-  '$spacer * 2.25',
-  '$spacer * 2.5',
-  '$spacer * 3'
-]
 ---
 
 <p>
@@ -118,13 +102,10 @@ const sizeValues = [
   <li>
     <code>0</code> - for classes that eliminate the <code>{noun}</code> by setting it to <code>0</code>
   </li>
-  {
-    sizeValues.map((value, index) => (
-      <li>
-        <code>{index + 1}</code> - (by default) for classes that set the <code>{noun}</code> to <code>{value}</code>
-      </li>
-    ))
-  }
+  <li>
+    Integers from <code>1</code> through <code>12</code> and fractional steps <code>0.5</code>, <code>1.5</code>,
+    <code>2.5</code>, and <code>3.5</code>. Multiply the key by <code>0.25rem</code> to get the default value.
+  </li>
   {
     includeAuto && (
       <li>

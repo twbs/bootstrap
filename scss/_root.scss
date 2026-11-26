@@ -91,7 +91,7 @@ $root-tokens: defaults(
     --btn-input-font-size: var(--body-font-size),
     --btn-input-font-weight: var(--font-weight-normal),
     --btn-input-line-height: var(--body-line-height),
-    --btn-input-border-radius: var(--radius-5),
+    --btn-input-border-radius: var(--radius-4),
 
     --btn-input-xs-gap: var(--spacer-1),
     --btn-input-xs-min-height: 1.5rem,
@@ -99,7 +99,7 @@ $root-tokens: defaults(
     --btn-input-xs-padding-x: .5rem,
     --btn-input-xs-font-size: var(--font-size-xs),
     --btn-input-xs-line-height: 1.125,
-    --btn-input-xs-border-radius: var(--radius-5),
+    --btn-input-xs-border-radius: var(--radius-4),
 
     --btn-input-sm-gap: .375rem,
     --btn-input-sm-min-height: 2rem,
@@ -107,7 +107,7 @@ $root-tokens: defaults(
     --btn-input-sm-padding-x: .625rem,
     --btn-input-sm-font-size: var(--font-size-sm),
     --btn-input-sm-line-height: var(--line-height-sm),
-    --btn-input-sm-border-radius: var(--radius-5),
+    --btn-input-sm-border-radius: var(--radius-4),
 
     --btn-input-lg-gap: .375rem,
     --btn-input-lg-min-height: 2.75rem,
@@ -115,7 +115,7 @@ $root-tokens: defaults(
     --btn-input-lg-padding-x: 1rem,
     --btn-input-lg-font-size: var(--font-size-md),
     --btn-input-lg-line-height: var(--line-height-md),
-    --btn-input-lg-border-radius: var(--radius-7),
+    --btn-input-lg-border-radius: var(--radius-6),
     // scss-docs-end root-form-variables
   ),
   $root-tokens
@@ -170,6 +170,7 @@ $root-tokens: defaults(
 // Generate spacer tokens
 // scss-docs-start root-spacer-loop
 @each $key, $value in $spacers {
+  $key: str-replace("#{$key}", ".", "-");
   $root-tokens: map.set($root-tokens, --spacer-#{$key}, $value);
 }
 // scss-docs-end root-spacer-loop
@@ -177,6 +178,7 @@ $root-tokens: defaults(
 // Generate radius tokens
 // scss-docs-start root-radius-loop
 @each $key, $value in $radii {
+  $key: str-replace("#{$key}", ".", "-");
   $root-tokens: map.set($root-tokens, --radius-#{$key}, $value);
 }
 // There is no `$radii` step for the pill, so keep a value passed through `$root-tokens`.
