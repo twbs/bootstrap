@@ -9,6 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import { onDocumentReady } from './util/component-functions.js'
+import type { ComponentConfig } from './util/config.js'
 
 /**
  * Constants
@@ -206,6 +207,14 @@ class Strength extends BaseComponent {
     }
 
     return score
+  }
+
+  protected override _configAfterMerge(config: ComponentConfig): ComponentConfig {
+    // A caller can override only the criteria it cares about. Merge the given
+    // weights over the defaults, so the remaining criteria still score. Without
+    // this, a missing key adds `undefined` and the whole score becomes `NaN`.
+    config.weights = { ...Default.weights, ...config.weights }
+    return config
   }
 
   protected _scoreToStrength(score: number): string | null {

@@ -308,6 +308,27 @@ describe('Strength', () => {
     })
   })
 
+  describe('custom weights', () => {
+    it('should merge partial weights with the default weights', () => {
+      fixtureEl.innerHTML = getStrengthHtml()
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const passwordInput = fixtureEl.querySelector('input[type="password"]')
+      const strength = new Strength(strengthEl, {
+        weights: {
+          uppercase: 0,
+          special: 2
+        },
+        thresholds: [3, 5, 7]
+      })
+
+      passwordInput.value = 'password' // lowercase only: two default criteria still score
+      passwordInput.dispatchEvent(createEvent('input'))
+
+      expect(strength.getStrength()).toEqual('weak')
+    })
+  })
+
   describe('custom thresholds', () => {
     it('should use custom threshold values', () => {
       fixtureEl.innerHTML = getStrengthHtml()
