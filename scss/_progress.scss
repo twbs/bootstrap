@@ -9,6 +9,7 @@
 
 $progress-tokens: () !default;
 
+// stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start progress-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
 $progress-tokens: defaults(
@@ -22,10 +23,12 @@ $progress-tokens: defaults(
     --progress-bar-bg: var(--primary-bg),
     --progress-bar-transition: width .6s ease,
     --progress-bar-animation: progress-bar-stripes 1s linear infinite,
+    --progress-segment-step: .375rem,
   ),
   $progress-tokens
 );
 // scss-docs-end progress-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 // Disable animation if transitions are disabled
 
@@ -83,12 +86,50 @@ $progress-tokens: defaults(
     background-size: var(--progress-height) var(--progress-height);
   }
 
+  .progress-segmented {
+    --progress-height: .625rem;
+    --progress-bg: color-mix(in oklch, var(--theme-bg, var(--progress-bar-bg)) 15%, transparent);
+    --progress-border-radius: 0;
+    --progress-box-shadow: none;
+    --progress-segment-position: left;
+
+    // Apply one mask to the track and fill so the segments align.
+    mask-image: radial-gradient(ellipse 33.333% 50%, #000 95%, transparent), linear-gradient(to right, transparent 16.667%, #000 16.667% 83.333%, transparent 83.333%), radial-gradient(ellipse 33.333% 50%, #000 95%, transparent);
+    mask-repeat: repeat-x;
+    mask-position: var(--progress-segment-position) top, var(--progress-segment-position) center, var(--progress-segment-position) bottom;
+    mask-size: var(--progress-segment-step) min(.25rem, 50%), var(--progress-segment-step) calc(100% - min(.25rem, 50%)), var(--progress-segment-step) min(.25rem, 50%);
+
+    &:dir(rtl) {
+      --progress-segment-position: right;
+    }
+  }
+
+  .progress-segmented,
+  .progress-segmented > .progress-bar {
+    --progress-segment-remainder: mod(100%, var(--progress-segment-step));
+
+    clip-path: inset(0 var(--progress-segment-remainder) 0 0);
+
+    &:dir(rtl) {
+      clip-path: inset(0 0 0 var(--progress-segment-remainder));
+    }
+  }
+
   .progress-stacked > .progress {
     overflow: visible;
   }
 
   .progress-stacked > .progress > .progress-bar {
     width: 100%;
+  }
+
+  .progress-stacked.progress-segmented > .progress {
+    --progress-height: inherit;
+    --progress-bg: transparent;
+    --progress-border-radius: inherit;
+    --progress-box-shadow: inherit;
+
+    flex: 0 0 round(down, var(--progress-segmented-width, 0%), var(--progress-segment-step));
   }
 
   @if $enable-transitions {

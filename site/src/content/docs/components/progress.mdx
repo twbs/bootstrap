@@ -130,6 +130,35 @@ You can include multiple progress components inside a container with `.progress-
     </div>
   </div>`} />
 
+## Segmented
+
+Add `.progress-segmented` to `.progress` to show the track and fill as a row of short vertical bars. Place visible labels outside the bar. Use `--bs-progress-segment-step` to set the approximate width of each segment and its gap.
+
+Apply a theme class to `.progress` to color the fill and its muted track. The fill shows only whole segments.
+
+<Example
+  class="vstack gap-3"
+  code={`<div class="progress progress-segmented theme-danger" role="progressbar" aria-label="Danger segmented example" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" style="width: 53%"></div>
+  </div>
+  <div class="progress progress-segmented theme-success" role="progressbar" aria-label="Success segmented example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" style="width: 75%"></div>
+  </div>`} />
+
+For stacked bars, add `.progress-segmented` to `.progress-stacked`. Set `--bs-progress-segmented-width` on each `.progress` to size its fill. Each fill rounds down to a whole number of segments.
+
+<Example code={`<div class="progress-stacked progress-segmented">
+    <div class="progress" role="progressbar" aria-label="Completed" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="--bs-progress-segmented-width: 25%">
+      <div class="progress-bar theme-success"></div>
+    </div>
+    <div class="progress" role="progressbar" aria-label="In progress" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="--bs-progress-segmented-width: 30%">
+      <div class="progress-bar theme-info"></div>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Blocked" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="--bs-progress-segmented-width: 15%">
+      <div class="progress-bar theme-danger"></div>
+    </div>
+  </div>`} />
+
 ## Striped
 
 Add `.progress-bar-striped` to any `.progress-bar` to apply a stripe via CSS gradient over the progress bar’s background color.
