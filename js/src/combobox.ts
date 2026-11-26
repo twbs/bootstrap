@@ -746,8 +746,17 @@ class Combobox extends BaseComponent {
       }
     })
     EventHandler.on(editor, `blur${EVENT_KEY}`, event => {
-      if (!this._composing && this._config.allowCustom && this._config.createOnBlur && !(event.relatedTarget as Element | null)?.closest('.chip, .menu')) {
+      const staysInside = Boolean((event.relatedTarget as Element | null)?.closest('.chip, .menu'))
+      if (this._composing || staysInside) {
+        return
+      }
+
+      if (this._config.allowCustom && this._config.createOnBlur) {
         this.add(editor.value.trim())
+      } else if (this._query !== null) {
+        this._query = null
+        this._filterItems('')
+        this._renderEditor()
       }
     })
     EventHandler.on(editor, `focus${EVENT_KEY}`, () => this.clearSelection())
@@ -1115,8 +1124,18 @@ class Combobox extends BaseComponent {
           return
         }
 
-        if (type === 'hidden' && this._editor) {
-          this._setActiveItem(null)
+        if (type === 'hidden') {
+          if (this._editor) {
+            this._setActiveItem(null)
+            if (this._query !== null) {
+              this._query = null
+              this._filterItems('')
+              this._renderEditor()
+            }
+          } else if (this._searchInput) {
+            this._searchInput.value = ''
+            this._filterItems('')
+          }
         }
 
         const forwarded = EventHandler.trigger(this._element, this.constructor.eventName(type))

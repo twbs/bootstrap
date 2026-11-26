@@ -203,6 +203,18 @@ describe('Combobox editor', () => {
     expect(x.input.hasAttribute('aria-activedescendant')).toBeFalse()
   })
 
+  it('should clear uncommitted query text when the editor loses focus', () => {
+    const x = make({ multiple: false })
+    x.input.focus()
+    type(x.input, 'Unfinished')
+    expect(x.input.value).toEqual('Unfinished')
+
+    x.input.dispatchEvent(new FocusEvent('blur', { relatedTarget: x.form }))
+
+    expect(x.input.value).toEqual('')
+    expect(x.items.every(item => item.style.display === '')).toBeTrue()
+  })
+
   it('should restore initial chips and fields on reset without selection events', async () => {
     const x = make({}, { selected: [0] })
     instance.add('science')
