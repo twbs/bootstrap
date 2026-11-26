@@ -70,6 +70,26 @@ describe('EventHandler', () => {
       })
     })
 
+    it('should register and remove namespaced input and selection listeners', () => {
+      fixtureEl.innerHTML = '<input type="text">'
+
+      const input = fixtureEl.querySelector('input')
+      const received = []
+      const record = event => received.push(event.type)
+
+      EventHandler.on(input, 'beforeinput.namespace', record)
+      EventHandler.on(document, 'selectionchange.namespace', record)
+      input.dispatchEvent(new InputEvent('beforeinput'))
+      document.dispatchEvent(new Event('selectionchange'))
+
+      EventHandler.off(input, '.namespace')
+      EventHandler.off(document, '.namespace')
+      input.dispatchEvent(new InputEvent('beforeinput'))
+      document.dispatchEvent(new Event('selectionchange'))
+
+      expect(received).toEqual(['beforeinput', 'selectionchange'])
+    })
+
     it('should handle event delegation', () => {
       return new Promise(resolve => {
         EventHandler.on(document, 'click', '.test', () => {
