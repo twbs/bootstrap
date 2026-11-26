@@ -9,6 +9,7 @@ module.exports = {
   // Make Jasmine look for `.test.scss` files
   // spec_files: ['**/*.{test,spec}.scss'],
   spec_files: [
+    'tests/node/**/*.test.cjs',
     '**/_utilities.test.scss',
     '**/utilities/_api.test.scss',
     '**/modules/_configuration.test.scss',

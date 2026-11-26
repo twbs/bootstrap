@@ -272,6 +272,18 @@ const eslintConfig = [
     }
   },
 
+  // scss CSS-output tests — Jasmine globals in CommonJS
+  {
+    files: ['scss/tests/node/**/*.cjs'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.jasmine
+      },
+      sourceType: 'script'
+    }
+  },
+
   // CJS files — Node.js environment, script mode
   {
     files: ['**/*.cjs'],
