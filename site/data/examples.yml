@@ -57,6 +57,8 @@
       description: 'Create custom buttons for just about any use case with utilities.'
     - name: Jumbotrons
       description: 'Create modernized versions of the classic Bootstrap component.'
+    - name: Masonry
+      description: 'Arrange cards of different heights with native CSS.'
 
 - category: Custom Components
   description: 'Brand-new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework.'
@@ -111,9 +113,3 @@
       description: 'Single navbar example with a fixed top navbar along with some additional content.'
     - name: Navbar bottom
       description: 'Single navbar example with a bottom navbar along with some additional content.'
-
-- category: Integrations
-  description: 'Integrations with external libraries.'
-  examples:
-    - name: 'Masonry'
-      description: 'Combine the powers of the Bootstrap grid and the Masonry layout.'
