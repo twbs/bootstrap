@@ -128,7 +128,6 @@
     "spellcheck": "cspell --config .cspell.json \".gitignore\" \"**/*.{md,mdx,yml,yaml,json,js,cjs,mjs,ts}\""
   },
   "peerDependencies": {
-    "@floating-ui/dom": "^1.8.0",
     "vanilla-calendar-pro": "^3.4.0"
   },
   "devDependencies": {
@@ -137,7 +136,6 @@
     "@astrojs/mdx": "^8.1.6",
     "@astrojs/sitemap": "^3.7.5",
     "@eslint/markdown": "^9.0.0",
-    "@floating-ui/dom": "^1.8.0",
     "@pagefind/component-ui": "^1.6.0",
     "@stackblitz/sdk": "^1.11.1",
     "@twbs/bui": "^0.1.15",

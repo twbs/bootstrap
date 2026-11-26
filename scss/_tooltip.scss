@@ -114,10 +114,10 @@ $tooltip-tokens: defaults(
     &::before {
       right: -1px;
       border-width: calc(var(--tooltip-arrow-width) * .5) var(--tooltip-arrow-height) calc(var(--tooltip-arrow-width) * .5) 0;
-      border-inline-end-color: var(--tooltip-bg);
+      border-right-color: var(--tooltip-bg);
 
       @include forced-colors() {
-        border-inline-end-color: CanvasText;
+        border-right-color: CanvasText;
       }
     }
   }
@@ -144,10 +144,10 @@ $tooltip-tokens: defaults(
     &::before {
       left: -1px;
       border-width: calc(var(--tooltip-arrow-width) * .5) 0 calc(var(--tooltip-arrow-width) * .5) var(--tooltip-arrow-height);
-      border-inline-start-color: var(--tooltip-bg);
+      border-left-color: var(--tooltip-bg);
 
       @include forced-colors() {
-        border-inline-start-color: CanvasText;
+        border-left-color: CanvasText;
       }
     }
   }

@@ -22,11 +22,11 @@ Work through each step in order. After each step, search the codebase for remain
 ## Step 1: Dependencies & Build
 
 1. Update `package.json`: `"bootstrap": "6.0.0-alpha.2"`
-2. Replace `@popperjs/core` with `@floating-ui/dom`
+2. Remove `@popperjs/core`
 3. If using Datepicker, add peer dep `vanilla-calendar-pro`
 4. Sass: replace all `@import` with `@use` (Node Sass is no longer supported)
 
-`bootstrap.bundle.js` includes Floating UI and Vanilla Calendar Pro. Standalone `bootstrap.js` leaves both peer dependencies external. Direct browser loading of the standalone build needs an import map.
+`bootstrap.bundle.js` includes Vanilla Calendar Pro. Standalone `bootstrap.js` leaves both peer dependencies external. Direct browser loading of the standalone build needs an import map.
 
 ```scss
 // v5
@@ -463,7 +463,7 @@ const tooltip = Tooltip.getOrCreateInstance(el)
 
 Data API initialization still runs automatically after you add `type="module"`. Apply the component and data attribute renames in this skill. Bundler imports (`import { X } from 'bootstrap'`) work as before.
 
-The bundled build includes Floating UI and Vanilla Calendar Pro. The standalone build requires installed peers or a browser import map.
+The bundled build includes Vanilla Calendar Pro. The standalone build requires installed peers or a browser import map.
 
 ### Renamed JS exports
 
@@ -473,9 +473,9 @@ The bundled build includes Floating UI and Vanilla Calendar Pro. The standalone 
 | `Offcanvas` | `Drawer` |
 | `Dropdown` | `Menu` |
 
-### Popper -> Floating UI
+### Popper to Bootstrap positioning
 
-Replace `@popperjs/core` with `@floating-ui/dom`. Rename the `popperConfig` option to `floatingConfig` on Tooltip, Popover, and Menu.
+Remove `@popperjs/core`. Review custom middleware. Rename the `popperConfig` option to `floatingConfig` on Tooltip, Popover, and Menu.
 
 ### Lifecycle methods return a promise
 

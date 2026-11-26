@@ -15,7 +15,8 @@ import {
   type Boundary,
   type Middleware,
   type Placement
-} from '@floating-ui/dom'
+} from './util/positioning.js'
+import { canAnchor, startAnchoring } from './util/anchor-positioning.js'
 import BaseComponent from './base-component.js'
 import EventHandler, { type BootstrapEvent } from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
@@ -157,6 +158,7 @@ class Tooltip extends BaseComponent {
   protected declare _resolveTimeout: (() => void) | null
   protected declare _isHovered: boolean | null
   protected declare _activeTrigger: Record<string, boolean>
+  protected declare _anchorUpdate: (() => void) | null
   protected declare _floatingCleanup: (() => void) | null
   protected declare _keydownHandler: ((event: KeyboardEvent) => void) | null
   protected declare _tipEventOut: ((event: BootstrapEvent) => void) | null
@@ -170,10 +172,6 @@ class Tooltip extends BaseComponent {
   declare tip: HTMLElement | null
 
   constructor(element?: string | Element | null, config?: Partial<TooltipConfig> | null) {
-    if (typeof computePosition === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Floating UI (https://floating-ui.com)')
-    }
-
     super(element, config)
 
     // Private
@@ -182,6 +180,7 @@ class Tooltip extends BaseComponent {
     this._resolveTimeout = null
     this._isHovered = null
     this._activeTrigger = {}
+    this._anchorUpdate = null
     this._floatingCleanup = null
     this._keydownHandler = null
     this._tipEventOut = null
@@ -248,6 +247,10 @@ class Tooltip extends BaseComponent {
       this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title')!)
     }
 
+    if (this.tip?.id === this._element.getAttribute('aria-describedby')) {
+      this._element.removeAttribute('aria-describedby')
+    }
+
     this._disposeFloating()
     this._disposeMediaQueryListeners()
     super.dispose()
@@ -294,6 +297,9 @@ class Tooltip extends BaseComponent {
     }
 
     await this._createFloating(tip)
+    if (this.tip !== tip) {
+      return
+    }
 
     tip.classList.add(CLASS_NAME_SHOW)
 
@@ -370,6 +376,11 @@ class Tooltip extends BaseComponent {
   }
 
   update(): void {
+    if (this._anchorUpdate) {
+      this._anchorUpdate()
+      return
+    }
+
     if (this._floatingCleanup && this.tip) {
       this._updateFloatingPosition()
     }
@@ -514,8 +525,15 @@ class Tooltip extends BaseComponent {
     const placement = this._getPlacement(tip)
     const arrowElement = tip.querySelector<HTMLElement>(`.${this.constructor.NAME}-arrow`)
 
+    if (this._tryAnchorPosition(tip, placement, arrowElement)) {
+      return
+    }
+
     // Initial position update
     await this._updateFloatingPosition(tip, placement, arrowElement)
+    if (this.tip !== tip) {
+      return
+    }
 
     // Set up auto-update for scroll/resize
     this._floatingCleanup = autoUpdate(
@@ -523,6 +541,43 @@ class Tooltip extends BaseComponent {
       tip,
       () => this._updateFloatingPosition(tip, null, arrowElement)
     )
+  }
+
+  protected _tryAnchorPosition(tip: HTMLElement, placement: string, arrowElement: HTMLElement | null): boolean {
+    const { boundary, fallbackPlacements, floatingConfig, offset, placement: configuredPlacement, template } = this._config
+    const defaults = this.constructor.Default
+    const side = placement as Placement
+    const container = tip.parentElement
+    const dialog = this._element.closest('dialog[open]')
+    if (!canAnchor(this._element) || floatingConfig || boundary !== Default.boundary ||
+        typeof configuredPlacement !== 'string' || this._responsivePlacements || !Default.fallbackPlacements.includes(side) ||
+        template !== defaults.template || !Array.isArray(offset) || offset.length !== 2 ||
+        offset[0] !== 0 || offset[1] !== (defaults.offset as number[])[1] ||
+        fallbackPlacements.join(',') !== Default.fallbackPlacements.join(',') ||
+        (container !== this._element.ownerDocument.body && container !== dialog)) {
+      return false
+    }
+
+    if (container === dialog && dialog) {
+      const { overflow, transform } = getComputedStyle(dialog)
+      if (overflow !== 'visible' || transform !== 'none') {
+        return false
+      }
+    }
+
+    const positioner = startAnchoring(this._element, tip, {
+      arrow: arrowElement,
+      candidates: [side, ...fallbackPlacements.filter(candidate => candidate !== side)] as Placement[],
+      gap: offset[1],
+      fallback: () => this._updateFloatingPosition(tip, null, arrowElement)
+    })
+    if (!positioner) {
+      return false
+    }
+
+    this._anchorUpdate = positioner.schedule
+    this._floatingCleanup = positioner.dispose
+    return true
   }
 
   protected async _updateFloatingPosition(tip: HTMLElement | null = this.tip, placement: string | null = null, arrowElement: HTMLElement | null = null): Promise<void> {
@@ -541,15 +596,19 @@ class Tooltip extends BaseComponent {
     const middleware = this._getFloatingMiddleware(arrowElement)
     const floatingConfig = this._getFloatingConfig(placement, middleware)
 
-    const { x, y, placement: finalPlacement, middlewareData } = await computePosition(
+    const { x, y, placement: finalPlacement, strategy, middlewareData } = await computePosition(
       this._element,
       tip,
       floatingConfig
     )
 
+    if (this.tip !== tip) {
+      return
+    }
+
     // Apply position to tooltip
     Object.assign(tip.style, {
-      position: 'absolute',
+      position: strategy,
       left: `${x}px`,
       top: `${y}px`
     })
@@ -570,7 +629,7 @@ class Tooltip extends BaseComponent {
 
       // Only set the cross-axis position (centering along the edge)
       // The main-axis position (which edge) is handled by CSS
-      // Floating UI reports the unused axis as `undefined`, never `null`
+      // The arrow result omits the unused axis
       Object.assign(arrowElement.style, {
         left: isVertical && arrowX !== undefined ? `${arrowX}px` : '',
         top: !isVertical && arrowY !== undefined ? `${arrowY}px` : '',
@@ -589,7 +648,7 @@ class Tooltip extends BaseComponent {
     }
 
     if (typeof offset === 'function') {
-      // Floating UI passes different args, adapt the interface for offset function callbacks
+      // Give the offset callback the component’s expected arguments.
       return ({ placement, rects }) => {
         const result = offset({ placement, reference: rects.reference, floating: rects.floating }, this._element)
         return toFloatingOffset(result)
@@ -988,6 +1047,7 @@ class Tooltip extends BaseComponent {
   }
 
   protected _disposeFloating(): void {
+    this._anchorUpdate = null
     if (this._floatingCleanup) {
       this._floatingCleanup()
       this._floatingCleanup = null

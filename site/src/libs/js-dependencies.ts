@@ -24,6 +24,8 @@ const FILE_DESCRIPTIONS: Record<string, string> = {
   'util/component-functions': 'Shared component helpers',
   'util/config': 'Configuration base class',
   'util/floating-ui': 'Responsive placement utilities',
+  'util/positioning': 'JavaScript positioner',
+  'util/anchor-positioning': 'CSS anchor positioning',
   'util/hash-target': 'URL hash target helpers',
   'util/index': 'Core utility functions',
   'util/sanitizer': 'HTML content sanitizer',
@@ -34,12 +36,11 @@ const FILE_DESCRIPTIONS: Record<string, string> = {
 
 // Descriptions for third-party packages that may appear in the graph.
 const PACKAGE_DESCRIPTIONS: Record<string, string> = {
-  '@floating-ui/dom': 'Third-party positioning library',
   'vanilla-calendar-pro': 'Third-party calendar library'
 }
 
 export interface JsDependency {
-  /** Display label for the "File" column, e.g. `js/src/tooltip.ts` or `@floating-ui/dom`. */
+  /** Display label for the "File" column, e.g. `js/src/tooltip.ts` or `vanilla-calendar-pro`. */
   file: string
   /** Human-readable description for the "Description" column. */
   description: string

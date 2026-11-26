@@ -146,19 +146,19 @@ export const disposeBreakpointListeners = (listeners: BreakpointListener[]): voi
 type FloatingOffsetOption = number[] | string | ((data: Record<string, any>, element: HTMLElement) => number[])
 
 /**
- * Public `floatingConfig` option: a Floating UI config object, a function that
+ * Public `floatingConfig` option: a positioning config object, a function that
  * refines the default config, or null.
  */
 type FloatingConfigOption = Record<string, any> | ((defaultConfig: Record<string, any>) => Record<string, any>) | null
 
 /**
- * Floating UI offset value: a number, an axis object, or our `[skidding, distance]` array
+ * Positioning offset value: a number, an axis object, or our `[skidding, distance]` array
  */
 type FloatingOffsetInput = number | number[] | { mainAxis?: number, crossAxis?: number, alignmentAxis?: number | null }
 type FloatingOffsetValue = Exclude<FloatingOffsetInput, number[]>
 
 /**
- * Normalize an offset value into Floating UI's offset shape.
+ * Normalize an offset value for the positioner.
  * A `[skidding, distance]` array becomes `{ mainAxis: distance, crossAxis: skidding }`;
  * numbers and axis objects pass through unchanged.
  */

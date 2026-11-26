@@ -42,7 +42,7 @@ Then compile your `custom-bootstrap.scss` instead of Bootstrap’s default `boot
 
 ## Lean JavaScript
 
-Bootstrap’s JavaScript includes every component in our primary dist files (`bootstrap.js` and `bootstrap.min.js`), and even our primary dependencies (Floating UI and Vanilla Calendar Pro) with our bundle files (`bootstrap.bundle.js` and `bootstrap.bundle.min.js`). While you’re customizing via Sass, be sure to remove related JavaScript.
+Bootstrap’s JavaScript includes every component in our primary dist files (`bootstrap.js` and `bootstrap.min.js`), and even Vanilla Calendar Pro in our bundle files (`bootstrap.bundle.js` and `bootstrap.bundle.min.js`). While you’re customizing via Sass, be sure to remove related JavaScript.
 
 For instance, assuming you’re using your own JavaScript bundler like Webpack, Parcel, or Vite, you’d only import the JavaScript you plan on using. In the example below, we show how to just include our dialog JavaScript:
 
@@ -63,7 +63,7 @@ import 'bootstrap/js/dist/dialog'
 // import 'bootstrap/js/dist/tooltip'
 ```
 
-Importing a file this way runs it for its side effects, which registers that component’s data attribute API—so `data-bs-toggle` and friends keep working without any extra code. This way, you’re not including any JavaScript you don’t intend to use for components like buttons, carousels, and tooltips. If you’re importing menus, tooltips or popovers, be sure to list the Floating UI dependency in your `package.json` file. If you’re using the datepicker, be sure to also list the Vanilla Calendar Pro dependency.
+Importing a file this way runs it for its side effects, which registers that component’s data attribute API—so `data-bs-toggle` and friends keep working without any extra code. This way, you’re not including any JavaScript you don’t intend to use for components like buttons, carousels, and tooltips. If you’re using the datepicker, be sure to also list the Vanilla Calendar Pro dependency.
 
 <Callout>
 **Heads up!** Files in `bootstrap/js/dist` use the **default export**. To use them, do the following:

@@ -33,7 +33,7 @@ Set up a Bootstrap 6 project bundled with Vite. Requires Node.js and terminal fa
    npm i --save-dev vite
    ```
 
-3. Install Bootstrap and its optional peer dependencies (omit `@floating-ui/dom` if not using menus/popovers/tooltips; omit `vanilla-calendar-pro` if not using the datepicker):
+3. Install the published Bootstrap release and the peer dependencies it requires:
 
    ```sh
    npm i --save bootstrap@6.0.0-alpha.2 @floating-ui/dom vanilla-calendar-pro
@@ -139,7 +139,7 @@ my-project/
 
    To customize, override Bootstrap's CSS token maps (`$root-tokens`, `$*-tokens`) — see [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written unprefixed in Sass; Bootstrap's dist/CDN CSS adds the `--bs-` prefix via PostCSS, so compiling the source yourself keeps them unprefixed.
 
-2. `src/js/main.js` — load the CSS and import Bootstrap's JS. Floating UI and Vanilla Calendar Pro are imported automatically through Bootstrap:
+2. `src/js/main.js` — load the CSS and import Bootstrap's JS. Vanilla Calendar Pro is imported automatically through Bootstrap:
 
    ```js
    // Import our custom CSS, then all of Bootstrap’s JS
@@ -158,7 +158,7 @@ my-project/
 ## Step 5: Verify
 
 1. Run `npm start` and open `http://localhost:8080` — the `.container` and `.btn-solid.theme-primary` button should be styled.
-2. Confirm the browser console is free of module-resolution errors (Bootstrap, Floating UI, Vanilla Calendar Pro).
+2. Confirm the browser console is free of module-resolution errors (Bootstrap and Vanilla Calendar Pro).
 3. Trigger a JS component (tooltip/dialog) to confirm the JS bundle works.
 4. Bootstrap 6 requires a browser that supports `oklch()` and `color-mix()`.
 

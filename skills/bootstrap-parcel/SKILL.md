@@ -33,7 +33,7 @@ Set up a Bootstrap 6 project bundled with Parcel. Parcel is zero-config and auto
    npm i --save-dev parcel
    ```
 
-3. Install Bootstrap and its optional peer dependencies (omit `@floating-ui/dom` if not using menus/popovers/tooltips; omit `vanilla-calendar-pro` if not using the datepicker):
+3. Install the published Bootstrap release and the peer dependencies it requires:
 
    ```sh
    npm i --save bootstrap@6.0.0-alpha.2 @floating-ui/dom vanilla-calendar-pro
@@ -119,7 +119,7 @@ my-project/
 
    To customize, override Bootstrap's CSS token maps (`$root-tokens`, `$*-tokens`) — see [Customize › Sass](https://getbootstrap.com/docs/6.0/customize/sass/#compile-time-overrides). Token names are written unprefixed in Sass; Bootstrap's dist/CDN CSS adds the `--bs-` prefix via PostCSS, so compiling the source yourself keeps them unprefixed.
 
-2. `src/js/main.js` — import Bootstrap's JS. Floating UI and Vanilla Calendar Pro are imported automatically through Bootstrap:
+2. `src/js/main.js` — import Bootstrap's JS. Vanilla Calendar Pro is imported automatically through Bootstrap:
 
    ```js
    // Import all of Bootstrap's JS

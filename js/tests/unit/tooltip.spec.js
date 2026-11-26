@@ -430,6 +430,37 @@ describe('Tooltip', () => {
   })
 
   describe('dispose', () => {
+    it('stops a pending show when disposed during positioning', async () => {
+      fixtureEl.innerHTML = '<button type="button" title="Preview">Trigger</button>'
+      const trigger = fixtureEl.firstElementChild
+      const shown = jasmine.createSpy('shown')
+      trigger.addEventListener('shown.bs.tooltip', shown)
+      const started = Promise.withResolvers()
+      const pending = Promise.withResolvers()
+      const tooltip = new Tooltip(trigger, {
+        floatingConfig: {
+          middleware: [{
+            name: 'wait',
+            async fn() {
+              started.resolve()
+              await pending.promise
+              return {}
+            }
+          }]
+        }
+      })
+
+      const showing = tooltip.show()
+      await started.promise
+      tooltip.dispose()
+      pending.resolve()
+      await showing
+
+      expect(shown).not.toHaveBeenCalled()
+      expect(trigger.hasAttribute('aria-describedby')).toBeFalse()
+      expect(document.querySelector('.tooltip')).toBeNull()
+    })
+
     it('should destroy a tooltip', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
