@@ -1,0 +1,20 @@
+{
+  "name": "bootstrap",
+  "interface": {
+    "displayName": "Bootstrap"
+  },
+  "plugins": [
+    {
+      "name": "bootstrap",
+      "source": {
+        "source": "local",
+        "path": "./skills"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
