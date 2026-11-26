@@ -98,7 +98,7 @@ $root-tokens: defaults(
     --btn-input-xs-padding-y: .125rem,
     --btn-input-xs-padding-x: .5rem,
     --btn-input-xs-font-size: var(--font-size-xs),
-    --btn-input-xs-line-height: 1.125,
+    --btn-input-xs-line-height: var(--line-height-xs),
     --btn-input-xs-border-radius: var(--radius-5),
 
     --btn-input-sm-gap: .375rem,

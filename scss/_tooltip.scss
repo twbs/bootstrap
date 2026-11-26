@@ -17,6 +17,7 @@ $tooltip-tokens: defaults(
     --tooltip-padding-x: var(--spacer-3),
     --tooltip-padding-y: calc(var(--spacer) * .375),
     --tooltip-font-size: var(--font-size-sm),
+    --tooltip-line-height: var(--line-height-sm),
     --tooltip-color: var(--bg-body),
     --tooltip-bg: var(--fg-body),
     --tooltip-border-radius: var(--radius-5),
@@ -46,6 +47,7 @@ $tooltip-tokens: defaults(
     // So reset our font and text properties to avoid inheriting weird values.
     @include reset-text();
     font-size: var(--tooltip-font-size);
+    line-height: var(--tooltip-line-height);
     // Allow breaking very long words so they don't overflow the tooltip's bounds
     word-wrap: break-word;
     opacity: 0;

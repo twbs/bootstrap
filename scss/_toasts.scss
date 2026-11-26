@@ -17,6 +17,7 @@ $toast-tokens: defaults(
     --toast-spacing: #{$container-padding-x},
     --toast-max-width: 350px,
     --toast-font-size: var(--font-size-sm),
+    --toast-line-height: var(--line-height-sm),
     --toast-color: null,
     --toast-bg: var(--bg-body),
     --toast-border-width: var(--border-width),
@@ -45,6 +46,7 @@ $toast-tokens: defaults(
     max-width: 100%;
     overflow: hidden;
     font-size: var(--toast-font-size);
+    line-height: var(--toast-line-height);
     color: var(--toast-color, var(--fg-body));
     pointer-events: auto;
     background-color: var(--toast-bg);

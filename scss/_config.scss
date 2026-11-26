@@ -303,11 +303,11 @@ $font-sizes: defaults(
   (
     "xs": (
       "font-size": .75rem,
-      "line-height": 1.25
+      "line-height": calc(1 / .75),
     ),
     "sm": (
       "font-size": .875rem,
-      "line-height": 1.5
+      "line-height": calc(1.25 / .875),
     ),
     "md": (
       "font-size": 1rem,
@@ -315,7 +315,7 @@ $font-sizes: defaults(
     ),
     "lg": (
       "font-size": clamp(1.125rem, 1rem + .625vw, 1.25rem),
-      "line-height": 1.5
+      "line-height": calc(1.75 / 1.25)
     ),
     "xl": (
       "font-size": clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
