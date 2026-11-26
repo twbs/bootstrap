@@ -140,7 +140,7 @@
     "@floating-ui/dom": "^1.8.0",
     "@pagefind/component-ui": "^1.6.0",
     "@stackblitz/sdk": "^1.11.1",
-    "@twbs/bui": "^0.1.12",
+    "@twbs/bui": "^0.1.15",
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@vitest/browser": "^5.1.0",
