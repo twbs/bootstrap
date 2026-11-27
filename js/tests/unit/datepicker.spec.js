@@ -575,9 +575,9 @@ describe('Datepicker', () => {
   })
 
   describe('theme detection', () => {
-    it('should detect theme from closest [data-bs-theme] ancestor', () => {
+    it('should detect theme from closest [data-bs-color-scheme] ancestor', () => {
       fixtureEl.innerHTML = [
-        '<div data-bs-theme="dark">',
+        '<div data-bs-color-scheme="dark">',
         '  <input type="text" data-bs-toggle="datepicker">',
         '</div>'
       ].join('')
@@ -590,7 +590,7 @@ describe('Datepicker', () => {
 
     it('should use explicit datepickerTheme config over ancestor', () => {
       fixtureEl.innerHTML = [
-        '<div data-bs-theme="dark">',
+        '<div data-bs-color-scheme="dark">',
         '  <input type="text" data-bs-toggle="datepicker" data-bs-datepicker-theme="light">',
         '</div>'
       ].join('')
@@ -610,9 +610,9 @@ describe('Datepicker', () => {
       expect(datepicker._getEffectiveTheme()).toBeNull()
     })
 
-    it('should set data-bs-theme on calendar element when ancestor has theme', () => {
+    it('should set data-bs-color-scheme on calendar element when ancestor has theme', () => {
       fixtureEl.innerHTML = [
-        '<div data-bs-theme="dark">',
+        '<div data-bs-color-scheme="dark">',
         '  <input type="text" data-bs-toggle="datepicker">',
         '</div>'
       ].join('')
@@ -624,10 +624,10 @@ describe('Datepicker', () => {
       datepicker._syncThemeAttribute(datepicker._calendar.context.mainElement)
 
       const calendarEl = datepicker._calendar.context.mainElement
-      expect(calendarEl.getAttribute('data-bs-theme')).toEqual('dark')
+      expect(calendarEl.getAttribute('data-bs-color-scheme')).toEqual('dark')
     })
 
-    it('should not have data-bs-theme when no theme is set', () => {
+    it('should not have data-bs-color-scheme when no theme is set', () => {
       fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker">'
 
       const inputEl = fixtureEl.querySelector('input')
@@ -637,7 +637,7 @@ describe('Datepicker', () => {
       datepicker._syncThemeAttribute(datepicker._calendar.context.mainElement)
 
       const calendarEl = datepicker._calendar.context.mainElement
-      expect(calendarEl.hasAttribute('data-bs-theme')).toBeFalse()
+      expect(calendarEl.hasAttribute('data-bs-color-scheme')).toBeFalse()
     })
   })
 

@@ -82,6 +82,7 @@ Review these changes when you upgrade from v6.0.0-alpha.1 to alpha 2.
 
 - **Native grid gaps.** Rows use CSS `gap`, without gutter padding on columns or negative margins. Continue using `.g-*`, `.gx-*`, and `.gy-*`. See [Gutters]([[docsref:/layout/gutters]]).
 - **Higher browser minimums.** Chrome and Edge require version 138, Firefox 147, and Safari 26 on macOS and iOS. See [Browsers & devices]([[docsref:/getting-started/browsers-devices]]).
+- **Renamed the color mode attribute.** Replace `data-bs-theme` with `data-bs-color-scheme`. See [Color mode attribute](#color-mode-attribute).
 - **Combobox replaces Chip input.** Editable search, multiple selection, and custom values now share one component. Multiple values submit as separate form fields. See [Combobox]([[docsref:/forms/combobox]]).
 - **Form control fixes.** [Range]([[docsref:/forms/range]]) updates refresh its display and tick marks. [Datepicker]([[docsref:/forms/datepicker]]) displays local dates, submits ISO dates, and preserves the original input.
 - **Dialog and Drawer updates.** Scroll locking compensates for scrollbar space. Drawer backdrops fade during closing, and `.dialog-2xl` supports larger content. See [Dialog and Drawer](#dialog-and-drawer).
@@ -104,6 +105,14 @@ See [Gutters]([[docsref:/layout/gutters]]) for sizing and custom CSS.
 
 The minimum browser versions have increased from Chrome and Edge 130 to 138, Firefox 132 to 147, and Safari 18 to 26 on macOS and iOS. Check your browser requirements before upgrading. See [Browsers & devices]([[docsref:/getting-started/browsers-devices]]) for the features that set each minimum version.
 
+### Color mode attribute
+
+Rename `data-bs-theme` to `data-bs-color-scheme` in your markup, CSS selectors, and scripts. Use the new attribute on `<html>` to set the page’s color mode or on a component to scope it to that component and its contents.
+
+For example, replace `data-bs-theme="dark"` with `data-bs-color-scheme="dark"`. In a custom color mode switcher, update calls such as `setAttribute('data-bs-color-scheme', 'dark')` and any reads of `dataset.bsTheme` to use `dataset.bsColorScheme`.
+
+The `light` and `dark` values still select the corresponding color scheme. The new name distinguishes this setting from `.theme-*` classes, which set a component’s theme color. See [Color modes]([[docsref:/customize/color-modes]]) for examples and [JavaScript usage]([[docsref:/customize/color-modes#javascript]]) for the color mode toggle.
+
 ### Dialog and Drawer
 
 - Bootstrap no longer applies `scrollbar-gutter: stable` globally. Dialog and Drawer now use JavaScript to compensate for disappearing scrollbar space while page scrolling is locked. Full-width fixed elements with `.fixed-top`, `.fixed-bottom`, or `.is-fixed` are compensated too. Review any custom scrollbar compensation you added for alpha 1. See [Dialog]([[docsref:/components/dialog]]).
@@ -121,7 +130,7 @@ The minimum browser versions have increased from Chrome and Edge 130 to 138, Fir
 
 Token names below use the unprefixed Sass source names. In Bootstrap’s compiled CSS, they use the `--bs-` prefix.
 
-- **Close button color.** `--btn-close-color` now defaults to `var(--fg-body)` instead of `currentcolor`. For a light icon on a dark surface, add `data-bs-theme="dark"` to the button or a parent. Set `--btn-close-color: currentcolor` if your custom component needs the button to inherit its text color. See [Close button]([[docsref:/components/close-button]]).
+- **Close button color.** `--btn-close-color` now defaults to `var(--fg-body)` instead of `currentcolor`. For a light icon on a dark surface, add `data-bs-color-scheme="dark"` to the button or a parent. Set `--btn-close-color: currentcolor` if your custom component needs the button to inherit its text color. See [Close button]([[docsref:/components/close-button]]).
 - **Removed unused tokens.** These tokens had no effect in alpha 1. Remove their overrides and use the controls below:
   - `--table-striped-bg`, `--table-active-bg`, and `--table-hover-bg`: use the corresponding `--table-*-bg-factor` tokens to control the color mix. See [Tables]([[docsref:/content/tables#css]]).
   - `--form-text-margin-top`: wrap related controls and help text in `.form-field` for shared spacing, or add a margin utility. See [Field]([[docsref:/forms/field]]).
@@ -191,6 +200,7 @@ See the [programmatic API]([[docsref:/getting-started/javascript#component-insta
   - Layers are set in `_root.scss` and then utilized across separate Sass partials.
   - We cannot, unfortunately, wrap `@use` or `@forward` statements in `@layer`—Sass expects those to be top level at all times. Also, while CSS allows `@import "file.css" layer(name)`, Sass also does not support that.
 - New, streamlined color modes and theming.
+  - Renamed the `data-bs-theme` attribute to `data-bs-color-scheme`. The `light` and `dark` values stay the same.
   - Removed `_maps.scss`
   - Removed `_variables-dark.scss`
   - Added `_colors.scss`, splitting colors out to their own file
@@ -251,14 +261,14 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Renamed `$grid-breakpoints` to `$breakpoints`.**
 - **Theme and config maps now merge via `defaults()`.** `$theme-colors`, `$theme-bgs`, `$theme-fgs`, `$theme-borders`, `$badge-variants`, and the other global maps accept a partial `@use ... with ()` override. v5 required a full map replacement. Set a key to `null` to drop it. Nested theme-color maps merge one level deep—pass the whole sub-map to change one role. See [Sass]([[docsref:/customize/sass]]).
 - **Added `$enable-forced-colors` and the `forced-colors()` mixin.** Components include styles for forced colors mode (for example, Windows high contrast themes), so parts drawn only with a background color stay visible. Set `$enable-forced-colors: false` to remove these styles from the build. In your own Sass, use `@include forced-colors()` instead of a bare `@media (forced-colors: active)` query, so your styles follow the same option. See [Forced colors]([[docsref:/getting-started/accessibility#forced-colors]]).
-- **Removed `$enable-dark-mode`.** Dark mode support is always compiled; control it at runtime with `data-bs-theme` (or the `color-mode()` mixin) instead of toggling a Sass flag.
+- **Removed `$enable-dark-mode`.** Dark mode support is always compiled; control it at runtime with `data-bs-color-scheme` (or the `color-mode()` mixin) instead of toggling a Sass flag.
 - **Removed `$enable-caret` and the caret mixins.** Menu toggles lost their automatic caret when menus moved to Floating UI, so the flag had no effect. The `caret()`, `caret-down()`, `caret-up()`, `caret-end()`, and `caret-start()` mixins, the `scss/mixins/_caret.scss` file, and the `$caret-width`, `$caret-vertical-align`, and `$caret-spacing` variables are gone too. Add an icon to the toggle markup if you want a caret.
 - **Removed `$enable-negative-margins`.** Negative margin utilities are always generated now, from the `$negative-spacers` map in `scss/_config.scss`. Override that map to change their values, or set a key to `null` to drop it. See [negative margins limited](#utilities) under Utilities.
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.
   - Removed `muted`, `black-50`, and `white-50` from text colors utilities map
-  - Removed the carousel dark Sass variables (`$carousel-dark-indicator-active-bg`, `$carousel-dark-control-icon-filter`) and the `.carousel-dark` class—they’re not reassigned. Dark carousels now use `data-bs-theme="dark"` (see the carousel changes below). Carousel captions were removed entirely too.
-  - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `--btn-close-color`, which defaults to `var(--fg-body)`, so it follows `data-bs-theme` like other components.
+  - Removed the carousel dark Sass variables (`$carousel-dark-indicator-active-bg`, `$carousel-dark-control-icon-filter`) and the `.carousel-dark` class—they’re not reassigned. Dark carousels now use `data-bs-color-scheme="dark"` (see the carousel changes below). Carousel captions were removed entirely too.
+  - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `--btn-close-color`, which defaults to `var(--fg-body)`, so it follows `data-bs-color-scheme` like other components.
   - Removed all `$border-radius-*` variables (`-xs`, `-sm`, default, `-lg`, `-xl`, `-xxl`, `-pill`) in favor of the numeric `$radii` map and `--radius-*` tokens—see [Border radius tokens](#utilities) under Utilities.
   - Removed `$text-muted` for secondary color.
   - Removed `$hr-bg-color` for `$hr-border-color` and `$hr-height` for `$hr-border-width`.
@@ -412,7 +422,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
   - Open state styling uses `details[open]` instead of JavaScript-toggled classes.
   - Theme coloring via `.theme-*` classes on the `.accordion` wrapper.
   - New modifiers: `.accordion-sm` for compact padding and type, and `.accordion-gap` to space items as separate rounded cards (`--accordion-gap`).
-- **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by the `--btn-close-color` token, and the `.btn-close-white` class has been removed. Add `data-bs-theme="dark"` to the button or a parent for a light icon. In alerts and toast headers, the icon takes the component's text color.
+- **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by the `--btn-close-color` token, and the `.btn-close-white` class has been removed. Add `data-bs-color-scheme="dark"` to the button or a parent for a light icon. In alerts and toast headers, the icon takes the component's text color.
 - **Removed `.alert-dismissible`.** Dismissible alerts no longer require the `.alert-dismissible` modifier class. Place a `.btn-close` directly inside the alert—the alert's flex layout positions it automatically. Remove any `.alert-dismissible` class from your markup.
 - **Restructured cards.** The outer border lives on `.card`. Header and footer keep a divider border only. Use `.list-group-flush` inside a card—`.card-list` is gone. Added `--card-box-shadow` and `--card-body-gap` tokens. New variant classes: `.card-translucent` (frosted glass effect) and `.card-subtle` (themed with subtle backgrounds). Horizontal cards use a new `.card-row` class. Removed `.card-link` class. `.card-body` is now an optional flex column that removes direct-child block margins and uses `--card-body-gap` for spacing. Add `.flex-row` for a horizontal body. `.card-title` and `.card-text` remain available as project hooks but no longer add styles; `.card-subtitle` still reduces the gap above the subtitle.
 - **Card groups now use container queries.** `.card-group` switches to its attached, equal-width row layout with a `@container` query instead of a viewport `@media` query, so it responds to the width of a parent query container rather than the viewport. Wrap the card group in a query container—e.g. add the `.contains-inline` utility to a parent element—or the cards stay stacked.
@@ -502,7 +512,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Removed `.carousel-caption`** and its `--carousel-caption-*` tokens. Compose slide content from your own markup inside `.carousel-item` instead, styling and positioning it with utilities or custom CSS.
 - **Replaced the `wrap` option with `ends`.** v5's `wrap: true | false` is now `ends: "loop" | "wrap" | "stop"` (default `"loop"`). Map `wrap: true` to `ends: "wrap"` (or the new default `"loop"` for the seamless conveyor effect) and `wrap: false` to `ends: "stop"`. Set it via `data-bs-ends` or the `ends` option. Unknown values fall back to `"loop"`.
 - **Removed the `.carousel-control-prev` / `.carousel-control-next` button classes.** The absolute, full-height hover targets are gone. Compose a control from a button (e.g. `.btn-icon`) plus `data-bs-slide="prev"` / `data-bs-slide="next"` and a `.carousel-icon-prev` / `.carousel-icon-next` glyph, placed in the flow or inside `.carousel-overlay-controls`.
-- **Removed the `.carousel-dark` class.** Use `data-bs-theme="dark"` on the `.carousel` (typically alongside `.carousel-overlay`) for reversed contrast.
+- **Removed the `.carousel-dark` class.** Use `data-bs-color-scheme="dark"` on the `.carousel` (typically alongside `.carousel-overlay`) for reversed contrast.
 - **Removed v5 carousel tokens** that no longer have an equivalent: `--carousel-caption-*`, `--carousel-control-color`, `--carousel-control-opacity` / `--carousel-control-hover-opacity`, `--carousel-control-icon-filter`, and `--carousel-transition`. Indicator, control, and fade styling now derive from the redesigned `--bs-carousel-*` tokens listed under [CSS variables]([[docsref:/components/carousel#variables]]).
 
 ### Reboot
@@ -517,7 +527,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - Removed the `::-moz-focus-inner` styles, as the pseudo selector is deprecated in Firefox.
 - Removed `text-transform: none` from `button` and `select` elements, as Firefox no longer incorrectly inherits text-transform.
 - Added `accent-color: var(--primary-base)` on `:root`, which applies the primary theme color to native form controls (checkboxes, radios, range inputs, progress bars) globally.
-- **Reboot now sets `color-scheme: light dark` on every `iframe`.** This keeps an embed transparent when you force a theme with `data-bs-theme`. Remove any v5 workaround like `[data-bs-theme="dark"] { color-scheme: unset; }`. v6 resolves its color tokens with `light-dark()`, which reads `color-scheme`. An `unset` there turns off dark mode for the whole subtree. For a third-party embed with no dark mode, add the new `.color-scheme-light` utility to that one iframe instead—see [Reboot]([[docsref:/content/reboot#third-party-embeds-with-no-dark-mode]]).
+- **Reboot now sets `color-scheme: light dark` on every `iframe`.** This keeps an embed transparent when you force a theme with `data-bs-color-scheme`. Remove any v5 workaround like `[data-bs-theme="dark"] { color-scheme: unset; }`. v6 resolves its color tokens with `light-dark()`, which reads `color-scheme`. An `unset` there turns off dark mode for the whole subtree. For a third-party embed with no dark mode, add the new `.color-scheme-light` utility to that one iframe instead—see [Reboot]([[docsref:/content/reboot#third-party-embeds-with-no-dark-mode]]).
 
 ### Forms
 
@@ -698,7 +708,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 - **Text wrap additions.** Added `.text-balance` and `.text-pretty` values to the text-wrap utility.
 - **Color utility renames.** `.text-*` color utilities have been replaced by `.fg-*` (foreground) utilities. New `.fg-emphasis-*` and `.fg-contrast-*` variants. Background utilities now include `.bg-subtle-*` and `.bg-muted-*` in addition to `.bg-*`. Added `.fg-bg` and `.bg-fg` cross-reference utilities; removed `.fg-inherit` and `.bg-inherit`. Renamed `.text-reset` to `.fg-reset`.
 - **Removed the `.text-bg-*` helpers.** The v5 `.text-bg-{color}` helpers (a solid themed background plus an automatically contrasting foreground) have been removed. Compose the same result from a background utility and the matching contrast foreground on the same element. For example, `.text-bg-primary` becomes `class="bg-primary fg-contrast-primary"`. This works for every theme color (`primary`, `secondary`, `success`, `danger`, `warning`, `info`, `accent`, `inverse`). For the former `.text-bg-light` / `.text-bg-dark`, pair a neutral surface (see below—`.bg-1` or a fixed `.bg-white` / `.bg-black`) with an appropriate `.fg-*`.
-- **Removed `.bg-light`, `.bg-dark`, and the `.bg-body-*` surfaces.** The color-mode-aware `.bg-body-secondary` / `.bg-body-tertiary` surfaces map to v6's neutral background scale `.bg-2`–`.bg-1` (each step a little more contrast than the page body). The old `.bg-light` / `.bg-dark` grays were *fixed*—they didn't follow the color mode—and v6 has no drop-in class that renders identically, so choose by intent: use the adaptive `.bg-1` / `.bg-2` if you want the surface to follow light and dark, or pin a fixed surface with `.bg-white` / `.bg-black` or by scoping a color mode (`data-bs-theme="light|dark"`) and using `.bg-body`. Note `.bg-black` is pure black (darker than v5's dark gray) and a scoped `data-bs-theme` renders the themed body color, so neither reproduces v5's exact shade.
+- **Removed `.bg-light`, `.bg-dark`, and the `.bg-body-*` surfaces.** The color-mode-aware `.bg-body-secondary` / `.bg-body-tertiary` surfaces map to v6's neutral background scale `.bg-2`–`.bg-1` (each step a little more contrast than the page body). The old `.bg-light` / `.bg-dark` grays were *fixed*—they didn't follow the color mode—and v6 has no drop-in class that renders identically, so choose by intent: use the adaptive `.bg-1` / `.bg-2` if you want the surface to follow light and dark, or pin a fixed surface with `.bg-white` / `.bg-black` or by scoping a color mode (`data-bs-color-scheme="light|dark"`) and using `.bg-body`. Note `.bg-black` is pure black (darker than v5's dark gray) and a scoped `data-bs-color-scheme` renders the themed body color, so neither reproduces v5's exact shade.
 
 <BsTable>
 | v5 class | v6 replacement |
@@ -706,7 +716,7 @@ The prefix syntax does not identify the query type. Utilities, grid columns, con
 | `.bg-body-tertiary` | `.bg-1` |
 | `.bg-body-secondary` | `.bg-2` |
 | `.bg-light` | `.bg-1` / `.bg-2` (adaptive), or `.bg-white` for a fixed light surface |
-| `.bg-dark` | `.bg-black`, or `data-bs-theme="dark"` + `.bg-body` (no exact shade match) |
+| `.bg-dark` | `.bg-black`, or `data-bs-color-scheme="dark"` + `.bg-body` (no exact shade match) |
 | `.bg-body` | `.bg-body` (unchanged) |
 </BsTable>
 - **Link utility renames.** Use [Link]([[docsref:/utilities/link]]) utilities for link text opacity. Use [Text decoration]([[docsref:/utilities/text-decoration]]) utilities for underlines.

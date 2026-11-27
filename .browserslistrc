@@ -8,7 +8,7 @@
 # Two rules for editing this file:
 #   1. Never set a floor below `light-dark()`: Chrome 123, Firefox 120,
 #      Safari 17.5. Lightning CSS lowers `light-dark()` to a custom-property
-#      polyfill below those versions, and the polyfill breaks `data-bs-theme`.
+#      polyfill below those versions, and the polyfill breaks `data-bs-color-scheme`.
 #   2. Run `npx browserslist --coverage` after any change, then update the
 #      versions and the coverage figure on the docs page above.
 

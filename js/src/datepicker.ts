@@ -852,11 +852,11 @@ class Datepicker extends BaseComponent {
   }
 
   protected _getThemeAncestor(): Element | null {
-    return this._element.closest('[data-bs-theme]')
+    return this._element.closest('[data-bs-color-scheme]')
   }
 
   protected _getEffectiveTheme(): string | null {
-    return this._config.datepickerTheme || this._getThemeAncestor()?.getAttribute('data-bs-theme') || null
+    return this._config.datepickerTheme || this._getThemeAncestor()?.getAttribute('data-bs-color-scheme') || null
   }
 
   protected _syncThemeAttribute(element: HTMLElement | undefined): void {
@@ -866,9 +866,9 @@ class Datepicker extends BaseComponent {
 
     const theme = this._getEffectiveTheme()
     if (theme) {
-      element.setAttribute('data-bs-theme', theme)
+      element.setAttribute('data-bs-color-scheme', theme)
     } else {
-      element.removeAttribute('data-bs-theme')
+      element.removeAttribute('data-bs-color-scheme')
     }
 
     const computed = getComputedStyle(this._element)
@@ -914,7 +914,7 @@ class Datepicker extends BaseComponent {
       }
     })
     const root = this._element.getRootNode()
-    const options = { subtree: true, attributes: true, attributeFilter: ['data-bs-theme', 'class', 'style', 'dir'] }
+    const options = { subtree: true, attributes: true, attributeFilter: ['data-bs-color-scheme', 'class', 'style', 'dir'] }
     this._themeObserver.observe(document.documentElement, options)
     if (root instanceof ShadowRoot) {
       this._themeObserver.observe(root, options)
@@ -1198,7 +1198,7 @@ class Datepicker extends BaseComponent {
       displayMonthsCount,
       type: displayMonthsCount > 1 ? 'multiple' : 'default',
       selectedTheme: vcpTheme,
-      themeAttrDetect: '[data-bs-theme]',
+      themeAttrDetect: '[data-bs-color-scheme]',
       onClickDate: (self, event) => this._handleDateClick(self, event),
       onInit: self => this._syncPopupState(self),
       onUpdate: self => this._syncPopupState(self)

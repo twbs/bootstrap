@@ -1,6 +1,6 @@
 ---
 title: Color modes
-description: Bootstrap supports light and dark color modes. The page follows the visitor’s system preference by default, and you can force a mode globally or per-component with the `data-bs-theme` attribute.
+description: Bootstrap supports light and dark color modes. The page follows the visitor’s system preference by default, and you can force a mode globally or per-component with the `data-bs-color-scheme` attribute.
 toc: true
 ---
 
@@ -17,15 +17,15 @@ import { getDocsRelativePath } from '@libs/path'
 This gives you the best of both worlds, with no flag to set:
 
 - **System preference by default.** Our `:root` is declared with `color-scheme: light dark`, so the page automatically follows the visitor’s operating system preference (`prefers-color-scheme`), just like a media query implementation.
-- **Override with a data attribute.** Set `data-bs-theme="light"` or `data-bs-theme="dark"` on the `<html>` element to force a mode for the whole page, or on any element or component to scope a mode to just that subtree.
+- **Override with a data attribute.** Set `data-bs-color-scheme="light"` or `data-bs-color-scheme="dark"` on the `<html>` element to force a mode for the whole page, or on any element or component to scope a mode to just that subtree.
 
-You don’t have to choose between media queries and a data attribute—because color modes are driven by `color-scheme`, the system preference and any `data-bs-theme` override work together.
+You don’t have to choose between media queries and a data attribute—because color modes are driven by `color-scheme`, the system preference and any `data-bs-color-scheme` override work together.
 
 ## Example
 
-For example, to change the color mode of a menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent element. Now, no matter the global color mode, these menus will display with the specified theme value.
+For example, to change the color mode of a menu, add `data-bs-color-scheme="light"` or `data-bs-color-scheme="dark"` to the parent element. Now, no matter the global color mode, these menus will display with the specified theme value.
 
-<Example class="d-flex justify-content-between" code={`<div data-bs-theme="light">
+<Example class="d-flex justify-content-between" code={`<div data-bs-color-scheme="light">
     <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
       Default menu
     </button>
@@ -39,7 +39,7 @@ For example, to change the color mode of a menu, add `data-bs-theme="light"` or 
     </div>
   </div>
 
-  <div data-bs-theme="dark">
+  <div data-bs-color-scheme="dark">
     <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
       Dark menu
     </button>
@@ -59,7 +59,7 @@ For example, to change the color mode of a menu, add `data-bs-theme="light"` or 
 
 - The `:root` element is set to `color-scheme: light dark`, so the page honors the visitor’s system preference by default. There’s nothing else to wire up for automatic dark mode.
 
-- The `data-bs-theme` attribute overrides `color-scheme` for the element it’s set on and its descendants—`[data-bs-theme="dark"]` sets `color-scheme: dark` and `[data-bs-theme="light"]` sets `color-scheme: light`. That forces every `light-dark()` token in that subtree to resolve to the chosen mode, which is why you can flip the whole page from `<html>` or recolor just a single component (as shown above).
+- The `data-bs-color-scheme` attribute overrides `color-scheme` for the element it’s set on and its descendants—`[data-bs-color-scheme="dark"]` sets `color-scheme: dark` and `[data-bs-color-scheme="light"]` sets `color-scheme: light`. That forces every `light-dark()` token in that subtree to resolve to the chosen mode, which is why you can flip the whole page from `<html>` or recolor just a single component (as shown above).
 
 - For styles that can’t be expressed as a token—custom components, or additional color modes of your own—use the `color-mode()` Sass mixin to scope rules to a mode. See [Building with Sass](#building-with-sass).
 
@@ -67,11 +67,11 @@ For example, to change the color mode of a menu, add `data-bs-theme="light"` or 
 
 ### Enable dark mode
 
-By default Bootstrap already follows the visitor’s system preference, so you don’t need to do anything to get automatic dark mode. To **force** dark mode regardless of their system setting, add the `data-bs-theme="dark"` attribute to the `<html>` element. This applies the dark color mode to all components and elements, other than those with their own `data-bs-theme` attribute. Building on the [quick start template]([[docsref:/guides/quickstart/]]):
+By default Bootstrap already follows the visitor’s system preference, so you don’t need to do anything to get automatic dark mode. To **force** dark mode regardless of their system setting, add the `data-bs-color-scheme="dark"` attribute to the `<html>` element. This applies the dark color mode to all components and elements, other than those with their own `data-bs-color-scheme` attribute. Building on the [quick start template]([[docsref:/guides/quickstart/]]):
 
 ```html
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-color-scheme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -94,7 +94,7 @@ Our built-in light and dark tokens auto-toggle via `light-dark()`, so you don’
 The mixin can emit its rules two ways, controlled by the `$color-mode-type` Sass variable:
 
 - `media-query` (the default) wraps your styles in a `@media (prefers-color-scheme: …)` block, so they follow the system preference.
-- `data` scopes your styles to a `[data-bs-theme="…"]` selector, so they can be toggled per-page or per-component.
+- `data` scopes your styles to a `[data-bs-color-scheme="…"]` selector, so they can be toggled per-page or per-component.
 
 For example, opting into the `data` attribute approach produces a scoped selector:
 
@@ -112,7 +112,7 @@ $color-mode-type: data;
 Outputs to:
 
 ```css
-[data-bs-theme=dark] .element {
+[data-bs-color-scheme=dark] .element {
   color: var(--bs-primary-fg-emphasis);
   background-color: var(--bs-primary-bg-subtle);
 }
@@ -144,15 +144,15 @@ Outputs to:
 
 ## Custom color modes
 
-While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own `data-bs-theme` selector with a custom value as the name of your color mode, then modify our Sass and CSS variables as needed. Bootstrap’s built-in dark mode uses `_root.scss` and `_theme.scss`, but you can follow the same pattern in your own stylesheet.
+While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own `data-bs-color-scheme` selector with a custom value as the name of your color mode, then modify our Sass and CSS variables as needed. Bootstrap’s built-in dark mode uses `_root.scss` and `_theme.scss`, but you can follow the same pattern in your own stylesheet.
 
-For example, you can create a “blue theme” with the selector `data-bs-theme="blue"`. In your custom Sass or CSS file, add the new selector and override any global or component CSS variables as needed. If you’re using Sass, you can also use Sass’s functions within your CSS variable overrides.
+For example, you can create a “blue theme” with the selector `data-bs-color-scheme="blue"`. In your custom Sass or CSS file, add the new selector and override any global or component CSS variables as needed. If you’re using Sass, you can also use Sass’s functions within your CSS variable overrides.
 
 <ScssDocs name="custom-color-mode" file="site/src/scss/_content.scss" />
 
 Set `color-scheme` in your custom mode, as the example above does with `dark`. Every `light-dark()` token your mode doesn’t override follows `color-scheme`, so without it your mode picks up the visitor’s system preference. A dark custom mode should also raise `--bs-shadow-strength`, like the built-in dark mode does.
 
-<Example code={`<div class="p-5 fg-body bg-body rounded-3" data-bs-theme="blue">
+<Example code={`<div class="p-5 fg-body bg-body rounded-3" data-bs-color-scheme="blue">
       <div class="h4">Example blue theme</div>
       <p>Some paragraph text to show how the blue theme might look with written copy.</p>
 
@@ -171,13 +171,13 @@ Set `color-scheme` in your custom mode, as the example above does with `dark`. E
           <a class="menu-item" href="#">Separated link</a>
         </div>
       </div>
-  </div>`} customMarkup={`<div data-bs-theme="blue">
+  </div>`} customMarkup={`<div data-bs-color-scheme="blue">
     ...
   </div>`} />
 
 ## JavaScript
 
-To allow visitors or users to toggle color modes, you’ll need to create a toggle element to control the `data-bs-theme` attribute on the root element, `<html>`. We’ve built a toggler in our documentation that initially defers to a user’s current system color mode, but provides an option to override that and pick a specific color mode.
+To allow visitors or users to toggle color modes, you’ll need to create a toggle element to control the `data-bs-color-scheme` attribute on the root element, `<html>`. We’ve built a toggler in our documentation that initially defers to a user’s current system color mode, but provides an option to override that and pick a specific color mode.
 
 Here’s a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it’s implemented using HTML and CSS from our own components. It is suggested to include the JavaScript at the top of your page to reduce potential screen flickering during reloading of your site. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
 
@@ -199,6 +199,6 @@ Our light and dark color tokens are generated from Sass in `_root.scss` and `_th
 
 ### Sass mixins
 
-Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-theme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#building-with-sass) for more details.
+Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-color-scheme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#building-with-sass) for more details.
 
 <ScssDocs name="color-mode-mixin" file="scss/mixins/_color-mode.scss" />

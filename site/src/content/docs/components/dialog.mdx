@@ -74,13 +74,13 @@ The Invoker Commands API is not supported in all browsers. For guaranteed suppor
 
 ## Dark dialog
 
-To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
+To make a dialog dark, add `data-bs-color-scheme="dark"` to the `<dialog>` element.
 
 <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogDark">
     Open dark dialog
   </button>
 
-  <dialog class="dialog" id="exampleDialogDark" aria-labelledby="exampleDialogDarkLabel" data-bs-theme="dark"><!-- [!code highlight] -->
+  <dialog class="dialog" id="exampleDialogDark" aria-labelledby="exampleDialogDarkLabel" data-bs-color-scheme="dark"><!-- [!code highlight] -->
     <div class="dialog-header">
       <h1 class="dialog-title" id="exampleDialogDarkLabel">Dark dialog title</h1>
       <CloseButton dismiss="dialog" />

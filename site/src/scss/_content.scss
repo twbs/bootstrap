@@ -172,7 +172,7 @@
   // stylelint-enable selector-no-qualifying-type
 
   // scss-docs-start custom-color-mode
-  [data-bs-theme="blue"] {
+  [data-bs-color-scheme="blue"] {
     --bs-fg-body: var(--bs-white);
     --bs-bg-body: var(--bs-blue-500);
     --bs-bg-3: var(--bs-blue-600);

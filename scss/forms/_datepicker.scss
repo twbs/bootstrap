@@ -89,11 +89,11 @@ $datepicker-tokens: defaults(
     @include border-radius(var(--datepicker-border-radius));
 
     // Respond to Bootstrap's color mode system
-    &[data-bs-theme="light"] {
+    &[data-bs-color-scheme="light"] {
       color-scheme: light;
     }
 
-    &[data-bs-theme="dark"] {
+    &[data-bs-color-scheme="dark"] {
       color-scheme: dark;
     }
 

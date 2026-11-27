@@ -25,11 +25,11 @@
         }
       }
       @include expect() {
-        [data-bs-theme=dark] .element {
+        [data-bs-color-scheme=dark] .element {
           color: var(--bs-primary-fg-emphasis);
           background-color: var(--bs-primary-bg-subtle);
         }
-        [data-bs-theme=dark] {
+        [data-bs-color-scheme=dark] {
           --custom-color: #{color.mix($indigo, $blue, 50%, oklch)};
         }
       }

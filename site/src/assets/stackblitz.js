@@ -205,11 +205,11 @@ const getDocsStyles = (exampleEl, sheets = [...document.styleSheets].filter(shee
     .flatMap(el => [...el.classList]))
 
   // The docs define custom color modes, like the blue one of the Color modes
-  // page, whose rules select the example by its `data-bs-theme` alone
-  const customModes = new Set([exampleEl, ...exampleEl.querySelectorAll('[data-bs-theme]')]
-    .map(el => el.getAttribute('data-bs-theme'))
+  // page, whose rules select the example by its `data-bs-color-scheme` alone
+  const customModes = new Set([exampleEl, ...exampleEl.querySelectorAll('[data-bs-color-scheme]')]
+    .map(el => el.getAttribute('data-bs-color-scheme'))
     .filter(mode => mode && mode !== 'light' && mode !== 'dark'))
-  const selectsCustomMode = selector => [...selector.matchAll(/\[data-bs-theme=["']?([\w-]+)/g)]
+  const selectsCustomMode = selector => [...selector.matchAll(/\[data-bs-color-scheme=["']?([\w-]+)/g)]
     .some(match => customModes.has(match[1]))
 
   const appliesToExample = selector => {

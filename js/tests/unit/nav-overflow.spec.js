@@ -1235,7 +1235,7 @@ describe('NavOverflow', () => {
         '  <ul class="nav" style="display: flex;">',
         '    <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Home</a></li>',
         '    <li class="nav-item" id="products-item" style="flex: 0 0 100px; width: 100px;">',
-        '      <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">Products</button>',
+        '      <button class="nav-link" type="button" data-bs-toggle="menu" data-bs-color-scheme="dark" aria-expanded="false">Products</button>',
         '      <div class="menu" id="products-menu">',
         '        <a class="menu-item" href="#">Laptops</a>',
         '        <div class="submenu">',
@@ -1262,6 +1262,7 @@ describe('NavOverflow', () => {
       expect(submenu).not.toBeNull()
       expect(trigger.textContent).toEqual('Products')
       expect(trigger.getAttribute('data-bs-toggle')).toBeNull()
+      expect(trigger.getAttribute('data-bs-color-scheme')).toEqual('dark')
       expect(trigger.getAttribute('aria-haspopup')).toEqual('true')
       expect(submenu.querySelector(':scope > .menu')).toEqual(productsMenu)
       expect(productsMenu.querySelector('.submenu > .menu-item').textContent).toEqual('Phones')

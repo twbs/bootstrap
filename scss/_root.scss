@@ -217,12 +217,12 @@ $root-tokens: defaults(
   }
 }
 
-[data-bs-theme="dark"] {
+[data-bs-color-scheme="dark"] {
   --shadow-strength: 2.4;
   color-scheme: dark;
 }
 
-[data-bs-theme="light"] {
+[data-bs-color-scheme="light"] {
   --shadow-strength: 1;
   color-scheme: light;
 }

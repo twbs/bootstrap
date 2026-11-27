@@ -438,9 +438,9 @@ To merely toggle the visibility of an element, meaning its `display` is not modi
 
 The `<iframe>` element is updated to set `color-scheme: light dark`. A browser paints an opaque `background: canvas` behind an iframe when the embedded document uses a different color scheme than the iframe element. On a dark page that shows as a white box.
 
-An embedded document follows the system preference. It cannot see your `data-bs-theme` attribute. We therefore pin every iframe to the system preference too. This keeps an embed transparent, also when you force a theme with `data-bs-theme`.
+An embedded document follows the system preference. It cannot see your `data-bs-color-scheme` attribute. We therefore pin every iframe to the system preference too. This keeps an embed transparent, also when you force a theme with `data-bs-color-scheme`.
 
-<Example code={`<div class="bg-body fg-body p-3" data-bs-theme="dark">
+<Example code={`<div class="bg-body fg-body p-3" data-bs-color-scheme="dark">
     <iframe class="w-100" style="color-scheme: unset" src="data:text/html,<!DOCTYPE html><html><meta name='color-scheme' content='light dark'><body style='background-color:transparent;color:gray;'><h4>Default iframe</h4></body></html>"></iframe>
     <iframe class="w-100" src="data:text/html,<!DOCTYPE html><html><meta name='color-scheme' content='light dark'><body style='background-color:transparent;color:gray;'><h4>iframe with color-scheme: light-dark</h4></body></html>"></iframe>
     <iframe class="w-100" src="data:text/html,<!DOCTYPE html><html><body style='background-color:transparent;color:gray;'><h4>Embed that declares no color scheme</h4></body></html>"></iframe>

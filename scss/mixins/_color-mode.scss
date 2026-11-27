@@ -16,7 +16,7 @@
       }
     }
   } @else {
-    [data-bs-theme="#{$mode}"] {
+    [data-bs-color-scheme="#{$mode}"] {
       @content;
     }
   }

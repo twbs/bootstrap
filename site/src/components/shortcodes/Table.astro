@@ -24,7 +24,7 @@ const { class: className, simplified = true, theme } = Astro.props
 
 // Build the attributes
 const classAttr = className ? ` class="${className}"` : ''
-const themeAttr = theme ? ` data-bs-theme="${theme}"` : ''
+const themeAttr = theme ? ` data-bs-color-scheme="${theme}"` : ''
 const allAttrs = `${classAttr}${themeAttr}`
 
 const tableCode = `<table${allAttrs}>

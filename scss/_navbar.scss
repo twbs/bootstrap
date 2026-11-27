@@ -307,7 +307,7 @@ $navbar-nav-tokens: defaults(
     }
   }
 
-  .navbar[data-bs-theme="dark"] {
+  .navbar[data-bs-color-scheme="dark"] {
     @include tokens($navbar-dark-tokens);
   }
 }

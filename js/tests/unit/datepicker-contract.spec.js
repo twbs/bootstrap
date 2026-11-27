@@ -74,7 +74,7 @@ describe('Datepicker rendered contract', () => {
 
   it('PG181: follows a theme ancestor added after initialization', async () => {
     const root = calendar(make())
-    host.setAttribute('data-bs-theme', 'dark')
+    host.setAttribute('data-bs-color-scheme', 'dark')
     await vi.waitFor(() => expect(getComputedStyle(root).colorScheme).toBe('dark'))
   })
 
