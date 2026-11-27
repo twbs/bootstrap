@@ -21,14 +21,20 @@ declare class Drawer extends DialogBase {
     static get Default(): DrawerConfig;
     static get DefaultType(): Record<string, string>;
     static get NAME(): string;
+    protected static _toggleDrawer(target: HTMLDialogElement, trigger: HTMLElement): void;
     dispose(): void;
     protected _getShowOptions(): {
         modal: boolean;
         preventBodyScroll: boolean;
     };
     protected _onBeforeShow(): void;
+    protected _canShow(relatedTarget?: HTMLElement): boolean;
+    protected _show(relatedTarget?: HTMLElement, returnFocus?: HTMLElement | null | undefined): Promise<void>;
+    protected _onAfterHide(): void;
+    protected _isInline(): boolean;
     protected _getInstantClassName(): string;
     protected _getStaticClassName(): string;
+    protected _shouldDeferClose(): boolean;
     protected _initResizeObserver(): void;
     protected _initSwipe(): void;
 }

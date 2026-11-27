@@ -163,7 +163,7 @@ $form-floating-tokens: defaults(
     }
 
     > label:has(~ .form-control-plaintext) {
-      border-width: var(--control-border-width) 0; // Required to properly position label text - as explained above
+      border-width: var(--border-width) 0; // Required to properly position label text - as explained above
 
       @include forced-colors() {
         padding: calc(var(--form-floating-padding-y) + var(--border-width)) var(--form-floating-padding-x);

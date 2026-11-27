@@ -1,5 +1,5 @@
 /*!
-* Bootstrap event-handler.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap event-handler.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -33,6 +33,9 @@ const nativeEvents = /* @__PURE__ */ new Set([
 	"keypress",
 	"keyup",
 	"input",
+	"compositionstart",
+	"compositionupdate",
+	"compositionend",
 	"paste",
 	"orientationchange",
 	"touchstart",
@@ -41,6 +44,7 @@ const nativeEvents = /* @__PURE__ */ new Set([
 	"touchcancel",
 	"pointerdown",
 	"pointermove",
+	"pointerover",
 	"pointerup",
 	"pointerleave",
 	"pointercancel",
@@ -65,7 +69,8 @@ const nativeEvents = /* @__PURE__ */ new Set([
 	"error",
 	"abort",
 	"scroll",
-	"scrollend"
+	"scrollend",
+	"hashchange"
 ]);
 /**
 * Private methods

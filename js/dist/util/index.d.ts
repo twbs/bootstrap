@@ -37,7 +37,7 @@ declare const reflow: (element: HTMLElement) => void;
 declare const onDOMContentLoaded: (callback: () => void) => void;
 declare const isRTL: () => boolean;
 declare const execute: <T = any>(possibleCallback: T | ((...functionArgs: any[]) => T), args?: any[], defaultValue?: T | ((...functionArgs: any[]) => T)) => T;
-declare const executeAfterTransition: (callback: () => void, transitionElement: Element, waitForTransition?: boolean) => void;
+declare const executeAfterTransition: (callback: () => void, transitionElement: Element, waitForTransition?: boolean) => (() => void) | undefined;
 /**
  * Return the previous/next element of a list.
  *

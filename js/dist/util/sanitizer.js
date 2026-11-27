@@ -1,5 +1,5 @@
 /*!
-* Bootstrap sanitizer.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap sanitizer.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -60,7 +60,7 @@ const DefaultAllowlist = {
 	ul: []
 };
 /**
-* Allowlist for icon HTML options (Chips `dismissIcon`, NavOverflow `moreIcon`,
+* Allowlist for icon HTML options (NavOverflow `moreIcon`,
 * and markup supplied via `[data-bs-overflow-icon]`). Covers the default SVG
 * icons plus common inline-icon markup. Event-handler attributes and tags not
 * listed here are stripped by `sanitizeHtml`.

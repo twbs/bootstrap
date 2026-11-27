@@ -20,6 +20,10 @@ declare class Range extends BaseComponent {
     protected _bubbleText: HTMLElement | null;
     protected _ticks: HTMLElement | null;
     protected _updateHandler: () => void;
+    protected _initialConfig: Partial<RangeConfig>;
+    protected _form: HTMLFormElement | null;
+    protected _resetHandler: (event: Event) => void;
+    protected _resetTimeouts: Set<number>;
     constructor(element?: string | Element | null, config?: Partial<RangeConfig> | null);
     static get Default(): RangeConfig;
     static get DefaultType(): Record<string, string>;
@@ -27,6 +31,8 @@ declare class Range extends BaseComponent {
     update(): void;
     dispose(): void;
     protected _configAfterMerge(config: ComponentConfig): ComponentConfig;
+    protected _syncBubble(): void;
+    protected _syncForm(): void;
     protected _addEventListeners(): void;
     protected _min(): number;
     protected _max(): number;

@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap Utilities v6.0.0-alpha.1 (https://getbootstrap.com/)
+  * Bootstrap Utilities v6.0.0-alpha.2 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -232,7 +232,7 @@
   --bs-link-underline-offset: 0.2em;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
   --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;
-  --bs-code-font-size: 95%;
+  --bs-code-font-size: 0.875em;
   --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
   --bs-border-width-keyline: 0.5px;
@@ -461,7 +461,6 @@
   --bs-z-tooltip: 1060;
   --bs-z-toast: 1070;
   color-scheme: light dark;
-  scrollbar-gutter: stable;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -497,7 +496,7 @@
       transition: transform var(--bs-hover-lift-transition-duration) var(--bs-hover-lift-transition-timing), box-shadow var(--bs-hover-lift-transition-duration) var(--bs-hover-lift-transition-timing);
     }
   }
-  .hover-lift:hover, .hover-lift:focus-visible {
+  .hover-lift:hover, .hover-lift:focus-visible, .hover-lift.show {
     transform: var(--bs-hover-lift-transform);
     box-shadow: var(--bs-hover-lift-box-shadow);
   }
@@ -810,7 +809,7 @@
     padding: 0 !important;
     margin: -1px !important;
     overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
     white-space: nowrap !important;
     border: 0 !important;
   }
@@ -848,6 +847,11 @@
     width: var(--bs-vr-border-width, var(--bs-border-width));
     min-height: 1em;
     background-color: var(--bs-border-color);
+  }
+  @media (forced-colors: active) {
+    .vr {
+      outline: 1px solid transparent;
+    }
   }
 }
 @property --bs-ratio {
@@ -1332,34 +1336,34 @@
   .border-5 {
     border-width: 5px;
   }
-  .border-10 {
+  .border-opacity-10 {
     border-color: color-mix(in oklch, var(--bs-bc) 10%, transparent);
   }
-  .border-20 {
+  .border-opacity-20 {
     border-color: color-mix(in oklch, var(--bs-bc) 20%, transparent);
   }
-  .border-30 {
+  .border-opacity-30 {
     border-color: color-mix(in oklch, var(--bs-bc) 30%, transparent);
   }
-  .border-40 {
+  .border-opacity-40 {
     border-color: color-mix(in oklch, var(--bs-bc) 40%, transparent);
   }
-  .border-50 {
+  .border-opacity-50 {
     border-color: color-mix(in oklch, var(--bs-bc) 50%, transparent);
   }
-  .border-60 {
+  .border-opacity-60 {
     border-color: color-mix(in oklch, var(--bs-bc) 60%, transparent);
   }
-  .border-70 {
+  .border-opacity-70 {
     border-color: color-mix(in oklch, var(--bs-bc) 70%, transparent);
   }
-  .border-80 {
+  .border-opacity-80 {
     border-color: color-mix(in oklch, var(--bs-bc) 80%, transparent);
   }
-  .border-90 {
+  .border-opacity-90 {
     border-color: color-mix(in oklch, var(--bs-bc) 90%, transparent);
   }
-  .border-100 {
+  .border-opacity-100 {
     border-color: var(--bs-bc);
   }
   .w-1 {
@@ -2548,6 +2552,9 @@
   .fst-normal {
     font-style: normal;
   }
+  .font-tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
   .fw-lighter {
     font-weight: lighter;
   }
@@ -2756,34 +2763,34 @@
     --bs-fg: var(--bs-secondary-contrast);
     color: var(--bs-fg);
   }
-  .fg-10 {
+  .fg-opacity-10 {
     color: color-mix(in oklch, var(--bs-fg) 10%, transparent);
   }
-  .fg-20 {
+  .fg-opacity-20 {
     color: color-mix(in oklch, var(--bs-fg) 20%, transparent);
   }
-  .fg-30 {
+  .fg-opacity-30 {
     color: color-mix(in oklch, var(--bs-fg) 30%, transparent);
   }
-  .fg-40 {
+  .fg-opacity-40 {
     color: color-mix(in oklch, var(--bs-fg) 40%, transparent);
   }
-  .fg-50 {
+  .fg-opacity-50 {
     color: color-mix(in oklch, var(--bs-fg) 50%, transparent);
   }
-  .fg-60 {
+  .fg-opacity-60 {
     color: color-mix(in oklch, var(--bs-fg) 60%, transparent);
   }
-  .fg-70 {
+  .fg-opacity-70 {
     color: color-mix(in oklch, var(--bs-fg) 70%, transparent);
   }
-  .fg-80 {
+  .fg-opacity-80 {
     color: color-mix(in oklch, var(--bs-fg) 80%, transparent);
   }
-  .fg-90 {
+  .fg-opacity-90 {
     color: color-mix(in oklch, var(--bs-fg) 90%, transparent);
   }
-  .fg-100 {
+  .fg-opacity-100 {
     color: var(--bs-fg);
   }
   .link-10 {
@@ -2896,64 +2903,64 @@
     --bs-underline-color: light-dark(var(--bs-gray-600), var(--bs-gray-400));
     text-decoration-color: var(--bs-underline-color);
   }
-  .underline-10 {
+  .underline-opacity-10 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 10%, transparent);
   }
-  .hover\:underline-10:hover {
+  .hover\:underline-opacity-10:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 10%, transparent);
   }
-  .underline-20 {
+  .underline-opacity-20 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 20%, transparent);
   }
-  .hover\:underline-20:hover {
+  .hover\:underline-opacity-20:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 20%, transparent);
   }
-  .underline-30 {
+  .underline-opacity-30 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 30%, transparent);
   }
-  .hover\:underline-30:hover {
+  .hover\:underline-opacity-30:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 30%, transparent);
   }
-  .underline-40 {
+  .underline-opacity-40 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 40%, transparent);
   }
-  .hover\:underline-40:hover {
+  .hover\:underline-opacity-40:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 40%, transparent);
   }
-  .underline-50 {
+  .underline-opacity-50 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 50%, transparent);
   }
-  .hover\:underline-50:hover {
+  .hover\:underline-opacity-50:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 50%, transparent);
   }
-  .underline-60 {
+  .underline-opacity-60 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 60%, transparent);
   }
-  .hover\:underline-60:hover {
+  .hover\:underline-opacity-60:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 60%, transparent);
   }
-  .underline-70 {
+  .underline-opacity-70 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 70%, transparent);
   }
-  .hover\:underline-70:hover {
+  .hover\:underline-opacity-70:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 70%, transparent);
   }
-  .underline-80 {
+  .underline-opacity-80 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 80%, transparent);
   }
-  .hover\:underline-80:hover {
+  .hover\:underline-opacity-80:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 80%, transparent);
   }
-  .underline-90 {
+  .underline-opacity-90 {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 90%, transparent);
   }
-  .hover\:underline-90:hover {
+  .hover\:underline-opacity-90:hover {
     text-decoration-color: color-mix(in oklch, var(--bs-underline-color, currentcolor) 90%, transparent);
   }
-  .underline-100 {
+  .underline-opacity-100 {
     text-decoration-color: var(--bs-underline-color, currentcolor);
   }
-  .hover\:underline-100:hover {
+  .hover\:underline-opacity-100:hover {
     text-decoration-color: var(--bs-underline-color, currentcolor);
   }
   .underline-thickness-1 {
@@ -3118,34 +3125,34 @@
     --bs-bg: var(--bs-secondary-bg-muted);
     background-color: var(--bs-bg);
   }
-  .bg-10 {
+  .bg-opacity-10 {
     background-color: color-mix(in oklch, var(--bs-bg) 10%, transparent);
   }
-  .bg-20 {
+  .bg-opacity-20 {
     background-color: color-mix(in oklch, var(--bs-bg) 20%, transparent);
   }
-  .bg-30 {
+  .bg-opacity-30 {
     background-color: color-mix(in oklch, var(--bs-bg) 30%, transparent);
   }
-  .bg-40 {
+  .bg-opacity-40 {
     background-color: color-mix(in oklch, var(--bs-bg) 40%, transparent);
   }
-  .bg-50 {
+  .bg-opacity-50 {
     background-color: color-mix(in oklch, var(--bs-bg) 50%, transparent);
   }
-  .bg-60 {
+  .bg-opacity-60 {
     background-color: color-mix(in oklch, var(--bs-bg) 60%, transparent);
   }
-  .bg-70 {
+  .bg-opacity-70 {
     background-color: color-mix(in oklch, var(--bs-bg) 70%, transparent);
   }
-  .bg-80 {
+  .bg-opacity-80 {
     background-color: color-mix(in oklch, var(--bs-bg) 80%, transparent);
   }
-  .bg-90 {
+  .bg-opacity-90 {
     background-color: color-mix(in oklch, var(--bs-bg) 90%, transparent);
   }
-  .bg-100 {
+  .bg-opacity-100 {
     background-color: var(--bs-bg);
   }
   .theme-contrast {
