@@ -21,7 +21,7 @@ Work through each step in order. After each step, search the codebase for remain
 
 ## Step 1: Dependencies & Build
 
-1. Update `package.json`: `"bootstrap": "6.0.0-alpha.1"`
+1. Update `package.json`: `"bootstrap": "6.0.0-alpha.2"`
 2. Replace `@popperjs/core` with `@floating-ui/dom`
 3. If using Datepicker, add peer dep `vanilla-calendar-pro`
 4. Sass: replace all `@import` with `@use` (Node Sass is no longer supported)
@@ -584,6 +584,14 @@ Removed `css-var`, `css-variable-name`, and `local-vars` options. Use `property`
 
 Root tokens emit on `:root, :host`. Repeat `:root` overrides on `:host` if you use shadow DOM.
 
+### Forced colors
+
+v6 includes styles for forced colors mode (for example, Windows high contrast themes), behind the new `$enable-forced-colors` option (`true` by default) and the `forced-colors()` mixin.
+
+- Remove any separate stylesheet that added forced colors fixes to v5 components. Its rules can conflict with the v6 ones.
+- Wrap your own `@media (forced-colors: active)` rules in `@include forced-colors() { … }`, so they follow `$enable-forced-colors`.
+- To remove these styles from the build, set `$enable-forced-colors: false` in `config`.
+
 ---
 
 ## Rebuilt behavior & new components
@@ -619,8 +627,8 @@ The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unch
 
 | Component | Trigger / hook | Purpose |
 | --- | --- | --- |
-| Combobox | `data-bs-toggle="combobox"` | Filterable/autocomplete select built on Menu |
-| Chip / Chip input | `.chip`, `.chip-input` (`data-bs-chips`) | Tags / tokens + interactive entry |
+| Combobox | `data-bs-toggle="combobox"` | Editable single or multiple selection and optional free entry, built on Menu |
+| Chip | `.chip` | Standalone tag / token presentation |
 | Datepicker | `data-bs-toggle="datepicker"` | Date picker (peer dep `vanilla-calendar-pro`) |
 | Range | `.form-range` (+ `data-bs-bubble`, ticks) | Enhanced range slider with a value bubble |
 | Strength | `data-bs-strength` | Password-strength meter |

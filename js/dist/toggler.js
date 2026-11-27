@@ -1,5 +1,5 @@
 /*!
-* Bootstrap toggler.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap toggler.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
@@ -22,6 +22,21 @@ const EVENT_TOGGLE = `toggle${EVENT_KEY}`;
 const EVENT_TOGGLED = `toggled${EVENT_KEY}`;
 const EVENT_CLICK = "click";
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"toggler\"]";
+const EVENT_HANDLER_PATTERN = /^on/i;
+const DISALLOWED_ATTRIBUTES = /* @__PURE__ */ new Set([
+	"action",
+	"background",
+	"data",
+	"formaction",
+	"href",
+	"id",
+	"poster",
+	"src",
+	"srcdoc",
+	"srcset",
+	"style",
+	"xlink:href"
+]);
 const DefaultType = {
 	attribute: "string",
 	value: "(string|number|boolean|null)"
@@ -50,7 +65,7 @@ var Toggler = class extends BaseComponent {
 	}
 	_execute() {
 		const { attribute, value } = this._config;
-		if (attribute === "id") return;
+		if (EVENT_HANDLER_PATTERN.test(attribute) || DISALLOWED_ATTRIBUTES.has(attribute.toLowerCase())) return;
 		if (value === null || value === void 0) return;
 		if (attribute === "class") {
 			this._element.classList.toggle(value);

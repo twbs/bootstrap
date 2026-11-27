@@ -1,6 +1,6 @@
 ---
 name: bootstrap-release
-description: Cuts a Bootstrap release from version preparation through npm, GitHub, NuGet, and documentation deployment. Use when a maintainer asks to release, publish, or ship Bootstrap, including prereleases such as v6.0.0-alpha.1.
+description: Cuts a Bootstrap release from version preparation through npm, GitHub, NuGet, and documentation deployment. Use when a maintainer asks to release, publish, or ship Bootstrap, including prereleases such as v6.0.0-alpha.2.
 disable-model-invocation: true
 ---
 
@@ -11,7 +11,7 @@ Set the release branch and version once before you start:
 
 ```sh
 export RELEASE_BRANCH=main
-export RELEASE_VERSION=6.0.0-alpha.1
+export RELEASE_VERSION=6.0.0-alpha.2
 export RELEASE_TAG="v${RELEASE_VERSION}"
 ```
 
@@ -102,7 +102,7 @@ The script updates:
 - `scss/_banner.scss`
 - `site/data/docs-versions.yml`
 
-It also updates RubyGem version strings from forms such as `6.0.0.alpha.1`.
+It also updates RubyGem version strings from forms such as `6.0.0.alpha.2`.
 Review every changed file.
 Search for stale version strings outside generated output.
 

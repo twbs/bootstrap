@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap Grid v6.0.0-alpha.1 (https://getbootstrap.com/)
+  * Bootstrap Grid v6.0.0-alpha.2 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -49,15 +49,13 @@
     --bs-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
-    margin-inline: calc(-0.5 * var(--bs-gutter-x));
-    margin-top: calc(-1 * var(--bs-gutter-y));
+    gap: var(--bs-gutter-y) var(--bs-gutter-x);
   }
   .row > * {
+    box-sizing: border-box;
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
-    padding-inline: calc(var(--bs-gutter-x) * 0.5);
-    margin-top: var(--bs-gutter-y);
   }
   .col {
     flex: 1 0 0;
@@ -68,27 +66,27 @@
   }
   .row-cols-1 > * {
     flex: 0 0 auto;
-    width: 100%;
+    width: calc((100% + var(--bs-gutter-x, 0px)) / 1 - var(--bs-gutter-x, 0px));
   }
   .row-cols-2 > * {
     flex: 0 0 auto;
-    width: 50%;
+    width: calc((100% + var(--bs-gutter-x, 0px)) / 2 - var(--bs-gutter-x, 0px));
   }
   .row-cols-3 > * {
     flex: 0 0 auto;
-    width: 33.3333333333%;
+    width: calc((100% + var(--bs-gutter-x, 0px)) / 3 - var(--bs-gutter-x, 0px));
   }
   .row-cols-4 > * {
     flex: 0 0 auto;
-    width: 25%;
+    width: calc((100% + var(--bs-gutter-x, 0px)) / 4 - var(--bs-gutter-x, 0px));
   }
   .row-cols-5 > * {
     flex: 0 0 auto;
-    width: 20%;
+    width: calc((100% + var(--bs-gutter-x, 0px)) / 5 - var(--bs-gutter-x, 0px));
   }
   .row-cols-6 > * {
     flex: 0 0 auto;
-    width: 16.6666666667%;
+    width: calc((100% + var(--bs-gutter-x, 0px)) / 6 - var(--bs-gutter-x, 0px));
   }
   .col-auto {
     flex: 0 0 auto;
@@ -96,88 +94,169 @@
   }
   .col-1 {
     flex: 0 0 auto;
-    width: 8.3333333333%;
+    width: calc((100% + 0px) * 0.0833333333 - 0px);
+  }
+  :where(.row) > .col-1 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333 - var(--bs-gutter-x, 0px));
   }
   .col-2 {
     flex: 0 0 auto;
-    width: 16.6666666667%;
+    width: calc((100% + 0px) * 0.1666666667 - 0px);
+  }
+  :where(.row) > .col-2 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667 - var(--bs-gutter-x, 0px));
   }
   .col-3 {
     flex: 0 0 auto;
-    width: 25%;
+    width: calc((100% + 0px) * 0.25 - 0px);
+  }
+  :where(.row) > .col-3 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.25 - var(--bs-gutter-x, 0px));
   }
   .col-4 {
     flex: 0 0 auto;
-    width: 33.3333333333%;
+    width: calc((100% + 0px) * 0.3333333333 - 0px);
+  }
+  :where(.row) > .col-4 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333 - var(--bs-gutter-x, 0px));
   }
   .col-5 {
     flex: 0 0 auto;
-    width: 41.6666666667%;
+    width: calc((100% + 0px) * 0.4166666667 - 0px);
+  }
+  :where(.row) > .col-5 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667 - var(--bs-gutter-x, 0px));
   }
   .col-6 {
     flex: 0 0 auto;
-    width: 50%;
+    width: calc((100% + 0px) * 0.5 - 0px);
+  }
+  :where(.row) > .col-6 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5 - var(--bs-gutter-x, 0px));
   }
   .col-7 {
     flex: 0 0 auto;
-    width: 58.3333333333%;
+    width: calc((100% + 0px) * 0.5833333333 - 0px);
+  }
+  :where(.row) > .col-7 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333 - var(--bs-gutter-x, 0px));
   }
   .col-8 {
     flex: 0 0 auto;
-    width: 66.6666666667%;
+    width: calc((100% + 0px) * 0.6666666667 - 0px);
+  }
+  :where(.row) > .col-8 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667 - var(--bs-gutter-x, 0px));
   }
   .col-9 {
     flex: 0 0 auto;
-    width: 75%;
+    width: calc((100% + 0px) * 0.75 - 0px);
+  }
+  :where(.row) > .col-9 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.75 - var(--bs-gutter-x, 0px));
   }
   .col-10 {
     flex: 0 0 auto;
-    width: 83.3333333333%;
+    width: calc((100% + 0px) * 0.8333333333 - 0px);
+  }
+  :where(.row) > .col-10 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333 - var(--bs-gutter-x, 0px));
   }
   .col-11 {
     flex: 0 0 auto;
-    width: 91.6666666667%;
+    width: calc((100% + 0px) * 0.9166666667 - 0px);
+  }
+  :where(.row) > .col-11 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667 - var(--bs-gutter-x, 0px));
   }
   .col-12 {
     flex: 0 0 auto;
-    width: 100%;
+    width: calc((100% + 0px) * 1 - 0px);
+  }
+  :where(.row) > .col-12 {
+    flex: 0 0 auto;
+    width: calc((100% + var(--bs-gutter-x, 0px)) * 1 - var(--bs-gutter-x, 0px));
   }
   .offset-1 {
-    margin-inline-start: 8.3333333333%;
+    margin-inline-start: calc((100% + 0px) * 0.0833333333);
+  }
+  :where(.row) > .offset-1 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333);
   }
   .offset-2 {
-    margin-inline-start: 16.6666666667%;
+    margin-inline-start: calc((100% + 0px) * 0.1666666667);
+  }
+  :where(.row) > .offset-2 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667);
   }
   .offset-3 {
-    margin-inline-start: 25%;
+    margin-inline-start: calc((100% + 0px) * 0.25);
+  }
+  :where(.row) > .offset-3 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.25);
   }
   .offset-4 {
-    margin-inline-start: 33.3333333333%;
+    margin-inline-start: calc((100% + 0px) * 0.3333333333);
+  }
+  :where(.row) > .offset-4 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333);
   }
   .offset-5 {
-    margin-inline-start: 41.6666666667%;
+    margin-inline-start: calc((100% + 0px) * 0.4166666667);
+  }
+  :where(.row) > .offset-5 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667);
   }
   .offset-6 {
-    margin-inline-start: 50%;
+    margin-inline-start: calc((100% + 0px) * 0.5);
+  }
+  :where(.row) > .offset-6 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5);
   }
   .offset-7 {
-    margin-inline-start: 58.3333333333%;
+    margin-inline-start: calc((100% + 0px) * 0.5833333333);
+  }
+  :where(.row) > .offset-7 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333);
   }
   .offset-8 {
-    margin-inline-start: 66.6666666667%;
+    margin-inline-start: calc((100% + 0px) * 0.6666666667);
+  }
+  :where(.row) > .offset-8 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667);
   }
   .offset-9 {
-    margin-inline-start: 75%;
+    margin-inline-start: calc((100% + 0px) * 0.75);
+  }
+  :where(.row) > .offset-9 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.75);
   }
   .offset-10 {
-    margin-inline-start: 83.3333333333%;
+    margin-inline-start: calc((100% + 0px) * 0.8333333333);
+  }
+  :where(.row) > .offset-10 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333);
   }
   .offset-11 {
-    margin-inline-start: 91.6666666667%;
+    margin-inline-start: calc((100% + 0px) * 0.9166666667);
+  }
+  :where(.row) > .offset-11 {
+    margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667);
   }
   .g-0,
   .gx-0 {
-    --bs-gutter-x: 0;
+    --bs-gutter-x: 0px;
   }
   .g-0,
   .gy-0 {
@@ -289,27 +368,27 @@
     }
     .sm\:row-cols-1 > * {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 1 - var(--bs-gutter-x, 0px));
     }
     .sm\:row-cols-2 > * {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 2 - var(--bs-gutter-x, 0px));
     }
     .sm\:row-cols-3 > * {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 3 - var(--bs-gutter-x, 0px));
     }
     .sm\:row-cols-4 > * {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 4 - var(--bs-gutter-x, 0px));
     }
     .sm\:row-cols-5 > * {
       flex: 0 0 auto;
-      width: 20%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 5 - var(--bs-gutter-x, 0px));
     }
     .sm\:row-cols-6 > * {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 6 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-auto {
       flex: 0 0 auto;
@@ -317,91 +396,175 @@
     }
     .sm\:col-1 {
       flex: 0 0 auto;
-      width: 8.3333333333%;
+      width: calc((100% + 0px) * 0.0833333333 - 0px);
+    }
+    :where(.row) > .sm\:col-1 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-2 {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + 0px) * 0.1666666667 - 0px);
+    }
+    :where(.row) > .sm\:col-2 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-3 {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + 0px) * 0.25 - 0px);
+    }
+    :where(.row) > .sm\:col-3 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.25 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-4 {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + 0px) * 0.3333333333 - 0px);
+    }
+    :where(.row) > .sm\:col-4 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-5 {
       flex: 0 0 auto;
-      width: 41.6666666667%;
+      width: calc((100% + 0px) * 0.4166666667 - 0px);
+    }
+    :where(.row) > .sm\:col-5 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-6 {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + 0px) * 0.5 - 0px);
+    }
+    :where(.row) > .sm\:col-6 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-7 {
       flex: 0 0 auto;
-      width: 58.3333333333%;
+      width: calc((100% + 0px) * 0.5833333333 - 0px);
+    }
+    :where(.row) > .sm\:col-7 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-8 {
       flex: 0 0 auto;
-      width: 66.6666666667%;
+      width: calc((100% + 0px) * 0.6666666667 - 0px);
+    }
+    :where(.row) > .sm\:col-8 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-9 {
       flex: 0 0 auto;
-      width: 75%;
+      width: calc((100% + 0px) * 0.75 - 0px);
+    }
+    :where(.row) > .sm\:col-9 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.75 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-10 {
       flex: 0 0 auto;
-      width: 83.3333333333%;
+      width: calc((100% + 0px) * 0.8333333333 - 0px);
+    }
+    :where(.row) > .sm\:col-10 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-11 {
       flex: 0 0 auto;
-      width: 91.6666666667%;
+      width: calc((100% + 0px) * 0.9166666667 - 0px);
+    }
+    :where(.row) > .sm\:col-11 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667 - var(--bs-gutter-x, 0px));
     }
     .sm\:col-12 {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + 0px) * 1 - 0px);
+    }
+    :where(.row) > .sm\:col-12 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 1 - var(--bs-gutter-x, 0px));
     }
     .sm\:offset-0 {
       margin-inline-start: 0;
     }
+    :where(.row) > .sm\:offset-0 {
+      margin-inline-start: 0;
+    }
     .sm\:offset-1 {
-      margin-inline-start: 8.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.0833333333);
+    }
+    :where(.row) > .sm\:offset-1 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333);
     }
     .sm\:offset-2 {
-      margin-inline-start: 16.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.1666666667);
+    }
+    :where(.row) > .sm\:offset-2 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667);
     }
     .sm\:offset-3 {
-      margin-inline-start: 25%;
+      margin-inline-start: calc((100% + 0px) * 0.25);
+    }
+    :where(.row) > .sm\:offset-3 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.25);
     }
     .sm\:offset-4 {
-      margin-inline-start: 33.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.3333333333);
+    }
+    :where(.row) > .sm\:offset-4 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333);
     }
     .sm\:offset-5 {
-      margin-inline-start: 41.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.4166666667);
+    }
+    :where(.row) > .sm\:offset-5 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667);
     }
     .sm\:offset-6 {
-      margin-inline-start: 50%;
+      margin-inline-start: calc((100% + 0px) * 0.5);
+    }
+    :where(.row) > .sm\:offset-6 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5);
     }
     .sm\:offset-7 {
-      margin-inline-start: 58.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.5833333333);
+    }
+    :where(.row) > .sm\:offset-7 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333);
     }
     .sm\:offset-8 {
-      margin-inline-start: 66.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.6666666667);
+    }
+    :where(.row) > .sm\:offset-8 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667);
     }
     .sm\:offset-9 {
-      margin-inline-start: 75%;
+      margin-inline-start: calc((100% + 0px) * 0.75);
+    }
+    :where(.row) > .sm\:offset-9 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.75);
     }
     .sm\:offset-10 {
-      margin-inline-start: 83.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.8333333333);
+    }
+    :where(.row) > .sm\:offset-10 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333);
     }
     .sm\:offset-11 {
-      margin-inline-start: 91.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.9166666667);
+    }
+    :where(.row) > .sm\:offset-11 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667);
     }
     .sm\:g-0,
     .sm\:gx-0 {
-      --bs-gutter-x: 0;
+      --bs-gutter-x: 0px;
     }
     .sm\:g-0,
     .sm\:gy-0 {
@@ -514,27 +677,27 @@
     }
     .md\:row-cols-1 > * {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 1 - var(--bs-gutter-x, 0px));
     }
     .md\:row-cols-2 > * {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 2 - var(--bs-gutter-x, 0px));
     }
     .md\:row-cols-3 > * {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 3 - var(--bs-gutter-x, 0px));
     }
     .md\:row-cols-4 > * {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 4 - var(--bs-gutter-x, 0px));
     }
     .md\:row-cols-5 > * {
       flex: 0 0 auto;
-      width: 20%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 5 - var(--bs-gutter-x, 0px));
     }
     .md\:row-cols-6 > * {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 6 - var(--bs-gutter-x, 0px));
     }
     .md\:col-auto {
       flex: 0 0 auto;
@@ -542,91 +705,175 @@
     }
     .md\:col-1 {
       flex: 0 0 auto;
-      width: 8.3333333333%;
+      width: calc((100% + 0px) * 0.0833333333 - 0px);
+    }
+    :where(.row) > .md\:col-1 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333 - var(--bs-gutter-x, 0px));
     }
     .md\:col-2 {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + 0px) * 0.1666666667 - 0px);
+    }
+    :where(.row) > .md\:col-2 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667 - var(--bs-gutter-x, 0px));
     }
     .md\:col-3 {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + 0px) * 0.25 - 0px);
+    }
+    :where(.row) > .md\:col-3 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.25 - var(--bs-gutter-x, 0px));
     }
     .md\:col-4 {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + 0px) * 0.3333333333 - 0px);
+    }
+    :where(.row) > .md\:col-4 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333 - var(--bs-gutter-x, 0px));
     }
     .md\:col-5 {
       flex: 0 0 auto;
-      width: 41.6666666667%;
+      width: calc((100% + 0px) * 0.4166666667 - 0px);
+    }
+    :where(.row) > .md\:col-5 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667 - var(--bs-gutter-x, 0px));
     }
     .md\:col-6 {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + 0px) * 0.5 - 0px);
+    }
+    :where(.row) > .md\:col-6 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5 - var(--bs-gutter-x, 0px));
     }
     .md\:col-7 {
       flex: 0 0 auto;
-      width: 58.3333333333%;
+      width: calc((100% + 0px) * 0.5833333333 - 0px);
+    }
+    :where(.row) > .md\:col-7 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333 - var(--bs-gutter-x, 0px));
     }
     .md\:col-8 {
       flex: 0 0 auto;
-      width: 66.6666666667%;
+      width: calc((100% + 0px) * 0.6666666667 - 0px);
+    }
+    :where(.row) > .md\:col-8 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667 - var(--bs-gutter-x, 0px));
     }
     .md\:col-9 {
       flex: 0 0 auto;
-      width: 75%;
+      width: calc((100% + 0px) * 0.75 - 0px);
+    }
+    :where(.row) > .md\:col-9 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.75 - var(--bs-gutter-x, 0px));
     }
     .md\:col-10 {
       flex: 0 0 auto;
-      width: 83.3333333333%;
+      width: calc((100% + 0px) * 0.8333333333 - 0px);
+    }
+    :where(.row) > .md\:col-10 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333 - var(--bs-gutter-x, 0px));
     }
     .md\:col-11 {
       flex: 0 0 auto;
-      width: 91.6666666667%;
+      width: calc((100% + 0px) * 0.9166666667 - 0px);
+    }
+    :where(.row) > .md\:col-11 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667 - var(--bs-gutter-x, 0px));
     }
     .md\:col-12 {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + 0px) * 1 - 0px);
+    }
+    :where(.row) > .md\:col-12 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 1 - var(--bs-gutter-x, 0px));
     }
     .md\:offset-0 {
       margin-inline-start: 0;
     }
+    :where(.row) > .md\:offset-0 {
+      margin-inline-start: 0;
+    }
     .md\:offset-1 {
-      margin-inline-start: 8.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.0833333333);
+    }
+    :where(.row) > .md\:offset-1 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333);
     }
     .md\:offset-2 {
-      margin-inline-start: 16.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.1666666667);
+    }
+    :where(.row) > .md\:offset-2 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667);
     }
     .md\:offset-3 {
-      margin-inline-start: 25%;
+      margin-inline-start: calc((100% + 0px) * 0.25);
+    }
+    :where(.row) > .md\:offset-3 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.25);
     }
     .md\:offset-4 {
-      margin-inline-start: 33.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.3333333333);
+    }
+    :where(.row) > .md\:offset-4 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333);
     }
     .md\:offset-5 {
-      margin-inline-start: 41.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.4166666667);
+    }
+    :where(.row) > .md\:offset-5 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667);
     }
     .md\:offset-6 {
-      margin-inline-start: 50%;
+      margin-inline-start: calc((100% + 0px) * 0.5);
+    }
+    :where(.row) > .md\:offset-6 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5);
     }
     .md\:offset-7 {
-      margin-inline-start: 58.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.5833333333);
+    }
+    :where(.row) > .md\:offset-7 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333);
     }
     .md\:offset-8 {
-      margin-inline-start: 66.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.6666666667);
+    }
+    :where(.row) > .md\:offset-8 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667);
     }
     .md\:offset-9 {
-      margin-inline-start: 75%;
+      margin-inline-start: calc((100% + 0px) * 0.75);
+    }
+    :where(.row) > .md\:offset-9 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.75);
     }
     .md\:offset-10 {
-      margin-inline-start: 83.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.8333333333);
+    }
+    :where(.row) > .md\:offset-10 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333);
     }
     .md\:offset-11 {
-      margin-inline-start: 91.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.9166666667);
+    }
+    :where(.row) > .md\:offset-11 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667);
     }
     .md\:g-0,
     .md\:gx-0 {
-      --bs-gutter-x: 0;
+      --bs-gutter-x: 0px;
     }
     .md\:g-0,
     .md\:gy-0 {
@@ -739,27 +986,27 @@
     }
     .lg\:row-cols-1 > * {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 1 - var(--bs-gutter-x, 0px));
     }
     .lg\:row-cols-2 > * {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 2 - var(--bs-gutter-x, 0px));
     }
     .lg\:row-cols-3 > * {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 3 - var(--bs-gutter-x, 0px));
     }
     .lg\:row-cols-4 > * {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 4 - var(--bs-gutter-x, 0px));
     }
     .lg\:row-cols-5 > * {
       flex: 0 0 auto;
-      width: 20%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 5 - var(--bs-gutter-x, 0px));
     }
     .lg\:row-cols-6 > * {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 6 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-auto {
       flex: 0 0 auto;
@@ -767,91 +1014,175 @@
     }
     .lg\:col-1 {
       flex: 0 0 auto;
-      width: 8.3333333333%;
+      width: calc((100% + 0px) * 0.0833333333 - 0px);
+    }
+    :where(.row) > .lg\:col-1 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-2 {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + 0px) * 0.1666666667 - 0px);
+    }
+    :where(.row) > .lg\:col-2 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-3 {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + 0px) * 0.25 - 0px);
+    }
+    :where(.row) > .lg\:col-3 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.25 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-4 {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + 0px) * 0.3333333333 - 0px);
+    }
+    :where(.row) > .lg\:col-4 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-5 {
       flex: 0 0 auto;
-      width: 41.6666666667%;
+      width: calc((100% + 0px) * 0.4166666667 - 0px);
+    }
+    :where(.row) > .lg\:col-5 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-6 {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + 0px) * 0.5 - 0px);
+    }
+    :where(.row) > .lg\:col-6 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-7 {
       flex: 0 0 auto;
-      width: 58.3333333333%;
+      width: calc((100% + 0px) * 0.5833333333 - 0px);
+    }
+    :where(.row) > .lg\:col-7 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-8 {
       flex: 0 0 auto;
-      width: 66.6666666667%;
+      width: calc((100% + 0px) * 0.6666666667 - 0px);
+    }
+    :where(.row) > .lg\:col-8 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-9 {
       flex: 0 0 auto;
-      width: 75%;
+      width: calc((100% + 0px) * 0.75 - 0px);
+    }
+    :where(.row) > .lg\:col-9 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.75 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-10 {
       flex: 0 0 auto;
-      width: 83.3333333333%;
+      width: calc((100% + 0px) * 0.8333333333 - 0px);
+    }
+    :where(.row) > .lg\:col-10 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-11 {
       flex: 0 0 auto;
-      width: 91.6666666667%;
+      width: calc((100% + 0px) * 0.9166666667 - 0px);
+    }
+    :where(.row) > .lg\:col-11 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667 - var(--bs-gutter-x, 0px));
     }
     .lg\:col-12 {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + 0px) * 1 - 0px);
+    }
+    :where(.row) > .lg\:col-12 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 1 - var(--bs-gutter-x, 0px));
     }
     .lg\:offset-0 {
       margin-inline-start: 0;
     }
+    :where(.row) > .lg\:offset-0 {
+      margin-inline-start: 0;
+    }
     .lg\:offset-1 {
-      margin-inline-start: 8.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.0833333333);
+    }
+    :where(.row) > .lg\:offset-1 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333);
     }
     .lg\:offset-2 {
-      margin-inline-start: 16.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.1666666667);
+    }
+    :where(.row) > .lg\:offset-2 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667);
     }
     .lg\:offset-3 {
-      margin-inline-start: 25%;
+      margin-inline-start: calc((100% + 0px) * 0.25);
+    }
+    :where(.row) > .lg\:offset-3 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.25);
     }
     .lg\:offset-4 {
-      margin-inline-start: 33.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.3333333333);
+    }
+    :where(.row) > .lg\:offset-4 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333);
     }
     .lg\:offset-5 {
-      margin-inline-start: 41.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.4166666667);
+    }
+    :where(.row) > .lg\:offset-5 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667);
     }
     .lg\:offset-6 {
-      margin-inline-start: 50%;
+      margin-inline-start: calc((100% + 0px) * 0.5);
+    }
+    :where(.row) > .lg\:offset-6 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5);
     }
     .lg\:offset-7 {
-      margin-inline-start: 58.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.5833333333);
+    }
+    :where(.row) > .lg\:offset-7 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333);
     }
     .lg\:offset-8 {
-      margin-inline-start: 66.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.6666666667);
+    }
+    :where(.row) > .lg\:offset-8 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667);
     }
     .lg\:offset-9 {
-      margin-inline-start: 75%;
+      margin-inline-start: calc((100% + 0px) * 0.75);
+    }
+    :where(.row) > .lg\:offset-9 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.75);
     }
     .lg\:offset-10 {
-      margin-inline-start: 83.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.8333333333);
+    }
+    :where(.row) > .lg\:offset-10 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333);
     }
     .lg\:offset-11 {
-      margin-inline-start: 91.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.9166666667);
+    }
+    :where(.row) > .lg\:offset-11 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667);
     }
     .lg\:g-0,
     .lg\:gx-0 {
-      --bs-gutter-x: 0;
+      --bs-gutter-x: 0px;
     }
     .lg\:g-0,
     .lg\:gy-0 {
@@ -964,27 +1295,27 @@
     }
     .xl\:row-cols-1 > * {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 1 - var(--bs-gutter-x, 0px));
     }
     .xl\:row-cols-2 > * {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 2 - var(--bs-gutter-x, 0px));
     }
     .xl\:row-cols-3 > * {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 3 - var(--bs-gutter-x, 0px));
     }
     .xl\:row-cols-4 > * {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 4 - var(--bs-gutter-x, 0px));
     }
     .xl\:row-cols-5 > * {
       flex: 0 0 auto;
-      width: 20%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 5 - var(--bs-gutter-x, 0px));
     }
     .xl\:row-cols-6 > * {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 6 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-auto {
       flex: 0 0 auto;
@@ -992,91 +1323,175 @@
     }
     .xl\:col-1 {
       flex: 0 0 auto;
-      width: 8.3333333333%;
+      width: calc((100% + 0px) * 0.0833333333 - 0px);
+    }
+    :where(.row) > .xl\:col-1 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-2 {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + 0px) * 0.1666666667 - 0px);
+    }
+    :where(.row) > .xl\:col-2 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-3 {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + 0px) * 0.25 - 0px);
+    }
+    :where(.row) > .xl\:col-3 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.25 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-4 {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + 0px) * 0.3333333333 - 0px);
+    }
+    :where(.row) > .xl\:col-4 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-5 {
       flex: 0 0 auto;
-      width: 41.6666666667%;
+      width: calc((100% + 0px) * 0.4166666667 - 0px);
+    }
+    :where(.row) > .xl\:col-5 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-6 {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + 0px) * 0.5 - 0px);
+    }
+    :where(.row) > .xl\:col-6 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-7 {
       flex: 0 0 auto;
-      width: 58.3333333333%;
+      width: calc((100% + 0px) * 0.5833333333 - 0px);
+    }
+    :where(.row) > .xl\:col-7 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-8 {
       flex: 0 0 auto;
-      width: 66.6666666667%;
+      width: calc((100% + 0px) * 0.6666666667 - 0px);
+    }
+    :where(.row) > .xl\:col-8 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-9 {
       flex: 0 0 auto;
-      width: 75%;
+      width: calc((100% + 0px) * 0.75 - 0px);
+    }
+    :where(.row) > .xl\:col-9 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.75 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-10 {
       flex: 0 0 auto;
-      width: 83.3333333333%;
+      width: calc((100% + 0px) * 0.8333333333 - 0px);
+    }
+    :where(.row) > .xl\:col-10 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-11 {
       flex: 0 0 auto;
-      width: 91.6666666667%;
+      width: calc((100% + 0px) * 0.9166666667 - 0px);
+    }
+    :where(.row) > .xl\:col-11 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667 - var(--bs-gutter-x, 0px));
     }
     .xl\:col-12 {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + 0px) * 1 - 0px);
+    }
+    :where(.row) > .xl\:col-12 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 1 - var(--bs-gutter-x, 0px));
     }
     .xl\:offset-0 {
       margin-inline-start: 0;
     }
+    :where(.row) > .xl\:offset-0 {
+      margin-inline-start: 0;
+    }
     .xl\:offset-1 {
-      margin-inline-start: 8.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.0833333333);
+    }
+    :where(.row) > .xl\:offset-1 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333);
     }
     .xl\:offset-2 {
-      margin-inline-start: 16.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.1666666667);
+    }
+    :where(.row) > .xl\:offset-2 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667);
     }
     .xl\:offset-3 {
-      margin-inline-start: 25%;
+      margin-inline-start: calc((100% + 0px) * 0.25);
+    }
+    :where(.row) > .xl\:offset-3 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.25);
     }
     .xl\:offset-4 {
-      margin-inline-start: 33.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.3333333333);
+    }
+    :where(.row) > .xl\:offset-4 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333);
     }
     .xl\:offset-5 {
-      margin-inline-start: 41.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.4166666667);
+    }
+    :where(.row) > .xl\:offset-5 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667);
     }
     .xl\:offset-6 {
-      margin-inline-start: 50%;
+      margin-inline-start: calc((100% + 0px) * 0.5);
+    }
+    :where(.row) > .xl\:offset-6 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5);
     }
     .xl\:offset-7 {
-      margin-inline-start: 58.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.5833333333);
+    }
+    :where(.row) > .xl\:offset-7 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333);
     }
     .xl\:offset-8 {
-      margin-inline-start: 66.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.6666666667);
+    }
+    :where(.row) > .xl\:offset-8 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667);
     }
     .xl\:offset-9 {
-      margin-inline-start: 75%;
+      margin-inline-start: calc((100% + 0px) * 0.75);
+    }
+    :where(.row) > .xl\:offset-9 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.75);
     }
     .xl\:offset-10 {
-      margin-inline-start: 83.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.8333333333);
+    }
+    :where(.row) > .xl\:offset-10 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333);
     }
     .xl\:offset-11 {
-      margin-inline-start: 91.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.9166666667);
+    }
+    :where(.row) > .xl\:offset-11 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667);
     }
     .xl\:g-0,
     .xl\:gx-0 {
-      --bs-gutter-x: 0;
+      --bs-gutter-x: 0px;
     }
     .xl\:g-0,
     .xl\:gy-0 {
@@ -1189,27 +1604,27 @@
     }
     .\32 xl\:row-cols-1 > * {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 1 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:row-cols-2 > * {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 2 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:row-cols-3 > * {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 3 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:row-cols-4 > * {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 4 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:row-cols-5 > * {
       flex: 0 0 auto;
-      width: 20%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 5 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:row-cols-6 > * {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + var(--bs-gutter-x, 0px)) / 6 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-auto {
       flex: 0 0 auto;
@@ -1217,91 +1632,175 @@
     }
     .\32 xl\:col-1 {
       flex: 0 0 auto;
-      width: 8.3333333333%;
+      width: calc((100% + 0px) * 0.0833333333 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-1 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-2 {
       flex: 0 0 auto;
-      width: 16.6666666667%;
+      width: calc((100% + 0px) * 0.1666666667 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-2 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-3 {
       flex: 0 0 auto;
-      width: 25%;
+      width: calc((100% + 0px) * 0.25 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-3 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.25 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-4 {
       flex: 0 0 auto;
-      width: 33.3333333333%;
+      width: calc((100% + 0px) * 0.3333333333 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-4 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-5 {
       flex: 0 0 auto;
-      width: 41.6666666667%;
+      width: calc((100% + 0px) * 0.4166666667 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-5 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-6 {
       flex: 0 0 auto;
-      width: 50%;
+      width: calc((100% + 0px) * 0.5 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-6 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-7 {
       flex: 0 0 auto;
-      width: 58.3333333333%;
+      width: calc((100% + 0px) * 0.5833333333 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-7 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-8 {
       flex: 0 0 auto;
-      width: 66.6666666667%;
+      width: calc((100% + 0px) * 0.6666666667 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-8 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-9 {
       flex: 0 0 auto;
-      width: 75%;
+      width: calc((100% + 0px) * 0.75 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-9 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.75 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-10 {
       flex: 0 0 auto;
-      width: 83.3333333333%;
+      width: calc((100% + 0px) * 0.8333333333 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-10 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-11 {
       flex: 0 0 auto;
-      width: 91.6666666667%;
+      width: calc((100% + 0px) * 0.9166666667 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-11 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:col-12 {
       flex: 0 0 auto;
-      width: 100%;
+      width: calc((100% + 0px) * 1 - 0px);
+    }
+    :where(.row) > .\32 xl\:col-12 {
+      flex: 0 0 auto;
+      width: calc((100% + var(--bs-gutter-x, 0px)) * 1 - var(--bs-gutter-x, 0px));
     }
     .\32 xl\:offset-0 {
       margin-inline-start: 0;
     }
+    :where(.row) > .\32 xl\:offset-0 {
+      margin-inline-start: 0;
+    }
     .\32 xl\:offset-1 {
-      margin-inline-start: 8.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.0833333333);
+    }
+    :where(.row) > .\32 xl\:offset-1 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.0833333333);
     }
     .\32 xl\:offset-2 {
-      margin-inline-start: 16.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.1666666667);
+    }
+    :where(.row) > .\32 xl\:offset-2 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.1666666667);
     }
     .\32 xl\:offset-3 {
-      margin-inline-start: 25%;
+      margin-inline-start: calc((100% + 0px) * 0.25);
+    }
+    :where(.row) > .\32 xl\:offset-3 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.25);
     }
     .\32 xl\:offset-4 {
-      margin-inline-start: 33.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.3333333333);
+    }
+    :where(.row) > .\32 xl\:offset-4 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.3333333333);
     }
     .\32 xl\:offset-5 {
-      margin-inline-start: 41.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.4166666667);
+    }
+    :where(.row) > .\32 xl\:offset-5 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.4166666667);
     }
     .\32 xl\:offset-6 {
-      margin-inline-start: 50%;
+      margin-inline-start: calc((100% + 0px) * 0.5);
+    }
+    :where(.row) > .\32 xl\:offset-6 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5);
     }
     .\32 xl\:offset-7 {
-      margin-inline-start: 58.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.5833333333);
+    }
+    :where(.row) > .\32 xl\:offset-7 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.5833333333);
     }
     .\32 xl\:offset-8 {
-      margin-inline-start: 66.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.6666666667);
+    }
+    :where(.row) > .\32 xl\:offset-8 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.6666666667);
     }
     .\32 xl\:offset-9 {
-      margin-inline-start: 75%;
+      margin-inline-start: calc((100% + 0px) * 0.75);
+    }
+    :where(.row) > .\32 xl\:offset-9 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.75);
     }
     .\32 xl\:offset-10 {
-      margin-inline-start: 83.3333333333%;
+      margin-inline-start: calc((100% + 0px) * 0.8333333333);
+    }
+    :where(.row) > .\32 xl\:offset-10 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.8333333333);
     }
     .\32 xl\:offset-11 {
-      margin-inline-start: 91.6666666667%;
+      margin-inline-start: calc((100% + 0px) * 0.9166666667);
+    }
+    :where(.row) > .\32 xl\:offset-11 {
+      margin-inline-start: calc((100% + var(--bs-gutter-x, 0px)) * 0.9166666667);
     }
     .\32 xl\:g-0,
     .\32 xl\:gx-0 {
-      --bs-gutter-x: 0;
+      --bs-gutter-x: 0px;
     }
     .\32 xl\:g-0,
     .\32 xl\:gy-0 {

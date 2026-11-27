@@ -1,7 +1,9 @@
+@use "sass:map";
 @use "config" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
@@ -31,6 +33,8 @@ $menu-tokens: defaults(
     --menu-item-color: var(--menu-color, var(--fg-body)),
     --menu-item-hover-color: var(--menu-color, var(--fg-body)),
     --menu-item-hover-bg: var(--bg-1),
+    --menu-item-focus-color: light-dark(var(--white), var(--gray-900)),
+    --menu-item-focus-bg: light-dark(var(--gray-700), var(--gray-200)),
     --menu-item-active-color: var(--primary-contrast),
     --menu-item-active-bg: var(--primary-bg),
     --menu-item-disabled-color: var(--fg-3),
@@ -54,17 +58,49 @@ $menu-tokens: defaults(
 
 // stylelint-enable custom-property-no-missing-var-function, scss/dollar-variable-default
 
+@mixin stacked-menu($selector) {
+  #{$selector} {
+    // The Menu plugin reads the same property in Sass and built CSS.
+    --bs-menu-stack-submenus: 1;
+
+    .menu-back {
+      display: block;
+    }
+
+    &:has(> .submenu.show > .menu.show) > :not(.submenu.show),
+    .menu:has(> .submenu.show > .menu.show) > :not(.submenu.show),
+    .submenu.show:has(> .menu.show) > .menu-item {
+      display: none;
+    }
+
+    .submenu > .menu {
+      position: static !important; // stylelint-disable-line declaration-no-important -- Override the inline position.
+      min-width: 0;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      @include transition(none);
+    }
+  }
+}
+
 @layer components {
   .menu {
     @include tokens($menu-tokens);
+
+    --bs-menu-available-width: initial;
+    --bs-menu-available-height: initial;
 
     position: absolute;
     z-index: var(--menu-zindex);
     display: none;
     flex-direction: column;
     gap: var(--menu-gap);
-    min-width: var(--menu-min-width);
-    max-height: var(--menu-max-height, none);
+    min-width: min(var(--menu-min-width), var(--bs-menu-available-width, calc(100dvw - 1rem)));
+    max-width: var(--bs-menu-available-width, calc(100dvw - 1rem));
+    max-height: min(var(--menu-max-height, 100dvh), var(--bs-menu-available-height, 100dvh));
     padding: var(--menu-padding-y) var(--menu-padding-x);
     margin: 0;
     overflow-y: var(--menu-overflow-y, initial);
@@ -72,6 +108,8 @@ $menu-tokens: defaults(
     font-size: var(--menu-font-size);
     color: var(--menu-color);
     text-align: start;
+    overflow-wrap: anywhere;
+    white-space: normal;
     list-style-type: "";
     background-color: var(--menu-bg);
     background-clip: padding-box;
@@ -121,6 +159,14 @@ $menu-tokens: defaults(
       opacity: 1;
       transform: none;
     }
+
+    &[data-bs-menu-constrained] {
+      overflow-y: var(--menu-overflow-y, auto);
+    }
+
+    > * {
+      flex-shrink: 0;
+    }
   }
 
   @starting-style {
@@ -167,15 +213,13 @@ $menu-tokens: defaults(
     color: var(--theme-fg, var(--menu-item-color));
     text-align: inherit;
     text-decoration: none;
-    white-space: nowrap;
     cursor: pointer;
     background-color: transparent;
     border: 0;
     outline: 0;
     @include border-radius(var(--menu-item-border-radius, 0));
 
-    &:hover,
-    &:focus {
+    &:hover {
       color: var(--theme-fg-emphasis, var(--menu-item-hover-color));
       background-color: var(--theme-bg-subtle, var(--menu-item-hover-bg));
       // @include gradient-bg(var(--theme-bg-subtle, var(--menu-item-hover-bg)));
@@ -189,6 +233,18 @@ $menu-tokens: defaults(
 
       .menu-item-icon {
         color: inherit !important; // stylelint-disable-line declaration-no-important
+      }
+    }
+
+    &:focus-visible:not(.disabled, :disabled) {
+      color: var(--menu-item-focus-color);
+      background-color: var(--menu-item-focus-bg);
+
+      // Show the focused item with the system highlight colors.
+      @include forced-colors() {
+        color: HighlightText;
+        background-color: Highlight;
+        forced-color-adjust: none;
       }
     }
 
@@ -218,7 +274,7 @@ $menu-tokens: defaults(
     display: flex;
     flex: 1;
     flex-direction: column;
-    min-width: fit-content;
+    min-width: 0;
   }
 
   .menu-item-description {
@@ -246,7 +302,6 @@ $menu-tokens: defaults(
     margin-bottom: 0;
     font-size: var(--font-size-sm);
     color: var(--menu-header-color);
-    white-space: nowrap;
   }
 
   .menu-text {
@@ -287,16 +342,34 @@ $menu-tokens: defaults(
       margin-top: calc(-1 * var(--menu-padding-y));
     }
 
-    &:hover > .menu-item,
-    &:focus-within > .menu-item {
+    &:hover > .menu-item:where(:not(:focus-visible)),
+    &:focus-within > .menu-item:where(:not(:focus-visible)) {
       color: var(--menu-item-hover-color);
       background-color: var(--menu-item-hover-bg);
     }
 
-    &.show > .menu-item {
+    &.show > .menu-item:where(:not(:focus-visible)) {
       color: var(--menu-item-hover-color);
       background-color: var(--menu-item-hover-bg);
     }
   }
   // scss-docs-end submenu
+
+  .menu-back {
+    display: none;
+  }
+
+  @include stacked-menu(".menu[data-bs-menu-stacked]");
+
+  @media (width < #{map.get($breakpoints, sm)}) {
+    // Keep the menu in the drawer body's scroll area.
+    :where(.drawer-body) .menu:has(> .submenu) {
+      position: static !important; // stylelint-disable-line declaration-no-important -- Override the inline position.
+      min-width: min(var(--menu-min-width), 100%);
+      max-width: 100%;
+      max-height: var(--menu-max-height, none);
+    }
+
+    @include stacked-menu(".menu");
+  }
 }

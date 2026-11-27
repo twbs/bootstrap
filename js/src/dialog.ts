@@ -10,7 +10,7 @@ import EventHandler from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import SelectorEngine from './dom/selector-engine.js'
 import { enableDismissTrigger } from './util/component-functions.js'
-import { isVisible } from './util/index.js'
+import { isDisabled } from './util/index.js'
 
 /**
  * Constants
@@ -21,8 +21,6 @@ const DATA_KEY = 'bs.dialog'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
-const EVENT_SHOW = `show${EVENT_KEY}`
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_CANCEL = `cancel${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
@@ -81,7 +79,7 @@ class Dialog extends DialogBase {
 
   protected static _handleDataApiClick(trigger: HTMLElement, event: Event): void {
     const target = SelectorEngine.getElementFromSelector(trigger)
-    if (!target) {
+    if (!(target instanceof HTMLDialogElement) || isDisabled(trigger)) {
       return
     }
 
@@ -90,7 +88,7 @@ class Dialog extends DialogBase {
     }
 
     const config = Manipulator.getDataAttributes(trigger)
-    const currentDialog = trigger.closest<HTMLDialogElement>('dialog[open]')
+    const currentDialog = trigger.closest<HTMLDialogElement>('dialog.dialog[open]')
 
     // A trigger inside the open dialog that targets the same dialog has
     // nothing to swap to. Keep the dialog open instead of toggling it closed.
@@ -101,12 +99,6 @@ class Dialog extends DialogBase {
     const shouldSwap = currentDialog && currentDialog !== target
 
     if (!shouldSwap) {
-      EventHandler.one(target, EVENT_SHOW, showEvent => {
-        if (!showEvent.defaultPrevented) {
-          Dialog._registerFocusRestoration(target, trigger)
-        }
-      })
-
       Dialog.getOrCreateInstance(target, config).toggle(trigger)
       return
     }
@@ -124,26 +116,21 @@ class Dialog extends DialogBase {
       return
     }
 
-    Dialog._registerFocusRestoration(target, trigger)
+    const returnFocus = currentInstance._returnFocus
+    const wasInstant = currentDialog.classList.contains(CLASS_NAME_INSTANT)
     target.classList.add(CLASS_NAME_SWAP_IN)
-    EventHandler.one(target, `shown${EVENT_KEY}`, () => {
+    newDialog._show(trigger, returnFocus).finally(() => {
       target.classList.remove(CLASS_NAME_SWAP_IN)
     })
-    newDialog._show(trigger)
 
-    currentDialog.classList.add(CLASS_NAME_INSTANT)
-    EventHandler.one(currentDialog, EVENT_HIDDEN, () => {
-      currentDialog.classList.remove(CLASS_NAME_INSTANT)
-    })
-    currentInstance._hide()
-  }
-
-  protected static _registerFocusRestoration(target: HTMLElement, trigger: HTMLElement): void {
-    EventHandler.one(target, EVENT_HIDDEN, () => {
-      if (isVisible(trigger)) {
-        trigger.focus({ preventScroll: true })
-      }
-    })
+    if (target.open) {
+      currentDialog.classList.add(CLASS_NAME_INSTANT)
+      currentInstance._hide(false).finally(() => {
+        if (!wasInstant) {
+          currentDialog.classList.remove(CLASS_NAME_INSTANT)
+        }
+      })
+    }
   }
 
   // Public

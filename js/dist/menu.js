@@ -1,9 +1,9 @@
 /*!
-* Bootstrap menu.js v6.0.0-alpha.1 (https://getbootstrap.com/)
+* Bootstrap menu.js v6.0.0-alpha.2 (https://getbootstrap.com/)
 * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
-import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
+import { autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import Manipulator from "./dom/manipulator.js";
@@ -33,6 +33,14 @@ const HOME_KEY = "Home";
 const END_KEY = "End";
 const ENTER_KEY = "Enter";
 const SPACE_KEY = " ";
+const ITEM_NAVIGATION_KEYS = /* @__PURE__ */ new Set([
+	ARROW_UP_KEY,
+	ARROW_DOWN_KEY,
+	ARROW_LEFT_KEY,
+	ARROW_RIGHT_KEY,
+	HOME_KEY,
+	END_KEY
+]);
 const RIGHT_MOUSE_BUTTON = 2;
 const SUBMENU_CLOSE_DELAY = 100;
 const EVENT_HIDE = `hide${EVENT_KEY}`;
@@ -42,13 +50,16 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_TOUCH_MOUSEOVER = `mouseover${EVENT_KEY}`;
 const CLASS_NAME_SHOW = "show";
+const CLASS_NAME_MENU_BACK = "menu-back";
 const SELECTOR_DATA_TOGGLE = "[data-bs-toggle=\"menu\"]:not(.disabled):not(:disabled)";
 const SELECTOR_MENU = ".menu";
 const SELECTOR_SUBMENU = ".submenu";
 const SELECTOR_SUBMENU_TOGGLE = ".submenu > .menu-item";
 const SELECTOR_NAVBAR_NAV = ".navbar-nav";
 const SELECTOR_VISIBLE_ITEMS = ".menu-item:not(.disabled):not(:disabled)";
+const SELECTOR_TAB_STOPS = ":is(a[href], button, input, select, textarea, summary, [tabindex], [contenteditable]):not(:disabled, .disabled)";
 const DEFAULT_PLACEMENT = "bottom-start";
 const SUBMENU_PLACEMENT = "end-start";
 const resolveLogicalPlacement = (placement) => {
@@ -99,10 +110,14 @@ var Menu = class Menu extends BaseComponent {
 		this._openSubmenus = /* @__PURE__ */ new Map();
 		this._submenuCloseTimeouts = /* @__PURE__ */ new Map();
 		this._hoverIntentData = null;
+		this._submenuPointerType = "mouse";
+		this._touchMouseover = () => noop();
+		this._touchMouseoverTargets = /* @__PURE__ */ new Set();
 		this._menu = this._config.menu || this._findMenu();
 		if (!this._config.menu && this._menu) this._parent = this._findWrapper(this._menu);
 		this._isSubmenu = this._parent.classList?.contains("submenu");
 		this._menuOriginalParent = this._menu?.parentNode;
+		this._menuOriginalNextSibling = null;
 		this._parseResponsivePlacements();
 		this._setupSubmenuListeners();
 		this._initSubmenuTriggers();
@@ -119,21 +134,32 @@ var Menu = class Menu extends BaseComponent {
 	toggle() {
 		return this._isShown() ? this.hide() : this.show();
 	}
-	async show() {
+	show() {
+		return this._show();
+	}
+	async _show(focus) {
 		if (isDisabled(this._element) || this._isShown()) return;
 		const relatedTarget = { relatedTarget: this._element };
 		if (EventHandler.trigger(this._element, EVENT_SHOW, relatedTarget).defaultPrevented) return;
 		this._moveMenuToContainer();
-		this._createFloating();
-		if ("ontouchstart" in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) for (const element of document.body.children) EventHandler.on(element, "mouseover", noop);
-		this._element.focus({ focusVisible: false });
+		this._disposeFloating();
+		this._submenuPointerType = "mouse";
+		if ("ontouchstart" in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) for (const element of document.body.children) {
+			EventHandler.on(element, EVENT_TOUCH_MOUSEOVER, this._touchMouseover);
+			this._touchMouseoverTargets.add(element);
+		}
 		this._element.setAttribute("aria-expanded", "true");
 		this._menu.classList.add(CLASS_NAME_SHOW);
 		this._element.classList.add(CLASS_NAME_SHOW);
 		if (this._parent) this._parent.classList.add(CLASS_NAME_SHOW);
+		this._syncSubmenuLayout();
+		this._createFloating();
 		Menu._openInstances.add(this);
+		if (focus) focus();
+		else this._element.focus({ focusVisible: false });
+		if (!this._element || !this._isShown()) return;
 		await this._queueCallback(() => {
-			if (this._isShown()) EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
+			if (this._menu && this._isShown()) EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
 		}, this._menu, this._isAnimated());
 	}
 	async hide() {
@@ -142,7 +168,10 @@ var Menu = class Menu extends BaseComponent {
 		await this._completeHide(relatedTarget);
 	}
 	dispose() {
+		this._removeTouchMouseoverListeners();
+		EventHandler.off(this._menu, EVENT_KEY);
 		this._disposeFloating();
+		this._clearSize();
 		this._restoreMenuToOriginalParent();
 		this._disposeMediaQueryListeners();
 		this._closeAllSubmenus();
@@ -165,20 +194,25 @@ var Menu = class Menu extends BaseComponent {
 	async _completeHide(relatedTarget) {
 		if (EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget).defaultPrevented) return;
 		this._closeAllSubmenus();
-		if ("ontouchstart" in document.documentElement) for (const element of document.body.children) EventHandler.off(element, "mouseover", noop);
+		this._removeTouchMouseoverListeners();
 		this._menu.classList.remove(CLASS_NAME_SHOW);
 		this._element.classList.remove(CLASS_NAME_SHOW);
 		if (this._parent) this._parent.classList.remove(CLASS_NAME_SHOW);
 		this._element.setAttribute("aria-expanded", "false");
 		Menu._openInstances.delete(this);
 		await this._queueCallback(() => {
-			if (this._isShown()) return;
+			if (!this._menu || this._isShown()) return;
 			this._disposeFloating();
+			this._clearSize();
 			this._restoreMenuToOriginalParent();
 			Manipulator.removeDataAttribute(this._menu, "placement");
 			Manipulator.removeDataAttribute(this._menu, "display");
 			EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
 		}, this._menu, this._isAnimated());
+	}
+	_removeTouchMouseoverListeners() {
+		for (const element of this._touchMouseoverTargets) EventHandler.off(element, EVENT_TOUCH_MOUSEOVER, this._touchMouseover);
+		this._touchMouseoverTargets.clear();
 	}
 	_getConfig(config) {
 		config = super._getConfig(config);
@@ -194,7 +228,6 @@ var Menu = class Menu extends BaseComponent {
 		if (this._config.reference === "parent") referenceElement = this._parent;
 		else if (isElement(this._config.reference)) referenceElement = getElement(this._config.reference);
 		else if (typeof this._config.reference === "object") referenceElement = this._config.reference;
-		this._updateFloatingPosition(referenceElement);
 		this._floatingCleanup = autoUpdate(referenceElement, this._menu, () => this._updateFloatingPosition(referenceElement));
 	}
 	async _updateFloatingPosition(referenceElement = null) {
@@ -246,14 +279,38 @@ var Menu = class Menu extends BaseComponent {
 	}
 	_getFloatingMiddleware() {
 		const offsetValue = this._getOffset();
+		const boundary = this._config.boundary === "clippingParents" ? "clippingAncestors" : this._config.boundary;
 		return [
 			offset(typeof offsetValue === "function" ? offsetValue : toFloatingOffset(offsetValue)),
 			flip({
-				fallbackPlacements: this._getFallbackPlacements(),
-				fallbackStrategy: "initialPlacement"
+				boundary,
+				fallbackPlacements: this._getFallbackPlacements()
 			}),
-			shift({ boundary: this._config.boundary === "clippingParents" ? "clippingAncestors" : this._config.boundary })
+			shift({ boundary }),
+			size({
+				boundary,
+				apply: ({ availableWidth, availableHeight, elements }) => {
+					if (this._menu !== elements.floating || !this._isShown() || getComputedStyle(this._menu).position === "static") return;
+					this._menu.style.setProperty("--bs-menu-available-width", `${Math.max(0, Math.floor(availableWidth))}px`);
+					this._menu.style.setProperty("--bs-menu-available-height", `${Math.max(0, Math.floor(availableHeight))}px`);
+					this._syncSubmenuLayout();
+				}
+			})
 		];
+	}
+	_syncSubmenuLayout() {
+		if (!this._openSubmenus.size) this._menu.toggleAttribute("data-bs-menu-constrained", this._menu.scrollHeight > this._menu.clientHeight);
+		else if (this._usesStackedSubmenus() && this._menu.scrollHeight > this._menu.clientHeight) this._menu.setAttribute("data-bs-menu-constrained", "");
+		const { overflowX, overflowY } = getComputedStyle(this._menu);
+		this._menu.toggleAttribute("data-bs-menu-stacked", overflowX !== "visible" || overflowY !== "visible");
+	}
+	_clearSize() {
+		if (this._menu) {
+			this._menu.style.removeProperty("--bs-menu-available-width");
+			this._menu.style.removeProperty("--bs-menu-available-height");
+			this._menu.removeAttribute("data-bs-menu-constrained");
+			this._menu.removeAttribute("data-bs-menu-stacked");
+		}
 	}
 	_getFallbackPlacements() {
 		return {
@@ -365,11 +422,17 @@ var Menu = class Menu extends BaseComponent {
 	_moveMenuToContainer() {
 		const container = this._getContainer();
 		if (!container || !this._menu) return;
-		if (this._menu.parentNode !== container) container.append(this._menu);
+		if (this._menu.parentNode !== container) {
+			this._menuOriginalNextSibling = this._menu.nextSibling;
+			container.append(this._menu);
+		}
 	}
 	_restoreMenuToOriginalParent() {
 		if (!this._menuOriginalParent || !this._menu) return;
-		if (this._menu.parentNode !== this._menuOriginalParent) this._menuOriginalParent.append(this._menu);
+		if (this._menu.parentNode !== this._menuOriginalParent) {
+			const nextSibling = this._menuOriginalNextSibling;
+			this._menuOriginalParent.insertBefore(this._menu, nextSibling?.parentNode === this._menuOriginalParent ? nextSibling : null);
+		}
 	}
 	async _applyFloatingPosition(reference, floating, placement, middleware, strategy = "absolute") {
 		if (!floating.isConnected) return null;
@@ -390,21 +453,32 @@ var Menu = class Menu extends BaseComponent {
 	}
 	_setupSubmenuListeners() {
 		if (this._config.submenuTrigger === "hover" || this._config.submenuTrigger === "both") {
-			EventHandler.on(this._menu, "mouseenter", SELECTOR_SUBMENU_TOGGLE, (event) => {
+			EventHandler.on(this._menu, `mouseenter${EVENT_KEY}`, SELECTOR_SUBMENU_TOGGLE, (event) => {
 				this._onSubmenuTriggerEnter(event);
 			});
-			EventHandler.on(this._menu, "mouseleave", SELECTOR_SUBMENU, (event) => {
+			EventHandler.on(this._menu, `mouseleave${EVENT_KEY}`, SELECTOR_SUBMENU, (event) => {
 				this._onSubmenuLeave(event);
 			});
-			EventHandler.on(this._menu, "mousemove", (event) => {
+			EventHandler.on(this._menu, `mousemove${EVENT_KEY}`, (event) => {
 				this._trackMousePosition(event);
 			});
 		}
-		if (this._config.submenuTrigger === "click" || this._config.submenuTrigger === "both") EventHandler.on(this._menu, "click", SELECTOR_SUBMENU_TOGGLE, (event) => {
-			this._onSubmenuTriggerClick(event);
+		if (this._config.submenuTrigger === "both") EventHandler.on(this._menu, `pointerover${EVENT_KEY}`, (event) => {
+			this._submenuPointerType = event.pointerType;
+		});
+		if ([
+			"click",
+			"hover",
+			"both"
+		].includes(this._config.submenuTrigger)) EventHandler.on(this._menu, `click${EVENT_KEY}`, SELECTOR_SUBMENU_TOGGLE, (event) => {
+			if (this._config.submenuTrigger !== "hover" || this._usesStackedSubmenus()) this._onSubmenuTriggerClick(event);
 		});
 	}
+	_usesStackedSubmenus() {
+		return getComputedStyle(this._menu).getPropertyValue("--bs-menu-stack-submenus") === "1";
+	}
 	_onSubmenuTriggerEnter(event) {
+		if (this._submenuPointerType !== "mouse" || this._usesStackedSubmenus()) return;
 		const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE);
 		if (!trigger) return;
 		const submenuWrapper = trigger.closest(SELECTOR_SUBMENU);
@@ -415,6 +489,7 @@ var Menu = class Menu extends BaseComponent {
 		this._openSubmenu(trigger, submenu, submenuWrapper);
 	}
 	_onSubmenuLeave(event) {
+		if (this._submenuPointerType !== "mouse" || this._usesStackedSubmenus()) return;
 		const submenuWrapper = event.target.closest(SELECTOR_SUBMENU);
 		const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
 		if (!submenu || !this._openSubmenus.has(submenu)) return;
@@ -433,6 +508,7 @@ var Menu = class Menu extends BaseComponent {
 		else {
 			this._closeSiblingSubmenus(submenuWrapper);
 			this._openSubmenu(trigger, submenu, submenuWrapper);
+			if (this._usesStackedSubmenus()) this._getItemsInMenu(submenu)[0]?.focus();
 		}
 	}
 	_initSubmenuTriggers() {
@@ -450,9 +526,25 @@ var Menu = class Menu extends BaseComponent {
 		submenu.style.opacity = "0";
 		submenu.classList.add(CLASS_NAME_SHOW);
 		submenuWrapper.classList.add(CLASS_NAME_SHOW);
-		const cleanup = this._createSubmenuFloating(trigger, submenu, submenuWrapper);
-		this._openSubmenus.set(submenu, cleanup);
-		EventHandler.on(submenu, "mouseenter", () => {
+		const backItem = document.createElement(submenu.matches("ul, ol, menu") ? "li" : "div");
+		backItem.className = CLASS_NAME_MENU_BACK;
+		const backButton = document.createElement("button");
+		backButton.type = "button";
+		backButton.className = "menu-item";
+		backButton.textContent = "Back";
+		backButton.addEventListener("click", (event) => {
+			event.stopPropagation();
+			this._closeSubmenu(submenu, submenuWrapper);
+			trigger.focus();
+		});
+		backItem.append(backButton);
+		submenu.prepend(backItem);
+		const cleanup = this._createSubmenuFloating(submenu, submenuWrapper);
+		this._openSubmenus.set(submenu, () => {
+			cleanup();
+			backItem.remove();
+		});
+		EventHandler.on(submenu, `mouseenter${EVENT_KEY}`, () => {
 			this._cancelSubmenuCloseTimeout(submenu);
 		});
 	}
@@ -467,7 +559,8 @@ var Menu = class Menu extends BaseComponent {
 		const cleanup = this._openSubmenus.get(submenu);
 		if (cleanup) cleanup();
 		this._openSubmenus.delete(submenu);
-		EventHandler.off(submenu, "mouseenter");
+		EventHandler.off(submenu, `mouseenter${EVENT_KEY}`);
+		this._cancelSubmenuCloseTimeout(submenu);
 		if (trigger) trigger.setAttribute("aria-expanded", "false");
 		submenu.classList.remove(CLASS_NAME_SHOW);
 		submenuWrapper.classList.remove(CLASS_NAME_SHOW);
@@ -487,7 +580,7 @@ var Menu = class Menu extends BaseComponent {
 			if (siblingWrapper !== currentSubmenuWrapper) this._closeSubmenu(siblingMenu, siblingWrapper);
 		}
 	}
-	_createSubmenuFloating(trigger, submenu, submenuWrapper) {
+	_createSubmenuFloating(submenu, submenuWrapper) {
 		const referenceElement = submenuWrapper;
 		const placement = resolveLogicalPlacement(SUBMENU_PLACEMENT);
 		const middleware = [
@@ -502,11 +595,14 @@ var Menu = class Menu extends BaseComponent {
 			] }),
 			shift({ padding: 8 })
 		];
-		const updatePosition = () => this._applyFloatingPosition(referenceElement, submenu, placement, middleware).then((finalPlacement) => {
+		const updatePosition = async () => {
+			if (this._usesStackedSubmenus()) {
+				submenu.style.opacity = "";
+				return;
+			}
+			await this._applyFloatingPosition(referenceElement, submenu, placement, middleware);
 			submenu.style.opacity = "";
-			return finalPlacement;
-		});
-		updatePosition();
+		};
 		return autoUpdate(referenceElement, submenu, updatePosition);
 	}
 	_scheduleSubmenuClose(submenu, submenuWrapper) {
@@ -564,7 +660,8 @@ var Menu = class Menu extends BaseComponent {
 		return !((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0));
 	}
 	_getItemsInMenu(menu) {
-		return SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS}`, menu).filter((element) => isVisible(element));
+		const backSelector = this._usesStackedSubmenus() ? `, :scope > .${CLASS_NAME_MENU_BACK} > ${SELECTOR_VISIBLE_ITEMS}` : "";
+		return SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_SUBMENU} > ${SELECTOR_VISIBLE_ITEMS}${backSelector}`, menu).filter((element) => isVisible(element));
 	}
 	_selectMenuItem({ key, target }) {
 		const currentMenu = target.closest(SELECTOR_MENU) || this._menu;
@@ -573,6 +670,20 @@ var Menu = class Menu extends BaseComponent {
 		const nextItem = getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target));
 		nextItem.focus();
 		this._closeUnrelatedSubmenus(currentMenu, nextItem);
+	}
+	_handlePortaledTab(event) {
+		if (!this._isShown() || this._menu.parentNode === this._menuOriginalParent || event.defaultPrevented) return;
+		const stops = SelectorEngine.find(SELECTOR_TAB_STOPS, this._menu).filter((element) => (element.tabIndex >= 0 || element.isContentEditable && !element.hasAttribute("tabindex")) && !element.closest("[inert]") && isVisible(element));
+		const first = stops[0];
+		if (event.target === this._element && !event.shiftKey && first) {
+			event.preventDefault();
+			first.focus();
+			return;
+		}
+		if (event.shiftKey && event.target === first) {
+			event.preventDefault();
+			this._element.focus();
+		} else if (!event.shiftKey && event.target === stops.at(-1)) this._element.focus();
 	}
 	_closeUnrelatedSubmenus(currentMenu, focusedElement) {
 		for (const [submenu] of this._openSubmenus) {
@@ -596,8 +707,7 @@ var Menu = class Menu extends BaseComponent {
 				this._closeSiblingSubmenus(submenuWrapper);
 				this._openSubmenu(target, submenu, submenuWrapper);
 				requestAnimationFrame(() => {
-					const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu);
-					if (firstItem) firstItem.focus();
+					if (this._openSubmenus?.has(submenu)) (this._usesStackedSubmenus() ? this._getItemsInMenu(submenu)[0] : SelectorEngine.findOne(`${SELECTOR_VISIBLE_ITEMS}:not(.${CLASS_NAME_MENU_BACK} > *)`, submenu))?.focus();
 				});
 			}
 			return true;
@@ -615,9 +725,10 @@ var Menu = class Menu extends BaseComponent {
 			}
 		}
 		if (key === HOME_KEY || key === END_KEY) {
+			const currentMenu = target.closest(SELECTOR_MENU);
+			if (!currentMenu) return false;
 			event.preventDefault();
 			event.stopPropagation();
-			const currentMenu = target.closest(SELECTOR_MENU);
 			const items = this._getItemsInMenu(currentMenu);
 			if (items.length) {
 				const targetItem = key === HOME_KEY ? items[0] : items.at(-1);
@@ -627,6 +738,20 @@ var Menu = class Menu extends BaseComponent {
 			return true;
 		}
 		return false;
+	}
+	_handleEscape(event) {
+		if (!this._isShown()) return;
+		event.preventDefault();
+		event.stopPropagation();
+		const currentMenu = event.target.closest(SELECTOR_MENU);
+		const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU);
+		if (currentMenu && parentSubmenuWrapper && this._openSubmenus.has(currentMenu)) {
+			this._closeSubmenu(currentMenu, parentSubmenuWrapper);
+			SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)?.focus();
+			return;
+		}
+		this.hide();
+		this._element.focus();
 	}
 	static clearMenus(event) {
 		if (event.button === RIGHT_MOUSE_BUTTON || event.type === "keyup" && event.key !== TAB_KEY) return;
@@ -649,40 +774,27 @@ var Menu = class Menu extends BaseComponent {
 		return SelectorEngine.prev(element, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine.next(element, SELECTOR_DATA_TOGGLE)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode);
 	}
 	static dataApiKeydownHandler(event) {
-		const isInput = /input|textarea/i.test(event.target.tagName) || event.target.isContentEditable;
-		const isEscapeEvent = event.key === ESCAPE_KEY;
-		const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key);
-		const isLeftOrRightEvent = [ARROW_LEFT_KEY, ARROW_RIGHT_KEY].includes(event.key);
-		const isHomeOrEndEvent = [HOME_KEY, END_KEY].includes(event.key);
-		const isEnterOrSpaceEvent = [ENTER_KEY, SPACE_KEY].includes(event.key);
-		const isSubmenuTrigger = event.target.matches(SELECTOR_SUBMENU_TOGGLE);
-		if (!isUpOrDownEvent && !isEscapeEvent && !isLeftOrRightEvent && !isHomeOrEndEvent && !(isEnterOrSpaceEvent && isSubmenuTrigger)) return;
-		if (isInput && !isEscapeEvent) return;
+		if (event.isComposing || event.keyCode === 229) return;
+		const { key, target } = event;
+		if (key !== ESCAPE_KEY && key !== TAB_KEY) {
+			const activatesSubmenu = (key === ENTER_KEY || key === SPACE_KEY) && target.matches(SELECTOR_SUBMENU_TOGGLE);
+			const isMenuItemOrToggle = target.matches(`${SELECTOR_DATA_TOGGLE}, .menu-item`);
+			if (!(ITEM_NAVIGATION_KEYS.has(key) || activatesSubmenu) || !isMenuItemOrToggle || target.isContentEditable || target.matches("input, select, textarea")) return;
+		}
 		const getToggleButton = Menu._getToggleFromKeydownContext(this, event);
 		if (!getToggleButton) return;
+		if (key === TAB_KEY) {
+			Menu.getInstance(getToggleButton)?._handlePortaledTab(event);
+			return;
+		}
 		const instance = Menu.getOrCreateInstance(getToggleButton);
-		if ((isLeftOrRightEvent || isHomeOrEndEvent || isEnterOrSpaceEvent && isSubmenuTrigger) && instance._handleSubmenuKeydown(event)) return;
-		if (isUpOrDownEvent) {
+		if (key === ESCAPE_KEY) instance._handleEscape(event);
+		else if (key === ARROW_UP_KEY || key === ARROW_DOWN_KEY) {
 			event.preventDefault();
 			event.stopPropagation();
 			instance.show();
 			instance._selectMenuItem(event);
-			return;
-		}
-		if (isEscapeEvent && instance._isShown()) {
-			event.preventDefault();
-			event.stopPropagation();
-			const currentMenu = event.target.closest(SELECTOR_MENU);
-			const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU);
-			if (parentSubmenuWrapper && instance._openSubmenus.size > 0) {
-				const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper);
-				instance._closeSubmenu(currentMenu, parentSubmenuWrapper);
-				if (parentTrigger) parentTrigger.focus();
-				return;
-			}
-			instance.hide();
-			getToggleButton.focus();
-		}
+		} else instance._handleSubmenuKeydown(event);
 	}
 };
 /**

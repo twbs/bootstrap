@@ -7,7 +7,7 @@
 type SanitizerAllowList = Record<string, Array<string | RegExp>>;
 export declare const DefaultAllowlist: SanitizerAllowList;
 /**
- * Allowlist for icon HTML options (Chips `dismissIcon`, NavOverflow `moreIcon`,
+ * Allowlist for icon HTML options (NavOverflow `moreIcon`,
  * and markup supplied via `[data-bs-overflow-icon]`). Covers the default SVG
  * icons plus common inline-icon markup. Event-handler attributes and tags not
  * listed here are stripped by `sanitizeHtml`.

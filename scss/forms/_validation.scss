@@ -30,19 +30,22 @@ $validation-states: defaults(
     width: 100%;
     font-size: var(--font-size-sm);
     color: var(--#{$theme}-fg);
+    overflow-wrap: anywhere;
   }
 
   // More specific to override base tooltip styles
   .tooltip.#{$state}-tooltip {
     position: absolute;
-    top: 100%;
+    inset-block-start: 100%;
+    inset-inline-start: 0;
     z-index: 5;
     display: none;
     max-width: 100%;
     padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
     margin-top: .1rem;
     color: var(--#{$theme}-contrast);
-    text-align: center;
+    text-align: start;
+    overflow-wrap: anywhere;
     background-color: var(--#{$theme}-bg);
     opacity: 1;
     @include border-radius(var(--tooltip-border-radius));
@@ -62,7 +65,8 @@ $validation-states: defaults(
     @include form-validation-state-selector($state) {
       --control-border-color: var(--#{$theme}-border);
 
-      &:focus-visible {
+      &:focus-visible,
+      &.form-adorn:focus-within {
         @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
         --control-border-color: var(--#{$theme}-border);
       }
@@ -201,9 +205,9 @@ $validation-states: defaults(
     }
   }
 
-  // Chip input — wrapper has the visible border; the .form-ghost inside
+  // Combobox — wrapper has the visible border; the .form-ghost inside
   // receives the native pseudo-class.
-  .chip-input:has(.form-ghost.is-#{$state}) {
+  .combobox-control:has(.form-ghost.is-#{$state}) {
     border-color: var(--#{$theme}-border);
 
     &:focus-within {
@@ -216,7 +220,7 @@ $validation-states: defaults(
   }
 
   @if $state == "invalid" {
-    [data-bs-validate] .chip-input:has(.form-ghost:user-invalid) {
+    [data-bs-validate] .combobox-control:has(.form-ghost:user-invalid) {
       border-color: var(--#{$theme}-border);
 
       &:focus-within {
@@ -228,7 +232,7 @@ $validation-states: defaults(
       ~ .invalid-tooltip { display: block; }
     }
   } @else if $state == "valid" {
-    [data-bs-validate~="valid"] .chip-input:has(.form-ghost:user-valid) {
+    [data-bs-validate~="valid"] .combobox-control:has(.form-ghost:user-valid) {
       border-color: var(--#{$theme}-border);
 
       &:focus-within {
@@ -285,6 +289,8 @@ $validation-states: defaults(
   // the .form-range wrapper, so we use :has() to toggle it.
   .form-range-input {
     @include form-validation-state-selector($state) {
+      --range-track-fill-bg: var(--#{$theme}-bg);
+
       &::-webkit-slider-thumb { background: var(--#{$theme}-bg); }
       &::-moz-range-thumb { background: var(--#{$theme}-bg); }
 
@@ -320,6 +326,24 @@ $validation-states: defaults(
     [data-bs-validate~="valid"] .form-field:has(.input-group .form-control:user-valid) {
       .valid-feedback,
       .valid-tooltip { display: block; }
+    }
+  }
+
+  // Floating label feedback follows the wrapper that contains the control.
+  .form-floating:has(> :where(.form-control).is-#{$state}) {
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip { display: block; }
+  }
+
+  @if $state == "invalid" {
+    [data-bs-validate] .form-floating:has(> :where(.form-control):user-invalid) {
+      ~ .invalid-feedback,
+      ~ .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .form-floating:has(> :where(.form-control):user-valid) {
+      ~ .valid-feedback,
+      ~ .valid-tooltip { display: block; }
     }
   }
 

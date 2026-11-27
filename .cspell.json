@@ -1,6 +1,7 @@
 {
   "version": "0.2",
   "words": [
+    "activedescendant",
     "affordance",
     "allowfullscreen",
     "Analyser",
@@ -33,6 +34,8 @@
     "cheatsheet",
     "checkgroup",
     "clearfix",
+    "closedby",
+    "closerequest",
     "Codesniffer",
     "combinator",
     "contenteditable",
@@ -75,6 +78,7 @@
     "flexbox",
     "focusables",
     "focustrap",
+    "formaction",
     "Fpath",
     "frontmatter",
     "fullscreen",
@@ -124,6 +128,7 @@
     "mkdir",
     "monospace",
     "mouseleave",
+    "multiselectable",
     "navbars",
     "navs",
     "navoverflow",

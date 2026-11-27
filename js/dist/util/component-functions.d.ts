@@ -15,5 +15,6 @@ type EventActionCallback = (data: EventActionData & {
     instances: BaseComponent[];
 }) => void;
 declare const eventActionOnPlugin: (Plugin: typeof BaseComponent, onEvent: string, stringSelector: string, method: string, callback?: EventActionCallback | null) => void;
-export { enableDismissTrigger, eventActionOnPlugin };
+declare const onDocumentReady: (eventName: string, callback: () => void) => void;
+export { enableDismissTrigger, eventActionOnPlugin, onDocumentReady };
 //# sourceMappingURL=component-functions.d.ts.map
