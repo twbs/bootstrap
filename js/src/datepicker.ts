@@ -1418,7 +1418,8 @@ class Datepicker extends BaseComponent {
         if (parts.year.length === 4) {
           const iso = `${parts.year}-${parts.month.padStart(2, '0')}-${parts.day.padStart(2, '0')}`
           const candidate = this._parseIsoDate(iso)
-          if (candidate && this._formatDate(iso) === value) {
+          const unpad = (text: string) => text.replace(/\b0+(?=\d)/g, '')
+          if (candidate && unpad(this._formatDate(iso)) === unpad(value)) {
             date = candidate
           }
         }
