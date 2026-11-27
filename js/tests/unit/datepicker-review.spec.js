@@ -200,6 +200,23 @@ describe('Datepicker review regressions', () => {
     })
   }
 
+  for (const [locale, values] of [
+    ['de-DE', ['1.3.2027', '01.03.2027']],
+    ['en-US', ['3/1/2027', '03/01/2027']],
+    ['en-GB', ['1/3/2027', '01/03/2027']]
+  ]) {
+    it(`accepts typed ${locale} dates with or without zero padding`, () => {
+      host.innerHTML = '<form><input name="date"></form>'
+      const input = host.querySelector('input')
+      picker = new Datepicker(input, { locale })
+      for (const value of values) {
+        input.value = value
+        input.dispatchEvent(new Event('input', { bubbles: true }))
+        expect(picker.getSelectedDates()).toEqual(['2027-03-01'])
+      }
+    })
+  }
+
   it('keeps the updated name when disposal precedes the attribute observer', () => {
     host.innerHTML = '<form><input name="before" value="2026-10-05"></form>'
     const input = host.querySelector('input')
