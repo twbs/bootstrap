@@ -29,12 +29,36 @@
       <button type="button" class="btn-solid theme-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
         Popover on start
       </button>
+
+      <p class="mt-4">Open the dialog. The popover should stay in one position.</p>
+      <button type="button" class="btn-solid theme-primary" id="open-edge-dialog">Open dialog</button>
+      <dialog class="dialog dialog-scrollable" id="edge-dialog" aria-labelledby="edge-dialog-title">
+        <div class="dialog-header">
+          <h2 class="dialog-title" id="edge-dialog-title">Popover at the dialog edge</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+        </div>
+        <div class="dialog-body" style="min-block-size: 0">
+          <div style="min-block-size: 36rem">
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn-solid theme-primary" id="edge-popover" data-bs-title="Popover at edge" data-bs-content="This popover has enough text to wrap onto several lines. It should keep the same width and stay in one position at the edge of the dialog.">Popover button</button>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </div>
 
     <script type="module">
-      import { Popover } from '../../../dist/js/bootstrap.bundle.js'
+      import { Dialog, Popover } from '../../../dist/js/bootstrap.bundle.js'
 
       document.querySelectorAll('[data-bs-toggle="popover"]').forEach(popoverEl => new Popover(popoverEl))
+
+      const edgeDialog = new Dialog('#edge-dialog')
+      const edgePopover = new Popover('#edge-popover', { trigger: 'manual', animation: false })
+      document.querySelector('#open-edge-dialog').addEventListener('click', async () => {
+        await edgeDialog.show()
+        edgePopover.show()
+      })
+      document.querySelector('#edge-dialog').addEventListener('hide.bs.dialog', () => edgePopover.hide())
     </script>
   </body>
 </html>
