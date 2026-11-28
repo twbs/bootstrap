@@ -49,6 +49,11 @@ $popover-tokens: defaults(
 
     z-index: var(--popover-zindex);
     display: block;
+    // Keep intrinsic width when left/top-positioned inside a containing block with limited
+    // remaining space (e.g. an open <dialog>). Without this, the popover shrinks to the gap
+    // between its left and the edge, flip/autoUpdate thrash, and placement never settles.
+    // See https://floating-ui.com/docs/computeposition#initial-layout and #43228.
+    width: max-content;
     max-width: var(--popover-max-width);
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
